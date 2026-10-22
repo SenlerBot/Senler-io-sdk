@@ -43,10 +43,6 @@ function instanceOfLandingAbRuleConfigDto(value) {
         return false;
     if (!('allocations' in value) || value['allocations'] === undefined)
         return false;
-    if (!('goal' in value) || value['goal'] === undefined)
-        return false;
-    if (!('actionIds' in value) || value['actionIds'] === undefined)
-        return false;
     return true;
 }
 function LandingAbRuleConfigDtoFromJSON(json) {
@@ -60,8 +56,8 @@ function LandingAbRuleConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         'kind': json['kind'],
         'experimentId': json['experiment_id'],
         'allocations': (json['allocations'].map(LandingAbAllocationDto_1.LandingAbAllocationDtoFromJSON)),
-        'goal': json['goal'],
-        'actionIds': json['action_ids'],
+        'goal': json['goal'] == null ? undefined : json['goal'],
+        'actionIds': json['action_ids'] == null ? undefined : json['action_ids'],
     };
 }
 function LandingAbRuleConfigDtoToJSON(json) {

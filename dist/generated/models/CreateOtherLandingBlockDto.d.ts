@@ -16,6 +16,12 @@
  */
 export interface CreateOtherLandingBlockDto {
     /**
+     * ID . ID .
+     * @type {string}
+     * @memberof CreateOtherLandingBlockDto
+     */
+    blockId?: string;
+    /**
      * ;
      * @type {string}
      * @memberof CreateOtherLandingBlockDto

@@ -28,6 +28,12 @@ import {
  */
 export interface CreateTextLandingBlockDto {
     /**
+     * ID . ID .
+     * @type {string}
+     * @memberof CreateTextLandingBlockDto
+     */
+    blockId?: string;
+    /**
      * ;
      * @type {string}
      * @memberof CreateTextLandingBlockDto
@@ -85,6 +91,7 @@ export function CreateTextLandingBlockDtoFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
 
+        'blockId': json['block_id'] == null ? undefined : json['block_id'],
         'pageVariantId': json['page_variant_id'] == null ? undefined : json['page_variant_id'],
         'expectedOrderRevision': json['expected_order_revision'],
         'isVisible': json['is_visible'],
@@ -105,6 +112,7 @@ export function CreateTextLandingBlockDtoToJSONTyped(value?: CreateTextLandingBl
 
     return {
 
+        'block_id': value['blockId'],
         'page_variant_id': value['pageVariantId'],
         'expected_order_revision': value['expectedOrderRevision'],
         'is_visible': value['isVisible'],

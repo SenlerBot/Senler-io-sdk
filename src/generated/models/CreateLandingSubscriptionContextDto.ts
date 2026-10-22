@@ -28,6 +28,13 @@ import {
  */
 export interface CreateLandingSubscriptionContextDto {
     /**
+     * ; observed_block_ids
+     * @type {Array<string>}
+     * @memberof CreateLandingSubscriptionContextDto
+     * @deprecated
+     */
+    observedExperimentIds?: Array<string>;
+    /**
      *
      * @type {boolean}
      * @memberof CreateLandingSubscriptionContextDto
@@ -39,12 +46,6 @@ export interface CreateLandingSubscriptionContextDto {
      * @memberof CreateLandingSubscriptionContextDto
      */
     observedBlockIds?: Array<string>;
-    /**
-     * , ,
-     * @type {Array<string>}
-     * @memberof CreateLandingSubscriptionContextDto
-     */
-    observedExperimentIds?: Array<string>;
     /**
      * resolve
      * @type {string}
@@ -119,9 +120,9 @@ export function CreateLandingSubscriptionContextDtoFromJSONTyped(json: any, igno
     }
     return {
 
+        'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
         'pageObserved': json['page_observed'] == null ? undefined : json['page_observed'],
         'observedBlockIds': json['observed_block_ids'] == null ? undefined : json['observed_block_ids'],
-        'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
         'eventToken': json['event_token'] == null ? undefined : json['event_token'],
         'analytics': json['analytics'] == null ? undefined : ((json['analytics'] as Array<any>).map(AnalyticsSnapshotDtoFromJSON)),
         'channelPublicId': json['channel_public_id'],
@@ -145,9 +146,9 @@ export function CreateLandingSubscriptionContextDtoToJSONTyped(value?: CreateLan
 
     return {
 
+        'observed_experiment_ids': value['observedExperimentIds'],
         'page_observed': value['pageObserved'],
         'observed_block_ids': value['observedBlockIds'],
-        'observed_experiment_ids': value['observedExperimentIds'],
         'event_token': value['eventToken'],
         'analytics': value['analytics'] == null ? undefined : ((value['analytics'] as Array<any>).map(AnalyticsSnapshotDtoToJSON)),
         'channel_public_id': value['channelPublicId'],

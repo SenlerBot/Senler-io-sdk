@@ -24,7 +24,6 @@ import type {
   LandingBlockDeleteMutationResponseDto,
   LandingBlockOrderMutationResponseDto,
   LandingDraftConflictResponseDto,
-  LandingExperimentReportDto,
   LandingPersonalizationMutationResponseDto,
   LandingPreviewResponseDto,
   LandingPublicationValidationDto,
@@ -60,8 +59,6 @@ import {
     LandingBlockOrderMutationResponseDtoToJSON,
     LandingDraftConflictResponseDtoFromJSON,
     LandingDraftConflictResponseDtoToJSON,
-    LandingExperimentReportDtoFromJSON,
-    LandingExperimentReportDtoToJSON,
     LandingPersonalizationMutationResponseDtoFromJSON,
     LandingPersonalizationMutationResponseDtoToJSON,
     LandingPreviewResponseDtoFromJSON,
@@ -115,12 +112,6 @@ export interface GetLandingPublicationValidationRequest {
 export interface GetLandingPublicationsRequest {
     agentId: string;
     acceptLanguage?: GetLandingPublicationsAcceptLanguageEnum;
-}
-
-export interface GetLandingRulesResultsRequest {
-    agentId: string;
-    ruleId: string;
-    acceptLanguage?: GetLandingRulesResultsAcceptLanguageEnum;
 }
 
 export interface GetLandingShareLinksRequest {
@@ -451,70 +442,6 @@ export class AgentsLandingApi extends runtime.BaseAPI {
      */
     async getLandingPublications(requestParameters: GetLandingPublicationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationsListResponseDto> {
         const response = await this.getLandingPublicationsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * , . ; .
-     * A/B
-     */
-    async getLandingRulesResultsRaw(requestParameters: GetLandingRulesResultsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingExperimentReportDto>> {
-        if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError(
-                'agentId',
-                'Required parameter "agentId" was null or undefined when calling getLandingRulesResults().'
-            );
-        }
-
-        if (requestParameters['ruleId'] == null) {
-            throw new runtime.RequiredError(
-                'ruleId',
-                'Required parameter "ruleId" was null or undefined when calling getLandingRulesResults().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-
-        const response = await this.request({
-            path: `/api/agents/{agentId}/landing/rules/{ruleId}/results`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))).replace(`{${"ruleId"}}`, encodeURIComponent(String(requestParameters['ruleId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingExperimentReportDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * , . ; .
-     * A/B
-     */
-    async getLandingRulesResults(requestParameters: GetLandingRulesResultsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingExperimentReportDto> {
-        const response = await this.getLandingRulesResultsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1324,14 +1251,6 @@ export const GetLandingPublicationsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetLandingPublicationsAcceptLanguageEnum = typeof GetLandingPublicationsAcceptLanguageEnum[keyof typeof GetLandingPublicationsAcceptLanguageEnum];
-/**
- * @export
- */
-export const GetLandingRulesResultsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type GetLandingRulesResultsAcceptLanguageEnum = typeof GetLandingRulesResultsAcceptLanguageEnum[keyof typeof GetLandingRulesResultsAcceptLanguageEnum];
 /**
  * @export
  */

@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface DeleteLandingBlockDto {
     /**
+     * personalization.blocks,
+     * @type {number}
+     * @memberof DeleteLandingBlockDto
+     */
+    expectedRevision: number;
+    /**
      *
      * @type {number}
      * @memberof DeleteLandingBlockDto
@@ -31,6 +37,7 @@ export interface DeleteLandingBlockDto {
  * Check if a given object implements the DeleteLandingBlockDto interface.
  */
 export function instanceOfDeleteLandingBlockDto(value: object): value is DeleteLandingBlockDto {
+    if (!('expectedRevision' in value) || value['expectedRevision'] === undefined) return false;
     if (!('expectedOrderRevision' in value) || value['expectedOrderRevision'] === undefined) return false;
     return true;
 }
@@ -45,6 +52,7 @@ export function DeleteLandingBlockDtoFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
 
+        'expectedRevision': json['expected_revision'],
         'expectedOrderRevision': json['expected_order_revision'],
     };
 }
@@ -60,6 +68,7 @@ export function DeleteLandingBlockDtoToJSONTyped(value?: DeleteLandingBlockDto |
 
     return {
 
+        'expected_revision': value['expectedRevision'],
         'expected_order_revision': value['expectedOrderRevision'],
     };
 }

@@ -55,7 +55,7 @@ export interface MutateLandingPersonalizationDto {
      */
     expectedRevision: number;
     /**
-     * : create_page, update_page, delete_page, create_variant, update_variant, delete_variant, copy_block, set_page_rule, set_block_rule, upsert_rule, delete_rule, update_content.
+     * : create_page, update_page, delete_page, create_variant, update_variant, delete_variant, copy_block, set_page_rule, set_block_rule, create_rule, update_rule, delete_rule, update_content.
      * @type {string}
      * @memberof MutateLandingPersonalizationDto
      */
@@ -154,7 +154,8 @@ export const MutateLandingPersonalizationDtoOperationEnum = {
     CopyBlock: 'copy_block',
     SetPageRule: 'set_page_rule',
     SetBlockRule: 'set_block_rule',
-    UpsertRule: 'upsert_rule',
+    CreateRule: 'create_rule',
+    UpdateRule: 'update_rule',
     DeleteRule: 'delete_rule',
     UpdateContent: 'update_content'
 } as const;

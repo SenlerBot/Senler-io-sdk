@@ -37,9 +37,9 @@ function instanceOfLandingPreviewResponseDto(value) {
         return false;
     if (!('eventToken' in value) || value['eventToken'] === undefined)
         return false;
-    if (!('exposures' in value) || value['exposures'] === undefined)
-        return false;
     if (!('exposureMarkers' in value) || value['exposureMarkers'] === undefined)
+        return false;
+    if (!('exposures' in value) || value['exposures'] === undefined)
         return false;
     if (!('decisions' in value) || value['decisions'] === undefined)
         return false;
@@ -60,8 +60,8 @@ function LandingPreviewResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'pageVariantId': json['page_variant_id'],
         'selectedBlocks': (json['selected_blocks'].map(LandingResolvedBlockDto_1.LandingResolvedBlockDtoFromJSON)),
         'eventToken': json['event_token'],
-        'exposures': (json['exposures'].map(LandingExperimentExposureDto_1.LandingExperimentExposureDtoFromJSON)),
         'exposureMarkers': (json['exposure_markers'].map(LandingExperimentMarkerDto_1.LandingExperimentMarkerDtoFromJSON)),
+        'exposures': (json['exposures'].map(LandingExperimentExposureDto_1.LandingExperimentExposureDtoFromJSON)),
         'decisions': (json['decisions'].map(LandingRuleDecisionDto_1.LandingRuleDecisionDtoFromJSON)),
         'unavailableContext': json['unavailable_context'],
     };
@@ -79,8 +79,8 @@ function LandingPreviewResponseDtoToJSONTyped(value, ignoreDiscriminator = false
         'page_variant_id': value['pageVariantId'],
         'selected_blocks': (value['selectedBlocks'].map(LandingResolvedBlockDto_1.LandingResolvedBlockDtoToJSON)),
         'event_token': value['eventToken'],
-        'exposures': (value['exposures'].map(LandingExperimentExposureDto_1.LandingExperimentExposureDtoToJSON)),
         'exposure_markers': (value['exposureMarkers'].map(LandingExperimentMarkerDto_1.LandingExperimentMarkerDtoToJSON)),
+        'exposures': (value['exposures'].map(LandingExperimentExposureDto_1.LandingExperimentExposureDtoToJSON)),
         'decisions': (value['decisions'].map(LandingRuleDecisionDto_1.LandingRuleDecisionDtoToJSON)),
         'unavailable_context': value['unavailableContext'],
     };

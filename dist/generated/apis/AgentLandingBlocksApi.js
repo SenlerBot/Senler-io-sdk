@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateLandingBlocksVideoAcceptLanguageEnum = exports.UpdateLandingBlocksTimerAcceptLanguageEnum = exports.UpdateLandingBlocksTextAcceptLanguageEnum = exports.UpdateLandingBlocksReviewsAcceptLanguageEnum = exports.UpdateLandingBlocksProductsAcceptLanguageEnum = exports.UpdateLandingBlocksOtherAcceptLanguageEnum = exports.UpdateLandingBlocksInteractiveAcceptLanguageEnum = exports.UpdateLandingBlocksImageAcceptLanguageEnum = exports.UpdateLandingBlocksFeaturesAcceptLanguageEnum = exports.UpdateLandingBlocksCoverAcceptLanguageEnum = exports.UpdateLandingBlocksButtonAcceptLanguageEnum = exports.UpdateLandingBlocksActionSubscribeSegmentAcceptLanguageEnum = exports.UpdateLandingBlocksActionOpenUrlAcceptLanguageEnum = exports.LandingBlocksVideoAcceptLanguageEnum = exports.LandingBlocksTimerAcceptLanguageEnum = exports.LandingBlocksTextAcceptLanguageEnum = exports.LandingBlocksReviewsAcceptLanguageEnum = exports.LandingBlocksProductsAcceptLanguageEnum = exports.LandingBlocksOtherAcceptLanguageEnum = exports.LandingBlocksInteractiveAcceptLanguageEnum = exports.LandingBlocksImageAcceptLanguageEnum = exports.LandingBlocksFeaturesAcceptLanguageEnum = exports.LandingBlocksCoverAcceptLanguageEnum = exports.LandingBlocksButtonAcceptLanguageEnum = exports.DeleteLandingBlocksActionAcceptLanguageEnum = exports.AgentLandingBlocksApi = void 0;
+exports.UpdateLandingBlocksWidgetAcceptLanguageEnum = exports.UpdateLandingBlocksVideoAcceptLanguageEnum = exports.UpdateLandingBlocksTimerAcceptLanguageEnum = exports.UpdateLandingBlocksTextAcceptLanguageEnum = exports.UpdateLandingBlocksReviewsAcceptLanguageEnum = exports.UpdateLandingBlocksProductsAcceptLanguageEnum = exports.UpdateLandingBlocksOtherAcceptLanguageEnum = exports.UpdateLandingBlocksInteractiveAcceptLanguageEnum = exports.UpdateLandingBlocksImageAcceptLanguageEnum = exports.UpdateLandingBlocksFeaturesAcceptLanguageEnum = exports.UpdateLandingBlocksCoverAcceptLanguageEnum = exports.UpdateLandingBlocksButtonAcceptLanguageEnum = exports.UpdateLandingBlocksActionSubscribeSegmentAcceptLanguageEnum = exports.UpdateLandingBlocksActionOpenUrlAcceptLanguageEnum = exports.LandingBlocksWidgetAcceptLanguageEnum = exports.LandingBlocksVideoAcceptLanguageEnum = exports.LandingBlocksTimerAcceptLanguageEnum = exports.LandingBlocksTextAcceptLanguageEnum = exports.LandingBlocksReviewsAcceptLanguageEnum = exports.LandingBlocksProductsAcceptLanguageEnum = exports.LandingBlocksOtherAcceptLanguageEnum = exports.LandingBlocksInteractiveAcceptLanguageEnum = exports.LandingBlocksImageAcceptLanguageEnum = exports.LandingBlocksFeaturesAcceptLanguageEnum = exports.LandingBlocksCoverAcceptLanguageEnum = exports.LandingBlocksButtonAcceptLanguageEnum = exports.DeleteLandingBlocksActionAcceptLanguageEnum = exports.AgentLandingBlocksApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -156,7 +156,7 @@ class AgentLandingBlocksApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.CreateButtonLandingBlockDtoToJSON)(requestParameters['createButtonLandingBlockDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockOrderMutationResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockCreateMutationResponseDtoFromJSON)(jsonValue));
     }
     /**
      * .
@@ -211,7 +211,7 @@ class AgentLandingBlocksApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.CreateCoverLandingBlockDtoToJSON)(requestParameters['createCoverLandingBlockDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockOrderMutationResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockCreateMutationResponseDtoFromJSON)(jsonValue));
     }
     /**
      * .
@@ -266,7 +266,7 @@ class AgentLandingBlocksApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.CreateFeaturesLandingBlockDtoToJSON)(requestParameters['createFeaturesLandingBlockDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockOrderMutationResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockCreateMutationResponseDtoFromJSON)(jsonValue));
     }
     /**
      * .
@@ -321,7 +321,7 @@ class AgentLandingBlocksApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.CreateImageLandingBlockDtoToJSON)(requestParameters['createImageLandingBlockDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockOrderMutationResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockCreateMutationResponseDtoFromJSON)(jsonValue));
     }
     /**
      * .
@@ -376,7 +376,7 @@ class AgentLandingBlocksApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.CreateAgentLandingActionBlockDtoToJSON)(requestParameters['createAgentLandingActionBlockDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockOrderMutationResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockCreateMutationResponseDtoFromJSON)(jsonValue));
     }
     /**
      * cover, button timer.
@@ -431,7 +431,7 @@ class AgentLandingBlocksApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.CreateOtherLandingBlockDtoToJSON)(requestParameters['createOtherLandingBlockDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockOrderMutationResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockCreateMutationResponseDtoFromJSON)(jsonValue));
     }
     /**
      * ( other). payload: {}; .
@@ -486,7 +486,7 @@ class AgentLandingBlocksApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.CreateProductsLandingBlockDtoToJSON)(requestParameters['createProductsLandingBlockDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockOrderMutationResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockCreateMutationResponseDtoFromJSON)(jsonValue));
     }
     /**
      * .
@@ -541,7 +541,7 @@ class AgentLandingBlocksApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.CreateReviewsLandingBlockDtoToJSON)(requestParameters['createReviewsLandingBlockDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockOrderMutationResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockCreateMutationResponseDtoFromJSON)(jsonValue));
     }
     /**
      * .
@@ -596,7 +596,7 @@ class AgentLandingBlocksApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.CreateTextLandingBlockDtoToJSON)(requestParameters['createTextLandingBlockDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockOrderMutationResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockCreateMutationResponseDtoFromJSON)(jsonValue));
     }
     /**
      * .
@@ -651,7 +651,7 @@ class AgentLandingBlocksApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.CreateTimerLandingBlockDtoToJSON)(requestParameters['createTimerLandingBlockDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockOrderMutationResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockCreateMutationResponseDtoFromJSON)(jsonValue));
     }
     /**
      * .
@@ -706,7 +706,7 @@ class AgentLandingBlocksApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.CreateVideoLandingBlockDtoToJSON)(requestParameters['createVideoLandingBlockDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockOrderMutationResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockCreateMutationResponseDtoFromJSON)(jsonValue));
     }
     /**
      * .
@@ -714,6 +714,61 @@ class AgentLandingBlocksApi extends runtime.BaseAPI {
      */
     async landingBlocksVideo(requestParameters, initOverrides) {
         const response = await this.landingBlocksVideoRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     * widget
+     */
+    async landingBlocksWidgetRaw(requestParameters, initOverrides) {
+        if (requestParameters['resourceId'] == null) {
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling landingBlocksWidget().');
+        }
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingBlocksWidget().');
+        }
+        if (requestParameters['createWidgetLandingBlockDto'] == null) {
+            throw new runtime.RequiredError('createWidgetLandingBlockDto', 'Required parameter "createWidgetLandingBlockDto" was null or undefined when calling landingBlocksWidget().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+        const response = await this.request({
+            path: `/api/agents/{resourceId}/landing/blocks/widget`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateWidgetLandingBlockDtoToJSON)(requestParameters['createWidgetLandingBlockDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockCreateMutationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     * widget
+     */
+    async landingBlocksWidget(requestParameters, initOverrides) {
+        const response = await this.landingBlocksWidgetRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -1470,6 +1525,64 @@ class AgentLandingBlocksApi extends runtime.BaseAPI {
         const response = await this.updateLandingBlocksVideoRaw(requestParameters, initOverrides);
         return await response.value();
     }
+    /**
+     * .
+     * text
+     */
+    async updateLandingBlocksWidgetRaw(requestParameters, initOverrides) {
+        if (requestParameters['resourceId'] == null) {
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateLandingBlocksWidget().');
+        }
+        if (requestParameters['blockId'] == null) {
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateLandingBlocksWidget().');
+        }
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksWidget().');
+        }
+        if (requestParameters['updateWidgetLandingBlockDto'] == null) {
+            throw new runtime.RequiredError('updateWidgetLandingBlockDto', 'Required parameter "updateWidgetLandingBlockDto" was null or undefined when calling updateLandingBlocksWidget().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+        const response = await this.request({
+            path: `/api/agents/{resourceId}/landing/blocks/{blockId}/widget`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateWidgetLandingBlockDtoToJSON)(requestParameters['updateWidgetLandingBlockDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockContentMutationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     * text
+     */
+    async updateLandingBlocksWidget(requestParameters, initOverrides) {
+        const response = await this.updateLandingBlocksWidgetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 }
 exports.AgentLandingBlocksApi = AgentLandingBlocksApi;
 /**
@@ -1553,6 +1666,13 @@ exports.LandingBlocksTimerAcceptLanguageEnum = {
  * @export
  */
 exports.LandingBlocksVideoAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LandingBlocksWidgetAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -1644,6 +1764,13 @@ exports.UpdateLandingBlocksTimerAcceptLanguageEnum = {
  * @export
  */
 exports.UpdateLandingBlocksVideoAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateLandingBlocksWidgetAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

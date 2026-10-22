@@ -38,6 +38,7 @@ function CreateOtherLandingBlockDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'blockId': json['block_id'] == null ? undefined : json['block_id'],
         'pageVariantId': json['page_variant_id'] == null ? undefined : json['page_variant_id'],
         'expectedOrderRevision': json['expected_order_revision'],
         'isVisible': json['is_visible'],
@@ -54,6 +55,7 @@ function CreateOtherLandingBlockDtoToJSONTyped(value, ignoreDiscriminator = fals
         return value;
     }
     return {
+        'block_id': value['blockId'],
         'page_variant_id': value['pageVariantId'],
         'expected_order_revision': value['expectedOrderRevision'],
         'is_visible': value['isVisible'],

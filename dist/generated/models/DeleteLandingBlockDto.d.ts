@@ -16,6 +16,12 @@
  */
 export interface DeleteLandingBlockDto {
     /**
+     * personalization.blocks,
+     * @type {number}
+     * @memberof DeleteLandingBlockDto
+     */
+    expectedRevision: number;
+    /**
      *
      * @type {number}
      * @memberof DeleteLandingBlockDto

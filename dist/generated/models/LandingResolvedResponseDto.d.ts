@@ -50,17 +50,18 @@ export interface LandingResolvedResponseDto {
      */
     eventToken: string | null;
     /**
-     * exposures.
-     * @type {Array<LandingExperimentExposureDto>}
-     * @memberof LandingResolvedResponseDto
-     */
-    exposures: Array<LandingExperimentExposureDto>;
-    /**
      * exposure markers.
      * @type {Array<LandingExperimentMarkerDto>}
      * @memberof LandingResolvedResponseDto
      */
     exposureMarkers: Array<LandingExperimentMarkerDto>;
+    /**
+     * ;
+     * @type {Array<LandingExperimentExposureDto>}
+     * @memberof LandingResolvedResponseDto
+     * @deprecated
+     */
+    exposures: Array<LandingExperimentExposureDto>;
 }
 /**
  * Check if a given object implements the LandingResolvedResponseDto interface.

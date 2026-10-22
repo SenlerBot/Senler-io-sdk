@@ -16,31 +16,31 @@
  */
 export interface LandingJevContextDto {
     /**
-     * 50
+     * .
      * @type {boolean}
      * @memberof LandingJevContextDto
      */
     history: boolean;
     /**
-     * segments.
+     * .
      * @type {boolean}
      * @memberof LandingJevContextDto
      */
     segments: boolean;
     /**
-     * funnels.
+     * .
      * @type {boolean}
      * @memberof LandingJevContextDto
      */
     funnels: boolean;
     /**
-     * UTM
+     * UTM .
      * @type {boolean}
      * @memberof LandingJevContextDto
      */
     traffic: boolean;
     /**
-     * ;
+     * .
      * @type {boolean}
      * @memberof LandingJevContextDto
      */

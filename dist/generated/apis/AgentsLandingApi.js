@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateLandingRealtimeFocusAcceptLanguageEnum = exports.UpdateLandingDraftAcceptLanguageEnum = exports.LandingPreviewLeadAcceptLanguageEnum = exports.LandingPreviewAcceptLanguageEnum = exports.LandingPersonalizationAcceptLanguageEnum = exports.LandingBlocksMoveAcceptLanguageEnum = exports.LandingAssetsUploadUrlAcceptLanguageEnum = exports.LandingAssetsFromUrlAcceptLanguageEnum = exports.LandingAssetsConfirmAcceptLanguageEnum = exports.GetLandingStatisticsAcceptLanguageEnum = exports.GetLandingStatisticsDaysEnum = exports.GetLandingShareLinksAcceptLanguageEnum = exports.GetLandingRulesResultsAcceptLanguageEnum = exports.GetLandingPublicationsAcceptLanguageEnum = exports.GetLandingPublicationValidationAcceptLanguageEnum = exports.GetLandingAcceptLanguageEnum = exports.DeleteLandingBlocksAcceptLanguageEnum = exports.AgentsLandingApi = void 0;
+exports.UpdateLandingRealtimeFocusAcceptLanguageEnum = exports.UpdateLandingDraftAcceptLanguageEnum = exports.LandingPreviewLeadAcceptLanguageEnum = exports.LandingPreviewAcceptLanguageEnum = exports.LandingPersonalizationAcceptLanguageEnum = exports.LandingBlocksMoveAcceptLanguageEnum = exports.LandingAssetsUploadUrlAcceptLanguageEnum = exports.LandingAssetsFromUrlAcceptLanguageEnum = exports.LandingAssetsConfirmAcceptLanguageEnum = exports.GetLandingStatisticsAcceptLanguageEnum = exports.GetLandingStatisticsDaysEnum = exports.GetLandingShareLinksAcceptLanguageEnum = exports.GetLandingPublicationsAcceptLanguageEnum = exports.GetLandingPublicationValidationAcceptLanguageEnum = exports.GetLandingAcceptLanguageEnum = exports.DeleteLandingBlocksAcceptLanguageEnum = exports.AgentsLandingApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -241,53 +241,6 @@ class AgentsLandingApi extends runtime.BaseAPI {
      */
     async getLandingPublications(requestParameters, initOverrides) {
         const response = await this.getLandingPublicationsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * , . ; .
-     * A/B
-     */
-    async getLandingRulesResultsRaw(requestParameters, initOverrides) {
-        if (requestParameters['agentId'] == null) {
-            throw new runtime.RequiredError('agentId', 'Required parameter "agentId" was null or undefined when calling getLandingRulesResults().');
-        }
-        if (requestParameters['ruleId'] == null) {
-            throw new runtime.RequiredError('ruleId', 'Required parameter "ruleId" was null or undefined when calling getLandingRulesResults().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/agents/{agentId}/landing/rules/{ruleId}/results`.replace(`{${"agentId"}}`, encodeURIComponent(String(requestParameters['agentId']))).replace(`{${"ruleId"}}`, encodeURIComponent(String(requestParameters['ruleId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingExperimentReportDtoFromJSON)(jsonValue));
-    }
-    /**
-     * , . ; .
-     * A/B
-     */
-    async getLandingRulesResults(requestParameters, initOverrides) {
-        const response = await this.getLandingRulesResultsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -876,13 +829,6 @@ exports.GetLandingPublicationValidationAcceptLanguageEnum = {
  * @export
  */
 exports.GetLandingPublicationsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.GetLandingRulesResultsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

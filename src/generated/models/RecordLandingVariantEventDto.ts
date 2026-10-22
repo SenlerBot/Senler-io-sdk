@@ -20,6 +20,13 @@ import { mapValues } from '../runtime';
  */
 export interface RecordLandingVariantEventDto {
     /**
+     * ; observed_block_ids
+     * @type {Array<string>}
+     * @memberof RecordLandingVariantEventDto
+     * @deprecated
+     */
+    observedExperimentIds?: Array<string>;
+    /**
      *
      * @type {boolean}
      * @memberof RecordLandingVariantEventDto
@@ -31,12 +38,6 @@ export interface RecordLandingVariantEventDto {
      * @memberof RecordLandingVariantEventDto
      */
     observedBlockIds?: Array<string>;
-    /**
-     * , ,
-     * @type {Array<string>}
-     * @memberof RecordLandingVariantEventDto
-     */
-    observedExperimentIds?: Array<string>;
     /**
      * event token.
      * @type {string}
@@ -56,17 +57,18 @@ export interface RecordLandingVariantEventDto {
      */
     kind: RecordLandingVariantEventDtoKindEnum;
     /**
-     * ,
-     * @type {string}
-     * @memberof RecordLandingVariantEventDto
-     */
-    experimentId?: string;
-    /**
      * action id.
      * @type {string}
      * @memberof RecordLandingVariantEventDto
      */
     actionId?: string;
+    /**
+     * ,
+     * @type {string}
+     * @memberof RecordLandingVariantEventDto
+     * @deprecated
+     */
+    experimentId?: string;
 }
 
 
@@ -102,14 +104,14 @@ export function RecordLandingVariantEventDtoFromJSONTyped(json: any, ignoreDiscr
     }
     return {
 
+        'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
         'pageObserved': json['page_observed'] == null ? undefined : json['page_observed'],
         'observedBlockIds': json['observed_block_ids'] == null ? undefined : json['observed_block_ids'],
-        'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
         'eventToken': json['event_token'],
         'eventId': json['event_id'],
         'kind': json['kind'],
-        'experimentId': json['experiment_id'] == null ? undefined : json['experiment_id'],
         'actionId': json['action_id'] == null ? undefined : json['action_id'],
+        'experimentId': json['experiment_id'] == null ? undefined : json['experiment_id'],
     };
 }
 
@@ -124,13 +126,13 @@ export function RecordLandingVariantEventDtoToJSONTyped(value?: RecordLandingVar
 
     return {
 
+        'observed_experiment_ids': value['observedExperimentIds'],
         'page_observed': value['pageObserved'],
         'observed_block_ids': value['observedBlockIds'],
-        'observed_experiment_ids': value['observedExperimentIds'],
         'event_token': value['eventToken'],
         'event_id': value['eventId'],
         'kind': value['kind'],
-        'experiment_id': value['experimentId'],
         'action_id': value['actionId'],
+        'experiment_id': value['experimentId'],
     };
 }

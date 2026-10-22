@@ -29,17 +29,18 @@ export interface LandingConditionRuleConfigDto {
      */
     branches: Array<LandingConditionBranchDto>;
     /**
-     *
+     * , - . .
      * @type {string}
      * @memberof LandingConditionRuleConfigDto
      */
     otherwiseOutcomeId: string;
     /**
-     *
+     * . otherwise_outcome_id.
      * @type {string}
      * @memberof LandingConditionRuleConfigDto
+     * @deprecated
      */
-    noDataOutcomeId: string;
+    noDataOutcomeId?: string;
 }
 /**
  * @export

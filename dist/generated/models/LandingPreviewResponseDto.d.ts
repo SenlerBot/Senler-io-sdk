@@ -51,17 +51,18 @@ export interface LandingPreviewResponseDto {
      */
     eventToken: string | null;
     /**
-     * exposures.
-     * @type {Array<LandingExperimentExposureDto>}
-     * @memberof LandingPreviewResponseDto
-     */
-    exposures: Array<LandingExperimentExposureDto>;
-    /**
      * exposure markers.
      * @type {Array<LandingExperimentMarkerDto>}
      * @memberof LandingPreviewResponseDto
      */
     exposureMarkers: Array<LandingExperimentMarkerDto>;
+    /**
+     * ;
+     * @type {Array<LandingExperimentExposureDto>}
+     * @memberof LandingPreviewResponseDto
+     * @deprecated
+     */
+    exposures: Array<LandingExperimentExposureDto>;
     /**
      * decisions.
      * @type {Array<LandingRuleDecisionDto>}

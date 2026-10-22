@@ -46,13 +46,63 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.WidgetWelcomeIconUploadUrlAcceptLanguageEnum = exports.WidgetWelcomeIconConfirmAcceptLanguageEnum = exports.WidgetCodePreviewAcceptLanguageEnum = exports.WidgetAcceptLanguageEnum = exports.UpdateWidgetSettingsAcceptLanguageEnum = exports.GetWidgetWelcomeStepsAcceptLanguageEnum = exports.ChannelsWidgetApi = void 0;
+exports.WidgetWelcomeIconUploadUrlAcceptLanguageEnum = exports.WidgetWelcomeIconConfirmAcceptLanguageEnum = exports.WidgetCodePreviewAcceptLanguageEnum = exports.WidgetAcceptLanguageEnum = exports.UpdateWidgetSettingsAcceptLanguageEnum = exports.GetWidgetWelcomeStepsAcceptLanguageEnum = exports.GetWidgetWelcomePreviewAcceptLanguageEnum = exports.ChannelsWidgetApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
  *
  */
 class ChannelsWidgetApi extends runtime.BaseAPI {
+    /**
+     * . . .
+     *
+     */
+    async getWidgetWelcomePreviewRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getWidgetWelcomePreview().');
+        }
+        const queryParameters = {};
+        if (requestParameters['automationId'] != null) {
+            queryParameters['automation_id'] = requestParameters['automationId'];
+        }
+        if (requestParameters['nodeId'] != null) {
+            queryParameters['node_id'] = requestParameters['nodeId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/channels/widget/{id}/welcome-preview`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.WidgetWelcomeAppearanceDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . . .
+     *
+     */
+    async getWidgetWelcomePreview(requestParameters, initOverrides) {
+        const response = await this.getWidgetWelcomePreviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
     /**
      * , , .
      *
@@ -347,6 +397,13 @@ class ChannelsWidgetApi extends runtime.BaseAPI {
     }
 }
 exports.ChannelsWidgetApi = ChannelsWidgetApi;
+/**
+ * @export
+ */
+exports.GetWidgetWelcomePreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
 /**
  * @export
  */

@@ -34,8 +34,6 @@ function instanceOfLandingJevRuleConfigDto(value) {
         return false;
     if (!('instruction' in value) || value['instruction'] === undefined)
         return false;
-    if (!('context' in value) || value['context'] === undefined)
-        return false;
     if (!('noDataOutcomeId' in value) || value['noDataOutcomeId'] === undefined)
         return false;
     return true;
@@ -51,7 +49,7 @@ function LandingJevRuleConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         'kind': json['kind'],
         'aiModelId': json['ai_model_id'] == null ? undefined : json['ai_model_id'],
         'instruction': json['instruction'],
-        'context': (0, LandingJevContextDto_1.LandingJevContextDtoFromJSON)(json['context']),
+        'context': json['context'] == null ? undefined : (0, LandingJevContextDto_1.LandingJevContextDtoFromJSON)(json['context']),
         'noDataOutcomeId': json['no_data_outcome_id'],
     };
 }

@@ -10,7 +10,13 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmS3UploadDto, CreateWidgetChannelDto, CreateWidgetChannelResponseDto, GetAvatarUploadUrlDto, PreviewWidgetCodeDto, PreviewWidgetCodeResponseDto, S3UploadUrlResponseDto, UpdateWidgetSettingsDto, UpdateWidgetSettingsResponseDto, WidgetWelcomeIconResponseDto, WidgetWelcomeStepsDto } from '../models/index';
+import type { ConfirmS3UploadDto, CreateWidgetChannelDto, CreateWidgetChannelResponseDto, GetAvatarUploadUrlDto, PreviewWidgetCodeDto, PreviewWidgetCodeResponseDto, S3UploadUrlResponseDto, UpdateWidgetSettingsDto, UpdateWidgetSettingsResponseDto, WidgetWelcomeAppearanceDto, WidgetWelcomeIconResponseDto, WidgetWelcomeStepsDto } from '../models/index';
+export interface GetWidgetWelcomePreviewRequest {
+    id: string;
+    automationId?: string;
+    nodeId?: string;
+    acceptLanguage?: GetWidgetWelcomePreviewAcceptLanguageEnum;
+}
 export interface GetWidgetWelcomeStepsRequest {
     id: string;
     automationId: string;
@@ -44,6 +50,16 @@ export interface WidgetWelcomeIconUploadUrlRequest {
  *
  */
 export declare class ChannelsWidgetApi extends runtime.BaseAPI {
+    /**
+     * . . .
+     *
+     */
+    getWidgetWelcomePreviewRaw(requestParameters: GetWidgetWelcomePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WidgetWelcomeAppearanceDto>>;
+    /**
+     * . . .
+     *
+     */
+    getWidgetWelcomePreview(requestParameters: GetWidgetWelcomePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WidgetWelcomeAppearanceDto>;
     /**
      * , , .
      *
@@ -105,6 +121,14 @@ export declare class ChannelsWidgetApi extends runtime.BaseAPI {
      */
     widgetWelcomeIconUploadUrl(requestParameters: WidgetWelcomeIconUploadUrlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<S3UploadUrlResponseDto>;
 }
+/**
+ * @export
+ */
+export declare const GetWidgetWelcomePreviewAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetWidgetWelcomePreviewAcceptLanguageEnum = typeof GetWidgetWelcomePreviewAcceptLanguageEnum[keyof typeof GetWidgetWelcomePreviewAcceptLanguageEnum];
 /**
  * @export
  */

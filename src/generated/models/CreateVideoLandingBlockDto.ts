@@ -28,6 +28,12 @@ import {
  */
 export interface CreateVideoLandingBlockDto {
     /**
+     * ID . ID .
+     * @type {string}
+     * @memberof CreateVideoLandingBlockDto
+     */
+    blockId?: string;
+    /**
      * ;
      * @type {string}
      * @memberof CreateVideoLandingBlockDto
@@ -85,6 +91,7 @@ export function CreateVideoLandingBlockDtoFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
 
+        'blockId': json['block_id'] == null ? undefined : json['block_id'],
         'pageVariantId': json['page_variant_id'] == null ? undefined : json['page_variant_id'],
         'expectedOrderRevision': json['expected_order_revision'],
         'isVisible': json['is_visible'],
@@ -105,6 +112,7 @@ export function CreateVideoLandingBlockDtoToJSONTyped(value?: CreateVideoLanding
 
     return {
 
+        'block_id': value['blockId'],
         'page_variant_id': value['pageVariantId'],
         'expected_order_revision': value['expectedOrderRevision'],
         'is_visible': value['isVisible'],

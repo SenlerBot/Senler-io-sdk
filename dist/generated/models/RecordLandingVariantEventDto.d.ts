@@ -16,6 +16,13 @@
  */
 export interface RecordLandingVariantEventDto {
     /**
+     * ; observed_block_ids
+     * @type {Array<string>}
+     * @memberof RecordLandingVariantEventDto
+     * @deprecated
+     */
+    observedExperimentIds?: Array<string>;
+    /**
      *
      * @type {boolean}
      * @memberof RecordLandingVariantEventDto
@@ -27,12 +34,6 @@ export interface RecordLandingVariantEventDto {
      * @memberof RecordLandingVariantEventDto
      */
     observedBlockIds?: Array<string>;
-    /**
-     * , ,
-     * @type {Array<string>}
-     * @memberof RecordLandingVariantEventDto
-     */
-    observedExperimentIds?: Array<string>;
     /**
      * event token.
      * @type {string}
@@ -52,17 +53,18 @@ export interface RecordLandingVariantEventDto {
      */
     kind: RecordLandingVariantEventDtoKindEnum;
     /**
-     * ,
-     * @type {string}
-     * @memberof RecordLandingVariantEventDto
-     */
-    experimentId?: string;
-    /**
      * action id.
      * @type {string}
      * @memberof RecordLandingVariantEventDto
      */
     actionId?: string;
+    /**
+     * ,
+     * @type {string}
+     * @memberof RecordLandingVariantEventDto
+     * @deprecated
+     */
+    experimentId?: string;
 }
 /**
  * @export

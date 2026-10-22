@@ -17,6 +17,12 @@ import type { LandingReviewsBlockPayloadDto } from './LandingReviewsBlockPayload
  */
 export interface CreateReviewsLandingBlockDto {
     /**
+     * ID . ID .
+     * @type {string}
+     * @memberof CreateReviewsLandingBlockDto
+     */
+    blockId?: string;
+    /**
      * ;
      * @type {string}
      * @memberof CreateReviewsLandingBlockDto

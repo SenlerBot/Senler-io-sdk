@@ -26,7 +26,7 @@ export interface MutateAgentLandingPersonalizationDto {
      */
     expectedRevision: number;
     /**
-     * : create_page, update_page, delete_page, create_variant, update_variant, delete_variant, copy_block, set_page_rule, set_block_rule, upsert_rule, delete_rule, update_content.
+     * : create_page, update_page, delete_page, create_variant, update_variant, delete_variant, copy_block, set_page_rule, set_block_rule, create_rule, update_rule, delete_rule, update_content.
      * @type {string}
      * @memberof MutateAgentLandingPersonalizationDto
      */
@@ -123,7 +123,8 @@ export declare const MutateAgentLandingPersonalizationDtoOperationEnum: {
     readonly CopyBlock: "copy_block";
     readonly SetPageRule: "set_page_rule";
     readonly SetBlockRule: "set_block_rule";
-    readonly UpsertRule: "upsert_rule";
+    readonly CreateRule: "create_rule";
+    readonly UpdateRule: "update_rule";
     readonly DeleteRule: "delete_rule";
     readonly UpdateContent: "update_content";
 };

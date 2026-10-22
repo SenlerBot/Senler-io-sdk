@@ -17,6 +17,12 @@ import type { LandingTimerBlockPayloadDto } from './LandingTimerBlockPayloadDto'
  */
 export interface CreateTimerLandingBlockDto {
     /**
+     * ID . ID .
+     * @type {string}
+     * @memberof CreateTimerLandingBlockDto
+     */
+    blockId?: string;
+    /**
      * ;
      * @type {string}
      * @memberof CreateTimerLandingBlockDto

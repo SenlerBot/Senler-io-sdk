@@ -28,6 +28,12 @@ import {
  */
 export interface CreateLandingActionBlockDto {
     /**
+     * ID . ID .
+     * @type {string}
+     * @memberof CreateLandingActionBlockDto
+     */
+    blockId?: string;
+    /**
      * ;
      * @type {string}
      * @memberof CreateLandingActionBlockDto
@@ -110,6 +116,7 @@ export function CreateLandingActionBlockDtoFromJSONTyped(json: any, ignoreDiscri
     }
     return {
 
+        'blockId': json['block_id'] == null ? undefined : json['block_id'],
         'pageVariantId': json['page_variant_id'] == null ? undefined : json['page_variant_id'],
         'expectedOrderRevision': json['expected_order_revision'],
         'type': json['type'],
@@ -132,6 +139,7 @@ export function CreateLandingActionBlockDtoToJSONTyped(value?: CreateLandingActi
 
     return {
 
+        'block_id': value['blockId'],
         'page_variant_id': value['pageVariantId'],
         'expected_order_revision': value['expectedOrderRevision'],
         'type': value['type'],

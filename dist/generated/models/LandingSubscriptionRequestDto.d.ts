@@ -73,6 +73,13 @@ export interface LandingSubscriptionRequestDto {
      */
     utmTerm?: string;
     /**
+     * ; observed_block_ids
+     * @type {Array<string>}
+     * @memberof LandingSubscriptionRequestDto
+     * @deprecated
+     */
+    observedExperimentIds?: Array<string>;
+    /**
      *
      * @type {boolean}
      * @memberof LandingSubscriptionRequestDto
@@ -84,12 +91,6 @@ export interface LandingSubscriptionRequestDto {
      * @memberof LandingSubscriptionRequestDto
      */
     observedBlockIds?: Array<string>;
-    /**
-     * , ,
-     * @type {Array<string>}
-     * @memberof LandingSubscriptionRequestDto
-     */
-    observedExperimentIds?: Array<string>;
     /**
      * resolve
      * @type {string}

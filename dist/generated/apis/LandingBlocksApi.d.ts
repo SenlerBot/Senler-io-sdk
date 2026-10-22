@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateButtonLandingBlockDto, CreateCoverLandingBlockDto, CreateFeaturesLandingBlockDto, CreateImageLandingBlockDto, CreateLandingActionBlockDto, CreateOtherLandingBlockDto, CreateProductsLandingBlockDto, CreateReviewsLandingBlockDto, CreateTextLandingBlockDto, CreateTimerLandingBlockDto, CreateVideoLandingBlockDto, LandingBlockContentMutationResponseDto, LandingBlockOrderMutationResponseDto, SetLandingOpenUrlActionDto, SetLandingSubscribeActionDto, UpdateButtonLandingBlockDto, UpdateCoverLandingBlockDto, UpdateFeaturesLandingBlockDto, UpdateImageLandingBlockDto, UpdateLandingActionBlockDto, UpdateOtherLandingBlockDto, UpdateProductsLandingBlockDto, UpdateReviewsLandingBlockDto, UpdateTextLandingBlockDto, UpdateTimerLandingBlockDto, UpdateTypedLandingBlockActionCommonDto, UpdateVideoLandingBlockDto } from '../models/index';
+import type { CreateButtonLandingBlockDto, CreateCoverLandingBlockDto, CreateFeaturesLandingBlockDto, CreateImageLandingBlockDto, CreateLandingActionBlockDto, CreateOtherLandingBlockDto, CreateProductsLandingBlockDto, CreateReviewsLandingBlockDto, CreateTextLandingBlockDto, CreateTimerLandingBlockDto, CreateVideoLandingBlockDto, CreateWidgetLandingBlockDto, LandingBlockContentMutationResponseDto, LandingBlockCreateMutationResponseDto, SetLandingOpenUrlActionDto, SetLandingSubscribeActionDto, UpdateButtonLandingBlockDto, UpdateCoverLandingBlockDto, UpdateFeaturesLandingBlockDto, UpdateImageLandingBlockDto, UpdateLandingActionBlockDto, UpdateOtherLandingBlockDto, UpdateProductsLandingBlockDto, UpdateReviewsLandingBlockDto, UpdateTextLandingBlockDto, UpdateTimerLandingBlockDto, UpdateTypedLandingBlockActionCommonDto, UpdateVideoLandingBlockDto, UpdateWidgetLandingBlockDto } from '../models/index';
 export interface BlocksButtonRequest {
     resourceId: string;
     xLandingEditorSessionId: string;
@@ -76,6 +76,12 @@ export interface BlocksVideoRequest {
     xLandingEditorSessionId: string;
     createVideoLandingBlockDto: CreateVideoLandingBlockDto;
     acceptLanguage?: BlocksVideoAcceptLanguageEnum;
+}
+export interface BlocksWidgetRequest {
+    resourceId: string;
+    xLandingEditorSessionId: string;
+    createWidgetLandingBlockDto: CreateWidgetLandingBlockDto;
+    acceptLanguage?: BlocksWidgetAcceptLanguageEnum;
 }
 export interface DeleteBlocksActionRequest {
     resourceId: string;
@@ -175,6 +181,13 @@ export interface UpdateBlocksVideoRequest {
     updateVideoLandingBlockDto: UpdateVideoLandingBlockDto;
     acceptLanguage?: UpdateBlocksVideoAcceptLanguageEnum;
 }
+export interface UpdateBlocksWidgetRequest {
+    resourceId: string;
+    blockId: string;
+    xLandingEditorSessionId: string;
+    updateWidgetLandingBlockDto: UpdateWidgetLandingBlockDto;
+    acceptLanguage?: UpdateBlocksWidgetAcceptLanguageEnum;
+}
 /**
  *
  */
@@ -183,112 +196,122 @@ export declare class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * button
      */
-    blocksButtonRaw(requestParameters: BlocksButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
+    blocksButtonRaw(requestParameters: BlocksButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
      * .
      * button
      */
-    blocksButton(requestParameters: BlocksButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
+    blocksButton(requestParameters: BlocksButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
      * .
      * cover
      */
-    blocksCoverRaw(requestParameters: BlocksCoverRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
+    blocksCoverRaw(requestParameters: BlocksCoverRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
      * .
      * cover
      */
-    blocksCover(requestParameters: BlocksCoverRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
+    blocksCover(requestParameters: BlocksCoverRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
      * .
      * features
      */
-    blocksFeaturesRaw(requestParameters: BlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
+    blocksFeaturesRaw(requestParameters: BlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
      * .
      * features
      */
-    blocksFeatures(requestParameters: BlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
+    blocksFeatures(requestParameters: BlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
      * .
      * image
      */
-    blocksImageRaw(requestParameters: BlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
+    blocksImageRaw(requestParameters: BlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
      * .
      * image
      */
-    blocksImage(requestParameters: BlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
+    blocksImage(requestParameters: BlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
      * cover, button timer.
      *
      */
-    blocksInteractiveRaw(requestParameters: BlocksInteractiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
+    blocksInteractiveRaw(requestParameters: BlocksInteractiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
      * cover, button timer.
      *
      */
-    blocksInteractive(requestParameters: BlocksInteractiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
+    blocksInteractive(requestParameters: BlocksInteractiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
      * ( other). payload: {}; .
      *
      */
-    blocksOtherRaw(requestParameters: BlocksOtherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
+    blocksOtherRaw(requestParameters: BlocksOtherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
      * ( other). payload: {}; .
      *
      */
-    blocksOther(requestParameters: BlocksOtherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
+    blocksOther(requestParameters: BlocksOtherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
      * .
      * products
      */
-    blocksProductsRaw(requestParameters: BlocksProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
+    blocksProductsRaw(requestParameters: BlocksProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
      * .
      * products
      */
-    blocksProducts(requestParameters: BlocksProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
+    blocksProducts(requestParameters: BlocksProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
      * .
      * reviews
      */
-    blocksReviewsRaw(requestParameters: BlocksReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
+    blocksReviewsRaw(requestParameters: BlocksReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
      * .
      * reviews
      */
-    blocksReviews(requestParameters: BlocksReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
+    blocksReviews(requestParameters: BlocksReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
      * .
      * text
      */
-    blocksTextRaw(requestParameters: BlocksTextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
+    blocksTextRaw(requestParameters: BlocksTextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
      * .
      * text
      */
-    blocksText(requestParameters: BlocksTextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
+    blocksText(requestParameters: BlocksTextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
      * .
      * timer
      */
-    blocksTimerRaw(requestParameters: BlocksTimerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
+    blocksTimerRaw(requestParameters: BlocksTimerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
      * .
      * timer
      */
-    blocksTimer(requestParameters: BlocksTimerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
+    blocksTimer(requestParameters: BlocksTimerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
      * .
      * video
      */
-    blocksVideoRaw(requestParameters: BlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>>;
+    blocksVideoRaw(requestParameters: BlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
      * .
      * video
      */
-    blocksVideo(requestParameters: BlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto>;
+    blocksVideo(requestParameters: BlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
+    /**
+     * .
+     * widget
+     */
+    blocksWidgetRaw(requestParameters: BlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
+    /**
+     * .
+     * widget
+     */
+    blocksWidget(requestParameters: BlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
      * , .
      *
@@ -429,6 +452,16 @@ export declare class LandingBlocksApi extends runtime.BaseAPI {
      * video
      */
     updateBlocksVideo(requestParameters: UpdateBlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
+    /**
+     * .
+     * text
+     */
+    updateBlocksWidgetRaw(requestParameters: UpdateBlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
+    /**
+     * .
+     * text
+     */
+    updateBlocksWidget(requestParameters: UpdateBlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
 }
 /**
  * @export
@@ -518,6 +551,14 @@ export declare const BlocksVideoAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type BlocksVideoAcceptLanguageEnum = typeof BlocksVideoAcceptLanguageEnum[keyof typeof BlocksVideoAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const BlocksWidgetAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type BlocksWidgetAcceptLanguageEnum = typeof BlocksWidgetAcceptLanguageEnum[keyof typeof BlocksWidgetAcceptLanguageEnum];
 /**
  * @export
  */
@@ -630,3 +671,11 @@ export declare const UpdateBlocksVideoAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateBlocksVideoAcceptLanguageEnum = typeof UpdateBlocksVideoAcceptLanguageEnum[keyof typeof UpdateBlocksVideoAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateBlocksWidgetAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateBlocksWidgetAcceptLanguageEnum = typeof UpdateBlocksWidgetAcceptLanguageEnum[keyof typeof UpdateBlocksWidgetAcceptLanguageEnum];

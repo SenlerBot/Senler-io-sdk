@@ -22,6 +22,8 @@ exports.DeleteLandingBlockDtoToJSONTyped = DeleteLandingBlockDtoToJSONTyped;
  * Check if a given object implements the DeleteLandingBlockDto interface.
  */
 function instanceOfDeleteLandingBlockDto(value) {
+    if (!('expectedRevision' in value) || value['expectedRevision'] === undefined)
+        return false;
     if (!('expectedOrderRevision' in value) || value['expectedOrderRevision'] === undefined)
         return false;
     return true;
@@ -34,6 +36,7 @@ function DeleteLandingBlockDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'expectedRevision': json['expected_revision'],
         'expectedOrderRevision': json['expected_order_revision'],
     };
 }
@@ -45,6 +48,7 @@ function DeleteLandingBlockDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'expected_revision': value['expectedRevision'],
         'expected_order_revision': value['expectedOrderRevision'],
     };
 }

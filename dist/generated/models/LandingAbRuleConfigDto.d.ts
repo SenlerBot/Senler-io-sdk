@@ -35,17 +35,19 @@ export interface LandingAbRuleConfigDto {
      */
     allocations: Array<LandingAbAllocationDto>;
     /**
-     * : subscription, click.
+     * . .
      * @type {string}
      * @memberof LandingAbRuleConfigDto
+     * @deprecated
      */
-    goal: LandingAbRuleConfigDtoGoalEnum;
+    goal?: LandingAbRuleConfigDtoGoalEnum;
     /**
-     * action ids.
+     * ; -.
      * @type {Array<string>}
      * @memberof LandingAbRuleConfigDto
+     * @deprecated
      */
-    actionIds: Array<string>;
+    actionIds?: Array<string>;
 }
 /**
  * @export

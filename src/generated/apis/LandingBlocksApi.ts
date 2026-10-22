@@ -26,9 +26,10 @@ import type {
   CreateTextLandingBlockDto,
   CreateTimerLandingBlockDto,
   CreateVideoLandingBlockDto,
+  CreateWidgetLandingBlockDto,
   ErrorResponse,
   LandingBlockContentMutationResponseDto,
-  LandingBlockOrderMutationResponseDto,
+  LandingBlockCreateMutationResponseDto,
   SetLandingOpenUrlActionDto,
   SetLandingSubscribeActionDto,
   UpdateButtonLandingBlockDto,
@@ -43,6 +44,7 @@ import type {
   UpdateTimerLandingBlockDto,
   UpdateTypedLandingBlockActionCommonDto,
   UpdateVideoLandingBlockDto,
+  UpdateWidgetLandingBlockDto,
 } from '../models/index';
 import {
     CreateButtonLandingBlockDtoFromJSON,
@@ -67,12 +69,14 @@ import {
     CreateTimerLandingBlockDtoToJSON,
     CreateVideoLandingBlockDtoFromJSON,
     CreateVideoLandingBlockDtoToJSON,
+    CreateWidgetLandingBlockDtoFromJSON,
+    CreateWidgetLandingBlockDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
     LandingBlockContentMutationResponseDtoFromJSON,
     LandingBlockContentMutationResponseDtoToJSON,
-    LandingBlockOrderMutationResponseDtoFromJSON,
-    LandingBlockOrderMutationResponseDtoToJSON,
+    LandingBlockCreateMutationResponseDtoFromJSON,
+    LandingBlockCreateMutationResponseDtoToJSON,
     SetLandingOpenUrlActionDtoFromJSON,
     SetLandingOpenUrlActionDtoToJSON,
     SetLandingSubscribeActionDtoFromJSON,
@@ -101,6 +105,8 @@ import {
     UpdateTypedLandingBlockActionCommonDtoToJSON,
     UpdateVideoLandingBlockDtoFromJSON,
     UpdateVideoLandingBlockDtoToJSON,
+    UpdateWidgetLandingBlockDtoFromJSON,
+    UpdateWidgetLandingBlockDtoToJSON,
 } from '../models/index';
 
 export interface BlocksButtonRequest {
@@ -178,6 +184,13 @@ export interface BlocksVideoRequest {
     xLandingEditorSessionId: string;
     createVideoLandingBlockDto: CreateVideoLandingBlockDto;
     acceptLanguage?: BlocksVideoAcceptLanguageEnum;
+}
+
+export interface BlocksWidgetRequest {
+    resourceId: string;
+    xLandingEditorSessionId: string;
+    createWidgetLandingBlockDto: CreateWidgetLandingBlockDto;
+    acceptLanguage?: BlocksWidgetAcceptLanguageEnum;
 }
 
 export interface DeleteBlocksActionRequest {
@@ -292,6 +305,14 @@ export interface UpdateBlocksVideoRequest {
     acceptLanguage?: UpdateBlocksVideoAcceptLanguageEnum;
 }
 
+export interface UpdateBlocksWidgetRequest {
+    resourceId: string;
+    blockId: string;
+    xLandingEditorSessionId: string;
+    updateWidgetLandingBlockDto: UpdateWidgetLandingBlockDto;
+    acceptLanguage?: UpdateBlocksWidgetAcceptLanguageEnum;
+}
+
 /**
  *
  */
@@ -301,7 +322,7 @@ export class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * button
      */
-    async blocksButtonRaw(requestParameters: BlocksButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>> {
+    async blocksButtonRaw(requestParameters: BlocksButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
         if (requestParameters['resourceId'] == null) {
             throw new runtime.RequiredError(
                 'resourceId',
@@ -363,14 +384,14 @@ export class LandingBlocksApi extends runtime.BaseAPI {
             body: CreateButtonLandingBlockDtoToJSON(requestParameters['createButtonLandingBlockDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockOrderMutationResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockCreateMutationResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * .
      * button
      */
-    async blocksButton(requestParameters: BlocksButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto> {
+    async blocksButton(requestParameters: BlocksButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
         const response = await this.blocksButtonRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -379,7 +400,7 @@ export class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * cover
      */
-    async blocksCoverRaw(requestParameters: BlocksCoverRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>> {
+    async blocksCoverRaw(requestParameters: BlocksCoverRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
         if (requestParameters['resourceId'] == null) {
             throw new runtime.RequiredError(
                 'resourceId',
@@ -441,14 +462,14 @@ export class LandingBlocksApi extends runtime.BaseAPI {
             body: CreateCoverLandingBlockDtoToJSON(requestParameters['createCoverLandingBlockDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockOrderMutationResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockCreateMutationResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * .
      * cover
      */
-    async blocksCover(requestParameters: BlocksCoverRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto> {
+    async blocksCover(requestParameters: BlocksCoverRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
         const response = await this.blocksCoverRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -457,7 +478,7 @@ export class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * features
      */
-    async blocksFeaturesRaw(requestParameters: BlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>> {
+    async blocksFeaturesRaw(requestParameters: BlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
         if (requestParameters['resourceId'] == null) {
             throw new runtime.RequiredError(
                 'resourceId',
@@ -519,14 +540,14 @@ export class LandingBlocksApi extends runtime.BaseAPI {
             body: CreateFeaturesLandingBlockDtoToJSON(requestParameters['createFeaturesLandingBlockDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockOrderMutationResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockCreateMutationResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * .
      * features
      */
-    async blocksFeatures(requestParameters: BlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto> {
+    async blocksFeatures(requestParameters: BlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
         const response = await this.blocksFeaturesRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -535,7 +556,7 @@ export class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * image
      */
-    async blocksImageRaw(requestParameters: BlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>> {
+    async blocksImageRaw(requestParameters: BlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
         if (requestParameters['resourceId'] == null) {
             throw new runtime.RequiredError(
                 'resourceId',
@@ -597,14 +618,14 @@ export class LandingBlocksApi extends runtime.BaseAPI {
             body: CreateImageLandingBlockDtoToJSON(requestParameters['createImageLandingBlockDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockOrderMutationResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockCreateMutationResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * .
      * image
      */
-    async blocksImage(requestParameters: BlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto> {
+    async blocksImage(requestParameters: BlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
         const response = await this.blocksImageRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -613,7 +634,7 @@ export class LandingBlocksApi extends runtime.BaseAPI {
      * cover, button timer.
      *
      */
-    async blocksInteractiveRaw(requestParameters: BlocksInteractiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>> {
+    async blocksInteractiveRaw(requestParameters: BlocksInteractiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
         if (requestParameters['resourceId'] == null) {
             throw new runtime.RequiredError(
                 'resourceId',
@@ -675,14 +696,14 @@ export class LandingBlocksApi extends runtime.BaseAPI {
             body: CreateLandingActionBlockDtoToJSON(requestParameters['createLandingActionBlockDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockOrderMutationResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockCreateMutationResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * cover, button timer.
      *
      */
-    async blocksInteractive(requestParameters: BlocksInteractiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto> {
+    async blocksInteractive(requestParameters: BlocksInteractiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
         const response = await this.blocksInteractiveRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -691,7 +712,7 @@ export class LandingBlocksApi extends runtime.BaseAPI {
      * ( other). payload: {}; .
      *
      */
-    async blocksOtherRaw(requestParameters: BlocksOtherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>> {
+    async blocksOtherRaw(requestParameters: BlocksOtherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
         if (requestParameters['resourceId'] == null) {
             throw new runtime.RequiredError(
                 'resourceId',
@@ -753,14 +774,14 @@ export class LandingBlocksApi extends runtime.BaseAPI {
             body: CreateOtherLandingBlockDtoToJSON(requestParameters['createOtherLandingBlockDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockOrderMutationResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockCreateMutationResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * ( other). payload: {}; .
      *
      */
-    async blocksOther(requestParameters: BlocksOtherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto> {
+    async blocksOther(requestParameters: BlocksOtherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
         const response = await this.blocksOtherRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -769,7 +790,7 @@ export class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * products
      */
-    async blocksProductsRaw(requestParameters: BlocksProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>> {
+    async blocksProductsRaw(requestParameters: BlocksProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
         if (requestParameters['resourceId'] == null) {
             throw new runtime.RequiredError(
                 'resourceId',
@@ -831,14 +852,14 @@ export class LandingBlocksApi extends runtime.BaseAPI {
             body: CreateProductsLandingBlockDtoToJSON(requestParameters['createProductsLandingBlockDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockOrderMutationResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockCreateMutationResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * .
      * products
      */
-    async blocksProducts(requestParameters: BlocksProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto> {
+    async blocksProducts(requestParameters: BlocksProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
         const response = await this.blocksProductsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -847,7 +868,7 @@ export class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * reviews
      */
-    async blocksReviewsRaw(requestParameters: BlocksReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>> {
+    async blocksReviewsRaw(requestParameters: BlocksReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
         if (requestParameters['resourceId'] == null) {
             throw new runtime.RequiredError(
                 'resourceId',
@@ -909,14 +930,14 @@ export class LandingBlocksApi extends runtime.BaseAPI {
             body: CreateReviewsLandingBlockDtoToJSON(requestParameters['createReviewsLandingBlockDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockOrderMutationResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockCreateMutationResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * .
      * reviews
      */
-    async blocksReviews(requestParameters: BlocksReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto> {
+    async blocksReviews(requestParameters: BlocksReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
         const response = await this.blocksReviewsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -925,7 +946,7 @@ export class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * text
      */
-    async blocksTextRaw(requestParameters: BlocksTextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>> {
+    async blocksTextRaw(requestParameters: BlocksTextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
         if (requestParameters['resourceId'] == null) {
             throw new runtime.RequiredError(
                 'resourceId',
@@ -987,14 +1008,14 @@ export class LandingBlocksApi extends runtime.BaseAPI {
             body: CreateTextLandingBlockDtoToJSON(requestParameters['createTextLandingBlockDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockOrderMutationResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockCreateMutationResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * .
      * text
      */
-    async blocksText(requestParameters: BlocksTextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto> {
+    async blocksText(requestParameters: BlocksTextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
         const response = await this.blocksTextRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1003,7 +1024,7 @@ export class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * timer
      */
-    async blocksTimerRaw(requestParameters: BlocksTimerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>> {
+    async blocksTimerRaw(requestParameters: BlocksTimerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
         if (requestParameters['resourceId'] == null) {
             throw new runtime.RequiredError(
                 'resourceId',
@@ -1065,14 +1086,14 @@ export class LandingBlocksApi extends runtime.BaseAPI {
             body: CreateTimerLandingBlockDtoToJSON(requestParameters['createTimerLandingBlockDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockOrderMutationResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockCreateMutationResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * .
      * timer
      */
-    async blocksTimer(requestParameters: BlocksTimerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto> {
+    async blocksTimer(requestParameters: BlocksTimerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
         const response = await this.blocksTimerRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1081,7 +1102,7 @@ export class LandingBlocksApi extends runtime.BaseAPI {
      * .
      * video
      */
-    async blocksVideoRaw(requestParameters: BlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockOrderMutationResponseDto>> {
+    async blocksVideoRaw(requestParameters: BlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
         if (requestParameters['resourceId'] == null) {
             throw new runtime.RequiredError(
                 'resourceId',
@@ -1143,15 +1164,93 @@ export class LandingBlocksApi extends runtime.BaseAPI {
             body: CreateVideoLandingBlockDtoToJSON(requestParameters['createVideoLandingBlockDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockOrderMutationResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockCreateMutationResponseDtoFromJSON(jsonValue));
     }
 
     /**
      * .
      * video
      */
-    async blocksVideo(requestParameters: BlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockOrderMutationResponseDto> {
+    async blocksVideo(requestParameters: BlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
         const response = await this.blocksVideoRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     * widget
+     */
+    async blocksWidgetRaw(requestParameters: BlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
+        if (requestParameters['resourceId'] == null) {
+            throw new runtime.RequiredError(
+                'resourceId',
+                'Required parameter "resourceId" was null or undefined when calling blocksWidget().'
+            );
+        }
+
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError(
+                'xLandingEditorSessionId',
+                'Required parameter "xLandingEditorSessionId" was null or undefined when calling blocksWidget().'
+            );
+        }
+
+        if (requestParameters['createWidgetLandingBlockDto'] == null) {
+            throw new runtime.RequiredError(
+                'createWidgetLandingBlockDto',
+                'Required parameter "createWidgetLandingBlockDto" was null or undefined when calling blocksWidget().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
+        }
+
+        const response = await this.request({
+            path: `/api/landings/{resourceId}/blocks/widget`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateWidgetLandingBlockDtoToJSON(requestParameters['createWidgetLandingBlockDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockCreateMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * widget
+     */
+    async blocksWidget(requestParameters: BlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
+        const response = await this.blocksWidgetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2345,6 +2444,91 @@ export class LandingBlocksApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+    /**
+     * .
+     * text
+     */
+    async updateBlocksWidgetRaw(requestParameters: UpdateBlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
+        if (requestParameters['resourceId'] == null) {
+            throw new runtime.RequiredError(
+                'resourceId',
+                'Required parameter "resourceId" was null or undefined when calling updateBlocksWidget().'
+            );
+        }
+
+        if (requestParameters['blockId'] == null) {
+            throw new runtime.RequiredError(
+                'blockId',
+                'Required parameter "blockId" was null or undefined when calling updateBlocksWidget().'
+            );
+        }
+
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError(
+                'xLandingEditorSessionId',
+                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateBlocksWidget().'
+            );
+        }
+
+        if (requestParameters['updateWidgetLandingBlockDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateWidgetLandingBlockDto',
+                'Required parameter "updateWidgetLandingBlockDto" was null or undefined when calling updateBlocksWidget().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
+        }
+
+        const response = await this.request({
+            path: `/api/landings/{resourceId}/blocks/{blockId}/widget`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateWidgetLandingBlockDtoToJSON(requestParameters['updateWidgetLandingBlockDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockContentMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     * text
+     */
+    async updateBlocksWidget(requestParameters: UpdateBlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
+        const response = await this.updateBlocksWidgetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
 }
 
 /**
@@ -2435,6 +2619,14 @@ export const BlocksVideoAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type BlocksVideoAcceptLanguageEnum = typeof BlocksVideoAcceptLanguageEnum[keyof typeof BlocksVideoAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const BlocksWidgetAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type BlocksWidgetAcceptLanguageEnum = typeof BlocksWidgetAcceptLanguageEnum[keyof typeof BlocksWidgetAcceptLanguageEnum];
 /**
  * @export
  */
@@ -2547,3 +2739,11 @@ export const UpdateBlocksVideoAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateBlocksVideoAcceptLanguageEnum = typeof UpdateBlocksVideoAcceptLanguageEnum[keyof typeof UpdateBlocksVideoAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateBlocksWidgetAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateBlocksWidgetAcceptLanguageEnum = typeof UpdateBlocksWidgetAcceptLanguageEnum[keyof typeof UpdateBlocksWidgetAcceptLanguageEnum];

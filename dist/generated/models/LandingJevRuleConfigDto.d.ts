@@ -29,17 +29,18 @@ export interface LandingJevRuleConfigDto {
      */
     aiModelId?: string;
     /**
-     * @
+     * Markdown- @. : [](#/agent-reference/landing-context/history); history, segments, funnels, traffic, avatar.
      * @type {string}
      * @memberof LandingJevRuleConfigDto
      */
     instruction: string;
     /**
-     *
+     * . , ; context.
      * @type {LandingJevContextDto}
      * @memberof LandingJevRuleConfigDto
+     * @deprecated
      */
-    context: LandingJevContextDto;
+    context?: LandingJevContextDto;
     /**
      * no data outcome id.
      * @type {string}

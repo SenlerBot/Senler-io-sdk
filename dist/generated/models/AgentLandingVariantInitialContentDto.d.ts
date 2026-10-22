@@ -50,6 +50,7 @@ export declare const AgentLandingVariantInitialContentDtoTypeEnum: {
     readonly Products: "products";
     readonly Video: "video";
     readonly Timer: "timer";
+    readonly Widget: "widget";
     readonly Other: "other";
 };
 export type AgentLandingVariantInitialContentDtoTypeEnum = typeof AgentLandingVariantInitialContentDtoTypeEnum[keyof typeof AgentLandingVariantInitialContentDtoTypeEnum];

@@ -17,6 +17,12 @@ import type { LandingTextBlockPayloadDto } from './LandingTextBlockPayloadDto';
  */
 export interface CreateTextLandingBlockDto {
     /**
+     * ID . ID .
+     * @type {string}
+     * @memberof CreateTextLandingBlockDto
+     */
+    blockId?: string;
+    /**
      * ;
      * @type {string}
      * @memberof CreateTextLandingBlockDto

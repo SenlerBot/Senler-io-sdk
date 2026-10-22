@@ -17,6 +17,13 @@ import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
  */
 export interface CreateLandingSubscriptionContextDto {
     /**
+     * ; observed_block_ids
+     * @type {Array<string>}
+     * @memberof CreateLandingSubscriptionContextDto
+     * @deprecated
+     */
+    observedExperimentIds?: Array<string>;
+    /**
      *
      * @type {boolean}
      * @memberof CreateLandingSubscriptionContextDto
@@ -28,12 +35,6 @@ export interface CreateLandingSubscriptionContextDto {
      * @memberof CreateLandingSubscriptionContextDto
      */
     observedBlockIds?: Array<string>;
-    /**
-     * , ,
-     * @type {Array<string>}
-     * @memberof CreateLandingSubscriptionContextDto
-     */
-    observedExperimentIds?: Array<string>;
     /**
      * resolve
      * @type {string}

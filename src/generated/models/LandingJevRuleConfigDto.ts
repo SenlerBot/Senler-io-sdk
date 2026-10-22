@@ -40,17 +40,18 @@ export interface LandingJevRuleConfigDto {
      */
     aiModelId?: string;
     /**
-     * @
+     * Markdown- @. : [](#/agent-reference/landing-context/history); history, segments, funnels, traffic, avatar.
      * @type {string}
      * @memberof LandingJevRuleConfigDto
      */
     instruction: string;
     /**
-     *
+     * . , ; context.
      * @type {LandingJevContextDto}
      * @memberof LandingJevRuleConfigDto
+     * @deprecated
      */
-    context: LandingJevContextDto;
+    context?: LandingJevContextDto;
     /**
      * no data outcome id.
      * @type {string}
@@ -75,7 +76,6 @@ export type LandingJevRuleConfigDtoKindEnum = typeof LandingJevRuleConfigDtoKind
 export function instanceOfLandingJevRuleConfigDto(value: object): value is LandingJevRuleConfigDto {
     if (!('kind' in value) || value['kind'] === undefined) return false;
     if (!('instruction' in value) || value['instruction'] === undefined) return false;
-    if (!('context' in value) || value['context'] === undefined) return false;
     if (!('noDataOutcomeId' in value) || value['noDataOutcomeId'] === undefined) return false;
     return true;
 }
@@ -93,7 +93,7 @@ export function LandingJevRuleConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
         'kind': json['kind'],
         'aiModelId': json['ai_model_id'] == null ? undefined : json['ai_model_id'],
         'instruction': json['instruction'],
-        'context': LandingJevContextDtoFromJSON(json['context']),
+        'context': json['context'] == null ? undefined : LandingJevContextDtoFromJSON(json['context']),
         'noDataOutcomeId': json['no_data_outcome_id'],
     };
 }

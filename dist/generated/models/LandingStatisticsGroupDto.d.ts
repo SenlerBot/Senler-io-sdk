@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LandingStatisticsIterationDto } from './LandingStatisticsIterationDto';
 import type { LandingStatisticsRowDto } from './LandingStatisticsRowDto';
 /**
  * LandingStatisticsGroupDto.
@@ -52,6 +53,12 @@ export interface LandingStatisticsGroupDto {
      * @memberof LandingStatisticsGroupDto
      */
     rows: Array<LandingStatisticsRowDto>;
+    /**
+     * A/B ;
+     * @type {Array<LandingStatisticsIterationDto>}
+     * @memberof LandingStatisticsGroupDto
+     */
+    iterations: Array<LandingStatisticsIterationDto>;
 }
 /**
  * @export

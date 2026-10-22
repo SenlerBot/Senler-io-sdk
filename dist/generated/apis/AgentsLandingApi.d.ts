@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmS3UploadDto, DeleteLandingBlockDto, GetLandingAssetUploadUrlDto, ImportImageDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingExperimentReportDto, LandingPersonalizationMutationResponseDto, LandingPreviewResponseDto, LandingPublicationValidationDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, LandingStatisticsReportDto, MoveLandingBlockDto, MutateAgentLandingPersonalizationDto, PreviewAnonymousLandingDto, PreviewLeadLandingDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingRealtimeFocusDto } from '../models/index';
+import type { ConfirmS3UploadDto, DeleteLandingBlockDto, GetLandingAssetUploadUrlDto, ImportImageDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingPersonalizationMutationResponseDto, LandingPreviewResponseDto, LandingPublicationValidationDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, LandingStatisticsReportDto, MoveLandingBlockDto, MutateAgentLandingPersonalizationDto, PreviewAnonymousLandingDto, PreviewLeadLandingDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingRealtimeFocusDto } from '../models/index';
 export interface DeleteLandingBlocksRequest {
     agentId: string;
     blockId: string;
@@ -29,11 +29,6 @@ export interface GetLandingPublicationValidationRequest {
 export interface GetLandingPublicationsRequest {
     agentId: string;
     acceptLanguage?: GetLandingPublicationsAcceptLanguageEnum;
-}
-export interface GetLandingRulesResultsRequest {
-    agentId: string;
-    ruleId: string;
-    acceptLanguage?: GetLandingRulesResultsAcceptLanguageEnum;
 }
 export interface GetLandingShareLinksRequest {
     agentId: string;
@@ -138,16 +133,6 @@ export declare class AgentsLandingApi extends runtime.BaseAPI {
      *
      */
     getLandingPublications(requestParameters: GetLandingPublicationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationsListResponseDto>;
-    /**
-     * , . ; .
-     * A/B
-     */
-    getLandingRulesResultsRaw(requestParameters: GetLandingRulesResultsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingExperimentReportDto>>;
-    /**
-     * , . ; .
-     * A/B
-     */
-    getLandingRulesResults(requestParameters: GetLandingRulesResultsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingExperimentReportDto>;
     /**
      * VK, Telegram MAX, .
      *
@@ -291,14 +276,6 @@ export declare const GetLandingPublicationsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetLandingPublicationsAcceptLanguageEnum = typeof GetLandingPublicationsAcceptLanguageEnum[keyof typeof GetLandingPublicationsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetLandingRulesResultsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetLandingRulesResultsAcceptLanguageEnum = typeof GetLandingRulesResultsAcceptLanguageEnum[keyof typeof GetLandingRulesResultsAcceptLanguageEnum];
 /**
  * @export
  */

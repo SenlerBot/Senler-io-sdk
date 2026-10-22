@@ -17,6 +17,12 @@ import type { LandingProductsBlockPayloadDto } from './LandingProductsBlockPaylo
  */
 export interface CreateProductsLandingBlockDto {
     /**
+     * ID . ID .
+     * @type {string}
+     * @memberof CreateProductsLandingBlockDto
+     */
+    blockId?: string;
+    /**
      * ;
      * @type {string}
      * @memberof CreateProductsLandingBlockDto

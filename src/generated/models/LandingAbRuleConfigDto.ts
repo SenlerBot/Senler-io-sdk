@@ -46,17 +46,19 @@ export interface LandingAbRuleConfigDto {
      */
     allocations: Array<LandingAbAllocationDto>;
     /**
-     * : subscription, click.
+     * . .
      * @type {string}
      * @memberof LandingAbRuleConfigDto
+     * @deprecated
      */
-    goal: LandingAbRuleConfigDtoGoalEnum;
+    goal?: LandingAbRuleConfigDtoGoalEnum;
     /**
-     * action ids.
+     * ; -.
      * @type {Array<string>}
      * @memberof LandingAbRuleConfigDto
+     * @deprecated
      */
-    actionIds: Array<string>;
+    actionIds?: Array<string>;
 }
 
 
@@ -85,8 +87,6 @@ export function instanceOfLandingAbRuleConfigDto(value: object): value is Landin
     if (!('kind' in value) || value['kind'] === undefined) return false;
     if (!('experimentId' in value) || value['experimentId'] === undefined) return false;
     if (!('allocations' in value) || value['allocations'] === undefined) return false;
-    if (!('goal' in value) || value['goal'] === undefined) return false;
-    if (!('actionIds' in value) || value['actionIds'] === undefined) return false;
     return true;
 }
 
@@ -103,8 +103,8 @@ export function LandingAbRuleConfigDtoFromJSONTyped(json: any, ignoreDiscriminat
         'kind': json['kind'],
         'experimentId': json['experiment_id'],
         'allocations': ((json['allocations'] as Array<any>).map(LandingAbAllocationDtoFromJSON)),
-        'goal': json['goal'],
-        'actionIds': json['action_ids'],
+        'goal': json['goal'] == null ? undefined : json['goal'],
+        'actionIds': json['action_ids'] == null ? undefined : json['action_ids'],
     };
 }
 

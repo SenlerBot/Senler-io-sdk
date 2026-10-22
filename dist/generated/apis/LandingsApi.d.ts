@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmS3UploadDto, CreateLandingDto, DeleteLandingBlockDto, DuplicateLandingDto, GetLandingAssetUploadUrlDto, ImportImageDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingExperimentReportDto, LandingListResponseDto, LandingPersonalizationMutationResponseDto, LandingPreviewResponseDto, LandingPublicationValidationDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, LandingStatisticsReportDto, LandingSummaryResponseDto, MoveLandingBlockDto, MutateLandingPersonalizationDto, PreviewAnonymousLandingDto, PreviewLeadLandingDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingDto, UpdateLandingRealtimeFocusDto } from '../models/index';
+import type { ConfirmS3UploadDto, CreateLandingDto, DeleteLandingBlockDto, DuplicateLandingDto, GetLandingAssetUploadUrlDto, ImportImageDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingListResponseDto, LandingPersonalizationMutationResponseDto, LandingPreviewResponseDto, LandingPublicationValidationDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, LandingStatisticsReportDto, LandingSummaryResponseDto, MoveLandingBlockDto, MutateLandingPersonalizationDto, PreviewAnonymousLandingDto, PreviewLeadLandingDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingDto, UpdateLandingRealtimeFocusDto } from '../models/index';
 export interface AssetsConfirmRequest {
     landingId: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
@@ -52,11 +52,6 @@ export interface GetPublicationValidationRequest {
 export interface GetPublicationsRequest {
     landingId: string;
     acceptLanguage?: GetPublicationsAcceptLanguageEnum;
-}
-export interface GetRulesResultsRequest {
-    landingId: string;
-    ruleId: string;
-    acceptLanguage?: GetRulesResultsAcceptLanguageEnum;
 }
 export interface GetShareLinksRequest {
     landingId: string;
@@ -217,16 +212,6 @@ export declare class LandingsApi extends runtime.BaseAPI {
      *
      */
     getPublications(requestParameters: GetPublicationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationsListResponseDto>;
-    /**
-     * , . ; .
-     * A/B
-     */
-    getRulesResultsRaw(requestParameters: GetRulesResultsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingExperimentReportDto>>;
-    /**
-     * , . ; .
-     * A/B
-     */
-    getRulesResults(requestParameters: GetRulesResultsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingExperimentReportDto>;
     /**
      * - VK, Telegram MAX. .
      *
@@ -432,14 +417,6 @@ export declare const GetPublicationsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetPublicationsAcceptLanguageEnum = typeof GetPublicationsAcceptLanguageEnum[keyof typeof GetPublicationsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetRulesResultsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetRulesResultsAcceptLanguageEnum = typeof GetRulesResultsAcceptLanguageEnum[keyof typeof GetRulesResultsAcceptLanguageEnum];
 /**
  * @export
  */

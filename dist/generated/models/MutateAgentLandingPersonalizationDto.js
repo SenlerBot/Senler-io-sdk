@@ -36,7 +36,8 @@ exports.MutateAgentLandingPersonalizationDtoOperationEnum = {
     CopyBlock: 'copy_block',
     SetPageRule: 'set_page_rule',
     SetBlockRule: 'set_block_rule',
-    UpsertRule: 'upsert_rule',
+    CreateRule: 'create_rule',
+    UpdateRule: 'update_rule',
     DeleteRule: 'delete_rule',
     UpdateContent: 'update_content'
 };

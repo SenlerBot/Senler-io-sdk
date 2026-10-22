@@ -33,6 +33,7 @@ exports.AgentLandingVariantInitialContentDtoTypeEnum = {
     Products: 'products',
     Video: 'video',
     Timer: 'timer',
+    Widget: 'widget',
     Other: 'other'
 };
 /**

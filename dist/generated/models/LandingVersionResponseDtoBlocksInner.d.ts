@@ -19,6 +19,7 @@ import type { LandingReviewsBlockResponseDto } from './LandingReviewsBlockRespon
 import type { LandingTextBlockResponseDto } from './LandingTextBlockResponseDto';
 import type { LandingTimerBlockResponseDto } from './LandingTimerBlockResponseDto';
 import type { LandingVideoBlockResponseDto } from './LandingVideoBlockResponseDto';
+import type { LandingWidgetBlockResponseDto } from './LandingWidgetBlockResponseDto';
 /**
  * @type LandingVersionResponseDtoBlocksInner
  * :
@@ -44,7 +45,9 @@ export type LandingVersionResponseDtoBlocksInner = {
     type: 'timer';
 } & LandingTimerBlockResponseDto | {
     type: 'video';
-} & LandingVideoBlockResponseDto;
+} & LandingVideoBlockResponseDto | {
+    type: 'widget';
+} & LandingWidgetBlockResponseDto;
 export declare function LandingVersionResponseDtoBlocksInnerFromJSON(json: any): LandingVersionResponseDtoBlocksInner;
 export declare function LandingVersionResponseDtoBlocksInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): LandingVersionResponseDtoBlocksInner;
 export declare function LandingVersionResponseDtoBlocksInnerToJSON(json: any): any;

@@ -28,6 +28,12 @@ import {
  */
 export interface CreateFeaturesLandingBlockDto {
     /**
+     * ID . ID .
+     * @type {string}
+     * @memberof CreateFeaturesLandingBlockDto
+     */
+    blockId?: string;
+    /**
      * ;
      * @type {string}
      * @memberof CreateFeaturesLandingBlockDto
@@ -85,6 +91,7 @@ export function CreateFeaturesLandingBlockDtoFromJSONTyped(json: any, ignoreDisc
     }
     return {
 
+        'blockId': json['block_id'] == null ? undefined : json['block_id'],
         'pageVariantId': json['page_variant_id'] == null ? undefined : json['page_variant_id'],
         'expectedOrderRevision': json['expected_order_revision'],
         'isVisible': json['is_visible'],
@@ -105,6 +112,7 @@ export function CreateFeaturesLandingBlockDtoToJSONTyped(value?: CreateFeaturesL
 
     return {
 
+        'block_id': value['blockId'],
         'page_variant_id': value['pageVariantId'],
         'expected_order_revision': value['expectedOrderRevision'],
         'is_visible': value['isVisible'],

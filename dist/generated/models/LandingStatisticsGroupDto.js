@@ -19,6 +19,7 @@ exports.LandingStatisticsGroupDtoFromJSON = LandingStatisticsGroupDtoFromJSON;
 exports.LandingStatisticsGroupDtoFromJSONTyped = LandingStatisticsGroupDtoFromJSONTyped;
 exports.LandingStatisticsGroupDtoToJSON = LandingStatisticsGroupDtoToJSON;
 exports.LandingStatisticsGroupDtoToJSONTyped = LandingStatisticsGroupDtoToJSONTyped;
+const LandingStatisticsIterationDto_1 = require("./LandingStatisticsIterationDto");
 const LandingStatisticsRowDto_1 = require("./LandingStatisticsRowDto");
 /**
  * @export
@@ -54,6 +55,8 @@ function instanceOfLandingStatisticsGroupDto(value) {
         return false;
     if (!('rows' in value) || value['rows'] === undefined)
         return false;
+    if (!('iterations' in value) || value['iterations'] === undefined)
+        return false;
     return true;
 }
 function LandingStatisticsGroupDtoFromJSON(json) {
@@ -70,6 +73,7 @@ function LandingStatisticsGroupDtoFromJSONTyped(json, ignoreDiscriminator) {
         'parentName': json['parent_name'],
         'ruleKind': json['rule_kind'],
         'rows': (json['rows'].map(LandingStatisticsRowDto_1.LandingStatisticsRowDtoFromJSON)),
+        'iterations': (json['iterations'].map(LandingStatisticsIterationDto_1.LandingStatisticsIterationDtoFromJSON)),
     };
 }
 function LandingStatisticsGroupDtoToJSON(json) {
@@ -86,5 +90,6 @@ function LandingStatisticsGroupDtoToJSONTyped(value, ignoreDiscriminator = false
         'parent_name': value['parentName'],
         'rule_kind': value['ruleKind'],
         'rows': (value['rows'].map(LandingStatisticsRowDto_1.LandingStatisticsRowDtoToJSON)),
+        'iterations': (value['iterations'].map(LandingStatisticsIterationDto_1.LandingStatisticsIterationDtoToJSON)),
     };
 }

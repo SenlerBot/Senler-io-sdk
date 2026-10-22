@@ -61,6 +61,7 @@ export const LandingVariantInitialContentDtoTypeEnum = {
     Products: 'products',
     Video: 'video',
     Timer: 'timer',
+    Widget: 'widget',
     Other: 'other'
 } as const;
 export type LandingVariantInitialContentDtoTypeEnum = typeof LandingVariantInitialContentDtoTypeEnum[keyof typeof LandingVariantInitialContentDtoTypeEnum];

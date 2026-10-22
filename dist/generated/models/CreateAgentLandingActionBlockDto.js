@@ -50,6 +50,7 @@ function CreateAgentLandingActionBlockDtoFromJSONTyped(json, ignoreDiscriminator
         return json;
     }
     return {
+        'blockId': json['block_id'] == null ? undefined : json['block_id'],
         'pageVariantId': json['page_variant_id'] == null ? undefined : json['page_variant_id'],
         'expectedOrderRevision': json['expected_order_revision'],
         'type': json['type'],
@@ -68,6 +69,7 @@ function CreateAgentLandingActionBlockDtoToJSONTyped(value, ignoreDiscriminator 
         return value;
     }
     return {
+        'block_id': value['blockId'],
         'page_variant_id': value['pageVariantId'],
         'expected_order_revision': value['expectedOrderRevision'],
         'type': value['type'],

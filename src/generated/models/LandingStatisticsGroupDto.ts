@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { LandingStatisticsIterationDto } from './LandingStatisticsIterationDto';
+import {
+    LandingStatisticsIterationDtoFromJSON,
+    LandingStatisticsIterationDtoFromJSONTyped,
+    LandingStatisticsIterationDtoToJSON,
+    LandingStatisticsIterationDtoToJSONTyped,
+} from './LandingStatisticsIterationDto';
 import type { LandingStatisticsRowDto } from './LandingStatisticsRowDto';
 import {
     LandingStatisticsRowDtoFromJSON,
@@ -63,6 +70,12 @@ export interface LandingStatisticsGroupDto {
      * @memberof LandingStatisticsGroupDto
      */
     rows: Array<LandingStatisticsRowDto>;
+    /**
+     * A/B ;
+     * @type {Array<LandingStatisticsIterationDto>}
+     * @memberof LandingStatisticsGroupDto
+     */
+    iterations: Array<LandingStatisticsIterationDto>;
 }
 
 
@@ -99,6 +112,7 @@ export function instanceOfLandingStatisticsGroupDto(value: object): value is Lan
     if (!('parentName' in value) || value['parentName'] === undefined) return false;
     if (!('ruleKind' in value) || value['ruleKind'] === undefined) return false;
     if (!('rows' in value) || value['rows'] === undefined) return false;
+    if (!('iterations' in value) || value['iterations'] === undefined) return false;
     return true;
 }
 
@@ -118,6 +132,7 @@ export function LandingStatisticsGroupDtoFromJSONTyped(json: any, ignoreDiscrimi
         'parentName': json['parent_name'],
         'ruleKind': json['rule_kind'],
         'rows': ((json['rows'] as Array<any>).map(LandingStatisticsRowDtoFromJSON)),
+        'iterations': ((json['iterations'] as Array<any>).map(LandingStatisticsIterationDtoFromJSON)),
     };
 }
 
@@ -138,5 +153,6 @@ export function LandingStatisticsGroupDtoToJSONTyped(value?: LandingStatisticsGr
         'parent_name': value['parentName'],
         'rule_kind': value['ruleKind'],
         'rows': ((value['rows'] as Array<any>).map(LandingStatisticsRowDtoToJSON)),
+        'iterations': ((value['iterations'] as Array<any>).map(LandingStatisticsIterationDtoToJSON)),
     };
 }

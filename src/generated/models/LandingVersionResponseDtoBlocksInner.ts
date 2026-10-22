@@ -82,13 +82,20 @@ import {
     LandingVideoBlockResponseDtoFromJSONTyped,
     LandingVideoBlockResponseDtoToJSON,
 } from './LandingVideoBlockResponseDto';
+import type { LandingWidgetBlockResponseDto } from './LandingWidgetBlockResponseDto';
+import {
+    instanceOfLandingWidgetBlockResponseDto,
+    LandingWidgetBlockResponseDtoFromJSON,
+    LandingWidgetBlockResponseDtoFromJSONTyped,
+    LandingWidgetBlockResponseDtoToJSON,
+} from './LandingWidgetBlockResponseDto';
 
 /**
  * @type LandingVersionResponseDtoBlocksInner
  * :
  * @export
  */
-export type LandingVersionResponseDtoBlocksInner = { type: 'button' } & LandingButtonBlockResponseDto | { type: 'cover' } & LandingCoverBlockResponseDto | { type: 'features' } & LandingFeaturesBlockResponseDto | { type: 'image' } & LandingImageBlockResponseDto | { type: 'other' } & LandingOtherBlockResponseDto | { type: 'products' } & LandingProductsBlockResponseDto | { type: 'reviews' } & LandingReviewsBlockResponseDto | { type: 'text' } & LandingTextBlockResponseDto | { type: 'timer' } & LandingTimerBlockResponseDto | { type: 'video' } & LandingVideoBlockResponseDto;
+export type LandingVersionResponseDtoBlocksInner = { type: 'button' } & LandingButtonBlockResponseDto | { type: 'cover' } & LandingCoverBlockResponseDto | { type: 'features' } & LandingFeaturesBlockResponseDto | { type: 'image' } & LandingImageBlockResponseDto | { type: 'other' } & LandingOtherBlockResponseDto | { type: 'products' } & LandingProductsBlockResponseDto | { type: 'reviews' } & LandingReviewsBlockResponseDto | { type: 'text' } & LandingTextBlockResponseDto | { type: 'timer' } & LandingTimerBlockResponseDto | { type: 'video' } & LandingVideoBlockResponseDto | { type: 'widget' } & LandingWidgetBlockResponseDto;
 
 export function LandingVersionResponseDtoBlocksInnerFromJSON(json: any): LandingVersionResponseDtoBlocksInner {
     return LandingVersionResponseDtoBlocksInnerFromJSONTyped(json, false);
@@ -119,6 +126,8 @@ export function LandingVersionResponseDtoBlocksInnerFromJSONTyped(json: any, ign
             return Object.assign({}, LandingTimerBlockResponseDtoFromJSONTyped(json, true), { type: 'timer' } as const);
         case 'video':
             return Object.assign({}, LandingVideoBlockResponseDtoFromJSONTyped(json, true), { type: 'video' } as const);
+        case 'widget':
+            return Object.assign({}, LandingWidgetBlockResponseDtoFromJSONTyped(json, true), { type: 'widget' } as const);
         default:
             throw new Error(`No variant of LandingVersionResponseDtoBlocksInner exists with 'type=${json['type']}'`);
     }
@@ -153,6 +162,8 @@ export function LandingVersionResponseDtoBlocksInnerToJSONTyped(value?: LandingV
             return Object.assign({}, LandingTimerBlockResponseDtoToJSON(value), { type: 'timer' } as const);
         case 'video':
             return Object.assign({}, LandingVideoBlockResponseDtoToJSON(value), { type: 'video' } as const);
+        case 'widget':
+            return Object.assign({}, LandingWidgetBlockResponseDtoToJSON(value), { type: 'widget' } as const);
         default:
             throw new Error(`No variant of LandingVersionResponseDtoBlocksInner exists with 'type=${value['type']}'`);
     }

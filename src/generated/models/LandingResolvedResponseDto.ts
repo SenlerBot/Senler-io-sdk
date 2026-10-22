@@ -79,17 +79,18 @@ export interface LandingResolvedResponseDto {
      */
     eventToken: string | null;
     /**
-     * exposures.
-     * @type {Array<LandingExperimentExposureDto>}
-     * @memberof LandingResolvedResponseDto
-     */
-    exposures: Array<LandingExperimentExposureDto>;
-    /**
      * exposure markers.
      * @type {Array<LandingExperimentMarkerDto>}
      * @memberof LandingResolvedResponseDto
      */
     exposureMarkers: Array<LandingExperimentMarkerDto>;
+    /**
+     * ;
+     * @type {Array<LandingExperimentExposureDto>}
+     * @memberof LandingResolvedResponseDto
+     * @deprecated
+     */
+    exposures: Array<LandingExperimentExposureDto>;
 }
 
 /**
@@ -101,8 +102,8 @@ export function instanceOfLandingResolvedResponseDto(value: object): value is La
     if (!('pageVariantId' in value) || value['pageVariantId'] === undefined) return false;
     if (!('selectedBlocks' in value) || value['selectedBlocks'] === undefined) return false;
     if (!('eventToken' in value) || value['eventToken'] === undefined) return false;
-    if (!('exposures' in value) || value['exposures'] === undefined) return false;
     if (!('exposureMarkers' in value) || value['exposureMarkers'] === undefined) return false;
+    if (!('exposures' in value) || value['exposures'] === undefined) return false;
     return true;
 }
 
@@ -121,8 +122,8 @@ export function LandingResolvedResponseDtoFromJSONTyped(json: any, ignoreDiscrim
         'pageVariantId': json['page_variant_id'],
         'selectedBlocks': ((json['selected_blocks'] as Array<any>).map(LandingResolvedBlockDtoFromJSON)),
         'eventToken': json['event_token'],
-        'exposures': ((json['exposures'] as Array<any>).map(LandingExperimentExposureDtoFromJSON)),
         'exposureMarkers': ((json['exposure_markers'] as Array<any>).map(LandingExperimentMarkerDtoFromJSON)),
+        'exposures': ((json['exposures'] as Array<any>).map(LandingExperimentExposureDtoFromJSON)),
     };
 }
 
@@ -142,7 +143,7 @@ export function LandingResolvedResponseDtoToJSONTyped(value?: LandingResolvedRes
         'page_variant_id': value['pageVariantId'],
         'selected_blocks': ((value['selectedBlocks'] as Array<any>).map(LandingResolvedBlockDtoToJSON)),
         'event_token': value['eventToken'],
-        'exposures': ((value['exposures'] as Array<any>).map(LandingExperimentExposureDtoToJSON)),
         'exposure_markers': ((value['exposureMarkers'] as Array<any>).map(LandingExperimentMarkerDtoToJSON)),
+        'exposures': ((value['exposures'] as Array<any>).map(LandingExperimentExposureDtoToJSON)),
     };
 }

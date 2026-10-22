@@ -36,8 +36,6 @@ function instanceOfLandingConditionRuleConfigDto(value) {
         return false;
     if (!('otherwiseOutcomeId' in value) || value['otherwiseOutcomeId'] === undefined)
         return false;
-    if (!('noDataOutcomeId' in value) || value['noDataOutcomeId'] === undefined)
-        return false;
     return true;
 }
 function LandingConditionRuleConfigDtoFromJSON(json) {
@@ -51,7 +49,7 @@ function LandingConditionRuleConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         'kind': json['kind'],
         'branches': (json['branches'].map(LandingConditionBranchDto_1.LandingConditionBranchDtoFromJSON)),
         'otherwiseOutcomeId': json['otherwise_outcome_id'],
-        'noDataOutcomeId': json['no_data_outcome_id'],
+        'noDataOutcomeId': json['no_data_outcome_id'] == null ? undefined : json['no_data_outcome_id'],
     };
 }
 function LandingConditionRuleConfigDtoToJSON(json) {

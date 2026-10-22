@@ -25,6 +25,7 @@ import type {
   S3UploadUrlResponseDto,
   UpdateWidgetSettingsDto,
   UpdateWidgetSettingsResponseDto,
+  WidgetWelcomeAppearanceDto,
   WidgetWelcomeIconResponseDto,
   WidgetWelcomeStepsDto,
 } from '../models/index';
@@ -49,11 +50,20 @@ import {
     UpdateWidgetSettingsDtoToJSON,
     UpdateWidgetSettingsResponseDtoFromJSON,
     UpdateWidgetSettingsResponseDtoToJSON,
+    WidgetWelcomeAppearanceDtoFromJSON,
+    WidgetWelcomeAppearanceDtoToJSON,
     WidgetWelcomeIconResponseDtoFromJSON,
     WidgetWelcomeIconResponseDtoToJSON,
     WidgetWelcomeStepsDtoFromJSON,
     WidgetWelcomeStepsDtoToJSON,
 } from '../models/index';
+
+export interface GetWidgetWelcomePreviewRequest {
+    id: string;
+    automationId?: string;
+    nodeId?: string;
+    acceptLanguage?: GetWidgetWelcomePreviewAcceptLanguageEnum;
+}
 
 export interface GetWidgetWelcomeStepsRequest {
     id: string;
@@ -94,6 +104,71 @@ export interface WidgetWelcomeIconUploadUrlRequest {
  *
  */
 export class ChannelsWidgetApi extends runtime.BaseAPI {
+
+    /**
+     * . . .
+     *
+     */
+    async getWidgetWelcomePreviewRaw(requestParameters: GetWidgetWelcomePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WidgetWelcomeAppearanceDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getWidgetWelcomePreview().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['automationId'] != null) {
+            queryParameters['automation_id'] = requestParameters['automationId'];
+        }
+
+        if (requestParameters['nodeId'] != null) {
+            queryParameters['node_id'] = requestParameters['nodeId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/channels/widget/{id}/welcome-preview`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => WidgetWelcomeAppearanceDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . . .
+     *
+     */
+    async getWidgetWelcomePreview(requestParameters: GetWidgetWelcomePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WidgetWelcomeAppearanceDto> {
+        const response = await this.getWidgetWelcomePreviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * , , .
@@ -493,6 +568,14 @@ export class ChannelsWidgetApi extends runtime.BaseAPI {
 
 }
 
+/**
+ * @export
+ */
+export const GetWidgetWelcomePreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetWidgetWelcomePreviewAcceptLanguageEnum = typeof GetWidgetWelcomePreviewAcceptLanguageEnum[keyof typeof GetWidgetWelcomePreviewAcceptLanguageEnum];
 /**
  * @export
  */

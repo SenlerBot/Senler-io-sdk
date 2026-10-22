@@ -17,6 +17,12 @@ import type { LandingVariantInitialContentDtoAction } from './LandingVariantInit
  */
 export interface CreateLandingActionBlockDto {
     /**
+     * ID . ID .
+     * @type {string}
+     * @memberof CreateLandingActionBlockDto
+     */
+    blockId?: string;
+    /**
      * ;
      * @type {string}
      * @memberof CreateLandingActionBlockDto

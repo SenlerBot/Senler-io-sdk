@@ -73,6 +73,7 @@ export const UpdateLandingBlockDtoTypeEnum = {
     Products: 'products',
     Video: 'video',
     Timer: 'timer',
+    Widget: 'widget',
     Other: 'other'
 } as const;
 export type UpdateLandingBlockDtoTypeEnum = typeof UpdateLandingBlockDtoTypeEnum[keyof typeof UpdateLandingBlockDtoTypeEnum];

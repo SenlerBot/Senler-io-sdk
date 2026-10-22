@@ -96,6 +96,13 @@ export interface LandingSubscriptionRequestDto {
      */
     utmTerm?: string;
     /**
+     * ; observed_block_ids
+     * @type {Array<string>}
+     * @memberof LandingSubscriptionRequestDto
+     * @deprecated
+     */
+    observedExperimentIds?: Array<string>;
+    /**
      *
      * @type {boolean}
      * @memberof LandingSubscriptionRequestDto
@@ -107,12 +114,6 @@ export interface LandingSubscriptionRequestDto {
      * @memberof LandingSubscriptionRequestDto
      */
     observedBlockIds?: Array<string>;
-    /**
-     * , ,
-     * @type {Array<string>}
-     * @memberof LandingSubscriptionRequestDto
-     */
-    observedExperimentIds?: Array<string>;
     /**
      * resolve
      * @type {string}
@@ -180,9 +181,9 @@ export function LandingSubscriptionRequestDtoFromJSONTyped(json: any, ignoreDisc
         'utmCampaign': json['utm_campaign'] == null ? undefined : json['utm_campaign'],
         'utmContent': json['utm_content'] == null ? undefined : json['utm_content'],
         'utmTerm': json['utm_term'] == null ? undefined : json['utm_term'],
+        'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
         'pageObserved': json['page_observed'] == null ? undefined : json['page_observed'],
         'observedBlockIds': json['observed_block_ids'] == null ? undefined : json['observed_block_ids'],
-        'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
         'eventToken': json['event_token'] == null ? undefined : json['event_token'],
         'analytics': json['analytics'] == null ? undefined : ((json['analytics'] as Array<any>).map(AnalyticsSnapshotDtoFromJSON)),
         'acceptedConsents': json['accepted_consents'] == null ? undefined : ((json['accepted_consents'] as Array<any>).map(AcceptedSegmentConsentDtoFromJSON)),
@@ -210,9 +211,9 @@ export function LandingSubscriptionRequestDtoToJSONTyped(value?: LandingSubscrip
         'utm_campaign': value['utmCampaign'],
         'utm_content': value['utmContent'],
         'utm_term': value['utmTerm'],
+        'observed_experiment_ids': value['observedExperimentIds'],
         'page_observed': value['pageObserved'],
         'observed_block_ids': value['observedBlockIds'],
-        'observed_experiment_ids': value['observedExperimentIds'],
         'event_token': value['eventToken'],
         'analytics': value['analytics'] == null ? undefined : ((value['analytics'] as Array<any>).map(AnalyticsSnapshotDtoToJSON)),
         'accepted_consents': value['acceptedConsents'] == null ? undefined : ((value['acceptedConsents'] as Array<any>).map(AcceptedSegmentConsentDtoToJSON)),

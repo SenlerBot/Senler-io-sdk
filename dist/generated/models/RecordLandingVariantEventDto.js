@@ -48,14 +48,14 @@ function RecordLandingVariantEventDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
         'pageObserved': json['page_observed'] == null ? undefined : json['page_observed'],
         'observedBlockIds': json['observed_block_ids'] == null ? undefined : json['observed_block_ids'],
-        'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
         'eventToken': json['event_token'],
         'eventId': json['event_id'],
         'kind': json['kind'],
-        'experimentId': json['experiment_id'] == null ? undefined : json['experiment_id'],
         'actionId': json['action_id'] == null ? undefined : json['action_id'],
+        'experimentId': json['experiment_id'] == null ? undefined : json['experiment_id'],
     };
 }
 function RecordLandingVariantEventDtoToJSON(json) {
@@ -66,13 +66,13 @@ function RecordLandingVariantEventDtoToJSONTyped(value, ignoreDiscriminator = fa
         return value;
     }
     return {
+        'observed_experiment_ids': value['observedExperimentIds'],
         'page_observed': value['pageObserved'],
         'observed_block_ids': value['observedBlockIds'],
-        'observed_experiment_ids': value['observedExperimentIds'],
         'event_token': value['eventToken'],
         'event_id': value['eventId'],
         'kind': value['kind'],
-        'experiment_id': value['experimentId'],
         'action_id': value['actionId'],
+        'experiment_id': value['experimentId'],
     };
 }

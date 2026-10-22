@@ -27,6 +27,7 @@ const LandingReviewsBlockResponseDto_1 = require("./LandingReviewsBlockResponseD
 const LandingTextBlockResponseDto_1 = require("./LandingTextBlockResponseDto");
 const LandingTimerBlockResponseDto_1 = require("./LandingTimerBlockResponseDto");
 const LandingVideoBlockResponseDto_1 = require("./LandingVideoBlockResponseDto");
+const LandingWidgetBlockResponseDto_1 = require("./LandingWidgetBlockResponseDto");
 function LandingVersionResponseDtoBlocksInnerFromJSON(json) {
     return LandingVersionResponseDtoBlocksInnerFromJSONTyped(json, false);
 }
@@ -55,6 +56,8 @@ function LandingVersionResponseDtoBlocksInnerFromJSONTyped(json, ignoreDiscrimin
             return Object.assign({}, (0, LandingTimerBlockResponseDto_1.LandingTimerBlockResponseDtoFromJSONTyped)(json, true), { type: 'timer' });
         case 'video':
             return Object.assign({}, (0, LandingVideoBlockResponseDto_1.LandingVideoBlockResponseDtoFromJSONTyped)(json, true), { type: 'video' });
+        case 'widget':
+            return Object.assign({}, (0, LandingWidgetBlockResponseDto_1.LandingWidgetBlockResponseDtoFromJSONTyped)(json, true), { type: 'widget' });
         default:
             throw new Error(`No variant of LandingVersionResponseDtoBlocksInner exists with 'type=${json['type']}'`);
     }
@@ -87,6 +90,8 @@ function LandingVersionResponseDtoBlocksInnerToJSONTyped(value, ignoreDiscrimina
             return Object.assign({}, (0, LandingTimerBlockResponseDto_1.LandingTimerBlockResponseDtoToJSON)(value), { type: 'timer' });
         case 'video':
             return Object.assign({}, (0, LandingVideoBlockResponseDto_1.LandingVideoBlockResponseDtoToJSON)(value), { type: 'video' });
+        case 'widget':
+            return Object.assign({}, (0, LandingWidgetBlockResponseDto_1.LandingWidgetBlockResponseDtoToJSON)(value), { type: 'widget' });
         default:
             throw new Error(`No variant of LandingVersionResponseDtoBlocksInner exists with 'type=${value['type']}'`);
     }

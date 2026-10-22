@@ -62,6 +62,7 @@ export declare const UpdateLandingBlockDtoTypeEnum: {
     readonly Products: "products";
     readonly Video: "video";
     readonly Timer: "timer";
+    readonly Widget: "widget";
     readonly Other: "other";
 };
 export type UpdateLandingBlockDtoTypeEnum = typeof UpdateLandingBlockDtoTypeEnum[keyof typeof UpdateLandingBlockDtoTypeEnum];
