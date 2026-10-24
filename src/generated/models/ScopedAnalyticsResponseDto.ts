@@ -129,12 +129,6 @@ export interface ScopedAnalyticsResponseDto {
      */
     comparison?: ComparisonMetrics;
     /**
-     *
-     * @type {MessageMetrics}
-     * @memberof ScopedAnalyticsResponseDto
-     */
-    messages?: MessageMetrics;
-    /**
      * ( )
      * @type {Array<EventTypeStats>}
      * @memberof ScopedAnalyticsResponseDto
@@ -165,6 +159,18 @@ export interface ScopedAnalyticsResponseDto {
      */
     unavailableStorageStats?: Array<string>;
     /**
+     * , ,
+     * @type {ScopedFinancialMetrics}
+     * @memberof ScopedAnalyticsResponseDto
+     */
+    financial?: ScopedFinancialMetrics;
+    /**
+     *
+     * @type {MessageMetrics}
+     * @memberof ScopedAnalyticsResponseDto
+     */
+    messages?: MessageMetrics;
+    /**
      * AI (-10, count DESC)
      * @type {ModelsByType}
      * @memberof ScopedAnalyticsResponseDto
@@ -188,12 +194,6 @@ export interface ScopedAnalyticsResponseDto {
      * @memberof ScopedAnalyticsResponseDto
      */
     platforms?: Array<PlatformStats>;
-    /**
-     * , ,
-     * @type {ScopedFinancialMetrics}
-     * @memberof ScopedAnalyticsResponseDto
-     */
-    financial?: ScopedFinancialMetrics;
 }
 
 /**
@@ -224,17 +224,17 @@ export function ScopedAnalyticsResponseDtoFromJSONTyped(json: any, ignoreDiscrim
         'periodEnd': json['period_end'],
         'overview': AnalyticsOverviewFromJSON(json['overview']),
         'comparison': json['comparison'] == null ? undefined : ComparisonMetricsFromJSON(json['comparison']),
-        'messages': json['messages'] == null ? undefined : MessageMetricsFromJSON(json['messages']),
         'eventTypes': ((json['event_types'] as Array<any>).map(EventTypeStatsFromJSON)),
         'topServers': ((json['top_servers'] as Array<any>).map(ServerUsageStatsFromJSON)),
         'timeSeries': ((json['time_series'] as Array<any>).map(TimeSeriesDataPointFromJSON)),
         'storageStats': ((json['storage_stats'] as Array<any>).map(StorageStatsFromJSON)),
         'unavailableStorageStats': json['unavailable_storage_stats'] == null ? undefined : json['unavailable_storage_stats'],
+        'financial': json['financial'] == null ? undefined : ScopedFinancialMetricsFromJSON(json['financial']),
+        'messages': json['messages'] == null ? undefined : MessageMetricsFromJSON(json['messages']),
         'modelsByType': json['models_by_type'] == null ? undefined : ModelsByTypeFromJSON(json['models_by_type']),
         'topAgents': json['top_agents'] == null ? undefined : ((json['top_agents'] as Array<any>).map(AgentUsageStatsFromJSON)),
         'topProjects': json['top_projects'] == null ? undefined : ((json['top_projects'] as Array<any>).map(ProjectUsageStatsFromJSON)),
         'platforms': json['platforms'] == null ? undefined : ((json['platforms'] as Array<any>).map(PlatformStatsFromJSON)),
-        'financial': json['financial'] == null ? undefined : ScopedFinancialMetricsFromJSON(json['financial']),
     };
 }
 
@@ -253,16 +253,16 @@ export function ScopedAnalyticsResponseDtoToJSONTyped(value?: ScopedAnalyticsRes
         'period_end': value['periodEnd'],
         'overview': AnalyticsOverviewToJSON(value['overview']),
         'comparison': ComparisonMetricsToJSON(value['comparison']),
-        'messages': MessageMetricsToJSON(value['messages']),
         'event_types': ((value['eventTypes'] as Array<any>).map(EventTypeStatsToJSON)),
         'top_servers': ((value['topServers'] as Array<any>).map(ServerUsageStatsToJSON)),
         'time_series': ((value['timeSeries'] as Array<any>).map(TimeSeriesDataPointToJSON)),
         'storage_stats': ((value['storageStats'] as Array<any>).map(StorageStatsToJSON)),
         'unavailable_storage_stats': value['unavailableStorageStats'],
+        'financial': ScopedFinancialMetricsToJSON(value['financial']),
+        'messages': MessageMetricsToJSON(value['messages']),
         'models_by_type': ModelsByTypeToJSON(value['modelsByType']),
         'top_agents': value['topAgents'] == null ? undefined : ((value['topAgents'] as Array<any>).map(AgentUsageStatsToJSON)),
         'top_projects': value['topProjects'] == null ? undefined : ((value['topProjects'] as Array<any>).map(ProjectUsageStatsToJSON)),
         'platforms': value['platforms'] == null ? undefined : ((value['platforms'] as Array<any>).map(PlatformStatsToJSON)),
-        'financial': ScopedFinancialMetricsToJSON(value['financial']),
     };
 }

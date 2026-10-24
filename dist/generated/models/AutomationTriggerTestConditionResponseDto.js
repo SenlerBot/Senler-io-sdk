@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AutomationTriggerTestConditionResponseDtoIncomingAttachmentsVariableScopeEnum = exports.AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum = exports.AutomationTriggerTestConditionResponseDtoRunReentryModeEnum = exports.AutomationTriggerTestConditionResponseDtoDialogScopeEnum = exports.AutomationTriggerTestConditionResponseDtoMessageMatchModeEnum = exports.AutomationTriggerTestConditionResponseDtoMessageSenderEnum = exports.AutomationTriggerTestConditionResponseDtoEventTypeEnum = void 0;
+exports.AutomationTriggerTestConditionResponseDtoIncomingAttachmentsVariableScopeEnum = exports.AutomationTriggerTestConditionResponseDtoIncomingMessageVariableScopeEnum = exports.AutomationTriggerTestConditionResponseDtoStartParameterVariableScopeEnum = exports.AutomationTriggerTestConditionResponseDtoRunReentryModeEnum = exports.AutomationTriggerTestConditionResponseDtoDialogScopeEnum = exports.AutomationTriggerTestConditionResponseDtoMessageMatchModeEnum = exports.AutomationTriggerTestConditionResponseDtoMessageSenderEnum = exports.AutomationTriggerTestConditionResponseDtoEventTypeEnum = void 0;
 exports.instanceOfAutomationTriggerTestConditionResponseDto = instanceOfAutomationTriggerTestConditionResponseDto;
 exports.AutomationTriggerTestConditionResponseDtoFromJSON = AutomationTriggerTestConditionResponseDtoFromJSON;
 exports.AutomationTriggerTestConditionResponseDtoFromJSONTyped = AutomationTriggerTestConditionResponseDtoFromJSONTyped;
@@ -23,6 +23,7 @@ exports.AutomationTriggerTestConditionResponseDtoToJSONTyped = AutomationTrigger
  * @export
  */
 exports.AutomationTriggerTestConditionResponseDtoEventTypeEnum = {
+    BotStarted: 'bot_started',
     MessageCreated: 'message_created',
     ReactionAdded: 'reaction_added',
     ReactionRemoved: 'reaction_removed',
@@ -47,7 +48,12 @@ exports.AutomationTriggerTestConditionResponseDtoMessageSenderEnum = {
 exports.AutomationTriggerTestConditionResponseDtoMessageMatchModeEnum = {
     Any: 'any',
     ContainsAny: 'contains_any',
-    StartPayloadPrefix: 'start_payload_prefix'
+    StartPayloadPrefix: 'start_payload_prefix',
+    Empty: 'empty',
+    Equals: 'equals',
+    StartsWith: 'starts_with',
+    Contains: 'contains',
+    LegacyMessage: 'legacy_message'
 };
 /**
  * @export
@@ -64,6 +70,15 @@ exports.AutomationTriggerTestConditionResponseDtoRunReentryModeEnum = {
     IgnoreActive: 'ignore_active',
     ReplaceActive: 'replace_active',
     Parallel: 'parallel'
+};
+/**
+ * @export
+ */
+exports.AutomationTriggerTestConditionResponseDtoStartParameterVariableScopeEnum = {
+    Run: 'run',
+    Lead: 'lead',
+    Dialog: 'dialog',
+    Project: 'project'
 };
 /**
  * @export
@@ -93,6 +108,8 @@ function instanceOfAutomationTriggerTestConditionResponseDto(value) {
         return false;
     if (!('messageMatchMode' in value) || value['messageMatchMode'] === undefined)
         return false;
+    if (!('caseSensitive' in value) || value['caseSensitive'] === undefined)
+        return false;
     if (!('phrases' in value) || value['phrases'] === undefined)
         return false;
     if (!('channelIds' in value) || value['channelIds'] === undefined)
@@ -106,6 +123,10 @@ function instanceOfAutomationTriggerTestConditionResponseDto(value) {
     if (!('reactionValues' in value) || value['reactionValues'] === undefined)
         return false;
     if (!('runReentryMode' in value) || value['runReentryMode'] === undefined)
+        return false;
+    if (!('startParameterVariableName' in value) || value['startParameterVariableName'] === undefined)
+        return false;
+    if (!('startParameterVariableScope' in value) || value['startParameterVariableScope'] === undefined)
         return false;
     if (!('incomingMessageVariableName' in value) || value['incomingMessageVariableName'] === undefined)
         return false;
@@ -128,6 +149,7 @@ function AutomationTriggerTestConditionResponseDtoFromJSONTyped(json, ignoreDisc
         'eventType': json['event_type'],
         'messageSender': json['message_sender'],
         'messageMatchMode': json['message_match_mode'],
+        'caseSensitive': json['case_sensitive'],
         'phrases': json['phrases'],
         'channelIds': json['channel_ids'] == null ? null : json['channel_ids'],
         'dialogIds': json['dialog_ids'] == null ? null : json['dialog_ids'],
@@ -135,6 +157,8 @@ function AutomationTriggerTestConditionResponseDtoFromJSONTyped(json, ignoreDisc
         'segmentId': json['segment_id'],
         'reactionValues': json['reaction_values'],
         'runReentryMode': json['run_reentry_mode'],
+        'startParameterVariableName': json['start_parameter_variable_name'],
+        'startParameterVariableScope': json['start_parameter_variable_scope'],
         'incomingMessageVariableName': json['incoming_message_variable_name'],
         'incomingMessageVariableScope': json['incoming_message_variable_scope'],
         'incomingAttachmentsVariableName': json['incoming_attachments_variable_name'],
@@ -152,6 +176,7 @@ function AutomationTriggerTestConditionResponseDtoToJSONTyped(value, ignoreDiscr
         'event_type': value['eventType'],
         'message_sender': value['messageSender'],
         'message_match_mode': value['messageMatchMode'],
+        'case_sensitive': value['caseSensitive'],
         'phrases': value['phrases'],
         'channel_ids': value['channelIds'],
         'dialog_ids': value['dialogIds'],
@@ -159,6 +184,8 @@ function AutomationTriggerTestConditionResponseDtoToJSONTyped(value, ignoreDiscr
         'segment_id': value['segmentId'],
         'reaction_values': value['reactionValues'],
         'run_reentry_mode': value['runReentryMode'],
+        'start_parameter_variable_name': value['startParameterVariableName'],
+        'start_parameter_variable_scope': value['startParameterVariableScope'],
         'incoming_message_variable_name': value['incomingMessageVariableName'],
         'incoming_message_variable_scope': value['incomingMessageVariableScope'],
         'incoming_attachments_variable_name': value['incomingAttachmentsVariableName'],

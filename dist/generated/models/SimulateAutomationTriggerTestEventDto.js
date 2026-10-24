@@ -24,6 +24,7 @@ const SimulateAutomationTriggerTestEventPayloadDto_1 = require("./SimulateAutoma
  * @export
  */
 exports.SimulateAutomationTriggerTestEventDtoEventTypeEnum = {
+    BotStarted: 'bot_started',
     MessageCreated: 'message_created',
     ReactionAdded: 'reaction_added',
     ReactionRemoved: 'reaction_removed',

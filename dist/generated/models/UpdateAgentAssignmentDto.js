@@ -13,12 +13,25 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateAgentAssignmentDtoAutoAssignmentRoleEnum = exports.UpdateAgentAssignmentDtoAutoAssignmentDialogScopeEnum = exports.UpdateAgentAssignmentDtoAutoAssignmentModeEnum = exports.UpdateAgentAssignmentDtoKeywordDialogScopeEnum = exports.UpdateAgentAssignmentDtoKeywordAssignmentRoleEnum = exports.UpdateAgentAssignmentDtoAutostartModeEnum = void 0;
+exports.UpdateAgentAssignmentDtoAutoAssignmentRoleEnum = exports.UpdateAgentAssignmentDtoAutoAssignmentDialogScopeEnum = exports.UpdateAgentAssignmentDtoAutoAssignmentModeEnum = exports.UpdateAgentAssignmentDtoKeywordDialogScopeEnum = exports.UpdateAgentAssignmentDtoKeywordAssignmentRoleEnum = exports.UpdateAgentAssignmentDtoAutostartModeEnum = exports.UpdateAgentAssignmentDtoStartButtonMatchModeEnum = void 0;
 exports.instanceOfUpdateAgentAssignmentDto = instanceOfUpdateAgentAssignmentDto;
 exports.UpdateAgentAssignmentDtoFromJSON = UpdateAgentAssignmentDtoFromJSON;
 exports.UpdateAgentAssignmentDtoFromJSONTyped = UpdateAgentAssignmentDtoFromJSONTyped;
 exports.UpdateAgentAssignmentDtoToJSON = UpdateAgentAssignmentDtoToJSON;
 exports.UpdateAgentAssignmentDtoToJSONTyped = UpdateAgentAssignmentDtoToJSONTyped;
+/**
+ * @export
+ */
+exports.UpdateAgentAssignmentDtoStartButtonMatchModeEnum = {
+    Any: 'any',
+    Empty: 'empty',
+    Equals: 'equals',
+    StartsWith: 'starts_with',
+    Contains: 'contains',
+    ContainsAny: 'contains_any',
+    StartPayloadPrefix: 'start_payload_prefix',
+    LegacyMessage: 'legacy_message'
+};
 /**
  * @export
  */
@@ -80,6 +93,12 @@ function UpdateAgentAssignmentDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'triggerKeywords': json['trigger_keywords'] == null ? undefined : json['trigger_keywords'],
+        'startButtonEnabled': json['start_button_enabled'] == null ? undefined : json['start_button_enabled'],
+        'keywordIncludeLinkParameters': json['keyword_include_link_parameters'] == null ? undefined : json['keyword_include_link_parameters'],
+        'keywordCaseSensitive': json['keyword_case_sensitive'] == null ? undefined : json['keyword_case_sensitive'],
+        'startButtonCaseSensitive': json['start_button_case_sensitive'] == null ? undefined : json['start_button_case_sensitive'],
+        'startButtonMatchMode': json['start_button_match_mode'] == null ? undefined : json['start_button_match_mode'],
+        'startButtonValues': json['start_button_values'] == null ? undefined : json['start_button_values'],
         'autostartMode': json['autostart_mode'] == null ? undefined : json['autostart_mode'],
         'keywordAssignmentRole': json['keyword_assignment_role'] == null ? undefined : json['keyword_assignment_role'],
         'keywordDialogScope': json['keyword_dialog_scope'] == null ? undefined : json['keyword_dialog_scope'],
@@ -100,6 +119,12 @@ function UpdateAgentAssignmentDtoToJSONTyped(value, ignoreDiscriminator = false)
     }
     return {
         'trigger_keywords': value['triggerKeywords'],
+        'start_button_enabled': value['startButtonEnabled'],
+        'keyword_include_link_parameters': value['keywordIncludeLinkParameters'],
+        'keyword_case_sensitive': value['keywordCaseSensitive'],
+        'start_button_case_sensitive': value['startButtonCaseSensitive'],
+        'start_button_match_mode': value['startButtonMatchMode'],
+        'start_button_values': value['startButtonValues'],
         'autostart_mode': value['autostartMode'],
         'keyword_assignment_role': value['keywordAssignmentRole'],
         'keyword_dialog_scope': value['keywordDialogScope'],

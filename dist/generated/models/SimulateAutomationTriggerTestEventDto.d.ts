@@ -17,7 +17,7 @@ import type { SimulateAutomationTriggerTestEventPayloadDto } from './SimulateAut
  */
 export interface SimulateAutomationTriggerTestEventDto {
     /**
-     * : message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, segment_subscribed, app_event_received.
+     * : bot_started, message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, segment_subscribed, app_event_received.
      * @type {string}
      * @memberof SimulateAutomationTriggerTestEventDto
      */
@@ -33,6 +33,7 @@ export interface SimulateAutomationTriggerTestEventDto {
  * @export
  */
 export declare const SimulateAutomationTriggerTestEventDtoEventTypeEnum: {
+    readonly BotStarted: "bot_started";
     readonly MessageCreated: "message_created";
     readonly ReactionAdded: "reaction_added";
     readonly ReactionRemoved: "reaction_removed";

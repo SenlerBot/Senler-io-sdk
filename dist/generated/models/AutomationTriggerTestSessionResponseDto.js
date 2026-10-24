@@ -24,6 +24,7 @@ const AutomationTriggerTestConditionResponseDto_1 = require("./AutomationTrigger
  * @export
  */
 exports.AutomationTriggerTestSessionResponseDtoEventTypeEnum = {
+    BotStarted: 'bot_started',
     MessageCreated: 'message_created',
     ReactionAdded: 'reaction_added',
     ReactionRemoved: 'reaction_removed',

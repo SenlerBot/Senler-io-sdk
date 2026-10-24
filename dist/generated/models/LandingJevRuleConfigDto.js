@@ -19,7 +19,6 @@ exports.LandingJevRuleConfigDtoFromJSON = LandingJevRuleConfigDtoFromJSON;
 exports.LandingJevRuleConfigDtoFromJSONTyped = LandingJevRuleConfigDtoFromJSONTyped;
 exports.LandingJevRuleConfigDtoToJSON = LandingJevRuleConfigDtoToJSON;
 exports.LandingJevRuleConfigDtoToJSONTyped = LandingJevRuleConfigDtoToJSONTyped;
-const LandingJevContextDto_1 = require("./LandingJevContextDto");
 /**
  * @export
  */
@@ -49,7 +48,6 @@ function LandingJevRuleConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         'kind': json['kind'],
         'aiModelId': json['ai_model_id'] == null ? undefined : json['ai_model_id'],
         'instruction': json['instruction'],
-        'context': json['context'] == null ? undefined : (0, LandingJevContextDto_1.LandingJevContextDtoFromJSON)(json['context']),
         'noDataOutcomeId': json['no_data_outcome_id'],
     };
 }
@@ -64,7 +62,6 @@ function LandingJevRuleConfigDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'kind': value['kind'],
         'ai_model_id': value['aiModelId'],
         'instruction': value['instruction'],
-        'context': (0, LandingJevContextDto_1.LandingJevContextDtoToJSON)(value['context']),
         'no_data_outcome_id': value['noDataOutcomeId'],
     };
 }

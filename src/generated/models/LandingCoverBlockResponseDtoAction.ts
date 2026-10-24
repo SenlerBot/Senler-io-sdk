@@ -12,6 +12,13 @@
  * Do not edit the class manually.
  */
 
+import type { LandingOpenLandingActionResponseDto } from './LandingOpenLandingActionResponseDto';
+import {
+    instanceOfLandingOpenLandingActionResponseDto,
+    LandingOpenLandingActionResponseDtoFromJSON,
+    LandingOpenLandingActionResponseDtoFromJSONTyped,
+    LandingOpenLandingActionResponseDtoToJSON,
+} from './LandingOpenLandingActionResponseDto';
 import type { LandingOpenUrlActionResponseDto } from './LandingOpenUrlActionResponseDto';
 import {
     instanceOfLandingOpenUrlActionResponseDto,
@@ -32,7 +39,7 @@ import {
  *
  * @export
  */
-export type LandingCoverBlockResponseDtoAction = { type: 'open_url' } & LandingOpenUrlActionResponseDto | { type: 'subscribe_segment' } & LandingSubscribeActionResponseDto;
+export type LandingCoverBlockResponseDtoAction = { type: 'open_landing' } & LandingOpenLandingActionResponseDto | { type: 'open_url' } & LandingOpenUrlActionResponseDto | { type: 'subscribe_segment' } & LandingSubscribeActionResponseDto;
 
 export function LandingCoverBlockResponseDtoActionFromJSON(json: any): LandingCoverBlockResponseDtoAction {
     return LandingCoverBlockResponseDtoActionFromJSONTyped(json, false);
@@ -43,6 +50,8 @@ export function LandingCoverBlockResponseDtoActionFromJSONTyped(json: any, ignor
         return json;
     }
     switch (json['type']) {
+        case 'open_landing':
+            return Object.assign({}, LandingOpenLandingActionResponseDtoFromJSONTyped(json, true), { type: 'open_landing' } as const);
         case 'open_url':
             return Object.assign({}, LandingOpenUrlActionResponseDtoFromJSONTyped(json, true), { type: 'open_url' } as const);
         case 'subscribe_segment':
@@ -61,6 +70,8 @@ export function LandingCoverBlockResponseDtoActionToJSONTyped(value?: LandingCov
         return value;
     }
     switch (value['type']) {
+        case 'open_landing':
+            return Object.assign({}, LandingOpenLandingActionResponseDtoToJSON(value), { type: 'open_landing' } as const);
         case 'open_url':
             return Object.assign({}, LandingOpenUrlActionResponseDtoToJSON(value), { type: 'open_url' } as const);
         case 'subscribe_segment':

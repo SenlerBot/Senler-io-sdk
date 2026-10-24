@@ -72,6 +72,7 @@ export { ModelsApi } from './ModelsApi';
 export { OAuthApi } from './OAuthApi';
 export { PlatformsApi } from './PlatformsApi';
 export { ProcessesApi } from './ProcessesApi';
+export { ProductMetricsApi } from './ProductMetricsApi';
 export { ProjectAppsApi } from './ProjectAppsApi';
 export { ProjectsApi } from './ProjectsApi';
 export { ProjectsAvatarApi } from './ProjectsAvatarApi';

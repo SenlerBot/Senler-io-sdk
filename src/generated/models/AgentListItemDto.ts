@@ -96,6 +96,36 @@ export interface AgentListItemDto {
      */
     triggerKeywords: Array<string>;
     /**
+     * : any, empty, equals, starts_with, contains, contains_any, start_payload_prefix, legacy_message.
+     * @type {string}
+     * @memberof AgentListItemDto
+     */
+    startButtonMatchMode: AgentListItemDtoStartButtonMatchModeEnum | null;
+    /**
+     * start button enabled.
+     * @type {boolean}
+     * @memberof AgentListItemDto
+     */
+    startButtonEnabled: boolean;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof AgentListItemDto
+     */
+    keywordCaseSensitive: boolean;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof AgentListItemDto
+     */
+    startButtonCaseSensitive: boolean;
+    /**
+     * start button values.
+     * @type {Array<string>}
+     * @memberof AgentListItemDto
+     */
+    startButtonValues: Array<string> | null;
+    /**
      *
      * @type {string}
      * @memberof AgentListItemDto
@@ -145,6 +175,21 @@ export type AgentListItemDtoAgentTypeEnum = typeof AgentListItemDtoAgentTypeEnum
 /**
  * @export
  */
+export const AgentListItemDtoStartButtonMatchModeEnum = {
+    Any: 'any',
+    Empty: 'empty',
+    Equals: 'equals',
+    StartsWith: 'starts_with',
+    Contains: 'contains',
+    ContainsAny: 'contains_any',
+    StartPayloadPrefix: 'start_payload_prefix',
+    LegacyMessage: 'legacy_message'
+} as const;
+export type AgentListItemDtoStartButtonMatchModeEnum = typeof AgentListItemDtoStartButtonMatchModeEnum[keyof typeof AgentListItemDtoStartButtonMatchModeEnum];
+
+/**
+ * @export
+ */
 export const AgentListItemDtoAutoAssignmentModeEnum = {
     Off: 'off',
     AllChannels: 'all_channels',
@@ -163,6 +208,11 @@ export function instanceOfAgentListItemDto(value: object): value is AgentListIte
     if (!('projectId' in value) || value['projectId'] === undefined) return false;
     if (!('isActive' in value) || value['isActive'] === undefined) return false;
     if (!('triggerKeywords' in value) || value['triggerKeywords'] === undefined) return false;
+    if (!('startButtonMatchMode' in value) || value['startButtonMatchMode'] === undefined) return false;
+    if (!('startButtonEnabled' in value) || value['startButtonEnabled'] === undefined) return false;
+    if (!('keywordCaseSensitive' in value) || value['keywordCaseSensitive'] === undefined) return false;
+    if (!('startButtonCaseSensitive' in value) || value['startButtonCaseSensitive'] === undefined) return false;
+    if (!('startButtonValues' in value) || value['startButtonValues'] === undefined) return false;
     if (!('autoAssignmentMode' in value) || value['autoAssignmentMode'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
@@ -189,6 +239,11 @@ export function AgentListItemDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'appOrigin': json['app_origin'] == null ? undefined : AgentAppOriginDtoFromJSON(json['app_origin']),
         'isActive': json['is_active'],
         'triggerKeywords': json['trigger_keywords'],
+        'startButtonMatchMode': json['start_button_match_mode'],
+        'startButtonEnabled': json['start_button_enabled'],
+        'keywordCaseSensitive': json['keyword_case_sensitive'],
+        'startButtonCaseSensitive': json['start_button_case_sensitive'],
+        'startButtonValues': json['start_button_values'] == null ? null : json['start_button_values'],
         'autoAssignmentMode': json['auto_assignment_mode'],
         'status': AgentStatusFromJSON(json['status']),
         'wizardCurrentStep': json['wizard_current_step'] == null ? undefined : WizardStepFromJSON(json['wizard_current_step']),
@@ -217,6 +272,11 @@ export function AgentListItemDtoToJSONTyped(value?: AgentListItemDto | null, ign
         'app_origin': AgentAppOriginDtoToJSON(value['appOrigin']),
         'is_active': value['isActive'],
         'trigger_keywords': value['triggerKeywords'],
+        'start_button_match_mode': value['startButtonMatchMode'],
+        'start_button_enabled': value['startButtonEnabled'],
+        'keyword_case_sensitive': value['keywordCaseSensitive'],
+        'start_button_case_sensitive': value['startButtonCaseSensitive'],
+        'start_button_values': value['startButtonValues'],
         'auto_assignment_mode': value['autoAssignmentMode'],
         'status': AgentStatusToJSON(value['status']),
         'wizard_current_step': WizardStepToJSON(value['wizardCurrentStep']),

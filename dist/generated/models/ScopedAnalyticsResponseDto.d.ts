@@ -52,12 +52,6 @@ export interface ScopedAnalyticsResponseDto {
      */
     comparison?: ComparisonMetrics;
     /**
-     *
-     * @type {MessageMetrics}
-     * @memberof ScopedAnalyticsResponseDto
-     */
-    messages?: MessageMetrics;
-    /**
      * ( )
      * @type {Array<EventTypeStats>}
      * @memberof ScopedAnalyticsResponseDto
@@ -88,6 +82,18 @@ export interface ScopedAnalyticsResponseDto {
      */
     unavailableStorageStats?: Array<string>;
     /**
+     * , ,
+     * @type {ScopedFinancialMetrics}
+     * @memberof ScopedAnalyticsResponseDto
+     */
+    financial?: ScopedFinancialMetrics;
+    /**
+     *
+     * @type {MessageMetrics}
+     * @memberof ScopedAnalyticsResponseDto
+     */
+    messages?: MessageMetrics;
+    /**
      * AI (-10, count DESC)
      * @type {ModelsByType}
      * @memberof ScopedAnalyticsResponseDto
@@ -111,12 +117,6 @@ export interface ScopedAnalyticsResponseDto {
      * @memberof ScopedAnalyticsResponseDto
      */
     platforms?: Array<PlatformStats>;
-    /**
-     * , ,
-     * @type {ScopedFinancialMetrics}
-     * @memberof ScopedAnalyticsResponseDto
-     */
-    financial?: ScopedFinancialMetrics;
 }
 /**
  * Check if a given object implements the ScopedAnalyticsResponseDto interface.

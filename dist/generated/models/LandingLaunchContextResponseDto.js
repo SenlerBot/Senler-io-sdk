@@ -18,7 +18,7 @@ exports.LandingLaunchContextResponseDtoFromJSON = LandingLaunchContextResponseDt
 exports.LandingLaunchContextResponseDtoFromJSONTyped = LandingLaunchContextResponseDtoFromJSONTyped;
 exports.LandingLaunchContextResponseDtoToJSON = LandingLaunchContextResponseDtoToJSON;
 exports.LandingLaunchContextResponseDtoToJSONTyped = LandingLaunchContextResponseDtoToJSONTyped;
-const LandingLaunchContextResponseDtoAction_1 = require("./LandingLaunchContextResponseDtoAction");
+const LandingLaunchSubscribeActionDto_1 = require("./LandingLaunchSubscribeActionDto");
 /**
  * Check if a given object implements the LandingLaunchContextResponseDto interface.
  */
@@ -51,7 +51,7 @@ function LandingLaunchContextResponseDtoFromJSONTyped(json, ignoreDiscriminator)
     return {
         'projectPublicId': json['project_public_id'],
         'landingPublicId': json['landing_public_id'],
-        'action': (0, LandingLaunchContextResponseDtoAction_1.LandingLaunchContextResponseDtoActionFromJSON)(json['action']),
+        'action': (0, LandingLaunchSubscribeActionDto_1.LandingLaunchSubscribeActionDtoFromJSON)(json['action']),
         'utmSource': json['utm_source'],
         'utmMedium': json['utm_medium'],
         'utmCampaign': json['utm_campaign'],
@@ -69,7 +69,7 @@ function LandingLaunchContextResponseDtoToJSONTyped(value, ignoreDiscriminator =
     return {
         'project_public_id': value['projectPublicId'],
         'landing_public_id': value['landingPublicId'],
-        'action': (0, LandingLaunchContextResponseDtoAction_1.LandingLaunchContextResponseDtoActionToJSON)(value['action']),
+        'action': (0, LandingLaunchSubscribeActionDto_1.LandingLaunchSubscribeActionDtoToJSON)(value['action']),
         'utm_source': value['utmSource'],
         'utm_medium': value['utmMedium'],
         'utm_campaign': value['utmCampaign'],

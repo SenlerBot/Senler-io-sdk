@@ -13,7 +13,8 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AutomationNodeConfigDtoAppStepConfigurationPresentationEnum = exports.AutomationNodeConfigDtoAppStepCompletionModeEnum = exports.AutomationNodeConfigDtoAppStepContinuationModeEnum = exports.AutomationNodeConfigDtoAppStepIconPresetEnum = exports.AutomationNodeConfigDtoLoopCollectionVariableScopeEnum = exports.AutomationNodeConfigDtoLoopModeEnum = exports.AutomationNodeConfigDtoWaitVariableScopeEnum = exports.AutomationNodeConfigDtoWaitModeEnum = exports.AutomationNodeConfigDtoMessageReplyAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoMessageReplyVariableScopeEnum = exports.AutomationNodeConfigDtoMessageTargetVariableScopeEnum = exports.AutomationNodeConfigDtoMessageVariableContextEnum = exports.AutomationNodeConfigDtoMessageTargetTypeEnum = exports.AutomationNodeConfigDtoMessageChannelTypesEnum = exports.AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum = exports.AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum = exports.AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoVariableDurationUnitEnum = exports.AutomationNodeConfigDtoVariableValueTypeEnum = exports.AutomationNodeConfigDtoVariableOperatorEnum = exports.AutomationNodeConfigDtoVariableOperationEnum = exports.AutomationNodeConfigDtoVariableTypeEnum = exports.AutomationNodeConfigDtoVariableScopeEnum = exports.AutomationNodeConfigDtoDateTimeConditionEnum = exports.AutomationNodeConfigDtoTableMatchModeEnum = exports.AutomationNodeConfigDtoTableWriteModeEnum = exports.AutomationNodeConfigDtoTableResultVariableScopeEnum = exports.AutomationNodeConfigDtoTableFirstRowSaveModeEnum = exports.AutomationNodeConfigDtoTableResultModeEnum = exports.AutomationNodeConfigDtoTableStructureModeEnum = exports.AutomationNodeConfigDtoChannelTypesEnum = exports.AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum = exports.AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum = exports.AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoOperatorConditionEnum = exports.AutomationNodeConfigDtoOperatorAssignmentModeEnum = exports.AutomationNodeConfigDtoAgentRoleEnum = exports.AutomationNodeConfigDtoIncomingMessageVariableScopeEnum = exports.AutomationNodeConfigDtoIncomingAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoMessageMatchModeEnum = exports.AutomationNodeConfigDtoRunReentryModeEnum = exports.AutomationNodeConfigDtoMessageSenderEnum = exports.AutomationNodeConfigDtoEventTypeEnum = exports.AutomationNodeConfigDtoAiAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoBirthdayFeb29Enum = exports.AutomationNodeConfigDtoBirthdayRepeatEnum = void 0;
+exports.AutomationNodeConfigDtoAppStepCompletionModeEnum = exports.AutomationNodeConfigDtoAppStepContinuationModeEnum = exports.AutomationNodeConfigDtoAppStepIconPresetEnum = exports.AutomationNodeConfigDtoLoopCollectionVariableScopeEnum = exports.AutomationNodeConfigDtoLoopModeEnum = exports.AutomationNodeConfigDtoWaitVariableScopeEnum = exports.AutomationNodeConfigDtoWaitModeEnum = exports.AutomationNodeConfigDtoMessageReplyAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoMessageReplyVariableScopeEnum = exports.AutomationNodeConfigDtoMessageTargetVariableScopeEnum = exports.AutomationNodeConfigDtoMessageVariableContextEnum = exports.AutomationNodeConfigDtoMessageTargetTypeEnum = exports.AutomationNodeConfigDtoMessageChannelTypesEnum = exports.AutomationNodeConfigDtoMessageButtonClickVariableScopeEnum = exports.AutomationNodeConfigDtoMessageDynamicButtonsVariableScopeEnum = exports.AutomationNodeConfigDtoMessageAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoVariableDurationUnitEnum = exports.AutomationNodeConfigDtoVariableValueTypeEnum = exports.AutomationNodeConfigDtoVariableOperatorEnum = exports.AutomationNodeConfigDtoVariableOperationEnum = exports.AutomationNodeConfigDtoVariableTypeEnum = exports.AutomationNodeConfigDtoVariableScopeEnum = exports.AutomationNodeConfigDtoDateTimeConditionEnum = exports.AutomationNodeConfigDtoTableMatchModeEnum = exports.AutomationNodeConfigDtoTableWriteModeEnum = exports.AutomationNodeConfigDtoTableResultVariableScopeEnum = exports.AutomationNodeConfigDtoTableFirstRowSaveModeEnum = exports.AutomationNodeConfigDtoTableResultModeEnum = exports.AutomationNodeConfigDtoTableStructureModeEnum = exports.AutomationNodeConfigDtoChannelTypesEnum = exports.AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseButtonsVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoAgentResponseTextVariableScopeEnum = exports.AutomationNodeConfigDtoAgentButtonClickVariableScopeEnum = exports.AutomationNodeConfigDtoAgentAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoOperatorConditionEnum = exports.AutomationNodeConfigDtoOperatorAssignmentModeEnum = exports.AutomationNodeConfigDtoAgentRoleEnum = exports.AutomationNodeConfigDtoIncomingMessageVariableScopeEnum = exports.AutomationNodeConfigDtoIncomingAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoStartParameterVariableScopeEnum = exports.AutomationNodeConfigDtoStartButtonMatchModeEnum = exports.AutomationNodeConfigDtoMessageMatchModeEnum = exports.AutomationNodeConfigDtoRunReentryModeEnum = exports.AutomationNodeConfigDtoMessageSenderEnum = exports.AutomationNodeConfigDtoEventTypeEnum = exports.AutomationNodeConfigDtoAiAttachmentsVariableScopeEnum = exports.AutomationNodeConfigDtoBirthdayFeb29Enum = exports.AutomationNodeConfigDtoBirthdayRepeatEnum = void 0;
+exports.AutomationNodeConfigDtoAppStepConfigurationPresentationEnum = void 0;
 exports.instanceOfAutomationNodeConfigDto = instanceOfAutomationNodeConfigDto;
 exports.AutomationNodeConfigDtoFromJSON = AutomationNodeConfigDtoFromJSON;
 exports.AutomationNodeConfigDtoFromJSONTyped = AutomationNodeConfigDtoFromJSONTyped;
@@ -63,6 +64,7 @@ exports.AutomationNodeConfigDtoAiAttachmentsVariableScopeEnum = {
  * @export
  */
 exports.AutomationNodeConfigDtoEventTypeEnum = {
+    BotStarted: 'bot_started',
     MessageCreated: 'message_created',
     ReactionAdded: 'reaction_added',
     ReactionRemoved: 'reaction_removed',
@@ -96,6 +98,28 @@ exports.AutomationNodeConfigDtoMessageMatchModeEnum = {
     Any: 'any',
     ContainsAny: 'contains_any',
     StartPayloadPrefix: 'start_payload_prefix'
+};
+/**
+ * @export
+ */
+exports.AutomationNodeConfigDtoStartButtonMatchModeEnum = {
+    Any: 'any',
+    Empty: 'empty',
+    Equals: 'equals',
+    StartsWith: 'starts_with',
+    Contains: 'contains',
+    ContainsAny: 'contains_any',
+    StartPayloadPrefix: 'start_payload_prefix',
+    LegacyMessage: 'legacy_message'
+};
+/**
+ * @export
+ */
+exports.AutomationNodeConfigDtoStartParameterVariableScopeEnum = {
+    Run: 'run',
+    Lead: 'lead',
+    Dialog: 'dialog',
+    Project: 'project'
 };
 /**
  * @export
@@ -543,6 +567,11 @@ function AutomationNodeConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         'messageSender': json['message_sender'] == null ? undefined : json['message_sender'],
         'runReentryMode': json['run_reentry_mode'] == null ? undefined : json['run_reentry_mode'],
         'messageMatchMode': json['message_match_mode'] == null ? undefined : json['message_match_mode'],
+        'caseSensitive': json['case_sensitive'] == null ? undefined : json['case_sensitive'],
+        'startButtonMatchMode': json['start_button_match_mode'] == null ? undefined : json['start_button_match_mode'],
+        'startButtonValues': json['start_button_values'] == null ? undefined : json['start_button_values'],
+        'startParameterVariableName': json['start_parameter_variable_name'] == null ? undefined : json['start_parameter_variable_name'],
+        'startParameterVariableScope': json['start_parameter_variable_scope'] == null ? undefined : json['start_parameter_variable_scope'],
         'messagePhrases': json['message_phrases'] == null ? undefined : json['message_phrases'],
         'incomingMessageVariableName': json['incoming_message_variable_name'] == null ? undefined : json['incoming_message_variable_name'],
         'incomingAttachmentsVariableName': json['incoming_attachments_variable_name'] == null ? undefined : json['incoming_attachments_variable_name'],
@@ -710,6 +739,11 @@ function AutomationNodeConfigDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'message_sender': value['messageSender'],
         'run_reentry_mode': value['runReentryMode'],
         'message_match_mode': value['messageMatchMode'],
+        'case_sensitive': value['caseSensitive'],
+        'start_button_match_mode': value['startButtonMatchMode'],
+        'start_button_values': value['startButtonValues'],
+        'start_parameter_variable_name': value['startParameterVariableName'],
+        'start_parameter_variable_scope': value['startParameterVariableScope'],
         'message_phrases': value['messagePhrases'],
         'incoming_message_variable_name': value['incomingMessageVariableName'],
         'incoming_attachments_variable_name': value['incomingAttachmentsVariableName'],

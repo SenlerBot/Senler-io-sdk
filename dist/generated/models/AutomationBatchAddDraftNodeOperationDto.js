@@ -32,6 +32,7 @@ exports.AutomationBatchAddDraftNodeOperationDtoKindEnum = {
 exports.AutomationBatchAddDraftNodeOperationDtoNodeTypeEnum = {
     TriggerBirthday: 'trigger.birthday',
     TriggerStart: 'trigger.start',
+    TriggerStartButton: 'trigger.start_button',
     TriggerIncomingMessage: 'trigger.incoming_message',
     TriggerSegmentEntered: 'trigger.segment_entered',
     TriggerEvent: 'trigger.event',

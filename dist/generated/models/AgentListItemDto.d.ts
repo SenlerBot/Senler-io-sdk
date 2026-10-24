@@ -75,6 +75,36 @@ export interface AgentListItemDto {
      */
     triggerKeywords: Array<string>;
     /**
+     * : any, empty, equals, starts_with, contains, contains_any, start_payload_prefix, legacy_message.
+     * @type {string}
+     * @memberof AgentListItemDto
+     */
+    startButtonMatchMode: AgentListItemDtoStartButtonMatchModeEnum | null;
+    /**
+     * start button enabled.
+     * @type {boolean}
+     * @memberof AgentListItemDto
+     */
+    startButtonEnabled: boolean;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof AgentListItemDto
+     */
+    keywordCaseSensitive: boolean;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof AgentListItemDto
+     */
+    startButtonCaseSensitive: boolean;
+    /**
+     * start button values.
+     * @type {Array<string>}
+     * @memberof AgentListItemDto
+     */
+    startButtonValues: Array<string> | null;
+    /**
      *
      * @type {string}
      * @memberof AgentListItemDto
@@ -118,6 +148,20 @@ export declare const AgentListItemDtoAgentTypeEnum: {
     readonly General: "general";
 };
 export type AgentListItemDtoAgentTypeEnum = typeof AgentListItemDtoAgentTypeEnum[keyof typeof AgentListItemDtoAgentTypeEnum];
+/**
+ * @export
+ */
+export declare const AgentListItemDtoStartButtonMatchModeEnum: {
+    readonly Any: "any";
+    readonly Empty: "empty";
+    readonly Equals: "equals";
+    readonly StartsWith: "starts_with";
+    readonly Contains: "contains";
+    readonly ContainsAny: "contains_any";
+    readonly StartPayloadPrefix: "start_payload_prefix";
+    readonly LegacyMessage: "legacy_message";
+};
+export type AgentListItemDtoStartButtonMatchModeEnum = typeof AgentListItemDtoStartButtonMatchModeEnum[keyof typeof AgentListItemDtoStartButtonMatchModeEnum];
 /**
  * @export
  */

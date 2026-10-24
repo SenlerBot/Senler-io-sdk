@@ -31,6 +31,7 @@ import type {
   LandingBlockContentMutationResponseDto,
   LandingBlockCreateMutationResponseDto,
   SetAgentLandingSubscribeActionDto,
+  SetLandingOpenLandingActionDto,
   SetLandingOpenUrlActionDto,
   UpdateAgentLandingActionBlockDto,
   UpdateButtonLandingBlockDto,
@@ -79,6 +80,8 @@ import {
     LandingBlockCreateMutationResponseDtoToJSON,
     SetAgentLandingSubscribeActionDtoFromJSON,
     SetAgentLandingSubscribeActionDtoToJSON,
+    SetLandingOpenLandingActionDtoFromJSON,
+    SetLandingOpenLandingActionDtoToJSON,
     SetLandingOpenUrlActionDtoFromJSON,
     SetLandingOpenUrlActionDtoToJSON,
     UpdateAgentLandingActionBlockDtoFromJSON,
@@ -199,6 +202,14 @@ export interface LandingBlocksWidgetRequest {
     xLandingEditorSessionId: string;
     createWidgetLandingBlockDto: CreateWidgetLandingBlockDto;
     acceptLanguage?: LandingBlocksWidgetAcceptLanguageEnum;
+}
+
+export interface UpdateLandingBlocksActionOpenLandingRequest {
+    resourceId: string;
+    blockId: string;
+    xLandingEditorSessionId: string;
+    setLandingOpenLandingActionDto: SetLandingOpenLandingActionDto;
+    acceptLanguage?: UpdateLandingBlocksActionOpenLandingAcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksActionOpenUrlRequest {
@@ -1336,6 +1347,91 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
      */
     async landingBlocksWidget(requestParameters: LandingBlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
         const response = await this.landingBlocksWidgetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateLandingBlocksActionOpenLandingRaw(requestParameters: UpdateLandingBlocksActionOpenLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
+        if (requestParameters['resourceId'] == null) {
+            throw new runtime.RequiredError(
+                'resourceId',
+                'Required parameter "resourceId" was null or undefined when calling updateLandingBlocksActionOpenLanding().'
+            );
+        }
+
+        if (requestParameters['blockId'] == null) {
+            throw new runtime.RequiredError(
+                'blockId',
+                'Required parameter "blockId" was null or undefined when calling updateLandingBlocksActionOpenLanding().'
+            );
+        }
+
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError(
+                'xLandingEditorSessionId',
+                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksActionOpenLanding().'
+            );
+        }
+
+        if (requestParameters['setLandingOpenLandingActionDto'] == null) {
+            throw new runtime.RequiredError(
+                'setLandingOpenLandingActionDto',
+                'Required parameter "setLandingOpenLandingActionDto" was null or undefined when calling updateLandingBlocksActionOpenLanding().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{resourceId}/landing/blocks/{blockId}/action/open-landing`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SetLandingOpenLandingActionDtoToJSON(requestParameters['setLandingOpenLandingActionDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockContentMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateLandingBlocksActionOpenLanding(requestParameters: UpdateLandingBlocksActionOpenLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
+        const response = await this.updateLandingBlocksActionOpenLandingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2635,6 +2731,14 @@ export const LandingBlocksWidgetAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type LandingBlocksWidgetAcceptLanguageEnum = typeof LandingBlocksWidgetAcceptLanguageEnum[keyof typeof LandingBlocksWidgetAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateLandingBlocksActionOpenLandingAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateLandingBlocksActionOpenLandingAcceptLanguageEnum = typeof UpdateLandingBlocksActionOpenLandingAcceptLanguageEnum[keyof typeof UpdateLandingBlocksActionOpenLandingAcceptLanguageEnum];
 /**
  * @export
  */

@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AgentSettingsResponseDtoVariablesAccessModeEnum = exports.AgentSettingsResponseDtoWidgetAiProgressModeEnum = exports.AgentSettingsResponseDtoAutoAssignmentRoleEnum = exports.AgentSettingsResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentSettingsResponseDtoAutoAssignmentModeEnum = exports.AgentSettingsResponseDtoKeywordDialogScopeEnum = exports.AgentSettingsResponseDtoKeywordAssignmentRoleEnum = exports.AgentSettingsResponseDtoAutostartModeEnum = exports.AgentSettingsResponseDtoKnowledgeBasePermissionsEnum = exports.AgentSettingsResponseDtoServerBindingModeEnum = exports.AgentSettingsResponseDtoAgentTypeEnum = void 0;
+exports.AgentSettingsResponseDtoVariablesAccessModeEnum = exports.AgentSettingsResponseDtoWidgetAiProgressModeEnum = exports.AgentSettingsResponseDtoAutoAssignmentRoleEnum = exports.AgentSettingsResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentSettingsResponseDtoAutoAssignmentModeEnum = exports.AgentSettingsResponseDtoKeywordDialogScopeEnum = exports.AgentSettingsResponseDtoKeywordAssignmentRoleEnum = exports.AgentSettingsResponseDtoStartButtonMatchModeEnum = exports.AgentSettingsResponseDtoAutostartModeEnum = exports.AgentSettingsResponseDtoKnowledgeBasePermissionsEnum = exports.AgentSettingsResponseDtoServerBindingModeEnum = exports.AgentSettingsResponseDtoAgentTypeEnum = void 0;
 exports.instanceOfAgentSettingsResponseDto = instanceOfAgentSettingsResponseDto;
 exports.AgentSettingsResponseDtoFromJSON = AgentSettingsResponseDtoFromJSON;
 exports.AgentSettingsResponseDtoFromJSONTyped = AgentSettingsResponseDtoFromJSONTyped;
@@ -80,6 +80,19 @@ exports.AgentSettingsResponseDtoAutostartModeEnum = {
     Off: 'off',
     Keywords: 'keywords',
     AllMessages: 'all_messages'
+};
+/**
+ * @export
+ */
+exports.AgentSettingsResponseDtoStartButtonMatchModeEnum = {
+    Any: 'any',
+    Empty: 'empty',
+    Equals: 'equals',
+    StartsWith: 'starts_with',
+    Contains: 'contains',
+    ContainsAny: 'contains_any',
+    StartPayloadPrefix: 'start_payload_prefix',
+    LegacyMessage: 'legacy_message'
 };
 /**
  * @export
@@ -160,6 +173,18 @@ function instanceOfAgentSettingsResponseDto(value) {
     if (!('triggerKeywords' in value) || value['triggerKeywords'] === undefined)
         return false;
     if (!('autostartMode' in value) || value['autostartMode'] === undefined)
+        return false;
+    if (!('startButtonMatchMode' in value) || value['startButtonMatchMode'] === undefined)
+        return false;
+    if (!('startButtonEnabled' in value) || value['startButtonEnabled'] === undefined)
+        return false;
+    if (!('keywordIncludeLinkParameters' in value) || value['keywordIncludeLinkParameters'] === undefined)
+        return false;
+    if (!('keywordCaseSensitive' in value) || value['keywordCaseSensitive'] === undefined)
+        return false;
+    if (!('startButtonCaseSensitive' in value) || value['startButtonCaseSensitive'] === undefined)
+        return false;
+    if (!('startButtonValues' in value) || value['startButtonValues'] === undefined)
         return false;
     if (!('autoAssignmentMode' in value) || value['autoAssignmentMode'] === undefined)
         return false;
@@ -298,6 +323,12 @@ function AgentSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'useDefaultDiscussionMetrics': json['use_default_discussion_metrics'],
         'triggerKeywords': json['trigger_keywords'],
         'autostartMode': json['autostart_mode'],
+        'startButtonMatchMode': json['start_button_match_mode'],
+        'startButtonEnabled': json['start_button_enabled'],
+        'keywordIncludeLinkParameters': json['keyword_include_link_parameters'],
+        'keywordCaseSensitive': json['keyword_case_sensitive'],
+        'startButtonCaseSensitive': json['start_button_case_sensitive'],
+        'startButtonValues': json['start_button_values'] == null ? null : json['start_button_values'],
         'keywordAssignmentRole': json['keyword_assignment_role'] == null ? undefined : json['keyword_assignment_role'],
         'keywordDialogScope': json['keyword_dialog_scope'] == null ? undefined : json['keyword_dialog_scope'],
         'keywordChannelIds': json['keyword_channel_ids'] == null ? undefined : json['keyword_channel_ids'],
@@ -395,6 +426,12 @@ function AgentSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'use_default_discussion_metrics': value['useDefaultDiscussionMetrics'],
         'trigger_keywords': value['triggerKeywords'],
         'autostart_mode': value['autostartMode'],
+        'start_button_match_mode': value['startButtonMatchMode'],
+        'start_button_enabled': value['startButtonEnabled'],
+        'keyword_include_link_parameters': value['keywordIncludeLinkParameters'],
+        'keyword_case_sensitive': value['keywordCaseSensitive'],
+        'start_button_case_sensitive': value['startButtonCaseSensitive'],
+        'start_button_values': value['startButtonValues'],
         'keyword_assignment_role': value['keywordAssignmentRole'],
         'keyword_dialog_scope': value['keywordDialogScope'],
         'keyword_channel_ids': value['keywordChannelIds'],

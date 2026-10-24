@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LandingLaunchContextResponseDtoAction } from './LandingLaunchContextResponseDtoAction';
+import type { LandingLaunchSubscribeActionDto } from './LandingLaunchSubscribeActionDto';
 /**
  * LandingLaunchContextResponseDto.
  * @export
@@ -29,11 +29,11 @@ export interface LandingLaunchContextResponseDto {
      */
     landingPublicId: string;
     /**
-     *
-     * @type {LandingLaunchContextResponseDtoAction}
+     * ,
+     * @type {LandingLaunchSubscribeActionDto}
      * @memberof LandingLaunchContextResponseDto
      */
-    action: LandingLaunchContextResponseDtoAction;
+    action: LandingLaunchSubscribeActionDto;
     /**
      *
      * @type {string}

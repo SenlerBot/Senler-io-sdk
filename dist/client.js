@@ -75,6 +75,7 @@ const ModelsApi_1 = require("./generated/apis/ModelsApi");
 const OAuthApi_1 = require("./generated/apis/OAuthApi");
 const PlatformsApi_1 = require("./generated/apis/PlatformsApi");
 const ProcessesApi_1 = require("./generated/apis/ProcessesApi");
+const ProductMetricsApi_1 = require("./generated/apis/ProductMetricsApi");
 const ProjectAppsApi_1 = require("./generated/apis/ProjectAppsApi");
 const ProjectsApi_1 = require("./generated/apis/ProjectsApi");
 const ProjectsAvatarApi_1 = require("./generated/apis/ProjectsAvatarApi");
@@ -189,6 +190,7 @@ class AiSenlerClient {
         this.oAuth = new OAuthApi_1.OAuthApi(configuration);
         this.platforms = new PlatformsApi_1.PlatformsApi(configuration);
         this.processes = new ProcessesApi_1.ProcessesApi(configuration);
+        this.productMetrics = new ProductMetricsApi_1.ProductMetricsApi(configuration);
         this.projectApps = new ProjectAppsApi_1.ProjectAppsApi(configuration);
         this.projects = new ProjectsApi_1.ProjectsApi(configuration);
         this.projectsAvatar = new ProjectsAvatarApi_1.ProjectsAvatarApi(configuration);

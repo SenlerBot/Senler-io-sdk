@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateButtonLandingBlockDto, CreateCoverLandingBlockDto, CreateFeaturesLandingBlockDto, CreateImageLandingBlockDto, CreateLandingActionBlockDto, CreateOtherLandingBlockDto, CreateProductsLandingBlockDto, CreateReviewsLandingBlockDto, CreateTextLandingBlockDto, CreateTimerLandingBlockDto, CreateVideoLandingBlockDto, CreateWidgetLandingBlockDto, LandingBlockContentMutationResponseDto, LandingBlockCreateMutationResponseDto, SetLandingOpenUrlActionDto, SetLandingSubscribeActionDto, UpdateButtonLandingBlockDto, UpdateCoverLandingBlockDto, UpdateFeaturesLandingBlockDto, UpdateImageLandingBlockDto, UpdateLandingActionBlockDto, UpdateOtherLandingBlockDto, UpdateProductsLandingBlockDto, UpdateReviewsLandingBlockDto, UpdateTextLandingBlockDto, UpdateTimerLandingBlockDto, UpdateTypedLandingBlockActionCommonDto, UpdateVideoLandingBlockDto, UpdateWidgetLandingBlockDto } from '../models/index';
+import type { CreateButtonLandingBlockDto, CreateCoverLandingBlockDto, CreateFeaturesLandingBlockDto, CreateImageLandingBlockDto, CreateLandingActionBlockDto, CreateOtherLandingBlockDto, CreateProductsLandingBlockDto, CreateReviewsLandingBlockDto, CreateTextLandingBlockDto, CreateTimerLandingBlockDto, CreateVideoLandingBlockDto, CreateWidgetLandingBlockDto, LandingBlockContentMutationResponseDto, LandingBlockCreateMutationResponseDto, SetLandingOpenLandingActionDto, SetLandingOpenUrlActionDto, SetLandingSubscribeActionDto, UpdateButtonLandingBlockDto, UpdateCoverLandingBlockDto, UpdateFeaturesLandingBlockDto, UpdateImageLandingBlockDto, UpdateLandingActionBlockDto, UpdateOtherLandingBlockDto, UpdateProductsLandingBlockDto, UpdateReviewsLandingBlockDto, UpdateTextLandingBlockDto, UpdateTimerLandingBlockDto, UpdateTypedLandingBlockActionCommonDto, UpdateVideoLandingBlockDto, UpdateWidgetLandingBlockDto } from '../models/index';
 export interface BlocksButtonRequest {
     resourceId: string;
     xLandingEditorSessionId: string;
@@ -89,6 +89,13 @@ export interface DeleteBlocksActionRequest {
     xLandingEditorSessionId: string;
     updateTypedLandingBlockActionCommonDto: UpdateTypedLandingBlockActionCommonDto;
     acceptLanguage?: DeleteBlocksActionAcceptLanguageEnum;
+}
+export interface UpdateBlocksActionOpenLandingRequest {
+    resourceId: string;
+    blockId: string;
+    xLandingEditorSessionId: string;
+    setLandingOpenLandingActionDto: SetLandingOpenLandingActionDto;
+    acceptLanguage?: UpdateBlocksActionOpenLandingAcceptLanguageEnum;
 }
 export interface UpdateBlocksActionOpenUrlRequest {
     resourceId: string;
@@ -322,6 +329,16 @@ export declare class LandingBlocksApi extends runtime.BaseAPI {
      *
      */
     deleteBlocksAction(requestParameters: DeleteBlocksActionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
+    /**
+     * .
+     *
+     */
+    updateBlocksActionOpenLandingRaw(requestParameters: UpdateBlocksActionOpenLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateBlocksActionOpenLanding(requestParameters: UpdateBlocksActionOpenLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
      * , .
      * URL
@@ -567,6 +584,14 @@ export declare const DeleteBlocksActionAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type DeleteBlocksActionAcceptLanguageEnum = typeof DeleteBlocksActionAcceptLanguageEnum[keyof typeof DeleteBlocksActionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateBlocksActionOpenLandingAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateBlocksActionOpenLandingAcceptLanguageEnum = typeof UpdateBlocksActionOpenLandingAcceptLanguageEnum[keyof typeof UpdateBlocksActionOpenLandingAcceptLanguageEnum];
 /**
  * @export
  */

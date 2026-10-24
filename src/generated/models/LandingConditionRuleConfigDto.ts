@@ -45,13 +45,6 @@ export interface LandingConditionRuleConfigDto {
      * @memberof LandingConditionRuleConfigDto
      */
     otherwiseOutcomeId: string;
-    /**
-     * . otherwise_outcome_id.
-     * @type {string}
-     * @memberof LandingConditionRuleConfigDto
-     * @deprecated
-     */
-    noDataOutcomeId?: string;
 }
 
 
@@ -87,7 +80,6 @@ export function LandingConditionRuleConfigDtoFromJSONTyped(json: any, ignoreDisc
         'kind': json['kind'],
         'branches': ((json['branches'] as Array<any>).map(LandingConditionBranchDtoFromJSON)),
         'otherwiseOutcomeId': json['otherwise_outcome_id'],
-        'noDataOutcomeId': json['no_data_outcome_id'] == null ? undefined : json['no_data_outcome_id'],
     };
 }
 
@@ -105,6 +97,5 @@ export function LandingConditionRuleConfigDtoToJSONTyped(value?: LandingConditio
         'kind': value['kind'],
         'branches': ((value['branches'] as Array<any>).map(LandingConditionBranchDtoToJSON)),
         'otherwise_outcome_id': value['otherwiseOutcomeId'],
-        'no_data_outcome_id': value['noDataOutcomeId'],
     };
 }

@@ -12,6 +12,13 @@
  * Do not edit the class manually.
  */
 
+import type { LandingPublicOpenLandingActionDto } from './LandingPublicOpenLandingActionDto';
+import {
+    instanceOfLandingPublicOpenLandingActionDto,
+    LandingPublicOpenLandingActionDtoFromJSON,
+    LandingPublicOpenLandingActionDtoFromJSONTyped,
+    LandingPublicOpenLandingActionDtoToJSON,
+} from './LandingPublicOpenLandingActionDto';
 import type { LandingPublicOpenUrlActionDto } from './LandingPublicOpenUrlActionDto';
 import {
     instanceOfLandingPublicOpenUrlActionDto,
@@ -32,7 +39,7 @@ import {
  *
  * @export
  */
-export type LandingPublicButtonBlockDtoAction = { type: 'open_url' } & LandingPublicOpenUrlActionDto | { type: 'subscribe_segment' } & LandingPublicSubscribeActionDto;
+export type LandingPublicButtonBlockDtoAction = { type: 'open_landing' } & LandingPublicOpenLandingActionDto | { type: 'open_url' } & LandingPublicOpenUrlActionDto | { type: 'subscribe_segment' } & LandingPublicSubscribeActionDto;
 
 export function LandingPublicButtonBlockDtoActionFromJSON(json: any): LandingPublicButtonBlockDtoAction {
     return LandingPublicButtonBlockDtoActionFromJSONTyped(json, false);
@@ -43,6 +50,8 @@ export function LandingPublicButtonBlockDtoActionFromJSONTyped(json: any, ignore
         return json;
     }
     switch (json['type']) {
+        case 'open_landing':
+            return Object.assign({}, LandingPublicOpenLandingActionDtoFromJSONTyped(json, true), { type: 'open_landing' } as const);
         case 'open_url':
             return Object.assign({}, LandingPublicOpenUrlActionDtoFromJSONTyped(json, true), { type: 'open_url' } as const);
         case 'subscribe_segment':
@@ -61,6 +70,8 @@ export function LandingPublicButtonBlockDtoActionToJSONTyped(value?: LandingPubl
         return value;
     }
     switch (value['type']) {
+        case 'open_landing':
+            return Object.assign({}, LandingPublicOpenLandingActionDtoToJSON(value), { type: 'open_landing' } as const);
         case 'open_url':
             return Object.assign({}, LandingPublicOpenUrlActionDtoToJSON(value), { type: 'open_url' } as const);
         case 'subscribe_segment':

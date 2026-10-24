@@ -16,7 +16,7 @@
  */
 export interface AutomationTriggerTestConditionResponseDto {
     /**
-     * : message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, segment_subscribed, app_event_received.
+     * : bot_started, message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, segment_subscribed, app_event_received.
      * @type {string}
      * @memberof AutomationTriggerTestConditionResponseDto
      */
@@ -28,11 +28,17 @@ export interface AutomationTriggerTestConditionResponseDto {
      */
     messageSender: AutomationTriggerTestConditionResponseDtoMessageSenderEnum | null;
     /**
-     * : any, contains_any, start_payload_prefix.
+     * : any, contains_any, start_payload_prefix, empty, equals, starts_with, contains, legacy_message.
      * @type {string}
      * @memberof AutomationTriggerTestConditionResponseDto
      */
     messageMatchMode: AutomationTriggerTestConditionResponseDtoMessageMatchModeEnum | null;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof AutomationTriggerTestConditionResponseDto
+     */
+    caseSensitive: boolean;
     /**
      * phrases.
      * @type {Array<string>}
@@ -76,6 +82,18 @@ export interface AutomationTriggerTestConditionResponseDto {
      */
     runReentryMode: AutomationTriggerTestConditionResponseDtoRunReentryModeEnum;
     /**
+     * start parameter variable name.
+     * @type {string}
+     * @memberof AutomationTriggerTestConditionResponseDto
+     */
+    startParameterVariableName: string | null;
+    /**
+     * : run, lead, dialog, project.
+     * @type {string}
+     * @memberof AutomationTriggerTestConditionResponseDto
+     */
+    startParameterVariableScope: AutomationTriggerTestConditionResponseDtoStartParameterVariableScopeEnum | null;
+    /**
      * incoming message variable name.
      * @type {string}
      * @memberof AutomationTriggerTestConditionResponseDto
@@ -104,6 +122,7 @@ export interface AutomationTriggerTestConditionResponseDto {
  * @export
  */
 export declare const AutomationTriggerTestConditionResponseDtoEventTypeEnum: {
+    readonly BotStarted: "bot_started";
     readonly MessageCreated: "message_created";
     readonly ReactionAdded: "reaction_added";
     readonly ReactionRemoved: "reaction_removed";
@@ -131,6 +150,11 @@ export declare const AutomationTriggerTestConditionResponseDtoMessageMatchModeEn
     readonly Any: "any";
     readonly ContainsAny: "contains_any";
     readonly StartPayloadPrefix: "start_payload_prefix";
+    readonly Empty: "empty";
+    readonly Equals: "equals";
+    readonly StartsWith: "starts_with";
+    readonly Contains: "contains";
+    readonly LegacyMessage: "legacy_message";
 };
 export type AutomationTriggerTestConditionResponseDtoMessageMatchModeEnum = typeof AutomationTriggerTestConditionResponseDtoMessageMatchModeEnum[keyof typeof AutomationTriggerTestConditionResponseDtoMessageMatchModeEnum];
 /**
@@ -151,6 +175,16 @@ export declare const AutomationTriggerTestConditionResponseDtoRunReentryModeEnum
     readonly Parallel: "parallel";
 };
 export type AutomationTriggerTestConditionResponseDtoRunReentryModeEnum = typeof AutomationTriggerTestConditionResponseDtoRunReentryModeEnum[keyof typeof AutomationTriggerTestConditionResponseDtoRunReentryModeEnum];
+/**
+ * @export
+ */
+export declare const AutomationTriggerTestConditionResponseDtoStartParameterVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Dialog: "dialog";
+    readonly Project: "project";
+};
+export type AutomationTriggerTestConditionResponseDtoStartParameterVariableScopeEnum = typeof AutomationTriggerTestConditionResponseDtoStartParameterVariableScopeEnum[keyof typeof AutomationTriggerTestConditionResponseDtoStartParameterVariableScopeEnum];
 /**
  * @export
  */

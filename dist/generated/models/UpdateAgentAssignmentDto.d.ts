@@ -22,6 +22,42 @@ export interface UpdateAgentAssignmentDto {
      */
     triggerKeywords?: Array<string>;
     /**
+     * , .
+     * @type {boolean}
+     * @memberof UpdateAgentAssignmentDto
+     */
+    startButtonEnabled?: boolean;
+    /**
+     * : .
+     * @type {boolean}
+     * @memberof UpdateAgentAssignmentDto
+     */
+    keywordIncludeLinkParameters?: boolean;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof UpdateAgentAssignmentDto
+     */
+    keywordCaseSensitive?: boolean;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof UpdateAgentAssignmentDto
+     */
+    startButtonCaseSensitive?: boolean;
+    /**
+     * : . null .
+     * @type {string}
+     * @memberof UpdateAgentAssignmentDto
+     */
+    startButtonMatchMode?: UpdateAgentAssignmentDtoStartButtonMatchModeEnum | null;
+    /**
+     * .
+     * @type {Array<string>}
+     * @memberof UpdateAgentAssignmentDto
+     */
+    startButtonValues?: Array<string> | null;
+    /**
      *
      * @type {string}
      * @memberof UpdateAgentAssignmentDto
@@ -76,6 +112,20 @@ export interface UpdateAgentAssignmentDto {
      */
     confirmAutoAssignmentOverwrite?: boolean;
 }
+/**
+ * @export
+ */
+export declare const UpdateAgentAssignmentDtoStartButtonMatchModeEnum: {
+    readonly Any: "any";
+    readonly Empty: "empty";
+    readonly Equals: "equals";
+    readonly StartsWith: "starts_with";
+    readonly Contains: "contains";
+    readonly ContainsAny: "contains_any";
+    readonly StartPayloadPrefix: "start_payload_prefix";
+    readonly LegacyMessage: "legacy_message";
+};
+export type UpdateAgentAssignmentDtoStartButtonMatchModeEnum = typeof UpdateAgentAssignmentDtoStartButtonMatchModeEnum[keyof typeof UpdateAgentAssignmentDtoStartButtonMatchModeEnum];
 /**
  * @export
  */

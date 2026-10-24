@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LandingOpenLandingActionInputDto } from './LandingOpenLandingActionInputDto';
 import type { LandingOpenUrlActionInputDto } from './LandingOpenUrlActionInputDto';
 import type { LandingSubscribeActionInputDto } from './LandingSubscribeActionInputDto';
 /**
@@ -17,6 +18,8 @@ import type { LandingSubscribeActionInputDto } from './LandingSubscribeActionInp
  * @export
  */
 export type LandingVariantInitialContentDtoAction = {
+    type: 'open_landing';
+} & LandingOpenLandingActionInputDto | {
     type: 'open_url';
 } & LandingOpenUrlActionInputDto | {
     type: 'subscribe_segment';

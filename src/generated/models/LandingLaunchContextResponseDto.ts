@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LandingLaunchContextResponseDtoAction } from './LandingLaunchContextResponseDtoAction';
+import type { LandingLaunchSubscribeActionDto } from './LandingLaunchSubscribeActionDto';
 import {
-    LandingLaunchContextResponseDtoActionFromJSON,
-    LandingLaunchContextResponseDtoActionFromJSONTyped,
-    LandingLaunchContextResponseDtoActionToJSON,
-    LandingLaunchContextResponseDtoActionToJSONTyped,
-} from './LandingLaunchContextResponseDtoAction';
+    LandingLaunchSubscribeActionDtoFromJSON,
+    LandingLaunchSubscribeActionDtoFromJSONTyped,
+    LandingLaunchSubscribeActionDtoToJSON,
+    LandingLaunchSubscribeActionDtoToJSONTyped,
+} from './LandingLaunchSubscribeActionDto';
 
 /**
  * LandingLaunchContextResponseDto.
@@ -40,11 +40,11 @@ export interface LandingLaunchContextResponseDto {
      */
     landingPublicId: string;
     /**
-     *
-     * @type {LandingLaunchContextResponseDtoAction}
+     * ,
+     * @type {LandingLaunchSubscribeActionDto}
      * @memberof LandingLaunchContextResponseDto
      */
-    action: LandingLaunchContextResponseDtoAction;
+    action: LandingLaunchSubscribeActionDto;
     /**
      *
      * @type {string}
@@ -104,7 +104,7 @@ export function LandingLaunchContextResponseDtoFromJSONTyped(json: any, ignoreDi
 
         'projectPublicId': json['project_public_id'],
         'landingPublicId': json['landing_public_id'],
-        'action': LandingLaunchContextResponseDtoActionFromJSON(json['action']),
+        'action': LandingLaunchSubscribeActionDtoFromJSON(json['action']),
         'utmSource': json['utm_source'],
         'utmMedium': json['utm_medium'],
         'utmCampaign': json['utm_campaign'],
@@ -126,7 +126,7 @@ export function LandingLaunchContextResponseDtoToJSONTyped(value?: LandingLaunch
 
         'project_public_id': value['projectPublicId'],
         'landing_public_id': value['landingPublicId'],
-        'action': LandingLaunchContextResponseDtoActionToJSON(value['action']),
+        'action': LandingLaunchSubscribeActionDtoToJSON(value['action']),
         'utm_source': value['utmSource'],
         'utm_medium': value['utmMedium'],
         'utm_campaign': value['utmCampaign'],

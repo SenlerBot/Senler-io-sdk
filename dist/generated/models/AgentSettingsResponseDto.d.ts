@@ -167,6 +167,42 @@ export interface AgentSettingsResponseDto {
      */
     autostartMode: AgentSettingsResponseDtoAutostartModeEnum;
     /**
+     * : any, empty, equals, starts_with, contains, contains_any, start_payload_prefix, legacy_message.
+     * @type {string}
+     * @memberof AgentSettingsResponseDto
+     */
+    startButtonMatchMode: AgentSettingsResponseDtoStartButtonMatchModeEnum | null;
+    /**
+     * start button enabled.
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    startButtonEnabled: boolean;
+    /**
+     * keyword include link parameters.
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    keywordIncludeLinkParameters: boolean;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    keywordCaseSensitive: boolean;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    startButtonCaseSensitive: boolean;
+    /**
+     * start button values.
+     * @type {Array<string>}
+     * @memberof AgentSettingsResponseDto
+     */
+    startButtonValues: Array<string> | null;
+    /**
      * . null, .
      * @type {string}
      * @memberof AgentSettingsResponseDto
@@ -614,6 +650,20 @@ export declare const AgentSettingsResponseDtoAutostartModeEnum: {
     readonly AllMessages: "all_messages";
 };
 export type AgentSettingsResponseDtoAutostartModeEnum = typeof AgentSettingsResponseDtoAutostartModeEnum[keyof typeof AgentSettingsResponseDtoAutostartModeEnum];
+/**
+ * @export
+ */
+export declare const AgentSettingsResponseDtoStartButtonMatchModeEnum: {
+    readonly Any: "any";
+    readonly Empty: "empty";
+    readonly Equals: "equals";
+    readonly StartsWith: "starts_with";
+    readonly Contains: "contains";
+    readonly ContainsAny: "contains_any";
+    readonly StartPayloadPrefix: "start_payload_prefix";
+    readonly LegacyMessage: "legacy_message";
+};
+export type AgentSettingsResponseDtoStartButtonMatchModeEnum = typeof AgentSettingsResponseDtoStartButtonMatchModeEnum[keyof typeof AgentSettingsResponseDtoStartButtonMatchModeEnum];
 /**
  * @export
  */

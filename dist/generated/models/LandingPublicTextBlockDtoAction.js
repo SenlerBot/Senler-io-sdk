@@ -17,6 +17,7 @@ exports.LandingPublicTextBlockDtoActionFromJSON = LandingPublicTextBlockDtoActio
 exports.LandingPublicTextBlockDtoActionFromJSONTyped = LandingPublicTextBlockDtoActionFromJSONTyped;
 exports.LandingPublicTextBlockDtoActionToJSON = LandingPublicTextBlockDtoActionToJSON;
 exports.LandingPublicTextBlockDtoActionToJSONTyped = LandingPublicTextBlockDtoActionToJSONTyped;
+const LandingPublicOpenLandingActionDto_1 = require("./LandingPublicOpenLandingActionDto");
 const LandingPublicOpenUrlActionDto_1 = require("./LandingPublicOpenUrlActionDto");
 const LandingPublicSubscribeActionDto_1 = require("./LandingPublicSubscribeActionDto");
 function LandingPublicTextBlockDtoActionFromJSON(json) {
@@ -27,6 +28,8 @@ function LandingPublicTextBlockDtoActionFromJSONTyped(json, ignoreDiscriminator)
         return json;
     }
     switch (json['type']) {
+        case 'open_landing':
+            return Object.assign({}, (0, LandingPublicOpenLandingActionDto_1.LandingPublicOpenLandingActionDtoFromJSONTyped)(json, true), { type: 'open_landing' });
         case 'open_url':
             return Object.assign({}, (0, LandingPublicOpenUrlActionDto_1.LandingPublicOpenUrlActionDtoFromJSONTyped)(json, true), { type: 'open_url' });
         case 'subscribe_segment':
@@ -43,6 +46,8 @@ function LandingPublicTextBlockDtoActionToJSONTyped(value, ignoreDiscriminator =
         return value;
     }
     switch (value['type']) {
+        case 'open_landing':
+            return Object.assign({}, (0, LandingPublicOpenLandingActionDto_1.LandingPublicOpenLandingActionDtoToJSON)(value), { type: 'open_landing' });
         case 'open_url':
             return Object.assign({}, (0, LandingPublicOpenUrlActionDto_1.LandingPublicOpenUrlActionDtoToJSON)(value), { type: 'open_url' });
         case 'subscribe_segment':

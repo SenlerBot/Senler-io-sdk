@@ -183,12 +183,21 @@ class DialogsApi extends runtime.BaseAPI {
      *
      */
     async directMessageRaw(requestParameters, initOverrides) {
+        if (requestParameters['idempotencyKey'] == null) {
+            throw new runtime.RequiredError('idempotencyKey', 'Required parameter "idempotencyKey" was null or undefined when calling directMessage().');
+        }
         if (requestParameters['directMessageDto'] == null) {
             throw new runtime.RequiredError('directMessageDto', 'Required parameter "directMessageDto" was null or undefined when calling directMessage().');
         }
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['idempotencyKey'] != null) {
+            headerParameters['idempotency-key'] = String(requestParameters['idempotencyKey']);
+        }
+        if (requestParameters['idempotencyKey2'] != null) {
+            headerParameters['Idempotency-Key'] = String(requestParameters['idempotencyKey2']);
+        }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
         }

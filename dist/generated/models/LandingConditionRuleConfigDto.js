@@ -49,7 +49,6 @@ function LandingConditionRuleConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         'kind': json['kind'],
         'branches': (json['branches'].map(LandingConditionBranchDto_1.LandingConditionBranchDtoFromJSON)),
         'otherwiseOutcomeId': json['otherwise_outcome_id'],
-        'noDataOutcomeId': json['no_data_outcome_id'] == null ? undefined : json['no_data_outcome_id'],
     };
 }
 function LandingConditionRuleConfigDtoToJSON(json) {
@@ -63,6 +62,5 @@ function LandingConditionRuleConfigDtoToJSONTyped(value, ignoreDiscriminator = f
         'kind': value['kind'],
         'branches': (value['branches'].map(LandingConditionBranchDto_1.LandingConditionBranchDtoToJSON)),
         'otherwise_outcome_id': value['otherwiseOutcomeId'],
-        'no_data_outcome_id': value['noDataOutcomeId'],
     };
 }

@@ -137,6 +137,42 @@ export interface AgentDraftSettingsStateResponseDto {
      */
     autostartMode: AgentDraftSettingsStateResponseDtoAutostartModeEnum;
     /**
+     * : any, empty, equals, starts_with, contains, contains_any, start_payload_prefix, legacy_message.
+     * @type {string}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    startButtonMatchMode: AgentDraftSettingsStateResponseDtoStartButtonMatchModeEnum | null;
+    /**
+     * start button enabled.
+     * @type {boolean}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    startButtonEnabled: boolean;
+    /**
+     * keyword include link parameters.
+     * @type {boolean}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    keywordIncludeLinkParameters: boolean;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    keywordCaseSensitive: boolean;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    startButtonCaseSensitive: boolean;
+    /**
+     * start button values.
+     * @type {Array<string>}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    startButtonValues: Array<string> | null;
+    /**
      * . null, .
      * @type {string}
      * @memberof AgentDraftSettingsStateResponseDto
@@ -549,6 +585,12 @@ export declare const AgentDraftSettingsStateResponseDtoConflictFieldsEnum: {
     readonly MetricsModelId: "metrics_model_id";
     readonly UseDefaultEventMetrics: "use_default_event_metrics";
     readonly UseDefaultDiscussionMetrics: "use_default_discussion_metrics";
+    readonly StartButtonEnabled: "start_button_enabled";
+    readonly KeywordIncludeLinkParameters: "keyword_include_link_parameters";
+    readonly KeywordCaseSensitive: "keyword_case_sensitive";
+    readonly StartButtonCaseSensitive: "start_button_case_sensitive";
+    readonly StartButtonMatchMode: "start_button_match_mode";
+    readonly StartButtonValues: "start_button_values";
     readonly TriggerKeywords: "trigger_keywords";
     readonly AutostartMode: "autostart_mode";
     readonly KeywordAssignmentRole: "keyword_assignment_role";
@@ -665,6 +707,20 @@ export declare const AgentDraftSettingsStateResponseDtoAutostartModeEnum: {
     readonly AllMessages: "all_messages";
 };
 export type AgentDraftSettingsStateResponseDtoAutostartModeEnum = typeof AgentDraftSettingsStateResponseDtoAutostartModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoAutostartModeEnum];
+/**
+ * @export
+ */
+export declare const AgentDraftSettingsStateResponseDtoStartButtonMatchModeEnum: {
+    readonly Any: "any";
+    readonly Empty: "empty";
+    readonly Equals: "equals";
+    readonly StartsWith: "starts_with";
+    readonly Contains: "contains";
+    readonly ContainsAny: "contains_any";
+    readonly StartPayloadPrefix: "start_payload_prefix";
+    readonly LegacyMessage: "legacy_message";
+};
+export type AgentDraftSettingsStateResponseDtoStartButtonMatchModeEnum = typeof AgentDraftSettingsStateResponseDtoStartButtonMatchModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoStartButtonMatchModeEnum];
 /**
  * @export
  */

@@ -72,6 +72,7 @@ import { ModelsApi } from './generated/apis/ModelsApi';
 import { OAuthApi } from './generated/apis/OAuthApi';
 import { PlatformsApi } from './generated/apis/PlatformsApi';
 import { ProcessesApi } from './generated/apis/ProcessesApi';
+import { ProductMetricsApi } from './generated/apis/ProductMetricsApi';
 import { ProjectAppsApi } from './generated/apis/ProjectAppsApi';
 import { ProjectsApi } from './generated/apis/ProjectsApi';
 import { ProjectsAvatarApi } from './generated/apis/ProjectsAvatarApi';
@@ -166,6 +167,7 @@ export declare class AiSenlerClient {
     readonly oAuth: OAuthApi;
     readonly platforms: PlatformsApi;
     readonly processes: ProcessesApi;
+    readonly productMetrics: ProductMetricsApi;
     readonly projectApps: ProjectAppsApi;
     readonly projects: ProjectsApi;
     readonly projectsAvatar: ProjectsAvatarApi;

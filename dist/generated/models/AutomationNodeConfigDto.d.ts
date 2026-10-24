@@ -181,6 +181,36 @@ export interface AutomationNodeConfigDto {
      */
     messageMatchMode?: AutomationNodeConfigDtoMessageMatchModeEnum;
     /**
+     * . .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    caseSensitive?: boolean;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    startButtonMatchMode?: AutomationNodeConfigDtoStartButtonMatchModeEnum;
+    /**
+     * .
+     * @type {Array<string>}
+     * @memberof AutomationNodeConfigDto
+     */
+    startButtonValues?: Array<string>;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    startParameterVariableName?: string;
+    /**
+     * : run, lead, dialog, project.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    startParameterVariableScope?: AutomationNodeConfigDtoStartParameterVariableScopeEnum;
+    /**
      * .
      * @type {Array<string>}
      * @memberof AutomationNodeConfigDto
@@ -1012,6 +1042,7 @@ export type AutomationNodeConfigDtoAiAttachmentsVariableScopeEnum = typeof Autom
  * @export
  */
 export declare const AutomationNodeConfigDtoEventTypeEnum: {
+    readonly BotStarted: "bot_started";
     readonly MessageCreated: "message_created";
     readonly ReactionAdded: "reaction_added";
     readonly ReactionRemoved: "reaction_removed";
@@ -1050,6 +1081,30 @@ export declare const AutomationNodeConfigDtoMessageMatchModeEnum: {
     readonly StartPayloadPrefix: "start_payload_prefix";
 };
 export type AutomationNodeConfigDtoMessageMatchModeEnum = typeof AutomationNodeConfigDtoMessageMatchModeEnum[keyof typeof AutomationNodeConfigDtoMessageMatchModeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoStartButtonMatchModeEnum: {
+    readonly Any: "any";
+    readonly Empty: "empty";
+    readonly Equals: "equals";
+    readonly StartsWith: "starts_with";
+    readonly Contains: "contains";
+    readonly ContainsAny: "contains_any";
+    readonly StartPayloadPrefix: "start_payload_prefix";
+    readonly LegacyMessage: "legacy_message";
+};
+export type AutomationNodeConfigDtoStartButtonMatchModeEnum = typeof AutomationNodeConfigDtoStartButtonMatchModeEnum[keyof typeof AutomationNodeConfigDtoStartButtonMatchModeEnum];
+/**
+ * @export
+ */
+export declare const AutomationNodeConfigDtoStartParameterVariableScopeEnum: {
+    readonly Run: "run";
+    readonly Lead: "lead";
+    readonly Dialog: "dialog";
+    readonly Project: "project";
+};
+export type AutomationNodeConfigDtoStartParameterVariableScopeEnum = typeof AutomationNodeConfigDtoStartParameterVariableScopeEnum[keyof typeof AutomationNodeConfigDtoStartParameterVariableScopeEnum];
 /**
  * @export
  */

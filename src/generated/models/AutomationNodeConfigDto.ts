@@ -276,6 +276,36 @@ export interface AutomationNodeConfigDto {
      */
     messageMatchMode?: AutomationNodeConfigDtoMessageMatchModeEnum;
     /**
+     * . .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    caseSensitive?: boolean;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    startButtonMatchMode?: AutomationNodeConfigDtoStartButtonMatchModeEnum;
+    /**
+     * .
+     * @type {Array<string>}
+     * @memberof AutomationNodeConfigDto
+     */
+    startButtonValues?: Array<string>;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    startParameterVariableName?: string;
+    /**
+     * : run, lead, dialog, project.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    startParameterVariableScope?: AutomationNodeConfigDtoStartParameterVariableScopeEnum;
+    /**
      * .
      * @type {Array<string>}
      * @memberof AutomationNodeConfigDto
@@ -1104,6 +1134,7 @@ export type AutomationNodeConfigDtoAiAttachmentsVariableScopeEnum = typeof Autom
  * @export
  */
 export const AutomationNodeConfigDtoEventTypeEnum = {
+    BotStarted: 'bot_started',
     MessageCreated: 'message_created',
     ReactionAdded: 'reaction_added',
     ReactionRemoved: 'reaction_removed',
@@ -1145,6 +1176,32 @@ export const AutomationNodeConfigDtoMessageMatchModeEnum = {
     StartPayloadPrefix: 'start_payload_prefix'
 } as const;
 export type AutomationNodeConfigDtoMessageMatchModeEnum = typeof AutomationNodeConfigDtoMessageMatchModeEnum[keyof typeof AutomationNodeConfigDtoMessageMatchModeEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoStartButtonMatchModeEnum = {
+    Any: 'any',
+    Empty: 'empty',
+    Equals: 'equals',
+    StartsWith: 'starts_with',
+    Contains: 'contains',
+    ContainsAny: 'contains_any',
+    StartPayloadPrefix: 'start_payload_prefix',
+    LegacyMessage: 'legacy_message'
+} as const;
+export type AutomationNodeConfigDtoStartButtonMatchModeEnum = typeof AutomationNodeConfigDtoStartButtonMatchModeEnum[keyof typeof AutomationNodeConfigDtoStartButtonMatchModeEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoStartParameterVariableScopeEnum = {
+    Run: 'run',
+    Lead: 'lead',
+    Dialog: 'dialog',
+    Project: 'project'
+} as const;
+export type AutomationNodeConfigDtoStartParameterVariableScopeEnum = typeof AutomationNodeConfigDtoStartParameterVariableScopeEnum[keyof typeof AutomationNodeConfigDtoStartParameterVariableScopeEnum];
 
 /**
  * @export
@@ -1680,6 +1737,11 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
         'messageSender': json['message_sender'] == null ? undefined : json['message_sender'],
         'runReentryMode': json['run_reentry_mode'] == null ? undefined : json['run_reentry_mode'],
         'messageMatchMode': json['message_match_mode'] == null ? undefined : json['message_match_mode'],
+        'caseSensitive': json['case_sensitive'] == null ? undefined : json['case_sensitive'],
+        'startButtonMatchMode': json['start_button_match_mode'] == null ? undefined : json['start_button_match_mode'],
+        'startButtonValues': json['start_button_values'] == null ? undefined : json['start_button_values'],
+        'startParameterVariableName': json['start_parameter_variable_name'] == null ? undefined : json['start_parameter_variable_name'],
+        'startParameterVariableScope': json['start_parameter_variable_scope'] == null ? undefined : json['start_parameter_variable_scope'],
         'messagePhrases': json['message_phrases'] == null ? undefined : json['message_phrases'],
         'incomingMessageVariableName': json['incoming_message_variable_name'] == null ? undefined : json['incoming_message_variable_name'],
         'incomingAttachmentsVariableName': json['incoming_attachments_variable_name'] == null ? undefined : json['incoming_attachments_variable_name'],
@@ -1851,6 +1913,11 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
         'message_sender': value['messageSender'],
         'run_reentry_mode': value['runReentryMode'],
         'message_match_mode': value['messageMatchMode'],
+        'case_sensitive': value['caseSensitive'],
+        'start_button_match_mode': value['startButtonMatchMode'],
+        'start_button_values': value['startButtonValues'],
+        'start_parameter_variable_name': value['startParameterVariableName'],
+        'start_parameter_variable_scope': value['startParameterVariableScope'],
         'message_phrases': value['messagePhrases'],
         'incoming_message_variable_name': value['incomingMessageVariableName'],
         'incoming_attachments_variable_name': value['incomingAttachmentsVariableName'],

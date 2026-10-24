@@ -30,6 +30,7 @@ import type {
   ErrorResponse,
   LandingBlockContentMutationResponseDto,
   LandingBlockCreateMutationResponseDto,
+  SetLandingOpenLandingActionDto,
   SetLandingOpenUrlActionDto,
   SetLandingSubscribeActionDto,
   UpdateButtonLandingBlockDto,
@@ -77,6 +78,8 @@ import {
     LandingBlockContentMutationResponseDtoToJSON,
     LandingBlockCreateMutationResponseDtoFromJSON,
     LandingBlockCreateMutationResponseDtoToJSON,
+    SetLandingOpenLandingActionDtoFromJSON,
+    SetLandingOpenLandingActionDtoToJSON,
     SetLandingOpenUrlActionDtoFromJSON,
     SetLandingOpenUrlActionDtoToJSON,
     SetLandingSubscribeActionDtoFromJSON,
@@ -199,6 +202,14 @@ export interface DeleteBlocksActionRequest {
     xLandingEditorSessionId: string;
     updateTypedLandingBlockActionCommonDto: UpdateTypedLandingBlockActionCommonDto;
     acceptLanguage?: DeleteBlocksActionAcceptLanguageEnum;
+}
+
+export interface UpdateBlocksActionOpenLandingRequest {
+    resourceId: string;
+    blockId: string;
+    xLandingEditorSessionId: string;
+    setLandingOpenLandingActionDto: SetLandingOpenLandingActionDto;
+    acceptLanguage?: UpdateBlocksActionOpenLandingAcceptLanguageEnum;
 }
 
 export interface UpdateBlocksActionOpenUrlRequest {
@@ -1336,6 +1347,91 @@ export class LandingBlocksApi extends runtime.BaseAPI {
      */
     async deleteBlocksAction(requestParameters: DeleteBlocksActionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
         const response = await this.deleteBlocksActionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateBlocksActionOpenLandingRaw(requestParameters: UpdateBlocksActionOpenLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
+        if (requestParameters['resourceId'] == null) {
+            throw new runtime.RequiredError(
+                'resourceId',
+                'Required parameter "resourceId" was null or undefined when calling updateBlocksActionOpenLanding().'
+            );
+        }
+
+        if (requestParameters['blockId'] == null) {
+            throw new runtime.RequiredError(
+                'blockId',
+                'Required parameter "blockId" was null or undefined when calling updateBlocksActionOpenLanding().'
+            );
+        }
+
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError(
+                'xLandingEditorSessionId',
+                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateBlocksActionOpenLanding().'
+            );
+        }
+
+        if (requestParameters['setLandingOpenLandingActionDto'] == null) {
+            throw new runtime.RequiredError(
+                'setLandingOpenLandingActionDto',
+                'Required parameter "setLandingOpenLandingActionDto" was null or undefined when calling updateBlocksActionOpenLanding().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
+        }
+
+        const response = await this.request({
+            path: `/api/landings/{resourceId}/blocks/{blockId}/action/open-landing`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SetLandingOpenLandingActionDtoToJSON(requestParameters['setLandingOpenLandingActionDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockContentMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateBlocksActionOpenLanding(requestParameters: UpdateBlocksActionOpenLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
+        const response = await this.updateBlocksActionOpenLandingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2635,6 +2731,14 @@ export const DeleteBlocksActionAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type DeleteBlocksActionAcceptLanguageEnum = typeof DeleteBlocksActionAcceptLanguageEnum[keyof typeof DeleteBlocksActionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateBlocksActionOpenLandingAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateBlocksActionOpenLandingAcceptLanguageEnum = typeof UpdateBlocksActionOpenLandingAcceptLanguageEnum[keyof typeof UpdateBlocksActionOpenLandingAcceptLanguageEnum];
 /**
  * @export
  */

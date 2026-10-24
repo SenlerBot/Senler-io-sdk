@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LandingJevContextDto } from './LandingJevContextDto';
 /**
  * LandingJevRuleConfigDto.
  * @export
@@ -34,13 +33,6 @@ export interface LandingJevRuleConfigDto {
      * @memberof LandingJevRuleConfigDto
      */
     instruction: string;
-    /**
-     * . , ; context.
-     * @type {LandingJevContextDto}
-     * @memberof LandingJevRuleConfigDto
-     * @deprecated
-     */
-    context?: LandingJevContextDto;
     /**
      * no data outcome id.
      * @type {string}

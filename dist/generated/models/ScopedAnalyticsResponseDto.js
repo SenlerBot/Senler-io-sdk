@@ -62,17 +62,17 @@ function ScopedAnalyticsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'periodEnd': json['period_end'],
         'overview': (0, AnalyticsOverview_1.AnalyticsOverviewFromJSON)(json['overview']),
         'comparison': json['comparison'] == null ? undefined : (0, ComparisonMetrics_1.ComparisonMetricsFromJSON)(json['comparison']),
-        'messages': json['messages'] == null ? undefined : (0, MessageMetrics_1.MessageMetricsFromJSON)(json['messages']),
         'eventTypes': (json['event_types'].map(EventTypeStats_1.EventTypeStatsFromJSON)),
         'topServers': (json['top_servers'].map(ServerUsageStats_1.ServerUsageStatsFromJSON)),
         'timeSeries': (json['time_series'].map(TimeSeriesDataPoint_1.TimeSeriesDataPointFromJSON)),
         'storageStats': (json['storage_stats'].map(StorageStats_1.StorageStatsFromJSON)),
         'unavailableStorageStats': json['unavailable_storage_stats'] == null ? undefined : json['unavailable_storage_stats'],
+        'financial': json['financial'] == null ? undefined : (0, ScopedFinancialMetrics_1.ScopedFinancialMetricsFromJSON)(json['financial']),
+        'messages': json['messages'] == null ? undefined : (0, MessageMetrics_1.MessageMetricsFromJSON)(json['messages']),
         'modelsByType': json['models_by_type'] == null ? undefined : (0, ModelsByType_1.ModelsByTypeFromJSON)(json['models_by_type']),
         'topAgents': json['top_agents'] == null ? undefined : (json['top_agents'].map(AgentUsageStats_1.AgentUsageStatsFromJSON)),
         'topProjects': json['top_projects'] == null ? undefined : (json['top_projects'].map(ProjectUsageStats_1.ProjectUsageStatsFromJSON)),
         'platforms': json['platforms'] == null ? undefined : (json['platforms'].map(PlatformStats_1.PlatformStatsFromJSON)),
-        'financial': json['financial'] == null ? undefined : (0, ScopedFinancialMetrics_1.ScopedFinancialMetricsFromJSON)(json['financial']),
     };
 }
 function ScopedAnalyticsResponseDtoToJSON(json) {
@@ -87,16 +87,16 @@ function ScopedAnalyticsResponseDtoToJSONTyped(value, ignoreDiscriminator = fals
         'period_end': value['periodEnd'],
         'overview': (0, AnalyticsOverview_1.AnalyticsOverviewToJSON)(value['overview']),
         'comparison': (0, ComparisonMetrics_1.ComparisonMetricsToJSON)(value['comparison']),
-        'messages': (0, MessageMetrics_1.MessageMetricsToJSON)(value['messages']),
         'event_types': (value['eventTypes'].map(EventTypeStats_1.EventTypeStatsToJSON)),
         'top_servers': (value['topServers'].map(ServerUsageStats_1.ServerUsageStatsToJSON)),
         'time_series': (value['timeSeries'].map(TimeSeriesDataPoint_1.TimeSeriesDataPointToJSON)),
         'storage_stats': (value['storageStats'].map(StorageStats_1.StorageStatsToJSON)),
         'unavailable_storage_stats': value['unavailableStorageStats'],
+        'financial': (0, ScopedFinancialMetrics_1.ScopedFinancialMetricsToJSON)(value['financial']),
+        'messages': (0, MessageMetrics_1.MessageMetricsToJSON)(value['messages']),
         'models_by_type': (0, ModelsByType_1.ModelsByTypeToJSON)(value['modelsByType']),
         'top_agents': value['topAgents'] == null ? undefined : (value['topAgents'].map(AgentUsageStats_1.AgentUsageStatsToJSON)),
         'top_projects': value['topProjects'] == null ? undefined : (value['topProjects'].map(ProjectUsageStats_1.ProjectUsageStatsToJSON)),
         'platforms': value['platforms'] == null ? undefined : (value['platforms'].map(PlatformStats_1.PlatformStatsToJSON)),
-        'financial': (0, ScopedFinancialMetrics_1.ScopedFinancialMetricsToJSON)(value['financial']),
     };
 }

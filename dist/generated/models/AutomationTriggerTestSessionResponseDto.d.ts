@@ -47,7 +47,7 @@ export interface AutomationTriggerTestSessionResponseDto {
      */
     dialogId: string;
     /**
-     * : message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, segment_subscribed, app_event_received.
+     * : bot_started, message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, segment_subscribed, app_event_received.
      * @type {string}
      * @memberof AutomationTriggerTestSessionResponseDto
      */
@@ -99,6 +99,7 @@ export interface AutomationTriggerTestSessionResponseDto {
  * @export
  */
 export declare const AutomationTriggerTestSessionResponseDtoEventTypeEnum: {
+    readonly BotStarted: "bot_started";
     readonly MessageCreated: "message_created";
     readonly ReactionAdded: "reaction_added";
     readonly ReactionRemoved: "reaction_removed";

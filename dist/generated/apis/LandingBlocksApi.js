@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateBlocksWidgetAcceptLanguageEnum = exports.UpdateBlocksVideoAcceptLanguageEnum = exports.UpdateBlocksTimerAcceptLanguageEnum = exports.UpdateBlocksTextAcceptLanguageEnum = exports.UpdateBlocksReviewsAcceptLanguageEnum = exports.UpdateBlocksProductsAcceptLanguageEnum = exports.UpdateBlocksOtherAcceptLanguageEnum = exports.UpdateBlocksInteractiveAcceptLanguageEnum = exports.UpdateBlocksImageAcceptLanguageEnum = exports.UpdateBlocksFeaturesAcceptLanguageEnum = exports.UpdateBlocksCoverAcceptLanguageEnum = exports.UpdateBlocksButtonAcceptLanguageEnum = exports.UpdateBlocksActionSubscribeSegmentAcceptLanguageEnum = exports.UpdateBlocksActionOpenUrlAcceptLanguageEnum = exports.DeleteBlocksActionAcceptLanguageEnum = exports.BlocksWidgetAcceptLanguageEnum = exports.BlocksVideoAcceptLanguageEnum = exports.BlocksTimerAcceptLanguageEnum = exports.BlocksTextAcceptLanguageEnum = exports.BlocksReviewsAcceptLanguageEnum = exports.BlocksProductsAcceptLanguageEnum = exports.BlocksOtherAcceptLanguageEnum = exports.BlocksInteractiveAcceptLanguageEnum = exports.BlocksImageAcceptLanguageEnum = exports.BlocksFeaturesAcceptLanguageEnum = exports.BlocksCoverAcceptLanguageEnum = exports.BlocksButtonAcceptLanguageEnum = exports.LandingBlocksApi = void 0;
+exports.UpdateBlocksWidgetAcceptLanguageEnum = exports.UpdateBlocksVideoAcceptLanguageEnum = exports.UpdateBlocksTimerAcceptLanguageEnum = exports.UpdateBlocksTextAcceptLanguageEnum = exports.UpdateBlocksReviewsAcceptLanguageEnum = exports.UpdateBlocksProductsAcceptLanguageEnum = exports.UpdateBlocksOtherAcceptLanguageEnum = exports.UpdateBlocksInteractiveAcceptLanguageEnum = exports.UpdateBlocksImageAcceptLanguageEnum = exports.UpdateBlocksFeaturesAcceptLanguageEnum = exports.UpdateBlocksCoverAcceptLanguageEnum = exports.UpdateBlocksButtonAcceptLanguageEnum = exports.UpdateBlocksActionSubscribeSegmentAcceptLanguageEnum = exports.UpdateBlocksActionOpenUrlAcceptLanguageEnum = exports.UpdateBlocksActionOpenLandingAcceptLanguageEnum = exports.DeleteBlocksActionAcceptLanguageEnum = exports.BlocksWidgetAcceptLanguageEnum = exports.BlocksVideoAcceptLanguageEnum = exports.BlocksTimerAcceptLanguageEnum = exports.BlocksTextAcceptLanguageEnum = exports.BlocksReviewsAcceptLanguageEnum = exports.BlocksProductsAcceptLanguageEnum = exports.BlocksOtherAcceptLanguageEnum = exports.BlocksInteractiveAcceptLanguageEnum = exports.BlocksImageAcceptLanguageEnum = exports.BlocksFeaturesAcceptLanguageEnum = exports.BlocksCoverAcceptLanguageEnum = exports.BlocksButtonAcceptLanguageEnum = exports.LandingBlocksApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -769,6 +769,64 @@ class LandingBlocksApi extends runtime.BaseAPI {
      */
     async deleteBlocksAction(requestParameters, initOverrides) {
         const response = await this.deleteBlocksActionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async updateBlocksActionOpenLandingRaw(requestParameters, initOverrides) {
+        if (requestParameters['resourceId'] == null) {
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateBlocksActionOpenLanding().');
+        }
+        if (requestParameters['blockId'] == null) {
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateBlocksActionOpenLanding().');
+        }
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateBlocksActionOpenLanding().');
+        }
+        if (requestParameters['setLandingOpenLandingActionDto'] == null) {
+            throw new runtime.RequiredError('setLandingOpenLandingActionDto', 'Required parameter "setLandingOpenLandingActionDto" was null or undefined when calling updateBlocksActionOpenLanding().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_landings"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_landings"]);
+        }
+        const response = await this.request({
+            path: `/api/landings/{resourceId}/blocks/{blockId}/action/open-landing`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SetLandingOpenLandingActionDtoToJSON)(requestParameters['setLandingOpenLandingActionDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockContentMutationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async updateBlocksActionOpenLanding(requestParameters, initOverrides) {
+        const response = await this.updateBlocksActionOpenLandingRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -1673,6 +1731,13 @@ exports.BlocksWidgetAcceptLanguageEnum = {
  * @export
  */
 exports.DeleteBlocksActionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateBlocksActionOpenLandingAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

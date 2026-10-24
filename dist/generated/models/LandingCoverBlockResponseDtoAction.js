@@ -17,6 +17,7 @@ exports.LandingCoverBlockResponseDtoActionFromJSON = LandingCoverBlockResponseDt
 exports.LandingCoverBlockResponseDtoActionFromJSONTyped = LandingCoverBlockResponseDtoActionFromJSONTyped;
 exports.LandingCoverBlockResponseDtoActionToJSON = LandingCoverBlockResponseDtoActionToJSON;
 exports.LandingCoverBlockResponseDtoActionToJSONTyped = LandingCoverBlockResponseDtoActionToJSONTyped;
+const LandingOpenLandingActionResponseDto_1 = require("./LandingOpenLandingActionResponseDto");
 const LandingOpenUrlActionResponseDto_1 = require("./LandingOpenUrlActionResponseDto");
 const LandingSubscribeActionResponseDto_1 = require("./LandingSubscribeActionResponseDto");
 function LandingCoverBlockResponseDtoActionFromJSON(json) {
@@ -27,6 +28,8 @@ function LandingCoverBlockResponseDtoActionFromJSONTyped(json, ignoreDiscriminat
         return json;
     }
     switch (json['type']) {
+        case 'open_landing':
+            return Object.assign({}, (0, LandingOpenLandingActionResponseDto_1.LandingOpenLandingActionResponseDtoFromJSONTyped)(json, true), { type: 'open_landing' });
         case 'open_url':
             return Object.assign({}, (0, LandingOpenUrlActionResponseDto_1.LandingOpenUrlActionResponseDtoFromJSONTyped)(json, true), { type: 'open_url' });
         case 'subscribe_segment':
@@ -43,6 +46,8 @@ function LandingCoverBlockResponseDtoActionToJSONTyped(value, ignoreDiscriminato
         return value;
     }
     switch (value['type']) {
+        case 'open_landing':
+            return Object.assign({}, (0, LandingOpenLandingActionResponseDto_1.LandingOpenLandingActionResponseDtoToJSON)(value), { type: 'open_landing' });
         case 'open_url':
             return Object.assign({}, (0, LandingOpenUrlActionResponseDto_1.LandingOpenUrlActionResponseDtoToJSON)(value), { type: 'open_url' });
         case 'subscribe_segment':

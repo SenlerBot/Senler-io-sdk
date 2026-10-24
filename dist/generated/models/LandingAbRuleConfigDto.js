@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandingAbRuleConfigDtoGoalEnum = exports.LandingAbRuleConfigDtoKindEnum = void 0;
+exports.LandingAbRuleConfigDtoKindEnum = void 0;
 exports.instanceOfLandingAbRuleConfigDto = instanceOfLandingAbRuleConfigDto;
 exports.LandingAbRuleConfigDtoFromJSON = LandingAbRuleConfigDtoFromJSON;
 exports.LandingAbRuleConfigDtoFromJSONTyped = LandingAbRuleConfigDtoFromJSONTyped;
@@ -25,13 +25,6 @@ const LandingAbAllocationDto_1 = require("./LandingAbAllocationDto");
  */
 exports.LandingAbRuleConfigDtoKindEnum = {
     Ab: 'ab'
-};
-/**
- * @export
- */
-exports.LandingAbRuleConfigDtoGoalEnum = {
-    Subscription: 'subscription',
-    Click: 'click'
 };
 /**
  * Check if a given object implements the LandingAbRuleConfigDto interface.
@@ -56,8 +49,6 @@ function LandingAbRuleConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         'kind': json['kind'],
         'experimentId': json['experiment_id'],
         'allocations': (json['allocations'].map(LandingAbAllocationDto_1.LandingAbAllocationDtoFromJSON)),
-        'goal': json['goal'] == null ? undefined : json['goal'],
-        'actionIds': json['action_ids'] == null ? undefined : json['action_ids'],
     };
 }
 function LandingAbRuleConfigDtoToJSON(json) {
@@ -71,7 +62,5 @@ function LandingAbRuleConfigDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'kind': value['kind'],
         'experiment_id': value['experimentId'],
         'allocations': (value['allocations'].map(LandingAbAllocationDto_1.LandingAbAllocationDtoToJSON)),
-        'goal': value['goal'],
-        'action_ids': value['actionIds'],
     };
 }

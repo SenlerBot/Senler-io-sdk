@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum = exports.AgentDraftSettingsStateResponseDtoWidgetAiProgressModeEnum = exports.AgentDraftSettingsStateResponseDtoStatusEnum = exports.AgentDraftSettingsStateResponseDtoKindEnum = exports.AgentDraftSettingsStateResponseDtoAutoAssignmentRoleEnum = exports.AgentDraftSettingsStateResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentDraftSettingsStateResponseDtoAutoAssignmentModeEnum = exports.AgentDraftSettingsStateResponseDtoKeywordDialogScopeEnum = exports.AgentDraftSettingsStateResponseDtoKeywordAssignmentRoleEnum = exports.AgentDraftSettingsStateResponseDtoAutostartModeEnum = exports.AgentDraftSettingsStateResponseDtoKnowledgeBasePermissionsEnum = exports.AgentDraftSettingsStateResponseDtoServerBindingModeEnum = exports.AgentDraftSettingsStateResponseDtoAgentTypeEnum = exports.AgentDraftSettingsStateResponseDtoConflictFieldsEnum = void 0;
+exports.AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum = exports.AgentDraftSettingsStateResponseDtoWidgetAiProgressModeEnum = exports.AgentDraftSettingsStateResponseDtoStatusEnum = exports.AgentDraftSettingsStateResponseDtoKindEnum = exports.AgentDraftSettingsStateResponseDtoAutoAssignmentRoleEnum = exports.AgentDraftSettingsStateResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentDraftSettingsStateResponseDtoAutoAssignmentModeEnum = exports.AgentDraftSettingsStateResponseDtoKeywordDialogScopeEnum = exports.AgentDraftSettingsStateResponseDtoKeywordAssignmentRoleEnum = exports.AgentDraftSettingsStateResponseDtoStartButtonMatchModeEnum = exports.AgentDraftSettingsStateResponseDtoAutostartModeEnum = exports.AgentDraftSettingsStateResponseDtoKnowledgeBasePermissionsEnum = exports.AgentDraftSettingsStateResponseDtoServerBindingModeEnum = exports.AgentDraftSettingsStateResponseDtoAgentTypeEnum = exports.AgentDraftSettingsStateResponseDtoConflictFieldsEnum = void 0;
 exports.instanceOfAgentDraftSettingsStateResponseDto = instanceOfAgentDraftSettingsStateResponseDto;
 exports.AgentDraftSettingsStateResponseDtoFromJSON = AgentDraftSettingsStateResponseDtoFromJSON;
 exports.AgentDraftSettingsStateResponseDtoFromJSONTyped = AgentDraftSettingsStateResponseDtoFromJSONTyped;
@@ -44,6 +44,12 @@ exports.AgentDraftSettingsStateResponseDtoConflictFieldsEnum = {
     MetricsModelId: 'metrics_model_id',
     UseDefaultEventMetrics: 'use_default_event_metrics',
     UseDefaultDiscussionMetrics: 'use_default_discussion_metrics',
+    StartButtonEnabled: 'start_button_enabled',
+    KeywordIncludeLinkParameters: 'keyword_include_link_parameters',
+    KeywordCaseSensitive: 'keyword_case_sensitive',
+    StartButtonCaseSensitive: 'start_button_case_sensitive',
+    StartButtonMatchMode: 'start_button_match_mode',
+    StartButtonValues: 'start_button_values',
     TriggerKeywords: 'trigger_keywords',
     AutostartMode: 'autostart_mode',
     KeywordAssignmentRole: 'keyword_assignment_role',
@@ -158,6 +164,19 @@ exports.AgentDraftSettingsStateResponseDtoAutostartModeEnum = {
 /**
  * @export
  */
+exports.AgentDraftSettingsStateResponseDtoStartButtonMatchModeEnum = {
+    Any: 'any',
+    Empty: 'empty',
+    Equals: 'equals',
+    StartsWith: 'starts_with',
+    Contains: 'contains',
+    ContainsAny: 'contains_any',
+    StartPayloadPrefix: 'start_payload_prefix',
+    LegacyMessage: 'legacy_message'
+};
+/**
+ * @export
+ */
 exports.AgentDraftSettingsStateResponseDtoKeywordAssignmentRoleEnum = {
     Primary: 'primary',
     Background: 'background'
@@ -249,6 +268,18 @@ function instanceOfAgentDraftSettingsStateResponseDto(value) {
     if (!('triggerKeywords' in value) || value['triggerKeywords'] === undefined)
         return false;
     if (!('autostartMode' in value) || value['autostartMode'] === undefined)
+        return false;
+    if (!('startButtonMatchMode' in value) || value['startButtonMatchMode'] === undefined)
+        return false;
+    if (!('startButtonEnabled' in value) || value['startButtonEnabled'] === undefined)
+        return false;
+    if (!('keywordIncludeLinkParameters' in value) || value['keywordIncludeLinkParameters'] === undefined)
+        return false;
+    if (!('keywordCaseSensitive' in value) || value['keywordCaseSensitive'] === undefined)
+        return false;
+    if (!('startButtonCaseSensitive' in value) || value['startButtonCaseSensitive'] === undefined)
+        return false;
+    if (!('startButtonValues' in value) || value['startButtonValues'] === undefined)
         return false;
     if (!('autoAssignmentMode' in value) || value['autoAssignmentMode'] === undefined)
         return false;
@@ -383,6 +414,12 @@ function AgentDraftSettingsStateResponseDtoFromJSONTyped(json, ignoreDiscriminat
         'metricsCollectionEnabled': json['metrics_collection_enabled'],
         'triggerKeywords': json['trigger_keywords'] == null ? null : json['trigger_keywords'],
         'autostartMode': json['autostart_mode'],
+        'startButtonMatchMode': json['start_button_match_mode'],
+        'startButtonEnabled': json['start_button_enabled'],
+        'keywordIncludeLinkParameters': json['keyword_include_link_parameters'],
+        'keywordCaseSensitive': json['keyword_case_sensitive'],
+        'startButtonCaseSensitive': json['start_button_case_sensitive'],
+        'startButtonValues': json['start_button_values'] == null ? null : json['start_button_values'],
         'keywordAssignmentRole': json['keyword_assignment_role'] == null ? undefined : json['keyword_assignment_role'],
         'keywordDialogScope': json['keyword_dialog_scope'] == null ? undefined : json['keyword_dialog_scope'],
         'keywordChannelIds': json['keyword_channel_ids'] == null ? undefined : json['keyword_channel_ids'],
@@ -476,6 +513,12 @@ function AgentDraftSettingsStateResponseDtoToJSONTyped(value, ignoreDiscriminato
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
         'trigger_keywords': value['triggerKeywords'],
         'autostart_mode': value['autostartMode'],
+        'start_button_match_mode': value['startButtonMatchMode'],
+        'start_button_enabled': value['startButtonEnabled'],
+        'keyword_include_link_parameters': value['keywordIncludeLinkParameters'],
+        'keyword_case_sensitive': value['keywordCaseSensitive'],
+        'start_button_case_sensitive': value['startButtonCaseSensitive'],
+        'start_button_values': value['startButtonValues'],
         'keyword_assignment_role': value['keywordAssignmentRole'],
         'keyword_dialog_scope': value['keywordDialogScope'],
         'keyword_channel_ids': value['keywordChannelIds'],

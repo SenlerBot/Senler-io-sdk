@@ -34,20 +34,6 @@ export interface LandingAbRuleConfigDto {
      * @memberof LandingAbRuleConfigDto
      */
     allocations: Array<LandingAbAllocationDto>;
-    /**
-     * . .
-     * @type {string}
-     * @memberof LandingAbRuleConfigDto
-     * @deprecated
-     */
-    goal?: LandingAbRuleConfigDtoGoalEnum;
-    /**
-     * ; -.
-     * @type {Array<string>}
-     * @memberof LandingAbRuleConfigDto
-     * @deprecated
-     */
-    actionIds?: Array<string>;
 }
 /**
  * @export
@@ -56,14 +42,6 @@ export declare const LandingAbRuleConfigDtoKindEnum: {
     readonly Ab: "ab";
 };
 export type LandingAbRuleConfigDtoKindEnum = typeof LandingAbRuleConfigDtoKindEnum[keyof typeof LandingAbRuleConfigDtoKindEnum];
-/**
- * @export
- */
-export declare const LandingAbRuleConfigDtoGoalEnum: {
-    readonly Subscription: "subscription";
-    readonly Click: "click";
-};
-export type LandingAbRuleConfigDtoGoalEnum = typeof LandingAbRuleConfigDtoGoalEnum[keyof typeof LandingAbRuleConfigDtoGoalEnum];
 /**
  * Check if a given object implements the LandingAbRuleConfigDto interface.
  */

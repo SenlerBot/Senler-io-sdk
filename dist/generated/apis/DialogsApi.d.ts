@@ -24,7 +24,9 @@ export interface DialogsListRequest {
     acceptLanguage?: DialogsListAcceptLanguageEnum;
 }
 export interface DirectMessageRequest {
+    idempotencyKey: string;
     directMessageDto: DirectMessageDto;
+    idempotencyKey2?: string;
     acceptLanguage?: DirectMessageAcceptLanguageEnum;
 }
 export interface EventsPollSnapshotRefreshRequest {

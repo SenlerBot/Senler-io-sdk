@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LandingJevContextDto } from './LandingJevContextDto';
-import {
-    LandingJevContextDtoFromJSON,
-    LandingJevContextDtoFromJSONTyped,
-    LandingJevContextDtoToJSON,
-    LandingJevContextDtoToJSONTyped,
-} from './LandingJevContextDto';
-
 /**
  * LandingJevRuleConfigDto.
  * @export
@@ -45,13 +37,6 @@ export interface LandingJevRuleConfigDto {
      * @memberof LandingJevRuleConfigDto
      */
     instruction: string;
-    /**
-     * . , ; context.
-     * @type {LandingJevContextDto}
-     * @memberof LandingJevRuleConfigDto
-     * @deprecated
-     */
-    context?: LandingJevContextDto;
     /**
      * no data outcome id.
      * @type {string}
@@ -93,7 +78,6 @@ export function LandingJevRuleConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
         'kind': json['kind'],
         'aiModelId': json['ai_model_id'] == null ? undefined : json['ai_model_id'],
         'instruction': json['instruction'],
-        'context': json['context'] == null ? undefined : LandingJevContextDtoFromJSON(json['context']),
         'noDataOutcomeId': json['no_data_outcome_id'],
     };
 }
@@ -112,7 +96,6 @@ export function LandingJevRuleConfigDtoToJSONTyped(value?: LandingJevRuleConfigD
         'kind': value['kind'],
         'ai_model_id': value['aiModelId'],
         'instruction': value['instruction'],
-        'context': LandingJevContextDtoToJSON(value['context']),
         'no_data_outcome_id': value['noDataOutcomeId'],
     };
 }

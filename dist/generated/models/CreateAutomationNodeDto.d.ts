@@ -60,6 +60,7 @@ export interface CreateAutomationNodeDto {
 export declare const CreateAutomationNodeDtoTypeEnum: {
     readonly TriggerBirthday: "trigger.birthday";
     readonly TriggerStart: "trigger.start";
+    readonly TriggerStartButton: "trigger.start_button";
     readonly TriggerIncomingMessage: "trigger.incoming_message";
     readonly TriggerSegmentEntered: "trigger.segment_entered";
     readonly TriggerEvent: "trigger.event";

@@ -34,13 +34,6 @@ export interface LandingConditionRuleConfigDto {
      * @memberof LandingConditionRuleConfigDto
      */
     otherwiseOutcomeId: string;
-    /**
-     * . otherwise_outcome_id.
-     * @type {string}
-     * @memberof LandingConditionRuleConfigDto
-     * @deprecated
-     */
-    noDataOutcomeId?: string;
 }
 /**
  * @export

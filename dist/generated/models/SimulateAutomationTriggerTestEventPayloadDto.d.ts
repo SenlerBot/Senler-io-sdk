@@ -16,6 +16,12 @@
  */
 export interface SimulateAutomationTriggerTestEventPayloadDto {
     /**
+     * . .
+     * @type {string}
+     * @memberof SimulateAutomationTriggerTestEventPayloadDto
+     */
+    startPayload?: string;
+    /**
      * reaction_added/reaction_removed.
      * @type {string}
      * @memberof SimulateAutomationTriggerTestEventPayloadDto
