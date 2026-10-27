@@ -27,6 +27,13 @@ import {
     StatisticsOperatorResponseBreakdownDtoToJSON,
     StatisticsOperatorResponseBreakdownDtoToJSONTyped,
 } from './StatisticsOperatorResponseBreakdownDto';
+import type { StatisticsSourceFreshnessDto } from './StatisticsSourceFreshnessDto';
+import {
+    StatisticsSourceFreshnessDtoFromJSON,
+    StatisticsSourceFreshnessDtoFromJSONTyped,
+    StatisticsSourceFreshnessDtoToJSON,
+    StatisticsSourceFreshnessDtoToJSONTyped,
+} from './StatisticsSourceFreshnessDto';
 import type { StatisticsCommunicationsChartsDto } from './StatisticsCommunicationsChartsDto';
 import {
     StatisticsCommunicationsChartsDtoFromJSON,
@@ -48,6 +55,12 @@ import {
  * @interface CabinetStatisticsCommunicationsResponseDto
  */
 export interface CabinetStatisticsCommunicationsResponseDto {
+    /**
+     * ;
+     * @type {Array<StatisticsSourceFreshnessDto>}
+     * @memberof CabinetStatisticsCommunicationsResponseDto
+     */
+    freshness: Array<StatisticsSourceFreshnessDto>;
     /**
      *
      * @type {Date}
@@ -107,6 +120,7 @@ export type CabinetStatisticsCommunicationsResponseDtoGranularityEnum = typeof C
  * Check if a given object implements the CabinetStatisticsCommunicationsResponseDto interface.
  */
 export function instanceOfCabinetStatisticsCommunicationsResponseDto(value: object): value is CabinetStatisticsCommunicationsResponseDto {
+    if (!('freshness' in value) || value['freshness'] === undefined) return false;
     if (!('periodStart' in value) || value['periodStart'] === undefined) return false;
     if (!('periodEnd' in value) || value['periodEnd'] === undefined) return false;
     if (!('granularity' in value) || value['granularity'] === undefined) return false;
@@ -126,6 +140,7 @@ export function CabinetStatisticsCommunicationsResponseDtoFromJSONTyped(json: an
     }
     return {
 
+        'freshness': ((json['freshness'] as Array<any>).map(StatisticsSourceFreshnessDtoFromJSON)),
         'periodStart': (new Date(json['period_start'])),
         'periodEnd': (new Date(json['period_end'])),
         'granularity': json['granularity'],
@@ -147,6 +162,7 @@ export function CabinetStatisticsCommunicationsResponseDtoToJSONTyped(value?: Ca
 
     return {
 
+        'freshness': ((value['freshness'] as Array<any>).map(StatisticsSourceFreshnessDtoToJSON)),
         'period_start': ((value['periodStart']).toISOString()),
         'period_end': ((value['periodEnd']).toISOString()),
         'granularity': value['granularity'],

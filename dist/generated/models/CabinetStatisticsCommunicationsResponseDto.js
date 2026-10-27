@@ -21,6 +21,7 @@ exports.CabinetStatisticsCommunicationsResponseDtoToJSON = CabinetStatisticsComm
 exports.CabinetStatisticsCommunicationsResponseDtoToJSONTyped = CabinetStatisticsCommunicationsResponseDtoToJSONTyped;
 const StatisticsOperatorResponseDetailDto_1 = require("./StatisticsOperatorResponseDetailDto");
 const StatisticsOperatorResponseBreakdownDto_1 = require("./StatisticsOperatorResponseBreakdownDto");
+const StatisticsSourceFreshnessDto_1 = require("./StatisticsSourceFreshnessDto");
 const StatisticsCommunicationsChartsDto_1 = require("./StatisticsCommunicationsChartsDto");
 const StatisticsCommunicationsSummaryDto_1 = require("./StatisticsCommunicationsSummaryDto");
 /**
@@ -34,6 +35,8 @@ exports.CabinetStatisticsCommunicationsResponseDtoGranularityEnum = {
  * Check if a given object implements the CabinetStatisticsCommunicationsResponseDto interface.
  */
 function instanceOfCabinetStatisticsCommunicationsResponseDto(value) {
+    if (!('freshness' in value) || value['freshness'] === undefined)
+        return false;
     if (!('periodStart' in value) || value['periodStart'] === undefined)
         return false;
     if (!('periodEnd' in value) || value['periodEnd'] === undefined)
@@ -56,6 +59,7 @@ function CabinetStatisticsCommunicationsResponseDtoFromJSONTyped(json, ignoreDis
         return json;
     }
     return {
+        'freshness': (json['freshness'].map(StatisticsSourceFreshnessDto_1.StatisticsSourceFreshnessDtoFromJSON)),
         'periodStart': (new Date(json['period_start'])),
         'periodEnd': (new Date(json['period_end'])),
         'granularity': json['granularity'],
@@ -73,6 +77,7 @@ function CabinetStatisticsCommunicationsResponseDtoToJSONTyped(value, ignoreDisc
         return value;
     }
     return {
+        'freshness': (value['freshness'].map(StatisticsSourceFreshnessDto_1.StatisticsSourceFreshnessDtoToJSON)),
         'period_start': ((value['periodStart']).toISOString()),
         'period_end': ((value['periodEnd']).toISOString()),
         'granularity': value['granularity'],

@@ -20,6 +20,13 @@ import {
     AudioPricingGuideDtoToJSON,
     AudioPricingGuideDtoToJSONTyped,
 } from './AudioPricingGuideDto';
+import type { ModelRelativeRatingsDto } from './ModelRelativeRatingsDto';
+import {
+    ModelRelativeRatingsDtoFromJSON,
+    ModelRelativeRatingsDtoFromJSONTyped,
+    ModelRelativeRatingsDtoToJSON,
+    ModelRelativeRatingsDtoToJSONTyped,
+} from './ModelRelativeRatingsDto';
 import type { ModelPricingDto } from './ModelPricingDto';
 import {
     ModelPricingDtoFromJSON,
@@ -41,6 +48,12 @@ import {
  * @interface PublicModelResponseDto
  */
 export interface PublicModelResponseDto {
+    /**
+     * ; null
+     * @type {ModelRelativeRatingsDto}
+     * @memberof PublicModelResponseDto
+     */
+    relativeRatings: ModelRelativeRatingsDto | null;
     /**
      * UUID
      * @type {string}
@@ -76,7 +89,7 @@ export interface PublicModelResponseDto {
      * @type {number}
      * @memberof PublicModelResponseDto
      */
-    reasoningLevel: PublicModelResponseDtoReasoningLevelEnum | null;
+    reasoningLevel: number | null;
     /**
      * Artificial Analysis Intelligence Index 100
      * @type {number}
@@ -94,7 +107,7 @@ export interface PublicModelResponseDto {
      * @type {number}
      * @memberof PublicModelResponseDto
      */
-    speedLevel: PublicModelResponseDtoSpeedLevelEnum | null;
+    speedLevel: number | null;
     /**
      * tool-capable OpenRouter, 010000
      * @type {number}
@@ -106,7 +119,7 @@ export interface PublicModelResponseDto {
      * @type {number}
      * @memberof PublicModelResponseDto
      */
-    priceLevel: PublicModelResponseDtoPriceLevelEnum | null;
+    priceLevel: number | null;
     /**
      *
      * @type {Date}
@@ -299,18 +312,6 @@ export interface PublicModelResponseDto {
 /**
  * @export
  */
-export const PublicModelResponseDtoReasoningLevelEnum = {
-    NUMBER_1: 1,
-    NUMBER_2: 2,
-    NUMBER_3: 3,
-    NUMBER_4: 4,
-    NUMBER_5: 5
-} as const;
-export type PublicModelResponseDtoReasoningLevelEnum = typeof PublicModelResponseDtoReasoningLevelEnum[keyof typeof PublicModelResponseDtoReasoningLevelEnum];
-
-/**
- * @export
- */
 export const PublicModelResponseDtoQualityLevelEnum = {
     NUMBER_1: 1,
     NUMBER_2: 2,
@@ -319,30 +320,6 @@ export const PublicModelResponseDtoQualityLevelEnum = {
     NUMBER_5: 5
 } as const;
 export type PublicModelResponseDtoQualityLevelEnum = typeof PublicModelResponseDtoQualityLevelEnum[keyof typeof PublicModelResponseDtoQualityLevelEnum];
-
-/**
- * @export
- */
-export const PublicModelResponseDtoSpeedLevelEnum = {
-    NUMBER_1: 1,
-    NUMBER_2: 2,
-    NUMBER_3: 3,
-    NUMBER_4: 4,
-    NUMBER_5: 5
-} as const;
-export type PublicModelResponseDtoSpeedLevelEnum = typeof PublicModelResponseDtoSpeedLevelEnum[keyof typeof PublicModelResponseDtoSpeedLevelEnum];
-
-/**
- * @export
- */
-export const PublicModelResponseDtoPriceLevelEnum = {
-    NUMBER_1: 1,
-    NUMBER_2: 2,
-    NUMBER_3: 3,
-    NUMBER_4: 4,
-    NUMBER_5: 5
-} as const;
-export type PublicModelResponseDtoPriceLevelEnum = typeof PublicModelResponseDtoPriceLevelEnum[keyof typeof PublicModelResponseDtoPriceLevelEnum];
 
 /**
  * @export
@@ -403,6 +380,7 @@ export type PublicModelResponseDtoBillingModeEnum = typeof PublicModelResponseDt
  * Check if a given object implements the PublicModelResponseDto interface.
  */
 export function instanceOfPublicModelResponseDto(value: object): value is PublicModelResponseDto {
+    if (!('relativeRatings' in value) || value['relativeRatings'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('slug' in value) || value['slug'] === undefined) return false;
     if (!('displayName' in value) || value['displayName'] === undefined) return false;
@@ -445,6 +423,7 @@ export function PublicModelResponseDtoFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
 
+        'relativeRatings': ModelRelativeRatingsDtoFromJSON(json['relative_ratings']),
         'id': json['id'],
         'slug': json['slug'],
         'displayName': json['display_name'],
@@ -501,6 +480,7 @@ export function PublicModelResponseDtoToJSONTyped(value?: PublicModelResponseDto
 
     return {
 
+        'relative_ratings': ModelRelativeRatingsDtoToJSON(value['relativeRatings']),
         'id': value['id'],
         'slug': value['slug'],
         'display_name': value['displayName'],

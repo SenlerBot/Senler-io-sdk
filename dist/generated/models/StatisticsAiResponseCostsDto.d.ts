@@ -23,7 +23,7 @@ import type { StatisticsAiResponseCancelledGenerationsDto } from './StatisticsAi
  */
 export interface StatisticsAiResponseCostsDto {
     /**
-     * : ready , realtime-capture ( ; ); backfilling ; unavailable . ready, , null
+     * : ready ; freshness ; backfilling ; unavailable . ready, , null
      * @type {string}
      * @memberof StatisticsAiResponseCostsDto
      */

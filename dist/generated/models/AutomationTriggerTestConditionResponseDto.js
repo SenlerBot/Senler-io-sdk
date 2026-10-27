@@ -52,8 +52,7 @@ exports.AutomationTriggerTestConditionResponseDtoMessageMatchModeEnum = {
     Empty: 'empty',
     Equals: 'equals',
     StartsWith: 'starts_with',
-    Contains: 'contains',
-    LegacyMessage: 'legacy_message'
+    Contains: 'contains'
 };
 /**
  * @export

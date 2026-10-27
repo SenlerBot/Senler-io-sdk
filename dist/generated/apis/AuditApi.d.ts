@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AuditLogListResponseDto } from '../models/index';
+import type { AuditInstructionHistoryDto, AuditLogListResponseDto } from '../models/index';
 export interface AuditListRequest {
     projectId: string;
     entityType?: AuditListEntityTypeEnum;
@@ -19,6 +19,11 @@ export interface AuditListRequest {
     before?: string;
     limit?: number;
     acceptLanguage?: AuditListAcceptLanguageEnum;
+}
+export interface GetInstructionRequest {
+    id: string;
+    projectId: string;
+    acceptLanguage?: GetInstructionAcceptLanguageEnum;
 }
 /**
  *
@@ -34,6 +39,16 @@ export declare class AuditApi extends runtime.BaseAPI {
      *
      */
     auditList(requestParameters: AuditListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AuditLogListResponseDto>;
+    /**
+     * . , expected_updated_at . . 404.
+     *
+     */
+    getInstructionRaw(requestParameters: GetInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AuditInstructionHistoryDto>>;
+    /**
+     * . , expected_updated_at . . 404.
+     *
+     */
+    getInstruction(requestParameters: GetInstructionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AuditInstructionHistoryDto>;
 }
 /**
  * @export
@@ -81,3 +96,11 @@ export declare const AuditListAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type AuditListAcceptLanguageEnum = typeof AuditListAcceptLanguageEnum[keyof typeof AuditListAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetInstructionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetInstructionAcceptLanguageEnum = typeof GetInstructionAcceptLanguageEnum[keyof typeof GetInstructionAcceptLanguageEnum];

@@ -11,6 +11,7 @@
  */
 import type { StatisticsOperatorResponseDetailDto } from './StatisticsOperatorResponseDetailDto';
 import type { StatisticsOperatorResponseBreakdownDto } from './StatisticsOperatorResponseBreakdownDto';
+import type { StatisticsSourceFreshnessDto } from './StatisticsSourceFreshnessDto';
 import type { StatisticsCommunicationsChartsDto } from './StatisticsCommunicationsChartsDto';
 import type { StatisticsCommunicationsSummaryDto } from './StatisticsCommunicationsSummaryDto';
 /**
@@ -19,6 +20,12 @@ import type { StatisticsCommunicationsSummaryDto } from './StatisticsCommunicati
  * @interface CabinetStatisticsCommunicationsResponseDto
  */
 export interface CabinetStatisticsCommunicationsResponseDto {
+    /**
+     * ;
+     * @type {Array<StatisticsSourceFreshnessDto>}
+     * @memberof CabinetStatisticsCommunicationsResponseDto
+     */
+    freshness: Array<StatisticsSourceFreshnessDto>;
     /**
      *
      * @type {Date}

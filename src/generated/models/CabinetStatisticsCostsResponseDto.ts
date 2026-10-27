@@ -20,6 +20,13 @@ import {
     StatisticsBalanceForecastDtoToJSON,
     StatisticsBalanceForecastDtoToJSONTyped,
 } from './StatisticsBalanceForecastDto';
+import type { StatisticsCostsChartDto } from './StatisticsCostsChartDto';
+import {
+    StatisticsCostsChartDtoFromJSON,
+    StatisticsCostsChartDtoFromJSONTyped,
+    StatisticsCostsChartDtoToJSON,
+    StatisticsCostsChartDtoToJSONTyped,
+} from './StatisticsCostsChartDto';
 import type { StatisticsBreakdownsDto } from './StatisticsBreakdownsDto';
 import {
     StatisticsBreakdownsDtoFromJSON,
@@ -27,13 +34,13 @@ import {
     StatisticsBreakdownsDtoToJSON,
     StatisticsBreakdownsDtoToJSONTyped,
 } from './StatisticsBreakdownsDto';
-import type { StatisticsUsageChartDto } from './StatisticsUsageChartDto';
+import type { StatisticsSourceFreshnessDto } from './StatisticsSourceFreshnessDto';
 import {
-    StatisticsUsageChartDtoFromJSON,
-    StatisticsUsageChartDtoFromJSONTyped,
-    StatisticsUsageChartDtoToJSON,
-    StatisticsUsageChartDtoToJSONTyped,
-} from './StatisticsUsageChartDto';
+    StatisticsSourceFreshnessDtoFromJSON,
+    StatisticsSourceFreshnessDtoFromJSONTyped,
+    StatisticsSourceFreshnessDtoToJSON,
+    StatisticsSourceFreshnessDtoToJSONTyped,
+} from './StatisticsSourceFreshnessDto';
 import type { StatisticsCostsSummaryDto } from './StatisticsCostsSummaryDto';
 import {
     StatisticsCostsSummaryDtoFromJSON,
@@ -48,6 +55,12 @@ import {
  * @interface CabinetStatisticsCostsResponseDto
  */
 export interface CabinetStatisticsCostsResponseDto {
+    /**
+     * ;
+     * @type {Array<StatisticsSourceFreshnessDto>}
+     * @memberof CabinetStatisticsCostsResponseDto
+     */
+    freshness: Array<StatisticsSourceFreshnessDto>;
     /**
      *
      * @type {Date}
@@ -80,10 +93,10 @@ export interface CabinetStatisticsCostsResponseDto {
     balanceForecast: StatisticsBalanceForecastDto;
     /**
      *
-     * @type {StatisticsUsageChartDto}
+     * @type {StatisticsCostsChartDto}
      * @memberof CabinetStatisticsCostsResponseDto
      */
-    charts: StatisticsUsageChartDto;
+    charts: StatisticsCostsChartDto;
     /**
      *
      * @type {StatisticsBreakdownsDto}
@@ -107,6 +120,7 @@ export type CabinetStatisticsCostsResponseDtoGranularityEnum = typeof CabinetSta
  * Check if a given object implements the CabinetStatisticsCostsResponseDto interface.
  */
 export function instanceOfCabinetStatisticsCostsResponseDto(value: object): value is CabinetStatisticsCostsResponseDto {
+    if (!('freshness' in value) || value['freshness'] === undefined) return false;
     if (!('periodStart' in value) || value['periodStart'] === undefined) return false;
     if (!('periodEnd' in value) || value['periodEnd'] === undefined) return false;
     if (!('granularity' in value) || value['granularity'] === undefined) return false;
@@ -127,12 +141,13 @@ export function CabinetStatisticsCostsResponseDtoFromJSONTyped(json: any, ignore
     }
     return {
 
+        'freshness': ((json['freshness'] as Array<any>).map(StatisticsSourceFreshnessDtoFromJSON)),
         'periodStart': (new Date(json['period_start'])),
         'periodEnd': (new Date(json['period_end'])),
         'granularity': json['granularity'],
         'summary': StatisticsCostsSummaryDtoFromJSON(json['summary']),
         'balanceForecast': StatisticsBalanceForecastDtoFromJSON(json['balance_forecast']),
-        'charts': StatisticsUsageChartDtoFromJSON(json['charts']),
+        'charts': StatisticsCostsChartDtoFromJSON(json['charts']),
         'breakdowns': StatisticsBreakdownsDtoFromJSON(json['breakdowns']),
     };
 }
@@ -148,12 +163,13 @@ export function CabinetStatisticsCostsResponseDtoToJSONTyped(value?: CabinetStat
 
     return {
 
+        'freshness': ((value['freshness'] as Array<any>).map(StatisticsSourceFreshnessDtoToJSON)),
         'period_start': ((value['periodStart']).toISOString()),
         'period_end': ((value['periodEnd']).toISOString()),
         'granularity': value['granularity'],
         'summary': StatisticsCostsSummaryDtoToJSON(value['summary']),
         'balance_forecast': StatisticsBalanceForecastDtoToJSON(value['balanceForecast']),
-        'charts': StatisticsUsageChartDtoToJSON(value['charts']),
+        'charts': StatisticsCostsChartDtoToJSON(value['charts']),
         'breakdowns': StatisticsBreakdownsDtoToJSON(value['breakdowns']),
     };
 }

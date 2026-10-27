@@ -210,6 +210,7 @@ class StorageApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * .
      *
      */
     async getIncomingPolicyRaw(requestParameters, initOverrides) {
@@ -248,6 +249,7 @@ class StorageApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.IncomingStoragePolicyDtoFromJSON)(jsonValue));
     }
     /**
+     * .
      *
      */
     async getIncomingPolicy(requestParameters, initOverrides) {
@@ -349,6 +351,7 @@ class StorageApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * .
      *
      */
     async updateIncomingPolicyRaw(requestParameters, initOverrides) {
@@ -392,6 +395,7 @@ class StorageApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.IncomingStoragePolicyDtoFromJSON)(jsonValue));
     }
     /**
+     * .
      *
      */
     async updateIncomingPolicy(requestParameters, initOverrides) {

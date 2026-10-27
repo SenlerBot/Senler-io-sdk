@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { AudioPricingGuideDto } from './AudioPricingGuideDto';
+import type { ModelRelativeRatingsDto } from './ModelRelativeRatingsDto';
 import type { ModelPricingDto } from './ModelPricingDto';
 import type { PublicImageGenerationPriceResponseDto } from './PublicImageGenerationPriceResponseDto';
 /**
@@ -18,6 +19,12 @@ import type { PublicImageGenerationPriceResponseDto } from './PublicImageGenerat
  * @interface PublicModelResponseDto
  */
 export interface PublicModelResponseDto {
+    /**
+     * ; null
+     * @type {ModelRelativeRatingsDto}
+     * @memberof PublicModelResponseDto
+     */
+    relativeRatings: ModelRelativeRatingsDto | null;
     /**
      * UUID
      * @type {string}
@@ -53,7 +60,7 @@ export interface PublicModelResponseDto {
      * @type {number}
      * @memberof PublicModelResponseDto
      */
-    reasoningLevel: PublicModelResponseDtoReasoningLevelEnum | null;
+    reasoningLevel: number | null;
     /**
      * Artificial Analysis Intelligence Index 100
      * @type {number}
@@ -71,7 +78,7 @@ export interface PublicModelResponseDto {
      * @type {number}
      * @memberof PublicModelResponseDto
      */
-    speedLevel: PublicModelResponseDtoSpeedLevelEnum | null;
+    speedLevel: number | null;
     /**
      * tool-capable OpenRouter, 010000
      * @type {number}
@@ -83,7 +90,7 @@ export interface PublicModelResponseDto {
      * @type {number}
      * @memberof PublicModelResponseDto
      */
-    priceLevel: PublicModelResponseDtoPriceLevelEnum | null;
+    priceLevel: number | null;
     /**
      *
      * @type {Date}
@@ -274,17 +281,6 @@ export interface PublicModelResponseDto {
 /**
  * @export
  */
-export declare const PublicModelResponseDtoReasoningLevelEnum: {
-    readonly NUMBER_1: 1;
-    readonly NUMBER_2: 2;
-    readonly NUMBER_3: 3;
-    readonly NUMBER_4: 4;
-    readonly NUMBER_5: 5;
-};
-export type PublicModelResponseDtoReasoningLevelEnum = typeof PublicModelResponseDtoReasoningLevelEnum[keyof typeof PublicModelResponseDtoReasoningLevelEnum];
-/**
- * @export
- */
 export declare const PublicModelResponseDtoQualityLevelEnum: {
     readonly NUMBER_1: 1;
     readonly NUMBER_2: 2;
@@ -293,28 +289,6 @@ export declare const PublicModelResponseDtoQualityLevelEnum: {
     readonly NUMBER_5: 5;
 };
 export type PublicModelResponseDtoQualityLevelEnum = typeof PublicModelResponseDtoQualityLevelEnum[keyof typeof PublicModelResponseDtoQualityLevelEnum];
-/**
- * @export
- */
-export declare const PublicModelResponseDtoSpeedLevelEnum: {
-    readonly NUMBER_1: 1;
-    readonly NUMBER_2: 2;
-    readonly NUMBER_3: 3;
-    readonly NUMBER_4: 4;
-    readonly NUMBER_5: 5;
-};
-export type PublicModelResponseDtoSpeedLevelEnum = typeof PublicModelResponseDtoSpeedLevelEnum[keyof typeof PublicModelResponseDtoSpeedLevelEnum];
-/**
- * @export
- */
-export declare const PublicModelResponseDtoPriceLevelEnum: {
-    readonly NUMBER_1: 1;
-    readonly NUMBER_2: 2;
-    readonly NUMBER_3: 3;
-    readonly NUMBER_4: 4;
-    readonly NUMBER_5: 5;
-};
-export type PublicModelResponseDtoPriceLevelEnum = typeof PublicModelResponseDtoPriceLevelEnum[keyof typeof PublicModelResponseDtoPriceLevelEnum];
 /**
  * @export
  */

@@ -13,49 +13,20 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PublicModelResponseDtoBillingModeEnum = exports.PublicModelResponseDtoSupportedServerBindingModesEnum = exports.PublicModelResponseDtoImagePricingTypeEnum = exports.PublicModelResponseDtoAudioPricingTypeEnum = exports.PublicModelResponseDtoTypeEnum = exports.PublicModelResponseDtoPriceLevelEnum = exports.PublicModelResponseDtoSpeedLevelEnum = exports.PublicModelResponseDtoQualityLevelEnum = exports.PublicModelResponseDtoReasoningLevelEnum = void 0;
+exports.PublicModelResponseDtoBillingModeEnum = exports.PublicModelResponseDtoSupportedServerBindingModesEnum = exports.PublicModelResponseDtoImagePricingTypeEnum = exports.PublicModelResponseDtoAudioPricingTypeEnum = exports.PublicModelResponseDtoTypeEnum = exports.PublicModelResponseDtoQualityLevelEnum = void 0;
 exports.instanceOfPublicModelResponseDto = instanceOfPublicModelResponseDto;
 exports.PublicModelResponseDtoFromJSON = PublicModelResponseDtoFromJSON;
 exports.PublicModelResponseDtoFromJSONTyped = PublicModelResponseDtoFromJSONTyped;
 exports.PublicModelResponseDtoToJSON = PublicModelResponseDtoToJSON;
 exports.PublicModelResponseDtoToJSONTyped = PublicModelResponseDtoToJSONTyped;
 const AudioPricingGuideDto_1 = require("./AudioPricingGuideDto");
+const ModelRelativeRatingsDto_1 = require("./ModelRelativeRatingsDto");
 const ModelPricingDto_1 = require("./ModelPricingDto");
 const PublicImageGenerationPriceResponseDto_1 = require("./PublicImageGenerationPriceResponseDto");
 /**
  * @export
  */
-exports.PublicModelResponseDtoReasoningLevelEnum = {
-    NUMBER_1: 1,
-    NUMBER_2: 2,
-    NUMBER_3: 3,
-    NUMBER_4: 4,
-    NUMBER_5: 5
-};
-/**
- * @export
- */
 exports.PublicModelResponseDtoQualityLevelEnum = {
-    NUMBER_1: 1,
-    NUMBER_2: 2,
-    NUMBER_3: 3,
-    NUMBER_4: 4,
-    NUMBER_5: 5
-};
-/**
- * @export
- */
-exports.PublicModelResponseDtoSpeedLevelEnum = {
-    NUMBER_1: 1,
-    NUMBER_2: 2,
-    NUMBER_3: 3,
-    NUMBER_4: 4,
-    NUMBER_5: 5
-};
-/**
- * @export
- */
-exports.PublicModelResponseDtoPriceLevelEnum = {
     NUMBER_1: 1,
     NUMBER_2: 2,
     NUMBER_3: 3,
@@ -110,6 +81,8 @@ exports.PublicModelResponseDtoBillingModeEnum = {
  * Check if a given object implements the PublicModelResponseDto interface.
  */
 function instanceOfPublicModelResponseDto(value) {
+    if (!('relativeRatings' in value) || value['relativeRatings'] === undefined)
+        return false;
     if (!('id' in value) || value['id'] === undefined)
         return false;
     if (!('slug' in value) || value['slug'] === undefined)
@@ -178,6 +151,7 @@ function PublicModelResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'relativeRatings': (0, ModelRelativeRatingsDto_1.ModelRelativeRatingsDtoFromJSON)(json['relative_ratings']),
         'id': json['id'],
         'slug': json['slug'],
         'displayName': json['display_name'],
@@ -230,6 +204,7 @@ function PublicModelResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'relative_ratings': (0, ModelRelativeRatingsDto_1.ModelRelativeRatingsDtoToJSON)(value['relativeRatings']),
         'id': value['id'],
         'slug': value['slug'],
         'display_name': value['displayName'],

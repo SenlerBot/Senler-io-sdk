@@ -133,6 +133,13 @@ export interface LandingsLaunchVariablesRequest {
     acceptLanguage?: LandingsLaunchVariablesAcceptLanguageEnum;
 }
 
+export interface LandingsLaunchVkMessageSubscriptionLinkRequest {
+    token: string;
+    origin: string;
+    landingSubscriptionRequestDto: LandingSubscriptionRequestDto;
+    acceptLanguage?: LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum;
+}
+
 export interface LandingsResolveRequest {
     landingPublicId: string;
     resolveLandingDto: ResolveLandingDto;
@@ -638,6 +645,66 @@ export class LandingsPublicApi extends runtime.BaseAPI {
     }
 
     /**
+     * VK . ref ref_source; .
+     * VK
+     */
+    async landingsLaunchVkMessageSubscriptionLinkRaw(requestParameters: LandingsLaunchVkMessageSubscriptionLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBotSubscriptionLinkResponseDto>> {
+        if (requestParameters['token'] == null) {
+            throw new runtime.RequiredError(
+                'token',
+                'Required parameter "token" was null or undefined when calling landingsLaunchVkMessageSubscriptionLink().'
+            );
+        }
+
+        if (requestParameters['origin'] == null) {
+            throw new runtime.RequiredError(
+                'origin',
+                'Required parameter "origin" was null or undefined when calling landingsLaunchVkMessageSubscriptionLink().'
+            );
+        }
+
+        if (requestParameters['landingSubscriptionRequestDto'] == null) {
+            throw new runtime.RequiredError(
+                'landingSubscriptionRequestDto',
+                'Required parameter "landingSubscriptionRequestDto" was null or undefined when calling landingsLaunchVkMessageSubscriptionLink().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['origin'] != null) {
+            headerParameters['origin'] = String(requestParameters['origin']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        const response = await this.request({
+            path: `/api/public/landings/launch/{token}/vk-message-subscription-link`.replace(`{${"token"}}`, encodeURIComponent(String(requestParameters['token']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: LandingSubscriptionRequestDtoToJSON(requestParameters['landingSubscriptionRequestDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBotSubscriptionLinkResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * VK . ref ref_source; .
+     * VK
+     */
+    async landingsLaunchVkMessageSubscriptionLink(requestParameters: LandingsLaunchVkMessageSubscriptionLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBotSubscriptionLinkResponseDto> {
+        const response = await this.landingsLaunchVkMessageSubscriptionLinkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * VK, Telegram MAX , . . ; - 3 .
      *
      */
@@ -816,6 +883,14 @@ export const LandingsLaunchVariablesAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type LandingsLaunchVariablesAcceptLanguageEnum = typeof LandingsLaunchVariablesAcceptLanguageEnum[keyof typeof LandingsLaunchVariablesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum = typeof LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum[keyof typeof LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum];
 /**
  * @export
  */

@@ -137,7 +137,7 @@ export interface AgentDraftSettingsStateResponseDto {
      */
     autostartMode: AgentDraftSettingsStateResponseDtoAutostartModeEnum;
     /**
-     * : any, empty, equals, starts_with, contains, contains_any, start_payload_prefix, legacy_message.
+     * : any, empty, equals, starts_with, contains.
      * @type {string}
      * @memberof AgentDraftSettingsStateResponseDto
      */
@@ -716,9 +716,6 @@ export declare const AgentDraftSettingsStateResponseDtoStartButtonMatchModeEnum:
     readonly Equals: "equals";
     readonly StartsWith: "starts_with";
     readonly Contains: "contains";
-    readonly ContainsAny: "contains_any";
-    readonly StartPayloadPrefix: "start_payload_prefix";
-    readonly LegacyMessage: "legacy_message";
 };
 export type AgentDraftSettingsStateResponseDtoStartButtonMatchModeEnum = typeof AgentDraftSettingsStateResponseDtoStartButtonMatchModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoStartButtonMatchModeEnum];
 /**

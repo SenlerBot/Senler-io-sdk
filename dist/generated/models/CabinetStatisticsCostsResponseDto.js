@@ -20,8 +20,9 @@ exports.CabinetStatisticsCostsResponseDtoFromJSONTyped = CabinetStatisticsCostsR
 exports.CabinetStatisticsCostsResponseDtoToJSON = CabinetStatisticsCostsResponseDtoToJSON;
 exports.CabinetStatisticsCostsResponseDtoToJSONTyped = CabinetStatisticsCostsResponseDtoToJSONTyped;
 const StatisticsBalanceForecastDto_1 = require("./StatisticsBalanceForecastDto");
+const StatisticsCostsChartDto_1 = require("./StatisticsCostsChartDto");
 const StatisticsBreakdownsDto_1 = require("./StatisticsBreakdownsDto");
-const StatisticsUsageChartDto_1 = require("./StatisticsUsageChartDto");
+const StatisticsSourceFreshnessDto_1 = require("./StatisticsSourceFreshnessDto");
 const StatisticsCostsSummaryDto_1 = require("./StatisticsCostsSummaryDto");
 /**
  * @export
@@ -34,6 +35,8 @@ exports.CabinetStatisticsCostsResponseDtoGranularityEnum = {
  * Check if a given object implements the CabinetStatisticsCostsResponseDto interface.
  */
 function instanceOfCabinetStatisticsCostsResponseDto(value) {
+    if (!('freshness' in value) || value['freshness'] === undefined)
+        return false;
     if (!('periodStart' in value) || value['periodStart'] === undefined)
         return false;
     if (!('periodEnd' in value) || value['periodEnd'] === undefined)
@@ -58,12 +61,13 @@ function CabinetStatisticsCostsResponseDtoFromJSONTyped(json, ignoreDiscriminato
         return json;
     }
     return {
+        'freshness': (json['freshness'].map(StatisticsSourceFreshnessDto_1.StatisticsSourceFreshnessDtoFromJSON)),
         'periodStart': (new Date(json['period_start'])),
         'periodEnd': (new Date(json['period_end'])),
         'granularity': json['granularity'],
         'summary': (0, StatisticsCostsSummaryDto_1.StatisticsCostsSummaryDtoFromJSON)(json['summary']),
         'balanceForecast': (0, StatisticsBalanceForecastDto_1.StatisticsBalanceForecastDtoFromJSON)(json['balance_forecast']),
-        'charts': (0, StatisticsUsageChartDto_1.StatisticsUsageChartDtoFromJSON)(json['charts']),
+        'charts': (0, StatisticsCostsChartDto_1.StatisticsCostsChartDtoFromJSON)(json['charts']),
         'breakdowns': (0, StatisticsBreakdownsDto_1.StatisticsBreakdownsDtoFromJSON)(json['breakdowns']),
     };
 }
@@ -75,12 +79,13 @@ function CabinetStatisticsCostsResponseDtoToJSONTyped(value, ignoreDiscriminator
         return value;
     }
     return {
+        'freshness': (value['freshness'].map(StatisticsSourceFreshnessDto_1.StatisticsSourceFreshnessDtoToJSON)),
         'period_start': ((value['periodStart']).toISOString()),
         'period_end': ((value['periodEnd']).toISOString()),
         'granularity': value['granularity'],
         'summary': (0, StatisticsCostsSummaryDto_1.StatisticsCostsSummaryDtoToJSON)(value['summary']),
         'balance_forecast': (0, StatisticsBalanceForecastDto_1.StatisticsBalanceForecastDtoToJSON)(value['balanceForecast']),
-        'charts': (0, StatisticsUsageChartDto_1.StatisticsUsageChartDtoToJSON)(value['charts']),
+        'charts': (0, StatisticsCostsChartDto_1.StatisticsCostsChartDtoToJSON)(value['charts']),
         'breakdowns': (0, StatisticsBreakdownsDto_1.StatisticsBreakdownsDtoToJSON)(value['breakdowns']),
     };
 }

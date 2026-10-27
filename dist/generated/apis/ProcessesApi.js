@@ -54,6 +54,7 @@ const index_1 = require("../models/index");
  */
 class ProcessesApi extends runtime.BaseAPI {
     /**
+     * null, .
      * Senler.ru
      */
     async getImportSenlerLeadsRaw(requestParameters, initOverrides) {
@@ -89,6 +90,7 @@ class ProcessesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SenlerImportStatusDtoFromJSON)(jsonValue));
     }
     /**
+     * null, .
      * Senler.ru
      */
     async getImportSenlerLeads(requestParameters, initOverrides) {

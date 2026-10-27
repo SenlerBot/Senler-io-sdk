@@ -17,6 +17,24 @@ import type { LandingPublicationErrorCode } from './LandingPublicationErrorCode'
  */
 export interface LandingPublicationErrorDto {
     /**
+     * ,
+     * @type {string}
+     * @memberof LandingPublicationErrorDto
+     */
+    pageVariantId?: string;
+    /**
+     * ,
+     * @type {string}
+     * @memberof LandingPublicationErrorDto
+     */
+    blockVariantId?: string;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof LandingPublicationErrorDto
+     */
+    relatedFields?: Array<string>;
+    /**
      *
      * @type {LandingPublicationErrorCode}
      * @memberof LandingPublicationErrorDto

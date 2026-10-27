@@ -27,13 +27,13 @@ import {
     StatisticsLeadBaseDtoToJSON,
     StatisticsLeadBaseDtoToJSONTyped,
 } from './StatisticsLeadBaseDto';
-import type { StatisticsUsageChartDto } from './StatisticsUsageChartDto';
+import type { StatisticsLeadsChartsDto } from './StatisticsLeadsChartsDto';
 import {
-    StatisticsUsageChartDtoFromJSON,
-    StatisticsUsageChartDtoFromJSONTyped,
-    StatisticsUsageChartDtoToJSON,
-    StatisticsUsageChartDtoToJSONTyped,
-} from './StatisticsUsageChartDto';
+    StatisticsLeadsChartsDtoFromJSON,
+    StatisticsLeadsChartsDtoFromJSONTyped,
+    StatisticsLeadsChartsDtoToJSON,
+    StatisticsLeadsChartsDtoToJSONTyped,
+} from './StatisticsLeadsChartsDto';
 import type { StatisticsSegmentMembershipBreakdownDto } from './StatisticsSegmentMembershipBreakdownDto';
 import {
     StatisticsSegmentMembershipBreakdownDtoFromJSON,
@@ -41,6 +41,13 @@ import {
     StatisticsSegmentMembershipBreakdownDtoToJSON,
     StatisticsSegmentMembershipBreakdownDtoToJSONTyped,
 } from './StatisticsSegmentMembershipBreakdownDto';
+import type { StatisticsSourceFreshnessDto } from './StatisticsSourceFreshnessDto';
+import {
+    StatisticsSourceFreshnessDtoFromJSON,
+    StatisticsSourceFreshnessDtoFromJSONTyped,
+    StatisticsSourceFreshnessDtoToJSON,
+    StatisticsSourceFreshnessDtoToJSONTyped,
+} from './StatisticsSourceFreshnessDto';
 
 /**
  * CabinetStatisticsLeadsResponseDto.
@@ -48,6 +55,12 @@ import {
  * @interface CabinetStatisticsLeadsResponseDto
  */
 export interface CabinetStatisticsLeadsResponseDto {
+    /**
+     * ;
+     * @type {Array<StatisticsSourceFreshnessDto>}
+     * @memberof CabinetStatisticsLeadsResponseDto
+     */
+    freshness: Array<StatisticsSourceFreshnessDto>;
     /**
      *
      * @type {Date}
@@ -80,10 +93,10 @@ export interface CabinetStatisticsLeadsResponseDto {
     leadBase: StatisticsLeadBaseDto;
     /**
      *
-     * @type {StatisticsUsageChartDto}
+     * @type {StatisticsLeadsChartsDto}
      * @memberof CabinetStatisticsLeadsResponseDto
      */
-    charts: StatisticsUsageChartDto;
+    charts: StatisticsLeadsChartsDto;
     /**
      *
      * @type {Array<StatisticsSegmentMembershipBreakdownDto>}
@@ -107,6 +120,7 @@ export type CabinetStatisticsLeadsResponseDtoGranularityEnum = typeof CabinetSta
  * Check if a given object implements the CabinetStatisticsLeadsResponseDto interface.
  */
 export function instanceOfCabinetStatisticsLeadsResponseDto(value: object): value is CabinetStatisticsLeadsResponseDto {
+    if (!('freshness' in value) || value['freshness'] === undefined) return false;
     if (!('periodStart' in value) || value['periodStart'] === undefined) return false;
     if (!('periodEnd' in value) || value['periodEnd'] === undefined) return false;
     if (!('granularity' in value) || value['granularity'] === undefined) return false;
@@ -127,12 +141,13 @@ export function CabinetStatisticsLeadsResponseDtoFromJSONTyped(json: any, ignore
     }
     return {
 
+        'freshness': ((json['freshness'] as Array<any>).map(StatisticsSourceFreshnessDtoFromJSON)),
         'periodStart': (new Date(json['period_start'])),
         'periodEnd': (new Date(json['period_end'])),
         'granularity': json['granularity'],
         'summary': StatisticsLeadsSummaryDtoFromJSON(json['summary']),
         'leadBase': StatisticsLeadBaseDtoFromJSON(json['lead_base']),
-        'charts': StatisticsUsageChartDtoFromJSON(json['charts']),
+        'charts': StatisticsLeadsChartsDtoFromJSON(json['charts']),
         'segmentMemberships': ((json['segment_memberships'] as Array<any>).map(StatisticsSegmentMembershipBreakdownDtoFromJSON)),
     };
 }
@@ -148,12 +163,13 @@ export function CabinetStatisticsLeadsResponseDtoToJSONTyped(value?: CabinetStat
 
     return {
 
+        'freshness': ((value['freshness'] as Array<any>).map(StatisticsSourceFreshnessDtoToJSON)),
         'period_start': ((value['periodStart']).toISOString()),
         'period_end': ((value['periodEnd']).toISOString()),
         'granularity': value['granularity'],
         'summary': StatisticsLeadsSummaryDtoToJSON(value['summary']),
         'lead_base': StatisticsLeadBaseDtoToJSON(value['leadBase']),
-        'charts': StatisticsUsageChartDtoToJSON(value['charts']),
+        'charts': StatisticsLeadsChartsDtoToJSON(value['charts']),
         'segment_memberships': ((value['segmentMemberships'] as Array<any>).map(StatisticsSegmentMembershipBreakdownDtoToJSON)),
     };
 }

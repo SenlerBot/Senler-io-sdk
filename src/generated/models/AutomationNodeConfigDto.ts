@@ -1185,10 +1185,7 @@ export const AutomationNodeConfigDtoStartButtonMatchModeEnum = {
     Empty: 'empty',
     Equals: 'equals',
     StartsWith: 'starts_with',
-    Contains: 'contains',
-    ContainsAny: 'contains_any',
-    StartPayloadPrefix: 'start_payload_prefix',
-    LegacyMessage: 'legacy_message'
+    Contains: 'contains'
 } as const;
 export type AutomationNodeConfigDtoStartButtonMatchModeEnum = typeof AutomationNodeConfigDtoStartButtonMatchModeEnum[keyof typeof AutomationNodeConfigDtoStartButtonMatchModeEnum];
 

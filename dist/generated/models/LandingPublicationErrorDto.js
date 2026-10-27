@@ -43,6 +43,9 @@ function LandingPublicationErrorDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'pageVariantId': json['page_variant_id'] == null ? undefined : json['page_variant_id'],
+        'blockVariantId': json['block_variant_id'] == null ? undefined : json['block_variant_id'],
+        'relatedFields': json['related_fields'] == null ? undefined : json['related_fields'],
         'code': (0, LandingPublicationErrorCode_1.LandingPublicationErrorCodeFromJSON)(json['code']),
         'blockId': json['block_id'],
         'itemId': json['item_id'],
@@ -58,6 +61,9 @@ function LandingPublicationErrorDtoToJSONTyped(value, ignoreDiscriminator = fals
         return value;
     }
     return {
+        'page_variant_id': value['pageVariantId'],
+        'block_variant_id': value['blockVariantId'],
+        'related_fields': value['relatedFields'],
         'code': (0, LandingPublicationErrorCode_1.LandingPublicationErrorCodeToJSON)(value['code']),
         'block_id': value['blockId'],
         'item_id': value['itemId'],

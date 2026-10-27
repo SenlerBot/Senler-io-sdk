@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { StatisticsNullableMetricDeltaDto } from './StatisticsNullableMetricDeltaDto';
 import type { StatisticsAiResponseCostsDto } from './StatisticsAiResponseCostsDto';
 import type { StatisticsCreditsMetricDeltaDto } from './StatisticsCreditsMetricDeltaDto';
 import type { StatisticsMetricDeltaDto } from './StatisticsMetricDeltaDto';
@@ -38,12 +37,6 @@ export interface StatisticsSummaryDto {
      */
     messagesTotal: StatisticsMetricDeltaDto;
     /**
-     *
-     * @type {StatisticsMetricDeltaDto}
-     * @memberof StatisticsSummaryDto
-     */
-    leadMessages: StatisticsMetricDeltaDto;
-    /**
      * , AI-; AI-
      * @type {StatisticsMetricDeltaDto}
      * @memberof StatisticsSummaryDto
@@ -66,19 +59,7 @@ export interface StatisticsSummaryDto {
      * @type {StatisticsMetricDeltaDto}
      * @memberof StatisticsSummaryDto
      */
-    activeDialogs: StatisticsMetricDeltaDto;
-    /**
-     *
-     * @type {StatisticsMetricDeltaDto}
-     * @memberof StatisticsSummaryDto
-     */
     newLeads: StatisticsMetricDeltaDto;
-    /**
-     *
-     * @type {StatisticsMetricDeltaDto}
-     * @memberof StatisticsSummaryDto
-     */
-    activeLeads: StatisticsMetricDeltaDto;
     /**
      * ,
      * @type {StatisticsMetricDeltaDto}
@@ -98,53 +79,11 @@ export interface StatisticsSummaryDto {
      */
     leadNetGrowth: StatisticsMetricDeltaDto;
     /**
-     *
-     * @type {StatisticsMetricDeltaDto}
-     * @memberof StatisticsSummaryDto
-     */
-    closedDialogs: StatisticsMetricDeltaDto;
-    /**
      * ,
      * @type {StatisticsMetricDeltaDto}
      * @memberof StatisticsSummaryDto
      */
     unansweredDialogs: StatisticsMetricDeltaDto;
-    /**
-     * ,
-     * @type {StatisticsMetricDeltaDto}
-     * @memberof StatisticsSummaryDto
-     */
-    operatorAssignedDialogs: StatisticsMetricDeltaDto;
-    /**
-     * , ; null
-     * @type {StatisticsNullableMetricDeltaDto}
-     * @memberof StatisticsSummaryDto
-     */
-    averageFirstResponseTimeSeconds: StatisticsNullableMetricDeltaDto;
-    /**
-     * , ; null
-     * @type {StatisticsNullableMetricDeltaDto}
-     * @memberof StatisticsSummaryDto
-     */
-    averageFirstResponseRawTimeSeconds: StatisticsNullableMetricDeltaDto;
-    /**
-     * , ; null
-     * @type {StatisticsNullableMetricDeltaDto}
-     * @memberof StatisticsSummaryDto
-     */
-    averageResponseTimeSeconds: StatisticsNullableMetricDeltaDto;
-    /**
-     * , ; null
-     * @type {StatisticsNullableMetricDeltaDto}
-     * @memberof StatisticsSummaryDto
-     */
-    averageResponseRawTimeSeconds: StatisticsNullableMetricDeltaDto;
-    /**
-     *
-     * @type {StatisticsMetricDeltaDto}
-     * @memberof StatisticsSummaryDto
-     */
-    tokensUsed: StatisticsMetricDeltaDto;
 }
 /**
  * Check if a given object implements the StatisticsSummaryDto interface.

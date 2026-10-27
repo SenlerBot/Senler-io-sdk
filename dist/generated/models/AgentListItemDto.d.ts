@@ -75,7 +75,7 @@ export interface AgentListItemDto {
      */
     triggerKeywords: Array<string>;
     /**
-     * : any, empty, equals, starts_with, contains, contains_any, start_payload_prefix, legacy_message.
+     * : any, empty, equals, starts_with, contains.
      * @type {string}
      * @memberof AgentListItemDto
      */
@@ -157,9 +157,6 @@ export declare const AgentListItemDtoStartButtonMatchModeEnum: {
     readonly Equals: "equals";
     readonly StartsWith: "starts_with";
     readonly Contains: "contains";
-    readonly ContainsAny: "contains_any";
-    readonly StartPayloadPrefix: "start_payload_prefix";
-    readonly LegacyMessage: "legacy_message";
 };
 export type AgentListItemDtoStartButtonMatchModeEnum = typeof AgentListItemDtoStartButtonMatchModeEnum[keyof typeof AgentListItemDtoStartButtonMatchModeEnum];
 /**

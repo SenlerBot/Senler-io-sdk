@@ -10,8 +10,9 @@
  * Do not edit the class manually.
  */
 import type { StatisticsBalanceForecastDto } from './StatisticsBalanceForecastDto';
+import type { StatisticsCostsChartDto } from './StatisticsCostsChartDto';
 import type { StatisticsBreakdownsDto } from './StatisticsBreakdownsDto';
-import type { StatisticsUsageChartDto } from './StatisticsUsageChartDto';
+import type { StatisticsSourceFreshnessDto } from './StatisticsSourceFreshnessDto';
 import type { StatisticsCostsSummaryDto } from './StatisticsCostsSummaryDto';
 /**
  * CabinetStatisticsCostsResponseDto.
@@ -19,6 +20,12 @@ import type { StatisticsCostsSummaryDto } from './StatisticsCostsSummaryDto';
  * @interface CabinetStatisticsCostsResponseDto
  */
 export interface CabinetStatisticsCostsResponseDto {
+    /**
+     * ;
+     * @type {Array<StatisticsSourceFreshnessDto>}
+     * @memberof CabinetStatisticsCostsResponseDto
+     */
+    freshness: Array<StatisticsSourceFreshnessDto>;
     /**
      *
      * @type {Date}
@@ -51,10 +58,10 @@ export interface CabinetStatisticsCostsResponseDto {
     balanceForecast: StatisticsBalanceForecastDto;
     /**
      *
-     * @type {StatisticsUsageChartDto}
+     * @type {StatisticsCostsChartDto}
      * @memberof CabinetStatisticsCostsResponseDto
      */
-    charts: StatisticsUsageChartDto;
+    charts: StatisticsCostsChartDto;
     /**
      *
      * @type {StatisticsBreakdownsDto}

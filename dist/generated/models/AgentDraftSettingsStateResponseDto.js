@@ -169,10 +169,7 @@ exports.AgentDraftSettingsStateResponseDtoStartButtonMatchModeEnum = {
     Empty: 'empty',
     Equals: 'equals',
     StartsWith: 'starts_with',
-    Contains: 'contains',
-    ContainsAny: 'contains_any',
-    StartPayloadPrefix: 'start_payload_prefix',
-    LegacyMessage: 'legacy_message'
+    Contains: 'contains'
 };
 /**
  * @export

@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateEventsNoteAcceptLanguageEnum = exports.TestDialogMessagesAcceptLanguageEnum = exports.GetUnreadCountAcceptLanguageEnum = exports.GetTestDialogAcceptLanguageEnum = exports.GetNavigationAcceptLanguageEnum = exports.GetMessageNotesAcceptLanguageEnum = exports.GetMarkAllReadBoundaryAcceptLanguageEnum = exports.GetLeadConversationEventsAcceptLanguageEnum = exports.GetLeadConversationAcceptLanguageEnum = exports.GetEventsReactionUsersAcceptLanguageEnum = exports.GetEventsPollOptionVotersAcceptLanguageEnum = exports.GetEventsNoteAcceptLanguageEnum = exports.GetEventsAcceptLanguageEnum = exports.GetEventsSortByEnum = exports.GetAiResponseQueueAcceptLanguageEnum = exports.GetAiCostsAcceptLanguageEnum = exports.EventsPollSnapshotRefreshAcceptLanguageEnum = exports.DirectMessageAcceptLanguageEnum = exports.DialogsListAcceptLanguageEnum = exports.DialogsGetByIdAcceptLanguageEnum = exports.DialogsCreateAcceptLanguageEnum = exports.DialogsApi = void 0;
+exports.UpdateEventsNoteAcceptLanguageEnum = exports.TestDialogMessagesAcceptLanguageEnum = exports.GetUnreadCountAcceptLanguageEnum = exports.GetTestDialogAcceptLanguageEnum = exports.GetNavigationAcceptLanguageEnum = exports.GetMessageNotesAcceptLanguageEnum = exports.GetMarkAllReadBoundaryAcceptLanguageEnum = exports.GetLeadConversationEventsAcceptLanguageEnum = exports.GetLeadConversationAcceptLanguageEnum = exports.GetEventsReactionUsersAcceptLanguageEnum = exports.GetEventsPollOptionVotersAcceptLanguageEnum = exports.GetEventsNoteAcceptLanguageEnum = exports.GetEventsAcceptLanguageEnum = exports.GetEventsAttachmentTypesEnum = exports.GetEventsSortByEnum = exports.GetAiResponseQueueAcceptLanguageEnum = exports.GetAiCostsAcceptLanguageEnum = exports.EventsPollSnapshotRefreshAcceptLanguageEnum = exports.DirectMessageAcceptLanguageEnum = exports.DialogsListAcceptLanguageEnum = exports.DialogsGetByIdAcceptLanguageEnum = exports.DialogsCreateAcceptLanguageEnum = exports.DialogsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -403,6 +403,12 @@ class DialogsApi extends runtime.BaseAPI {
         }
         if (requestParameters['messagesOnly'] != null) {
             queryParameters['messages_only'] = requestParameters['messagesOnly'];
+        }
+        if (requestParameters['hasAttachments'] != null) {
+            queryParameters['has_attachments'] = requestParameters['hasAttachments'];
+        }
+        if (requestParameters['attachmentTypes'] != null) {
+            queryParameters['attachment_types'] = requestParameters['attachmentTypes'];
         }
         if (requestParameters['sourceChatId'] != null) {
             queryParameters['source_chat_id'] = requestParameters['sourceChatId'];
@@ -1056,6 +1062,17 @@ exports.GetAiResponseQueueAcceptLanguageEnum = {
 exports.GetEventsSortByEnum = {
     Relevance: 'relevance',
     Timestamp: 'timestamp'
+};
+/**
+ * @export
+ */
+exports.GetEventsAttachmentTypesEnum = {
+    Photo: 'photo',
+    Video: 'video',
+    Voice: 'voice',
+    Audio: 'audio',
+    Document: 'document',
+    Sticker: 'sticker'
 };
 /**
  * @export

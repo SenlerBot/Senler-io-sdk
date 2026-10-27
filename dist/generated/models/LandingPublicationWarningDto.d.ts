@@ -17,6 +17,18 @@ import type { LandingPublicationWarningCode } from './LandingPublicationWarningC
  */
 export interface LandingPublicationWarningDto {
     /**
+     * ,
+     * @type {string}
+     * @memberof LandingPublicationWarningDto
+     */
+    pageVariantId?: string;
+    /**
+     * ,
+     * @type {string}
+     * @memberof LandingPublicationWarningDto
+     */
+    blockVariantId?: string;
+    /**
      * ID ,
      * @type {string}
      * @memberof LandingPublicationWarningDto

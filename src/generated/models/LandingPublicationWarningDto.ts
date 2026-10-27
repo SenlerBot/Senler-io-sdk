@@ -28,6 +28,18 @@ import {
  */
 export interface LandingPublicationWarningDto {
     /**
+     * ,
+     * @type {string}
+     * @memberof LandingPublicationWarningDto
+     */
+    pageVariantId?: string;
+    /**
+     * ,
+     * @type {string}
+     * @memberof LandingPublicationWarningDto
+     */
+    blockVariantId?: string;
+    /**
      * ID ,
      * @type {string}
      * @memberof LandingPublicationWarningDto
@@ -83,6 +95,8 @@ export function LandingPublicationWarningDtoFromJSONTyped(json: any, ignoreDiscr
     }
     return {
 
+        'pageVariantId': json['page_variant_id'] == null ? undefined : json['page_variant_id'],
+        'blockVariantId': json['block_variant_id'] == null ? undefined : json['block_variant_id'],
         'blockId': json['block_id'],
         'code': LandingPublicationWarningCodeFromJSON(json['code']),
         'message': json['message'],
@@ -102,6 +116,8 @@ export function LandingPublicationWarningDtoToJSONTyped(value?: LandingPublicati
 
     return {
 
+        'page_variant_id': value['pageVariantId'],
+        'block_variant_id': value['blockVariantId'],
         'block_id': value['blockId'],
         'code': LandingPublicationWarningCodeToJSON(value['code']),
         'message': value['message'],

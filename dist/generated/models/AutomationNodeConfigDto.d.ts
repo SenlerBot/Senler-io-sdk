@@ -1090,9 +1090,6 @@ export declare const AutomationNodeConfigDtoStartButtonMatchModeEnum: {
     readonly Equals: "equals";
     readonly StartsWith: "starts_with";
     readonly Contains: "contains";
-    readonly ContainsAny: "contains_any";
-    readonly StartPayloadPrefix: "start_payload_prefix";
-    readonly LegacyMessage: "legacy_message";
 };
 export type AutomationNodeConfigDtoStartButtonMatchModeEnum = typeof AutomationNodeConfigDtoStartButtonMatchModeEnum[keyof typeof AutomationNodeConfigDtoStartButtonMatchModeEnum];
 /**

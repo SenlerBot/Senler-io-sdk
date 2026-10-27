@@ -43,6 +43,8 @@ function LandingPublicationWarningDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'pageVariantId': json['page_variant_id'] == null ? undefined : json['page_variant_id'],
+        'blockVariantId': json['block_variant_id'] == null ? undefined : json['block_variant_id'],
         'blockId': json['block_id'],
         'code': (0, LandingPublicationWarningCode_1.LandingPublicationWarningCodeFromJSON)(json['code']),
         'message': json['message'],
@@ -58,6 +60,8 @@ function LandingPublicationWarningDtoToJSONTyped(value, ignoreDiscriminator = fa
         return value;
     }
     return {
+        'page_variant_id': value['pageVariantId'],
+        'block_variant_id': value['blockVariantId'],
         'block_id': value['blockId'],
         'code': (0, LandingPublicationWarningCode_1.LandingPublicationWarningCodeToJSON)(value['code']),
         'message': value['message'],

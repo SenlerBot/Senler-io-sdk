@@ -34,6 +34,13 @@ import {
     StatisticsSummaryDtoToJSON,
     StatisticsSummaryDtoToJSONTyped,
 } from './StatisticsSummaryDto';
+import type { StatisticsSourceFreshnessDto } from './StatisticsSourceFreshnessDto';
+import {
+    StatisticsSourceFreshnessDtoFromJSON,
+    StatisticsSourceFreshnessDtoFromJSONTyped,
+    StatisticsSourceFreshnessDtoToJSON,
+    StatisticsSourceFreshnessDtoToJSONTyped,
+} from './StatisticsSourceFreshnessDto';
 
 /**
  * CabinetStatisticsOverviewResponseDto.
@@ -41,6 +48,12 @@ import {
  * @interface CabinetStatisticsOverviewResponseDto
  */
 export interface CabinetStatisticsOverviewResponseDto {
+    /**
+     * ;
+     * @type {Array<StatisticsSourceFreshnessDto>}
+     * @memberof CabinetStatisticsOverviewResponseDto
+     */
+    freshness: Array<StatisticsSourceFreshnessDto>;
     /**
      *
      * @type {Date}
@@ -94,6 +107,7 @@ export type CabinetStatisticsOverviewResponseDtoGranularityEnum = typeof Cabinet
  * Check if a given object implements the CabinetStatisticsOverviewResponseDto interface.
  */
 export function instanceOfCabinetStatisticsOverviewResponseDto(value: object): value is CabinetStatisticsOverviewResponseDto {
+    if (!('freshness' in value) || value['freshness'] === undefined) return false;
     if (!('periodStart' in value) || value['periodStart'] === undefined) return false;
     if (!('periodEnd' in value) || value['periodEnd'] === undefined) return false;
     if (!('granularity' in value) || value['granularity'] === undefined) return false;
@@ -113,6 +127,7 @@ export function CabinetStatisticsOverviewResponseDtoFromJSONTyped(json: any, ign
     }
     return {
 
+        'freshness': ((json['freshness'] as Array<any>).map(StatisticsSourceFreshnessDtoFromJSON)),
         'periodStart': (new Date(json['period_start'])),
         'periodEnd': (new Date(json['period_end'])),
         'granularity': json['granularity'],
@@ -133,6 +148,7 @@ export function CabinetStatisticsOverviewResponseDtoToJSONTyped(value?: CabinetS
 
     return {
 
+        'freshness': ((value['freshness'] as Array<any>).map(StatisticsSourceFreshnessDtoToJSON)),
         'period_start': ((value['periodStart']).toISOString()),
         'period_end': ((value['periodEnd']).toISOString()),
         'granularity': value['granularity'],

@@ -28,6 +28,24 @@ import {
  */
 export interface LandingPublicationErrorDto {
     /**
+     * ,
+     * @type {string}
+     * @memberof LandingPublicationErrorDto
+     */
+    pageVariantId?: string;
+    /**
+     * ,
+     * @type {string}
+     * @memberof LandingPublicationErrorDto
+     */
+    blockVariantId?: string;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof LandingPublicationErrorDto
+     */
+    relatedFields?: Array<string>;
+    /**
      *
      * @type {LandingPublicationErrorCode}
      * @memberof LandingPublicationErrorDto
@@ -83,6 +101,9 @@ export function LandingPublicationErrorDtoFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
 
+        'pageVariantId': json['page_variant_id'] == null ? undefined : json['page_variant_id'],
+        'blockVariantId': json['block_variant_id'] == null ? undefined : json['block_variant_id'],
+        'relatedFields': json['related_fields'] == null ? undefined : json['related_fields'],
         'code': LandingPublicationErrorCodeFromJSON(json['code']),
         'blockId': json['block_id'],
         'itemId': json['item_id'],
@@ -102,6 +123,9 @@ export function LandingPublicationErrorDtoToJSONTyped(value?: LandingPublication
 
     return {
 
+        'page_variant_id': value['pageVariantId'],
+        'block_variant_id': value['blockVariantId'],
+        'related_fields': value['relatedFields'],
         'code': LandingPublicationErrorCodeToJSON(value['code']),
         'block_id': value['blockId'],
         'item_id': value['itemId'],

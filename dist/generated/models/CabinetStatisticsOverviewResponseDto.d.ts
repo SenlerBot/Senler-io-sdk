@@ -12,12 +12,19 @@
 import type { StatisticsBalanceForecastDto } from './StatisticsBalanceForecastDto';
 import type { StatisticsLeadBaseDto } from './StatisticsLeadBaseDto';
 import type { StatisticsSummaryDto } from './StatisticsSummaryDto';
+import type { StatisticsSourceFreshnessDto } from './StatisticsSourceFreshnessDto';
 /**
  * CabinetStatisticsOverviewResponseDto.
  * @export
  * @interface CabinetStatisticsOverviewResponseDto
  */
 export interface CabinetStatisticsOverviewResponseDto {
+    /**
+     * ;
+     * @type {Array<StatisticsSourceFreshnessDto>}
+     * @memberof CabinetStatisticsOverviewResponseDto
+     */
+    freshness: Array<StatisticsSourceFreshnessDto>;
     /**
      *
      * @type {Date}

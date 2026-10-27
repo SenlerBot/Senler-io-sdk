@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuditListAcceptLanguageEnum = exports.AuditListEntityTypeEnum = exports.AuditApi = void 0;
+exports.GetInstructionAcceptLanguageEnum = exports.AuditListAcceptLanguageEnum = exports.AuditListEntityTypeEnum = exports.AuditApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -115,6 +115,56 @@ class AuditApi extends runtime.BaseAPI {
         const response = await this.auditListRaw(requestParameters, initOverrides);
         return await response.value();
     }
+    /**
+     * . , expected_updated_at . . 404.
+     *
+     */
+    async getInstructionRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getInstruction().');
+        }
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getInstruction().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_view_audit"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_view_audit"]);
+        }
+        const response = await this.request({
+            path: `/api/audit/{id}/instruction`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AuditInstructionHistoryDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . , expected_updated_at . . 404.
+     *
+     */
+    async getInstruction(requestParameters, initOverrides) {
+        const response = await this.getInstructionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 }
 exports.AuditApi = AuditApi;
 /**
@@ -158,6 +208,13 @@ exports.AuditListEntityTypeEnum = {
  * @export
  */
 exports.AuditListAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetInstructionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

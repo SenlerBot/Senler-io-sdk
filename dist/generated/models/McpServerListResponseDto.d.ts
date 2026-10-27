@@ -41,6 +41,12 @@ export interface McpServerListResponseDto {
      */
     servers: Array<ServerListMemberDto>;
     /**
+     * : ID , .
+     * @type {Array<string>}
+     * @memberof McpServerListResponseDto
+     */
+    mcpServerIds: Array<string>;
+    /**
      *
      * @type {number}
      * @memberof McpServerListResponseDto

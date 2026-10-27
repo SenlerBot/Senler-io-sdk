@@ -294,6 +294,7 @@ export class StorageApi extends runtime.BaseAPI {
     }
 
     /**
+     * .
      *
      */
     async getIncomingPolicyRaw(requestParameters: GetIncomingPolicyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IncomingStoragePolicyDto>> {
@@ -345,6 +346,7 @@ export class StorageApi extends runtime.BaseAPI {
     }
 
     /**
+     * .
      *
      */
     async getIncomingPolicy(requestParameters: GetIncomingPolicyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IncomingStoragePolicyDto> {
@@ -475,6 +477,7 @@ export class StorageApi extends runtime.BaseAPI {
     }
 
     /**
+     * .
      *
      */
     async updateIncomingPolicyRaw(requestParameters: UpdateIncomingPolicyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IncomingStoragePolicyDto>> {
@@ -536,6 +539,7 @@ export class StorageApi extends runtime.BaseAPI {
     }
 
     /**
+     * .
      *
      */
     async updateIncomingPolicy(requestParameters: UpdateIncomingPolicyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IncomingStoragePolicyDto> {

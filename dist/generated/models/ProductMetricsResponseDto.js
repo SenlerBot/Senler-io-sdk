@@ -36,6 +36,10 @@ function instanceOfProductMetricsResponseDto(value) {
         return false;
     if (!('automationsStartedAt' in value) || value['automationsStartedAt'] === undefined)
         return false;
+    if (!('apiStartedAt' in value) || value['apiStartedAt'] === undefined)
+        return false;
+    if (!('installationsStartedAt' in value) || value['installationsStartedAt'] === undefined)
+        return false;
     if (!('delayed' in value) || value['delayed'] === undefined)
         return false;
     if (!('growth' in value) || value['growth'] === undefined)
@@ -58,6 +62,8 @@ function ProductMetricsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'updatedAt': (json['updated_at'] == null ? null : new Date(json['updated_at'])),
         'collectionStartedAt': (new Date(json['collection_started_at'])),
         'automationsStartedAt': (new Date(json['automations_started_at'])),
+        'apiStartedAt': (new Date(json['api_started_at'])),
+        'installationsStartedAt': (new Date(json['installations_started_at'])),
         'delayed': json['delayed'],
         'growth': (json['growth'].map(ProductGrowthDto_1.ProductGrowthDtoFromJSON)),
         'usage': (json['usage'].map(ProductUsageDto_1.ProductUsageDtoFromJSON)),
@@ -77,6 +83,8 @@ function ProductMetricsResponseDtoToJSONTyped(value, ignoreDiscriminator = false
         'updated_at': (value['updatedAt'] == null ? null : value['updatedAt'].toISOString()),
         'collection_started_at': ((value['collectionStartedAt']).toISOString()),
         'automations_started_at': ((value['automationsStartedAt']).toISOString()),
+        'api_started_at': ((value['apiStartedAt']).toISOString()),
+        'installations_started_at': ((value['installationsStartedAt']).toISOString()),
         'delayed': value['delayed'],
         'growth': (value['growth'].map(ProductGrowthDto_1.ProductGrowthDtoToJSON)),
         'usage': (value['usage'].map(ProductUsageDto_1.ProductUsageDtoToJSON)),

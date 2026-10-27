@@ -61,6 +61,12 @@ export interface LandingsLaunchVariablesRequest {
     resolveLandingVariablesRequestDto: ResolveLandingVariablesRequestDto;
     acceptLanguage?: LandingsLaunchVariablesAcceptLanguageEnum;
 }
+export interface LandingsLaunchVkMessageSubscriptionLinkRequest {
+    token: string;
+    origin: string;
+    landingSubscriptionRequestDto: LandingSubscriptionRequestDto;
+    acceptLanguage?: LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum;
+}
 export interface LandingsResolveRequest {
     landingPublicId: string;
     resolveLandingDto: ResolveLandingDto;
@@ -176,6 +182,16 @@ export declare class LandingsPublicApi extends runtime.BaseAPI {
      */
     landingsLaunchVariables(requestParameters: LandingsLaunchVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingVariablesDto>;
     /**
+     * VK . ref ref_source; .
+     * VK
+     */
+    landingsLaunchVkMessageSubscriptionLinkRaw(requestParameters: LandingsLaunchVkMessageSubscriptionLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBotSubscriptionLinkResponseDto>>;
+    /**
+     * VK . ref ref_source; .
+     * VK
+     */
+    landingsLaunchVkMessageSubscriptionLink(requestParameters: LandingsLaunchVkMessageSubscriptionLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBotSubscriptionLinkResponseDto>;
+    /**
      * VK, Telegram MAX , . . ; - 3 .
      *
      */
@@ -276,6 +292,14 @@ export declare const LandingsLaunchVariablesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type LandingsLaunchVariablesAcceptLanguageEnum = typeof LandingsLaunchVariablesAcceptLanguageEnum[keyof typeof LandingsLaunchVariablesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum = typeof LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum[keyof typeof LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum];
 /**
  * @export
  */

@@ -32,179 +32,12 @@ export interface StatisticsChannelBreakdownDto {
      */
     channelName?: string;
     /**
-     *
-     * @type {string}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    channelType?: StatisticsChannelBreakdownDtoChannelTypeEnum;
-    /**
-     *
-     * @type {string}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    platformType?: StatisticsChannelBreakdownDtoPlatformTypeEnum;
-    /**
      * , ; 1 = 10000 ; : 12.5 = 125000
      * @type {number}
      * @memberof StatisticsChannelBreakdownDto
      */
     creditsUsed: number;
-    /**
-     *
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    messagesTotal: number;
-    /**
-     *
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    leadMessages: number;
-    /**
-     * , AI-; AI-
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    aiMessages: number;
-    /**
-     *
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    operatorMessages: number;
-    /**
-     *
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    activeDialogs: number;
-    /**
-     *
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    activeLeads: number;
-    /**
-     *
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    newDialogs: number;
-    /**
-     *
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    newLeads: number;
-    /**
-     *
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    leadSubscriptions: number;
-    /**
-     *
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    leadUnsubscriptions: number;
-    /**
-     *
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    closedDialogs: number;
-    /**
-     *
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    unansweredDialogs: number;
-    /**
-     * ,
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    operatorAssignedDialogs: number;
-    /**
-     * , ; null
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    averageFirstResponseTimeSeconds: number | null;
-    /**
-     * , ; null
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    averageFirstResponseRawTimeSeconds: number | null;
-    /**
-     * , ; null
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    averageResponseTimeSeconds: number | null;
-    /**
-     * , ; null
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    averageResponseRawTimeSeconds: number | null;
-    /**
-     * , ; 1 = 10000 ; : 12.5 = 125000
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    averageCreditsPerDialog: number;
-    /**
-     *
-     * @type {number}
-     * @memberof StatisticsChannelBreakdownDto
-     */
-    tokensUsed: number;
 }
-
-
-/**
- * @export
- */
-export const StatisticsChannelBreakdownDtoChannelTypeEnum = {
-    Vk: 'vk',
-    Tg: 'tg',
-    Max: 'max',
-    Discord: 'discord',
-    Widget: 'widget',
-    Streamvi: 'streamvi',
-    Email: 'email',
-    Avito: 'avito',
-    Inst: 'inst',
-    Facebook: 'facebook',
-    Whatsapp: 'whatsapp'
-} as const;
-export type StatisticsChannelBreakdownDtoChannelTypeEnum = typeof StatisticsChannelBreakdownDtoChannelTypeEnum[keyof typeof StatisticsChannelBreakdownDtoChannelTypeEnum];
-
-/**
- * @export
- */
-export const StatisticsChannelBreakdownDtoPlatformTypeEnum = {
-    Vk: 'vk',
-    Tg: 'tg',
-    Max: 'max',
-    Discord: 'discord',
-    Widget: 'widget',
-    Streamvi: 'streamvi',
-    Email: 'email',
-    Avito: 'avito',
-    Inst: 'inst',
-    Facebook: 'facebook',
-    Whatsapp: 'whatsapp',
-    Web: 'web',
-    Ai: 'ai',
-    Automation: 'automation'
-} as const;
-export type StatisticsChannelBreakdownDtoPlatformTypeEnum = typeof StatisticsChannelBreakdownDtoPlatformTypeEnum[keyof typeof StatisticsChannelBreakdownDtoPlatformTypeEnum];
-
 
 /**
  * Check if a given object implements the StatisticsChannelBreakdownDto interface.
@@ -212,25 +45,6 @@ export type StatisticsChannelBreakdownDtoPlatformTypeEnum = typeof StatisticsCha
 export function instanceOfStatisticsChannelBreakdownDto(value: object): value is StatisticsChannelBreakdownDto {
     if (!('channelId' in value) || value['channelId'] === undefined) return false;
     if (!('creditsUsed' in value) || value['creditsUsed'] === undefined) return false;
-    if (!('messagesTotal' in value) || value['messagesTotal'] === undefined) return false;
-    if (!('leadMessages' in value) || value['leadMessages'] === undefined) return false;
-    if (!('aiMessages' in value) || value['aiMessages'] === undefined) return false;
-    if (!('operatorMessages' in value) || value['operatorMessages'] === undefined) return false;
-    if (!('activeDialogs' in value) || value['activeDialogs'] === undefined) return false;
-    if (!('activeLeads' in value) || value['activeLeads'] === undefined) return false;
-    if (!('newDialogs' in value) || value['newDialogs'] === undefined) return false;
-    if (!('newLeads' in value) || value['newLeads'] === undefined) return false;
-    if (!('leadSubscriptions' in value) || value['leadSubscriptions'] === undefined) return false;
-    if (!('leadUnsubscriptions' in value) || value['leadUnsubscriptions'] === undefined) return false;
-    if (!('closedDialogs' in value) || value['closedDialogs'] === undefined) return false;
-    if (!('unansweredDialogs' in value) || value['unansweredDialogs'] === undefined) return false;
-    if (!('operatorAssignedDialogs' in value) || value['operatorAssignedDialogs'] === undefined) return false;
-    if (!('averageFirstResponseTimeSeconds' in value) || value['averageFirstResponseTimeSeconds'] === undefined) return false;
-    if (!('averageFirstResponseRawTimeSeconds' in value) || value['averageFirstResponseRawTimeSeconds'] === undefined) return false;
-    if (!('averageResponseTimeSeconds' in value) || value['averageResponseTimeSeconds'] === undefined) return false;
-    if (!('averageResponseRawTimeSeconds' in value) || value['averageResponseRawTimeSeconds'] === undefined) return false;
-    if (!('averageCreditsPerDialog' in value) || value['averageCreditsPerDialog'] === undefined) return false;
-    if (!('tokensUsed' in value) || value['tokensUsed'] === undefined) return false;
     return true;
 }
 
@@ -246,28 +60,7 @@ export function StatisticsChannelBreakdownDtoFromJSONTyped(json: any, ignoreDisc
 
         'channelId': json['channel_id'],
         'channelName': json['channel_name'] == null ? undefined : json['channel_name'],
-        'channelType': json['channel_type'] == null ? undefined : json['channel_type'],
-        'platformType': json['platform_type'] == null ? undefined : json['platform_type'],
         'creditsUsed': json['credits_used'],
-        'messagesTotal': json['messages_total'],
-        'leadMessages': json['lead_messages'],
-        'aiMessages': json['ai_messages'],
-        'operatorMessages': json['operator_messages'],
-        'activeDialogs': json['active_dialogs'],
-        'activeLeads': json['active_leads'],
-        'newDialogs': json['new_dialogs'],
-        'newLeads': json['new_leads'],
-        'leadSubscriptions': json['lead_subscriptions'],
-        'leadUnsubscriptions': json['lead_unsubscriptions'],
-        'closedDialogs': json['closed_dialogs'],
-        'unansweredDialogs': json['unanswered_dialogs'],
-        'operatorAssignedDialogs': json['operator_assigned_dialogs'],
-        'averageFirstResponseTimeSeconds': json['average_first_response_time_seconds'],
-        'averageFirstResponseRawTimeSeconds': json['average_first_response_raw_time_seconds'],
-        'averageResponseTimeSeconds': json['average_response_time_seconds'],
-        'averageResponseRawTimeSeconds': json['average_response_raw_time_seconds'],
-        'averageCreditsPerDialog': json['average_credits_per_dialog'],
-        'tokensUsed': json['tokens_used'],
     };
 }
 
@@ -284,27 +77,6 @@ export function StatisticsChannelBreakdownDtoToJSONTyped(value?: StatisticsChann
 
         'channel_id': value['channelId'],
         'channel_name': value['channelName'],
-        'channel_type': value['channelType'],
-        'platform_type': value['platformType'],
         'credits_used': value['creditsUsed'],
-        'messages_total': value['messagesTotal'],
-        'lead_messages': value['leadMessages'],
-        'ai_messages': value['aiMessages'],
-        'operator_messages': value['operatorMessages'],
-        'active_dialogs': value['activeDialogs'],
-        'active_leads': value['activeLeads'],
-        'new_dialogs': value['newDialogs'],
-        'new_leads': value['newLeads'],
-        'lead_subscriptions': value['leadSubscriptions'],
-        'lead_unsubscriptions': value['leadUnsubscriptions'],
-        'closed_dialogs': value['closedDialogs'],
-        'unanswered_dialogs': value['unansweredDialogs'],
-        'operator_assigned_dialogs': value['operatorAssignedDialogs'],
-        'average_first_response_time_seconds': value['averageFirstResponseTimeSeconds'],
-        'average_first_response_raw_time_seconds': value['averageFirstResponseRawTimeSeconds'],
-        'average_response_time_seconds': value['averageResponseTimeSeconds'],
-        'average_response_raw_time_seconds': value['averageResponseRawTimeSeconds'],
-        'average_credits_per_dialog': value['averageCreditsPerDialog'],
-        'tokens_used': value['tokensUsed'],
     };
 }

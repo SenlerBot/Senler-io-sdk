@@ -54,6 +54,18 @@ export interface ProductMetricsResponseDto {
      */
     automationsStartedAt: Date;
     /**
+     * API-
+     * @type {Date}
+     * @memberof ProductMetricsResponseDto
+     */
+    apiStartedAt: Date;
+    /**
+     *
+     * @type {Date}
+     * @memberof ProductMetricsResponseDto
+     */
+    installationsStartedAt: Date;
+    /**
      *
      * @type {boolean}
      * @memberof ProductMetricsResponseDto

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CabinetStatisticsAiResponseToolsResponseDto, CabinetStatisticsCommunicationsResponseDto, CabinetStatisticsCostsResponseDto, CabinetStatisticsLeadSubscriptionEventsResponseDto, CabinetStatisticsLeadsResponseDto, CabinetStatisticsOverviewResponseDto, StatisticsAiResponseCostsDto } from '../models/index';
+import type { CabinetStatisticsAiResponseToolsResponseDto, CabinetStatisticsCommunicationsResponseDto, CabinetStatisticsCostsResponseDto, CabinetStatisticsLeadSubscriptionEventsResponseDto, CabinetStatisticsLeadsResponseDto, CabinetStatisticsOverviewResponseDto } from '../models/index';
 export interface GetCommunicationsRequest {
     period: GetCommunicationsPeriodEnum;
     projectId: string;
@@ -26,14 +26,6 @@ export interface GetCostsRequest {
     operatorUserId?: string;
     timezone?: string;
     acceptLanguage?: GetCostsAcceptLanguageEnum;
-}
-export interface GetCostsAiResponseSummaryRequest {
-    period: GetCostsAiResponseSummaryPeriodEnum;
-    projectId: string;
-    channelId?: string;
-    operatorUserId?: string;
-    timezone?: string;
-    acceptLanguage?: GetCostsAiResponseSummaryAcceptLanguageEnum;
 }
 export interface GetCostsAiResponseToolsRequest {
     period: GetCostsAiResponseToolsPeriodEnum;
@@ -94,16 +86,6 @@ export declare class StatisticsApi extends runtime.BaseAPI {
      *
      */
     getCosts(requestParameters: GetCostsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsCostsResponseDto>;
-    /**
-     * . .
-     * AI-
-     */
-    getCostsAiResponseSummaryRaw(requestParameters: GetCostsAiResponseSummaryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StatisticsAiResponseCostsDto>>;
-    /**
-     * . .
-     * AI-
-     */
-    getCostsAiResponseSummary(requestParameters: GetCostsAiResponseSummaryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StatisticsAiResponseCostsDto>;
     /**
      * , AI-. , . .
      * AI-
@@ -181,24 +163,6 @@ export declare const GetCostsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetCostsAcceptLanguageEnum = typeof GetCostsAcceptLanguageEnum[keyof typeof GetCostsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetCostsAiResponseSummaryPeriodEnum: {
-    readonly _24h: "24h";
-    readonly _7d: "7d";
-    readonly _30d: "30d";
-    readonly _90d: "90d";
-};
-export type GetCostsAiResponseSummaryPeriodEnum = typeof GetCostsAiResponseSummaryPeriodEnum[keyof typeof GetCostsAiResponseSummaryPeriodEnum];
-/**
- * @export
- */
-export declare const GetCostsAiResponseSummaryAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetCostsAiResponseSummaryAcceptLanguageEnum = typeof GetCostsAiResponseSummaryAcceptLanguageEnum[keyof typeof GetCostsAiResponseSummaryAcceptLanguageEnum];
 /**
  * @export
  */

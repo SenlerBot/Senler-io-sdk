@@ -98,6 +98,7 @@ export interface ProcessesListRequest {
 export class ProcessesApi extends runtime.BaseAPI {
 
     /**
+     * null, .
      * Senler.ru
      */
     async getImportSenlerLeadsRaw(requestParameters: GetImportSenlerLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SenlerImportStatusDto>> {
@@ -145,6 +146,7 @@ export class ProcessesApi extends runtime.BaseAPI {
     }
 
     /**
+     * null, .
      * Senler.ru
      */
     async getImportSenlerLeads(requestParameters: GetImportSenlerLeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SenlerImportStatusDto> {

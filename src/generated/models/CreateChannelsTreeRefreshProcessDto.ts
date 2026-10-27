@@ -112,6 +112,7 @@ export const CreateChannelsTreeRefreshProcessDtoKindEnum = {
     TelegramChannel: 'telegram_channel',
     TelegramForumTopic: 'telegram_forum_topic',
     TelegramPostThread: 'telegram_post_thread',
+    VkCommunity: 'vk_community',
     VkChat: 'vk_chat',
     VkWallPostThread: 'vk_wall_post_thread',
     MaxChat: 'max_chat',

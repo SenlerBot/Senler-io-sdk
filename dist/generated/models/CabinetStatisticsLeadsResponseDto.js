@@ -21,8 +21,9 @@ exports.CabinetStatisticsLeadsResponseDtoToJSON = CabinetStatisticsLeadsResponse
 exports.CabinetStatisticsLeadsResponseDtoToJSONTyped = CabinetStatisticsLeadsResponseDtoToJSONTyped;
 const StatisticsLeadsSummaryDto_1 = require("./StatisticsLeadsSummaryDto");
 const StatisticsLeadBaseDto_1 = require("./StatisticsLeadBaseDto");
-const StatisticsUsageChartDto_1 = require("./StatisticsUsageChartDto");
+const StatisticsLeadsChartsDto_1 = require("./StatisticsLeadsChartsDto");
 const StatisticsSegmentMembershipBreakdownDto_1 = require("./StatisticsSegmentMembershipBreakdownDto");
+const StatisticsSourceFreshnessDto_1 = require("./StatisticsSourceFreshnessDto");
 /**
  * @export
  */
@@ -34,6 +35,8 @@ exports.CabinetStatisticsLeadsResponseDtoGranularityEnum = {
  * Check if a given object implements the CabinetStatisticsLeadsResponseDto interface.
  */
 function instanceOfCabinetStatisticsLeadsResponseDto(value) {
+    if (!('freshness' in value) || value['freshness'] === undefined)
+        return false;
     if (!('periodStart' in value) || value['periodStart'] === undefined)
         return false;
     if (!('periodEnd' in value) || value['periodEnd'] === undefined)
@@ -58,12 +61,13 @@ function CabinetStatisticsLeadsResponseDtoFromJSONTyped(json, ignoreDiscriminato
         return json;
     }
     return {
+        'freshness': (json['freshness'].map(StatisticsSourceFreshnessDto_1.StatisticsSourceFreshnessDtoFromJSON)),
         'periodStart': (new Date(json['period_start'])),
         'periodEnd': (new Date(json['period_end'])),
         'granularity': json['granularity'],
         'summary': (0, StatisticsLeadsSummaryDto_1.StatisticsLeadsSummaryDtoFromJSON)(json['summary']),
         'leadBase': (0, StatisticsLeadBaseDto_1.StatisticsLeadBaseDtoFromJSON)(json['lead_base']),
-        'charts': (0, StatisticsUsageChartDto_1.StatisticsUsageChartDtoFromJSON)(json['charts']),
+        'charts': (0, StatisticsLeadsChartsDto_1.StatisticsLeadsChartsDtoFromJSON)(json['charts']),
         'segmentMemberships': (json['segment_memberships'].map(StatisticsSegmentMembershipBreakdownDto_1.StatisticsSegmentMembershipBreakdownDtoFromJSON)),
     };
 }
@@ -75,12 +79,13 @@ function CabinetStatisticsLeadsResponseDtoToJSONTyped(value, ignoreDiscriminator
         return value;
     }
     return {
+        'freshness': (value['freshness'].map(StatisticsSourceFreshnessDto_1.StatisticsSourceFreshnessDtoToJSON)),
         'period_start': ((value['periodStart']).toISOString()),
         'period_end': ((value['periodEnd']).toISOString()),
         'granularity': value['granularity'],
         'summary': (0, StatisticsLeadsSummaryDto_1.StatisticsLeadsSummaryDtoToJSON)(value['summary']),
         'lead_base': (0, StatisticsLeadBaseDto_1.StatisticsLeadBaseDtoToJSON)(value['leadBase']),
-        'charts': (0, StatisticsUsageChartDto_1.StatisticsUsageChartDtoToJSON)(value['charts']),
+        'charts': (0, StatisticsLeadsChartsDto_1.StatisticsLeadsChartsDtoToJSON)(value['charts']),
         'segment_memberships': (value['segmentMemberships'].map(StatisticsSegmentMembershipBreakdownDto_1.StatisticsSegmentMembershipBreakdownDtoToJSON)),
     };
 }

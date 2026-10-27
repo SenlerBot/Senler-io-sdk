@@ -69,6 +69,13 @@ import {
     McpServerResponseDtoToJSON,
     McpServerResponseDtoToJSONTyped,
 } from './McpServerResponseDto';
+import type { AgentMcpServerListResponseDto } from './AgentMcpServerListResponseDto';
+import {
+    AgentMcpServerListResponseDtoFromJSON,
+    AgentMcpServerListResponseDtoFromJSONTyped,
+    AgentMcpServerListResponseDtoToJSON,
+    AgentMcpServerListResponseDtoToJSONTyped,
+} from './AgentMcpServerListResponseDto';
 import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
 import {
     AgentAssignmentPolicyDtoFromJSON,
@@ -76,13 +83,6 @@ import {
     AgentAssignmentPolicyDtoToJSON,
     AgentAssignmentPolicyDtoToJSONTyped,
 } from './AgentAssignmentPolicyDto';
-import type { McpServerListResponseDto } from './McpServerListResponseDto';
-import {
-    McpServerListResponseDtoFromJSON,
-    McpServerListResponseDtoFromJSONTyped,
-    McpServerListResponseDtoToJSON,
-    McpServerListResponseDtoToJSONTyped,
-} from './McpServerListResponseDto';
 import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicyDto';
 import {
     AgentAutomationEventPolicyDtoFromJSON,
@@ -135,10 +135,10 @@ export interface AgentSettingsResponseDto {
     mcpServerListId?: string | null;
     /**
      * MCP
-     * @type {McpServerListResponseDto}
+     * @type {AgentMcpServerListResponseDto}
      * @memberof AgentSettingsResponseDto
      */
-    serverList?: McpServerListResponseDto;
+    serverList?: AgentMcpServerListResponseDto;
     /**
      * ID ( direct)
      * @type {Array<string>}
@@ -236,7 +236,7 @@ export interface AgentSettingsResponseDto {
      */
     autostartMode: AgentSettingsResponseDtoAutostartModeEnum;
     /**
-     * : any, empty, equals, starts_with, contains, contains_any, start_payload_prefix, legacy_message.
+     * : any, empty, equals, starts_with, contains.
      * @type {string}
      * @memberof AgentSettingsResponseDto
      */
@@ -725,10 +725,7 @@ export const AgentSettingsResponseDtoStartButtonMatchModeEnum = {
     Empty: 'empty',
     Equals: 'equals',
     StartsWith: 'starts_with',
-    Contains: 'contains',
-    ContainsAny: 'contains_any',
-    StartPayloadPrefix: 'start_payload_prefix',
-    LegacyMessage: 'legacy_message'
+    Contains: 'contains'
 } as const;
 export type AgentSettingsResponseDtoStartButtonMatchModeEnum = typeof AgentSettingsResponseDtoStartButtonMatchModeEnum[keyof typeof AgentSettingsResponseDtoStartButtonMatchModeEnum];
 
@@ -893,7 +890,7 @@ export function AgentSettingsResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'agentType': json['agent_type'],
         'serverBindingMode': json['server_binding_mode'],
         'mcpServerListId': json['mcp_server_list_id'] == null ? undefined : json['mcp_server_list_id'],
-        'serverList': json['serverList'] == null ? undefined : McpServerListResponseDtoFromJSON(json['serverList']),
+        'serverList': json['serverList'] == null ? undefined : AgentMcpServerListResponseDtoFromJSON(json['serverList']),
         'mcpServerIds': json['mcp_server_ids'] == null ? undefined : json['mcp_server_ids'],
         'servers': json['servers'] == null ? undefined : ((json['servers'] as Array<any>).map(McpServerResponseDtoFromJSON)),
         'knowledgeBasePermissions': json['knowledge_base_permissions'] == null ? undefined : json['knowledge_base_permissions'],
@@ -1000,7 +997,7 @@ export function AgentSettingsResponseDtoToJSONTyped(value?: AgentSettingsRespons
         'agent_type': value['agentType'],
         'server_binding_mode': value['serverBindingMode'],
         'mcp_server_list_id': value['mcpServerListId'],
-        'serverList': McpServerListResponseDtoToJSON(value['serverList']),
+        'serverList': AgentMcpServerListResponseDtoToJSON(value['serverList']),
         'mcp_server_ids': value['mcpServerIds'],
         'servers': value['servers'] == null ? undefined : ((value['servers'] as Array<any>).map(McpServerResponseDtoToJSON)),
         'knowledge_base_permissions': value['knowledgeBasePermissions'],

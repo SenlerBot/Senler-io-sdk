@@ -71,6 +71,18 @@ export interface ProductMetricsResponseDto {
      */
     automationsStartedAt: Date;
     /**
+     * API-
+     * @type {Date}
+     * @memberof ProductMetricsResponseDto
+     */
+    apiStartedAt: Date;
+    /**
+     *
+     * @type {Date}
+     * @memberof ProductMetricsResponseDto
+     */
+    installationsStartedAt: Date;
+    /**
      *
      * @type {boolean}
      * @memberof ProductMetricsResponseDto
@@ -100,6 +112,8 @@ export function instanceOfProductMetricsResponseDto(value: object): value is Pro
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     if (!('collectionStartedAt' in value) || value['collectionStartedAt'] === undefined) return false;
     if (!('automationsStartedAt' in value) || value['automationsStartedAt'] === undefined) return false;
+    if (!('apiStartedAt' in value) || value['apiStartedAt'] === undefined) return false;
+    if (!('installationsStartedAt' in value) || value['installationsStartedAt'] === undefined) return false;
     if (!('delayed' in value) || value['delayed'] === undefined) return false;
     if (!('growth' in value) || value['growth'] === undefined) return false;
     if (!('usage' in value) || value['usage'] === undefined) return false;
@@ -122,6 +136,8 @@ export function ProductMetricsResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
         'updatedAt': (json['updated_at'] == null ? null : new Date(json['updated_at'])),
         'collectionStartedAt': (new Date(json['collection_started_at'])),
         'automationsStartedAt': (new Date(json['automations_started_at'])),
+        'apiStartedAt': (new Date(json['api_started_at'])),
+        'installationsStartedAt': (new Date(json['installations_started_at'])),
         'delayed': json['delayed'],
         'growth': ((json['growth'] as Array<any>).map(ProductGrowthDtoFromJSON)),
         'usage': ((json['usage'] as Array<any>).map(ProductUsageDtoFromJSON)),
@@ -145,6 +161,8 @@ export function ProductMetricsResponseDtoToJSONTyped(value?: ProductMetricsRespo
         'updated_at': (value['updatedAt'] == null ? null : (value['updatedAt'] as any).toISOString()),
         'collection_started_at': ((value['collectionStartedAt']).toISOString()),
         'automations_started_at': ((value['automationsStartedAt']).toISOString()),
+        'api_started_at': ((value['apiStartedAt']).toISOString()),
+        'installations_started_at': ((value['installationsStartedAt']).toISOString()),
         'delayed': value['delayed'],
         'growth': ((value['growth'] as Array<any>).map(ProductGrowthDtoToJSON)),
         'usage': ((value['usage'] as Array<any>).map(ProductUsageDtoToJSON)),

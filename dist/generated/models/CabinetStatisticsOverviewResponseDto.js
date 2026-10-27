@@ -22,6 +22,7 @@ exports.CabinetStatisticsOverviewResponseDtoToJSONTyped = CabinetStatisticsOverv
 const StatisticsBalanceForecastDto_1 = require("./StatisticsBalanceForecastDto");
 const StatisticsLeadBaseDto_1 = require("./StatisticsLeadBaseDto");
 const StatisticsSummaryDto_1 = require("./StatisticsSummaryDto");
+const StatisticsSourceFreshnessDto_1 = require("./StatisticsSourceFreshnessDto");
 /**
  * @export
  */
@@ -33,6 +34,8 @@ exports.CabinetStatisticsOverviewResponseDtoGranularityEnum = {
  * Check if a given object implements the CabinetStatisticsOverviewResponseDto interface.
  */
 function instanceOfCabinetStatisticsOverviewResponseDto(value) {
+    if (!('freshness' in value) || value['freshness'] === undefined)
+        return false;
     if (!('periodStart' in value) || value['periodStart'] === undefined)
         return false;
     if (!('periodEnd' in value) || value['periodEnd'] === undefined)
@@ -55,6 +58,7 @@ function CabinetStatisticsOverviewResponseDtoFromJSONTyped(json, ignoreDiscrimin
         return json;
     }
     return {
+        'freshness': (json['freshness'].map(StatisticsSourceFreshnessDto_1.StatisticsSourceFreshnessDtoFromJSON)),
         'periodStart': (new Date(json['period_start'])),
         'periodEnd': (new Date(json['period_end'])),
         'granularity': json['granularity'],
@@ -71,6 +75,7 @@ function CabinetStatisticsOverviewResponseDtoToJSONTyped(value, ignoreDiscrimina
         return value;
     }
     return {
+        'freshness': (value['freshness'].map(StatisticsSourceFreshnessDto_1.StatisticsSourceFreshnessDtoToJSON)),
         'period_start': ((value['periodStart']).toISOString()),
         'period_end': ((value['periodEnd']).toISOString()),
         'granularity': value['granularity'],

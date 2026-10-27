@@ -9,8 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { StatisticsTimeSeriesPointDto } from './StatisticsTimeSeriesPointDto';
 import type { StatisticsActivityHeatmapPointDto } from './StatisticsActivityHeatmapPointDto';
+import type { StatisticsCommunicationsTimeSeriesPointDto } from './StatisticsCommunicationsTimeSeriesPointDto';
 /**
  * StatisticsCommunicationsChartsDto.
  * @export
@@ -19,10 +19,10 @@ import type { StatisticsActivityHeatmapPointDto } from './StatisticsActivityHeat
 export interface StatisticsCommunicationsChartsDto {
     /**
      *
-     * @type {Array<StatisticsTimeSeriesPointDto>}
+     * @type {Array<StatisticsCommunicationsTimeSeriesPointDto>}
      * @memberof StatisticsCommunicationsChartsDto
      */
-    usage: Array<StatisticsTimeSeriesPointDto>;
+    usage: Array<StatisticsCommunicationsTimeSeriesPointDto>;
     /**
      *
      * @type {Array<StatisticsActivityHeatmapPointDto>}

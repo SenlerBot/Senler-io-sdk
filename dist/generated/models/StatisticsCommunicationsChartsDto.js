@@ -18,8 +18,8 @@ exports.StatisticsCommunicationsChartsDtoFromJSON = StatisticsCommunicationsChar
 exports.StatisticsCommunicationsChartsDtoFromJSONTyped = StatisticsCommunicationsChartsDtoFromJSONTyped;
 exports.StatisticsCommunicationsChartsDtoToJSON = StatisticsCommunicationsChartsDtoToJSON;
 exports.StatisticsCommunicationsChartsDtoToJSONTyped = StatisticsCommunicationsChartsDtoToJSONTyped;
-const StatisticsTimeSeriesPointDto_1 = require("./StatisticsTimeSeriesPointDto");
 const StatisticsActivityHeatmapPointDto_1 = require("./StatisticsActivityHeatmapPointDto");
+const StatisticsCommunicationsTimeSeriesPointDto_1 = require("./StatisticsCommunicationsTimeSeriesPointDto");
 /**
  * Check if a given object implements the StatisticsCommunicationsChartsDto interface.
  */
@@ -38,7 +38,7 @@ function StatisticsCommunicationsChartsDtoFromJSONTyped(json, ignoreDiscriminato
         return json;
     }
     return {
-        'usage': (json['usage'].map(StatisticsTimeSeriesPointDto_1.StatisticsTimeSeriesPointDtoFromJSON)),
+        'usage': (json['usage'].map(StatisticsCommunicationsTimeSeriesPointDto_1.StatisticsCommunicationsTimeSeriesPointDtoFromJSON)),
         'activityHeatmap': (json['activity_heatmap'].map(StatisticsActivityHeatmapPointDto_1.StatisticsActivityHeatmapPointDtoFromJSON)),
     };
 }
@@ -50,7 +50,7 @@ function StatisticsCommunicationsChartsDtoToJSONTyped(value, ignoreDiscriminator
         return value;
     }
     return {
-        'usage': (value['usage'].map(StatisticsTimeSeriesPointDto_1.StatisticsTimeSeriesPointDtoToJSON)),
+        'usage': (value['usage'].map(StatisticsCommunicationsTimeSeriesPointDto_1.StatisticsCommunicationsTimeSeriesPointDtoToJSON)),
         'activity_heatmap': (value['activityHeatmap'].map(StatisticsActivityHeatmapPointDto_1.StatisticsActivityHeatmapPointDtoToJSON)),
     };
 }

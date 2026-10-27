@@ -11,14 +11,21 @@
  */
 import type { StatisticsLeadsSummaryDto } from './StatisticsLeadsSummaryDto';
 import type { StatisticsLeadBaseDto } from './StatisticsLeadBaseDto';
-import type { StatisticsUsageChartDto } from './StatisticsUsageChartDto';
+import type { StatisticsLeadsChartsDto } from './StatisticsLeadsChartsDto';
 import type { StatisticsSegmentMembershipBreakdownDto } from './StatisticsSegmentMembershipBreakdownDto';
+import type { StatisticsSourceFreshnessDto } from './StatisticsSourceFreshnessDto';
 /**
  * CabinetStatisticsLeadsResponseDto.
  * @export
  * @interface CabinetStatisticsLeadsResponseDto
  */
 export interface CabinetStatisticsLeadsResponseDto {
+    /**
+     * ;
+     * @type {Array<StatisticsSourceFreshnessDto>}
+     * @memberof CabinetStatisticsLeadsResponseDto
+     */
+    freshness: Array<StatisticsSourceFreshnessDto>;
     /**
      *
      * @type {Date}
@@ -51,10 +58,10 @@ export interface CabinetStatisticsLeadsResponseDto {
     leadBase: StatisticsLeadBaseDto;
     /**
      *
-     * @type {StatisticsUsageChartDto}
+     * @type {StatisticsLeadsChartsDto}
      * @memberof CabinetStatisticsLeadsResponseDto
      */
-    charts: StatisticsUsageChartDto;
+    charts: StatisticsLeadsChartsDto;
     /**
      *
      * @type {Array<StatisticsSegmentMembershipBreakdownDto>}

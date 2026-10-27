@@ -29,6 +29,8 @@ function instanceOfMcpServerListResponseDto(value) {
         return false;
     if (!('servers' in value) || value['servers'] === undefined)
         return false;
+    if (!('mcpServerIds' in value) || value['mcpServerIds'] === undefined)
+        return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
         return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined)
@@ -47,6 +49,7 @@ function McpServerListResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'servers': (json['servers'].map(ServerListMemberDto_1.ServerListMemberDtoFromJSON)),
+        'mcpServerIds': json['mcp_server_ids'],
         'serverCount': json['server_count'] == null ? undefined : json['server_count'],
         'meta': json['meta'] == null ? undefined : json['meta'],
         'createdAt': (new Date(json['created_at'])),
@@ -65,6 +68,7 @@ function McpServerListResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'name': value['name'],
         'description': value['description'],
         'servers': (value['servers'].map(ServerListMemberDto_1.ServerListMemberDtoToJSON)),
+        'mcp_server_ids': value['mcpServerIds'],
         'server_count': value['serverCount'],
         'meta': value['meta'],
         'created_at': ((value['createdAt']).toISOString()),

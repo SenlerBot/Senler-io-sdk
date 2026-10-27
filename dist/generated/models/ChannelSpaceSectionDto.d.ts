@@ -70,6 +70,7 @@ export declare const ChannelSpaceSectionDtoKindsEnum: {
     readonly TelegramChannel: "telegram_channel";
     readonly TelegramForumTopic: "telegram_forum_topic";
     readonly TelegramPostThread: "telegram_post_thread";
+    readonly VkCommunity: "vk_community";
     readonly VkChat: "vk_chat";
     readonly VkWallPostThread: "vk_wall_post_thread";
     readonly MaxChat: "max_chat";
@@ -89,6 +90,7 @@ export declare const ChannelSpaceSectionDtoDefaultKindEnum: {
     readonly TelegramChannel: "telegram_channel";
     readonly TelegramForumTopic: "telegram_forum_topic";
     readonly TelegramPostThread: "telegram_post_thread";
+    readonly VkCommunity: "vk_community";
     readonly VkChat: "vk_chat";
     readonly VkWallPostThread: "vk_wall_post_thread";
     readonly MaxChat: "max_chat";

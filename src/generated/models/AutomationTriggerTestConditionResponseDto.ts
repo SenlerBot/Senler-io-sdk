@@ -32,7 +32,7 @@ export interface AutomationTriggerTestConditionResponseDto {
      */
     messageSender: AutomationTriggerTestConditionResponseDtoMessageSenderEnum | null;
     /**
-     * : any, contains_any, start_payload_prefix, empty, equals, starts_with, contains, legacy_message.
+     * : any, contains_any, start_payload_prefix, empty, equals, starts_with, contains.
      * @type {string}
      * @memberof AutomationTriggerTestConditionResponseDto
      */
@@ -161,8 +161,7 @@ export const AutomationTriggerTestConditionResponseDtoMessageMatchModeEnum = {
     Empty: 'empty',
     Equals: 'equals',
     StartsWith: 'starts_with',
-    Contains: 'contains',
-    LegacyMessage: 'legacy_message'
+    Contains: 'contains'
 } as const;
 export type AutomationTriggerTestConditionResponseDtoMessageMatchModeEnum = typeof AutomationTriggerTestConditionResponseDtoMessageMatchModeEnum[keyof typeof AutomationTriggerTestConditionResponseDtoMessageMatchModeEnum];
 

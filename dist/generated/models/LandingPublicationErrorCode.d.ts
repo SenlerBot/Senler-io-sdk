@@ -19,6 +19,9 @@ export declare const LandingPublicationErrorCode: {
     readonly MediaUrlInvalid: "media_url_invalid";
     readonly TimerDateInvalid: "timer_date_invalid";
     readonly AssetInvalid: "asset_invalid";
+    readonly AssetImportRequired: "asset_import_required";
+    readonly AssetMissing: "asset_missing";
+    readonly AssetCheckUnavailable: "asset_check_unavailable";
     readonly ActionInvalid: "action_invalid";
     readonly ActionIdDuplicate: "action_id_duplicate";
     readonly SegmentUnavailable: "segment_unavailable";

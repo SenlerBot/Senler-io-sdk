@@ -33,36 +33,6 @@ export interface StatisticsAgentBreakdownDto {
      * @memberof StatisticsAgentBreakdownDto
      */
     creditsUsed: number;
-    /**
-     *
-     * @type {number}
-     * @memberof StatisticsAgentBreakdownDto
-     */
-    messagesTotal: number;
-    /**
-     * , AI-; AI-
-     * @type {number}
-     * @memberof StatisticsAgentBreakdownDto
-     */
-    aiMessages: number;
-    /**
-     *
-     * @type {number}
-     * @memberof StatisticsAgentBreakdownDto
-     */
-    activeDialogs: number;
-    /**
-     * , ; 1 = 10000 ; : 12.5 = 125000
-     * @type {number}
-     * @memberof StatisticsAgentBreakdownDto
-     */
-    averageCreditsPerDialog: number;
-    /**
-     *
-     * @type {number}
-     * @memberof StatisticsAgentBreakdownDto
-     */
-    tokensUsed: number;
 }
 /**
  * Check if a given object implements the StatisticsAgentBreakdownDto interface.

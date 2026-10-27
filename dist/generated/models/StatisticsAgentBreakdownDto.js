@@ -26,16 +26,6 @@ function instanceOfStatisticsAgentBreakdownDto(value) {
         return false;
     if (!('creditsUsed' in value) || value['creditsUsed'] === undefined)
         return false;
-    if (!('messagesTotal' in value) || value['messagesTotal'] === undefined)
-        return false;
-    if (!('aiMessages' in value) || value['aiMessages'] === undefined)
-        return false;
-    if (!('activeDialogs' in value) || value['activeDialogs'] === undefined)
-        return false;
-    if (!('averageCreditsPerDialog' in value) || value['averageCreditsPerDialog'] === undefined)
-        return false;
-    if (!('tokensUsed' in value) || value['tokensUsed'] === undefined)
-        return false;
     return true;
 }
 function StatisticsAgentBreakdownDtoFromJSON(json) {
@@ -49,11 +39,6 @@ function StatisticsAgentBreakdownDtoFromJSONTyped(json, ignoreDiscriminator) {
         'agentId': json['agent_id'],
         'agentName': json['agent_name'] == null ? undefined : json['agent_name'],
         'creditsUsed': json['credits_used'],
-        'messagesTotal': json['messages_total'],
-        'aiMessages': json['ai_messages'],
-        'activeDialogs': json['active_dialogs'],
-        'averageCreditsPerDialog': json['average_credits_per_dialog'],
-        'tokensUsed': json['tokens_used'],
     };
 }
 function StatisticsAgentBreakdownDtoToJSON(json) {
@@ -67,10 +52,5 @@ function StatisticsAgentBreakdownDtoToJSONTyped(value, ignoreDiscriminator = fal
         'agent_id': value['agentId'],
         'agent_name': value['agentName'],
         'credits_used': value['creditsUsed'],
-        'messages_total': value['messagesTotal'],
-        'ai_messages': value['aiMessages'],
-        'active_dialogs': value['activeDialogs'],
-        'average_credits_per_dialog': value['averageCreditsPerDialog'],
-        'tokens_used': value['tokensUsed'],
     };
 }

@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandingsVariantEventsAcceptLanguageEnum = exports.LandingsResolveAcceptLanguageEnum = exports.LandingsLaunchVariablesAcceptLanguageEnum = exports.LandingsLaunchUnsubscribeAcceptLanguageEnum = exports.LandingsLaunchSubscriptionStatusAcceptLanguageEnum = exports.LandingsLaunchSubscribeAcceptLanguageEnum = exports.LandingsLaunchMiniAppLaunchAcceptLanguageEnum = exports.LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum = exports.GetProjectsLandingsAnalyticsAcceptLanguageEnum = exports.GetProjectsLandingsAcceptLanguageEnum = exports.GetLandingsLaunchAcceptLanguageEnum = exports.GetLandingsAcceptLanguageEnum = exports.LandingsPublicApi = void 0;
+exports.LandingsVariantEventsAcceptLanguageEnum = exports.LandingsResolveAcceptLanguageEnum = exports.LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum = exports.LandingsLaunchVariablesAcceptLanguageEnum = exports.LandingsLaunchUnsubscribeAcceptLanguageEnum = exports.LandingsLaunchSubscriptionStatusAcceptLanguageEnum = exports.LandingsLaunchSubscribeAcceptLanguageEnum = exports.LandingsLaunchMiniAppLaunchAcceptLanguageEnum = exports.LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum = exports.GetProjectsLandingsAnalyticsAcceptLanguageEnum = exports.GetProjectsLandingsAcceptLanguageEnum = exports.GetLandingsLaunchAcceptLanguageEnum = exports.GetLandingsAcceptLanguageEnum = exports.LandingsPublicApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -395,6 +395,46 @@ class LandingsPublicApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * VK . ref ref_source; .
+     * VK
+     */
+    async landingsLaunchVkMessageSubscriptionLinkRaw(requestParameters, initOverrides) {
+        if (requestParameters['token'] == null) {
+            throw new runtime.RequiredError('token', 'Required parameter "token" was null or undefined when calling landingsLaunchVkMessageSubscriptionLink().');
+        }
+        if (requestParameters['origin'] == null) {
+            throw new runtime.RequiredError('origin', 'Required parameter "origin" was null or undefined when calling landingsLaunchVkMessageSubscriptionLink().');
+        }
+        if (requestParameters['landingSubscriptionRequestDto'] == null) {
+            throw new runtime.RequiredError('landingSubscriptionRequestDto', 'Required parameter "landingSubscriptionRequestDto" was null or undefined when calling landingsLaunchVkMessageSubscriptionLink().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['origin'] != null) {
+            headerParameters['origin'] = String(requestParameters['origin']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/public/landings/launch/{token}/vk-message-subscription-link`.replace(`{${"token"}}`, encodeURIComponent(String(requestParameters['token']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.LandingSubscriptionRequestDtoToJSON)(requestParameters['landingSubscriptionRequestDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBotSubscriptionLinkResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * VK . ref ref_source; .
+     * VK
+     */
+    async landingsLaunchVkMessageSubscriptionLink(requestParameters, initOverrides) {
+        const response = await this.landingsLaunchVkMessageSubscriptionLinkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * VK, Telegram MAX , . . ; - 3 .
      *
      */
@@ -530,6 +570,13 @@ exports.LandingsLaunchUnsubscribeAcceptLanguageEnum = {
  * @export
  */
 exports.LandingsLaunchVariablesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

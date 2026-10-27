@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { StatisticsTimeSeriesPointDto } from './StatisticsTimeSeriesPointDto';
-import {
-    StatisticsTimeSeriesPointDtoFromJSON,
-    StatisticsTimeSeriesPointDtoFromJSONTyped,
-    StatisticsTimeSeriesPointDtoToJSON,
-    StatisticsTimeSeriesPointDtoToJSONTyped,
-} from './StatisticsTimeSeriesPointDto';
 import type { StatisticsActivityHeatmapPointDto } from './StatisticsActivityHeatmapPointDto';
 import {
     StatisticsActivityHeatmapPointDtoFromJSON,
@@ -27,6 +20,13 @@ import {
     StatisticsActivityHeatmapPointDtoToJSON,
     StatisticsActivityHeatmapPointDtoToJSONTyped,
 } from './StatisticsActivityHeatmapPointDto';
+import type { StatisticsCommunicationsTimeSeriesPointDto } from './StatisticsCommunicationsTimeSeriesPointDto';
+import {
+    StatisticsCommunicationsTimeSeriesPointDtoFromJSON,
+    StatisticsCommunicationsTimeSeriesPointDtoFromJSONTyped,
+    StatisticsCommunicationsTimeSeriesPointDtoToJSON,
+    StatisticsCommunicationsTimeSeriesPointDtoToJSONTyped,
+} from './StatisticsCommunicationsTimeSeriesPointDto';
 
 /**
  * StatisticsCommunicationsChartsDto.
@@ -36,10 +36,10 @@ import {
 export interface StatisticsCommunicationsChartsDto {
     /**
      *
-     * @type {Array<StatisticsTimeSeriesPointDto>}
+     * @type {Array<StatisticsCommunicationsTimeSeriesPointDto>}
      * @memberof StatisticsCommunicationsChartsDto
      */
-    usage: Array<StatisticsTimeSeriesPointDto>;
+    usage: Array<StatisticsCommunicationsTimeSeriesPointDto>;
     /**
      *
      * @type {Array<StatisticsActivityHeatmapPointDto>}
@@ -67,7 +67,7 @@ export function StatisticsCommunicationsChartsDtoFromJSONTyped(json: any, ignore
     }
     return {
 
-        'usage': ((json['usage'] as Array<any>).map(StatisticsTimeSeriesPointDtoFromJSON)),
+        'usage': ((json['usage'] as Array<any>).map(StatisticsCommunicationsTimeSeriesPointDtoFromJSON)),
         'activityHeatmap': ((json['activity_heatmap'] as Array<any>).map(StatisticsActivityHeatmapPointDtoFromJSON)),
     };
 }
@@ -83,7 +83,7 @@ export function StatisticsCommunicationsChartsDtoToJSONTyped(value?: StatisticsC
 
     return {
 
-        'usage': ((value['usage'] as Array<any>).map(StatisticsTimeSeriesPointDtoToJSON)),
+        'usage': ((value['usage'] as Array<any>).map(StatisticsCommunicationsTimeSeriesPointDtoToJSON)),
         'activity_heatmap': ((value['activityHeatmap'] as Array<any>).map(StatisticsActivityHeatmapPointDtoToJSON)),
     };
 }

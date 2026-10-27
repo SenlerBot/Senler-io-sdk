@@ -53,6 +53,8 @@ export interface GetEventsRequest {
     after?: string;
     aroundEventId?: string;
     messagesOnly?: boolean;
+    hasAttachments?: boolean;
+    attachmentTypes?: Array<GetEventsAttachmentTypesEnum>;
     sourceChatId?: string;
     sourceThreadId?: string;
     limit?: number;
@@ -394,6 +396,18 @@ export declare const GetEventsSortByEnum: {
     readonly Timestamp: "timestamp";
 };
 export type GetEventsSortByEnum = typeof GetEventsSortByEnum[keyof typeof GetEventsSortByEnum];
+/**
+ * @export
+ */
+export declare const GetEventsAttachmentTypesEnum: {
+    readonly Photo: "photo";
+    readonly Video: "video";
+    readonly Voice: "voice";
+    readonly Audio: "audio";
+    readonly Document: "document";
+    readonly Sticker: "sticker";
+};
+export type GetEventsAttachmentTypesEnum = typeof GetEventsAttachmentTypesEnum[keyof typeof GetEventsAttachmentTypesEnum];
 /**
  * @export
  */

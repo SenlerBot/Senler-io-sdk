@@ -143,6 +143,8 @@ export interface GetEventsRequest {
     after?: string;
     aroundEventId?: string;
     messagesOnly?: boolean;
+    hasAttachments?: boolean;
+    attachmentTypes?: Array<GetEventsAttachmentTypesEnum>;
     sourceChatId?: string;
     sourceThreadId?: string;
     limit?: number;
@@ -698,6 +700,14 @@ export class DialogsApi extends runtime.BaseAPI {
 
         if (requestParameters['messagesOnly'] != null) {
             queryParameters['messages_only'] = requestParameters['messagesOnly'];
+        }
+
+        if (requestParameters['hasAttachments'] != null) {
+            queryParameters['has_attachments'] = requestParameters['hasAttachments'];
+        }
+
+        if (requestParameters['attachmentTypes'] != null) {
+            queryParameters['attachment_types'] = requestParameters['attachmentTypes'];
         }
 
         if (requestParameters['sourceChatId'] != null) {
@@ -1564,6 +1574,18 @@ export const GetEventsSortByEnum = {
     Timestamp: 'timestamp'
 } as const;
 export type GetEventsSortByEnum = typeof GetEventsSortByEnum[keyof typeof GetEventsSortByEnum];
+/**
+ * @export
+ */
+export const GetEventsAttachmentTypesEnum = {
+    Photo: 'photo',
+    Video: 'video',
+    Voice: 'voice',
+    Audio: 'audio',
+    Document: 'document',
+    Sticker: 'sticker'
+} as const;
+export type GetEventsAttachmentTypesEnum = typeof GetEventsAttachmentTypesEnum[keyof typeof GetEventsAttachmentTypesEnum];
 /**
  * @export
  */

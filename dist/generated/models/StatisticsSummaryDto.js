@@ -18,7 +18,6 @@ exports.StatisticsSummaryDtoFromJSON = StatisticsSummaryDtoFromJSON;
 exports.StatisticsSummaryDtoFromJSONTyped = StatisticsSummaryDtoFromJSONTyped;
 exports.StatisticsSummaryDtoToJSON = StatisticsSummaryDtoToJSON;
 exports.StatisticsSummaryDtoToJSONTyped = StatisticsSummaryDtoToJSONTyped;
-const StatisticsNullableMetricDeltaDto_1 = require("./StatisticsNullableMetricDeltaDto");
 const StatisticsAiResponseCostsDto_1 = require("./StatisticsAiResponseCostsDto");
 const StatisticsCreditsMetricDeltaDto_1 = require("./StatisticsCreditsMetricDeltaDto");
 const StatisticsMetricDeltaDto_1 = require("./StatisticsMetricDeltaDto");
@@ -32,19 +31,13 @@ function instanceOfStatisticsSummaryDto(value) {
         return false;
     if (!('messagesTotal' in value) || value['messagesTotal'] === undefined)
         return false;
-    if (!('leadMessages' in value) || value['leadMessages'] === undefined)
-        return false;
     if (!('aiMessages' in value) || value['aiMessages'] === undefined)
         return false;
     if (!('operatorMessages' in value) || value['operatorMessages'] === undefined)
         return false;
     if (!('newDialogs' in value) || value['newDialogs'] === undefined)
         return false;
-    if (!('activeDialogs' in value) || value['activeDialogs'] === undefined)
-        return false;
     if (!('newLeads' in value) || value['newLeads'] === undefined)
-        return false;
-    if (!('activeLeads' in value) || value['activeLeads'] === undefined)
         return false;
     if (!('leadSubscriptions' in value) || value['leadSubscriptions'] === undefined)
         return false;
@@ -52,21 +45,7 @@ function instanceOfStatisticsSummaryDto(value) {
         return false;
     if (!('leadNetGrowth' in value) || value['leadNetGrowth'] === undefined)
         return false;
-    if (!('closedDialogs' in value) || value['closedDialogs'] === undefined)
-        return false;
     if (!('unansweredDialogs' in value) || value['unansweredDialogs'] === undefined)
-        return false;
-    if (!('operatorAssignedDialogs' in value) || value['operatorAssignedDialogs'] === undefined)
-        return false;
-    if (!('averageFirstResponseTimeSeconds' in value) || value['averageFirstResponseTimeSeconds'] === undefined)
-        return false;
-    if (!('averageFirstResponseRawTimeSeconds' in value) || value['averageFirstResponseRawTimeSeconds'] === undefined)
-        return false;
-    if (!('averageResponseTimeSeconds' in value) || value['averageResponseTimeSeconds'] === undefined)
-        return false;
-    if (!('averageResponseRawTimeSeconds' in value) || value['averageResponseRawTimeSeconds'] === undefined)
-        return false;
-    if (!('tokensUsed' in value) || value['tokensUsed'] === undefined)
         return false;
     return true;
 }
@@ -81,24 +60,14 @@ function StatisticsSummaryDtoFromJSONTyped(json, ignoreDiscriminator) {
         'creditsUsed': (0, StatisticsCreditsMetricDeltaDto_1.StatisticsCreditsMetricDeltaDtoFromJSON)(json['credits_used']),
         'aiResponseCosts': (0, StatisticsAiResponseCostsDto_1.StatisticsAiResponseCostsDtoFromJSON)(json['ai_response_costs']),
         'messagesTotal': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['messages_total']),
-        'leadMessages': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['lead_messages']),
         'aiMessages': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['ai_messages']),
         'operatorMessages': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['operator_messages']),
         'newDialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['new_dialogs']),
-        'activeDialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['active_dialogs']),
         'newLeads': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['new_leads']),
-        'activeLeads': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['active_leads']),
         'leadSubscriptions': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['lead_subscriptions']),
         'leadUnsubscriptions': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['lead_unsubscriptions']),
         'leadNetGrowth': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['lead_net_growth']),
-        'closedDialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['closed_dialogs']),
         'unansweredDialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['unanswered_dialogs']),
-        'operatorAssignedDialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['operator_assigned_dialogs']),
-        'averageFirstResponseTimeSeconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['average_first_response_time_seconds']),
-        'averageFirstResponseRawTimeSeconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['average_first_response_raw_time_seconds']),
-        'averageResponseTimeSeconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['average_response_time_seconds']),
-        'averageResponseRawTimeSeconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoFromJSON)(json['average_response_raw_time_seconds']),
-        'tokensUsed': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoFromJSON)(json['tokens_used']),
     };
 }
 function StatisticsSummaryDtoToJSON(json) {
@@ -112,23 +81,13 @@ function StatisticsSummaryDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'credits_used': (0, StatisticsCreditsMetricDeltaDto_1.StatisticsCreditsMetricDeltaDtoToJSON)(value['creditsUsed']),
         'ai_response_costs': (0, StatisticsAiResponseCostsDto_1.StatisticsAiResponseCostsDtoToJSON)(value['aiResponseCosts']),
         'messages_total': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['messagesTotal']),
-        'lead_messages': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['leadMessages']),
         'ai_messages': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['aiMessages']),
         'operator_messages': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['operatorMessages']),
         'new_dialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['newDialogs']),
-        'active_dialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['activeDialogs']),
         'new_leads': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['newLeads']),
-        'active_leads': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['activeLeads']),
         'lead_subscriptions': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['leadSubscriptions']),
         'lead_unsubscriptions': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['leadUnsubscriptions']),
         'lead_net_growth': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['leadNetGrowth']),
-        'closed_dialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['closedDialogs']),
         'unanswered_dialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['unansweredDialogs']),
-        'operator_assigned_dialogs': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['operatorAssignedDialogs']),
-        'average_first_response_time_seconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['averageFirstResponseTimeSeconds']),
-        'average_first_response_raw_time_seconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['averageFirstResponseRawTimeSeconds']),
-        'average_response_time_seconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['averageResponseTimeSeconds']),
-        'average_response_raw_time_seconds': (0, StatisticsNullableMetricDeltaDto_1.StatisticsNullableMetricDeltaDtoToJSON)(value['averageResponseRawTimeSeconds']),
-        'tokens_used': (0, StatisticsMetricDeltaDto_1.StatisticsMetricDeltaDtoToJSON)(value['tokensUsed']),
     };
 }

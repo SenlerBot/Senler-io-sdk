@@ -27,8 +27,8 @@ const WizardStep_1 = require("./WizardStep");
 const OperatorHandoffPolicyDto_1 = require("./OperatorHandoffPolicyDto");
 const KnowledgeBaseSourceBindingDto_1 = require("./KnowledgeBaseSourceBindingDto");
 const McpServerResponseDto_1 = require("./McpServerResponseDto");
+const AgentMcpServerListResponseDto_1 = require("./AgentMcpServerListResponseDto");
 const AgentAssignmentPolicyDto_1 = require("./AgentAssignmentPolicyDto");
-const McpServerListResponseDto_1 = require("./McpServerListResponseDto");
 const AgentAutomationEventPolicyDto_1 = require("./AgentAutomationEventPolicyDto");
 /**
  * @export
@@ -89,10 +89,7 @@ exports.AgentSettingsResponseDtoStartButtonMatchModeEnum = {
     Empty: 'empty',
     Equals: 'equals',
     StartsWith: 'starts_with',
-    Contains: 'contains',
-    ContainsAny: 'contains_any',
-    StartPayloadPrefix: 'start_payload_prefix',
-    LegacyMessage: 'legacy_message'
+    Contains: 'contains'
 };
 /**
  * @export
@@ -306,7 +303,7 @@ function AgentSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'agentType': json['agent_type'],
         'serverBindingMode': json['server_binding_mode'],
         'mcpServerListId': json['mcp_server_list_id'] == null ? undefined : json['mcp_server_list_id'],
-        'serverList': json['serverList'] == null ? undefined : (0, McpServerListResponseDto_1.McpServerListResponseDtoFromJSON)(json['serverList']),
+        'serverList': json['serverList'] == null ? undefined : (0, AgentMcpServerListResponseDto_1.AgentMcpServerListResponseDtoFromJSON)(json['serverList']),
         'mcpServerIds': json['mcp_server_ids'] == null ? undefined : json['mcp_server_ids'],
         'servers': json['servers'] == null ? undefined : (json['servers'].map(McpServerResponseDto_1.McpServerResponseDtoFromJSON)),
         'knowledgeBasePermissions': json['knowledge_base_permissions'] == null ? undefined : json['knowledge_base_permissions'],
@@ -409,7 +406,7 @@ function AgentSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'agent_type': value['agentType'],
         'server_binding_mode': value['serverBindingMode'],
         'mcp_server_list_id': value['mcpServerListId'],
-        'serverList': (0, McpServerListResponseDto_1.McpServerListResponseDtoToJSON)(value['serverList']),
+        'serverList': (0, AgentMcpServerListResponseDto_1.AgentMcpServerListResponseDtoToJSON)(value['serverList']),
         'mcp_server_ids': value['mcpServerIds'],
         'servers': value['servers'] == null ? undefined : (value['servers'].map(McpServerResponseDto_1.McpServerResponseDtoToJSON)),
         'knowledge_base_permissions': value['knowledgeBasePermissions'],

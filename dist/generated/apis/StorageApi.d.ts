@@ -81,10 +81,12 @@ export declare class StorageApi extends runtime.BaseAPI {
      */
     getFiles(requestParameters: GetFilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageFilesListResponseDto>;
     /**
+     * .
      *
      */
     getIncomingPolicyRaw(requestParameters: GetIncomingPolicyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IncomingStoragePolicyDto>>;
     /**
+     * .
      *
      */
     getIncomingPolicy(requestParameters: GetIncomingPolicyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IncomingStoragePolicyDto>;
@@ -109,10 +111,12 @@ export declare class StorageApi extends runtime.BaseAPI {
      */
     getStats(requestParameters: GetStatsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageStatsResponseDto>;
     /**
+     * .
      *
      */
     updateIncomingPolicyRaw(requestParameters: UpdateIncomingPolicyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IncomingStoragePolicyDto>>;
     /**
+     * .
      *
      */
     updateIncomingPolicy(requestParameters: UpdateIncomingPolicyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IncomingStoragePolicyDto>;
