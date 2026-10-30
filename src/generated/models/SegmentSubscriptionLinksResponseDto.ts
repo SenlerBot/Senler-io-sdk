@@ -28,7 +28,7 @@ import {
  */
 export interface SegmentSubscriptionLinksResponseDto {
     /**
-     * channels.
+     * . .
      * @type {Array<DirectSubscriptionChannelLinksDto>}
      * @memberof SegmentSubscriptionLinksResponseDto
      */

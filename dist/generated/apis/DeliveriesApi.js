@@ -597,7 +597,7 @@ class DeliveriesApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , , . ; filter_source=query , , . .
+     * , , . ; filter_source=query , , . , . . .
      * preview
      */
     async getAudiencePreviewRaw(requestParameters, initOverrides) {
@@ -657,7 +657,7 @@ class DeliveriesApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DeliveryAudiencePreviewResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , , . ; filter_source=query , , . .
+     * , , . ; filter_source=query , , . , . . .
      * preview
      */
     async getAudiencePreview(requestParameters, initOverrides) {

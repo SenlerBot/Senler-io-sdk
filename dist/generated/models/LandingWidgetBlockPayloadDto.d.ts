@@ -10,6 +10,8 @@
  * Do not edit the class manually.
  */
 import type { LandingWidgetAppearanceDto } from './LandingWidgetAppearanceDto';
+import type { WidgetWelcomeSelectionDto } from './WidgetWelcomeSelectionDto';
+import type { LandingWidgetFeaturesDto } from './LandingWidgetFeaturesDto';
 import type { LandingButtonContentDto } from './LandingButtonContentDto';
 /**
  * LandingWidgetBlockPayloadDto.
@@ -47,6 +49,18 @@ export interface LandingWidgetBlockPayloadDto {
      * @memberof LandingWidgetBlockPayloadDto
      */
     appearance: LandingWidgetAppearanceDto | null;
+    /**
+     * . .
+     * @type {LandingWidgetFeaturesDto}
+     * @memberof LandingWidgetBlockPayloadDto
+     */
+    features?: LandingWidgetFeaturesDto;
+    /**
+     * . . .
+     * @type {WidgetWelcomeSelectionDto}
+     * @memberof LandingWidgetBlockPayloadDto
+     */
+    welcome?: WidgetWelcomeSelectionDto;
 }
 /**
  * @export

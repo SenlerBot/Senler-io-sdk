@@ -20,6 +20,20 @@ import {
     LandingWidgetAppearanceDtoToJSON,
     LandingWidgetAppearanceDtoToJSONTyped,
 } from './LandingWidgetAppearanceDto';
+import type { WidgetWelcomeSelectionDto } from './WidgetWelcomeSelectionDto';
+import {
+    WidgetWelcomeSelectionDtoFromJSON,
+    WidgetWelcomeSelectionDtoFromJSONTyped,
+    WidgetWelcomeSelectionDtoToJSON,
+    WidgetWelcomeSelectionDtoToJSONTyped,
+} from './WidgetWelcomeSelectionDto';
+import type { LandingWidgetFeaturesDto } from './LandingWidgetFeaturesDto';
+import {
+    LandingWidgetFeaturesDtoFromJSON,
+    LandingWidgetFeaturesDtoFromJSONTyped,
+    LandingWidgetFeaturesDtoToJSON,
+    LandingWidgetFeaturesDtoToJSONTyped,
+} from './LandingWidgetFeaturesDto';
 import type { LandingButtonContentDto } from './LandingButtonContentDto';
 import {
     LandingButtonContentDtoFromJSON,
@@ -64,6 +78,18 @@ export interface LandingWidgetBlockPayloadDto {
      * @memberof LandingWidgetBlockPayloadDto
      */
     appearance: LandingWidgetAppearanceDto | null;
+    /**
+     * . .
+     * @type {LandingWidgetFeaturesDto}
+     * @memberof LandingWidgetBlockPayloadDto
+     */
+    features?: LandingWidgetFeaturesDto;
+    /**
+     * . . .
+     * @type {WidgetWelcomeSelectionDto}
+     * @memberof LandingWidgetBlockPayloadDto
+     */
+    welcome?: WidgetWelcomeSelectionDto;
 }
 
 
@@ -105,6 +131,8 @@ export function LandingWidgetBlockPayloadDtoFromJSONTyped(json: any, ignoreDiscr
         'height': json['height'],
         'trigger': LandingButtonContentDtoFromJSON(json['trigger']),
         'appearance': LandingWidgetAppearanceDtoFromJSON(json['appearance']),
+        'features': json['features'] == null ? undefined : LandingWidgetFeaturesDtoFromJSON(json['features']),
+        'welcome': json['welcome'] == null ? undefined : WidgetWelcomeSelectionDtoFromJSON(json['welcome']),
     };
 }
 
@@ -124,5 +152,7 @@ export function LandingWidgetBlockPayloadDtoToJSONTyped(value?: LandingWidgetBlo
         'height': value['height'],
         'trigger': LandingButtonContentDtoToJSON(value['trigger']),
         'appearance': LandingWidgetAppearanceDtoToJSON(value['appearance']),
+        'features': LandingWidgetFeaturesDtoToJSON(value['features']),
+        'welcome': WidgetWelcomeSelectionDtoToJSON(value['welcome']),
     };
 }

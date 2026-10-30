@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface ReplyTargetMaxChannelDataDto {
     /**
+     * ID MAX:
+     * @type {string}
+     * @memberof ReplyTargetMaxChannelDataDto
+     */
+    postId?: string;
+    /**
      * ID MAX
      * @type {string}
      * @memberof ReplyTargetMaxChannelDataDto
@@ -68,6 +74,7 @@ export function ReplyTargetMaxChannelDataDtoFromJSONTyped(json: any, ignoreDiscr
     }
     return {
 
+        'postId': json['post_id'] == null ? undefined : json['post_id'],
         'chatId': json['chat_id'],
         'chatType': json['chat_type'],
         'title': json['title'] == null ? undefined : json['title'],
@@ -85,6 +92,7 @@ export function ReplyTargetMaxChannelDataDtoToJSONTyped(value?: ReplyTargetMaxCh
 
     return {
 
+        'post_id': value['postId'],
         'chat_id': value['chatId'],
         'chat_type': value['chatType'],
         'title': value['title'],

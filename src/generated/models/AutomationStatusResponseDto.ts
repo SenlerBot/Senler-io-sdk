@@ -25,12 +25,6 @@ export interface AutomationStatusResponseDto {
      * @memberof AutomationStatusResponseDto
      */
     status: AutomationStatusResponseDtoStatusEnum;
-    /**
-     * .
-     * @type {boolean}
-     * @memberof AutomationStatusResponseDto
-     */
-    acceptNewTriggers: boolean;
 }
 
 
@@ -51,7 +45,6 @@ export type AutomationStatusResponseDtoStatusEnum = typeof AutomationStatusRespo
  */
 export function instanceOfAutomationStatusResponseDto(value: object): value is AutomationStatusResponseDto {
     if (!('status' in value) || value['status'] === undefined) return false;
-    if (!('acceptNewTriggers' in value) || value['acceptNewTriggers'] === undefined) return false;
     return true;
 }
 
@@ -66,7 +59,6 @@ export function AutomationStatusResponseDtoFromJSONTyped(json: any, ignoreDiscri
     return {
 
         'status': json['status'],
-        'acceptNewTriggers': json['accept_new_triggers'],
     };
 }
 
@@ -82,6 +74,5 @@ export function AutomationStatusResponseDtoToJSONTyped(value?: AutomationStatusR
     return {
 
         'status': value['status'],
-        'accept_new_triggers': value['acceptNewTriggers'],
     };
 }

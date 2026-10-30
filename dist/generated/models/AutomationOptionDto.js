@@ -77,8 +77,6 @@ function instanceOfAutomationOptionDto(value) {
         return false;
     if (!('status' in value) || value['status'] === undefined)
         return false;
-    if (!('acceptNewTriggers' in value) || value['acceptNewTriggers'] === undefined)
-        return false;
     if (!('isReadOnly' in value) || value['isReadOnly'] === undefined)
         return false;
     if (!('publishedVersionId' in value) || value['publishedVersionId'] === undefined)
@@ -104,7 +102,6 @@ function AutomationOptionDtoFromJSONTyped(json, ignoreDiscriminator) {
         'type': json['type'],
         'channelTypes': json['channel_types'],
         'status': json['status'],
-        'acceptNewTriggers': json['accept_new_triggers'],
         'isReadOnly': json['is_read_only'],
         'publishedVersionId': json['published_version_id'],
     };
@@ -128,7 +125,6 @@ function AutomationOptionDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'type': value['type'],
         'channel_types': value['channelTypes'],
         'status': value['status'],
-        'accept_new_triggers': value['acceptNewTriggers'],
         'is_read_only': value['isReadOnly'],
         'published_version_id': value['publishedVersionId'],
     };

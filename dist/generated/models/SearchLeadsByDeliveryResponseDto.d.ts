@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { DeliveryLeadCountsDto } from './DeliveryLeadCountsDto';
+import type { DeliveryChannelCountsDto } from './DeliveryChannelCountsDto';
 import type { DeliveryLeadDto } from './DeliveryLeadDto';
 /**
  * SearchLeadsByDeliveryResponseDto.
@@ -18,19 +19,25 @@ import type { DeliveryLeadDto } from './DeliveryLeadDto';
  */
 export interface SearchLeadsByDeliveryResponseDto {
     /**
-     *
+     * . counts counts_by_channel.
      * @type {Array<DeliveryLeadDto>}
      * @memberof SearchLeadsByDeliveryResponseDto
      */
     items: Array<DeliveryLeadDto>;
     /**
-     *
+     * , channel_ids lead_id; result.
      * @type {DeliveryLeadCountsDto}
      * @memberof SearchLeadsByDeliveryResponseDto
      */
     counts: DeliveryLeadCountsDto;
     /**
-     *
+     * , counts. .
+     * @type {Array<DeliveryChannelCountsDto>}
+     * @memberof SearchLeadsByDeliveryResponseDto
+     */
+    countsByChannel: Array<DeliveryChannelCountsDto>;
+    /**
+     * cursor . null , .
      * @type {string}
      * @memberof SearchLeadsByDeliveryResponseDto
      */

@@ -934,7 +934,7 @@ export class DeliveriesApi extends runtime.BaseAPI {
     }
 
     /**
-     * , , . ; filter_source=query , , . .
+     * , , . ; filter_source=query , , . , . . .
      * preview
      */
     async getAudiencePreviewRaw(requestParameters: GetAudiencePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryAudiencePreviewResponseDto>> {
@@ -1014,7 +1014,7 @@ export class DeliveriesApi extends runtime.BaseAPI {
     }
 
     /**
-     * , , . ; filter_source=query , , . .
+     * , , . ; filter_source=query , , . , . . .
      * preview
      */
     async getAudiencePreview(requestParameters: GetAudiencePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryAudiencePreviewResponseDto> {

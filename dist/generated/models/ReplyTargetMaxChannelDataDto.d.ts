@@ -16,6 +16,12 @@
  */
 export interface ReplyTargetMaxChannelDataDto {
     /**
+     * ID MAX:
+     * @type {string}
+     * @memberof ReplyTargetMaxChannelDataDto
+     */
+    postId?: string;
+    /**
      * ID MAX
      * @type {string}
      * @memberof ReplyTargetMaxChannelDataDto

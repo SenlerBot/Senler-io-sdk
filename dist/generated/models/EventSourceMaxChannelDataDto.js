@@ -48,6 +48,7 @@ function EventSourceMaxChannelDataDtoFromJSONTyped(json, ignoreDiscriminator) {
         'fromId': json['from_id'] == null ? undefined : json['from_id'],
         'messageId': json['message_id'] == null ? undefined : json['message_id'],
         'replyToMessageId': json['reply_to_message_id'] == null ? undefined : json['reply_to_message_id'],
+        'postId': json['post_id'] == null ? undefined : json['post_id'],
         'chatType': json['chat_type'],
     };
 }
@@ -64,6 +65,7 @@ function EventSourceMaxChannelDataDtoToJSONTyped(value, ignoreDiscriminator = fa
         'from_id': value['fromId'],
         'message_id': value['messageId'],
         'reply_to_message_id': value['replyToMessageId'],
+        'post_id': value['postId'],
         'chat_type': value['chatType'],
     };
 }

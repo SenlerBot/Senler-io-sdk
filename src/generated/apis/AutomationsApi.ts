@@ -68,7 +68,6 @@ import type {
   RetryAutomationTaskResponseDto,
   SendFirstTestMessageDto,
   SendFirstTestMessageResponseDto,
-  SetAutomationTriggerIntakeDto,
   SimulateAutomationTriggerTestEventDto,
   StartAutomationRunDto,
   StartAutomationRunResponseDto,
@@ -186,8 +185,6 @@ import {
     SendFirstTestMessageDtoToJSON,
     SendFirstTestMessageResponseDtoFromJSON,
     SendFirstTestMessageResponseDtoToJSON,
-    SetAutomationTriggerIntakeDtoFromJSON,
-    SetAutomationTriggerIntakeDtoToJSON,
     SimulateAutomationTriggerTestEventDtoFromJSON,
     SimulateAutomationTriggerTestEventDtoToJSON,
     StartAutomationRunDtoFromJSON,
@@ -568,12 +565,6 @@ export interface UpdateNodesHttpResponseSampleRequest {
     nodeId: string;
     updateAutomationHttpResponseSampleDto: UpdateAutomationHttpResponseSampleDto;
     acceptLanguage?: UpdateNodesHttpResponseSampleAcceptLanguageEnum;
-}
-
-export interface UpdateTriggerIntakeRequest {
-    automationId: string;
-    setAutomationTriggerIntakeDto: SetAutomationTriggerIntakeDto;
-    acceptLanguage?: UpdateTriggerIntakeAcceptLanguageEnum;
 }
 
 export interface ValidateRequest {
@@ -1408,7 +1399,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * durable pause Runner, API status; starts parked.
+     * .
      *
      */
     async automationsPauseRaw(requestParameters: AutomationsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationStatusResponseDto>> {
@@ -1456,7 +1447,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * durable pause Runner, API status; starts parked.
+     * .
      *
      */
     async automationsPause(requestParameters: AutomationsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto> {
@@ -3433,7 +3424,7 @@ export class AutomationsApi extends runtime.BaseAPI {
 
     /**
      * parked tasks queued/waiting available_at, API status.
-     * parked- Runner
+     *
      */
     async resumeRaw(requestParameters: ResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationStatusResponseDto>> {
         if (requestParameters['automationId'] == null) {
@@ -3481,7 +3472,7 @@ export class AutomationsApi extends runtime.BaseAPI {
 
     /**
      * parked tasks queued/waiting available_at, API status.
-     * parked- Runner
+     *
      */
     async resume(requestParameters: ResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto> {
         const response = await this.resumeRaw(requestParameters, initOverrides);
@@ -4195,73 +4186,6 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * runs .
-     *
-     */
-    async updateTriggerIntakeRaw(requestParameters: UpdateTriggerIntakeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationStatusResponseDto>> {
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError(
-                'automationId',
-                'Required parameter "automationId" was null or undefined when calling updateTriggerIntake().'
-            );
-        }
-
-        if (requestParameters['setAutomationTriggerIntakeDto'] == null) {
-            throw new runtime.RequiredError(
-                'setAutomationTriggerIntakeDto',
-                'Required parameter "setAutomationTriggerIntakeDto" was null or undefined when calling updateTriggerIntake().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
-        }
-
-        const response = await this.request({
-            path: `/api/automations/{automationId}/trigger-intake`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: SetAutomationTriggerIntakeDtoToJSON(requestParameters['setAutomationTriggerIntakeDto']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationStatusResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * runs .
-     *
-     */
-    async updateTriggerIntake(requestParameters: UpdateTriggerIntakeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto> {
-        const response = await this.updateTriggerIntakeRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
      * , , , , . .
      *
      */
@@ -4924,14 +4848,6 @@ export const UpdateNodesHttpResponseSampleAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateNodesHttpResponseSampleAcceptLanguageEnum = typeof UpdateNodesHttpResponseSampleAcceptLanguageEnum[keyof typeof UpdateNodesHttpResponseSampleAcceptLanguageEnum];
-/**
- * @export
- */
-export const UpdateTriggerIntakeAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type UpdateTriggerIntakeAcceptLanguageEnum = typeof UpdateTriggerIntakeAcceptLanguageEnum[keyof typeof UpdateTriggerIntakeAcceptLanguageEnum];
 /**
  * @export
  */

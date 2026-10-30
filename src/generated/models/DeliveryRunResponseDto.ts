@@ -38,7 +38,7 @@ export interface DeliveryRunResponseDto {
      */
     processId: string | null;
     /**
-     *
+     * . completed ; .
      * @type {string}
      * @memberof DeliveryRunResponseDto
      */
@@ -50,13 +50,13 @@ export interface DeliveryRunResponseDto {
      */
     totalCount: number;
     /**
-     *
+     * . : .
      * @type {number}
      * @memberof DeliveryRunResponseDto
      */
     sentCount: number;
     /**
-     *
+     * . .
      * @type {number}
      * @memberof DeliveryRunResponseDto
      */

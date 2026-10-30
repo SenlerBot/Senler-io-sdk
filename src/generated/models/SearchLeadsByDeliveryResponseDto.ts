@@ -20,6 +20,13 @@ import {
     DeliveryLeadCountsDtoToJSON,
     DeliveryLeadCountsDtoToJSONTyped,
 } from './DeliveryLeadCountsDto';
+import type { DeliveryChannelCountsDto } from './DeliveryChannelCountsDto';
+import {
+    DeliveryChannelCountsDtoFromJSON,
+    DeliveryChannelCountsDtoFromJSONTyped,
+    DeliveryChannelCountsDtoToJSON,
+    DeliveryChannelCountsDtoToJSONTyped,
+} from './DeliveryChannelCountsDto';
 import type { DeliveryLeadDto } from './DeliveryLeadDto';
 import {
     DeliveryLeadDtoFromJSON,
@@ -35,19 +42,25 @@ import {
  */
 export interface SearchLeadsByDeliveryResponseDto {
     /**
-     *
+     * . counts counts_by_channel.
      * @type {Array<DeliveryLeadDto>}
      * @memberof SearchLeadsByDeliveryResponseDto
      */
     items: Array<DeliveryLeadDto>;
     /**
-     *
+     * , channel_ids lead_id; result.
      * @type {DeliveryLeadCountsDto}
      * @memberof SearchLeadsByDeliveryResponseDto
      */
     counts: DeliveryLeadCountsDto;
     /**
-     *
+     * , counts. .
+     * @type {Array<DeliveryChannelCountsDto>}
+     * @memberof SearchLeadsByDeliveryResponseDto
+     */
+    countsByChannel: Array<DeliveryChannelCountsDto>;
+    /**
+     * cursor . null , .
      * @type {string}
      * @memberof SearchLeadsByDeliveryResponseDto
      */
@@ -60,6 +73,7 @@ export interface SearchLeadsByDeliveryResponseDto {
 export function instanceOfSearchLeadsByDeliveryResponseDto(value: object): value is SearchLeadsByDeliveryResponseDto {
     if (!('items' in value) || value['items'] === undefined) return false;
     if (!('counts' in value) || value['counts'] === undefined) return false;
+    if (!('countsByChannel' in value) || value['countsByChannel'] === undefined) return false;
     if (!('nextCursor' in value) || value['nextCursor'] === undefined) return false;
     return true;
 }
@@ -76,6 +90,7 @@ export function SearchLeadsByDeliveryResponseDtoFromJSONTyped(json: any, ignoreD
 
         'items': ((json['items'] as Array<any>).map(DeliveryLeadDtoFromJSON)),
         'counts': DeliveryLeadCountsDtoFromJSON(json['counts']),
+        'countsByChannel': ((json['counts_by_channel'] as Array<any>).map(DeliveryChannelCountsDtoFromJSON)),
         'nextCursor': json['next_cursor'],
     };
 }
@@ -93,6 +108,7 @@ export function SearchLeadsByDeliveryResponseDtoToJSONTyped(value?: SearchLeadsB
 
         'items': ((value['items'] as Array<any>).map(DeliveryLeadDtoToJSON)),
         'counts': DeliveryLeadCountsDtoToJSON(value['counts']),
+        'counts_by_channel': ((value['countsByChannel'] as Array<any>).map(DeliveryChannelCountsDtoToJSON)),
         'next_cursor': value['nextCursor'],
     };
 }

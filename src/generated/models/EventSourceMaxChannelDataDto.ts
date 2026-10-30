@@ -50,6 +50,12 @@ export interface EventSourceMaxChannelDataDto {
      */
     replyToMessageId?: string;
     /**
+     * ID ,
+     * @type {string}
+     * @memberof EventSourceMaxChannelDataDto
+     */
+    postId?: string;
+    /**
      * MAX
      * @type {string}
      * @memberof EventSourceMaxChannelDataDto
@@ -91,6 +97,7 @@ export function EventSourceMaxChannelDataDtoFromJSONTyped(json: any, ignoreDiscr
         'fromId': json['from_id'] == null ? undefined : json['from_id'],
         'messageId': json['message_id'] == null ? undefined : json['message_id'],
         'replyToMessageId': json['reply_to_message_id'] == null ? undefined : json['reply_to_message_id'],
+        'postId': json['post_id'] == null ? undefined : json['post_id'],
         'chatType': json['chat_type'],
     };
 }
@@ -111,6 +118,7 @@ export function EventSourceMaxChannelDataDtoToJSONTyped(value?: EventSourceMaxCh
         'from_id': value['fromId'],
         'message_id': value['messageId'],
         'reply_to_message_id': value['replyToMessageId'],
+        'post_id': value['postId'],
         'chat_type': value['chatType'],
     };
 }

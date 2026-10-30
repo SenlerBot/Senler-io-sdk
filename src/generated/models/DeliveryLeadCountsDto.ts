@@ -26,11 +26,23 @@ export interface DeliveryLeadCountsDto {
      */
     all: number;
     /**
-     *
+     * ; . delivered.
      * @type {number}
      * @memberof DeliveryLeadCountsDto
      */
     sent: number;
+    /**
+     * . .
+     * @type {number}
+     * @memberof DeliveryLeadCountsDto
+     */
+    delivered: number;
+    /**
+     * , .
+     * @type {number}
+     * @memberof DeliveryLeadCountsDto
+     */
+    pendingDelivery: number;
     /**
      *
      * @type {number}
@@ -51,6 +63,8 @@ export interface DeliveryLeadCountsDto {
 export function instanceOfDeliveryLeadCountsDto(value: object): value is DeliveryLeadCountsDto {
     if (!('all' in value) || value['all'] === undefined) return false;
     if (!('sent' in value) || value['sent'] === undefined) return false;
+    if (!('delivered' in value) || value['delivered'] === undefined) return false;
+    if (!('pendingDelivery' in value) || value['pendingDelivery'] === undefined) return false;
     if (!('failed' in value) || value['failed'] === undefined) return false;
     if (!('notSent' in value) || value['notSent'] === undefined) return false;
     return true;
@@ -68,6 +82,8 @@ export function DeliveryLeadCountsDtoFromJSONTyped(json: any, ignoreDiscriminato
 
         'all': json['all'],
         'sent': json['sent'],
+        'delivered': json['delivered'],
+        'pendingDelivery': json['pending_delivery'],
         'failed': json['failed'],
         'notSent': json['not_sent'],
     };
@@ -86,6 +102,8 @@ export function DeliveryLeadCountsDtoToJSONTyped(value?: DeliveryLeadCountsDto |
 
         'all': value['all'],
         'sent': value['sent'],
+        'delivered': value['delivered'],
+        'pending_delivery': value['pendingDelivery'],
         'failed': value['failed'],
         'not_sent': value['notSent'],
     };

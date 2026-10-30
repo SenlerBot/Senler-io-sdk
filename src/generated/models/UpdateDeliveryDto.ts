@@ -47,7 +47,7 @@ export interface UpdateDeliveryDto {
      */
     filters?: DeliveryAudienceFilterDto;
     /**
-     * . .
+     * . . {{lead_data.first_name}}; {{#if lead_data.first_name}}, {{lead_data.first_name}}!{{else}}!{{/if}}. , {first_name}, : , . https://senler.io/help/ru/deliveries/message; .
      * @type {string}
      * @memberof UpdateDeliveryDto
      */

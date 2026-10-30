@@ -28,7 +28,7 @@ import {
  */
 export interface LandingWidgetAppearanceDto {
     /**
-     * : block , widget , .
+     * : block , ; widget , .
      * @type {string}
      * @memberof LandingWidgetAppearanceDto
      */

@@ -895,7 +895,7 @@ export class SegmentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . Mini App- .
+     * . , . Mini App- .
      *
      */
     async getSubscriptionLinksRaw(requestParameters: GetSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentSubscriptionLinksResponseDto>> {
@@ -943,7 +943,7 @@ export class SegmentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . Mini App- .
+     * . , . Mini App- .
      *
      */
     async getSubscriptionLinks(requestParameters: GetSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentSubscriptionLinksResponseDto> {
@@ -1016,7 +1016,7 @@ export class SegmentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , .
+     * . ; .
      *
      */
     async segmentsCreateRaw(requestParameters: SegmentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>> {
@@ -1078,7 +1078,7 @@ export class SegmentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , .
+     * . ; .
      *
      */
     async segmentsCreate(requestParameters: SegmentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto> {

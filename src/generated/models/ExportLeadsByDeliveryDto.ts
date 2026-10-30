@@ -44,7 +44,7 @@ export interface ExportLeadsByDeliveryDto {
      */
     channelIds?: Array<string>;
     /**
-     * ID ,
+     * ID . ; , .
      * @type {string}
      * @memberof ExportLeadsByDeliveryDto
      */

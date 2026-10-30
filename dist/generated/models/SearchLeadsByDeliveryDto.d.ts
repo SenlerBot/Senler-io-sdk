@@ -40,7 +40,7 @@ export interface SearchLeadsByDeliveryDto {
      */
     channelIds?: Array<string>;
     /**
-     * ID ,
+     * ID . ; , .
      * @type {string}
      * @memberof SearchLeadsByDeliveryDto
      */

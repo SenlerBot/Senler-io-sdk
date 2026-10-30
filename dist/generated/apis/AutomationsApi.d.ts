@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAttentionSummaryDto, AutomationAvatarUploadUrlResponseDto, AutomationEdgeResponseDto, AutomationGraphResponseDto, AutomationHttpPreviewDto, AutomationHttpPreviewResponseDto, AutomationHttpResponseSampleDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationOperationsResponseDto, AutomationOperatorOptionsDto, AutomationOptionsResponseDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationTriggerTestSessionResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, CancelAutomationRunResponseDto, ChannelDeliveryRecoveryPageDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CreateAutomationTriggerTestSessionDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, FunnelOptionsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportAttachmentDto, ImportImageDto, LayoutAutomationDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SetAutomationTriggerIntakeDto, SimulateAutomationTriggerTestEventDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationHttpResponseSampleDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
+import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAttentionSummaryDto, AutomationAvatarUploadUrlResponseDto, AutomationEdgeResponseDto, AutomationGraphResponseDto, AutomationHttpPreviewDto, AutomationHttpPreviewResponseDto, AutomationHttpResponseSampleDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationOperationsResponseDto, AutomationOperatorOptionsDto, AutomationOptionsResponseDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationTriggerTestSessionResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, CancelAutomationRunResponseDto, ChannelDeliveryRecoveryPageDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CreateAutomationTriggerTestSessionDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, FunnelOptionsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportAttachmentDto, ImportImageDto, LayoutAutomationDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SimulateAutomationTriggerTestEventDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationHttpResponseSampleDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
 export interface AttachmentsConfirmRequest {
     automationId: string;
     confirmUploadDto: ConfirmUploadDto;
@@ -321,11 +321,6 @@ export interface UpdateNodesHttpResponseSampleRequest {
     updateAutomationHttpResponseSampleDto: UpdateAutomationHttpResponseSampleDto;
     acceptLanguage?: UpdateNodesHttpResponseSampleAcceptLanguageEnum;
 }
-export interface UpdateTriggerIntakeRequest {
-    automationId: string;
-    setAutomationTriggerIntakeDto: SetAutomationTriggerIntakeDto;
-    acceptLanguage?: UpdateTriggerIntakeAcceptLanguageEnum;
-}
 export interface ValidateRequest {
     automationId: string;
     acceptLanguage?: ValidateAcceptLanguageEnum;
@@ -462,12 +457,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     automationsList(requestParameters: AutomationsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationListResponseDto>;
     /**
-     * durable pause Runner, API status; starts parked.
+     * .
      *
      */
     automationsPauseRaw(requestParameters: AutomationsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationStatusResponseDto>>;
     /**
-     * durable pause Runner, API status; starts parked.
+     * .
      *
      */
     automationsPause(requestParameters: AutomationsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto>;
@@ -753,12 +748,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
     publish(requestParameters: PublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationVersionInfoDto>;
     /**
      * parked tasks queued/waiting available_at, API status.
-     * parked- Runner
+     *
      */
     resumeRaw(requestParameters: ResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationStatusResponseDto>>;
     /**
      * parked tasks queued/waiting available_at, API status.
-     * parked- Runner
+     *
      */
     resume(requestParameters: ResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto>;
     /**
@@ -861,16 +856,6 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      * JSON- HTTP-
      */
     updateNodesHttpResponseSample(requestParameters: UpdateNodesHttpResponseSampleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationHttpResponseSampleDto>;
-    /**
-     * runs .
-     *
-     */
-    updateTriggerIntakeRaw(requestParameters: UpdateTriggerIntakeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationStatusResponseDto>>;
-    /**
-     * runs .
-     *
-     */
-    updateTriggerIntake(requestParameters: UpdateTriggerIntakeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationStatusResponseDto>;
     /**
      * , , , , . .
      *
@@ -1418,14 +1403,6 @@ export declare const UpdateNodesHttpResponseSampleAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateNodesHttpResponseSampleAcceptLanguageEnum = typeof UpdateNodesHttpResponseSampleAcceptLanguageEnum[keyof typeof UpdateNodesHttpResponseSampleAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateTriggerIntakeAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateTriggerIntakeAcceptLanguageEnum = typeof UpdateTriggerIntakeAcceptLanguageEnum[keyof typeof UpdateTriggerIntakeAcceptLanguageEnum];
 /**
  * @export
  */

@@ -22,11 +22,23 @@ export interface DeliveryLeadCountsDto {
      */
     all: number;
     /**
-     *
+     * ; . delivered.
      * @type {number}
      * @memberof DeliveryLeadCountsDto
      */
     sent: number;
+    /**
+     * . .
+     * @type {number}
+     * @memberof DeliveryLeadCountsDto
+     */
+    delivered: number;
+    /**
+     * , .
+     * @type {number}
+     * @memberof DeliveryLeadCountsDto
+     */
+    pendingDelivery: number;
     /**
      *
      * @type {number}

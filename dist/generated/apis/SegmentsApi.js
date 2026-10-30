@@ -583,7 +583,7 @@ class SegmentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . Mini App- .
+     * . , . Mini App- .
      *
      */
     async getSubscriptionLinksRaw(requestParameters, initOverrides) {
@@ -619,7 +619,7 @@ class SegmentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentSubscriptionLinksResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . Mini App- .
+     * . , . Mini App- .
      *
      */
     async getSubscriptionLinks(requestParameters, initOverrides) {
@@ -674,7 +674,7 @@ class SegmentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , .
+     * . ; .
      *
      */
     async segmentsCreateRaw(requestParameters, initOverrides) {
@@ -718,7 +718,7 @@ class SegmentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SegmentResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , .
+     * . ; .
      *
      */
     async segmentsCreate(requestParameters, initOverrides) {

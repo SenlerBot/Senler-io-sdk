@@ -227,12 +227,12 @@ export declare class DeliveriesApi extends runtime.BaseAPI {
      */
     deliveriesUpdate(requestParameters: DeliveriesUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryResponseDto>;
     /**
-     * , , . ; filter_source=query , , . .
+     * , , . ; filter_source=query , , . , . . .
      * preview
      */
     getAudiencePreviewRaw(requestParameters: GetAudiencePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeliveryAudiencePreviewResponseDto>>;
     /**
-     * , , . ; filter_source=query , , . .
+     * , , . ; filter_source=query , , . , . . .
      * preview
      */
     getAudiencePreview(requestParameters: GetAudiencePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeliveryAudiencePreviewResponseDto>;

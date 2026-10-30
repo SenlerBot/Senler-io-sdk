@@ -20,6 +20,8 @@ exports.LandingWidgetBlockPayloadDtoFromJSONTyped = LandingWidgetBlockPayloadDto
 exports.LandingWidgetBlockPayloadDtoToJSON = LandingWidgetBlockPayloadDtoToJSON;
 exports.LandingWidgetBlockPayloadDtoToJSONTyped = LandingWidgetBlockPayloadDtoToJSONTyped;
 const LandingWidgetAppearanceDto_1 = require("./LandingWidgetAppearanceDto");
+const WidgetWelcomeSelectionDto_1 = require("./WidgetWelcomeSelectionDto");
+const LandingWidgetFeaturesDto_1 = require("./LandingWidgetFeaturesDto");
 const LandingButtonContentDto_1 = require("./LandingButtonContentDto");
 /**
  * @export
@@ -58,6 +60,8 @@ function LandingWidgetBlockPayloadDtoFromJSONTyped(json, ignoreDiscriminator) {
         'height': json['height'],
         'trigger': (0, LandingButtonContentDto_1.LandingButtonContentDtoFromJSON)(json['trigger']),
         'appearance': (0, LandingWidgetAppearanceDto_1.LandingWidgetAppearanceDtoFromJSON)(json['appearance']),
+        'features': json['features'] == null ? undefined : (0, LandingWidgetFeaturesDto_1.LandingWidgetFeaturesDtoFromJSON)(json['features']),
+        'welcome': json['welcome'] == null ? undefined : (0, WidgetWelcomeSelectionDto_1.WidgetWelcomeSelectionDtoFromJSON)(json['welcome']),
     };
 }
 function LandingWidgetBlockPayloadDtoToJSON(json) {
@@ -73,5 +77,7 @@ function LandingWidgetBlockPayloadDtoToJSONTyped(value, ignoreDiscriminator = fa
         'height': value['height'],
         'trigger': (0, LandingButtonContentDto_1.LandingButtonContentDtoToJSON)(value['trigger']),
         'appearance': (0, LandingWidgetAppearanceDto_1.LandingWidgetAppearanceDtoToJSON)(value['appearance']),
+        'features': (0, LandingWidgetFeaturesDto_1.LandingWidgetFeaturesDtoToJSON)(value['features']),
+        'welcome': (0, WidgetWelcomeSelectionDto_1.WidgetWelcomeSelectionDtoToJSON)(value['welcome']),
     };
 }

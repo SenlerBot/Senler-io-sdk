@@ -46,6 +46,12 @@ export interface EventSourceMaxChannelDataDto {
      */
     replyToMessageId?: string;
     /**
+     * ID ,
+     * @type {string}
+     * @memberof EventSourceMaxChannelDataDto
+     */
+    postId?: string;
+    /**
      * MAX
      * @type {string}
      * @memberof EventSourceMaxChannelDataDto

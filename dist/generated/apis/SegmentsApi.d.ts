@@ -216,12 +216,12 @@ export declare class SegmentsApi extends runtime.BaseAPI {
      */
     getReferences(requestParameters: GetReferencesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentReferencesListResponseDto>;
     /**
-     * . Mini App- .
+     * . , . Mini App- .
      *
      */
     getSubscriptionLinksRaw(requestParameters: GetSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentSubscriptionLinksResponseDto>>;
     /**
-     * . Mini App- .
+     * . , . Mini App- .
      *
      */
     getSubscriptionLinks(requestParameters: GetSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentSubscriptionLinksResponseDto>;
@@ -236,12 +236,12 @@ export declare class SegmentsApi extends runtime.BaseAPI {
      */
     leads(requestParameters: LeadsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadResponseDto>;
     /**
-     * , .
+     * . ; .
      *
      */
     segmentsCreateRaw(requestParameters: SegmentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SegmentResponseDto>>;
     /**
-     * , .
+     * . ; .
      *
      */
     segmentsCreate(requestParameters: SegmentsCreateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentResponseDto>;

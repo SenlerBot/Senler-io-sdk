@@ -43,6 +43,7 @@ function ReplyTargetMaxChannelDataDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'postId': json['post_id'] == null ? undefined : json['post_id'],
         'chatId': json['chat_id'],
         'chatType': json['chat_type'],
         'title': json['title'] == null ? undefined : json['title'],
@@ -56,6 +57,7 @@ function ReplyTargetMaxChannelDataDtoToJSONTyped(value, ignoreDiscriminator = fa
         return value;
     }
     return {
+        'post_id': value['postId'],
         'chat_id': value['chatId'],
         'chat_type': value['chatType'],
         'title': value['title'],

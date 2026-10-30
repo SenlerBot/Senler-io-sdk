@@ -90,12 +90,6 @@ export interface AutomationOptionDto {
      * @type {boolean}
      * @memberof AutomationOptionDto
      */
-    acceptNewTriggers: boolean;
-    /**
-     * .
-     * @type {boolean}
-     * @memberof AutomationOptionDto
-     */
     isReadOnly: boolean;
     /**
      * Mongo ID .
@@ -160,7 +154,6 @@ export function instanceOfAutomationOptionDto(value: object): value is Automatio
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('channelTypes' in value) || value['channelTypes'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
-    if (!('acceptNewTriggers' in value) || value['acceptNewTriggers'] === undefined) return false;
     if (!('isReadOnly' in value) || value['isReadOnly'] === undefined) return false;
     if (!('publishedVersionId' in value) || value['publishedVersionId'] === undefined) return false;
     return true;
@@ -187,7 +180,6 @@ export function AutomationOptionDtoFromJSONTyped(json: any, ignoreDiscriminator:
         'type': json['type'],
         'channelTypes': json['channel_types'],
         'status': json['status'],
-        'acceptNewTriggers': json['accept_new_triggers'],
         'isReadOnly': json['is_read_only'],
         'publishedVersionId': json['published_version_id'],
     };
@@ -215,7 +207,6 @@ export function AutomationOptionDtoToJSONTyped(value?: AutomationOptionDto | nul
         'type': value['type'],
         'channel_types': value['channelTypes'],
         'status': value['status'],
-        'accept_new_triggers': value['acceptNewTriggers'],
         'is_read_only': value['isReadOnly'],
         'published_version_id': value['publishedVersionId'],
     };

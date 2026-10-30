@@ -34,8 +34,6 @@ exports.AutomationStatusResponseDtoStatusEnum = {
 function instanceOfAutomationStatusResponseDto(value) {
     if (!('status' in value) || value['status'] === undefined)
         return false;
-    if (!('acceptNewTriggers' in value) || value['acceptNewTriggers'] === undefined)
-        return false;
     return true;
 }
 function AutomationStatusResponseDtoFromJSON(json) {
@@ -47,7 +45,6 @@ function AutomationStatusResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'status': json['status'],
-        'acceptNewTriggers': json['accept_new_triggers'],
     };
 }
 function AutomationStatusResponseDtoToJSON(json) {
@@ -59,6 +56,5 @@ function AutomationStatusResponseDtoToJSONTyped(value, ignoreDiscriminator = fal
     }
     return {
         'status': value['status'],
-        'accept_new_triggers': value['acceptNewTriggers'],
     };
 }

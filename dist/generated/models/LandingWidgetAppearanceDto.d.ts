@@ -17,7 +17,7 @@ import type { WidgetThemeDto } from './WidgetThemeDto';
  */
 export interface LandingWidgetAppearanceDto {
     /**
-     * : block , widget , .
+     * : block , ; widget , .
      * @type {string}
      * @memberof LandingWidgetAppearanceDto
      */

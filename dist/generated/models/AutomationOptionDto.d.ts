@@ -86,12 +86,6 @@ export interface AutomationOptionDto {
      * @type {boolean}
      * @memberof AutomationOptionDto
      */
-    acceptNewTriggers: boolean;
-    /**
-     * .
-     * @type {boolean}
-     * @memberof AutomationOptionDto
-     */
     isReadOnly: boolean;
     /**
      * Mongo ID .

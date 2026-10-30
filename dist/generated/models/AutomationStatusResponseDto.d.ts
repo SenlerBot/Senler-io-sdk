@@ -21,12 +21,6 @@ export interface AutomationStatusResponseDto {
      * @memberof AutomationStatusResponseDto
      */
     status: AutomationStatusResponseDtoStatusEnum;
-    /**
-     * .
-     * @type {boolean}
-     * @memberof AutomationStatusResponseDto
-     */
-    acceptNewTriggers: boolean;
 }
 /**
  * @export

@@ -28,7 +28,7 @@ export interface DirectSubscriptionAvailableLinkDto {
      */
     status: DirectSubscriptionAvailableLinkDtoStatusEnum;
     /**
-     *
+     * . .
      * @type {string}
      * @memberof DirectSubscriptionAvailableLinkDto
      */

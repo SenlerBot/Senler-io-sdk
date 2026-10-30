@@ -47,7 +47,7 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NodesHttpPreviewAcceptLanguageEnum = exports.NodesAcceptLanguageEnum = exports.LayoutAcceptLanguageEnum = exports.GetTestTriggerSessionsCurrentAcceptLanguageEnum = exports.GetTestTriggerSessionsAcceptLanguageEnum = exports.GetRuns2AcceptLanguageEnum = exports.GetRunsAcceptLanguageEnum = exports.GetRunsStateEnum = exports.GetRunsStatusEnum = exports.GetOptionsAcceptLanguageEnum = exports.GetOptionsChannelTypeEnum = exports.GetOptionsTypeEnum = exports.GetOperatorOptionsAcceptLanguageEnum = exports.GetOperationsAcceptLanguageEnum = exports.GetNodesHttpResponseSampleAcceptLanguageEnum = exports.GetNodeTypesAcceptLanguageEnum = exports.GetNodeTypesAutomationTypeEnum = exports.GetGraphAcceptLanguageEnum = exports.GetGraphViewEnum = exports.GetFunnelOptionsAcceptLanguageEnum = exports.GetDialogsRunsAcceptLanguageEnum = exports.GetDialogsRunsStateEnum = exports.GetDialogsRunsStatusEnum = exports.GetChannelsDeliveryRecoveryAcceptLanguageEnum = exports.GetAttentionAcceptLanguageEnum = exports.GetAttachmentsAcceptLanguageEnum = exports.EdgesAcceptLanguageEnum = exports.DeleteTestTriggerSessionsAcceptLanguageEnum = exports.DeleteNodesAcceptLanguageEnum = exports.DeleteEdgesAcceptLanguageEnum = exports.ChannelsDeliveryRecoveryRetryAcceptLanguageEnum = exports.BatchAcceptLanguageEnum = exports.AutomationsUpdateAcceptLanguageEnum = exports.AutomationsTestDialogMessagesAcceptLanguageEnum = exports.AutomationsPauseAcceptLanguageEnum = exports.AutomationsListAcceptLanguageEnum = exports.AutomationsListChannelTypeEnum = exports.AutomationsListTypeEnum = exports.AutomationsGetVersionsAcceptLanguageEnum = exports.AutomationsGetTestDialogAcceptLanguageEnum = exports.AutomationsGetByIdAcceptLanguageEnum = exports.AutomationsDeactivateAcceptLanguageEnum = exports.AutomationsCreateAcceptLanguageEnum = exports.AutomationsAvatarUploadUrlAcceptLanguageEnum = exports.AutomationsAvatarFromUrlAcceptLanguageEnum = exports.AutomationsAvatarConfirmAcceptLanguageEnum = exports.AttachmentsUploadUrlAcceptLanguageEnum = exports.AttachmentsFromUrlAcceptLanguageEnum = exports.AttachmentsConfirmAcceptLanguageEnum = exports.AutomationsApi = void 0;
-exports.VersionsRestoreAcceptLanguageEnum = exports.ValidateAcceptLanguageEnum = exports.UpdateTriggerIntakeAcceptLanguageEnum = exports.UpdateNodesHttpResponseSampleAcceptLanguageEnum = exports.UpdateNodesAcceptLanguageEnum = exports.TestTriggerSessionsEventsAcceptLanguageEnum = exports.TestTriggerSessionsAcceptLanguageEnum = exports.TestRunsAcceptLanguageEnum = exports.RunsTasksRetryAcceptLanguageEnum = exports.RunsPauseAcceptLanguageEnum = exports.RunsIncidentsResolveAcceptLanguageEnum = exports.RunsCancelAcceptLanguageEnum = exports.RunsAcceptLanguageEnum = exports.ResumeAcceptLanguageEnum = exports.PublishAcceptLanguageEnum = exports.NodesValidateAcceptLanguageEnum = void 0;
+exports.VersionsRestoreAcceptLanguageEnum = exports.ValidateAcceptLanguageEnum = exports.UpdateNodesHttpResponseSampleAcceptLanguageEnum = exports.UpdateNodesAcceptLanguageEnum = exports.TestTriggerSessionsEventsAcceptLanguageEnum = exports.TestTriggerSessionsAcceptLanguageEnum = exports.TestRunsAcceptLanguageEnum = exports.RunsTasksRetryAcceptLanguageEnum = exports.RunsPauseAcceptLanguageEnum = exports.RunsIncidentsResolveAcceptLanguageEnum = exports.RunsCancelAcceptLanguageEnum = exports.RunsAcceptLanguageEnum = exports.ResumeAcceptLanguageEnum = exports.PublishAcceptLanguageEnum = exports.NodesValidateAcceptLanguageEnum = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -662,7 +662,7 @@ class AutomationsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * durable pause Runner, API status; starts parked.
+     * .
      *
      */
     async automationsPauseRaw(requestParameters, initOverrides) {
@@ -698,7 +698,7 @@ class AutomationsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationStatusResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * durable pause Runner, API status; starts parked.
+     * .
      *
      */
     async automationsPause(requestParameters, initOverrides) {
@@ -2169,7 +2169,7 @@ class AutomationsApi extends runtime.BaseAPI {
     }
     /**
      * parked tasks queued/waiting available_at, API status.
-     * parked- Runner
+     *
      */
     async resumeRaw(requestParameters, initOverrides) {
         if (requestParameters['automationId'] == null) {
@@ -2205,7 +2205,7 @@ class AutomationsApi extends runtime.BaseAPI {
     }
     /**
      * parked tasks queued/waiting available_at, API status.
-     * parked- Runner
+     *
      */
     async resume(requestParameters, initOverrides) {
         const response = await this.resumeRaw(requestParameters, initOverrides);
@@ -2713,55 +2713,6 @@ class AutomationsApi extends runtime.BaseAPI {
      */
     async updateNodesHttpResponseSample(requestParameters, initOverrides) {
         const response = await this.updateNodesHttpResponseSampleRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * runs .
-     *
-     */
-    async updateTriggerIntakeRaw(requestParameters, initOverrides) {
-        if (requestParameters['automationId'] == null) {
-            throw new runtime.RequiredError('automationId', 'Required parameter "automationId" was null or undefined when calling updateTriggerIntake().');
-        }
-        if (requestParameters['setAutomationTriggerIntakeDto'] == null) {
-            throw new runtime.RequiredError('setAutomationTriggerIntakeDto', 'Required parameter "setAutomationTriggerIntakeDto" was null or undefined when calling updateTriggerIntake().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
-        }
-        const response = await this.request({
-            path: `/api/automations/{automationId}/trigger-intake`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.SetAutomationTriggerIntakeDtoToJSON)(requestParameters['setAutomationTriggerIntakeDto']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationStatusResponseDtoFromJSON)(jsonValue));
-    }
-    /**
-     * runs .
-     *
-     */
-    async updateTriggerIntake(requestParameters, initOverrides) {
-        const response = await this.updateTriggerIntakeRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -3326,13 +3277,6 @@ exports.UpdateNodesAcceptLanguageEnum = {
  * @export
  */
 exports.UpdateNodesHttpResponseSampleAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
-exports.UpdateTriggerIntakeAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

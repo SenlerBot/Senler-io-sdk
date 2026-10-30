@@ -17,7 +17,7 @@ import type { DirectSubscriptionChannelLinksDto } from './DirectSubscriptionChan
  */
 export interface SegmentSubscriptionLinksResponseDto {
     /**
-     * channels.
+     * . .
      * @type {Array<DirectSubscriptionChannelLinksDto>}
      * @memberof SegmentSubscriptionLinksResponseDto
      */

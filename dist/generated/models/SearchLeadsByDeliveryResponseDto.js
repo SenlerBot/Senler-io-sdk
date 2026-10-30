@@ -19,6 +19,7 @@ exports.SearchLeadsByDeliveryResponseDtoFromJSONTyped = SearchLeadsByDeliveryRes
 exports.SearchLeadsByDeliveryResponseDtoToJSON = SearchLeadsByDeliveryResponseDtoToJSON;
 exports.SearchLeadsByDeliveryResponseDtoToJSONTyped = SearchLeadsByDeliveryResponseDtoToJSONTyped;
 const DeliveryLeadCountsDto_1 = require("./DeliveryLeadCountsDto");
+const DeliveryChannelCountsDto_1 = require("./DeliveryChannelCountsDto");
 const DeliveryLeadDto_1 = require("./DeliveryLeadDto");
 /**
  * Check if a given object implements the SearchLeadsByDeliveryResponseDto interface.
@@ -27,6 +28,8 @@ function instanceOfSearchLeadsByDeliveryResponseDto(value) {
     if (!('items' in value) || value['items'] === undefined)
         return false;
     if (!('counts' in value) || value['counts'] === undefined)
+        return false;
+    if (!('countsByChannel' in value) || value['countsByChannel'] === undefined)
         return false;
     if (!('nextCursor' in value) || value['nextCursor'] === undefined)
         return false;
@@ -42,6 +45,7 @@ function SearchLeadsByDeliveryResponseDtoFromJSONTyped(json, ignoreDiscriminator
     return {
         'items': (json['items'].map(DeliveryLeadDto_1.DeliveryLeadDtoFromJSON)),
         'counts': (0, DeliveryLeadCountsDto_1.DeliveryLeadCountsDtoFromJSON)(json['counts']),
+        'countsByChannel': (json['counts_by_channel'].map(DeliveryChannelCountsDto_1.DeliveryChannelCountsDtoFromJSON)),
         'nextCursor': json['next_cursor'],
     };
 }
@@ -55,6 +59,7 @@ function SearchLeadsByDeliveryResponseDtoToJSONTyped(value, ignoreDiscriminator 
     return {
         'items': (value['items'].map(DeliveryLeadDto_1.DeliveryLeadDtoToJSON)),
         'counts': (0, DeliveryLeadCountsDto_1.DeliveryLeadCountsDtoToJSON)(value['counts']),
+        'counts_by_channel': (value['countsByChannel'].map(DeliveryChannelCountsDto_1.DeliveryChannelCountsDtoToJSON)),
         'next_cursor': value['nextCursor'],
     };
 }

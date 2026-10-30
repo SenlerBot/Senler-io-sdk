@@ -86,12 +86,6 @@ export interface AutomationResponseDto {
      * @type {boolean}
      * @memberof AutomationResponseDto
      */
-    acceptNewTriggers: boolean;
-    /**
-     * .
-     * @type {boolean}
-     * @memberof AutomationResponseDto
-     */
     isReadOnly: boolean;
     /**
      * Mongo ID .
