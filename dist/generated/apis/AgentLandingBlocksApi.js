@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateLandingBlocksWidgetAcceptLanguageEnum = exports.UpdateLandingBlocksVideoAcceptLanguageEnum = exports.UpdateLandingBlocksTimerAcceptLanguageEnum = exports.UpdateLandingBlocksTextAcceptLanguageEnum = exports.UpdateLandingBlocksReviewsAcceptLanguageEnum = exports.UpdateLandingBlocksProductsAcceptLanguageEnum = exports.UpdateLandingBlocksOtherAcceptLanguageEnum = exports.UpdateLandingBlocksInteractiveAcceptLanguageEnum = exports.UpdateLandingBlocksImageAcceptLanguageEnum = exports.UpdateLandingBlocksFeaturesAcceptLanguageEnum = exports.UpdateLandingBlocksCoverAcceptLanguageEnum = exports.UpdateLandingBlocksButtonAcceptLanguageEnum = exports.UpdateLandingBlocksActionSubscribeSegmentAcceptLanguageEnum = exports.UpdateLandingBlocksActionOpenUrlAcceptLanguageEnum = exports.UpdateLandingBlocksActionOpenLandingAcceptLanguageEnum = exports.LandingBlocksWidgetAcceptLanguageEnum = exports.LandingBlocksVideoAcceptLanguageEnum = exports.LandingBlocksTimerAcceptLanguageEnum = exports.LandingBlocksTextAcceptLanguageEnum = exports.LandingBlocksReviewsAcceptLanguageEnum = exports.LandingBlocksProductsAcceptLanguageEnum = exports.LandingBlocksOtherAcceptLanguageEnum = exports.LandingBlocksInteractiveAcceptLanguageEnum = exports.LandingBlocksImageAcceptLanguageEnum = exports.LandingBlocksFeaturesAcceptLanguageEnum = exports.LandingBlocksCoverAcceptLanguageEnum = exports.LandingBlocksButtonAcceptLanguageEnum = exports.DeleteLandingBlocksActionAcceptLanguageEnum = exports.AgentLandingBlocksApi = void 0;
+exports.UpdateLandingBlocksWidgetAcceptLanguageEnum = exports.UpdateLandingBlocksVideoAcceptLanguageEnum = exports.UpdateLandingBlocksTimerAcceptLanguageEnum = exports.UpdateLandingBlocksTextAcceptLanguageEnum = exports.UpdateLandingBlocksReviewsAcceptLanguageEnum = exports.UpdateLandingBlocksProductsAcceptLanguageEnum = exports.UpdateLandingBlocksOtherAcceptLanguageEnum = exports.UpdateLandingBlocksInteractiveAcceptLanguageEnum = exports.UpdateLandingBlocksImageAcceptLanguageEnum = exports.UpdateLandingBlocksHtmlAcceptLanguageEnum = exports.UpdateLandingBlocksFeaturesAcceptLanguageEnum = exports.UpdateLandingBlocksCoverAcceptLanguageEnum = exports.UpdateLandingBlocksButtonAcceptLanguageEnum = exports.UpdateLandingBlocksActionSubscribeSegmentAcceptLanguageEnum = exports.UpdateLandingBlocksActionOpenUrlAcceptLanguageEnum = exports.UpdateLandingBlocksActionOpenLandingAcceptLanguageEnum = exports.LandingBlocksWidgetAcceptLanguageEnum = exports.LandingBlocksVideoAcceptLanguageEnum = exports.LandingBlocksTimerAcceptLanguageEnum = exports.LandingBlocksTextAcceptLanguageEnum = exports.LandingBlocksReviewsAcceptLanguageEnum = exports.LandingBlocksProductsAcceptLanguageEnum = exports.LandingBlocksOtherAcceptLanguageEnum = exports.LandingBlocksInteractiveAcceptLanguageEnum = exports.LandingBlocksImageAcceptLanguageEnum = exports.LandingBlocksHtmlAcceptLanguageEnum = exports.LandingBlocksFeaturesAcceptLanguageEnum = exports.LandingBlocksCoverAcceptLanguageEnum = exports.LandingBlocksButtonAcceptLanguageEnum = exports.DeleteLandingBlocksActionAcceptLanguageEnum = exports.AgentLandingBlocksApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -274,6 +274,61 @@ class AgentLandingBlocksApi extends runtime.BaseAPI {
      */
     async landingBlocksFeatures(requestParameters, initOverrides) {
         const response = await this.landingBlocksFeaturesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     * html
+     */
+    async landingBlocksHtmlRaw(requestParameters, initOverrides) {
+        if (requestParameters['resourceId'] == null) {
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling landingBlocksHtml().');
+        }
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingBlocksHtml().');
+        }
+        if (requestParameters['createHtmlLandingBlockDto'] == null) {
+            throw new runtime.RequiredError('createHtmlLandingBlockDto', 'Required parameter "createHtmlLandingBlockDto" was null or undefined when calling landingBlocksHtml().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+        const response = await this.request({
+            path: `/api/agents/{resourceId}/landing/blocks/html`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateHtmlLandingBlockDtoToJSON)(requestParameters['createHtmlLandingBlockDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockCreateMutationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     * html
+     */
+    async landingBlocksHtml(requestParameters, initOverrides) {
+        const response = await this.landingBlocksHtmlRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -1121,6 +1176,64 @@ class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
     /**
      * .
+     * html
+     */
+    async updateLandingBlocksHtmlRaw(requestParameters, initOverrides) {
+        if (requestParameters['resourceId'] == null) {
+            throw new runtime.RequiredError('resourceId', 'Required parameter "resourceId" was null or undefined when calling updateLandingBlocksHtml().');
+        }
+        if (requestParameters['blockId'] == null) {
+            throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling updateLandingBlocksHtml().');
+        }
+        if (requestParameters['xLandingEditorSessionId'] == null) {
+            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksHtml().');
+        }
+        if (requestParameters['updateHtmlLandingBlockDto'] == null) {
+            throw new runtime.RequiredError('updateHtmlLandingBlockDto', 'Required parameter "updateHtmlLandingBlockDto" was null or undefined when calling updateLandingBlocksHtml().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
+        }
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+        const response = await this.request({
+            path: `/api/agents/{resourceId}/landing/blocks/{blockId}/html`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateHtmlLandingBlockDtoToJSON)(requestParameters['updateHtmlLandingBlockDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBlockContentMutationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     * html
+     */
+    async updateLandingBlocksHtml(requestParameters, initOverrides) {
+        const response = await this.updateLandingBlocksHtmlRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
      * image
      */
     async updateLandingBlocksImageRaw(requestParameters, initOverrides) {
@@ -1674,6 +1787,13 @@ exports.LandingBlocksFeaturesAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.LandingBlocksHtmlAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.LandingBlocksImageAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1773,6 +1893,13 @@ exports.UpdateLandingBlocksCoverAcceptLanguageEnum = {
  * @export
  */
 exports.UpdateLandingBlocksFeaturesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateLandingBlocksHtmlAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

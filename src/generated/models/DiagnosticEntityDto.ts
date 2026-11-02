@@ -20,6 +20,13 @@ import {
     DiagnosticFindingDtoToJSON,
     DiagnosticFindingDtoToJSONTyped,
 } from './DiagnosticFindingDto';
+import type { DiagnosticReferenceDto } from './DiagnosticReferenceDto';
+import {
+    DiagnosticReferenceDtoFromJSON,
+    DiagnosticReferenceDtoFromJSONTyped,
+    DiagnosticReferenceDtoToJSON,
+    DiagnosticReferenceDtoToJSONTyped,
+} from './DiagnosticReferenceDto';
 
 /**
  * DiagnosticEntityDto.
@@ -45,6 +52,30 @@ export interface DiagnosticEntityDto {
      * @memberof DiagnosticEntityDto
      */
     name: string;
+    /**
+     * . , .
+     * @type {string}
+     * @memberof DiagnosticEntityDto
+     */
+    settingsView?: DiagnosticEntityDtoSettingsViewEnum;
+    /**
+     * ; .
+     * @type {string}
+     * @memberof DiagnosticEntityDto
+     */
+    historyStatus?: DiagnosticEntityDtoHistoryStatusEnum;
+    /**
+     * .
+     * @type {string}
+     * @memberof DiagnosticEntityDto
+     */
+    avatarUrl?: string;
+    /**
+     * , ; .
+     * @type {Array<DiagnosticReferenceDto>}
+     * @memberof DiagnosticEntityDto
+     */
+    reviewReferences?: Array<DiagnosticReferenceDto>;
     /**
      * ID .
      * @type {string}
@@ -162,6 +193,27 @@ export type DiagnosticEntityDtoEntityTypeEnum = typeof DiagnosticEntityDtoEntity
 /**
  * @export
  */
+export const DiagnosticEntityDtoSettingsViewEnum = {
+    Draft: 'draft',
+    Published: 'published'
+} as const;
+export type DiagnosticEntityDtoSettingsViewEnum = typeof DiagnosticEntityDtoSettingsViewEnum[keyof typeof DiagnosticEntityDtoSettingsViewEnum];
+
+/**
+ * @export
+ */
+export const DiagnosticEntityDtoHistoryStatusEnum = {
+    Sample: 'sample',
+    Empty: 'empty',
+    Unavailable: 'unavailable',
+    Unconfirmed: 'unconfirmed',
+    NotChecked: 'not_checked'
+} as const;
+export type DiagnosticEntityDtoHistoryStatusEnum = typeof DiagnosticEntityDtoHistoryStatusEnum[keyof typeof DiagnosticEntityDtoHistoryStatusEnum];
+
+/**
+ * @export
+ */
 export const DiagnosticEntityDtoReasonsEnum = {
     Errors: 'errors',
     Changed: 'changed',
@@ -232,6 +284,10 @@ export function DiagnosticEntityDtoFromJSONTyped(json: any, ignoreDiscriminator:
         'ref': json['ref'],
         'entityType': json['entity_type'],
         'name': json['name'],
+        'settingsView': json['settings_view'] == null ? undefined : json['settings_view'],
+        'historyStatus': json['history_status'] == null ? undefined : json['history_status'],
+        'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
+        'reviewReferences': json['review_references'] == null ? undefined : ((json['review_references'] as Array<any>).map(DiagnosticReferenceDtoFromJSON)),
         'entityId': json['entity_id'],
         'updatedAt': (new Date(json['updated_at'])),
         'createdAt': (new Date(json['created_at'])),
@@ -266,6 +322,10 @@ export function DiagnosticEntityDtoToJSONTyped(value?: DiagnosticEntityDto | nul
         'ref': value['ref'],
         'entity_type': value['entityType'],
         'name': value['name'],
+        'settings_view': value['settingsView'],
+        'history_status': value['historyStatus'],
+        'avatar_url': value['avatarUrl'],
+        'review_references': value['reviewReferences'] == null ? undefined : ((value['reviewReferences'] as Array<any>).map(DiagnosticReferenceDtoToJSON)),
         'entity_id': value['entityId'],
         'updated_at': ((value['updatedAt']).toISOString()),
         'created_at': ((value['createdAt']).toISOString()),

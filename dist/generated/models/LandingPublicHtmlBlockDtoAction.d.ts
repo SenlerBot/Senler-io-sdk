@@ -13,18 +13,18 @@ import type { LandingPublicOpenLandingActionDto } from './LandingPublicOpenLandi
 import type { LandingPublicOpenUrlActionDto } from './LandingPublicOpenUrlActionDto';
 import type { LandingPublicSubscribeActionDto } from './LandingPublicSubscribeActionDto';
 /**
- * @type LandingPublicTextBlockDtoAction
+ * @type LandingPublicHtmlBlockDtoAction
  *
  * @export
  */
-export type LandingPublicTextBlockDtoAction = {
+export type LandingPublicHtmlBlockDtoAction = {
     type: 'open_landing';
 } & LandingPublicOpenLandingActionDto | {
     type: 'open_url';
 } & LandingPublicOpenUrlActionDto | {
     type: 'subscribe_segment';
 } & LandingPublicSubscribeActionDto;
-export declare function LandingPublicTextBlockDtoActionFromJSON(json: any): LandingPublicTextBlockDtoAction;
-export declare function LandingPublicTextBlockDtoActionFromJSONTyped(json: any, ignoreDiscriminator: boolean): LandingPublicTextBlockDtoAction;
-export declare function LandingPublicTextBlockDtoActionToJSON(json: any): any;
-export declare function LandingPublicTextBlockDtoActionToJSONTyped(value?: LandingPublicTextBlockDtoAction | null, ignoreDiscriminator?: boolean): any;
+export declare function LandingPublicHtmlBlockDtoActionFromJSON(json: any): LandingPublicHtmlBlockDtoAction;
+export declare function LandingPublicHtmlBlockDtoActionFromJSONTyped(json: any, ignoreDiscriminator: boolean): LandingPublicHtmlBlockDtoAction;
+export declare function LandingPublicHtmlBlockDtoActionToJSON(json: any): any;
+export declare function LandingPublicHtmlBlockDtoActionToJSONTyped(value?: LandingPublicHtmlBlockDtoAction | null, ignoreDiscriminator?: boolean): any;

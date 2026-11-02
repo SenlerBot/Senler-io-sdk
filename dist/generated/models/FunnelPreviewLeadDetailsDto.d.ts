@@ -82,7 +82,7 @@ export interface FunnelPreviewLeadDetailsDto {
      */
     blacklistReason?: string | null;
     /**
-     *
+     * , . .
      * @type {string}
      * @memberof FunnelPreviewLeadDetailsDto
      */
@@ -116,9 +116,12 @@ export type FunnelPreviewLeadDetailsDtoChannelTypeEnum = typeof FunnelPreviewLea
  */
 export declare const FunnelPreviewLeadDetailsDtoLeadSourceEnum: {
     readonly GroupJoin: "group_join";
+    readonly GroupLeave: "group_leave";
     readonly Message: "message";
     readonly MessageAllow: "message_allow";
+    readonly MessageDeny: "message_deny";
     readonly BotAdded: "bot_added";
+    readonly Landing: "landing";
     readonly Comment: "comment";
     readonly Like: "like";
     readonly Manual: "manual";

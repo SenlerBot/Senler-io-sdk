@@ -1106,6 +1106,10 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (requestParameters['acceptLanguage'] != null) {
@@ -1144,10 +1148,6 @@ export class KnowledgeBaseApi extends runtime.BaseAPI {
             formParams = new FormData();
         } else {
             formParams = new URLSearchParams();
-        }
-
-        if (requestParameters['projectId'] != null) {
-            formParams.append('project_id', requestParameters['projectId'] as any);
         }
 
         if (requestParameters['locale'] != null) {

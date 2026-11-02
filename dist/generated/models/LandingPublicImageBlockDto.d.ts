@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LandingPublicTextBlockDtoAction } from './LandingPublicTextBlockDtoAction';
+import type { LandingPublicHtmlBlockDtoAction } from './LandingPublicHtmlBlockDtoAction';
 import type { LandingImageBlockPayloadDto } from './LandingImageBlockPayloadDto';
 /**
  * LandingPublicImageBlockDto.
@@ -25,10 +25,10 @@ export interface LandingPublicImageBlockDto {
     id: string;
     /**
      *
-     * @type {LandingPublicTextBlockDtoAction}
+     * @type {LandingPublicHtmlBlockDtoAction}
      * @memberof LandingPublicImageBlockDto
      */
-    action: LandingPublicTextBlockDtoAction | null;
+    action: LandingPublicHtmlBlockDtoAction | null;
     /**
      * : image.
      * @type {string}

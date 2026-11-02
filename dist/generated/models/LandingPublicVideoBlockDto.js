@@ -19,7 +19,7 @@ exports.LandingPublicVideoBlockDtoFromJSON = LandingPublicVideoBlockDtoFromJSON;
 exports.LandingPublicVideoBlockDtoFromJSONTyped = LandingPublicVideoBlockDtoFromJSONTyped;
 exports.LandingPublicVideoBlockDtoToJSON = LandingPublicVideoBlockDtoToJSON;
 exports.LandingPublicVideoBlockDtoToJSONTyped = LandingPublicVideoBlockDtoToJSONTyped;
-const LandingPublicTextBlockDtoAction_1 = require("./LandingPublicTextBlockDtoAction");
+const LandingPublicHtmlBlockDtoAction_1 = require("./LandingPublicHtmlBlockDtoAction");
 const LandingVideoBlockPayloadDto_1 = require("./LandingVideoBlockPayloadDto");
 /**
  * @export
@@ -50,7 +50,7 @@ function LandingPublicVideoBlockDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'id': json['id'],
-        'action': (0, LandingPublicTextBlockDtoAction_1.LandingPublicTextBlockDtoActionFromJSON)(json['action']),
+        'action': (0, LandingPublicHtmlBlockDtoAction_1.LandingPublicHtmlBlockDtoActionFromJSON)(json['action']),
         'type': json['type'],
         'payload': (0, LandingVideoBlockPayloadDto_1.LandingVideoBlockPayloadDtoFromJSON)(json['payload']),
     };
@@ -64,7 +64,7 @@ function LandingPublicVideoBlockDtoToJSONTyped(value, ignoreDiscriminator = fals
     }
     return {
         'id': value['id'],
-        'action': (0, LandingPublicTextBlockDtoAction_1.LandingPublicTextBlockDtoActionToJSON)(value['action']),
+        'action': (0, LandingPublicHtmlBlockDtoAction_1.LandingPublicHtmlBlockDtoActionToJSON)(value['action']),
         'type': value['type'],
         'payload': (0, LandingVideoBlockPayloadDto_1.LandingVideoBlockPayloadDtoToJSON)(value['payload']),
     };

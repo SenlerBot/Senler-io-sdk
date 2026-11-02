@@ -24,6 +24,7 @@ import type {
   AgentInstructionResponseDto,
   AgentSettingsListResponseDto,
   AgentSettingsResponseDto,
+  AgentSubscriptionLinksResponseDto,
   AgentUnpublishedStateResponseDto,
   AgentsByListResponseDto,
   ErrorResponse,
@@ -55,6 +56,8 @@ import {
     AgentSettingsListResponseDtoToJSON,
     AgentSettingsResponseDtoFromJSON,
     AgentSettingsResponseDtoToJSON,
+    AgentSubscriptionLinksResponseDtoFromJSON,
+    AgentSubscriptionLinksResponseDtoToJSON,
     AgentUnpublishedStateResponseDtoFromJSON,
     AgentUnpublishedStateResponseDtoToJSON,
     AgentsByListResponseDtoFromJSON,
@@ -97,6 +100,11 @@ export interface AgentsDeactivateRequest {
 export interface AgentsRevertRequest {
     id: string;
     acceptLanguage?: AgentsRevertAcceptLanguageEnum;
+}
+
+export interface AgentsSubscriptionDraftRequest {
+    id: string;
+    acceptLanguage?: AgentsSubscriptionDraftAcceptLanguageEnum;
 }
 
 export interface DeleteAgentsRequest {
@@ -173,6 +181,11 @@ export interface GetAgentsOperatorHandoffOperatorsRequest {
     acceptLanguage?: GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum;
 }
 
+export interface GetAgentsSubscriptionLinksRequest {
+    id: string;
+    acceptLanguage?: GetAgentsSubscriptionLinksAcceptLanguageEnum;
+}
+
 export interface GetAgentsUnpublishedStateRequest {
     id: string;
     acceptLanguage?: GetAgentsUnpublishedStateAcceptLanguageEnum;
@@ -213,7 +226,7 @@ export interface UpdateAgentsWizardProgressRequest {
 export class AgentsApi extends runtime.BaseAPI {
 
     /**
-     * , . .
+     * . . . MCP ; . prepareSubscription getSubscriptionLinks. .
      *
      */
     async agentsAcquisitionRaw(requestParameters: AgentsAcquisitionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAcquisitionResponseDto>> {
@@ -261,7 +274,7 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , . .
+     * . . . MCP ; . prepareSubscription getSubscriptionLinks. .
      *
      */
     async agentsAcquisition(requestParameters: AgentsAcquisitionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAcquisitionResponseDto> {
@@ -437,6 +450,63 @@ export class AgentsApi extends runtime.BaseAPI {
      */
     async agentsRevert(requestParameters: AgentsRevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto> {
         const response = await this.agentsRevertRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . , . . state next_action; . , getSubscriptionLinks.
+     *
+     */
+    async agentsSubscriptionDraftRaw(requestParameters: AgentsSubscriptionDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSubscriptionLinksResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling agentsSubscriptionDraft().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}/subscription/draft`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentSubscriptionLinksResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . , . . state next_action; . , getSubscriptionLinks.
+     *
+     */
+    async agentsSubscriptionDraft(requestParameters: AgentsSubscriptionDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSubscriptionLinksResponseDto> {
+        const response = await this.agentsSubscriptionDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1235,6 +1305,63 @@ export class AgentsApi extends runtime.BaseAPI {
     }
 
     /**
+     * : . , . state=not_prepared prepareSubscription; state=draft . . ; .
+     *
+     */
+    async getAgentsSubscriptionLinksRaw(requestParameters: GetAgentsSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSubscriptionLinksResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling getAgentsSubscriptionLinks().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}/subscription/links`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentSubscriptionLinksResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * : . , . state=not_prepared prepareSubscription; state=draft . . ; .
+     *
+     */
+    async getAgentsSubscriptionLinks(requestParameters: GetAgentsSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSubscriptionLinksResponseDto> {
+        const response = await this.getAgentsSubscriptionLinksRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * , , .
      *
      */
@@ -1650,6 +1777,14 @@ export type AgentsRevertAcceptLanguageEnum = typeof AgentsRevertAcceptLanguageEn
 /**
  * @export
  */
+export const AgentsSubscriptionDraftAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type AgentsSubscriptionDraftAcceptLanguageEnum = typeof AgentsSubscriptionDraftAcceptLanguageEnum[keyof typeof AgentsSubscriptionDraftAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const DeleteAgentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1777,6 +1912,14 @@ export const GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum = typeof GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum[keyof typeof GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetAgentsSubscriptionLinksAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetAgentsSubscriptionLinksAcceptLanguageEnum = typeof GetAgentsSubscriptionLinksAcceptLanguageEnum[keyof typeof GetAgentsSubscriptionLinksAcceptLanguageEnum];
 /**
  * @export
  */

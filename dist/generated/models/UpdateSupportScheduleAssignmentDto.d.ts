@@ -16,6 +16,12 @@
  */
 export interface UpdateSupportScheduleAssignmentDto {
     /**
+     * . true ; false .
+     * @type {boolean}
+     * @memberof UpdateSupportScheduleAssignmentDto
+     */
+    isDayOff?: boolean;
+    /**
      * ; null , []
      * @type {Array<string>}
      * @memberof UpdateSupportScheduleAssignmentDto

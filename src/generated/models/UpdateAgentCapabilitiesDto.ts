@@ -42,6 +42,12 @@ import {
  */
 export interface UpdateAgentCapabilitiesDto {
     /**
+     * : , . .
+     * @type {string}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    dialogContextMode?: UpdateAgentCapabilitiesDtoDialogContextModeEnum;
+    /**
      *
      * @type {boolean}
      * @memberof UpdateAgentCapabilitiesDto
@@ -305,6 +311,16 @@ export interface UpdateAgentCapabilitiesDto {
 /**
  * @export
  */
+export const UpdateAgentCapabilitiesDtoDialogContextModeEnum = {
+    AllDialog: 'all_dialog',
+    CurrentSession: 'current_session',
+    CurrentRequest: 'current_request'
+} as const;
+export type UpdateAgentCapabilitiesDtoDialogContextModeEnum = typeof UpdateAgentCapabilitiesDtoDialogContextModeEnum[keyof typeof UpdateAgentCapabilitiesDtoDialogContextModeEnum];
+
+/**
+ * @export
+ */
 export const UpdateAgentCapabilitiesDtoWidgetAiProgressModeEnum = {
     SafeProgress: 'safe_progress',
     DetailedProgress: 'detailed_progress',
@@ -330,6 +346,7 @@ export function UpdateAgentCapabilitiesDtoFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
 
+        'dialogContextMode': json['dialog_context_mode'] == null ? undefined : json['dialog_context_mode'],
         'enableButtons': json['enable_buttons'] == null ? undefined : json['enable_buttons'],
         'maxToolIterations': json['max_tool_iterations'] == null ? undefined : json['max_tool_iterations'],
         'enableWidgetPageActions': json['enable_widget_page_actions'] == null ? undefined : json['enable_widget_page_actions'],
@@ -387,6 +404,7 @@ export function UpdateAgentCapabilitiesDtoToJSONTyped(value?: UpdateAgentCapabil
 
     return {
 
+        'dialog_context_mode': value['dialogContextMode'],
         'enable_buttons': value['enableButtons'],
         'max_tool_iterations': value['maxToolIterations'],
         'enable_widget_page_actions': value['enableWidgetPageActions'],

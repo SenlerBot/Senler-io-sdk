@@ -40,7 +40,7 @@ export interface AgentAcquisitionResponseDto {
      */
     landingId: string;
     /**
-     * ,
+     * ID ;
      * @type {string}
      * @memberof AgentAcquisitionResponseDto
      */

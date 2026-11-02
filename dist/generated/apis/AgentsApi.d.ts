@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AgentAcquisitionResponseDto, AgentAutoAssignmentPreviewResponseDto, AgentDraftSettingsResponseDto, AgentDraftSettingsStateResponseDto, AgentInstalledAppEventsGroupDto, AgentInstalledAppToolsGroupDto, AgentInstructionResponseDto, AgentSettingsListResponseDto, AgentSettingsResponseDto, AgentUnpublishedStateResponseDto, AgentsByListResponseDto, InstructionMcpToolDto, OperatorHandoffGroupDto, OperatorHandoffOperatorDto, PatchAgentInstructionResponseDto, SuccessResponseDto, UpdateAgentInstalledAppEventsDto, UpdateAgentsDraftInstructionBody, UpdateWizardProgressDto } from '../models/index';
+import type { AgentAcquisitionResponseDto, AgentAutoAssignmentPreviewResponseDto, AgentDraftSettingsResponseDto, AgentDraftSettingsStateResponseDto, AgentInstalledAppEventsGroupDto, AgentInstalledAppToolsGroupDto, AgentInstructionResponseDto, AgentSettingsListResponseDto, AgentSettingsResponseDto, AgentSubscriptionLinksResponseDto, AgentUnpublishedStateResponseDto, AgentsByListResponseDto, InstructionMcpToolDto, OperatorHandoffGroupDto, OperatorHandoffOperatorDto, PatchAgentInstructionResponseDto, SuccessResponseDto, UpdateAgentInstalledAppEventsDto, UpdateAgentsDraftInstructionBody, UpdateWizardProgressDto } from '../models/index';
 export interface AgentsAcquisitionRequest {
     id: string;
     acceptLanguage?: AgentsAcquisitionAcceptLanguageEnum;
@@ -26,6 +26,10 @@ export interface AgentsDeactivateRequest {
 export interface AgentsRevertRequest {
     id: string;
     acceptLanguage?: AgentsRevertAcceptLanguageEnum;
+}
+export interface AgentsSubscriptionDraftRequest {
+    id: string;
+    acceptLanguage?: AgentsSubscriptionDraftAcceptLanguageEnum;
 }
 export interface DeleteAgentsRequest {
     id: string;
@@ -88,6 +92,10 @@ export interface GetAgentsOperatorHandoffOperatorsRequest {
     projectId: string;
     acceptLanguage?: GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum;
 }
+export interface GetAgentsSubscriptionLinksRequest {
+    id: string;
+    acceptLanguage?: GetAgentsSubscriptionLinksAcceptLanguageEnum;
+}
 export interface GetAgentsUnpublishedStateRequest {
     id: string;
     acceptLanguage?: GetAgentsUnpublishedStateAcceptLanguageEnum;
@@ -121,12 +129,12 @@ export interface UpdateAgentsWizardProgressRequest {
  */
 export declare class AgentsApi extends runtime.BaseAPI {
     /**
-     * , . .
+     * . . . MCP ; . prepareSubscription getSubscriptionLinks. .
      *
      */
     agentsAcquisitionRaw(requestParameters: AgentsAcquisitionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentAcquisitionResponseDto>>;
     /**
-     * , . .
+     * . . . MCP ; . prepareSubscription getSubscriptionLinks. .
      *
      */
     agentsAcquisition(requestParameters: AgentsAcquisitionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentAcquisitionResponseDto>;
@@ -160,6 +168,16 @@ export declare class AgentsApi extends runtime.BaseAPI {
      *
      */
     agentsRevert(requestParameters: AgentsRevertRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
+    /**
+     * . , . . state next_action; . , getSubscriptionLinks.
+     *
+     */
+    agentsSubscriptionDraftRaw(requestParameters: AgentsSubscriptionDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSubscriptionLinksResponseDto>>;
+    /**
+     * . , . . state next_action; . , getSubscriptionLinks.
+     *
+     */
+    agentsSubscriptionDraft(requestParameters: AgentsSubscriptionDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSubscriptionLinksResponseDto>;
     /**
      * . can_manage_agents.
      *
@@ -291,6 +309,16 @@ export declare class AgentsApi extends runtime.BaseAPI {
      */
     getAgentsOperatorHandoffOperators(requestParameters: GetAgentsOperatorHandoffOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<OperatorHandoffOperatorDto>>;
     /**
+     * : . , . state=not_prepared prepareSubscription; state=draft . . ; .
+     *
+     */
+    getAgentsSubscriptionLinksRaw(requestParameters: GetAgentsSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentSubscriptionLinksResponseDto>>;
+    /**
+     * : . , . state=not_prepared prepareSubscription; state=draft . . ; .
+     *
+     */
+    getAgentsSubscriptionLinks(requestParameters: GetAgentsSubscriptionLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentSubscriptionLinksResponseDto>;
+    /**
      * , , .
      *
      */
@@ -383,6 +411,14 @@ export declare const AgentsRevertAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type AgentsRevertAcceptLanguageEnum = typeof AgentsRevertAcceptLanguageEnum[keyof typeof AgentsRevertAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const AgentsSubscriptionDraftAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type AgentsSubscriptionDraftAcceptLanguageEnum = typeof AgentsSubscriptionDraftAcceptLanguageEnum[keyof typeof AgentsSubscriptionDraftAcceptLanguageEnum];
 /**
  * @export
  */
@@ -513,6 +549,14 @@ export declare const GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum = typeof GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum[keyof typeof GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetAgentsSubscriptionLinksAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetAgentsSubscriptionLinksAcceptLanguageEnum = typeof GetAgentsSubscriptionLinksAcceptLanguageEnum[keyof typeof GetAgentsSubscriptionLinksAcceptLanguageEnum];
 /**
  * @export
  */

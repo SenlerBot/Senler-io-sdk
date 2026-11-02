@@ -13,19 +13,37 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DiagnosticEntityDtoAnalysisStatusEnum = exports.DiagnosticEntityDtoDataStatusEnum = exports.DiagnosticEntityDtoReasonsEnum = exports.DiagnosticEntityDtoEntityTypeEnum = void 0;
+exports.DiagnosticEntityDtoAnalysisStatusEnum = exports.DiagnosticEntityDtoDataStatusEnum = exports.DiagnosticEntityDtoReasonsEnum = exports.DiagnosticEntityDtoHistoryStatusEnum = exports.DiagnosticEntityDtoSettingsViewEnum = exports.DiagnosticEntityDtoEntityTypeEnum = void 0;
 exports.instanceOfDiagnosticEntityDto = instanceOfDiagnosticEntityDto;
 exports.DiagnosticEntityDtoFromJSON = DiagnosticEntityDtoFromJSON;
 exports.DiagnosticEntityDtoFromJSONTyped = DiagnosticEntityDtoFromJSONTyped;
 exports.DiagnosticEntityDtoToJSON = DiagnosticEntityDtoToJSON;
 exports.DiagnosticEntityDtoToJSONTyped = DiagnosticEntityDtoToJSONTyped;
 const DiagnosticFindingDto_1 = require("./DiagnosticFindingDto");
+const DiagnosticReferenceDto_1 = require("./DiagnosticReferenceDto");
 /**
  * @export
  */
 exports.DiagnosticEntityDtoEntityTypeEnum = {
     Agent: 'agent',
     Automation: 'automation'
+};
+/**
+ * @export
+ */
+exports.DiagnosticEntityDtoSettingsViewEnum = {
+    Draft: 'draft',
+    Published: 'published'
+};
+/**
+ * @export
+ */
+exports.DiagnosticEntityDtoHistoryStatusEnum = {
+    Sample: 'sample',
+    Empty: 'empty',
+    Unavailable: 'unavailable',
+    Unconfirmed: 'unconfirmed',
+    NotChecked: 'not_checked'
 };
 /**
  * @export
@@ -109,6 +127,10 @@ function DiagnosticEntityDtoFromJSONTyped(json, ignoreDiscriminator) {
         'ref': json['ref'],
         'entityType': json['entity_type'],
         'name': json['name'],
+        'settingsView': json['settings_view'] == null ? undefined : json['settings_view'],
+        'historyStatus': json['history_status'] == null ? undefined : json['history_status'],
+        'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
+        'reviewReferences': json['review_references'] == null ? undefined : (json['review_references'].map(DiagnosticReferenceDto_1.DiagnosticReferenceDtoFromJSON)),
         'entityId': json['entity_id'],
         'updatedAt': (new Date(json['updated_at'])),
         'createdAt': (new Date(json['created_at'])),
@@ -139,6 +161,10 @@ function DiagnosticEntityDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'ref': value['ref'],
         'entity_type': value['entityType'],
         'name': value['name'],
+        'settings_view': value['settingsView'],
+        'history_status': value['historyStatus'],
+        'avatar_url': value['avatarUrl'],
+        'review_references': value['reviewReferences'] == null ? undefined : (value['reviewReferences'].map(DiagnosticReferenceDto_1.DiagnosticReferenceDtoToJSON)),
         'entity_id': value['entityId'],
         'updated_at': ((value['updatedAt']).toISOString()),
         'created_at': ((value['createdAt']).toISOString()),

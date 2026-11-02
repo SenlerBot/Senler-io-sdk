@@ -12,6 +12,7 @@
 import type { LandingPublicButtonBlockDto } from './LandingPublicButtonBlockDto';
 import type { LandingPublicCoverBlockDto } from './LandingPublicCoverBlockDto';
 import type { LandingPublicFeaturesBlockDto } from './LandingPublicFeaturesBlockDto';
+import type { LandingPublicHtmlBlockDto } from './LandingPublicHtmlBlockDto';
 import type { LandingPublicImageBlockDto } from './LandingPublicImageBlockDto';
 import type { LandingPublicOtherBlockDto } from './LandingPublicOtherBlockDto';
 import type { LandingPublicProductsBlockDto } from './LandingPublicProductsBlockDto';
@@ -32,6 +33,8 @@ export type LandingPublicResponseDtoBlocksInner = {
 } & LandingPublicCoverBlockDto | {
     type: 'features';
 } & LandingPublicFeaturesBlockDto | {
+    type: 'html';
+} & LandingPublicHtmlBlockDto | {
     type: 'image';
 } & LandingPublicImageBlockDto | {
     type: 'other';

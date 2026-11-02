@@ -28,6 +28,8 @@ import type {
   AutomationNodeCatalogResponseDto,
   AutomationNodeConfigValidationResponseDto,
   AutomationNodeResponseDto,
+  AutomationNodeSearchResponseDto,
+  AutomationNodesResponseDto,
   AutomationOperationsResponseDto,
   AutomationOperatorOptionsDto,
   AutomationOptionsResponseDto,
@@ -105,6 +107,10 @@ import {
     AutomationNodeConfigValidationResponseDtoToJSON,
     AutomationNodeResponseDtoFromJSON,
     AutomationNodeResponseDtoToJSON,
+    AutomationNodeSearchResponseDtoFromJSON,
+    AutomationNodeSearchResponseDtoToJSON,
+    AutomationNodesResponseDtoFromJSON,
+    AutomationNodesResponseDtoToJSON,
     AutomationOperationsResponseDtoFromJSON,
     AutomationOperationsResponseDtoToJSON,
     AutomationOperatorOptionsDtoFromJSON,
@@ -396,10 +402,33 @@ export interface GetNodeTypesRequest {
     acceptLanguage?: GetNodeTypesAcceptLanguageEnum;
 }
 
+export interface GetNodesRequest {
+    automationId: string;
+    nodeIds: Array<string>;
+    view?: GetNodesViewEnum;
+    expectedRevision?: number;
+    includeEdges?: boolean;
+    edgesLimit?: number;
+    edgesCursor?: string;
+    acceptLanguage?: GetNodesAcceptLanguageEnum;
+}
+
 export interface GetNodesHttpResponseSampleRequest {
     automationId: string;
     nodeId: string;
     acceptLanguage?: GetNodesHttpResponseSampleAcceptLanguageEnum;
+}
+
+export interface GetNodesSearchRequest {
+    automationId: string;
+    view?: GetNodesSearchViewEnum;
+    expectedRevision?: number;
+    nodeIds?: Array<string>;
+    search?: string;
+    types?: Array<GetNodesSearchTypesEnum>;
+    limit?: number;
+    cursor?: string;
+    acceptLanguage?: GetNodesSearchAcceptLanguageEnum;
 }
 
 export interface GetOperationsRequest {
@@ -2366,7 +2395,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * nodes/edges React Flow JSON. draft graph, node_id .
+     * nodes/edges React Flow JSON. searchAutomationNodes, getAutomationNodes: . draft graph, node_id .
      *
      */
     async getGraphRaw(requestParameters: GetGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>> {
@@ -2418,7 +2447,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * nodes/edges React Flow JSON. draft graph, node_id .
+     * nodes/edges React Flow JSON. searchAutomationNodes, getAutomationNodes: . draft graph, node_id .
      *
      */
     async getGraph(requestParameters: GetGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto> {
@@ -2496,6 +2525,94 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
+     * 20 UUID . ID searchAutomationNodes. expected_revision , . include_edges ; ID . ID missing_node_ids.
+     *
+     */
+    async getNodesRaw(requestParameters: GetNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodesResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling getNodes().'
+            );
+        }
+
+        if (requestParameters['nodeIds'] == null) {
+            throw new runtime.RequiredError(
+                'nodeIds',
+                'Required parameter "nodeIds" was null or undefined when calling getNodes().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['view'] != null) {
+            queryParameters['view'] = requestParameters['view'];
+        }
+
+        if (requestParameters['expectedRevision'] != null) {
+            queryParameters['expected_revision'] = requestParameters['expectedRevision'];
+        }
+
+        if (requestParameters['nodeIds'] != null) {
+            queryParameters['node_ids'] = requestParameters['nodeIds'];
+        }
+
+        if (requestParameters['includeEdges'] != null) {
+            queryParameters['include_edges'] = requestParameters['includeEdges'];
+        }
+
+        if (requestParameters['edgesLimit'] != null) {
+            queryParameters['edges_limit'] = requestParameters['edgesLimit'];
+        }
+
+        if (requestParameters['edgesCursor'] != null) {
+            queryParameters['edges_cursor'] = requestParameters['edgesCursor'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/nodes`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationNodesResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * 20 UUID . ID searchAutomationNodes. expected_revision , . include_edges ; ID . ID missing_node_ids.
+     *
+     */
+    async getNodes(requestParameters: GetNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodesResponseDto> {
+        const response = await this.getNodesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * . .
      * JSON- HTTP-
      */
@@ -2556,6 +2673,91 @@ export class AutomationsApi extends runtime.BaseAPI {
      */
     async getNodesHttpResponseSample(requestParameters: GetNodesHttpResponseSampleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationHttpResponseSampleDto> {
         const response = await this.getNodesHttpResponseSampleRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * MCP. ; ID, , , . node_ids UUID . getAutomationNodes node_ids expected_revision . getGraph.
+     * ID, ,
+     */
+    async getNodesSearchRaw(requestParameters: GetNodesSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeSearchResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling getNodesSearch().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['view'] != null) {
+            queryParameters['view'] = requestParameters['view'];
+        }
+
+        if (requestParameters['expectedRevision'] != null) {
+            queryParameters['expected_revision'] = requestParameters['expectedRevision'];
+        }
+
+        if (requestParameters['nodeIds'] != null) {
+            queryParameters['node_ids'] = requestParameters['nodeIds'];
+        }
+
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
+        }
+
+        if (requestParameters['types'] != null) {
+            queryParameters['types'] = requestParameters['types'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/nodes/search`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationNodeSearchResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * MCP. ; ID, , , . node_ids UUID . getAutomationNodes node_ids expected_revision . getGraph.
+     * ID, ,
+     */
+    async getNodesSearch(requestParameters: GetNodesSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeSearchResponseDto> {
+        const response = await this.getNodesSearchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -4612,11 +4814,86 @@ export type GetNodeTypesAcceptLanguageEnum = typeof GetNodeTypesAcceptLanguageEn
 /**
  * @export
  */
+export const GetNodesViewEnum = {
+    Draft: 'draft',
+    Published: 'published'
+} as const;
+export type GetNodesViewEnum = typeof GetNodesViewEnum[keyof typeof GetNodesViewEnum];
+/**
+ * @export
+ */
+export const GetNodesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetNodesAcceptLanguageEnum = typeof GetNodesAcceptLanguageEnum[keyof typeof GetNodesAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const GetNodesHttpResponseSampleAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
 export type GetNodesHttpResponseSampleAcceptLanguageEnum = typeof GetNodesHttpResponseSampleAcceptLanguageEnum[keyof typeof GetNodesHttpResponseSampleAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetNodesSearchViewEnum = {
+    Draft: 'draft',
+    Published: 'published'
+} as const;
+export type GetNodesSearchViewEnum = typeof GetNodesSearchViewEnum[keyof typeof GetNodesSearchViewEnum];
+/**
+ * @export
+ */
+export const GetNodesSearchTypesEnum = {
+    TriggerBirthday: 'trigger.birthday',
+    TriggerStart: 'trigger.start',
+    TriggerStartButton: 'trigger.start_button',
+    TriggerMembershipJoined: 'trigger.membership_joined',
+    TriggerIncomingMessage: 'trigger.incoming_message',
+    TriggerSegmentEntered: 'trigger.segment_entered',
+    TriggerEvent: 'trigger.event',
+    TriggerAppEvent: 'trigger.app_event',
+    ConditionVariable: 'condition.variable',
+    ConditionAi: 'condition.ai',
+    ConditionDateTime: 'condition.date_time',
+    ConditionSegment: 'condition.segment',
+    ConditionFunnelStage: 'condition.funnel_stage',
+    ConditionAutomation: 'condition.automation',
+    ConditionAgent: 'condition.agent',
+    ConditionOperatorAssignment: 'condition.operator_assignment',
+    ConditionChannelType: 'condition.channel_type',
+    ConditionTableRow: 'condition.table_row',
+    BranchRandom: 'branch.random',
+    ActionSetVariable: 'action.set_variable',
+    ActionMessage: 'action.message',
+    ActionPoll: 'action.poll',
+    ActionTyping: 'action.typing',
+    ActionAgentRequest: 'action.agent_request',
+    ActionAddSegment: 'action.add_segment',
+    ActionMoveFunnelStage: 'action.move_funnel_stage',
+    ActionRemoveSegment: 'action.remove_segment',
+    ActionAddAutomation: 'action.add_automation',
+    ActionRemoveAutomation: 'action.remove_automation',
+    ActionAssignAgent: 'action.assign_agent',
+    ActionUnassignAgent: 'action.unassign_agent',
+    ActionHandoffToOperator: 'action.handoff_to_operator',
+    ActionTableWrite: 'action.table_write',
+    ActionHttp: 'action.http',
+    ActionApp: 'action.app',
+    ControlWait: 'control.wait',
+    ControlLoop: 'control.loop'
+} as const;
+export type GetNodesSearchTypesEnum = typeof GetNodesSearchTypesEnum[keyof typeof GetNodesSearchTypesEnum];
+/**
+ * @export
+ */
+export const GetNodesSearchAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetNodesSearchAcceptLanguageEnum = typeof GetNodesSearchAcceptLanguageEnum[keyof typeof GetNodesSearchAcceptLanguageEnum];
 /**
  * @export
  */

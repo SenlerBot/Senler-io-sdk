@@ -33,6 +33,13 @@ import {
     LandingPublicFeaturesBlockDtoFromJSONTyped,
     LandingPublicFeaturesBlockDtoToJSON,
 } from './LandingPublicFeaturesBlockDto';
+import type { LandingPublicHtmlBlockDto } from './LandingPublicHtmlBlockDto';
+import {
+    instanceOfLandingPublicHtmlBlockDto,
+    LandingPublicHtmlBlockDtoFromJSON,
+    LandingPublicHtmlBlockDtoFromJSONTyped,
+    LandingPublicHtmlBlockDtoToJSON,
+} from './LandingPublicHtmlBlockDto';
 import type { LandingPublicImageBlockDto } from './LandingPublicImageBlockDto';
 import {
     instanceOfLandingPublicImageBlockDto,
@@ -95,7 +102,7 @@ import {
  * : . , .
  * @export
  */
-export type LandingPublicResponseDtoBlocksInner = { type: 'button' } & LandingPublicButtonBlockDto | { type: 'cover' } & LandingPublicCoverBlockDto | { type: 'features' } & LandingPublicFeaturesBlockDto | { type: 'image' } & LandingPublicImageBlockDto | { type: 'other' } & LandingPublicOtherBlockDto | { type: 'products' } & LandingPublicProductsBlockDto | { type: 'reviews' } & LandingPublicReviewsBlockDto | { type: 'text' } & LandingPublicTextBlockDto | { type: 'timer' } & LandingPublicTimerBlockDto | { type: 'video' } & LandingPublicVideoBlockDto | { type: 'widget' } & LandingPublicWidgetBlockDto;
+export type LandingPublicResponseDtoBlocksInner = { type: 'button' } & LandingPublicButtonBlockDto | { type: 'cover' } & LandingPublicCoverBlockDto | { type: 'features' } & LandingPublicFeaturesBlockDto | { type: 'html' } & LandingPublicHtmlBlockDto | { type: 'image' } & LandingPublicImageBlockDto | { type: 'other' } & LandingPublicOtherBlockDto | { type: 'products' } & LandingPublicProductsBlockDto | { type: 'reviews' } & LandingPublicReviewsBlockDto | { type: 'text' } & LandingPublicTextBlockDto | { type: 'timer' } & LandingPublicTimerBlockDto | { type: 'video' } & LandingPublicVideoBlockDto | { type: 'widget' } & LandingPublicWidgetBlockDto;
 
 export function LandingPublicResponseDtoBlocksInnerFromJSON(json: any): LandingPublicResponseDtoBlocksInner {
     return LandingPublicResponseDtoBlocksInnerFromJSONTyped(json, false);
@@ -112,6 +119,8 @@ export function LandingPublicResponseDtoBlocksInnerFromJSONTyped(json: any, igno
             return Object.assign({}, LandingPublicCoverBlockDtoFromJSONTyped(json, true), { type: 'cover' } as const);
         case 'features':
             return Object.assign({}, LandingPublicFeaturesBlockDtoFromJSONTyped(json, true), { type: 'features' } as const);
+        case 'html':
+            return Object.assign({}, LandingPublicHtmlBlockDtoFromJSONTyped(json, true), { type: 'html' } as const);
         case 'image':
             return Object.assign({}, LandingPublicImageBlockDtoFromJSONTyped(json, true), { type: 'image' } as const);
         case 'other':
@@ -148,6 +157,8 @@ export function LandingPublicResponseDtoBlocksInnerToJSONTyped(value?: LandingPu
             return Object.assign({}, LandingPublicCoverBlockDtoToJSON(value), { type: 'cover' } as const);
         case 'features':
             return Object.assign({}, LandingPublicFeaturesBlockDtoToJSON(value), { type: 'features' } as const);
+        case 'html':
+            return Object.assign({}, LandingPublicHtmlBlockDtoToJSON(value), { type: 'html' } as const);
         case 'image':
             return Object.assign({}, LandingPublicImageBlockDtoToJSON(value), { type: 'image' } as const);
         case 'other':

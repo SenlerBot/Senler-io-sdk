@@ -56,6 +56,12 @@ import {
  */
 export interface AgentDraftSettingsStateResponseDto {
     /**
+     * : , . .
+     * @type {string}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    dialogContextMode: AgentDraftSettingsStateResponseDtoDialogContextModeEnum;
+    /**
      * , . .
      * @type {Array<string>}
      * @memberof AgentDraftSettingsStateResponseDto
@@ -595,6 +601,16 @@ export interface AgentDraftSettingsStateResponseDto {
 /**
  * @export
  */
+export const AgentDraftSettingsStateResponseDtoDialogContextModeEnum = {
+    AllDialog: 'all_dialog',
+    CurrentSession: 'current_session',
+    CurrentRequest: 'current_request'
+} as const;
+export type AgentDraftSettingsStateResponseDtoDialogContextModeEnum = typeof AgentDraftSettingsStateResponseDtoDialogContextModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoDialogContextModeEnum];
+
+/**
+ * @export
+ */
 export const AgentDraftSettingsStateResponseDtoConflictFieldsEnum = {
     Name: 'name',
     Instruction: 'instruction',
@@ -603,6 +619,7 @@ export const AgentDraftSettingsStateResponseDtoConflictFieldsEnum = {
     SelectedModelId: 'selected_model_id',
     EventSummaryMode: 'event_summary_mode',
     DialogSummaryMode: 'dialog_summary_mode',
+    DialogContextMode: 'dialog_context_mode',
     Meta: 'meta',
     Status: 'status',
     ServerBindingMode: 'server_binding_mode',
@@ -845,6 +862,7 @@ export type AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum = typeof A
  * Check if a given object implements the AgentDraftSettingsStateResponseDto interface.
  */
 export function instanceOfAgentDraftSettingsStateResponseDto(value: object): value is AgentDraftSettingsStateResponseDto {
+    if (!('dialogContextMode' in value) || value['dialogContextMode'] === undefined) return false;
     if (!('conflictFields' in value) || value['conflictFields'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('agentId' in value) || value['agentId'] === undefined) return false;
@@ -926,6 +944,7 @@ export function AgentDraftSettingsStateResponseDtoFromJSONTyped(json: any, ignor
     }
     return {
 
+        'dialogContextMode': json['dialog_context_mode'],
         'conflictFields': json['conflict_fields'],
         'id': json['id'],
         'agentId': json['agent_id'],
@@ -1029,6 +1048,7 @@ export function AgentDraftSettingsStateResponseDtoToJSONTyped(value?: AgentDraft
 
     return {
 
+        'dialog_context_mode': value['dialogContextMode'],
         'conflict_fields': value['conflictFields'],
         'id': value['id'],
         'agent_id': value['agentId'],

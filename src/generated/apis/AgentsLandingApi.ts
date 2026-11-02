@@ -15,6 +15,7 @@
 
 import * as runtime from '../runtime';
 import type {
+  AgentLandingLinksResponseDto,
   ConfirmS3UploadDto,
   DeleteLandingBlockDto,
   ErrorResponse,
@@ -30,7 +31,6 @@ import type {
   LandingPublicationsListResponseDto,
   LandingRealtimeFocusResponseDto,
   LandingResponseDto,
-  LandingShareLinksResponseDto,
   LandingStatisticsReportDto,
   MoveLandingBlockDto,
   MutateAgentLandingPersonalizationDto,
@@ -41,6 +41,8 @@ import type {
   UpdateLandingRealtimeFocusDto,
 } from '../models/index';
 import {
+    AgentLandingLinksResponseDtoFromJSON,
+    AgentLandingLinksResponseDtoToJSON,
     ConfirmS3UploadDtoFromJSON,
     ConfirmS3UploadDtoToJSON,
     DeleteLandingBlockDtoFromJSON,
@@ -71,8 +73,6 @@ import {
     LandingRealtimeFocusResponseDtoToJSON,
     LandingResponseDtoFromJSON,
     LandingResponseDtoToJSON,
-    LandingShareLinksResponseDtoFromJSON,
-    LandingShareLinksResponseDtoToJSON,
     LandingStatisticsReportDtoFromJSON,
     LandingStatisticsReportDtoToJSON,
     MoveLandingBlockDtoFromJSON,
@@ -275,7 +275,7 @@ export class AgentsLandingApi extends runtime.BaseAPI {
     }
 
     /**
-     * , .
+     * . AgentsUser ensureAcquisition; . MCP .
      *
      */
     async getLandingRaw(requestParameters: GetLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>> {
@@ -323,7 +323,7 @@ export class AgentsLandingApi extends runtime.BaseAPI {
     }
 
     /**
-     * , .
+     * . AgentsUser ensureAcquisition; . MCP .
      *
      */
     async getLanding(requestParameters: GetLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto> {
@@ -446,10 +446,10 @@ export class AgentsLandingApi extends runtime.BaseAPI {
     }
 
     /**
-     * VK, Telegram MAX, .
+     * : . state next_action, . prepare_landing AgentsUser ensureAcquisition, publish_agent . AgentsUser getSubscriptionLinks. VK, Telegram MAX.
      *
      */
-    async getLandingShareLinksRaw(requestParameters: GetLandingShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingShareLinksResponseDto>> {
+    async getLandingShareLinksRaw(requestParameters: GetLandingShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentLandingLinksResponseDto>> {
         if (requestParameters['agentId'] == null) {
             throw new runtime.RequiredError(
                 'agentId',
@@ -490,14 +490,14 @@ export class AgentsLandingApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LandingShareLinksResponseDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentLandingLinksResponseDtoFromJSON(jsonValue));
     }
 
     /**
-     * VK, Telegram MAX, .
+     * : . state next_action, . prepare_landing AgentsUser ensureAcquisition, publish_agent . AgentsUser getSubscriptionLinks. VK, Telegram MAX.
      *
      */
-    async getLandingShareLinks(requestParameters: GetLandingShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingShareLinksResponseDto> {
+    async getLandingShareLinks(requestParameters: GetLandingShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentLandingLinksResponseDto> {
         const response = await this.getLandingShareLinksRaw(requestParameters, initOverrides);
         return await response.value();
     }

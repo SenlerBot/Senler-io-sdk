@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAttentionSummaryDto, AutomationAvatarUploadUrlResponseDto, AutomationEdgeResponseDto, AutomationGraphResponseDto, AutomationHttpPreviewDto, AutomationHttpPreviewResponseDto, AutomationHttpResponseSampleDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationOperationsResponseDto, AutomationOperatorOptionsDto, AutomationOptionsResponseDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationTriggerTestSessionResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, CancelAutomationRunResponseDto, ChannelDeliveryRecoveryPageDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CreateAutomationTriggerTestSessionDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, FunnelOptionsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportAttachmentDto, ImportImageDto, LayoutAutomationDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SimulateAutomationTriggerTestEventDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationHttpResponseSampleDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
+import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAttentionSummaryDto, AutomationAvatarUploadUrlResponseDto, AutomationEdgeResponseDto, AutomationGraphResponseDto, AutomationHttpPreviewDto, AutomationHttpPreviewResponseDto, AutomationHttpResponseSampleDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationNodeSearchResponseDto, AutomationNodesResponseDto, AutomationOperationsResponseDto, AutomationOperatorOptionsDto, AutomationOptionsResponseDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationTriggerTestSessionResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, CancelAutomationRunResponseDto, ChannelDeliveryRecoveryPageDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CreateAutomationTriggerTestSessionDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, FunnelOptionsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportAttachmentDto, ImportImageDto, LayoutAutomationDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SimulateAutomationTriggerTestEventDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationHttpResponseSampleDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
 export interface AttachmentsConfirmRequest {
     automationId: string;
     confirmUploadDto: ConfirmUploadDto;
@@ -174,10 +174,31 @@ export interface GetNodeTypesRequest {
     timezone?: string;
     acceptLanguage?: GetNodeTypesAcceptLanguageEnum;
 }
+export interface GetNodesRequest {
+    automationId: string;
+    nodeIds: Array<string>;
+    view?: GetNodesViewEnum;
+    expectedRevision?: number;
+    includeEdges?: boolean;
+    edgesLimit?: number;
+    edgesCursor?: string;
+    acceptLanguage?: GetNodesAcceptLanguageEnum;
+}
 export interface GetNodesHttpResponseSampleRequest {
     automationId: string;
     nodeId: string;
     acceptLanguage?: GetNodesHttpResponseSampleAcceptLanguageEnum;
+}
+export interface GetNodesSearchRequest {
+    automationId: string;
+    view?: GetNodesSearchViewEnum;
+    expectedRevision?: number;
+    nodeIds?: Array<string>;
+    search?: string;
+    types?: Array<GetNodesSearchTypesEnum>;
+    limit?: number;
+    cursor?: string;
+    acceptLanguage?: GetNodesSearchAcceptLanguageEnum;
 }
 export interface GetOperationsRequest {
     automationId: string;
@@ -597,12 +618,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     getFunnelOptions(requestParameters: GetFunnelOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FunnelOptionsResponseDto>;
     /**
-     * nodes/edges React Flow JSON. draft graph, node_id .
+     * nodes/edges React Flow JSON. searchAutomationNodes, getAutomationNodes: . draft graph, node_id .
      *
      */
     getGraphRaw(requestParameters: GetGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>>;
     /**
-     * nodes/edges React Flow JSON. draft graph, node_id .
+     * nodes/edges React Flow JSON. searchAutomationNodes, getAutomationNodes: . draft graph, node_id .
      *
      */
     getGraph(requestParameters: GetGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto>;
@@ -617,6 +638,16 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     getNodeTypes(requestParameters: GetNodeTypesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeCatalogResponseDto>;
     /**
+     * 20 UUID . ID searchAutomationNodes. expected_revision , . include_edges ; ID . ID missing_node_ids.
+     *
+     */
+    getNodesRaw(requestParameters: GetNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodesResponseDto>>;
+    /**
+     * 20 UUID . ID searchAutomationNodes. expected_revision , . include_edges ; ID . ID missing_node_ids.
+     *
+     */
+    getNodes(requestParameters: GetNodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodesResponseDto>;
+    /**
      * . .
      * JSON- HTTP-
      */
@@ -626,6 +657,16 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      * JSON- HTTP-
      */
     getNodesHttpResponseSample(requestParameters: GetNodesHttpResponseSampleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationHttpResponseSampleDto>;
+    /**
+     * MCP. ; ID, , , . node_ids UUID . getAutomationNodes node_ids expected_revision . getGraph.
+     * ID, ,
+     */
+    getNodesSearchRaw(requestParameters: GetNodesSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeSearchResponseDto>>;
+    /**
+     * MCP. ; ID, , , . node_ids UUID . getAutomationNodes node_ids expected_revision . getGraph.
+     * ID, ,
+     */
+    getNodesSearch(requestParameters: GetNodesSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeSearchResponseDto>;
     /**
      * reconnect; compaction snapshot .
      * sequence
@@ -1167,11 +1208,86 @@ export type GetNodeTypesAcceptLanguageEnum = typeof GetNodeTypesAcceptLanguageEn
 /**
  * @export
  */
+export declare const GetNodesViewEnum: {
+    readonly Draft: "draft";
+    readonly Published: "published";
+};
+export type GetNodesViewEnum = typeof GetNodesViewEnum[keyof typeof GetNodesViewEnum];
+/**
+ * @export
+ */
+export declare const GetNodesAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetNodesAcceptLanguageEnum = typeof GetNodesAcceptLanguageEnum[keyof typeof GetNodesAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetNodesHttpResponseSampleAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type GetNodesHttpResponseSampleAcceptLanguageEnum = typeof GetNodesHttpResponseSampleAcceptLanguageEnum[keyof typeof GetNodesHttpResponseSampleAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetNodesSearchViewEnum: {
+    readonly Draft: "draft";
+    readonly Published: "published";
+};
+export type GetNodesSearchViewEnum = typeof GetNodesSearchViewEnum[keyof typeof GetNodesSearchViewEnum];
+/**
+ * @export
+ */
+export declare const GetNodesSearchTypesEnum: {
+    readonly TriggerBirthday: "trigger.birthday";
+    readonly TriggerStart: "trigger.start";
+    readonly TriggerStartButton: "trigger.start_button";
+    readonly TriggerMembershipJoined: "trigger.membership_joined";
+    readonly TriggerIncomingMessage: "trigger.incoming_message";
+    readonly TriggerSegmentEntered: "trigger.segment_entered";
+    readonly TriggerEvent: "trigger.event";
+    readonly TriggerAppEvent: "trigger.app_event";
+    readonly ConditionVariable: "condition.variable";
+    readonly ConditionAi: "condition.ai";
+    readonly ConditionDateTime: "condition.date_time";
+    readonly ConditionSegment: "condition.segment";
+    readonly ConditionFunnelStage: "condition.funnel_stage";
+    readonly ConditionAutomation: "condition.automation";
+    readonly ConditionAgent: "condition.agent";
+    readonly ConditionOperatorAssignment: "condition.operator_assignment";
+    readonly ConditionChannelType: "condition.channel_type";
+    readonly ConditionTableRow: "condition.table_row";
+    readonly BranchRandom: "branch.random";
+    readonly ActionSetVariable: "action.set_variable";
+    readonly ActionMessage: "action.message";
+    readonly ActionPoll: "action.poll";
+    readonly ActionTyping: "action.typing";
+    readonly ActionAgentRequest: "action.agent_request";
+    readonly ActionAddSegment: "action.add_segment";
+    readonly ActionMoveFunnelStage: "action.move_funnel_stage";
+    readonly ActionRemoveSegment: "action.remove_segment";
+    readonly ActionAddAutomation: "action.add_automation";
+    readonly ActionRemoveAutomation: "action.remove_automation";
+    readonly ActionAssignAgent: "action.assign_agent";
+    readonly ActionUnassignAgent: "action.unassign_agent";
+    readonly ActionHandoffToOperator: "action.handoff_to_operator";
+    readonly ActionTableWrite: "action.table_write";
+    readonly ActionHttp: "action.http";
+    readonly ActionApp: "action.app";
+    readonly ControlWait: "control.wait";
+    readonly ControlLoop: "control.loop";
+};
+export type GetNodesSearchTypesEnum = typeof GetNodesSearchTypesEnum[keyof typeof GetNodesSearchTypesEnum];
+/**
+ * @export
+ */
+export declare const GetNodesSearchAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetNodesSearchAcceptLanguageEnum = typeof GetNodesSearchAcceptLanguageEnum[keyof typeof GetNodesSearchAcceptLanguageEnum];
 /**
  * @export
  */

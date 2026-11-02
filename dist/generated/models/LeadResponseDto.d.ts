@@ -172,7 +172,7 @@ export interface LeadResponseDto {
      */
     blacklistReason?: string | null;
     /**
-     *
+     * , . .
      * @type {string}
      * @memberof LeadResponseDto
      */
@@ -262,9 +262,12 @@ export type LeadResponseDtoChannelTypeEnum = typeof LeadResponseDtoChannelTypeEn
  */
 export declare const LeadResponseDtoLeadSourceEnum: {
     readonly GroupJoin: "group_join";
+    readonly GroupLeave: "group_leave";
     readonly Message: "message";
     readonly MessageAllow: "message_allow";
+    readonly MessageDeny: "message_deny";
     readonly BotAdded: "bot_added";
+    readonly Landing: "landing";
     readonly Comment: "comment";
     readonly Like: "like";
     readonly Manual: "manual";

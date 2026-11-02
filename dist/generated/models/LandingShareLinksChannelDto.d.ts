@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LandingShareLinksChannelDtoSubscriptionLinksInner } from './LandingShareLinksChannelDtoSubscriptionLinksInner';
+import type { DirectSubscriptionChannelLinksDtoSubscriptionLinksInner } from './DirectSubscriptionChannelLinksDtoSubscriptionLinksInner';
 import type { LandingShareLinksChannelDtoOpeningLinksInner } from './LandingShareLinksChannelDtoOpeningLinksInner';
 /**
  * LandingShareLinksChannelDto.
@@ -55,10 +55,10 @@ export interface LandingShareLinksChannelDto {
     openingLinks: Array<LandingShareLinksChannelDtoOpeningLinksInner>;
     /**
      * . .
-     * @type {Array<LandingShareLinksChannelDtoSubscriptionLinksInner>}
+     * @type {Array<DirectSubscriptionChannelLinksDtoSubscriptionLinksInner>}
      * @memberof LandingShareLinksChannelDto
      */
-    subscriptionLinks: Array<LandingShareLinksChannelDtoSubscriptionLinksInner>;
+    subscriptionLinks: Array<DirectSubscriptionChannelLinksDtoSubscriptionLinksInner>;
 }
 /**
  * @export

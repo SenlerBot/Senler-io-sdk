@@ -112,7 +112,7 @@ class AgentsLandingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , .
+     * . AgentsUser ensureAcquisition; . MCP .
      *
      */
     async getLandingRaw(requestParameters, initOverrides) {
@@ -148,7 +148,7 @@ class AgentsLandingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , .
+     * . AgentsUser ensureAcquisition; . MCP .
      *
      */
     async getLanding(requestParameters, initOverrides) {
@@ -244,7 +244,7 @@ class AgentsLandingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * VK, Telegram MAX, .
+     * : . state next_action, . prepare_landing AgentsUser ensureAcquisition, publish_agent . AgentsUser getSubscriptionLinks. VK, Telegram MAX.
      *
      */
     async getLandingShareLinksRaw(requestParameters, initOverrides) {
@@ -277,10 +277,10 @@ class AgentsLandingApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingShareLinksResponseDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentLandingLinksResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * VK, Telegram MAX, .
+     * : . state next_action, . prepare_landing AgentsUser ensureAcquisition, publish_agent . AgentsUser getSubscriptionLinks. VK, Telegram MAX.
      *
      */
     async getLandingShareLinks(requestParameters, initOverrides) {

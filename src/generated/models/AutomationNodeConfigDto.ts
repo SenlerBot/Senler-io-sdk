@@ -246,7 +246,7 @@ export interface AutomationNodeConfigDto {
      */
     http?: AutomationHttpConfigDto;
     /**
-     * , .
+     * . / : chat_member_added chat_member_removed; chat_member_added.
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
@@ -359,6 +359,18 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     channelIds?: Array<string>;
+    /**
+     * / .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    membershipChannelId?: string;
+    /**
+     * , , . VK .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    membershipSpaceId?: string;
     /**
      * , .
      * @type {Array<string>}
@@ -1135,6 +1147,8 @@ export type AutomationNodeConfigDtoAiAttachmentsVariableScopeEnum = typeof Autom
  */
 export const AutomationNodeConfigDtoEventTypeEnum = {
     BotStarted: 'bot_started',
+    ChatMemberAdded: 'chat_member_added',
+    ChatMemberRemoved: 'chat_member_removed',
     MessageCreated: 'message_created',
     ReactionAdded: 'reaction_added',
     ReactionRemoved: 'reaction_removed',
@@ -1556,6 +1570,7 @@ export type AutomationNodeConfigDtoMessageChannelTypesEnum = typeof AutomationNo
  */
 export const AutomationNodeConfigDtoMessageTargetTypeEnum = {
     CurrentContext: 'current_context',
+    PrivateDialog: 'private_dialog',
     Lead: 'lead',
     Dialog: 'dialog',
     LeadVariable: 'lead_variable',
@@ -1748,6 +1763,8 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
         'appEventName': json['app_event_name'] == null ? undefined : json['app_event_name'],
         'appEventVariableName': json['app_event_variable_name'] == null ? undefined : json['app_event_variable_name'],
         'channelIds': json['channel_ids'] == null ? undefined : json['channel_ids'],
+        'membershipChannelId': json['membership_channel_id'] == null ? undefined : json['membership_channel_id'],
+        'membershipSpaceId': json['membership_space_id'] == null ? undefined : json['membership_space_id'],
         'dialogIds': json['dialog_ids'] == null ? undefined : json['dialog_ids'],
         'dialogScope': json['dialog_scope'] == null ? undefined : json['dialog_scope'],
         'segmentId': json['segment_id'] == null ? undefined : json['segment_id'],
@@ -1924,6 +1941,8 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
         'app_event_name': value['appEventName'],
         'app_event_variable_name': value['appEventVariableName'],
         'channel_ids': value['channelIds'],
+        'membership_channel_id': value['membershipChannelId'],
+        'membership_space_id': value['membershipSpaceId'],
         'dialog_ids': value['dialogIds'],
         'dialog_scope': value['dialogScope'],
         'segment_id': value['segmentId'],

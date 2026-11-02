@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LandingPublicTextBlockDtoAction } from './LandingPublicTextBlockDtoAction';
+import type { LandingPublicHtmlBlockDtoAction } from './LandingPublicHtmlBlockDtoAction';
 import {
-    LandingPublicTextBlockDtoActionFromJSON,
-    LandingPublicTextBlockDtoActionFromJSONTyped,
-    LandingPublicTextBlockDtoActionToJSON,
-    LandingPublicTextBlockDtoActionToJSONTyped,
-} from './LandingPublicTextBlockDtoAction';
+    LandingPublicHtmlBlockDtoActionFromJSON,
+    LandingPublicHtmlBlockDtoActionFromJSONTyped,
+    LandingPublicHtmlBlockDtoActionToJSON,
+    LandingPublicHtmlBlockDtoActionToJSONTyped,
+} from './LandingPublicHtmlBlockDtoAction';
 import type { LandingTextBlockPayloadDto } from './LandingTextBlockPayloadDto';
 import {
     LandingTextBlockPayloadDtoFromJSON,
@@ -42,10 +42,10 @@ export interface LandingPublicTextBlockDto {
     id: string;
     /**
      *
-     * @type {LandingPublicTextBlockDtoAction}
+     * @type {LandingPublicHtmlBlockDtoAction}
      * @memberof LandingPublicTextBlockDto
      */
-    action: LandingPublicTextBlockDtoAction | null;
+    action: LandingPublicHtmlBlockDtoAction | null;
     /**
      * : text.
      * @type {string}
@@ -92,7 +92,7 @@ export function LandingPublicTextBlockDtoFromJSONTyped(json: any, ignoreDiscrimi
     return {
 
         'id': json['id'],
-        'action': LandingPublicTextBlockDtoActionFromJSON(json['action']),
+        'action': LandingPublicHtmlBlockDtoActionFromJSON(json['action']),
         'type': json['type'],
         'payload': LandingTextBlockPayloadDtoFromJSON(json['payload']),
     };
@@ -110,7 +110,7 @@ export function LandingPublicTextBlockDtoToJSONTyped(value?: LandingPublicTextBl
     return {
 
         'id': value['id'],
-        'action': LandingPublicTextBlockDtoActionToJSON(value['action']),
+        'action': LandingPublicHtmlBlockDtoActionToJSON(value['action']),
         'type': value['type'],
         'payload': LandingTextBlockPayloadDtoToJSON(value['payload']),
     };

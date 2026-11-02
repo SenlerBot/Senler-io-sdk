@@ -19,7 +19,7 @@ exports.LandingPublicProductsBlockDtoFromJSON = LandingPublicProductsBlockDtoFro
 exports.LandingPublicProductsBlockDtoFromJSONTyped = LandingPublicProductsBlockDtoFromJSONTyped;
 exports.LandingPublicProductsBlockDtoToJSON = LandingPublicProductsBlockDtoToJSON;
 exports.LandingPublicProductsBlockDtoToJSONTyped = LandingPublicProductsBlockDtoToJSONTyped;
-const LandingPublicTextBlockDtoAction_1 = require("./LandingPublicTextBlockDtoAction");
+const LandingPublicHtmlBlockDtoAction_1 = require("./LandingPublicHtmlBlockDtoAction");
 const LandingProductsBlockPayloadDto_1 = require("./LandingProductsBlockPayloadDto");
 /**
  * @export
@@ -50,7 +50,7 @@ function LandingPublicProductsBlockDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'id': json['id'],
-        'action': (0, LandingPublicTextBlockDtoAction_1.LandingPublicTextBlockDtoActionFromJSON)(json['action']),
+        'action': (0, LandingPublicHtmlBlockDtoAction_1.LandingPublicHtmlBlockDtoActionFromJSON)(json['action']),
         'type': json['type'],
         'payload': (0, LandingProductsBlockPayloadDto_1.LandingProductsBlockPayloadDtoFromJSON)(json['payload']),
     };
@@ -64,7 +64,7 @@ function LandingPublicProductsBlockDtoToJSONTyped(value, ignoreDiscriminator = f
     }
     return {
         'id': value['id'],
-        'action': (0, LandingPublicTextBlockDtoAction_1.LandingPublicTextBlockDtoActionToJSON)(value['action']),
+        'action': (0, LandingPublicHtmlBlockDtoAction_1.LandingPublicHtmlBlockDtoActionToJSON)(value['action']),
         'type': value['type'],
         'payload': (0, LandingProductsBlockPayloadDto_1.LandingProductsBlockPayloadDtoToJSON)(value['payload']),
     };

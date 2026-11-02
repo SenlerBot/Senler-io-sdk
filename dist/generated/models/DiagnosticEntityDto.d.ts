@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { DiagnosticFindingDto } from './DiagnosticFindingDto';
+import type { DiagnosticReferenceDto } from './DiagnosticReferenceDto';
 /**
  * DiagnosticEntityDto.
  * @export
@@ -34,6 +35,30 @@ export interface DiagnosticEntityDto {
      * @memberof DiagnosticEntityDto
      */
     name: string;
+    /**
+     * . , .
+     * @type {string}
+     * @memberof DiagnosticEntityDto
+     */
+    settingsView?: DiagnosticEntityDtoSettingsViewEnum;
+    /**
+     * ; .
+     * @type {string}
+     * @memberof DiagnosticEntityDto
+     */
+    historyStatus?: DiagnosticEntityDtoHistoryStatusEnum;
+    /**
+     * .
+     * @type {string}
+     * @memberof DiagnosticEntityDto
+     */
+    avatarUrl?: string;
+    /**
+     * , ; .
+     * @type {Array<DiagnosticReferenceDto>}
+     * @memberof DiagnosticEntityDto
+     */
+    reviewReferences?: Array<DiagnosticReferenceDto>;
     /**
      * ID .
      * @type {string}
@@ -145,6 +170,25 @@ export declare const DiagnosticEntityDtoEntityTypeEnum: {
     readonly Automation: "automation";
 };
 export type DiagnosticEntityDtoEntityTypeEnum = typeof DiagnosticEntityDtoEntityTypeEnum[keyof typeof DiagnosticEntityDtoEntityTypeEnum];
+/**
+ * @export
+ */
+export declare const DiagnosticEntityDtoSettingsViewEnum: {
+    readonly Draft: "draft";
+    readonly Published: "published";
+};
+export type DiagnosticEntityDtoSettingsViewEnum = typeof DiagnosticEntityDtoSettingsViewEnum[keyof typeof DiagnosticEntityDtoSettingsViewEnum];
+/**
+ * @export
+ */
+export declare const DiagnosticEntityDtoHistoryStatusEnum: {
+    readonly Sample: "sample";
+    readonly Empty: "empty";
+    readonly Unavailable: "unavailable";
+    readonly Unconfirmed: "unconfirmed";
+    readonly NotChecked: "not_checked";
+};
+export type DiagnosticEntityDtoHistoryStatusEnum = typeof DiagnosticEntityDtoHistoryStatusEnum[keyof typeof DiagnosticEntityDtoHistoryStatusEnum];
 /**
  * @export
  */

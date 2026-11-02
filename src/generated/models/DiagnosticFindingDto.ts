@@ -20,6 +20,13 @@ import {
     DiagnosticCitationDtoToJSON,
     DiagnosticCitationDtoToJSONTyped,
 } from './DiagnosticCitationDto';
+import type { DiagnosticReferenceDto } from './DiagnosticReferenceDto';
+import {
+    DiagnosticReferenceDtoFromJSON,
+    DiagnosticReferenceDtoFromJSONTyped,
+    DiagnosticReferenceDtoToJSON,
+    DiagnosticReferenceDtoToJSONTyped,
+} from './DiagnosticReferenceDto';
 
 /**
  * DiagnosticFindingDto.
@@ -75,6 +82,12 @@ export interface DiagnosticFindingDto {
      * @memberof DiagnosticFindingDto
      */
     citations?: Array<DiagnosticCitationDto>;
+    /**
+     * , ; .
+     * @type {Array<DiagnosticReferenceDto>}
+     * @memberof DiagnosticFindingDto
+     */
+    references?: Array<DiagnosticReferenceDto>;
 }
 
 
@@ -130,6 +143,7 @@ export function DiagnosticFindingDtoFromJSONTyped(json: any, ignoreDiscriminator
         'suggestion': json['suggestion'],
         'verification': json['verification'],
         'citations': json['citations'] == null ? undefined : ((json['citations'] as Array<any>).map(DiagnosticCitationDtoFromJSON)),
+        'references': json['references'] == null ? undefined : ((json['references'] as Array<any>).map(DiagnosticReferenceDtoFromJSON)),
     };
 }
 
@@ -152,5 +166,6 @@ export function DiagnosticFindingDtoToJSONTyped(value?: DiagnosticFindingDto | n
         'suggestion': value['suggestion'],
         'verification': value['verification'],
         'citations': value['citations'] == null ? undefined : ((value['citations'] as Array<any>).map(DiagnosticCitationDtoToJSON)),
+        'references': value['references'] == null ? undefined : ((value['references'] as Array<any>).map(DiagnosticReferenceDtoToJSON)),
     };
 }

@@ -16,7 +16,7 @@
  */
 export interface AutomationTriggerTestConditionResponseDto {
     /**
-     * : bot_started, message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, segment_subscribed, app_event_received.
+     * : bot_started, chat_member_added, chat_member_removed, message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, segment_subscribed, app_event_received.
      * @type {string}
      * @memberof AutomationTriggerTestConditionResponseDto
      */
@@ -123,6 +123,8 @@ export interface AutomationTriggerTestConditionResponseDto {
  */
 export declare const AutomationTriggerTestConditionResponseDtoEventTypeEnum: {
     readonly BotStarted: "bot_started";
+    readonly ChatMemberAdded: "chat_member_added";
+    readonly ChatMemberRemoved: "chat_member_removed";
     readonly MessageCreated: "message_created";
     readonly ReactionAdded: "reaction_added";
     readonly ReactionRemoved: "reaction_removed";

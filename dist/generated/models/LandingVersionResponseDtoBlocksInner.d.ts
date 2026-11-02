@@ -12,6 +12,7 @@
 import type { LandingButtonBlockResponseDto } from './LandingButtonBlockResponseDto';
 import type { LandingCoverBlockResponseDto } from './LandingCoverBlockResponseDto';
 import type { LandingFeaturesBlockResponseDto } from './LandingFeaturesBlockResponseDto';
+import type { LandingHtmlBlockResponseDto } from './LandingHtmlBlockResponseDto';
 import type { LandingImageBlockResponseDto } from './LandingImageBlockResponseDto';
 import type { LandingOtherBlockResponseDto } from './LandingOtherBlockResponseDto';
 import type { LandingProductsBlockResponseDto } from './LandingProductsBlockResponseDto';
@@ -32,6 +33,8 @@ export type LandingVersionResponseDtoBlocksInner = {
 } & LandingCoverBlockResponseDto | {
     type: 'features';
 } & LandingFeaturesBlockResponseDto | {
+    type: 'html';
+} & LandingHtmlBlockResponseDto | {
     type: 'image';
 } & LandingImageBlockResponseDto | {
     type: 'other';

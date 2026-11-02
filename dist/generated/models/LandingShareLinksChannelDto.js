@@ -19,7 +19,7 @@ exports.LandingShareLinksChannelDtoFromJSON = LandingShareLinksChannelDtoFromJSO
 exports.LandingShareLinksChannelDtoFromJSONTyped = LandingShareLinksChannelDtoFromJSONTyped;
 exports.LandingShareLinksChannelDtoToJSON = LandingShareLinksChannelDtoToJSON;
 exports.LandingShareLinksChannelDtoToJSONTyped = LandingShareLinksChannelDtoToJSONTyped;
-const LandingShareLinksChannelDtoSubscriptionLinksInner_1 = require("./LandingShareLinksChannelDtoSubscriptionLinksInner");
+const DirectSubscriptionChannelLinksDtoSubscriptionLinksInner_1 = require("./DirectSubscriptionChannelLinksDtoSubscriptionLinksInner");
 const LandingShareLinksChannelDtoOpeningLinksInner_1 = require("./LandingShareLinksChannelDtoOpeningLinksInner");
 /**
  * @export
@@ -63,7 +63,7 @@ function LandingShareLinksChannelDtoFromJSONTyped(json, ignoreDiscriminator) {
         'avatarUrl': json['avatar_url'],
         'label': json['label'],
         'openingLinks': (json['opening_links'].map(LandingShareLinksChannelDtoOpeningLinksInner_1.LandingShareLinksChannelDtoOpeningLinksInnerFromJSON)),
-        'subscriptionLinks': (json['subscription_links'].map(LandingShareLinksChannelDtoSubscriptionLinksInner_1.LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSON)),
+        'subscriptionLinks': (json['subscription_links'].map(DirectSubscriptionChannelLinksDtoSubscriptionLinksInner_1.DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSON)),
     };
 }
 function LandingShareLinksChannelDtoToJSON(json) {
@@ -80,6 +80,6 @@ function LandingShareLinksChannelDtoToJSONTyped(value, ignoreDiscriminator = fal
         'avatar_url': value['avatarUrl'],
         'label': value['label'],
         'opening_links': (value['openingLinks'].map(LandingShareLinksChannelDtoOpeningLinksInner_1.LandingShareLinksChannelDtoOpeningLinksInnerToJSON)),
-        'subscription_links': (value['subscriptionLinks'].map(LandingShareLinksChannelDtoSubscriptionLinksInner_1.LandingShareLinksChannelDtoSubscriptionLinksInnerToJSON)),
+        'subscription_links': (value['subscriptionLinks'].map(DirectSubscriptionChannelLinksDtoSubscriptionLinksInner_1.DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSON)),
     };
 }

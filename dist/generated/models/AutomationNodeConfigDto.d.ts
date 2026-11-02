@@ -151,7 +151,7 @@ export interface AutomationNodeConfigDto {
      */
     http?: AutomationHttpConfigDto;
     /**
-     * , .
+     * . / : chat_member_added chat_member_removed; chat_member_added.
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
@@ -264,6 +264,18 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     channelIds?: Array<string>;
+    /**
+     * / .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    membershipChannelId?: string;
+    /**
+     * , , . VK .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    membershipSpaceId?: string;
     /**
      * , .
      * @type {Array<string>}
@@ -1043,6 +1055,8 @@ export type AutomationNodeConfigDtoAiAttachmentsVariableScopeEnum = typeof Autom
  */
 export declare const AutomationNodeConfigDtoEventTypeEnum: {
     readonly BotStarted: "bot_started";
+    readonly ChatMemberAdded: "chat_member_added";
+    readonly ChatMemberRemoved: "chat_member_removed";
     readonly MessageCreated: "message_created";
     readonly ReactionAdded: "reaction_added";
     readonly ReactionRemoved: "reaction_removed";
@@ -1429,6 +1443,7 @@ export type AutomationNodeConfigDtoMessageChannelTypesEnum = typeof AutomationNo
  */
 export declare const AutomationNodeConfigDtoMessageTargetTypeEnum: {
     readonly CurrentContext: "current_context";
+    readonly PrivateDialog: "private_dialog";
     readonly Lead: "lead";
     readonly Dialog: "dialog";
     readonly LeadVariable: "lead_variable";

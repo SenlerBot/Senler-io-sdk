@@ -24,6 +24,8 @@ exports.AutomationTriggerTestConditionResponseDtoToJSONTyped = AutomationTrigger
  */
 exports.AutomationTriggerTestConditionResponseDtoEventTypeEnum = {
     BotStarted: 'bot_started',
+    ChatMemberAdded: 'chat_member_added',
+    ChatMemberRemoved: 'chat_member_removed',
     MessageCreated: 'message_created',
     ReactionAdded: 'reaction_added',
     ReactionRemoved: 'reaction_removed',

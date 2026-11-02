@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateAgentCapabilitiesDtoWidgetAiProgressModeEnum = void 0;
+exports.UpdateAgentCapabilitiesDtoWidgetAiProgressModeEnum = exports.UpdateAgentCapabilitiesDtoDialogContextModeEnum = void 0;
 exports.instanceOfUpdateAgentCapabilitiesDto = instanceOfUpdateAgentCapabilitiesDto;
 exports.UpdateAgentCapabilitiesDtoFromJSON = UpdateAgentCapabilitiesDtoFromJSON;
 exports.UpdateAgentCapabilitiesDtoFromJSONTyped = UpdateAgentCapabilitiesDtoFromJSONTyped;
@@ -22,6 +22,14 @@ exports.UpdateAgentCapabilitiesDtoToJSONTyped = UpdateAgentCapabilitiesDtoToJSON
 const OperatorHandoffPolicyDto_1 = require("./OperatorHandoffPolicyDto");
 const AgentAssignmentPolicyDto_1 = require("./AgentAssignmentPolicyDto");
 const AgentAutomationEventPolicyDto_1 = require("./AgentAutomationEventPolicyDto");
+/**
+ * @export
+ */
+exports.UpdateAgentCapabilitiesDtoDialogContextModeEnum = {
+    AllDialog: 'all_dialog',
+    CurrentSession: 'current_session',
+    CurrentRequest: 'current_request'
+};
 /**
  * @export
  */
@@ -44,6 +52,7 @@ function UpdateAgentCapabilitiesDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'dialogContextMode': json['dialog_context_mode'] == null ? undefined : json['dialog_context_mode'],
         'enableButtons': json['enable_buttons'] == null ? undefined : json['enable_buttons'],
         'maxToolIterations': json['max_tool_iterations'] == null ? undefined : json['max_tool_iterations'],
         'enableWidgetPageActions': json['enable_widget_page_actions'] == null ? undefined : json['enable_widget_page_actions'],
@@ -97,6 +106,7 @@ function UpdateAgentCapabilitiesDtoToJSONTyped(value, ignoreDiscriminator = fals
         return value;
     }
     return {
+        'dialog_context_mode': value['dialogContextMode'],
         'enable_buttons': value['enableButtons'],
         'max_tool_iterations': value['maxToolIterations'],
         'enable_widget_page_actions': value['enableWidgetPageActions'],

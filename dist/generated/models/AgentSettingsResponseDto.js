@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AgentSettingsResponseDtoVariablesAccessModeEnum = exports.AgentSettingsResponseDtoWidgetAiProgressModeEnum = exports.AgentSettingsResponseDtoAutoAssignmentRoleEnum = exports.AgentSettingsResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentSettingsResponseDtoAutoAssignmentModeEnum = exports.AgentSettingsResponseDtoKeywordDialogScopeEnum = exports.AgentSettingsResponseDtoKeywordAssignmentRoleEnum = exports.AgentSettingsResponseDtoStartButtonMatchModeEnum = exports.AgentSettingsResponseDtoAutostartModeEnum = exports.AgentSettingsResponseDtoKnowledgeBasePermissionsEnum = exports.AgentSettingsResponseDtoServerBindingModeEnum = exports.AgentSettingsResponseDtoAgentTypeEnum = void 0;
+exports.AgentSettingsResponseDtoVariablesAccessModeEnum = exports.AgentSettingsResponseDtoWidgetAiProgressModeEnum = exports.AgentSettingsResponseDtoAutoAssignmentRoleEnum = exports.AgentSettingsResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentSettingsResponseDtoAutoAssignmentModeEnum = exports.AgentSettingsResponseDtoKeywordDialogScopeEnum = exports.AgentSettingsResponseDtoKeywordAssignmentRoleEnum = exports.AgentSettingsResponseDtoStartButtonMatchModeEnum = exports.AgentSettingsResponseDtoAutostartModeEnum = exports.AgentSettingsResponseDtoKnowledgeBasePermissionsEnum = exports.AgentSettingsResponseDtoServerBindingModeEnum = exports.AgentSettingsResponseDtoAgentTypeEnum = exports.AgentSettingsResponseDtoDialogContextModeEnum = void 0;
 exports.instanceOfAgentSettingsResponseDto = instanceOfAgentSettingsResponseDto;
 exports.AgentSettingsResponseDtoFromJSON = AgentSettingsResponseDtoFromJSON;
 exports.AgentSettingsResponseDtoFromJSONTyped = AgentSettingsResponseDtoFromJSONTyped;
@@ -30,6 +30,14 @@ const McpServerResponseDto_1 = require("./McpServerResponseDto");
 const AgentMcpServerListResponseDto_1 = require("./AgentMcpServerListResponseDto");
 const AgentAssignmentPolicyDto_1 = require("./AgentAssignmentPolicyDto");
 const AgentAutomationEventPolicyDto_1 = require("./AgentAutomationEventPolicyDto");
+/**
+ * @export
+ */
+exports.AgentSettingsResponseDtoDialogContextModeEnum = {
+    AllDialog: 'all_dialog',
+    CurrentSession: 'current_session',
+    CurrentRequest: 'current_request'
+};
 /**
  * @export
  */
@@ -149,6 +157,8 @@ exports.AgentSettingsResponseDtoVariablesAccessModeEnum = {
  * Check if a given object implements the AgentSettingsResponseDto interface.
  */
 function instanceOfAgentSettingsResponseDto(value) {
+    if (!('dialogContextMode' in value) || value['dialogContextMode'] === undefined)
+        return false;
     if (!('id' in value) || value['id'] === undefined)
         return false;
     if (!('name' in value) || value['name'] === undefined)
@@ -297,6 +307,7 @@ function AgentSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'dialogContextMode': json['dialog_context_mode'],
         'id': json['id'],
         'name': json['name'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
@@ -400,6 +411,7 @@ function AgentSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         return value;
     }
     return {
+        'dialog_context_mode': value['dialogContextMode'],
         'id': value['id'],
         'name': value['name'],
         'avatar_url': value['avatarUrl'],

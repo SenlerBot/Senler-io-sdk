@@ -95,6 +95,7 @@ function DiagnosticProgressDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'currentRef': json['current_ref'] == null ? undefined : json['current_ref'],
         'running': json['running'],
         'action': json['action'],
         'sourceLabel': json['source_label'],
@@ -123,6 +124,7 @@ function DiagnosticProgressDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'current_ref': value['currentRef'],
         'running': value['running'],
         'action': value['action'],
         'source_label': value['sourceLabel'],

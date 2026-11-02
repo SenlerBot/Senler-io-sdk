@@ -26,6 +26,7 @@ const LandingVariantInitialContentDtoAction_1 = require("./LandingVariantInitial
 exports.UpdateLandingBlockDtoTypeEnum = {
     Cover: 'cover',
     Text: 'text',
+    Html: 'html',
     Button: 'button',
     Image: 'image',
     Features: 'features',

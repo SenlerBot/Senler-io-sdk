@@ -21,6 +21,12 @@ import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicy
  */
 export interface AgentDraftSettingsStateResponseDto {
     /**
+     * : , . .
+     * @type {string}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    dialogContextMode: AgentDraftSettingsStateResponseDtoDialogContextModeEnum;
+    /**
      * , . .
      * @type {Array<string>}
      * @memberof AgentDraftSettingsStateResponseDto
@@ -568,6 +574,15 @@ export interface AgentDraftSettingsStateResponseDto {
 /**
  * @export
  */
+export declare const AgentDraftSettingsStateResponseDtoDialogContextModeEnum: {
+    readonly AllDialog: "all_dialog";
+    readonly CurrentSession: "current_session";
+    readonly CurrentRequest: "current_request";
+};
+export type AgentDraftSettingsStateResponseDtoDialogContextModeEnum = typeof AgentDraftSettingsStateResponseDtoDialogContextModeEnum[keyof typeof AgentDraftSettingsStateResponseDtoDialogContextModeEnum];
+/**
+ * @export
+ */
 export declare const AgentDraftSettingsStateResponseDtoConflictFieldsEnum: {
     readonly Name: "name";
     readonly Instruction: "instruction";
@@ -576,6 +591,7 @@ export declare const AgentDraftSettingsStateResponseDtoConflictFieldsEnum: {
     readonly SelectedModelId: "selected_model_id";
     readonly EventSummaryMode: "event_summary_mode";
     readonly DialogSummaryMode: "dialog_summary_mode";
+    readonly DialogContextMode: "dialog_context_mode";
     readonly Meta: "meta";
     readonly Status: "status";
     readonly ServerBindingMode: "server_binding_mode";

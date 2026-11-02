@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { DiagnosticCitationDto } from './DiagnosticCitationDto';
+import type { DiagnosticReferenceDto } from './DiagnosticReferenceDto';
 /**
  * DiagnosticFindingDto.
  * @export
@@ -64,6 +65,12 @@ export interface DiagnosticFindingDto {
      * @memberof DiagnosticFindingDto
      */
     citations?: Array<DiagnosticCitationDto>;
+    /**
+     * , ; .
+     * @type {Array<DiagnosticReferenceDto>}
+     * @memberof DiagnosticFindingDto
+     */
+    references?: Array<DiagnosticReferenceDto>;
 }
 /**
  * @export

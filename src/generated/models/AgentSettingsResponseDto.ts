@@ -98,6 +98,12 @@ import {
  */
 export interface AgentSettingsResponseDto {
     /**
+     * : , . .
+     * @type {string}
+     * @memberof AgentSettingsResponseDto
+     */
+    dialogContextMode: AgentSettingsResponseDtoDialogContextModeEnum;
+    /**
      * ID
      * @type {string}
      * @memberof AgentSettingsResponseDto
@@ -661,6 +667,16 @@ export interface AgentSettingsResponseDto {
 /**
  * @export
  */
+export const AgentSettingsResponseDtoDialogContextModeEnum = {
+    AllDialog: 'all_dialog',
+    CurrentSession: 'current_session',
+    CurrentRequest: 'current_request'
+} as const;
+export type AgentSettingsResponseDtoDialogContextModeEnum = typeof AgentSettingsResponseDtoDialogContextModeEnum[keyof typeof AgentSettingsResponseDtoDialogContextModeEnum];
+
+/**
+ * @export
+ */
 export const AgentSettingsResponseDtoAgentTypeEnum = {
     Sales: 'sales',
     Support: 'support',
@@ -802,6 +818,7 @@ export type AgentSettingsResponseDtoVariablesAccessModeEnum = typeof AgentSettin
  * Check if a given object implements the AgentSettingsResponseDto interface.
  */
 export function instanceOfAgentSettingsResponseDto(value: object): value is AgentSettingsResponseDto {
+    if (!('dialogContextMode' in value) || value['dialogContextMode'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('agentType' in value) || value['agentType'] === undefined) return false;
@@ -884,6 +901,7 @@ export function AgentSettingsResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
 
+        'dialogContextMode': json['dialog_context_mode'],
         'id': json['id'],
         'name': json['name'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
@@ -991,6 +1009,7 @@ export function AgentSettingsResponseDtoToJSONTyped(value?: AgentSettingsRespons
 
     return {
 
+        'dialog_context_mode': value['dialogContextMode'],
         'id': value['id'],
         'name': value['name'],
         'avatar_url': value['avatarUrl'],

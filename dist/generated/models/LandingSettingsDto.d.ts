@@ -17,6 +17,18 @@ import type { LandingTheme } from './LandingTheme';
  */
 export interface LandingSettingsDto {
     /**
+     * CSS . :scope .
+     * @type {string}
+     * @memberof LandingSettingsDto
+     */
+    customCss?: string;
+    /**
+     * CSS- HTML-.
+     * @type {string}
+     * @memberof LandingSettingsDto
+     */
+    htmlCss?: string;
+    /**
      * . null
      * @type {string}
      * @memberof LandingSettingsDto

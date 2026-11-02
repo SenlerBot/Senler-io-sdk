@@ -15,6 +15,7 @@ const AgentsAvatarApi_1 = require("./generated/apis/AgentsAvatarApi");
 const AgentsLandingApi_1 = require("./generated/apis/AgentsLandingApi");
 const AgentTrainingApi_1 = require("./generated/apis/AgentTrainingApi");
 const AIProviderAccountsApi_1 = require("./generated/apis/AIProviderAccountsApi");
+const AmbassadorReferralsApi_1 = require("./generated/apis/AmbassadorReferralsApi");
 const AnalyticsApi_1 = require("./generated/apis/AnalyticsApi");
 const AppAccessGrantsApi_1 = require("./generated/apis/AppAccessGrantsApi");
 const AppAgentEventsApi_1 = require("./generated/apis/AppAgentEventsApi");
@@ -130,6 +131,7 @@ class AiSenlerClient {
         this.agentsLanding = new AgentsLandingApi_1.AgentsLandingApi(configuration);
         this.agentTraining = new AgentTrainingApi_1.AgentTrainingApi(configuration);
         this.aiProviderAccounts = new AIProviderAccountsApi_1.AIProviderAccountsApi(configuration);
+        this.ambassadorReferrals = new AmbassadorReferralsApi_1.AmbassadorReferralsApi(configuration);
         this.analytics = new AnalyticsApi_1.AnalyticsApi(configuration);
         this.appAccessGrants = new AppAccessGrantsApi_1.AppAccessGrantsApi(configuration);
         this.appAgentEvents = new AppAgentEventsApi_1.AppAgentEventsApi(configuration);

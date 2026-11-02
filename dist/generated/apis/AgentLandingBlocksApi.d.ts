@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateAgentLandingActionBlockDto, CreateButtonLandingBlockDto, CreateCoverLandingBlockDto, CreateFeaturesLandingBlockDto, CreateImageLandingBlockDto, CreateOtherLandingBlockDto, CreateProductsLandingBlockDto, CreateReviewsLandingBlockDto, CreateTextLandingBlockDto, CreateTimerLandingBlockDto, CreateVideoLandingBlockDto, CreateWidgetLandingBlockDto, LandingBlockContentMutationResponseDto, LandingBlockCreateMutationResponseDto, SetAgentLandingSubscribeActionDto, SetLandingOpenLandingActionDto, SetLandingOpenUrlActionDto, UpdateAgentLandingActionBlockDto, UpdateButtonLandingBlockDto, UpdateCoverLandingBlockDto, UpdateFeaturesLandingBlockDto, UpdateImageLandingBlockDto, UpdateOtherLandingBlockDto, UpdateProductsLandingBlockDto, UpdateReviewsLandingBlockDto, UpdateTextLandingBlockDto, UpdateTimerLandingBlockDto, UpdateTypedLandingBlockActionCommonDto, UpdateVideoLandingBlockDto, UpdateWidgetLandingBlockDto } from '../models/index';
+import type { CreateAgentLandingActionBlockDto, CreateButtonLandingBlockDto, CreateCoverLandingBlockDto, CreateFeaturesLandingBlockDto, CreateHtmlLandingBlockDto, CreateImageLandingBlockDto, CreateOtherLandingBlockDto, CreateProductsLandingBlockDto, CreateReviewsLandingBlockDto, CreateTextLandingBlockDto, CreateTimerLandingBlockDto, CreateVideoLandingBlockDto, CreateWidgetLandingBlockDto, LandingBlockContentMutationResponseDto, LandingBlockCreateMutationResponseDto, SetAgentLandingSubscribeActionDto, SetLandingOpenLandingActionDto, SetLandingOpenUrlActionDto, UpdateAgentLandingActionBlockDto, UpdateButtonLandingBlockDto, UpdateCoverLandingBlockDto, UpdateFeaturesLandingBlockDto, UpdateHtmlLandingBlockDto, UpdateImageLandingBlockDto, UpdateOtherLandingBlockDto, UpdateProductsLandingBlockDto, UpdateReviewsLandingBlockDto, UpdateTextLandingBlockDto, UpdateTimerLandingBlockDto, UpdateTypedLandingBlockActionCommonDto, UpdateVideoLandingBlockDto, UpdateWidgetLandingBlockDto } from '../models/index';
 export interface DeleteLandingBlocksActionRequest {
     resourceId: string;
     blockId: string;
@@ -35,6 +35,12 @@ export interface LandingBlocksFeaturesRequest {
     xLandingEditorSessionId: string;
     createFeaturesLandingBlockDto: CreateFeaturesLandingBlockDto;
     acceptLanguage?: LandingBlocksFeaturesAcceptLanguageEnum;
+}
+export interface LandingBlocksHtmlRequest {
+    resourceId: string;
+    xLandingEditorSessionId: string;
+    createHtmlLandingBlockDto: CreateHtmlLandingBlockDto;
+    acceptLanguage?: LandingBlocksHtmlAcceptLanguageEnum;
 }
 export interface LandingBlocksImageRequest {
     resourceId: string;
@@ -131,6 +137,13 @@ export interface UpdateLandingBlocksFeaturesRequest {
     xLandingEditorSessionId: string;
     updateFeaturesLandingBlockDto: UpdateFeaturesLandingBlockDto;
     acceptLanguage?: UpdateLandingBlocksFeaturesAcceptLanguageEnum;
+}
+export interface UpdateLandingBlocksHtmlRequest {
+    resourceId: string;
+    blockId: string;
+    xLandingEditorSessionId: string;
+    updateHtmlLandingBlockDto: UpdateHtmlLandingBlockDto;
+    acceptLanguage?: UpdateLandingBlocksHtmlAcceptLanguageEnum;
 }
 export interface UpdateLandingBlocksImageRequest {
     resourceId: string;
@@ -239,6 +252,16 @@ export declare class AgentLandingBlocksApi extends runtime.BaseAPI {
      * features
      */
     landingBlocksFeatures(requestParameters: LandingBlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
+    /**
+     * .
+     * html
+     */
+    landingBlocksHtmlRaw(requestParameters: LandingBlocksHtmlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
+    /**
+     * .
+     * html
+     */
+    landingBlocksHtml(requestParameters: LandingBlocksHtmlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
      * .
      * image
@@ -391,6 +414,16 @@ export declare class AgentLandingBlocksApi extends runtime.BaseAPI {
     updateLandingBlocksFeatures(requestParameters: UpdateLandingBlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
      * .
+     * html
+     */
+    updateLandingBlocksHtmlRaw(requestParameters: UpdateLandingBlocksHtmlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
+    /**
+     * .
+     * html
+     */
+    updateLandingBlocksHtml(requestParameters: UpdateLandingBlocksHtmlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
+    /**
+     * .
      * image
      */
     updateLandingBlocksImageRaw(requestParameters: UpdateLandingBlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
@@ -515,6 +548,14 @@ export type LandingBlocksFeaturesAcceptLanguageEnum = typeof LandingBlocksFeatur
 /**
  * @export
  */
+export declare const LandingBlocksHtmlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingBlocksHtmlAcceptLanguageEnum = typeof LandingBlocksHtmlAcceptLanguageEnum[keyof typeof LandingBlocksHtmlAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const LandingBlocksImageAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -632,6 +673,14 @@ export declare const UpdateLandingBlocksFeaturesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateLandingBlocksFeaturesAcceptLanguageEnum = typeof UpdateLandingBlocksFeaturesAcceptLanguageEnum[keyof typeof UpdateLandingBlocksFeaturesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateLandingBlocksHtmlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateLandingBlocksHtmlAcceptLanguageEnum = typeof UpdateLandingBlocksHtmlAcceptLanguageEnum[keyof typeof UpdateLandingBlocksHtmlAcceptLanguageEnum];
 /**
  * @export
  */

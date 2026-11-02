@@ -54,6 +54,7 @@ export interface AgentLandingVariantInitialContentDto {
 export const AgentLandingVariantInitialContentDtoTypeEnum = {
     Cover: 'cover',
     Text: 'text',
+    Html: 'html',
     Button: 'button',
     Image: 'image',
     Features: 'features',

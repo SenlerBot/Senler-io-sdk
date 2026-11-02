@@ -65,6 +65,8 @@ exports.AutomationNodeConfigDtoAiAttachmentsVariableScopeEnum = {
  */
 exports.AutomationNodeConfigDtoEventTypeEnum = {
     BotStarted: 'bot_started',
+    ChatMemberAdded: 'chat_member_added',
+    ChatMemberRemoved: 'chat_member_removed',
     MessageCreated: 'message_created',
     ReactionAdded: 'reaction_added',
     ReactionRemoved: 'reaction_removed',
@@ -416,6 +418,7 @@ exports.AutomationNodeConfigDtoMessageChannelTypesEnum = {
  */
 exports.AutomationNodeConfigDtoMessageTargetTypeEnum = {
     CurrentContext: 'current_context',
+    PrivateDialog: 'private_dialog',
     Lead: 'lead',
     Dialog: 'dialog',
     LeadVariable: 'lead_variable',
@@ -578,6 +581,8 @@ function AutomationNodeConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         'appEventName': json['app_event_name'] == null ? undefined : json['app_event_name'],
         'appEventVariableName': json['app_event_variable_name'] == null ? undefined : json['app_event_variable_name'],
         'channelIds': json['channel_ids'] == null ? undefined : json['channel_ids'],
+        'membershipChannelId': json['membership_channel_id'] == null ? undefined : json['membership_channel_id'],
+        'membershipSpaceId': json['membership_space_id'] == null ? undefined : json['membership_space_id'],
         'dialogIds': json['dialog_ids'] == null ? undefined : json['dialog_ids'],
         'dialogScope': json['dialog_scope'] == null ? undefined : json['dialog_scope'],
         'segmentId': json['segment_id'] == null ? undefined : json['segment_id'],
@@ -750,6 +755,8 @@ function AutomationNodeConfigDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'app_event_name': value['appEventName'],
         'app_event_variable_name': value['appEventVariableName'],
         'channel_ids': value['channelIds'],
+        'membership_channel_id': value['membershipChannelId'],
+        'membership_space_id': value['membershipSpaceId'],
         'dialog_ids': value['dialogIds'],
         'dialog_scope': value['dialogScope'],
         'segment_id': value['segmentId'],

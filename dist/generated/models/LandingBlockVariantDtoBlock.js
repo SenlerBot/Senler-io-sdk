@@ -20,6 +20,7 @@ exports.LandingBlockVariantDtoBlockToJSONTyped = LandingBlockVariantDtoBlockToJS
 const LandingButtonBlockResponseDto_1 = require("./LandingButtonBlockResponseDto");
 const LandingCoverBlockResponseDto_1 = require("./LandingCoverBlockResponseDto");
 const LandingFeaturesBlockResponseDto_1 = require("./LandingFeaturesBlockResponseDto");
+const LandingHtmlBlockResponseDto_1 = require("./LandingHtmlBlockResponseDto");
 const LandingImageBlockResponseDto_1 = require("./LandingImageBlockResponseDto");
 const LandingOtherBlockResponseDto_1 = require("./LandingOtherBlockResponseDto");
 const LandingProductsBlockResponseDto_1 = require("./LandingProductsBlockResponseDto");
@@ -42,6 +43,8 @@ function LandingBlockVariantDtoBlockFromJSONTyped(json, ignoreDiscriminator) {
             return Object.assign({}, (0, LandingCoverBlockResponseDto_1.LandingCoverBlockResponseDtoFromJSONTyped)(json, true), { type: 'cover' });
         case 'features':
             return Object.assign({}, (0, LandingFeaturesBlockResponseDto_1.LandingFeaturesBlockResponseDtoFromJSONTyped)(json, true), { type: 'features' });
+        case 'html':
+            return Object.assign({}, (0, LandingHtmlBlockResponseDto_1.LandingHtmlBlockResponseDtoFromJSONTyped)(json, true), { type: 'html' });
         case 'image':
             return Object.assign({}, (0, LandingImageBlockResponseDto_1.LandingImageBlockResponseDtoFromJSONTyped)(json, true), { type: 'image' });
         case 'other':
@@ -76,6 +79,8 @@ function LandingBlockVariantDtoBlockToJSONTyped(value, ignoreDiscriminator = fal
             return Object.assign({}, (0, LandingCoverBlockResponseDto_1.LandingCoverBlockResponseDtoToJSON)(value), { type: 'cover' });
         case 'features':
             return Object.assign({}, (0, LandingFeaturesBlockResponseDto_1.LandingFeaturesBlockResponseDtoToJSON)(value), { type: 'features' });
+        case 'html':
+            return Object.assign({}, (0, LandingHtmlBlockResponseDto_1.LandingHtmlBlockResponseDtoToJSON)(value), { type: 'html' });
         case 'image':
             return Object.assign({}, (0, LandingImageBlockResponseDto_1.LandingImageBlockResponseDtoToJSON)(value), { type: 'image' });
         case 'other':

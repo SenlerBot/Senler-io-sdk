@@ -19,7 +19,7 @@ exports.DirectSubscriptionChannelLinksDtoFromJSON = DirectSubscriptionChannelLin
 exports.DirectSubscriptionChannelLinksDtoFromJSONTyped = DirectSubscriptionChannelLinksDtoFromJSONTyped;
 exports.DirectSubscriptionChannelLinksDtoToJSON = DirectSubscriptionChannelLinksDtoToJSON;
 exports.DirectSubscriptionChannelLinksDtoToJSONTyped = DirectSubscriptionChannelLinksDtoToJSONTyped;
-const LandingShareLinksChannelDtoSubscriptionLinksInner_1 = require("./LandingShareLinksChannelDtoSubscriptionLinksInner");
+const DirectSubscriptionChannelLinksDtoSubscriptionLinksInner_1 = require("./DirectSubscriptionChannelLinksDtoSubscriptionLinksInner");
 /**
  * @export
  */
@@ -59,7 +59,7 @@ function DirectSubscriptionChannelLinksDtoFromJSONTyped(json, ignoreDiscriminato
         'channelType': json['channel_type'],
         'avatarUrl': json['avatar_url'],
         'label': json['label'],
-        'subscriptionLinks': (json['subscription_links'].map(LandingShareLinksChannelDtoSubscriptionLinksInner_1.LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSON)),
+        'subscriptionLinks': (json['subscription_links'].map(DirectSubscriptionChannelLinksDtoSubscriptionLinksInner_1.DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSON)),
     };
 }
 function DirectSubscriptionChannelLinksDtoToJSON(json) {
@@ -75,6 +75,6 @@ function DirectSubscriptionChannelLinksDtoToJSONTyped(value, ignoreDiscriminator
         'channel_type': value['channelType'],
         'avatar_url': value['avatarUrl'],
         'label': value['label'],
-        'subscription_links': (value['subscriptionLinks'].map(LandingShareLinksChannelDtoSubscriptionLinksInner_1.LandingShareLinksChannelDtoSubscriptionLinksInnerToJSON)),
+        'subscription_links': (value['subscriptionLinks'].map(DirectSubscriptionChannelLinksDtoSubscriptionLinksInner_1.DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSON)),
     };
 }

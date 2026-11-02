@@ -27,6 +27,12 @@ import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicy
  */
 export interface AgentSettingsResponseDto {
     /**
+     * : , . .
+     * @type {string}
+     * @memberof AgentSettingsResponseDto
+     */
+    dialogContextMode: AgentSettingsResponseDtoDialogContextModeEnum;
+    /**
      * ID
      * @type {string}
      * @memberof AgentSettingsResponseDto
@@ -595,6 +601,15 @@ export interface AgentSettingsResponseDto {
      */
     updatedAt: Date;
 }
+/**
+ * @export
+ */
+export declare const AgentSettingsResponseDtoDialogContextModeEnum: {
+    readonly AllDialog: "all_dialog";
+    readonly CurrentSession: "current_session";
+    readonly CurrentRequest: "current_request";
+};
+export type AgentSettingsResponseDtoDialogContextModeEnum = typeof AgentSettingsResponseDtoDialogContextModeEnum[keyof typeof AgentSettingsResponseDtoDialogContextModeEnum];
 /**
  * @export
  */

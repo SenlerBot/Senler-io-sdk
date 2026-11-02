@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LandingPublicTextBlockDtoAction } from './LandingPublicTextBlockDtoAction';
+import type { LandingPublicHtmlBlockDtoAction } from './LandingPublicHtmlBlockDtoAction';
 import {
-    LandingPublicTextBlockDtoActionFromJSON,
-    LandingPublicTextBlockDtoActionFromJSONTyped,
-    LandingPublicTextBlockDtoActionToJSON,
-    LandingPublicTextBlockDtoActionToJSONTyped,
-} from './LandingPublicTextBlockDtoAction';
+    LandingPublicHtmlBlockDtoActionFromJSON,
+    LandingPublicHtmlBlockDtoActionFromJSONTyped,
+    LandingPublicHtmlBlockDtoActionToJSON,
+    LandingPublicHtmlBlockDtoActionToJSONTyped,
+} from './LandingPublicHtmlBlockDtoAction';
 import type { LandingReviewsBlockPayloadDto } from './LandingReviewsBlockPayloadDto';
 import {
     LandingReviewsBlockPayloadDtoFromJSON,
@@ -42,10 +42,10 @@ export interface LandingPublicReviewsBlockDto {
     id: string;
     /**
      *
-     * @type {LandingPublicTextBlockDtoAction}
+     * @type {LandingPublicHtmlBlockDtoAction}
      * @memberof LandingPublicReviewsBlockDto
      */
-    action: LandingPublicTextBlockDtoAction | null;
+    action: LandingPublicHtmlBlockDtoAction | null;
     /**
      * : reviews.
      * @type {string}
@@ -92,7 +92,7 @@ export function LandingPublicReviewsBlockDtoFromJSONTyped(json: any, ignoreDiscr
     return {
 
         'id': json['id'],
-        'action': LandingPublicTextBlockDtoActionFromJSON(json['action']),
+        'action': LandingPublicHtmlBlockDtoActionFromJSON(json['action']),
         'type': json['type'],
         'payload': LandingReviewsBlockPayloadDtoFromJSON(json['payload']),
     };
@@ -110,7 +110,7 @@ export function LandingPublicReviewsBlockDtoToJSONTyped(value?: LandingPublicRev
     return {
 
         'id': value['id'],
-        'action': LandingPublicTextBlockDtoActionToJSON(value['action']),
+        'action': LandingPublicHtmlBlockDtoActionToJSON(value['action']),
         'type': value['type'],
         'payload': LandingReviewsBlockPayloadDtoToJSON(value['payload']),
     };

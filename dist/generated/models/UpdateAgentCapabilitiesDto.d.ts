@@ -19,6 +19,12 @@ import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicy
  */
 export interface UpdateAgentCapabilitiesDto {
     /**
+     * : , . .
+     * @type {string}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    dialogContextMode?: UpdateAgentCapabilitiesDtoDialogContextModeEnum;
+    /**
      *
      * @type {boolean}
      * @memberof UpdateAgentCapabilitiesDto
@@ -279,6 +285,15 @@ export interface UpdateAgentCapabilitiesDto {
      */
     operatorHandoffPolicy?: OperatorHandoffPolicyDto;
 }
+/**
+ * @export
+ */
+export declare const UpdateAgentCapabilitiesDtoDialogContextModeEnum: {
+    readonly AllDialog: "all_dialog";
+    readonly CurrentSession: "current_session";
+    readonly CurrentRequest: "current_request";
+};
+export type UpdateAgentCapabilitiesDtoDialogContextModeEnum = typeof UpdateAgentCapabilitiesDtoDialogContextModeEnum[keyof typeof UpdateAgentCapabilitiesDtoDialogContextModeEnum];
 /**
  * @export
  */

@@ -13,16 +13,16 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSON = LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSON;
-exports.LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSONTyped = LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSONTyped;
-exports.LandingShareLinksChannelDtoSubscriptionLinksInnerToJSON = LandingShareLinksChannelDtoSubscriptionLinksInnerToJSON;
-exports.LandingShareLinksChannelDtoSubscriptionLinksInnerToJSONTyped = LandingShareLinksChannelDtoSubscriptionLinksInnerToJSONTyped;
+exports.DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSON = DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSON;
+exports.DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSONTyped = DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSONTyped;
+exports.DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSON = DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSON;
+exports.DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSONTyped = DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSONTyped;
 const DirectSubscriptionAvailableLinkDto_1 = require("./DirectSubscriptionAvailableLinkDto");
 const DirectSubscriptionUnavailableLinkDto_1 = require("./DirectSubscriptionUnavailableLinkDto");
-function LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSON(json) {
-    return LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSONTyped(json, false);
+function DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSON(json) {
+    return DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSONTyped(json, false);
 }
-function LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSONTyped(json, ignoreDiscriminator) {
+function DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSONTyped(json, ignoreDiscriminator) {
     if (json == null) {
         return json;
     }
@@ -32,13 +32,13 @@ function LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSONTyped(json, ig
         case 'unavailable':
             return Object.assign({}, (0, DirectSubscriptionUnavailableLinkDto_1.DirectSubscriptionUnavailableLinkDtoFromJSONTyped)(json, true), { status: 'unavailable' });
         default:
-            throw new Error(`No variant of LandingShareLinksChannelDtoSubscriptionLinksInner exists with 'status=${json['status']}'`);
+            throw new Error(`No variant of DirectSubscriptionChannelLinksDtoSubscriptionLinksInner exists with 'status=${json['status']}'`);
     }
 }
-function LandingShareLinksChannelDtoSubscriptionLinksInnerToJSON(json) {
-    return LandingShareLinksChannelDtoSubscriptionLinksInnerToJSONTyped(json, false);
+function DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSON(json) {
+    return DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSONTyped(json, false);
 }
-function LandingShareLinksChannelDtoSubscriptionLinksInnerToJSONTyped(value, ignoreDiscriminator = false) {
+function DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSONTyped(value, ignoreDiscriminator = false) {
     if (value == null) {
         return value;
     }
@@ -48,6 +48,6 @@ function LandingShareLinksChannelDtoSubscriptionLinksInnerToJSONTyped(value, ign
         case 'unavailable':
             return Object.assign({}, (0, DirectSubscriptionUnavailableLinkDto_1.DirectSubscriptionUnavailableLinkDtoToJSON)(value), { status: 'unavailable' });
         default:
-            throw new Error(`No variant of LandingShareLinksChannelDtoSubscriptionLinksInner exists with 'status=${value['status']}'`);
+            throw new Error(`No variant of DirectSubscriptionChannelLinksDtoSubscriptionLinksInner exists with 'status=${value['status']}'`);
     }
 }

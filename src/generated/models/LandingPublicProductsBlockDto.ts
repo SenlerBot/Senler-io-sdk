@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LandingPublicTextBlockDtoAction } from './LandingPublicTextBlockDtoAction';
+import type { LandingPublicHtmlBlockDtoAction } from './LandingPublicHtmlBlockDtoAction';
 import {
-    LandingPublicTextBlockDtoActionFromJSON,
-    LandingPublicTextBlockDtoActionFromJSONTyped,
-    LandingPublicTextBlockDtoActionToJSON,
-    LandingPublicTextBlockDtoActionToJSONTyped,
-} from './LandingPublicTextBlockDtoAction';
+    LandingPublicHtmlBlockDtoActionFromJSON,
+    LandingPublicHtmlBlockDtoActionFromJSONTyped,
+    LandingPublicHtmlBlockDtoActionToJSON,
+    LandingPublicHtmlBlockDtoActionToJSONTyped,
+} from './LandingPublicHtmlBlockDtoAction';
 import type { LandingProductsBlockPayloadDto } from './LandingProductsBlockPayloadDto';
 import {
     LandingProductsBlockPayloadDtoFromJSON,
@@ -42,10 +42,10 @@ export interface LandingPublicProductsBlockDto {
     id: string;
     /**
      *
-     * @type {LandingPublicTextBlockDtoAction}
+     * @type {LandingPublicHtmlBlockDtoAction}
      * @memberof LandingPublicProductsBlockDto
      */
-    action: LandingPublicTextBlockDtoAction | null;
+    action: LandingPublicHtmlBlockDtoAction | null;
     /**
      * : products.
      * @type {string}
@@ -92,7 +92,7 @@ export function LandingPublicProductsBlockDtoFromJSONTyped(json: any, ignoreDisc
     return {
 
         'id': json['id'],
-        'action': LandingPublicTextBlockDtoActionFromJSON(json['action']),
+        'action': LandingPublicHtmlBlockDtoActionFromJSON(json['action']),
         'type': json['type'],
         'payload': LandingProductsBlockPayloadDtoFromJSON(json['payload']),
     };
@@ -110,7 +110,7 @@ export function LandingPublicProductsBlockDtoToJSONTyped(value?: LandingPublicPr
     return {
 
         'id': value['id'],
-        'action': LandingPublicTextBlockDtoActionToJSON(value['action']),
+        'action': LandingPublicHtmlBlockDtoActionToJSON(value['action']),
         'type': value['type'],
         'payload': LandingProductsBlockPayloadDtoToJSON(value['payload']),
     };

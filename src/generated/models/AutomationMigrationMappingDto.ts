@@ -26,7 +26,7 @@ export interface AutomationMigrationMappingDto {
      */
     fromNodeId: string;
     /**
-     * UUID .
+     * UUID $end .
      * @type {string}
      * @memberof AutomationMigrationMappingDto
      */

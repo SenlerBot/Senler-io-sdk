@@ -513,6 +513,9 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('file', 'Required parameter "file" was null or undefined when calling filesRecognitionEstimate().');
         }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         const headerParameters = {};
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -546,9 +549,6 @@ class KnowledgeBaseApi extends runtime.BaseAPI {
         }
         else {
             formParams = new URLSearchParams();
-        }
-        if (requestParameters['projectId'] != null) {
-            formParams.append('project_id', requestParameters['projectId']);
         }
         if (requestParameters['locale'] != null) {
             formParams.append('locale', requestParameters['locale']);

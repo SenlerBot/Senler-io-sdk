@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LandingPublicTextBlockDtoAction } from './LandingPublicTextBlockDtoAction';
+import type { LandingPublicHtmlBlockDtoAction } from './LandingPublicHtmlBlockDtoAction';
 import {
-    LandingPublicTextBlockDtoActionFromJSON,
-    LandingPublicTextBlockDtoActionFromJSONTyped,
-    LandingPublicTextBlockDtoActionToJSON,
-    LandingPublicTextBlockDtoActionToJSONTyped,
-} from './LandingPublicTextBlockDtoAction';
+    LandingPublicHtmlBlockDtoActionFromJSON,
+    LandingPublicHtmlBlockDtoActionFromJSONTyped,
+    LandingPublicHtmlBlockDtoActionToJSON,
+    LandingPublicHtmlBlockDtoActionToJSONTyped,
+} from './LandingPublicHtmlBlockDtoAction';
 import type { LandingFeaturesBlockPayloadDto } from './LandingFeaturesBlockPayloadDto';
 import {
     LandingFeaturesBlockPayloadDtoFromJSON,
@@ -42,10 +42,10 @@ export interface LandingPublicFeaturesBlockDto {
     id: string;
     /**
      *
-     * @type {LandingPublicTextBlockDtoAction}
+     * @type {LandingPublicHtmlBlockDtoAction}
      * @memberof LandingPublicFeaturesBlockDto
      */
-    action: LandingPublicTextBlockDtoAction | null;
+    action: LandingPublicHtmlBlockDtoAction | null;
     /**
      * : features.
      * @type {string}
@@ -92,7 +92,7 @@ export function LandingPublicFeaturesBlockDtoFromJSONTyped(json: any, ignoreDisc
     return {
 
         'id': json['id'],
-        'action': LandingPublicTextBlockDtoActionFromJSON(json['action']),
+        'action': LandingPublicHtmlBlockDtoActionFromJSON(json['action']),
         'type': json['type'],
         'payload': LandingFeaturesBlockPayloadDtoFromJSON(json['payload']),
     };
@@ -110,7 +110,7 @@ export function LandingPublicFeaturesBlockDtoToJSONTyped(value?: LandingPublicFe
     return {
 
         'id': value['id'],
-        'action': LandingPublicTextBlockDtoActionToJSON(value['action']),
+        'action': LandingPublicHtmlBlockDtoActionToJSON(value['action']),
         'type': value['type'],
         'payload': LandingFeaturesBlockPayloadDtoToJSON(value['payload']),
     };

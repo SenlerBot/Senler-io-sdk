@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface DiagnosticProgressDto {
     /**
+     * , . , .
+     * @type {string}
+     * @memberof DiagnosticProgressDto
+     */
+    currentRef?: string;
+    /**
      * .
      * @type {boolean}
      * @memberof DiagnosticProgressDto
@@ -198,6 +204,7 @@ export function DiagnosticProgressDtoFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
 
+        'currentRef': json['current_ref'] == null ? undefined : json['current_ref'],
         'running': json['running'],
         'action': json['action'],
         'sourceLabel': json['source_label'],
@@ -230,6 +237,7 @@ export function DiagnosticProgressDtoToJSONTyped(value?: DiagnosticProgressDto |
 
     return {
 
+        'current_ref': value['currentRef'],
         'running': value['running'],
         'action': value['action'],
         'source_label': value['sourceLabel'],

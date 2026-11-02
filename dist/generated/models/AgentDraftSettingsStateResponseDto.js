@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum = exports.AgentDraftSettingsStateResponseDtoWidgetAiProgressModeEnum = exports.AgentDraftSettingsStateResponseDtoStatusEnum = exports.AgentDraftSettingsStateResponseDtoKindEnum = exports.AgentDraftSettingsStateResponseDtoAutoAssignmentRoleEnum = exports.AgentDraftSettingsStateResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentDraftSettingsStateResponseDtoAutoAssignmentModeEnum = exports.AgentDraftSettingsStateResponseDtoKeywordDialogScopeEnum = exports.AgentDraftSettingsStateResponseDtoKeywordAssignmentRoleEnum = exports.AgentDraftSettingsStateResponseDtoStartButtonMatchModeEnum = exports.AgentDraftSettingsStateResponseDtoAutostartModeEnum = exports.AgentDraftSettingsStateResponseDtoKnowledgeBasePermissionsEnum = exports.AgentDraftSettingsStateResponseDtoServerBindingModeEnum = exports.AgentDraftSettingsStateResponseDtoAgentTypeEnum = exports.AgentDraftSettingsStateResponseDtoConflictFieldsEnum = void 0;
+exports.AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum = exports.AgentDraftSettingsStateResponseDtoWidgetAiProgressModeEnum = exports.AgentDraftSettingsStateResponseDtoStatusEnum = exports.AgentDraftSettingsStateResponseDtoKindEnum = exports.AgentDraftSettingsStateResponseDtoAutoAssignmentRoleEnum = exports.AgentDraftSettingsStateResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentDraftSettingsStateResponseDtoAutoAssignmentModeEnum = exports.AgentDraftSettingsStateResponseDtoKeywordDialogScopeEnum = exports.AgentDraftSettingsStateResponseDtoKeywordAssignmentRoleEnum = exports.AgentDraftSettingsStateResponseDtoStartButtonMatchModeEnum = exports.AgentDraftSettingsStateResponseDtoAutostartModeEnum = exports.AgentDraftSettingsStateResponseDtoKnowledgeBasePermissionsEnum = exports.AgentDraftSettingsStateResponseDtoServerBindingModeEnum = exports.AgentDraftSettingsStateResponseDtoAgentTypeEnum = exports.AgentDraftSettingsStateResponseDtoConflictFieldsEnum = exports.AgentDraftSettingsStateResponseDtoDialogContextModeEnum = void 0;
 exports.instanceOfAgentDraftSettingsStateResponseDto = instanceOfAgentDraftSettingsStateResponseDto;
 exports.AgentDraftSettingsStateResponseDtoFromJSON = AgentDraftSettingsStateResponseDtoFromJSON;
 exports.AgentDraftSettingsStateResponseDtoFromJSONTyped = AgentDraftSettingsStateResponseDtoFromJSONTyped;
@@ -27,6 +27,14 @@ const AgentAutomationEventPolicyDto_1 = require("./AgentAutomationEventPolicyDto
 /**
  * @export
  */
+exports.AgentDraftSettingsStateResponseDtoDialogContextModeEnum = {
+    AllDialog: 'all_dialog',
+    CurrentSession: 'current_session',
+    CurrentRequest: 'current_request'
+};
+/**
+ * @export
+ */
 exports.AgentDraftSettingsStateResponseDtoConflictFieldsEnum = {
     Name: 'name',
     Instruction: 'instruction',
@@ -35,6 +43,7 @@ exports.AgentDraftSettingsStateResponseDtoConflictFieldsEnum = {
     SelectedModelId: 'selected_model_id',
     EventSummaryMode: 'event_summary_mode',
     DialogSummaryMode: 'dialog_summary_mode',
+    DialogContextMode: 'dialog_context_mode',
     Meta: 'meta',
     Status: 'status',
     ServerBindingMode: 'server_binding_mode',
@@ -246,6 +255,8 @@ exports.AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum = {
  * Check if a given object implements the AgentDraftSettingsStateResponseDto interface.
  */
 function instanceOfAgentDraftSettingsStateResponseDto(value) {
+    if (!('dialogContextMode' in value) || value['dialogContextMode'] === undefined)
+        return false;
     if (!('conflictFields' in value) || value['conflictFields'] === undefined)
         return false;
     if (!('id' in value) || value['id'] === undefined)
@@ -392,6 +403,7 @@ function AgentDraftSettingsStateResponseDtoFromJSONTyped(json, ignoreDiscriminat
         return json;
     }
     return {
+        'dialogContextMode': json['dialog_context_mode'],
         'conflictFields': json['conflict_fields'],
         'id': json['id'],
         'agentId': json['agent_id'],
@@ -491,6 +503,7 @@ function AgentDraftSettingsStateResponseDtoToJSONTyped(value, ignoreDiscriminato
         return value;
     }
     return {
+        'dialog_context_mode': value['dialogContextMode'],
         'conflict_fields': value['conflictFields'],
         'id': value['id'],
         'agent_id': value['agentId'],

@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface SupportScheduleAssignmentDto {
     /**
+     * :
+     * @type {boolean}
+     * @memberof SupportScheduleAssignmentDto
+     */
+    isDayOff: boolean;
+    /**
      * ; null , []
      * @type {Array<string>}
      * @memberof SupportScheduleAssignmentDto
@@ -73,6 +79,7 @@ export interface SupportScheduleAssignmentDto {
  * Check if a given object implements the SupportScheduleAssignmentDto interface.
  */
 export function instanceOfSupportScheduleAssignmentDto(value: object): value is SupportScheduleAssignmentDto {
+    if (!('isDayOff' in value) || value['isDayOff'] === undefined) return false;
     if (!('groupIds' in value) || value['groupIds'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('projectId' in value) || value['projectId'] === undefined) return false;
@@ -94,6 +101,7 @@ export function SupportScheduleAssignmentDtoFromJSONTyped(json: any, ignoreDiscr
     }
     return {
 
+        'isDayOff': json['is_day_off'],
         'groupIds': json['group_ids'] == null ? null : json['group_ids'],
         'id': json['id'],
         'projectId': json['project_id'],
@@ -116,6 +124,7 @@ export function SupportScheduleAssignmentDtoToJSONTyped(value?: SupportScheduleA
 
     return {
 
+        'is_day_off': value['isDayOff'],
         'group_ids': value['groupIds'],
         'id': value['id'],
         'project_id': value['projectId'],

@@ -13,17 +13,17 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandingPublicTextBlockDtoActionFromJSON = LandingPublicTextBlockDtoActionFromJSON;
-exports.LandingPublicTextBlockDtoActionFromJSONTyped = LandingPublicTextBlockDtoActionFromJSONTyped;
-exports.LandingPublicTextBlockDtoActionToJSON = LandingPublicTextBlockDtoActionToJSON;
-exports.LandingPublicTextBlockDtoActionToJSONTyped = LandingPublicTextBlockDtoActionToJSONTyped;
+exports.LandingPublicHtmlBlockDtoActionFromJSON = LandingPublicHtmlBlockDtoActionFromJSON;
+exports.LandingPublicHtmlBlockDtoActionFromJSONTyped = LandingPublicHtmlBlockDtoActionFromJSONTyped;
+exports.LandingPublicHtmlBlockDtoActionToJSON = LandingPublicHtmlBlockDtoActionToJSON;
+exports.LandingPublicHtmlBlockDtoActionToJSONTyped = LandingPublicHtmlBlockDtoActionToJSONTyped;
 const LandingPublicOpenLandingActionDto_1 = require("./LandingPublicOpenLandingActionDto");
 const LandingPublicOpenUrlActionDto_1 = require("./LandingPublicOpenUrlActionDto");
 const LandingPublicSubscribeActionDto_1 = require("./LandingPublicSubscribeActionDto");
-function LandingPublicTextBlockDtoActionFromJSON(json) {
-    return LandingPublicTextBlockDtoActionFromJSONTyped(json, false);
+function LandingPublicHtmlBlockDtoActionFromJSON(json) {
+    return LandingPublicHtmlBlockDtoActionFromJSONTyped(json, false);
 }
-function LandingPublicTextBlockDtoActionFromJSONTyped(json, ignoreDiscriminator) {
+function LandingPublicHtmlBlockDtoActionFromJSONTyped(json, ignoreDiscriminator) {
     if (json == null) {
         return json;
     }
@@ -35,13 +35,13 @@ function LandingPublicTextBlockDtoActionFromJSONTyped(json, ignoreDiscriminator)
         case 'subscribe_segment':
             return Object.assign({}, (0, LandingPublicSubscribeActionDto_1.LandingPublicSubscribeActionDtoFromJSONTyped)(json, true), { type: 'subscribe_segment' });
         default:
-            throw new Error(`No variant of LandingPublicTextBlockDtoAction exists with 'type=${json['type']}'`);
+            throw new Error(`No variant of LandingPublicHtmlBlockDtoAction exists with 'type=${json['type']}'`);
     }
 }
-function LandingPublicTextBlockDtoActionToJSON(json) {
-    return LandingPublicTextBlockDtoActionToJSONTyped(json, false);
+function LandingPublicHtmlBlockDtoActionToJSON(json) {
+    return LandingPublicHtmlBlockDtoActionToJSONTyped(json, false);
 }
-function LandingPublicTextBlockDtoActionToJSONTyped(value, ignoreDiscriminator = false) {
+function LandingPublicHtmlBlockDtoActionToJSONTyped(value, ignoreDiscriminator = false) {
     if (value == null) {
         return value;
     }
@@ -53,6 +53,6 @@ function LandingPublicTextBlockDtoActionToJSONTyped(value, ignoreDiscriminator =
         case 'subscribe_segment':
             return Object.assign({}, (0, LandingPublicSubscribeActionDto_1.LandingPublicSubscribeActionDtoToJSON)(value), { type: 'subscribe_segment' });
         default:
-            throw new Error(`No variant of LandingPublicTextBlockDtoAction exists with 'type=${value['type']}'`);
+            throw new Error(`No variant of LandingPublicHtmlBlockDtoAction exists with 'type=${value['type']}'`);
     }
 }

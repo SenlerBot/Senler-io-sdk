@@ -20,6 +20,7 @@ exports.LandingPublicResponseDtoBlocksInnerToJSONTyped = LandingPublicResponseDt
 const LandingPublicButtonBlockDto_1 = require("./LandingPublicButtonBlockDto");
 const LandingPublicCoverBlockDto_1 = require("./LandingPublicCoverBlockDto");
 const LandingPublicFeaturesBlockDto_1 = require("./LandingPublicFeaturesBlockDto");
+const LandingPublicHtmlBlockDto_1 = require("./LandingPublicHtmlBlockDto");
 const LandingPublicImageBlockDto_1 = require("./LandingPublicImageBlockDto");
 const LandingPublicOtherBlockDto_1 = require("./LandingPublicOtherBlockDto");
 const LandingPublicProductsBlockDto_1 = require("./LandingPublicProductsBlockDto");
@@ -42,6 +43,8 @@ function LandingPublicResponseDtoBlocksInnerFromJSONTyped(json, ignoreDiscrimina
             return Object.assign({}, (0, LandingPublicCoverBlockDto_1.LandingPublicCoverBlockDtoFromJSONTyped)(json, true), { type: 'cover' });
         case 'features':
             return Object.assign({}, (0, LandingPublicFeaturesBlockDto_1.LandingPublicFeaturesBlockDtoFromJSONTyped)(json, true), { type: 'features' });
+        case 'html':
+            return Object.assign({}, (0, LandingPublicHtmlBlockDto_1.LandingPublicHtmlBlockDtoFromJSONTyped)(json, true), { type: 'html' });
         case 'image':
             return Object.assign({}, (0, LandingPublicImageBlockDto_1.LandingPublicImageBlockDtoFromJSONTyped)(json, true), { type: 'image' });
         case 'other':
@@ -76,6 +79,8 @@ function LandingPublicResponseDtoBlocksInnerToJSONTyped(value, ignoreDiscriminat
             return Object.assign({}, (0, LandingPublicCoverBlockDto_1.LandingPublicCoverBlockDtoToJSON)(value), { type: 'cover' });
         case 'features':
             return Object.assign({}, (0, LandingPublicFeaturesBlockDto_1.LandingPublicFeaturesBlockDtoToJSON)(value), { type: 'features' });
+        case 'html':
+            return Object.assign({}, (0, LandingPublicHtmlBlockDto_1.LandingPublicHtmlBlockDtoToJSON)(value), { type: 'html' });
         case 'image':
             return Object.assign({}, (0, LandingPublicImageBlockDto_1.LandingPublicImageBlockDtoToJSON)(value), { type: 'image' });
         case 'other':

@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LandingPublicTextBlockDtoAction } from './LandingPublicTextBlockDtoAction';
+import type { LandingPublicHtmlBlockDtoAction } from './LandingPublicHtmlBlockDtoAction';
 import {
-    LandingPublicTextBlockDtoActionFromJSON,
-    LandingPublicTextBlockDtoActionFromJSONTyped,
-    LandingPublicTextBlockDtoActionToJSON,
-    LandingPublicTextBlockDtoActionToJSONTyped,
-} from './LandingPublicTextBlockDtoAction';
+    LandingPublicHtmlBlockDtoActionFromJSON,
+    LandingPublicHtmlBlockDtoActionFromJSONTyped,
+    LandingPublicHtmlBlockDtoActionToJSON,
+    LandingPublicHtmlBlockDtoActionToJSONTyped,
+} from './LandingPublicHtmlBlockDtoAction';
 
 /**
  * LandingPublicOtherBlockDto.
@@ -35,10 +35,10 @@ export interface LandingPublicOtherBlockDto {
     id: string;
     /**
      *
-     * @type {LandingPublicTextBlockDtoAction}
+     * @type {LandingPublicHtmlBlockDtoAction}
      * @memberof LandingPublicOtherBlockDto
      */
-    action: LandingPublicTextBlockDtoAction | null;
+    action: LandingPublicHtmlBlockDtoAction | null;
     /**
      *
      * @type {string}
@@ -85,7 +85,7 @@ export function LandingPublicOtherBlockDtoFromJSONTyped(json: any, ignoreDiscrim
     return {
 
         'id': json['id'],
-        'action': LandingPublicTextBlockDtoActionFromJSON(json['action']),
+        'action': LandingPublicHtmlBlockDtoActionFromJSON(json['action']),
         'type': json['type'],
         'payload': json['payload'],
     };
@@ -103,7 +103,7 @@ export function LandingPublicOtherBlockDtoToJSONTyped(value?: LandingPublicOther
     return {
 
         'id': value['id'],
-        'action': LandingPublicTextBlockDtoActionToJSON(value['action']),
+        'action': LandingPublicHtmlBlockDtoActionToJSON(value['action']),
         'type': value['type'],
         'payload': value['payload'],
     };

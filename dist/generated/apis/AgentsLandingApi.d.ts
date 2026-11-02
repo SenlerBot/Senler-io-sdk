@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ConfirmS3UploadDto, DeleteLandingBlockDto, GetLandingAssetUploadUrlDto, ImportImageDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingPersonalizationMutationResponseDto, LandingPreviewResponseDto, LandingPublicationValidationDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingShareLinksResponseDto, LandingStatisticsReportDto, MoveLandingBlockDto, MutateAgentLandingPersonalizationDto, PreviewAnonymousLandingDto, PreviewLeadLandingDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingRealtimeFocusDto } from '../models/index';
+import type { AgentLandingLinksResponseDto, ConfirmS3UploadDto, DeleteLandingBlockDto, GetLandingAssetUploadUrlDto, ImportImageDto, LandingAssetUploadResponseDto, LandingBlockDeleteMutationResponseDto, LandingBlockOrderMutationResponseDto, LandingPersonalizationMutationResponseDto, LandingPreviewResponseDto, LandingPublicationValidationDto, LandingPublicationsListResponseDto, LandingRealtimeFocusResponseDto, LandingResponseDto, LandingStatisticsReportDto, MoveLandingBlockDto, MutateAgentLandingPersonalizationDto, PreviewAnonymousLandingDto, PreviewLeadLandingDto, S3UploadUrlResponseDto, UpdateLandingDraftDto, UpdateLandingRealtimeFocusDto } from '../models/index';
 export interface DeleteLandingBlocksRequest {
     agentId: string;
     blockId: string;
@@ -104,12 +104,12 @@ export declare class AgentsLandingApi extends runtime.BaseAPI {
      */
     deleteLandingBlocks(requestParameters: DeleteLandingBlocksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockDeleteMutationResponseDto>;
     /**
-     * , .
+     * . AgentsUser ensureAcquisition; . MCP .
      *
      */
     getLandingRaw(requestParameters: GetLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>>;
     /**
-     * , .
+     * . AgentsUser ensureAcquisition; . MCP .
      *
      */
     getLanding(requestParameters: GetLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
@@ -134,15 +134,15 @@ export declare class AgentsLandingApi extends runtime.BaseAPI {
      */
     getLandingPublications(requestParameters: GetLandingPublicationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationsListResponseDto>;
     /**
-     * VK, Telegram MAX, .
+     * : . state next_action, . prepare_landing AgentsUser ensureAcquisition, publish_agent . AgentsUser getSubscriptionLinks. VK, Telegram MAX.
      *
      */
-    getLandingShareLinksRaw(requestParameters: GetLandingShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingShareLinksResponseDto>>;
+    getLandingShareLinksRaw(requestParameters: GetLandingShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentLandingLinksResponseDto>>;
     /**
-     * VK, Telegram MAX, .
+     * : . state next_action, . prepare_landing AgentsUser ensureAcquisition, publish_agent . AgentsUser getSubscriptionLinks. VK, Telegram MAX.
      *
      */
-    getLandingShareLinks(requestParameters: GetLandingShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingShareLinksResponseDto>;
+    getLandingShareLinks(requestParameters: GetLandingShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentLandingLinksResponseDto>;
     /**
      * , . .
      * ,

@@ -77,7 +77,7 @@ export interface LeadsFilterDto {
      */
     isBlocked?: boolean;
     /**
-     *
+     * , . .
      * @type {Array<string>}
      * @memberof LeadsFilterDto
      */
@@ -186,9 +186,12 @@ export type LeadsFilterDtoChannelTypeEnum = typeof LeadsFilterDtoChannelTypeEnum
  */
 export const LeadsFilterDtoLeadSourceEnum = {
     GroupJoin: 'group_join',
+    GroupLeave: 'group_leave',
     Message: 'message',
     MessageAllow: 'message_allow',
+    MessageDeny: 'message_deny',
     BotAdded: 'bot_added',
+    Landing: 'landing',
     Comment: 'comment',
     Like: 'like',
     Manual: 'manual',

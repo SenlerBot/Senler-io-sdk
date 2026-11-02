@@ -28,17 +28,17 @@ import {
 } from './DirectSubscriptionUnavailableLinkDto';
 
 /**
- * @type LandingShareLinksChannelDtoSubscriptionLinksInner
- * : . .
+ * @type DirectSubscriptionChannelLinksDtoSubscriptionLinksInner
+ * : subscription links.
  * @export
  */
-export type LandingShareLinksChannelDtoSubscriptionLinksInner = { status: 'available' } & DirectSubscriptionAvailableLinkDto | { status: 'unavailable' } & DirectSubscriptionUnavailableLinkDto;
+export type DirectSubscriptionChannelLinksDtoSubscriptionLinksInner = { status: 'available' } & DirectSubscriptionAvailableLinkDto | { status: 'unavailable' } & DirectSubscriptionUnavailableLinkDto;
 
-export function LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSON(json: any): LandingShareLinksChannelDtoSubscriptionLinksInner {
-    return LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSONTyped(json, false);
+export function DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSON(json: any): DirectSubscriptionChannelLinksDtoSubscriptionLinksInner {
+    return DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSONTyped(json, false);
 }
 
-export function LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): LandingShareLinksChannelDtoSubscriptionLinksInner {
+export function DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): DirectSubscriptionChannelLinksDtoSubscriptionLinksInner {
     if (json == null) {
         return json;
     }
@@ -48,15 +48,15 @@ export function LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSONTyped(j
         case 'unavailable':
             return Object.assign({}, DirectSubscriptionUnavailableLinkDtoFromJSONTyped(json, true), { status: 'unavailable' } as const);
         default:
-            throw new Error(`No variant of LandingShareLinksChannelDtoSubscriptionLinksInner exists with 'status=${json['status']}'`);
+            throw new Error(`No variant of DirectSubscriptionChannelLinksDtoSubscriptionLinksInner exists with 'status=${json['status']}'`);
     }
 }
 
-export function LandingShareLinksChannelDtoSubscriptionLinksInnerToJSON(json: any): any {
-    return LandingShareLinksChannelDtoSubscriptionLinksInnerToJSONTyped(json, false);
+export function DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSON(json: any): any {
+    return DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSONTyped(json, false);
 }
 
-export function LandingShareLinksChannelDtoSubscriptionLinksInnerToJSONTyped(value?: LandingShareLinksChannelDtoSubscriptionLinksInner | null, ignoreDiscriminator: boolean = false): any {
+export function DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSONTyped(value?: DirectSubscriptionChannelLinksDtoSubscriptionLinksInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
@@ -66,7 +66,7 @@ export function LandingShareLinksChannelDtoSubscriptionLinksInnerToJSONTyped(val
         case 'unavailable':
             return Object.assign({}, DirectSubscriptionUnavailableLinkDtoToJSON(value), { status: 'unavailable' } as const);
         default:
-            throw new Error(`No variant of LandingShareLinksChannelDtoSubscriptionLinksInner exists with 'status=${value['status']}'`);
+            throw new Error(`No variant of DirectSubscriptionChannelLinksDtoSubscriptionLinksInner exists with 'status=${value['status']}'`);
     }
 
 }

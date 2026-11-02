@@ -35,17 +35,17 @@ import {
 } from './LandingPublicSubscribeActionDto';
 
 /**
- * @type LandingPublicTextBlockDtoAction
+ * @type LandingPublicHtmlBlockDtoAction
  *
  * @export
  */
-export type LandingPublicTextBlockDtoAction = { type: 'open_landing' } & LandingPublicOpenLandingActionDto | { type: 'open_url' } & LandingPublicOpenUrlActionDto | { type: 'subscribe_segment' } & LandingPublicSubscribeActionDto;
+export type LandingPublicHtmlBlockDtoAction = { type: 'open_landing' } & LandingPublicOpenLandingActionDto | { type: 'open_url' } & LandingPublicOpenUrlActionDto | { type: 'subscribe_segment' } & LandingPublicSubscribeActionDto;
 
-export function LandingPublicTextBlockDtoActionFromJSON(json: any): LandingPublicTextBlockDtoAction {
-    return LandingPublicTextBlockDtoActionFromJSONTyped(json, false);
+export function LandingPublicHtmlBlockDtoActionFromJSON(json: any): LandingPublicHtmlBlockDtoAction {
+    return LandingPublicHtmlBlockDtoActionFromJSONTyped(json, false);
 }
 
-export function LandingPublicTextBlockDtoActionFromJSONTyped(json: any, ignoreDiscriminator: boolean): LandingPublicTextBlockDtoAction {
+export function LandingPublicHtmlBlockDtoActionFromJSONTyped(json: any, ignoreDiscriminator: boolean): LandingPublicHtmlBlockDtoAction {
     if (json == null) {
         return json;
     }
@@ -57,15 +57,15 @@ export function LandingPublicTextBlockDtoActionFromJSONTyped(json: any, ignoreDi
         case 'subscribe_segment':
             return Object.assign({}, LandingPublicSubscribeActionDtoFromJSONTyped(json, true), { type: 'subscribe_segment' } as const);
         default:
-            throw new Error(`No variant of LandingPublicTextBlockDtoAction exists with 'type=${json['type']}'`);
+            throw new Error(`No variant of LandingPublicHtmlBlockDtoAction exists with 'type=${json['type']}'`);
     }
 }
 
-export function LandingPublicTextBlockDtoActionToJSON(json: any): any {
-    return LandingPublicTextBlockDtoActionToJSONTyped(json, false);
+export function LandingPublicHtmlBlockDtoActionToJSON(json: any): any {
+    return LandingPublicHtmlBlockDtoActionToJSONTyped(json, false);
 }
 
-export function LandingPublicTextBlockDtoActionToJSONTyped(value?: LandingPublicTextBlockDtoAction | null, ignoreDiscriminator: boolean = false): any {
+export function LandingPublicHtmlBlockDtoActionToJSONTyped(value?: LandingPublicHtmlBlockDtoAction | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
@@ -77,7 +77,7 @@ export function LandingPublicTextBlockDtoActionToJSONTyped(value?: LandingPublic
         case 'subscribe_segment':
             return Object.assign({}, LandingPublicSubscribeActionDtoToJSON(value), { type: 'subscribe_segment' } as const);
         default:
-            throw new Error(`No variant of LandingPublicTextBlockDtoAction exists with 'type=${value['type']}'`);
+            throw new Error(`No variant of LandingPublicHtmlBlockDtoAction exists with 'type=${value['type']}'`);
     }
 
 }

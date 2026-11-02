@@ -36,6 +36,7 @@ export declare const ValidateAutomationNodeConfigDtoTypeEnum: {
     readonly TriggerBirthday: "trigger.birthday";
     readonly TriggerStart: "trigger.start";
     readonly TriggerStartButton: "trigger.start_button";
+    readonly TriggerMembershipJoined: "trigger.membership_joined";
     readonly TriggerIncomingMessage: "trigger.incoming_message";
     readonly TriggerSegmentEntered: "trigger.segment_entered";
     readonly TriggerEvent: "trigger.event";

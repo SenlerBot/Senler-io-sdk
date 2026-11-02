@@ -33,6 +33,13 @@ import {
     LandingFeaturesBlockResponseDtoFromJSONTyped,
     LandingFeaturesBlockResponseDtoToJSON,
 } from './LandingFeaturesBlockResponseDto';
+import type { LandingHtmlBlockResponseDto } from './LandingHtmlBlockResponseDto';
+import {
+    instanceOfLandingHtmlBlockResponseDto,
+    LandingHtmlBlockResponseDtoFromJSON,
+    LandingHtmlBlockResponseDtoFromJSONTyped,
+    LandingHtmlBlockResponseDtoToJSON,
+} from './LandingHtmlBlockResponseDto';
 import type { LandingImageBlockResponseDto } from './LandingImageBlockResponseDto';
 import {
     instanceOfLandingImageBlockResponseDto,
@@ -95,7 +102,7 @@ import {
  * :
  * @export
  */
-export type LandingVersionResponseDtoBlocksInner = { type: 'button' } & LandingButtonBlockResponseDto | { type: 'cover' } & LandingCoverBlockResponseDto | { type: 'features' } & LandingFeaturesBlockResponseDto | { type: 'image' } & LandingImageBlockResponseDto | { type: 'other' } & LandingOtherBlockResponseDto | { type: 'products' } & LandingProductsBlockResponseDto | { type: 'reviews' } & LandingReviewsBlockResponseDto | { type: 'text' } & LandingTextBlockResponseDto | { type: 'timer' } & LandingTimerBlockResponseDto | { type: 'video' } & LandingVideoBlockResponseDto | { type: 'widget' } & LandingWidgetBlockResponseDto;
+export type LandingVersionResponseDtoBlocksInner = { type: 'button' } & LandingButtonBlockResponseDto | { type: 'cover' } & LandingCoverBlockResponseDto | { type: 'features' } & LandingFeaturesBlockResponseDto | { type: 'html' } & LandingHtmlBlockResponseDto | { type: 'image' } & LandingImageBlockResponseDto | { type: 'other' } & LandingOtherBlockResponseDto | { type: 'products' } & LandingProductsBlockResponseDto | { type: 'reviews' } & LandingReviewsBlockResponseDto | { type: 'text' } & LandingTextBlockResponseDto | { type: 'timer' } & LandingTimerBlockResponseDto | { type: 'video' } & LandingVideoBlockResponseDto | { type: 'widget' } & LandingWidgetBlockResponseDto;
 
 export function LandingVersionResponseDtoBlocksInnerFromJSON(json: any): LandingVersionResponseDtoBlocksInner {
     return LandingVersionResponseDtoBlocksInnerFromJSONTyped(json, false);
@@ -112,6 +119,8 @@ export function LandingVersionResponseDtoBlocksInnerFromJSONTyped(json: any, ign
             return Object.assign({}, LandingCoverBlockResponseDtoFromJSONTyped(json, true), { type: 'cover' } as const);
         case 'features':
             return Object.assign({}, LandingFeaturesBlockResponseDtoFromJSONTyped(json, true), { type: 'features' } as const);
+        case 'html':
+            return Object.assign({}, LandingHtmlBlockResponseDtoFromJSONTyped(json, true), { type: 'html' } as const);
         case 'image':
             return Object.assign({}, LandingImageBlockResponseDtoFromJSONTyped(json, true), { type: 'image' } as const);
         case 'other':
@@ -148,6 +157,8 @@ export function LandingVersionResponseDtoBlocksInnerToJSONTyped(value?: LandingV
             return Object.assign({}, LandingCoverBlockResponseDtoToJSON(value), { type: 'cover' } as const);
         case 'features':
             return Object.assign({}, LandingFeaturesBlockResponseDtoToJSON(value), { type: 'features' } as const);
+        case 'html':
+            return Object.assign({}, LandingHtmlBlockResponseDtoToJSON(value), { type: 'html' } as const);
         case 'image':
             return Object.assign({}, LandingImageBlockResponseDtoToJSON(value), { type: 'image' } as const);
         case 'other':

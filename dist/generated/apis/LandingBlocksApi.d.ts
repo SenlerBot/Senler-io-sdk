@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateButtonLandingBlockDto, CreateCoverLandingBlockDto, CreateFeaturesLandingBlockDto, CreateImageLandingBlockDto, CreateLandingActionBlockDto, CreateOtherLandingBlockDto, CreateProductsLandingBlockDto, CreateReviewsLandingBlockDto, CreateTextLandingBlockDto, CreateTimerLandingBlockDto, CreateVideoLandingBlockDto, CreateWidgetLandingBlockDto, LandingBlockContentMutationResponseDto, LandingBlockCreateMutationResponseDto, SetLandingOpenLandingActionDto, SetLandingOpenUrlActionDto, SetLandingSubscribeActionDto, UpdateButtonLandingBlockDto, UpdateCoverLandingBlockDto, UpdateFeaturesLandingBlockDto, UpdateImageLandingBlockDto, UpdateLandingActionBlockDto, UpdateOtherLandingBlockDto, UpdateProductsLandingBlockDto, UpdateReviewsLandingBlockDto, UpdateTextLandingBlockDto, UpdateTimerLandingBlockDto, UpdateTypedLandingBlockActionCommonDto, UpdateVideoLandingBlockDto, UpdateWidgetLandingBlockDto } from '../models/index';
+import type { CreateButtonLandingBlockDto, CreateCoverLandingBlockDto, CreateFeaturesLandingBlockDto, CreateHtmlLandingBlockDto, CreateImageLandingBlockDto, CreateLandingActionBlockDto, CreateOtherLandingBlockDto, CreateProductsLandingBlockDto, CreateReviewsLandingBlockDto, CreateTextLandingBlockDto, CreateTimerLandingBlockDto, CreateVideoLandingBlockDto, CreateWidgetLandingBlockDto, LandingBlockContentMutationResponseDto, LandingBlockCreateMutationResponseDto, SetLandingOpenLandingActionDto, SetLandingOpenUrlActionDto, SetLandingSubscribeActionDto, UpdateButtonLandingBlockDto, UpdateCoverLandingBlockDto, UpdateFeaturesLandingBlockDto, UpdateHtmlLandingBlockDto, UpdateImageLandingBlockDto, UpdateLandingActionBlockDto, UpdateOtherLandingBlockDto, UpdateProductsLandingBlockDto, UpdateReviewsLandingBlockDto, UpdateTextLandingBlockDto, UpdateTimerLandingBlockDto, UpdateTypedLandingBlockActionCommonDto, UpdateVideoLandingBlockDto, UpdateWidgetLandingBlockDto } from '../models/index';
 export interface BlocksButtonRequest {
     resourceId: string;
     xLandingEditorSessionId: string;
@@ -28,6 +28,12 @@ export interface BlocksFeaturesRequest {
     xLandingEditorSessionId: string;
     createFeaturesLandingBlockDto: CreateFeaturesLandingBlockDto;
     acceptLanguage?: BlocksFeaturesAcceptLanguageEnum;
+}
+export interface BlocksHtmlRequest {
+    resourceId: string;
+    xLandingEditorSessionId: string;
+    createHtmlLandingBlockDto: CreateHtmlLandingBlockDto;
+    acceptLanguage?: BlocksHtmlAcceptLanguageEnum;
 }
 export interface BlocksImageRequest {
     resourceId: string;
@@ -132,6 +138,13 @@ export interface UpdateBlocksFeaturesRequest {
     updateFeaturesLandingBlockDto: UpdateFeaturesLandingBlockDto;
     acceptLanguage?: UpdateBlocksFeaturesAcceptLanguageEnum;
 }
+export interface UpdateBlocksHtmlRequest {
+    resourceId: string;
+    blockId: string;
+    xLandingEditorSessionId: string;
+    updateHtmlLandingBlockDto: UpdateHtmlLandingBlockDto;
+    acceptLanguage?: UpdateBlocksHtmlAcceptLanguageEnum;
+}
 export interface UpdateBlocksImageRequest {
     resourceId: string;
     blockId: string;
@@ -229,6 +242,16 @@ export declare class LandingBlocksApi extends runtime.BaseAPI {
      * features
      */
     blocksFeatures(requestParameters: BlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
+    /**
+     * .
+     * html
+     */
+    blocksHtmlRaw(requestParameters: BlocksHtmlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
+    /**
+     * .
+     * html
+     */
+    blocksHtml(requestParameters: BlocksHtmlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
      * .
      * image
@@ -391,6 +414,16 @@ export declare class LandingBlocksApi extends runtime.BaseAPI {
     updateBlocksFeatures(requestParameters: UpdateBlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
      * .
+     * html
+     */
+    updateBlocksHtmlRaw(requestParameters: UpdateBlocksHtmlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
+    /**
+     * .
+     * html
+     */
+    updateBlocksHtml(requestParameters: UpdateBlocksHtmlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
+    /**
+     * .
      * image
      */
     updateBlocksImageRaw(requestParameters: UpdateBlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
@@ -504,6 +537,14 @@ export declare const BlocksFeaturesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type BlocksFeaturesAcceptLanguageEnum = typeof BlocksFeaturesAcceptLanguageEnum[keyof typeof BlocksFeaturesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const BlocksHtmlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type BlocksHtmlAcceptLanguageEnum = typeof BlocksHtmlAcceptLanguageEnum[keyof typeof BlocksHtmlAcceptLanguageEnum];
 /**
  * @export
  */
@@ -632,6 +673,14 @@ export declare const UpdateBlocksFeaturesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateBlocksFeaturesAcceptLanguageEnum = typeof UpdateBlocksFeaturesAcceptLanguageEnum[keyof typeof UpdateBlocksFeaturesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateBlocksHtmlAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateBlocksHtmlAcceptLanguageEnum = typeof UpdateBlocksHtmlAcceptLanguageEnum[keyof typeof UpdateBlocksHtmlAcceptLanguageEnum];
 /**
  * @export
  */

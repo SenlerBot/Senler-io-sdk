@@ -10,6 +10,7 @@ export { AgentsAvatarApi } from './AgentsAvatarApi';
 export { AgentsLandingApi } from './AgentsLandingApi';
 export { AgentTrainingApi } from './AgentTrainingApi';
 export { AIProviderAccountsApi } from './AIProviderAccountsApi';
+export { AmbassadorReferralsApi } from './AmbassadorReferralsApi';
 export { AnalyticsApi } from './AnalyticsApi';
 export { AppAccessGrantsApi } from './AppAccessGrantsApi';
 export { AppAgentEventsApi } from './AppAgentEventsApi';

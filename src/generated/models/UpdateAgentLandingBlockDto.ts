@@ -66,6 +66,7 @@ export interface UpdateAgentLandingBlockDto {
 export const UpdateAgentLandingBlockDtoTypeEnum = {
     Cover: 'cover',
     Text: 'text',
+    Html: 'html',
     Button: 'button',
     Image: 'image',
     Features: 'features',

@@ -55,6 +55,7 @@ export interface UpdateLandingBlockDto {
 export declare const UpdateLandingBlockDtoTypeEnum: {
     readonly Cover: "cover";
     readonly Text: "text";
+    readonly Html: "html";
     readonly Button: "button";
     readonly Image: "image";
     readonly Features: "features";

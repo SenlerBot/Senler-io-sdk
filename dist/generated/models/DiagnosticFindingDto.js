@@ -20,6 +20,7 @@ exports.DiagnosticFindingDtoFromJSONTyped = DiagnosticFindingDtoFromJSONTyped;
 exports.DiagnosticFindingDtoToJSON = DiagnosticFindingDtoToJSON;
 exports.DiagnosticFindingDtoToJSONTyped = DiagnosticFindingDtoToJSONTyped;
 const DiagnosticCitationDto_1 = require("./DiagnosticCitationDto");
+const DiagnosticReferenceDto_1 = require("./DiagnosticReferenceDto");
 /**
  * @export
  */
@@ -71,6 +72,7 @@ function DiagnosticFindingDtoFromJSONTyped(json, ignoreDiscriminator) {
         'suggestion': json['suggestion'],
         'verification': json['verification'],
         'citations': json['citations'] == null ? undefined : (json['citations'].map(DiagnosticCitationDto_1.DiagnosticCitationDtoFromJSON)),
+        'references': json['references'] == null ? undefined : (json['references'].map(DiagnosticReferenceDto_1.DiagnosticReferenceDtoFromJSON)),
     };
 }
 function DiagnosticFindingDtoToJSON(json) {
@@ -89,5 +91,6 @@ function DiagnosticFindingDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'suggestion': value['suggestion'],
         'verification': value['verification'],
         'citations': value['citations'] == null ? undefined : (value['citations'].map(DiagnosticCitationDto_1.DiagnosticCitationDtoToJSON)),
+        'references': value['references'] == null ? undefined : (value['references'].map(DiagnosticReferenceDto_1.DiagnosticReferenceDtoToJSON)),
     };
 }

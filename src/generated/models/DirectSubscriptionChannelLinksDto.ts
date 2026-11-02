@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LandingShareLinksChannelDtoSubscriptionLinksInner } from './LandingShareLinksChannelDtoSubscriptionLinksInner';
+import type { DirectSubscriptionChannelLinksDtoSubscriptionLinksInner } from './DirectSubscriptionChannelLinksDtoSubscriptionLinksInner';
 import {
-    LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSON,
-    LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSONTyped,
-    LandingShareLinksChannelDtoSubscriptionLinksInnerToJSON,
-    LandingShareLinksChannelDtoSubscriptionLinksInnerToJSONTyped,
-} from './LandingShareLinksChannelDtoSubscriptionLinksInner';
+    DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSON,
+    DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSONTyped,
+    DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSON,
+    DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSONTyped,
+} from './DirectSubscriptionChannelLinksDtoSubscriptionLinksInner';
 
 /**
  * DirectSubscriptionChannelLinksDto.
@@ -59,10 +59,10 @@ export interface DirectSubscriptionChannelLinksDto {
     label: string;
     /**
      * subscription links.
-     * @type {Array<LandingShareLinksChannelDtoSubscriptionLinksInner>}
+     * @type {Array<DirectSubscriptionChannelLinksDtoSubscriptionLinksInner>}
      * @memberof DirectSubscriptionChannelLinksDto
      */
-    subscriptionLinks: Array<LandingShareLinksChannelDtoSubscriptionLinksInner>;
+    subscriptionLinks: Array<DirectSubscriptionChannelLinksDtoSubscriptionLinksInner>;
 }
 
 
@@ -105,7 +105,7 @@ export function DirectSubscriptionChannelLinksDtoFromJSONTyped(json: any, ignore
         'channelType': json['channel_type'],
         'avatarUrl': json['avatar_url'],
         'label': json['label'],
-        'subscriptionLinks': ((json['subscription_links'] as Array<any>).map(LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSON)),
+        'subscriptionLinks': ((json['subscription_links'] as Array<any>).map(DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSON)),
     };
 }
 
@@ -125,6 +125,6 @@ export function DirectSubscriptionChannelLinksDtoToJSONTyped(value?: DirectSubsc
         'channel_type': value['channelType'],
         'avatar_url': value['avatarUrl'],
         'label': value['label'],
-        'subscription_links': ((value['subscriptionLinks'] as Array<any>).map(LandingShareLinksChannelDtoSubscriptionLinksInnerToJSON)),
+        'subscription_links': ((value['subscriptionLinks'] as Array<any>).map(DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSON)),
     };
 }

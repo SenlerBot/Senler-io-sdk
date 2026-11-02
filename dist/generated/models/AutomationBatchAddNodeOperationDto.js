@@ -34,6 +34,7 @@ exports.AutomationBatchAddNodeOperationDtoNodeTypeEnum = {
     TriggerBirthday: 'trigger.birthday',
     TriggerStart: 'trigger.start',
     TriggerStartButton: 'trigger.start_button',
+    TriggerMembershipJoined: 'trigger.membership_joined',
     TriggerIncomingMessage: 'trigger.incoming_message',
     TriggerSegmentEntered: 'trigger.segment_entered',
     TriggerEvent: 'trigger.event',

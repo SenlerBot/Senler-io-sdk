@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LandingShareLinksChannelDtoSubscriptionLinksInner } from './LandingShareLinksChannelDtoSubscriptionLinksInner';
+import type { DirectSubscriptionChannelLinksDtoSubscriptionLinksInner } from './DirectSubscriptionChannelLinksDtoSubscriptionLinksInner';
 import {
-    LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSON,
-    LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSONTyped,
-    LandingShareLinksChannelDtoSubscriptionLinksInnerToJSON,
-    LandingShareLinksChannelDtoSubscriptionLinksInnerToJSONTyped,
-} from './LandingShareLinksChannelDtoSubscriptionLinksInner';
+    DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSON,
+    DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSONTyped,
+    DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSON,
+    DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSONTyped,
+} from './DirectSubscriptionChannelLinksDtoSubscriptionLinksInner';
 import type { LandingShareLinksChannelDtoOpeningLinksInner } from './LandingShareLinksChannelDtoOpeningLinksInner';
 import {
     LandingShareLinksChannelDtoOpeningLinksInnerFromJSON,
@@ -72,10 +72,10 @@ export interface LandingShareLinksChannelDto {
     openingLinks: Array<LandingShareLinksChannelDtoOpeningLinksInner>;
     /**
      * . .
-     * @type {Array<LandingShareLinksChannelDtoSubscriptionLinksInner>}
+     * @type {Array<DirectSubscriptionChannelLinksDtoSubscriptionLinksInner>}
      * @memberof LandingShareLinksChannelDto
      */
-    subscriptionLinks: Array<LandingShareLinksChannelDtoSubscriptionLinksInner>;
+    subscriptionLinks: Array<DirectSubscriptionChannelLinksDtoSubscriptionLinksInner>;
 }
 
 
@@ -120,7 +120,7 @@ export function LandingShareLinksChannelDtoFromJSONTyped(json: any, ignoreDiscri
         'avatarUrl': json['avatar_url'],
         'label': json['label'],
         'openingLinks': ((json['opening_links'] as Array<any>).map(LandingShareLinksChannelDtoOpeningLinksInnerFromJSON)),
-        'subscriptionLinks': ((json['subscription_links'] as Array<any>).map(LandingShareLinksChannelDtoSubscriptionLinksInnerFromJSON)),
+        'subscriptionLinks': ((json['subscription_links'] as Array<any>).map(DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerFromJSON)),
     };
 }
 
@@ -141,6 +141,6 @@ export function LandingShareLinksChannelDtoToJSONTyped(value?: LandingShareLinks
         'avatar_url': value['avatarUrl'],
         'label': value['label'],
         'opening_links': ((value['openingLinks'] as Array<any>).map(LandingShareLinksChannelDtoOpeningLinksInnerToJSON)),
-        'subscription_links': ((value['subscriptionLinks'] as Array<any>).map(LandingShareLinksChannelDtoSubscriptionLinksInnerToJSON)),
+        'subscription_links': ((value['subscriptionLinks'] as Array<any>).map(DirectSubscriptionChannelLinksDtoSubscriptionLinksInnerToJSON)),
     };
 }

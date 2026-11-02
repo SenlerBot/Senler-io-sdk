@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface UpdateSupportScheduleAssignmentDto {
     /**
+     * . true ; false .
+     * @type {boolean}
+     * @memberof UpdateSupportScheduleAssignmentDto
+     */
+    isDayOff?: boolean;
+    /**
      * ; null , []
      * @type {Array<string>}
      * @memberof UpdateSupportScheduleAssignmentDto
@@ -74,6 +80,7 @@ export function UpdateSupportScheduleAssignmentDtoFromJSONTyped(json: any, ignor
     }
     return {
 
+        'isDayOff': json['is_day_off'] == null ? undefined : json['is_day_off'],
         'groupIds': json['group_ids'] == null ? undefined : json['group_ids'],
         'startsAt': json['starts_at'] == null ? undefined : (new Date(json['starts_at'])),
         'endsAt': json['ends_at'] == null ? undefined : (new Date(json['ends_at'])),
@@ -94,6 +101,7 @@ export function UpdateSupportScheduleAssignmentDtoToJSONTyped(value?: UpdateSupp
 
     return {
 
+        'is_day_off': value['isDayOff'],
         'group_ids': value['groupIds'],
         'starts_at': value['startsAt'] == null ? undefined : ((value['startsAt']).toISOString()),
         'ends_at': value['endsAt'] == null ? undefined : ((value['endsAt']).toISOString()),

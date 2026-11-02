@@ -16,6 +16,12 @@
  */
 export interface DiagnosticProgressDto {
     /**
+     * , . , .
+     * @type {string}
+     * @memberof DiagnosticProgressDto
+     */
+    currentRef?: string;
+    /**
      * .
      * @type {boolean}
      * @memberof DiagnosticProgressDto

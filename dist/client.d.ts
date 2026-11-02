@@ -12,6 +12,7 @@ import { AgentsAvatarApi } from './generated/apis/AgentsAvatarApi';
 import { AgentsLandingApi } from './generated/apis/AgentsLandingApi';
 import { AgentTrainingApi } from './generated/apis/AgentTrainingApi';
 import { AIProviderAccountsApi } from './generated/apis/AIProviderAccountsApi';
+import { AmbassadorReferralsApi } from './generated/apis/AmbassadorReferralsApi';
 import { AnalyticsApi } from './generated/apis/AnalyticsApi';
 import { AppAccessGrantsApi } from './generated/apis/AppAccessGrantsApi';
 import { AppAgentEventsApi } from './generated/apis/AppAgentEventsApi';
@@ -107,6 +108,7 @@ export declare class AiSenlerClient {
     readonly agentsLanding: AgentsLandingApi;
     readonly agentTraining: AgentTrainingApi;
     readonly aiProviderAccounts: AIProviderAccountsApi;
+    readonly ambassadorReferrals: AmbassadorReferralsApi;
     readonly analytics: AnalyticsApi;
     readonly appAccessGrants: AppAccessGrantsApi;
     readonly appAgentEvents: AppAgentEventsApi;

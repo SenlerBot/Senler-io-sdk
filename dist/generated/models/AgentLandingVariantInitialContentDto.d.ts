@@ -43,6 +43,7 @@ export interface AgentLandingVariantInitialContentDto {
 export declare const AgentLandingVariantInitialContentDtoTypeEnum: {
     readonly Cover: "cover";
     readonly Text: "text";
+    readonly Html: "html";
     readonly Button: "button";
     readonly Image: "image";
     readonly Features: "features";

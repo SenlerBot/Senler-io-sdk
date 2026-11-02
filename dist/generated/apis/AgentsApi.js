@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateAgentsWizardProgressAcceptLanguageEnum = exports.UpdateAgentsRestoreAcceptLanguageEnum = exports.UpdateAgentsInstalledAppEventsAcceptLanguageEnum = exports.UpdateAgentsDraftInstructionAcceptLanguageEnum = exports.GetProjectsInstructionMcpToolsAcceptLanguageEnum = exports.GetAgentsUnpublishedStateAcceptLanguageEnum = exports.GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum = exports.GetAgentsOperatorHandoffGroupsAcceptLanguageEnum = exports.GetAgentsInstructionAcceptLanguageEnum = exports.GetAgentsInstalledAppToolsAcceptLanguageEnum = exports.GetAgentsInstalledAppEventsAcceptLanguageEnum = exports.GetAgentsDraftInstructionAcceptLanguageEnum = exports.GetAgentsDraftAcceptLanguageEnum = exports.GetAgentsByListAcceptLanguageEnum = exports.GetAgentsAutoAssignmentPreviewAcceptLanguageEnum = exports.GetAgentsAutoAssignmentPreviewAutoAssignmentRoleEnum = exports.GetAgentsAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = exports.GetAgentsAutoAssignmentPreviewAutoAssignmentModeEnum = exports.GetAgents2AcceptLanguageEnum = exports.GetAgentsAcceptLanguageEnum = exports.DeleteAgentsDraftAcceptLanguageEnum = exports.DeleteAgentsAcceptLanguageEnum = exports.AgentsRevertAcceptLanguageEnum = exports.AgentsDeactivateAcceptLanguageEnum = exports.AgentsActivateAcceptLanguageEnum = exports.AgentsAcquisitionAcceptLanguageEnum = exports.AgentsApi = void 0;
+exports.UpdateAgentsWizardProgressAcceptLanguageEnum = exports.UpdateAgentsRestoreAcceptLanguageEnum = exports.UpdateAgentsInstalledAppEventsAcceptLanguageEnum = exports.UpdateAgentsDraftInstructionAcceptLanguageEnum = exports.GetProjectsInstructionMcpToolsAcceptLanguageEnum = exports.GetAgentsUnpublishedStateAcceptLanguageEnum = exports.GetAgentsSubscriptionLinksAcceptLanguageEnum = exports.GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum = exports.GetAgentsOperatorHandoffGroupsAcceptLanguageEnum = exports.GetAgentsInstructionAcceptLanguageEnum = exports.GetAgentsInstalledAppToolsAcceptLanguageEnum = exports.GetAgentsInstalledAppEventsAcceptLanguageEnum = exports.GetAgentsDraftInstructionAcceptLanguageEnum = exports.GetAgentsDraftAcceptLanguageEnum = exports.GetAgentsByListAcceptLanguageEnum = exports.GetAgentsAutoAssignmentPreviewAcceptLanguageEnum = exports.GetAgentsAutoAssignmentPreviewAutoAssignmentRoleEnum = exports.GetAgentsAutoAssignmentPreviewAutoAssignmentDialogScopeEnum = exports.GetAgentsAutoAssignmentPreviewAutoAssignmentModeEnum = exports.GetAgents2AcceptLanguageEnum = exports.GetAgentsAcceptLanguageEnum = exports.DeleteAgentsDraftAcceptLanguageEnum = exports.DeleteAgentsAcceptLanguageEnum = exports.AgentsSubscriptionDraftAcceptLanguageEnum = exports.AgentsRevertAcceptLanguageEnum = exports.AgentsDeactivateAcceptLanguageEnum = exports.AgentsActivateAcceptLanguageEnum = exports.AgentsAcquisitionAcceptLanguageEnum = exports.AgentsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,7 +54,7 @@ const index_1 = require("../models/index");
  */
 class AgentsApi extends runtime.BaseAPI {
     /**
-     * , . .
+     * . . . MCP ; . prepareSubscription getSubscriptionLinks. .
      *
      */
     async agentsAcquisitionRaw(requestParameters, initOverrides) {
@@ -90,7 +90,7 @@ class AgentsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentAcquisitionResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , . .
+     * . . . MCP ; . prepareSubscription getSubscriptionLinks. .
      *
      */
     async agentsAcquisition(requestParameters, initOverrides) {
@@ -227,6 +227,50 @@ class AgentsApi extends runtime.BaseAPI {
      */
     async agentsRevert(requestParameters, initOverrides) {
         const response = await this.agentsRevertRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . , . . state next_action; . , getSubscriptionLinks.
+     *
+     */
+    async agentsSubscriptionDraftRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling agentsSubscriptionDraft().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+        const response = await this.request({
+            path: `/api/agents/{id}/subscription/draft`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentSubscriptionLinksResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . , . . state next_action; . , getSubscriptionLinks.
+     *
+     */
+    async agentsSubscriptionDraft(requestParameters, initOverrides) {
+        const response = await this.agentsSubscriptionDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -839,6 +883,50 @@ class AgentsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * : . , . state=not_prepared prepareSubscription; state=draft . . ; .
+     *
+     */
+    async getAgentsSubscriptionLinksRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling getAgentsSubscriptionLinks().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/agents/{id}/subscription/links`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentSubscriptionLinksResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * : . , . state=not_prepared prepareSubscription; state=draft . . ; .
+     *
+     */
+    async getAgentsSubscriptionLinks(requestParameters, initOverrides) {
+        const response = await this.getAgentsSubscriptionLinksRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * , , .
      *
      */
@@ -1153,6 +1241,13 @@ exports.AgentsRevertAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.AgentsSubscriptionDraftAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.DeleteAgentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1261,6 +1356,13 @@ exports.GetAgentsOperatorHandoffGroupsAcceptLanguageEnum = {
  * @export
  */
 exports.GetAgentsOperatorHandoffOperatorsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetAgentsSubscriptionLinksAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

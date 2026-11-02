@@ -40,9 +40,12 @@ exports.FunnelPreviewLeadDetailsDtoChannelTypeEnum = {
  */
 exports.FunnelPreviewLeadDetailsDtoLeadSourceEnum = {
     GroupJoin: 'group_join',
+    GroupLeave: 'group_leave',
     Message: 'message',
     MessageAllow: 'message_allow',
+    MessageDeny: 'message_deny',
     BotAdded: 'bot_added',
+    Landing: 'landing',
     Comment: 'comment',
     Like: 'like',
     Manual: 'manual',
