@@ -19,6 +19,7 @@ exports.LandingSettingsDtoFromJSON = LandingSettingsDtoFromJSON;
 exports.LandingSettingsDtoFromJSONTyped = LandingSettingsDtoFromJSONTyped;
 exports.LandingSettingsDtoToJSON = LandingSettingsDtoToJSON;
 exports.LandingSettingsDtoToJSONTyped = LandingSettingsDtoToJSONTyped;
+const LandingSdkPermissionsDto_1 = require("./LandingSdkPermissionsDto");
 const LandingTheme_1 = require("./LandingTheme");
 /**
  * @export
@@ -53,8 +54,8 @@ function LandingSettingsDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'sdkPermissions': json['sdk_permissions'] == null ? undefined : (0, LandingSdkPermissionsDto_1.LandingSdkPermissionsDtoFromJSON)(json['sdk_permissions']),
         'customCss': json['custom_css'] == null ? undefined : json['custom_css'],
-        'htmlCss': json['html_css'] == null ? undefined : json['html_css'],
         'visitorName': json['visitor_name'] == null ? undefined : json['visitor_name'],
         'language': json['language'],
         'listVisible': json['list_visible'],
@@ -72,8 +73,8 @@ function LandingSettingsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'sdk_permissions': (0, LandingSdkPermissionsDto_1.LandingSdkPermissionsDtoToJSON)(value['sdkPermissions']),
         'custom_css': value['customCss'],
-        'html_css': value['htmlCss'],
         'visitor_name': value['visitorName'],
         'language': value['language'],
         'list_visible': value['listVisible'],

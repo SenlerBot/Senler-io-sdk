@@ -20,6 +20,12 @@ export interface WidgetFeaturesDto {
      * @type {boolean}
      * @memberof WidgetFeaturesDto
      */
+    liveVoice?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof WidgetFeaturesDto
+     */
     fileUpload?: boolean;
     /**
      *

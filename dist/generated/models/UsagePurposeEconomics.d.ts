@@ -66,6 +66,7 @@ export declare const UsagePurposeEconomicsPurposeEnum: {
     readonly DialogOperatorReply: "dialog_operator_reply";
     readonly DialogMedia: "dialog_media";
     readonly DialogMetrics: "dialog_metrics";
+    readonly ContextCompaction: "context_compaction";
     readonly KnowledgeImageDescription: "knowledge_image_description";
     readonly AgentSetup: "agent_setup";
     readonly AnalyticsInsightSummary: "analytics_insight_summary";

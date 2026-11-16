@@ -29,6 +29,7 @@ const DialogChatEventDtoDeliveryRef_1 = require("./DialogChatEventDtoDeliveryRef
 const EventTypingDto_1 = require("./EventTypingDto");
 const EventMessageInteractionsDto_1 = require("./EventMessageInteractionsDto");
 const EventErrorDto_1 = require("./EventErrorDto");
+const EventLiveVoiceDto_1 = require("./EventLiveVoiceDto");
 const EventMessageDto_1 = require("./EventMessageDto");
 const EventTimerDto_1 = require("./EventTimerDto");
 const EventStatusDto_1 = require("./EventStatusDto");
@@ -173,6 +174,7 @@ function DialogChatEventDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'liveVoice': json['live_voice'] == null ? undefined : (0, EventLiveVoiceDto_1.EventLiveVoiceDtoFromJSON)(json['live_voice']),
         'funnel': json['funnel'] == null ? undefined : (0, EventFunnelDto_1.EventFunnelDtoFromJSON)(json['funnel']),
         'automationObservation': json['automation_observation'] == null ? undefined : (0, AutomationFunnelObservationDto_1.AutomationFunnelObservationDtoFromJSON)(json['automation_observation']),
         'id': json['id'],
@@ -229,6 +231,7 @@ function DialogChatEventDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'live_voice': (0, EventLiveVoiceDto_1.EventLiveVoiceDtoToJSON)(value['liveVoice']),
         'funnel': (0, EventFunnelDto_1.EventFunnelDtoToJSON)(value['funnel']),
         'automation_observation': (0, AutomationFunnelObservationDto_1.AutomationFunnelObservationDtoToJSON)(value['automationObservation']),
         'id': value['id'],

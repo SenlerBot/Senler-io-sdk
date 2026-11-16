@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ArrayVariableItemsDto, ArrayVariableValueDto, BooleanVariableValueDto, DateVariableValueDto, LeadVariableArrayMutationResponseDto, LeadVariableResponseDto, LeadVariableValueResponseDto, LeadVariableWriteResponseDto, NumberVariableValueDto, ObjectVariableValueDto, ProjectVariablesDeactivate200Response, StringVariableValueDto } from '../models/index';
+import type { ArrayVariableItemsDto, ArrayVariableValueDto, BooleanVariableValueDto, DateVariableValueDto, LeadVariableArrayMutationResponseDto, LeadVariableResponseDto, LeadVariableValueResponseDto, LeadVariableWriteResponseDto, NumberVariableValueDto, ObjectVariableValueDto, ProjectVariablesDeactivate200Response, ReactionVariableValueDto, StringVariableValueDto } from '../models/index';
 export interface LeadVariablesDeleteValuesRequest {
     leadId: string;
     name: string;
@@ -65,6 +65,13 @@ export interface LeadVariablesUpdateValuesObjectRequest {
     objectVariableValueDto: ObjectVariableValueDto;
     writeMode?: LeadVariablesUpdateValuesObjectWriteModeEnum;
     acceptLanguage?: LeadVariablesUpdateValuesObjectAcceptLanguageEnum;
+}
+export interface LeadVariablesUpdateValuesReactionRequest {
+    leadId: string;
+    name: string;
+    reactionVariableValueDto: ReactionVariableValueDto;
+    writeMode?: LeadVariablesUpdateValuesReactionWriteModeEnum;
+    acceptLanguage?: LeadVariablesUpdateValuesReactionAcceptLanguageEnum;
 }
 export interface LeadVariablesUpdateValuesStringRequest {
     leadId: string;
@@ -195,6 +202,16 @@ export declare class LeadVariablesApi extends runtime.BaseAPI {
      *
      */
     leadVariablesUpdateValuesObject(requestParameters: LeadVariablesUpdateValuesObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto>;
+    /**
+     * .
+     *
+     */
+    leadVariablesUpdateValuesReactionRaw(requestParameters: LeadVariablesUpdateValuesReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>>;
+    /**
+     * .
+     *
+     */
+    leadVariablesUpdateValuesReaction(requestParameters: LeadVariablesUpdateValuesReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto>;
     /**
      * .
      *
@@ -366,6 +383,22 @@ export declare const LeadVariablesUpdateValuesObjectAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type LeadVariablesUpdateValuesObjectAcceptLanguageEnum = typeof LeadVariablesUpdateValuesObjectAcceptLanguageEnum[keyof typeof LeadVariablesUpdateValuesObjectAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LeadVariablesUpdateValuesReactionWriteModeEnum: {
+    readonly Overwrite: "overwrite";
+    readonly IfAbsent: "if_absent";
+};
+export type LeadVariablesUpdateValuesReactionWriteModeEnum = typeof LeadVariablesUpdateValuesReactionWriteModeEnum[keyof typeof LeadVariablesUpdateValuesReactionWriteModeEnum];
+/**
+ * @export
+ */
+export declare const LeadVariablesUpdateValuesReactionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LeadVariablesUpdateValuesReactionAcceptLanguageEnum = typeof LeadVariablesUpdateValuesReactionAcceptLanguageEnum[keyof typeof LeadVariablesUpdateValuesReactionAcceptLanguageEnum];
 /**
  * @export
  */

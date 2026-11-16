@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PublicDocumentationGetSearchAcceptLanguageEnum = exports.PublicDocumentationGetSearchAudienceEnum = exports.PublicDocumentationGetSearchScopeEnum = exports.PublicDocumentationGetSearchLocaleEnum = exports.GetPageAcceptLanguageEnum = exports.GetAppsTreeAcceptLanguageEnum = exports.GetAppsFilesAcceptLanguageEnum = exports.GetApps2AcceptLanguageEnum = exports.GetAppsAcceptLanguageEnum = exports.PublicDocumentationApi = void 0;
+exports.PublicDocumentationGetSearchAcceptLanguageEnum = exports.PublicDocumentationGetSearchAudienceEnum = exports.PublicDocumentationGetSearchScopeEnum = exports.PublicDocumentationGetSearchLocaleEnum = exports.PublicDocumentationGetSearchSearchInEnum = exports.GetPageAcceptLanguageEnum = exports.GetAppsTreeAcceptLanguageEnum = exports.GetAppsFilesAcceptLanguageEnum = exports.GetApps2AcceptLanguageEnum = exports.GetAppsAcceptLanguageEnum = exports.PublicDocumentationApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -208,8 +208,8 @@ class PublicDocumentationApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . include_api=true HTTP-; API . app ID .
-     * Senler
+     * search_in=documentation ( ) Senler . search_in=api HTTP-, , . locale, scope, app audience . app ID .
+     * API Senler
      */
     async publicDocumentationGetSearchRaw(requestParameters, initOverrides) {
         if (requestParameters['query'] == null) {
@@ -219,8 +219,8 @@ class PublicDocumentationApi extends runtime.BaseAPI {
         if (requestParameters['query'] != null) {
             queryParameters['query'] = requestParameters['query'];
         }
-        if (requestParameters['includeApi'] != null) {
-            queryParameters['include_api'] = requestParameters['includeApi'];
+        if (requestParameters['searchIn'] != null) {
+            queryParameters['search_in'] = requestParameters['searchIn'];
         }
         if (requestParameters['locale'] != null) {
             queryParameters['locale'] = requestParameters['locale'];
@@ -250,8 +250,8 @@ class PublicDocumentationApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PublicDocumentationSearchResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * . include_api=true HTTP-; API . app ID .
-     * Senler
+     * search_in=documentation ( ) Senler . search_in=api HTTP-, , . locale, scope, app audience . app ID .
+     * API Senler
      */
     async publicDocumentationGetSearch(requestParameters, initOverrides) {
         const response = await this.publicDocumentationGetSearchRaw(requestParameters, initOverrides);
@@ -293,6 +293,13 @@ exports.GetAppsTreeAcceptLanguageEnum = {
 exports.GetPageAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
+};
+/**
+ * @export
+ */
+exports.PublicDocumentationGetSearchSearchInEnum = {
+    Documentation: 'documentation',
+    Api: 'api'
 };
 /**
  * @export

@@ -28,7 +28,7 @@ export interface LeadResponseDto {
      */
     readonly analyticsIdentifiers: Array<LeadAnalyticsIdentifierDto>;
     /**
-     * Effective birthday. A missing year remains absent.
+     * . , .
      * @type {LeadBirthdayDateDto}
      * @memberof LeadResponseDto
      */
@@ -40,19 +40,37 @@ export interface LeadResponseDto {
      */
     birthdayMode: LeadResponseDtoBirthdayModeEnum;
     /**
-     * Most recently available channel birthday, independent of manual override.
+     * ; import
+     * @type {string}
+     * @memberof LeadResponseDto
+     */
+    birthdaySource?: LeadResponseDtoBirthdaySourceEnum | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LeadResponseDto
+     */
+    city?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LeadResponseDto
+     */
+    country?: string | null;
+    /**
+     * , .
      * @type {LeadBirthdayDateDto}
      * @memberof LeadResponseDto
      */
     birthdayChannel: LeadBirthdayDateDto | null;
     /**
-     * Time the effective birthday source was updated
+     *
      * @type {Date}
      * @memberof LeadResponseDto
      */
     birthdayUpdatedAt?: Date | null;
     /**
-     * Time the channel birthday was checked successfully
+     *
      * @type {Date}
      * @memberof LeadResponseDto
      */
@@ -240,6 +258,15 @@ export declare const LeadResponseDtoBirthdayModeEnum: {
     readonly Manual: "manual";
 };
 export type LeadResponseDtoBirthdayModeEnum = typeof LeadResponseDtoBirthdayModeEnum[keyof typeof LeadResponseDtoBirthdayModeEnum];
+/**
+ * @export
+ */
+export declare const LeadResponseDtoBirthdaySourceEnum: {
+    readonly Manual: "manual";
+    readonly Channel: "channel";
+    readonly Import: "import";
+};
+export type LeadResponseDtoBirthdaySourceEnum = typeof LeadResponseDtoBirthdaySourceEnum[keyof typeof LeadResponseDtoBirthdaySourceEnum];
 /**
  * @export
  */

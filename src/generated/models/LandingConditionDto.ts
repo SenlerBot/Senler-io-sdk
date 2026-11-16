@@ -32,7 +32,7 @@ export interface LandingConditionDto {
      */
     name: string;
     /**
-     * : string, number, boolean, json, date, array, object.
+     * : string, number, boolean, json, date, array, object, reaction.
      * @type {string}
      * @memberof LandingConditionDto
      */
@@ -75,7 +75,8 @@ export const LandingConditionDtoVariableTypeEnum = {
     Json: 'json',
     Date: 'date',
     Array: 'array',
-    Object: 'object'
+    Object: 'object',
+    Reaction: 'reaction'
 } as const;
 export type LandingConditionDtoVariableTypeEnum = typeof LandingConditionDtoVariableTypeEnum[keyof typeof LandingConditionDtoVariableTypeEnum];
 

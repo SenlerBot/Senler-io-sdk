@@ -88,6 +88,7 @@ export declare const LeadVariableDefinitionResponseDtoTypeEnum: {
     readonly Date: "date";
     readonly Array: "array";
     readonly Object: "object";
+    readonly Reaction: "reaction";
 };
 export type LeadVariableDefinitionResponseDtoTypeEnum = typeof LeadVariableDefinitionResponseDtoTypeEnum[keyof typeof LeadVariableDefinitionResponseDtoTypeEnum];
 /**

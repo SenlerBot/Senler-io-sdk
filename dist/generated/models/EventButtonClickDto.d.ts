@@ -16,6 +16,12 @@
  */
 export interface EventButtonClickDto {
     /**
+     * Telegram-; 64 UTF-8.
+     * @type {string}
+     * @memberof EventButtonClickDto
+     */
+    widgetData?: string;
+    /**
      * .
      * @type {string}
      * @memberof EventButtonClickDto

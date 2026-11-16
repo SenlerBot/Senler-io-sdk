@@ -80,6 +80,12 @@ export interface AppVersionStepResponseDto {
      */
     agentResourceId?: string | null;
     /**
+     * ID
+     * @type {string}
+     * @memberof AppVersionStepResponseDto
+     */
+    segmentResourceId?: string | null;
+    /**
      * ,
      * @type {string}
      * @memberof AppVersionStepResponseDto
@@ -135,10 +141,12 @@ export type AppVersionStepResponseDtoPhaseEnum = typeof AppVersionStepResponseDt
  */
 export declare const AppVersionStepResponseDtoTypeEnum: {
     readonly FillVariables: "fill_variables";
+    readonly SelectRecipient: "select_recipient";
     readonly SetDefaultAgent: "set_default_agent";
     readonly AssignAgentToDialog: "assign_agent_to_dialog";
     readonly CustomInstruction: "custom_instruction";
     readonly SubscriptionLinks: "subscription_links";
+    readonly ConfigureConsents: "configure_consents";
 };
 export type AppVersionStepResponseDtoTypeEnum = typeof AppVersionStepResponseDtoTypeEnum[keyof typeof AppVersionStepResponseDtoTypeEnum];
 /**

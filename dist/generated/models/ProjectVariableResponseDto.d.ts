@@ -96,6 +96,7 @@ export declare const ProjectVariableResponseDtoTypeEnum: {
     readonly Date: "date";
     readonly Array: "array";
     readonly Object: "object";
+    readonly Reaction: "reaction";
 };
 export type ProjectVariableResponseDtoTypeEnum = typeof ProjectVariableResponseDtoTypeEnum[keyof typeof ProjectVariableResponseDtoTypeEnum];
 /**

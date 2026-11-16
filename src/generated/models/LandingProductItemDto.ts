@@ -13,12 +13,26 @@
  */
 
 import { mapValues } from '../runtime';
+import type { LandingProductBookingButtonDto } from './LandingProductBookingButtonDto';
+import {
+    LandingProductBookingButtonDtoFromJSON,
+    LandingProductBookingButtonDtoFromJSONTyped,
+    LandingProductBookingButtonDtoToJSON,
+    LandingProductBookingButtonDtoToJSONTyped,
+} from './LandingProductBookingButtonDto';
+
 /**
  * LandingProductItemDto.
  * @export
  * @interface LandingProductItemDto
  */
 export interface LandingProductItemDto {
+    /**
+     * button.
+     * @type {LandingProductBookingButtonDto}
+     * @memberof LandingProductItemDto
+     */
+    button?: LandingProductBookingButtonDto | null;
     /**
      * id.
      * @type {string}
@@ -75,6 +89,7 @@ export function LandingProductItemDtoFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
 
+        'button': json['button'] == null ? undefined : LandingProductBookingButtonDtoFromJSON(json['button']),
         'id': json['id'],
         'name': json['name'] == null ? undefined : json['name'],
         'category': json['category'] == null ? undefined : json['category'],
@@ -95,6 +110,7 @@ export function LandingProductItemDtoToJSONTyped(value?: LandingProductItemDto |
 
     return {
 
+        'button': LandingProductBookingButtonDtoToJSON(value['button']),
         'id': value['id'],
         'name': value['name'],
         'category': value['category'],

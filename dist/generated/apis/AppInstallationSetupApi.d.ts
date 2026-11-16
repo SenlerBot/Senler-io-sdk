@@ -10,12 +10,18 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { InstallationSetupResponseDto, ReconfigureInstallationStepDto, SubmitDefaultAgentStepDto, SubmitDialogAssignmentStepDto, SubmitFillVariablesStepDto, SubmitSubscriptionLinksStepDto } from '../models/index';
+import type { InstallationSetupResponseDto, ReconfigureInstallationStepDto, SubmitConfigureConsentsStepDto, SubmitDefaultAgentStepDto, SubmitDialogAssignmentStepDto, SubmitFillVariablesStepDto, SubmitRecipientStepDto, SubmitSubscriptionLinksStepDto } from '../models/index';
 export interface SetupStepsAssignAgentToDialogRequest {
     installationId: string;
     stepId: string;
     submitDialogAssignmentStepDto: SubmitDialogAssignmentStepDto;
     acceptLanguage?: SetupStepsAssignAgentToDialogAcceptLanguageEnum;
+}
+export interface SetupStepsConfigureConsentsRequest {
+    installationId: string;
+    stepId: string;
+    submitConfigureConsentsStepDto: SubmitConfigureConsentsStepDto;
+    acceptLanguage?: SetupStepsConfigureConsentsAcceptLanguageEnum;
 }
 export interface SetupStepsCustomInstructionRequest {
     installationId: string;
@@ -28,6 +34,12 @@ export interface SetupStepsFillVariablesRequest {
     stepId: string;
     submitFillVariablesStepDto: SubmitFillVariablesStepDto;
     acceptLanguage?: SetupStepsFillVariablesAcceptLanguageEnum;
+}
+export interface SetupStepsSelectRecipientRequest {
+    installationId: string;
+    stepId: string;
+    submitRecipientStepDto: SubmitRecipientStepDto;
+    acceptLanguage?: SetupStepsSelectRecipientAcceptLanguageEnum;
 }
 export interface SetupStepsSetDefaultAgentRequest {
     installationId: string;
@@ -46,15 +58,25 @@ export interface SetupStepsSubscriptionLinksRequest {
  */
 export declare class AppInstallationSetupApi extends runtime.BaseAPI {
     /**
-     * .
-     * assign_agent_to_dialog
+     * assign_agent_to_dialog . ; . . installation_id steps[].id assign_agent_to_dialog .
+     *
      */
     setupStepsAssignAgentToDialogRaw(requestParameters: SetupStepsAssignAgentToDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InstallationSetupResponseDto>>;
     /**
-     * .
-     * assign_agent_to_dialog
+     * assign_agent_to_dialog . ; . . installation_id steps[].id assign_agent_to_dialog .
+     *
      */
     setupStepsAssignAgentToDialog(requestParameters: SetupStepsAssignAgentToDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InstallationSetupResponseDto>;
+    /**
+     * , . API .
+     *
+     */
+    setupStepsConfigureConsentsRaw(requestParameters: SetupStepsConfigureConsentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InstallationSetupResponseDto>>;
+    /**
+     * , . API .
+     *
+     */
+    setupStepsConfigureConsents(requestParameters: SetupStepsConfigureConsentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InstallationSetupResponseDto>;
     /**
      * .
      * custom_instruction
@@ -75,6 +97,16 @@ export declare class AppInstallationSetupApi extends runtime.BaseAPI {
      * fill_variables
      */
     setupStepsFillVariables(requestParameters: SetupStepsFillVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InstallationSetupResponseDto>;
+    /**
+     * dialog_id lead_id. ID .
+     *
+     */
+    setupStepsSelectRecipientRaw(requestParameters: SetupStepsSelectRecipientRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InstallationSetupResponseDto>>;
+    /**
+     * dialog_id lead_id. ID .
+     *
+     */
+    setupStepsSelectRecipient(requestParameters: SetupStepsSelectRecipientRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InstallationSetupResponseDto>;
     /**
      * .
      * set_default_agent
@@ -107,6 +139,14 @@ export type SetupStepsAssignAgentToDialogAcceptLanguageEnum = typeof SetupStepsA
 /**
  * @export
  */
+export declare const SetupStepsConfigureConsentsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SetupStepsConfigureConsentsAcceptLanguageEnum = typeof SetupStepsConfigureConsentsAcceptLanguageEnum[keyof typeof SetupStepsConfigureConsentsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const SetupStepsCustomInstructionAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -120,6 +160,14 @@ export declare const SetupStepsFillVariablesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type SetupStepsFillVariablesAcceptLanguageEnum = typeof SetupStepsFillVariablesAcceptLanguageEnum[keyof typeof SetupStepsFillVariablesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const SetupStepsSelectRecipientAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SetupStepsSelectRecipientAcceptLanguageEnum = typeof SetupStepsSelectRecipientAcceptLanguageEnum[keyof typeof SetupStepsSelectRecipientAcceptLanguageEnum];
 /**
  * @export
  */

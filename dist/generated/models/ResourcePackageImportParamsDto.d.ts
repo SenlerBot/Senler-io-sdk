@@ -16,6 +16,18 @@
  */
 export interface ResourcePackageImportParamsDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof ResourcePackageImportParamsDto
+     */
+    resourcePackageActivate?: boolean;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof ResourcePackageImportParamsDto
+     */
+    channelIds?: Array<string>;
+    /**
      * UUID
      * @type {string}
      * @memberof ResourcePackageImportParamsDto

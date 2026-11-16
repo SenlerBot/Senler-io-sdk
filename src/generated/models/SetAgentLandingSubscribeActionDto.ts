@@ -42,7 +42,7 @@ import {
  */
 export interface SetAgentLandingSubscribeActionDto {
     /**
-     * .
+     * revision . 409 .
      * @type {number}
      * @memberof SetAgentLandingSubscribeActionDto
      */

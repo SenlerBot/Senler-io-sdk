@@ -28,7 +28,7 @@ import {
  */
 export interface SetLandingOpenLandingActionDto {
     /**
-     * .
+     * revision . 409 .
      * @type {number}
      * @memberof SetLandingOpenLandingActionDto
      */

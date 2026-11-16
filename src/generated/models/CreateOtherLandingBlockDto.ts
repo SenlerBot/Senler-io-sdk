@@ -32,7 +32,7 @@ export interface CreateOtherLandingBlockDto {
      */
     pageVariantId?: string;
     /**
-     *
+     * order_revision . 409 .
      * @type {number}
      * @memberof CreateOtherLandingBlockDto
      */

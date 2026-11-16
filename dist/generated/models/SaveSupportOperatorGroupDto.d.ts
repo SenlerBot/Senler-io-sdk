@@ -27,6 +27,18 @@ export interface SaveSupportOperatorGroupDto {
      * @memberof SaveSupportOperatorGroupDto
      */
     memberIds?: Array<string>;
+    /**
+     * , . true.
+     * @type {boolean}
+     * @memberof SaveSupportOperatorGroupDto
+     */
+    requireShiftCheckIn?: boolean;
+    /**
+     * . require_shift_check_in. true.
+     * @type {boolean}
+     * @memberof SaveSupportOperatorGroupDto
+     */
+    requireSchedule?: boolean;
 }
 /**
  * Check if a given object implements the SaveSupportOperatorGroupDto interface.

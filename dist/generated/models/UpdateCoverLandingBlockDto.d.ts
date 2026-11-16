@@ -17,7 +17,7 @@ import type { LandingCoverBlockPayloadDto } from './LandingCoverBlockPayloadDto'
  */
 export interface UpdateCoverLandingBlockDto {
     /**
-     *
+     * revision . 409 .
      * @type {number}
      * @memberof UpdateCoverLandingBlockDto
      */

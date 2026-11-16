@@ -26,6 +26,8 @@ const LandingExperimentMarkerDto_1 = require("./LandingExperimentMarkerDto");
  * Check if a given object implements the LandingResolvedResponseDto interface.
  */
 function instanceOfLandingResolvedResponseDto(value) {
+    if (!('bookingToken' in value) || value['bookingToken'] === undefined)
+        return false;
     if (!('landing' in value) || value['landing'] === undefined)
         return false;
     if (!('visitId' in value) || value['visitId'] === undefined)
@@ -38,8 +40,6 @@ function instanceOfLandingResolvedResponseDto(value) {
         return false;
     if (!('exposureMarkers' in value) || value['exposureMarkers'] === undefined)
         return false;
-    if (!('exposures' in value) || value['exposures'] === undefined)
-        return false;
     return true;
 }
 function LandingResolvedResponseDtoFromJSON(json) {
@@ -50,13 +50,14 @@ function LandingResolvedResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'bookingToken': json['booking_token'],
         'landing': (0, LandingPublicResponseDto_1.LandingPublicResponseDtoFromJSON)(json['landing']),
         'visitId': json['visit_id'],
         'pageVariantId': json['page_variant_id'],
         'selectedBlocks': (json['selected_blocks'].map(LandingResolvedBlockDto_1.LandingResolvedBlockDtoFromJSON)),
         'eventToken': json['event_token'],
         'exposureMarkers': (json['exposure_markers'].map(LandingExperimentMarkerDto_1.LandingExperimentMarkerDtoFromJSON)),
-        'exposures': (json['exposures'].map(LandingExperimentExposureDto_1.LandingExperimentExposureDtoFromJSON)),
+        'exposures': json['exposures'] == null ? undefined : (json['exposures'].map(LandingExperimentExposureDto_1.LandingExperimentExposureDtoFromJSON)),
     };
 }
 function LandingResolvedResponseDtoToJSON(json) {
@@ -67,12 +68,13 @@ function LandingResolvedResponseDtoToJSONTyped(value, ignoreDiscriminator = fals
         return value;
     }
     return {
+        'booking_token': value['bookingToken'],
         'landing': (0, LandingPublicResponseDto_1.LandingPublicResponseDtoToJSON)(value['landing']),
         'visit_id': value['visitId'],
         'page_variant_id': value['pageVariantId'],
         'selected_blocks': (value['selectedBlocks'].map(LandingResolvedBlockDto_1.LandingResolvedBlockDtoToJSON)),
         'event_token': value['eventToken'],
         'exposure_markers': (value['exposureMarkers'].map(LandingExperimentMarkerDto_1.LandingExperimentMarkerDtoToJSON)),
-        'exposures': (value['exposures'].map(LandingExperimentExposureDto_1.LandingExperimentExposureDtoToJSON)),
+        'exposures': value['exposures'] == null ? undefined : (value['exposures'].map(LandingExperimentExposureDto_1.LandingExperimentExposureDtoToJSON)),
     };
 }

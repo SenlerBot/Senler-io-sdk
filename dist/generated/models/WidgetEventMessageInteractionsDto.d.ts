@@ -14,6 +14,7 @@ import type { WidgetPlatformActionDto } from './WidgetPlatformActionDto';
 import type { WidgetEventMessageForwardingDto } from './WidgetEventMessageForwardingDto';
 import type { WidgetEventMessageViewsDto } from './WidgetEventMessageViewsDto';
 import type { WidgetEventMessageMentionsDto } from './WidgetEventMessageMentionsDto';
+import type { WidgetInteractiveMessageDto } from './WidgetInteractiveMessageDto';
 import type { WidgetEventMessageRepliesDto } from './WidgetEventMessageRepliesDto';
 import type { WidgetEventMessagePinningDto } from './WidgetEventMessagePinningDto';
 import type { WidgetEventMessageReactionDto } from './WidgetEventMessageReactionDto';
@@ -23,6 +24,12 @@ import type { WidgetEventMessageReactionDto } from './WidgetEventMessageReaction
  * @interface WidgetEventMessageInteractionsDto
  */
 export interface WidgetEventMessageInteractionsDto {
+    /**
+     * HTML- .
+     * @type {WidgetInteractiveMessageDto}
+     * @memberof WidgetEventMessageInteractionsDto
+     */
+    interactiveWidget?: WidgetInteractiveMessageDto;
     /**
      *
      * @type {Array<WidgetEventMessageReactionDto>}

@@ -17,7 +17,7 @@ import type { LandingImageBlockPayloadDto } from './LandingImageBlockPayloadDto'
  */
 export interface UpdateImageLandingBlockDto {
     /**
-     *
+     * revision . 409 .
      * @type {number}
      * @memberof UpdateImageLandingBlockDto
      */

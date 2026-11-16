@@ -101,6 +101,7 @@ function DialogBulkFiltersDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'messageRecipientsOnly': json['message_recipients_only'] == null ? undefined : json['message_recipients_only'],
         'operatorUserIds': json['operator_user_ids'] == null ? undefined : json['operator_user_ids'],
         'supportGroupId': json['support_group_id'] == null ? undefined : json['support_group_id'],
         'supportGroupAssignment': json['support_group_assignment'] == null ? undefined : json['support_group_assignment'],
@@ -147,6 +148,7 @@ function DialogBulkFiltersDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'message_recipients_only': value['messageRecipientsOnly'],
         'operator_user_ids': value['operatorUserIds'],
         'support_group_id': value['supportGroupId'],
         'support_group_assignment': value['supportGroupAssignment'],

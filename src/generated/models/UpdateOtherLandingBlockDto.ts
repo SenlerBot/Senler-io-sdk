@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface UpdateOtherLandingBlockDto {
     /**
-     *
+     * revision . 409 .
      * @type {number}
      * @memberof UpdateOtherLandingBlockDto
      */

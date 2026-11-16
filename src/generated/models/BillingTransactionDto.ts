@@ -34,6 +34,13 @@ import {
     BillingTransactionDtoDetailsByModelValueToJSON,
     BillingTransactionDtoDetailsByModelValueToJSONTyped,
 } from './BillingTransactionDtoDetailsByModelValue';
+import type { ReferralTransactionDetailsDto } from './ReferralTransactionDetailsDto';
+import {
+    ReferralTransactionDetailsDtoFromJSON,
+    ReferralTransactionDetailsDtoFromJSONTyped,
+    ReferralTransactionDetailsDtoToJSON,
+    ReferralTransactionDetailsDtoToJSONTyped,
+} from './ReferralTransactionDetailsDto';
 
 /**
  * BillingTransactionDto.
@@ -41,6 +48,12 @@ import {
  * @interface BillingTransactionDto
  */
 export interface BillingTransactionDto {
+    /**
+     * . .
+     * @type {ReferralTransactionDetailsDto}
+     * @memberof BillingTransactionDto
+     */
+    referral?: ReferralTransactionDetailsDto | null;
     /**
      * ID
      * @type {string}
@@ -308,6 +321,7 @@ export function BillingTransactionDtoFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
 
+        'referral': json['referral'] == null ? undefined : ReferralTransactionDetailsDtoFromJSON(json['referral']),
         'id': json['id'],
         'projectId': json['project_id'],
         'type': json['type'],
@@ -358,6 +372,7 @@ export function BillingTransactionDtoToJSONTyped(value?: BillingTransactionDto |
 
     return {
 
+        'referral': ReferralTransactionDetailsDtoToJSON(value['referral']),
         'id': value['id'],
         'project_id': value['projectId'],
         'type': value['type'],

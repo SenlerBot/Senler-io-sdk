@@ -47,7 +47,7 @@ export interface AutomationHttpPreviewResponseDto {
      */
     errorMessage: string | null;
     /**
-     * Response body. JSON is returned as text to preserve the original response.
+     * . JSON .
      * @type {string}
      * @memberof AutomationHttpPreviewResponseDto
      */
@@ -61,13 +61,13 @@ export interface AutomationHttpPreviewResponseDto {
         [key: string]: string;
     };
     /**
-     * Saved JSON example. Null when the response was not saved as an example.
+     * JSON. null , .
      * @type {AutomationHttpResponseSampleDto}
      * @memberof AutomationHttpPreviewResponseDto
      */
     sample: AutomationHttpResponseSampleDto | null;
     /**
-     * Example storage error, independent of the HTTP request outcome.
+     * , HTTP-.
      * @type {string}
      * @memberof AutomationHttpPreviewResponseDto
      */

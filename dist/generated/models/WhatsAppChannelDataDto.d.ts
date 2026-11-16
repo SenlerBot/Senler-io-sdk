@@ -46,7 +46,7 @@ export interface WhatsAppChannelDataDto {
      */
     expiresAt: Date | null;
     /**
-     * WhatsApp Business Account ID
+     * - WhatsApp
      * @type {string}
      * @memberof WhatsAppChannelDataDto
      */

@@ -21,6 +21,12 @@ import type { LandingExperimentMarkerDto } from './LandingExperimentMarkerDto';
  */
 export interface LandingPreviewResponseDto {
     /**
+     * ; null
+     * @type {string}
+     * @memberof LandingPreviewResponseDto
+     */
+    bookingToken: string | null;
+    /**
      *
      * @type {LandingPublicResponseDto}
      * @memberof LandingPreviewResponseDto
@@ -57,12 +63,12 @@ export interface LandingPreviewResponseDto {
      */
     exposureMarkers: Array<LandingExperimentMarkerDto>;
     /**
-     * ;
+     * ; . .
      * @type {Array<LandingExperimentExposureDto>}
      * @memberof LandingPreviewResponseDto
      * @deprecated
      */
-    exposures: Array<LandingExperimentExposureDto>;
+    exposures?: Array<LandingExperimentExposureDto>;
     /**
      * decisions.
      * @type {Array<LandingRuleDecisionDto>}

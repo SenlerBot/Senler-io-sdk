@@ -35,7 +35,10 @@ exports.ResourcePackageResourcePreviewDtoResourceTypeEnum = {
     KnowledgeFile: 'knowledge_file',
     KnowledgeTable: 'knowledge_table',
     Landing: 'landing',
-    MetricDefinition: 'metric_definition'
+    MetricDefinition: 'metric_definition',
+    BookingService: 'booking_service',
+    BookingSpecialist: 'booking_specialist',
+    BookingResource: 'booking_resource'
 };
 /**
  * Check if a given object implements the ResourcePackageResourcePreviewDto interface.
@@ -57,6 +60,7 @@ function ResourcePackageResourcePreviewDtoFromJSONTyped(json, ignoreDiscriminato
         return json;
     }
     return {
+        'unresolvedLandingLinks': json['unresolved_landing_links'] == null ? undefined : json['unresolved_landing_links'],
         'localId': json['local_id'],
         'resourceType': json['resource_type'],
         'name': json['name'],
@@ -70,6 +74,7 @@ function ResourcePackageResourcePreviewDtoToJSONTyped(value, ignoreDiscriminator
         return value;
     }
     return {
+        'unresolved_landing_links': value['unresolvedLandingLinks'],
         'local_id': value['localId'],
         'resource_type': value['resourceType'],
         'name': value['name'],

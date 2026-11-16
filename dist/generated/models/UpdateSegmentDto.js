@@ -33,6 +33,7 @@ function UpdateSegmentDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'suppressAgentResponseOnSubscription': json['suppress_agent_response_on_subscription'] == null ? undefined : json['suppress_agent_response_on_subscription'],
         'name': json['name'] == null ? undefined : json['name'],
         'requiredConsents': json['required_consents'] == null ? undefined : (json['required_consents'].map(SegmentRequiredConsentDto_1.SegmentRequiredConsentDtoFromJSON)),
         'consentPromptText': json['consent_prompt_text'] == null ? undefined : json['consent_prompt_text'],
@@ -46,6 +47,7 @@ function UpdateSegmentDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'suppress_agent_response_on_subscription': value['suppressAgentResponseOnSubscription'],
         'name': value['name'],
         'required_consents': value['requiredConsents'] == null ? undefined : (value['requiredConsents'].map(SegmentRequiredConsentDto_1.SegmentRequiredConsentDtoToJSON)),
         'consent_prompt_text': value['consentPromptText'],

@@ -16,7 +16,7 @@
  */
 export interface AutomationFunnelObservationDto {
     /**
-     * ID MongoDB
+     *
      * @type {string}
      * @memberof AutomationFunnelObservationDto
      */

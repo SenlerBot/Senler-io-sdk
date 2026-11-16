@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OwnershipTransferAcceptLanguageEnum = exports.GetRolePresetsAcceptLanguageEnum = exports.GetMembersChannelsAcceptLanguageEnum = exports.AccessUpdateMembersAcceptLanguageEnum = exports.AccessGetMembers2AcceptLanguageEnum = exports.AccessGetMembersAcceptLanguageEnum = exports.AccessDeleteMembersAcceptLanguageEnum = exports.AccessApi = void 0;
+exports.UpdateSupportScheduleOperatorsAcceptLanguageEnum = exports.SupportScheduleOperatorsAcceptLanguageEnum = exports.OwnershipTransferAcceptLanguageEnum = exports.GetSupportScheduleOperatorCandidatesAcceptLanguageEnum = exports.GetRolePresetsAcceptLanguageEnum = exports.GetMembersChannelsAcceptLanguageEnum = exports.AccessUpdateMembersAcceptLanguageEnum = exports.AccessGetMembers2AcceptLanguageEnum = exports.AccessGetMembersAcceptLanguageEnum = exports.AccessDeleteMembersAcceptLanguageEnum = exports.AccessApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -317,6 +317,59 @@ class AccessApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * , , , email.
+     *
+     */
+    async getSupportScheduleOperatorCandidatesRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getSupportScheduleOperatorCandidates().');
+        }
+        const queryParameters = {};
+        if (requestParameters['after'] != null) {
+            queryParameters['after'] = requestParameters['after'];
+        }
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
+        }
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/access/{projectId}/support-schedule/operator-candidates`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SupportScheduleCandidatesResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , , , email.
+     *
+     */
+    async getSupportScheduleOperatorCandidates(requestParameters, initOverrides) {
+        const response = await this.getSupportScheduleOperatorCandidatesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * . .
      *
      */
@@ -352,6 +405,104 @@ class AccessApi extends runtime.BaseAPI {
      */
     async ownershipTransfer(requestParameters, initOverrides) {
         const response = await this.ownershipTransferRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async supportScheduleOperatorsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling supportScheduleOperators().');
+        }
+        if (requestParameters['addSupportScheduleOperatorDto'] == null) {
+            throw new runtime.RequiredError('addSupportScheduleOperatorDto', 'Required parameter "addSupportScheduleOperatorDto" was null or undefined when calling supportScheduleOperators().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_access"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
+        }
+        const response = await this.request({
+            path: `/api/access/{projectId}/support-schedule/operators`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.AddSupportScheduleOperatorDtoToJSON)(requestParameters['addSupportScheduleOperatorDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UpdateProjectMemberResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async supportScheduleOperators(requestParameters, initOverrides) {
+        const response = await this.supportScheduleOperatorsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . .
+     *
+     */
+    async updateSupportScheduleOperatorsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling updateSupportScheduleOperators().');
+        }
+        if (requestParameters['saveSupportScheduleOperatorsDto'] == null) {
+            throw new runtime.RequiredError('saveSupportScheduleOperatorsDto', 'Required parameter "saveSupportScheduleOperatorsDto" was null or undefined when calling updateSupportScheduleOperators().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_access"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
+        }
+        const response = await this.request({
+            path: `/api/access/{projectId}/support-schedule/operators`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SaveSupportScheduleOperatorsDtoToJSON)(requestParameters['saveSupportScheduleOperatorsDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuccessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async updateSupportScheduleOperators(requestParameters, initOverrides) {
+        const response = await this.updateSupportScheduleOperatorsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
@@ -401,7 +552,28 @@ exports.GetRolePresetsAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.GetSupportScheduleOperatorCandidatesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.OwnershipTransferAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.SupportScheduleOperatorsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateSupportScheduleOperatorsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

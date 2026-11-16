@@ -18,6 +18,7 @@ exports.LandingLaunchContextResponseDtoFromJSON = LandingLaunchContextResponseDt
 exports.LandingLaunchContextResponseDtoFromJSONTyped = LandingLaunchContextResponseDtoFromJSONTyped;
 exports.LandingLaunchContextResponseDtoToJSON = LandingLaunchContextResponseDtoToJSON;
 exports.LandingLaunchContextResponseDtoToJSONTyped = LandingLaunchContextResponseDtoToJSONTyped;
+const LandingSdkSubscriptionResponseDto_1 = require("./LandingSdkSubscriptionResponseDto");
 const LandingLaunchSubscribeActionDto_1 = require("./LandingLaunchSubscribeActionDto");
 /**
  * Check if a given object implements the LandingLaunchContextResponseDto interface.
@@ -49,6 +50,7 @@ function LandingLaunchContextResponseDtoFromJSONTyped(json, ignoreDiscriminator)
         return json;
     }
     return {
+        'sdkSubscription': json['sdk_subscription'] == null ? undefined : (0, LandingSdkSubscriptionResponseDto_1.LandingSdkSubscriptionResponseDtoFromJSON)(json['sdk_subscription']),
         'projectPublicId': json['project_public_id'],
         'landingPublicId': json['landing_public_id'],
         'action': (0, LandingLaunchSubscribeActionDto_1.LandingLaunchSubscribeActionDtoFromJSON)(json['action']),
@@ -67,6 +69,7 @@ function LandingLaunchContextResponseDtoToJSONTyped(value, ignoreDiscriminator =
         return value;
     }
     return {
+        'sdk_subscription': (0, LandingSdkSubscriptionResponseDto_1.LandingSdkSubscriptionResponseDtoToJSON)(value['sdkSubscription']),
         'project_public_id': value['projectPublicId'],
         'landing_public_id': value['landingPublicId'],
         'action': (0, LandingLaunchSubscribeActionDto_1.LandingLaunchSubscribeActionDtoToJSON)(value['action']),

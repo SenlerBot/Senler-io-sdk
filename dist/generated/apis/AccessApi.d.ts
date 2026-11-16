@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { GetMemberChannelsResponseDto, GetProjectMemberResponseDto, ProjectMemberListItemDto, RolePresetsResponseDto, SuccessResponseDto, TransferOwnershipDto, TransferOwnershipResponseDto, UpdateProjectMemberDto, UpdateProjectMemberResponseDto } from '../models/index';
+import type { AddSupportScheduleOperatorDto, GetMemberChannelsResponseDto, GetProjectMemberResponseDto, ProjectMemberListItemDto, RolePresetsResponseDto, SaveSupportScheduleOperatorsDto, SuccessResponseDto, SupportScheduleCandidatesResponseDto, TransferOwnershipDto, TransferOwnershipResponseDto, UpdateProjectMemberDto, UpdateProjectMemberResponseDto } from '../models/index';
 export interface AccessDeleteMembersRequest {
     projectId: string;
     memberId: string;
@@ -39,10 +39,27 @@ export interface GetMembersChannelsRequest {
 export interface GetRolePresetsRequest {
     acceptLanguage?: GetRolePresetsAcceptLanguageEnum;
 }
+export interface GetSupportScheduleOperatorCandidatesRequest {
+    projectId: string;
+    after?: string;
+    search?: string;
+    limit?: number;
+    acceptLanguage?: GetSupportScheduleOperatorCandidatesAcceptLanguageEnum;
+}
 export interface OwnershipTransferRequest {
     projectId: string;
     transferOwnershipDto: TransferOwnershipDto;
     acceptLanguage?: OwnershipTransferAcceptLanguageEnum;
+}
+export interface SupportScheduleOperatorsRequest {
+    projectId: string;
+    addSupportScheduleOperatorDto: AddSupportScheduleOperatorDto;
+    acceptLanguage?: SupportScheduleOperatorsAcceptLanguageEnum;
+}
+export interface UpdateSupportScheduleOperatorsRequest {
+    projectId: string;
+    saveSupportScheduleOperatorsDto: SaveSupportScheduleOperatorsDto;
+    acceptLanguage?: UpdateSupportScheduleOperatorsAcceptLanguageEnum;
 }
 /**
  *
@@ -109,6 +126,16 @@ export declare class AccessApi extends runtime.BaseAPI {
      */
     getRolePresets(requestParameters?: GetRolePresetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RolePresetsResponseDto>;
     /**
+     * , , , email.
+     *
+     */
+    getSupportScheduleOperatorCandidatesRaw(requestParameters: GetSupportScheduleOperatorCandidatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportScheduleCandidatesResponseDto>>;
+    /**
+     * , , , email.
+     *
+     */
+    getSupportScheduleOperatorCandidates(requestParameters: GetSupportScheduleOperatorCandidatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportScheduleCandidatesResponseDto>;
+    /**
      * . .
      *
      */
@@ -118,6 +145,26 @@ export declare class AccessApi extends runtime.BaseAPI {
      *
      */
     ownershipTransfer(requestParameters: OwnershipTransferRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TransferOwnershipResponseDto>;
+    /**
+     * .
+     *
+     */
+    supportScheduleOperatorsRaw(requestParameters: SupportScheduleOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateProjectMemberResponseDto>>;
+    /**
+     * .
+     *
+     */
+    supportScheduleOperators(requestParameters: SupportScheduleOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateProjectMemberResponseDto>;
+    /**
+     * . .
+     *
+     */
+    updateSupportScheduleOperatorsRaw(requestParameters: UpdateSupportScheduleOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    updateSupportScheduleOperators(requestParameters: UpdateSupportScheduleOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
 }
 /**
  * @export
@@ -170,8 +217,32 @@ export type GetRolePresetsAcceptLanguageEnum = typeof GetRolePresetsAcceptLangua
 /**
  * @export
  */
+export declare const GetSupportScheduleOperatorCandidatesAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetSupportScheduleOperatorCandidatesAcceptLanguageEnum = typeof GetSupportScheduleOperatorCandidatesAcceptLanguageEnum[keyof typeof GetSupportScheduleOperatorCandidatesAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const OwnershipTransferAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type OwnershipTransferAcceptLanguageEnum = typeof OwnershipTransferAcceptLanguageEnum[keyof typeof OwnershipTransferAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const SupportScheduleOperatorsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type SupportScheduleOperatorsAcceptLanguageEnum = typeof SupportScheduleOperatorsAcceptLanguageEnum[keyof typeof SupportScheduleOperatorsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateSupportScheduleOperatorsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateSupportScheduleOperatorsAcceptLanguageEnum = typeof UpdateSupportScheduleOperatorsAcceptLanguageEnum[keyof typeof UpdateSupportScheduleOperatorsAcceptLanguageEnum];

@@ -35,6 +35,8 @@ function instanceOfLandingPublicOpenLandingActionDto(value) {
         return false;
     if (!('landingPublicId' in value) || value['landingPublicId'] === undefined)
         return false;
+    if (!('webUrl' in value) || value['webUrl'] === undefined)
+        return false;
     return true;
 }
 function LandingPublicOpenLandingActionDtoFromJSON(json) {
@@ -48,6 +50,7 @@ function LandingPublicOpenLandingActionDtoFromJSONTyped(json, ignoreDiscriminato
         'id': json['id'],
         'type': json['type'],
         'landingPublicId': json['landing_public_id'],
+        'webUrl': json['web_url'],
     };
 }
 function LandingPublicOpenLandingActionDtoToJSON(json) {
@@ -61,5 +64,6 @@ function LandingPublicOpenLandingActionDtoToJSONTyped(value, ignoreDiscriminator
         'id': value['id'],
         'type': value['type'],
         'landing_public_id': value['landingPublicId'],
+        'web_url': value['webUrl'],
     };
 }

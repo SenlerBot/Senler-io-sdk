@@ -10,202 +10,229 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateButtonLandingBlockDto, CreateCoverLandingBlockDto, CreateFeaturesLandingBlockDto, CreateHtmlLandingBlockDto, CreateImageLandingBlockDto, CreateLandingActionBlockDto, CreateOtherLandingBlockDto, CreateProductsLandingBlockDto, CreateReviewsLandingBlockDto, CreateTextLandingBlockDto, CreateTimerLandingBlockDto, CreateVideoLandingBlockDto, CreateWidgetLandingBlockDto, LandingBlockContentMutationResponseDto, LandingBlockCreateMutationResponseDto, SetLandingOpenLandingActionDto, SetLandingOpenUrlActionDto, SetLandingSubscribeActionDto, UpdateButtonLandingBlockDto, UpdateCoverLandingBlockDto, UpdateFeaturesLandingBlockDto, UpdateHtmlLandingBlockDto, UpdateImageLandingBlockDto, UpdateLandingActionBlockDto, UpdateOtherLandingBlockDto, UpdateProductsLandingBlockDto, UpdateReviewsLandingBlockDto, UpdateTextLandingBlockDto, UpdateTimerLandingBlockDto, UpdateTypedLandingBlockActionCommonDto, UpdateVideoLandingBlockDto, UpdateWidgetLandingBlockDto } from '../models/index';
+import type { CreateBookingLandingBlockDto, CreateButtonLandingBlockDto, CreateCoverLandingBlockDto, CreateFeaturesLandingBlockDto, CreateHtmlLandingBlockDto, CreateImageLandingBlockDto, CreateLandingActionBlockDto, CreateOtherLandingBlockDto, CreateProductsLandingBlockDto, CreateReviewsLandingBlockDto, CreateTextLandingBlockDto, CreateTimerLandingBlockDto, CreateVideoLandingBlockDto, CreateWidgetLandingBlockDto, LandingBlockContentMutationResponseDto, LandingBlockCreateMutationResponseDto, LandingHtmlPatchResponseDto, PatchLandingHtmlDto, SetLandingOpenBookingActionDto, SetLandingOpenLandingActionDto, SetLandingOpenUrlActionDto, SetLandingSubscribeActionDto, UpdateBookingLandingBlockDto, UpdateButtonLandingBlockDto, UpdateCoverLandingBlockDto, UpdateFeaturesLandingBlockDto, UpdateHtmlLandingBlockDto, UpdateImageLandingBlockDto, UpdateLandingActionBlockDto, UpdateOtherLandingBlockDto, UpdateProductsLandingBlockDto, UpdateReviewsLandingBlockDto, UpdateTextLandingBlockDto, UpdateTimerLandingBlockDto, UpdateTypedLandingBlockActionCommonDto, UpdateVideoLandingBlockDto, UpdateWidgetLandingBlockDto } from '../models/index';
+export interface BlocksBookingRequest {
+    resourceId: string;
+    createBookingLandingBlockDto: CreateBookingLandingBlockDto;
+    xLandingEditorSessionId?: string;
+    acceptLanguage?: BlocksBookingAcceptLanguageEnum;
+}
 export interface BlocksButtonRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createButtonLandingBlockDto: CreateButtonLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: BlocksButtonAcceptLanguageEnum;
 }
 export interface BlocksCoverRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createCoverLandingBlockDto: CreateCoverLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: BlocksCoverAcceptLanguageEnum;
 }
 export interface BlocksFeaturesRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createFeaturesLandingBlockDto: CreateFeaturesLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: BlocksFeaturesAcceptLanguageEnum;
 }
 export interface BlocksHtmlRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createHtmlLandingBlockDto: CreateHtmlLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: BlocksHtmlAcceptLanguageEnum;
 }
 export interface BlocksImageRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createImageLandingBlockDto: CreateImageLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: BlocksImageAcceptLanguageEnum;
 }
 export interface BlocksInteractiveRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createLandingActionBlockDto: CreateLandingActionBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: BlocksInteractiveAcceptLanguageEnum;
 }
 export interface BlocksOtherRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createOtherLandingBlockDto: CreateOtherLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: BlocksOtherAcceptLanguageEnum;
 }
 export interface BlocksProductsRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createProductsLandingBlockDto: CreateProductsLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: BlocksProductsAcceptLanguageEnum;
 }
 export interface BlocksReviewsRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createReviewsLandingBlockDto: CreateReviewsLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: BlocksReviewsAcceptLanguageEnum;
 }
 export interface BlocksTextRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createTextLandingBlockDto: CreateTextLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: BlocksTextAcceptLanguageEnum;
 }
 export interface BlocksTimerRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createTimerLandingBlockDto: CreateTimerLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: BlocksTimerAcceptLanguageEnum;
 }
 export interface BlocksVideoRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createVideoLandingBlockDto: CreateVideoLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: BlocksVideoAcceptLanguageEnum;
 }
 export interface BlocksWidgetRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createWidgetLandingBlockDto: CreateWidgetLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: BlocksWidgetAcceptLanguageEnum;
 }
 export interface DeleteBlocksActionRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateTypedLandingBlockActionCommonDto: UpdateTypedLandingBlockActionCommonDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: DeleteBlocksActionAcceptLanguageEnum;
+}
+export interface UpdateBlocksActionOpenBookingRequest {
+    resourceId: string;
+    blockId: string;
+    setLandingOpenBookingActionDto: SetLandingOpenBookingActionDto;
+    xLandingEditorSessionId?: string;
+    acceptLanguage?: UpdateBlocksActionOpenBookingAcceptLanguageEnum;
 }
 export interface UpdateBlocksActionOpenLandingRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     setLandingOpenLandingActionDto: SetLandingOpenLandingActionDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateBlocksActionOpenLandingAcceptLanguageEnum;
 }
 export interface UpdateBlocksActionOpenUrlRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     setLandingOpenUrlActionDto: SetLandingOpenUrlActionDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateBlocksActionOpenUrlAcceptLanguageEnum;
 }
 export interface UpdateBlocksActionSubscribeSegmentRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     setLandingSubscribeActionDto: SetLandingSubscribeActionDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateBlocksActionSubscribeSegmentAcceptLanguageEnum;
+}
+export interface UpdateBlocksBookingRequest {
+    resourceId: string;
+    blockId: string;
+    updateBookingLandingBlockDto: UpdateBookingLandingBlockDto;
+    xLandingEditorSessionId?: string;
+    acceptLanguage?: UpdateBlocksBookingAcceptLanguageEnum;
 }
 export interface UpdateBlocksButtonRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateButtonLandingBlockDto: UpdateButtonLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateBlocksButtonAcceptLanguageEnum;
 }
 export interface UpdateBlocksCoverRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateCoverLandingBlockDto: UpdateCoverLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateBlocksCoverAcceptLanguageEnum;
 }
 export interface UpdateBlocksFeaturesRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateFeaturesLandingBlockDto: UpdateFeaturesLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateBlocksFeaturesAcceptLanguageEnum;
 }
 export interface UpdateBlocksHtmlRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateHtmlLandingBlockDto: UpdateHtmlLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateBlocksHtmlAcceptLanguageEnum;
+}
+export interface UpdateBlocksHtml2Request {
+    resourceId: string;
+    blockId: string;
+    patchLandingHtmlDto: PatchLandingHtmlDto;
+    xLandingEditorSessionId?: string;
+    acceptLanguage?: UpdateBlocksHtml2AcceptLanguageEnum;
 }
 export interface UpdateBlocksImageRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateImageLandingBlockDto: UpdateImageLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateBlocksImageAcceptLanguageEnum;
 }
 export interface UpdateBlocksInteractiveRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateLandingActionBlockDto: UpdateLandingActionBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateBlocksInteractiveAcceptLanguageEnum;
 }
 export interface UpdateBlocksOtherRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateOtherLandingBlockDto: UpdateOtherLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateBlocksOtherAcceptLanguageEnum;
 }
 export interface UpdateBlocksProductsRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateProductsLandingBlockDto: UpdateProductsLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateBlocksProductsAcceptLanguageEnum;
 }
 export interface UpdateBlocksReviewsRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateReviewsLandingBlockDto: UpdateReviewsLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateBlocksReviewsAcceptLanguageEnum;
 }
 export interface UpdateBlocksTextRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateTextLandingBlockDto: UpdateTextLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateBlocksTextAcceptLanguageEnum;
 }
 export interface UpdateBlocksTimerRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateTimerLandingBlockDto: UpdateTimerLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateBlocksTimerAcceptLanguageEnum;
 }
 export interface UpdateBlocksVideoRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateVideoLandingBlockDto: UpdateVideoLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateBlocksVideoAcceptLanguageEnum;
 }
 export interface UpdateBlocksWidgetRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateWidgetLandingBlockDto: UpdateWidgetLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateBlocksWidgetAcceptLanguageEnum;
 }
 /**
@@ -213,52 +240,62 @@ export interface UpdateBlocksWidgetRequest {
  */
 export declare class LandingBlocksApi extends runtime.BaseAPI {
     /**
-     * .
+     * . expected_order_revision; block_id.
+     * booking
+     */
+    blocksBookingRaw(requestParameters: BlocksBookingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
+    /**
+     * . expected_order_revision; block_id.
+     * booking
+     */
+    blocksBooking(requestParameters: BlocksBookingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
+    /**
+     * . expected_order_revision; block_id.
      * button
      */
     blocksButtonRaw(requestParameters: BlocksButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * button
      */
     blocksButton(requestParameters: BlocksButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * cover
      */
     blocksCoverRaw(requestParameters: BlocksCoverRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * cover
      */
     blocksCover(requestParameters: BlocksCoverRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * features
      */
     blocksFeaturesRaw(requestParameters: BlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * features
      */
     blocksFeatures(requestParameters: BlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
-     * .
+     * . expected_order_revision; block_id. HTML- , CSS JS ; style on*- HTML . HTML.
      * html
      */
     blocksHtmlRaw(requestParameters: BlocksHtmlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
-     * .
+     * . expected_order_revision; block_id. HTML- , CSS JS ; style on*- HTML . HTML.
      * html
      */
     blocksHtml(requestParameters: BlocksHtmlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * image
      */
     blocksImageRaw(requestParameters: BlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * image
      */
     blocksImage(requestParameters: BlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
@@ -283,62 +320,62 @@ export declare class LandingBlocksApi extends runtime.BaseAPI {
      */
     blocksOther(requestParameters: BlocksOtherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * products
      */
     blocksProductsRaw(requestParameters: BlocksProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * products
      */
     blocksProducts(requestParameters: BlocksProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * reviews
      */
     blocksReviewsRaw(requestParameters: BlocksReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * reviews
      */
     blocksReviews(requestParameters: BlocksReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * text
      */
     blocksTextRaw(requestParameters: BlocksTextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * text
      */
     blocksText(requestParameters: BlocksTextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * timer
      */
     blocksTimerRaw(requestParameters: BlocksTimerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * timer
      */
     blocksTimer(requestParameters: BlocksTimerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * video
      */
     blocksVideoRaw(requestParameters: BlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * video
      */
     blocksVideo(requestParameters: BlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * widget
      */
     blocksWidgetRaw(requestParameters: BlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
     /**
-     * .
+     * . expected_order_revision; block_id.
      * widget
      */
     blocksWidget(requestParameters: BlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
@@ -352,6 +389,16 @@ export declare class LandingBlocksApi extends runtime.BaseAPI {
      *
      */
     deleteBlocksAction(requestParameters: DeleteBlocksActionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
+    /**
+     * - .
+     * -
+     */
+    updateBlocksActionOpenBookingRaw(requestParameters: UpdateBlocksActionOpenBookingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
+    /**
+     * - .
+     * -
+     */
+    updateBlocksActionOpenBooking(requestParameters: UpdateBlocksActionOpenBookingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
      * .
      *
@@ -383,52 +430,72 @@ export declare class LandingBlocksApi extends runtime.BaseAPI {
      */
     updateBlocksActionSubscribeSegment(requestParameters: UpdateBlocksActionSubscribeSegmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
+     * -
+     */
+    updateBlocksBookingRaw(requestParameters: UpdateBlocksBookingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
+    /**
+     * payload . , expected_revision; 409 . .
+     * -
+     */
+    updateBlocksBooking(requestParameters: UpdateBlocksBookingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
+    /**
+     * payload . , expected_revision; 409 . .
      * button
      */
     updateBlocksButtonRaw(requestParameters: UpdateBlocksButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * button
      */
     updateBlocksButton(requestParameters: UpdateBlocksButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * cover
      */
     updateBlocksCoverRaw(requestParameters: UpdateBlocksCoverRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * cover
      */
     updateBlocksCover(requestParameters: UpdateBlocksCoverRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * features
      */
     updateBlocksFeaturesRaw(requestParameters: UpdateBlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * features
      */
     updateBlocksFeatures(requestParameters: UpdateBlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
-     * .
+     * payload . PATCH blocks/:blockId/html . , expected_revision; 409 . . HTML- , CSS JS ; style on*- HTML . HTML. JavaScript payload.js.
      * html
      */
     updateBlocksHtmlRaw(requestParameters: UpdateBlocksHtmlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
     /**
-     * .
+     * payload . PATCH blocks/:blockId/html . , expected_revision; 409 . . HTML- , CSS JS ; style on*- HTML . HTML. JavaScript payload.js.
      * html
      */
     updateBlocksHtml(requestParameters: UpdateBlocksHtmlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
-     * .
+     * HTML- . payload. revision; expected_revision . . , 409 : . , . block_id revision HTML. MCP- read_tool_result path.
+     * HTML, CSS JavaScript
+     */
+    updateBlocksHtml2Raw(requestParameters: UpdateBlocksHtml2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingHtmlPatchResponseDto>>;
+    /**
+     * HTML- . payload. revision; expected_revision . . , 409 : . , . block_id revision HTML. MCP- read_tool_result path.
+     * HTML, CSS JavaScript
+     */
+    updateBlocksHtml2(requestParameters: UpdateBlocksHtml2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingHtmlPatchResponseDto>;
+    /**
+     * payload . , expected_revision; 409 . .
      * image
      */
     updateBlocksImageRaw(requestParameters: UpdateBlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * image
      */
     updateBlocksImage(requestParameters: UpdateBlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
@@ -453,66 +520,74 @@ export declare class LandingBlocksApi extends runtime.BaseAPI {
      */
     updateBlocksOther(requestParameters: UpdateBlocksOtherRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * products
      */
     updateBlocksProductsRaw(requestParameters: UpdateBlocksProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * products
      */
     updateBlocksProducts(requestParameters: UpdateBlocksProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * reviews
      */
     updateBlocksReviewsRaw(requestParameters: UpdateBlocksReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * reviews
      */
     updateBlocksReviews(requestParameters: UpdateBlocksReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * text
      */
     updateBlocksTextRaw(requestParameters: UpdateBlocksTextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * text
      */
     updateBlocksText(requestParameters: UpdateBlocksTextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * timer
      */
     updateBlocksTimerRaw(requestParameters: UpdateBlocksTimerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * timer
      */
     updateBlocksTimer(requestParameters: UpdateBlocksTimerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * video
      */
     updateBlocksVideoRaw(requestParameters: UpdateBlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * video
      */
     updateBlocksVideo(requestParameters: UpdateBlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
-     * .
-     * text
+     * payload . , expected_revision; 409 . .
+     *
      */
     updateBlocksWidgetRaw(requestParameters: UpdateBlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
     /**
-     * .
-     * text
+     * payload . , expected_revision; 409 . .
+     *
      */
     updateBlocksWidget(requestParameters: UpdateBlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
 }
+/**
+ * @export
+ */
+export declare const BlocksBookingAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type BlocksBookingAcceptLanguageEnum = typeof BlocksBookingAcceptLanguageEnum[keyof typeof BlocksBookingAcceptLanguageEnum];
 /**
  * @export
  */
@@ -628,6 +703,14 @@ export type DeleteBlocksActionAcceptLanguageEnum = typeof DeleteBlocksActionAcce
 /**
  * @export
  */
+export declare const UpdateBlocksActionOpenBookingAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateBlocksActionOpenBookingAcceptLanguageEnum = typeof UpdateBlocksActionOpenBookingAcceptLanguageEnum[keyof typeof UpdateBlocksActionOpenBookingAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const UpdateBlocksActionOpenLandingAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -649,6 +732,14 @@ export declare const UpdateBlocksActionSubscribeSegmentAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateBlocksActionSubscribeSegmentAcceptLanguageEnum = typeof UpdateBlocksActionSubscribeSegmentAcceptLanguageEnum[keyof typeof UpdateBlocksActionSubscribeSegmentAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateBlocksBookingAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateBlocksBookingAcceptLanguageEnum = typeof UpdateBlocksBookingAcceptLanguageEnum[keyof typeof UpdateBlocksBookingAcceptLanguageEnum];
 /**
  * @export
  */
@@ -681,6 +772,14 @@ export declare const UpdateBlocksHtmlAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateBlocksHtmlAcceptLanguageEnum = typeof UpdateBlocksHtmlAcceptLanguageEnum[keyof typeof UpdateBlocksHtmlAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateBlocksHtml2AcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateBlocksHtml2AcceptLanguageEnum = typeof UpdateBlocksHtml2AcceptLanguageEnum[keyof typeof UpdateBlocksHtml2AcceptLanguageEnum];
 /**
  * @export
  */

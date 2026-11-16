@@ -138,6 +138,7 @@ export type AuditLogResponseDtoDelegatedActorTypeEnum = typeof AuditLogResponseD
  * @export
  */
 export declare const AuditLogResponseDtoEntityTypeEnum: {
+    readonly BookingConfig: "booking_config";
     readonly ProjectWebhook: "project_webhook";
     readonly Funnel: "funnel";
     readonly Project: "project";

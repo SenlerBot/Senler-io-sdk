@@ -52,7 +52,7 @@ export interface CreateProjectWebhookDto {
      */
     status?: CreateProjectWebhookDtoStatusEnum;
     /**
-     * http; hermes . HTTP- standard-webhooks. ; , . standard-webhooks: webhook-id, webhook-timestamp (Unix-), webhook-signature (v1,Base64 HMAC-SHA256 id.timestamp.rawBody). Base64- webhook_secret whsec_. senler-v1 (Senler Webhook Standard): x-webhook-*. ; secret .
+     * http; hermes . HTTP- standard-webhooks. ; , . standard-webhooks: webhook-id, webhook-timestamp (Unix-), webhook-signature (v1,Base64 HMAC-SHA256 id.timestamp.rawBody). Base64- webhook_secret whsec_. senler-v1 ( Senler): x-webhook-*. ; secret .
      * @type {string}
      * @memberof CreateProjectWebhookDto
      */

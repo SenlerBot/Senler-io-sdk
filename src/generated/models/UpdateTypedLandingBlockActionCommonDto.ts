@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface UpdateTypedLandingBlockActionCommonDto {
     /**
-     * .
+     * revision . 409 .
      * @type {number}
      * @memberof UpdateTypedLandingBlockActionCommonDto
      */

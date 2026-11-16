@@ -22,7 +22,7 @@ export interface UpdateLandingDto {
      */
     name: string;
     /**
-     *
+     * settings_revision . 409 .
      * @type {number}
      * @memberof UpdateLandingDto
      */

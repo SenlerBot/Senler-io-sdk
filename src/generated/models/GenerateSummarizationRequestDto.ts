@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface GenerateSummarizationRequestDto {
     /**
-     * Maximum total charge in credit minor units (1 credit = 10000 units).
+     * ; 1 = 10000 .
      * @type {number}
      * @memberof GenerateSummarizationRequestDto
      */

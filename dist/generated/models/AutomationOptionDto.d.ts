@@ -93,6 +93,12 @@ export interface AutomationOptionDto {
      * @memberof AutomationOptionDto
      */
     publishedVersionId: string | null;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof AutomationOptionDto
+     */
+    returnsResult: boolean;
 }
 /**
  * @export

@@ -40,7 +40,7 @@ export interface CreateLandingActionBlockDto {
      */
     pageVariantId?: string;
     /**
-     *
+     * order_revision . 409 .
      * @type {number}
      * @memberof CreateLandingActionBlockDto
      */

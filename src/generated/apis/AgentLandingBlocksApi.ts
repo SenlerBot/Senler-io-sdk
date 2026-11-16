@@ -16,6 +16,7 @@
 import * as runtime from '../runtime';
 import type {
   CreateAgentLandingActionBlockDto,
+  CreateBookingLandingBlockDto,
   CreateButtonLandingBlockDto,
   CreateCoverLandingBlockDto,
   CreateFeaturesLandingBlockDto,
@@ -31,10 +32,14 @@ import type {
   ErrorResponse,
   LandingBlockContentMutationResponseDto,
   LandingBlockCreateMutationResponseDto,
+  LandingHtmlPatchResponseDto,
+  PatchLandingHtmlDto,
   SetAgentLandingSubscribeActionDto,
+  SetLandingOpenBookingActionDto,
   SetLandingOpenLandingActionDto,
   SetLandingOpenUrlActionDto,
   UpdateAgentLandingActionBlockDto,
+  UpdateBookingLandingBlockDto,
   UpdateButtonLandingBlockDto,
   UpdateCoverLandingBlockDto,
   UpdateFeaturesLandingBlockDto,
@@ -52,6 +57,8 @@ import type {
 import {
     CreateAgentLandingActionBlockDtoFromJSON,
     CreateAgentLandingActionBlockDtoToJSON,
+    CreateBookingLandingBlockDtoFromJSON,
+    CreateBookingLandingBlockDtoToJSON,
     CreateButtonLandingBlockDtoFromJSON,
     CreateButtonLandingBlockDtoToJSON,
     CreateCoverLandingBlockDtoFromJSON,
@@ -82,14 +89,22 @@ import {
     LandingBlockContentMutationResponseDtoToJSON,
     LandingBlockCreateMutationResponseDtoFromJSON,
     LandingBlockCreateMutationResponseDtoToJSON,
+    LandingHtmlPatchResponseDtoFromJSON,
+    LandingHtmlPatchResponseDtoToJSON,
+    PatchLandingHtmlDtoFromJSON,
+    PatchLandingHtmlDtoToJSON,
     SetAgentLandingSubscribeActionDtoFromJSON,
     SetAgentLandingSubscribeActionDtoToJSON,
+    SetLandingOpenBookingActionDtoFromJSON,
+    SetLandingOpenBookingActionDtoToJSON,
     SetLandingOpenLandingActionDtoFromJSON,
     SetLandingOpenLandingActionDtoToJSON,
     SetLandingOpenUrlActionDtoFromJSON,
     SetLandingOpenUrlActionDtoToJSON,
     UpdateAgentLandingActionBlockDtoFromJSON,
     UpdateAgentLandingActionBlockDtoToJSON,
+    UpdateBookingLandingBlockDtoFromJSON,
+    UpdateBookingLandingBlockDtoToJSON,
     UpdateButtonLandingBlockDtoFromJSON,
     UpdateButtonLandingBlockDtoToJSON,
     UpdateCoverLandingBlockDtoFromJSON,
@@ -121,227 +136,258 @@ import {
 export interface DeleteLandingBlocksActionRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateTypedLandingBlockActionCommonDto: UpdateTypedLandingBlockActionCommonDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: DeleteLandingBlocksActionAcceptLanguageEnum;
+}
+
+export interface LandingBlocksBookingRequest {
+    resourceId: string;
+    createBookingLandingBlockDto: CreateBookingLandingBlockDto;
+    xLandingEditorSessionId?: string;
+    acceptLanguage?: LandingBlocksBookingAcceptLanguageEnum;
 }
 
 export interface LandingBlocksButtonRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createButtonLandingBlockDto: CreateButtonLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingBlocksButtonAcceptLanguageEnum;
 }
 
 export interface LandingBlocksCoverRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createCoverLandingBlockDto: CreateCoverLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingBlocksCoverAcceptLanguageEnum;
 }
 
 export interface LandingBlocksFeaturesRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createFeaturesLandingBlockDto: CreateFeaturesLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingBlocksFeaturesAcceptLanguageEnum;
 }
 
 export interface LandingBlocksHtmlRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createHtmlLandingBlockDto: CreateHtmlLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingBlocksHtmlAcceptLanguageEnum;
 }
 
 export interface LandingBlocksImageRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createImageLandingBlockDto: CreateImageLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingBlocksImageAcceptLanguageEnum;
 }
 
 export interface LandingBlocksInteractiveRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createAgentLandingActionBlockDto: CreateAgentLandingActionBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingBlocksInteractiveAcceptLanguageEnum;
 }
 
 export interface LandingBlocksOtherRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createOtherLandingBlockDto: CreateOtherLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingBlocksOtherAcceptLanguageEnum;
 }
 
 export interface LandingBlocksProductsRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createProductsLandingBlockDto: CreateProductsLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingBlocksProductsAcceptLanguageEnum;
 }
 
 export interface LandingBlocksReviewsRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createReviewsLandingBlockDto: CreateReviewsLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingBlocksReviewsAcceptLanguageEnum;
 }
 
 export interface LandingBlocksTextRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createTextLandingBlockDto: CreateTextLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingBlocksTextAcceptLanguageEnum;
 }
 
 export interface LandingBlocksTimerRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createTimerLandingBlockDto: CreateTimerLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingBlocksTimerAcceptLanguageEnum;
 }
 
 export interface LandingBlocksVideoRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createVideoLandingBlockDto: CreateVideoLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingBlocksVideoAcceptLanguageEnum;
 }
 
 export interface LandingBlocksWidgetRequest {
     resourceId: string;
-    xLandingEditorSessionId: string;
     createWidgetLandingBlockDto: CreateWidgetLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingBlocksWidgetAcceptLanguageEnum;
+}
+
+export interface UpdateLandingBlocksActionOpenBookingRequest {
+    resourceId: string;
+    blockId: string;
+    setLandingOpenBookingActionDto: SetLandingOpenBookingActionDto;
+    xLandingEditorSessionId?: string;
+    acceptLanguage?: UpdateLandingBlocksActionOpenBookingAcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksActionOpenLandingRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     setLandingOpenLandingActionDto: SetLandingOpenLandingActionDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksActionOpenLandingAcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksActionOpenUrlRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     setLandingOpenUrlActionDto: SetLandingOpenUrlActionDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksActionOpenUrlAcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksActionSubscribeSegmentRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     setAgentLandingSubscribeActionDto: SetAgentLandingSubscribeActionDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksActionSubscribeSegmentAcceptLanguageEnum;
+}
+
+export interface UpdateLandingBlocksBookingRequest {
+    resourceId: string;
+    blockId: string;
+    updateBookingLandingBlockDto: UpdateBookingLandingBlockDto;
+    xLandingEditorSessionId?: string;
+    acceptLanguage?: UpdateLandingBlocksBookingAcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksButtonRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateButtonLandingBlockDto: UpdateButtonLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksButtonAcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksCoverRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateCoverLandingBlockDto: UpdateCoverLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksCoverAcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksFeaturesRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateFeaturesLandingBlockDto: UpdateFeaturesLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksFeaturesAcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksHtmlRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateHtmlLandingBlockDto: UpdateHtmlLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksHtmlAcceptLanguageEnum;
+}
+
+export interface UpdateLandingBlocksHtml2Request {
+    resourceId: string;
+    blockId: string;
+    patchLandingHtmlDto: PatchLandingHtmlDto;
+    xLandingEditorSessionId?: string;
+    acceptLanguage?: UpdateLandingBlocksHtml2AcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksImageRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateImageLandingBlockDto: UpdateImageLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksImageAcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksInteractiveRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateAgentLandingActionBlockDto: UpdateAgentLandingActionBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksInteractiveAcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksOtherRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateOtherLandingBlockDto: UpdateOtherLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksOtherAcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksProductsRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateProductsLandingBlockDto: UpdateProductsLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksProductsAcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksReviewsRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateReviewsLandingBlockDto: UpdateReviewsLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksReviewsAcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksTextRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateTextLandingBlockDto: UpdateTextLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksTextAcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksTimerRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateTimerLandingBlockDto: UpdateTimerLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksTimerAcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksVideoRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateVideoLandingBlockDto: UpdateVideoLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksVideoAcceptLanguageEnum;
 }
 
 export interface UpdateLandingBlocksWidgetRequest {
     resourceId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     updateWidgetLandingBlockDto: UpdateWidgetLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksWidgetAcceptLanguageEnum;
 }
 
@@ -366,13 +412,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'blockId',
                 'Required parameter "blockId" was null or undefined when calling deleteLandingBlocksAction().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling deleteLandingBlocksAction().'
             );
         }
 
@@ -436,7 +475,78 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
+     * booking
+     */
+    async landingBlocksBookingRaw(requestParameters: LandingBlocksBookingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
+        if (requestParameters['resourceId'] == null) {
+            throw new runtime.RequiredError(
+                'resourceId',
+                'Required parameter "resourceId" was null or undefined when calling landingBlocksBooking().'
+            );
+        }
+
+        if (requestParameters['createBookingLandingBlockDto'] == null) {
+            throw new runtime.RequiredError(
+                'createBookingLandingBlockDto',
+                'Required parameter "createBookingLandingBlockDto" was null or undefined when calling landingBlocksBooking().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{resourceId}/landing/blocks/booking`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateBookingLandingBlockDtoToJSON(requestParameters['createBookingLandingBlockDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockCreateMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . expected_order_revision; block_id.
+     * booking
+     */
+    async landingBlocksBooking(requestParameters: LandingBlocksBookingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
+        const response = await this.landingBlocksBookingRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . expected_order_revision; block_id.
      * button
      */
     async landingBlocksButtonRaw(requestParameters: LandingBlocksButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
@@ -444,13 +554,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'resourceId',
                 'Required parameter "resourceId" was null or undefined when calling landingBlocksButton().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingBlocksButton().'
             );
         }
 
@@ -505,7 +608,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * button
      */
     async landingBlocksButton(requestParameters: LandingBlocksButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
@@ -514,7 +617,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * cover
      */
     async landingBlocksCoverRaw(requestParameters: LandingBlocksCoverRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
@@ -522,13 +625,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'resourceId',
                 'Required parameter "resourceId" was null or undefined when calling landingBlocksCover().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingBlocksCover().'
             );
         }
 
@@ -583,7 +679,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * cover
      */
     async landingBlocksCover(requestParameters: LandingBlocksCoverRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
@@ -592,7 +688,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * features
      */
     async landingBlocksFeaturesRaw(requestParameters: LandingBlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
@@ -600,13 +696,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'resourceId',
                 'Required parameter "resourceId" was null or undefined when calling landingBlocksFeatures().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingBlocksFeatures().'
             );
         }
 
@@ -661,7 +750,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * features
      */
     async landingBlocksFeatures(requestParameters: LandingBlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
@@ -670,7 +759,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id. HTML- , CSS JS ; style on*- HTML . HTML.
      * html
      */
     async landingBlocksHtmlRaw(requestParameters: LandingBlocksHtmlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
@@ -678,13 +767,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'resourceId',
                 'Required parameter "resourceId" was null or undefined when calling landingBlocksHtml().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingBlocksHtml().'
             );
         }
 
@@ -739,7 +821,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id. HTML- , CSS JS ; style on*- HTML . HTML.
      * html
      */
     async landingBlocksHtml(requestParameters: LandingBlocksHtmlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
@@ -748,7 +830,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * image
      */
     async landingBlocksImageRaw(requestParameters: LandingBlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
@@ -756,13 +838,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'resourceId',
                 'Required parameter "resourceId" was null or undefined when calling landingBlocksImage().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingBlocksImage().'
             );
         }
 
@@ -817,7 +892,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * image
      */
     async landingBlocksImage(requestParameters: LandingBlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
@@ -834,13 +909,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'resourceId',
                 'Required parameter "resourceId" was null or undefined when calling landingBlocksInteractive().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingBlocksInteractive().'
             );
         }
 
@@ -915,13 +983,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingBlocksOther().'
-            );
-        }
-
         if (requestParameters['createOtherLandingBlockDto'] == null) {
             throw new runtime.RequiredError(
                 'createOtherLandingBlockDto',
@@ -982,7 +1043,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * products
      */
     async landingBlocksProductsRaw(requestParameters: LandingBlocksProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
@@ -990,13 +1051,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'resourceId',
                 'Required parameter "resourceId" was null or undefined when calling landingBlocksProducts().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingBlocksProducts().'
             );
         }
 
@@ -1051,7 +1105,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * products
      */
     async landingBlocksProducts(requestParameters: LandingBlocksProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
@@ -1060,7 +1114,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * reviews
      */
     async landingBlocksReviewsRaw(requestParameters: LandingBlocksReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
@@ -1068,13 +1122,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'resourceId',
                 'Required parameter "resourceId" was null or undefined when calling landingBlocksReviews().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingBlocksReviews().'
             );
         }
 
@@ -1129,7 +1176,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * reviews
      */
     async landingBlocksReviews(requestParameters: LandingBlocksReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
@@ -1138,7 +1185,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * text
      */
     async landingBlocksTextRaw(requestParameters: LandingBlocksTextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
@@ -1146,13 +1193,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'resourceId',
                 'Required parameter "resourceId" was null or undefined when calling landingBlocksText().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingBlocksText().'
             );
         }
 
@@ -1207,7 +1247,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * text
      */
     async landingBlocksText(requestParameters: LandingBlocksTextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
@@ -1216,7 +1256,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * timer
      */
     async landingBlocksTimerRaw(requestParameters: LandingBlocksTimerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
@@ -1224,13 +1264,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'resourceId',
                 'Required parameter "resourceId" was null or undefined when calling landingBlocksTimer().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingBlocksTimer().'
             );
         }
 
@@ -1285,7 +1318,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * timer
      */
     async landingBlocksTimer(requestParameters: LandingBlocksTimerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
@@ -1294,7 +1327,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * video
      */
     async landingBlocksVideoRaw(requestParameters: LandingBlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
@@ -1302,13 +1335,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'resourceId',
                 'Required parameter "resourceId" was null or undefined when calling landingBlocksVideo().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingBlocksVideo().'
             );
         }
 
@@ -1363,7 +1389,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * video
      */
     async landingBlocksVideo(requestParameters: LandingBlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
@@ -1372,7 +1398,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * widget
      */
     async landingBlocksWidgetRaw(requestParameters: LandingBlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>> {
@@ -1380,13 +1406,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'resourceId',
                 'Required parameter "resourceId" was null or undefined when calling landingBlocksWidget().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingBlocksWidget().'
             );
         }
 
@@ -1441,11 +1460,89 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * . expected_order_revision; block_id.
      * widget
      */
     async landingBlocksWidget(requestParameters: LandingBlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto> {
         const response = await this.landingBlocksWidgetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * - .
+     * -
+     */
+    async updateLandingBlocksActionOpenBookingRaw(requestParameters: UpdateLandingBlocksActionOpenBookingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
+        if (requestParameters['resourceId'] == null) {
+            throw new runtime.RequiredError(
+                'resourceId',
+                'Required parameter "resourceId" was null or undefined when calling updateLandingBlocksActionOpenBooking().'
+            );
+        }
+
+        if (requestParameters['blockId'] == null) {
+            throw new runtime.RequiredError(
+                'blockId',
+                'Required parameter "blockId" was null or undefined when calling updateLandingBlocksActionOpenBooking().'
+            );
+        }
+
+        if (requestParameters['setLandingOpenBookingActionDto'] == null) {
+            throw new runtime.RequiredError(
+                'setLandingOpenBookingActionDto',
+                'Required parameter "setLandingOpenBookingActionDto" was null or undefined when calling updateLandingBlocksActionOpenBooking().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{resourceId}/landing/blocks/{blockId}/action/open-booking`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SetLandingOpenBookingActionDtoToJSON(requestParameters['setLandingOpenBookingActionDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockContentMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * - .
+     * -
+     */
+    async updateLandingBlocksActionOpenBooking(requestParameters: UpdateLandingBlocksActionOpenBookingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
+        const response = await this.updateLandingBlocksActionOpenBookingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1465,13 +1562,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'blockId',
                 'Required parameter "blockId" was null or undefined when calling updateLandingBlocksActionOpenLanding().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksActionOpenLanding().'
             );
         }
 
@@ -1553,13 +1643,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksActionOpenUrl().'
-            );
-        }
-
         if (requestParameters['setLandingOpenUrlActionDto'] == null) {
             throw new runtime.RequiredError(
                 'setLandingOpenUrlActionDto',
@@ -1638,13 +1721,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksActionSubscribeSegment().'
-            );
-        }
-
         if (requestParameters['setAgentLandingSubscribeActionDto'] == null) {
             throw new runtime.RequiredError(
                 'setAgentLandingSubscribeActionDto',
@@ -1705,7 +1781,85 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
+     * -
+     */
+    async updateLandingBlocksBookingRaw(requestParameters: UpdateLandingBlocksBookingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
+        if (requestParameters['resourceId'] == null) {
+            throw new runtime.RequiredError(
+                'resourceId',
+                'Required parameter "resourceId" was null or undefined when calling updateLandingBlocksBooking().'
+            );
+        }
+
+        if (requestParameters['blockId'] == null) {
+            throw new runtime.RequiredError(
+                'blockId',
+                'Required parameter "blockId" was null or undefined when calling updateLandingBlocksBooking().'
+            );
+        }
+
+        if (requestParameters['updateBookingLandingBlockDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateBookingLandingBlockDto',
+                'Required parameter "updateBookingLandingBlockDto" was null or undefined when calling updateLandingBlocksBooking().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{resourceId}/landing/blocks/{blockId}/booking`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateBookingLandingBlockDtoToJSON(requestParameters['updateBookingLandingBlockDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBlockContentMutationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * payload . , expected_revision; 409 . .
+     * -
+     */
+    async updateLandingBlocksBooking(requestParameters: UpdateLandingBlocksBookingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
+        const response = await this.updateLandingBlocksBookingRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * payload . , expected_revision; 409 . .
      * button
      */
     async updateLandingBlocksButtonRaw(requestParameters: UpdateLandingBlocksButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
@@ -1720,13 +1874,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'blockId',
                 'Required parameter "blockId" was null or undefined when calling updateLandingBlocksButton().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksButton().'
             );
         }
 
@@ -1781,7 +1928,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * button
      */
     async updateLandingBlocksButton(requestParameters: UpdateLandingBlocksButtonRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
@@ -1790,7 +1937,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * cover
      */
     async updateLandingBlocksCoverRaw(requestParameters: UpdateLandingBlocksCoverRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
@@ -1805,13 +1952,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'blockId',
                 'Required parameter "blockId" was null or undefined when calling updateLandingBlocksCover().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksCover().'
             );
         }
 
@@ -1866,7 +2006,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * cover
      */
     async updateLandingBlocksCover(requestParameters: UpdateLandingBlocksCoverRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
@@ -1875,7 +2015,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * features
      */
     async updateLandingBlocksFeaturesRaw(requestParameters: UpdateLandingBlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
@@ -1890,13 +2030,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'blockId',
                 'Required parameter "blockId" was null or undefined when calling updateLandingBlocksFeatures().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksFeatures().'
             );
         }
 
@@ -1951,7 +2084,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * features
      */
     async updateLandingBlocksFeatures(requestParameters: UpdateLandingBlocksFeaturesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
@@ -1960,7 +2093,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . PATCH blocks/:blockId/html . , expected_revision; 409 . . HTML- , CSS JS ; style on*- HTML . HTML. JavaScript payload.js.
      * html
      */
     async updateLandingBlocksHtmlRaw(requestParameters: UpdateLandingBlocksHtmlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
@@ -1975,13 +2108,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'blockId',
                 'Required parameter "blockId" was null or undefined when calling updateLandingBlocksHtml().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksHtml().'
             );
         }
 
@@ -2036,7 +2162,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . PATCH blocks/:blockId/html . , expected_revision; 409 . . HTML- , CSS JS ; style on*- HTML . HTML. JavaScript payload.js.
      * html
      */
     async updateLandingBlocksHtml(requestParameters: UpdateLandingBlocksHtmlRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
@@ -2045,7 +2171,85 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * HTML- . payload. revision; expected_revision . . , 409 : . , . block_id revision HTML. MCP- read_tool_result path.
+     * HTML, CSS JavaScript
+     */
+    async updateLandingBlocksHtml2Raw(requestParameters: UpdateLandingBlocksHtml2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingHtmlPatchResponseDto>> {
+        if (requestParameters['resourceId'] == null) {
+            throw new runtime.RequiredError(
+                'resourceId',
+                'Required parameter "resourceId" was null or undefined when calling updateLandingBlocksHtml2().'
+            );
+        }
+
+        if (requestParameters['blockId'] == null) {
+            throw new runtime.RequiredError(
+                'blockId',
+                'Required parameter "blockId" was null or undefined when calling updateLandingBlocksHtml2().'
+            );
+        }
+
+        if (requestParameters['patchLandingHtmlDto'] == null) {
+            throw new runtime.RequiredError(
+                'patchLandingHtmlDto',
+                'Required parameter "patchLandingHtmlDto" was null or undefined when calling updateLandingBlocksHtml2().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['xLandingEditorSessionId'] != null) {
+            headerParameters['x-landing-editor-session-id'] = String(requestParameters['xLandingEditorSessionId']);
+        }
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{resourceId}/landing/blocks/{blockId}/html`.replace(`{${"resourceId"}}`, encodeURIComponent(String(requestParameters['resourceId']))).replace(`{${"blockId"}}`, encodeURIComponent(String(requestParameters['blockId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PatchLandingHtmlDtoToJSON(requestParameters['patchLandingHtmlDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingHtmlPatchResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * HTML- . payload. revision; expected_revision . . , 409 : . , . block_id revision HTML. MCP- read_tool_result path.
+     * HTML, CSS JavaScript
+     */
+    async updateLandingBlocksHtml2(requestParameters: UpdateLandingBlocksHtml2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingHtmlPatchResponseDto> {
+        const response = await this.updateLandingBlocksHtml2Raw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * payload . , expected_revision; 409 . .
      * image
      */
     async updateLandingBlocksImageRaw(requestParameters: UpdateLandingBlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
@@ -2060,13 +2264,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'blockId',
                 'Required parameter "blockId" was null or undefined when calling updateLandingBlocksImage().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksImage().'
             );
         }
 
@@ -2121,7 +2318,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * image
      */
     async updateLandingBlocksImage(requestParameters: UpdateLandingBlocksImageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
@@ -2145,13 +2342,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'blockId',
                 'Required parameter "blockId" was null or undefined when calling updateLandingBlocksInteractive().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksInteractive().'
             );
         }
 
@@ -2233,13 +2423,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksOther().'
-            );
-        }
-
         if (requestParameters['updateOtherLandingBlockDto'] == null) {
             throw new runtime.RequiredError(
                 'updateOtherLandingBlockDto',
@@ -2300,7 +2483,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * products
      */
     async updateLandingBlocksProductsRaw(requestParameters: UpdateLandingBlocksProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
@@ -2315,13 +2498,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'blockId',
                 'Required parameter "blockId" was null or undefined when calling updateLandingBlocksProducts().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksProducts().'
             );
         }
 
@@ -2376,7 +2552,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * products
      */
     async updateLandingBlocksProducts(requestParameters: UpdateLandingBlocksProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
@@ -2385,7 +2561,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * reviews
      */
     async updateLandingBlocksReviewsRaw(requestParameters: UpdateLandingBlocksReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
@@ -2400,13 +2576,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'blockId',
                 'Required parameter "blockId" was null or undefined when calling updateLandingBlocksReviews().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksReviews().'
             );
         }
 
@@ -2461,7 +2630,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * reviews
      */
     async updateLandingBlocksReviews(requestParameters: UpdateLandingBlocksReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
@@ -2470,7 +2639,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * text
      */
     async updateLandingBlocksTextRaw(requestParameters: UpdateLandingBlocksTextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
@@ -2485,13 +2654,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'blockId',
                 'Required parameter "blockId" was null or undefined when calling updateLandingBlocksText().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksText().'
             );
         }
 
@@ -2546,7 +2708,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * text
      */
     async updateLandingBlocksText(requestParameters: UpdateLandingBlocksTextRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
@@ -2555,7 +2717,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * timer
      */
     async updateLandingBlocksTimerRaw(requestParameters: UpdateLandingBlocksTimerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
@@ -2570,13 +2732,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'blockId',
                 'Required parameter "blockId" was null or undefined when calling updateLandingBlocksTimer().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksTimer().'
             );
         }
 
@@ -2631,7 +2786,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * timer
      */
     async updateLandingBlocksTimer(requestParameters: UpdateLandingBlocksTimerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
@@ -2640,7 +2795,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * video
      */
     async updateLandingBlocksVideoRaw(requestParameters: UpdateLandingBlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
@@ -2655,13 +2810,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'blockId',
                 'Required parameter "blockId" was null or undefined when calling updateLandingBlocksVideo().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksVideo().'
             );
         }
 
@@ -2716,7 +2864,7 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * payload . , expected_revision; 409 . .
      * video
      */
     async updateLandingBlocksVideo(requestParameters: UpdateLandingBlocksVideoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
@@ -2725,8 +2873,8 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
-     * text
+     * payload . , expected_revision; 409 . .
+     *
      */
     async updateLandingBlocksWidgetRaw(requestParameters: UpdateLandingBlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>> {
         if (requestParameters['resourceId'] == null) {
@@ -2740,13 +2888,6 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'blockId',
                 'Required parameter "blockId" was null or undefined when calling updateLandingBlocksWidget().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingBlocksWidget().'
             );
         }
 
@@ -2801,8 +2942,8 @@ export class AgentLandingBlocksApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
-     * text
+     * payload . , expected_revision; 409 . .
+     *
      */
     async updateLandingBlocksWidget(requestParameters: UpdateLandingBlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto> {
         const response = await this.updateLandingBlocksWidgetRaw(requestParameters, initOverrides);
@@ -2819,6 +2960,14 @@ export const DeleteLandingBlocksActionAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type DeleteLandingBlocksActionAcceptLanguageEnum = typeof DeleteLandingBlocksActionAcceptLanguageEnum[keyof typeof DeleteLandingBlocksActionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const LandingBlocksBookingAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type LandingBlocksBookingAcceptLanguageEnum = typeof LandingBlocksBookingAcceptLanguageEnum[keyof typeof LandingBlocksBookingAcceptLanguageEnum];
 /**
  * @export
  */
@@ -2926,6 +3075,14 @@ export type LandingBlocksWidgetAcceptLanguageEnum = typeof LandingBlocksWidgetAc
 /**
  * @export
  */
+export const UpdateLandingBlocksActionOpenBookingAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateLandingBlocksActionOpenBookingAcceptLanguageEnum = typeof UpdateLandingBlocksActionOpenBookingAcceptLanguageEnum[keyof typeof UpdateLandingBlocksActionOpenBookingAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const UpdateLandingBlocksActionOpenLandingAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -2947,6 +3104,14 @@ export const UpdateLandingBlocksActionSubscribeSegmentAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateLandingBlocksActionSubscribeSegmentAcceptLanguageEnum = typeof UpdateLandingBlocksActionSubscribeSegmentAcceptLanguageEnum[keyof typeof UpdateLandingBlocksActionSubscribeSegmentAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateLandingBlocksBookingAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateLandingBlocksBookingAcceptLanguageEnum = typeof UpdateLandingBlocksBookingAcceptLanguageEnum[keyof typeof UpdateLandingBlocksBookingAcceptLanguageEnum];
 /**
  * @export
  */
@@ -2979,6 +3144,14 @@ export const UpdateLandingBlocksHtmlAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateLandingBlocksHtmlAcceptLanguageEnum = typeof UpdateLandingBlocksHtmlAcceptLanguageEnum[keyof typeof UpdateLandingBlocksHtmlAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateLandingBlocksHtml2AcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateLandingBlocksHtml2AcceptLanguageEnum = typeof UpdateLandingBlocksHtml2AcceptLanguageEnum[keyof typeof UpdateLandingBlocksHtml2AcceptLanguageEnum];
 /**
  * @export
  */

@@ -51,12 +51,12 @@ export declare class AccessInvitationsApi extends runtime.BaseAPI {
      */
     accessInvitationsGetInvitations(requestParameters: AccessInvitationsGetInvitationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<InvitationListItemDto>>;
     /**
-     * user_id email. pending- ( 4 ). .
+     * user_id email. pending- ( 4 ). . can_manage_bookings.
      *
      */
     accessInvitationsInvitationsRaw(requestParameters: AccessInvitationsInvitationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InvitationCreatedResponseDto>>;
     /**
-     * user_id email. pending- ( 4 ). .
+     * user_id email. pending- ( 4 ). . can_manage_bookings.
      *
      */
     accessInvitationsInvitations(requestParameters: AccessInvitationsInvitationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InvitationCreatedResponseDto>;

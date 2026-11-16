@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LandingPublicSubscribeActionDtoSubscription } from './LandingPublicSubscribeActionDtoSubscription';
+import type { LandingSdkSubscriptionResponseDtoSubscription } from './LandingSdkSubscriptionResponseDtoSubscription';
 import type { LandingContactCaptureDto } from './LandingContactCaptureDto';
 /**
  * LandingPublicSubscribeActionDto.
@@ -37,10 +37,10 @@ export interface LandingPublicSubscribeActionDto {
     contactCapture: LandingContactCaptureDto;
     /**
      *
-     * @type {LandingPublicSubscribeActionDtoSubscription}
+     * @type {LandingSdkSubscriptionResponseDtoSubscription}
      * @memberof LandingPublicSubscribeActionDto
      */
-    subscription: LandingPublicSubscribeActionDtoSubscription;
+    subscription: LandingSdkSubscriptionResponseDtoSubscription;
 }
 /**
  * @export

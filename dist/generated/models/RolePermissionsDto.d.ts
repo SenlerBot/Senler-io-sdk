@@ -148,6 +148,18 @@ export interface RolePermissionsDto {
      */
     canManageLandings: boolean;
     /**
+     * -
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canViewBookings: boolean;
+    /**
+     * -
+     * @type {boolean}
+     * @memberof RolePermissionsDto
+     */
+    canManageBookings: boolean;
+    /**
      *
      * @type {boolean}
      * @memberof RolePermissionsDto

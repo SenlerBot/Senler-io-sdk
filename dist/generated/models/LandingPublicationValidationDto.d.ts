@@ -19,13 +19,13 @@ import type { LandingPublicationSnapshotDto } from './LandingPublicationSnapshot
  */
 export interface LandingPublicationValidationDto {
     /**
-     * ,
+     * , ;
      * @type {LandingPublicationSnapshotDto}
      * @memberof LandingPublicationValidationDto
      */
     snapshot: LandingPublicationSnapshotDto;
     /**
-     *
+     * . , JavaScript
      * @type {boolean}
      * @memberof LandingPublicationValidationDto
      */

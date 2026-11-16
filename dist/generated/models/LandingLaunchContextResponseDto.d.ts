@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LandingSdkSubscriptionResponseDto } from './LandingSdkSubscriptionResponseDto';
 import type { LandingLaunchSubscribeActionDto } from './LandingLaunchSubscribeActionDto';
 /**
  * LandingLaunchContextResponseDto.
@@ -16,6 +17,12 @@ import type { LandingLaunchSubscribeActionDto } from './LandingLaunchSubscribeAc
  * @interface LandingLaunchContextResponseDto
  */
 export interface LandingLaunchContextResponseDto {
+    /**
+     * SDK
+     * @type {LandingSdkSubscriptionResponseDto}
+     * @memberof LandingLaunchContextResponseDto
+     */
+    sdkSubscription?: LandingSdkSubscriptionResponseDto;
     /**
      * ID
      * @type {string}

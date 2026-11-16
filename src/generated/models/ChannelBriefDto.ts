@@ -103,6 +103,12 @@ export interface ChannelBriefDto {
      */
     isPaused: boolean;
     /**
+     * .
+     * @type {string}
+     * @memberof ChannelBriefDto
+     */
+    billingStatus?: ChannelBriefDtoBillingStatusEnum;
+    /**
      * Username / (TG: bot_username, MAX: bot_username, VK: screen_name)
      * @type {string}
      * @memberof ChannelBriefDto
@@ -177,6 +183,20 @@ export const ChannelBriefDtoTypeEnum = {
 } as const;
 export type ChannelBriefDtoTypeEnum = typeof ChannelBriefDtoTypeEnum[keyof typeof ChannelBriefDtoTypeEnum];
 
+/**
+ * @export
+ */
+export const ChannelBriefDtoBillingStatusEnum = {
+    Active: 'active',
+    Suspending: 'suspending',
+    Suspended: 'suspended',
+    SourceActive: 'source_active',
+    Restoring: 'restoring',
+    RestoreFailed: 'restore_failed',
+    ReconnectRequired: 'reconnect_required'
+} as const;
+export type ChannelBriefDtoBillingStatusEnum = typeof ChannelBriefDtoBillingStatusEnum[keyof typeof ChannelBriefDtoBillingStatusEnum];
+
 
 /**
  * Check if a given object implements the ChannelBriefDto interface.
@@ -207,6 +227,7 @@ export function ChannelBriefDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
         'externalId': json['external_id'] == null ? undefined : json['external_id'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
         'isPaused': json['is_paused'],
+        'billingStatus': json['billing_status'] == null ? undefined : json['billing_status'],
         'botUsername': json['bot_username'] == null ? undefined : json['bot_username'],
         'migration': json['migration'] == null ? undefined : ChannelMigrationStatusDtoFromJSON(json['migration']),
         'migrationBackfill': json['migration_backfill'] == null ? undefined : ChannelMigrationBackfillDtoFromJSON(json['migration_backfill']),
@@ -239,6 +260,7 @@ export function ChannelBriefDtoToJSONTyped(value?: ChannelBriefDto | null, ignor
         'external_id': value['externalId'],
         'avatar_url': value['avatarUrl'],
         'is_paused': value['isPaused'],
+        'billing_status': value['billingStatus'],
         'bot_username': value['botUsername'],
         'migration': ChannelMigrationStatusDtoToJSON(value['migration']),
         'migration_backfill': ChannelMigrationBackfillDtoToJSON(value['migrationBackfill']),

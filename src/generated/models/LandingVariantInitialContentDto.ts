@@ -34,7 +34,7 @@ export interface LandingVariantInitialContentDto {
      */
     type: LandingVariantInitialContentDtoTypeEnum;
     /**
-     * ; type (mixed type)
+     * payload, ; type . . (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof LandingVariantInitialContentDto
      */
@@ -63,6 +63,7 @@ export const LandingVariantInitialContentDtoTypeEnum = {
     Video: 'video',
     Timer: 'timer',
     Widget: 'widget',
+    Booking: 'booking',
     Other: 'other'
 } as const;
 export type LandingVariantInitialContentDtoTypeEnum = typeof LandingVariantInitialContentDtoTypeEnum[keyof typeof LandingVariantInitialContentDtoTypeEnum];

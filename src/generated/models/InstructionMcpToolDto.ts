@@ -20,13 +20,13 @@ import { mapValues } from '../runtime';
  */
 export interface InstructionMcpToolDto {
     /**
-     * Exact public method name returned by this MCP server
+     * MCP-
      * @type {string}
      * @memberof InstructionMcpToolDto
      */
     name: string;
     /**
-     * Tool description from the server catalog
+     *
      * @type {string}
      * @memberof InstructionMcpToolDto
      */

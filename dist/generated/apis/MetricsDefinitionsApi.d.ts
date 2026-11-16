@@ -33,6 +33,7 @@ export interface MetricsDefinitionsDeactivateRequest {
 }
 export interface MetricsDefinitionsGetByIdRequest {
     id: string;
+    projectId: string;
     acceptLanguage?: MetricsDefinitionsGetByIdAcceptLanguageEnum;
 }
 export interface MetricsDefinitionsListRequest {
@@ -138,12 +139,12 @@ export declare class MetricsDefinitionsApi extends runtime.BaseAPI {
      */
     metricsDefinitionsDeactivate(requestParameters: MetricsDefinitionsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
-     * . .
+     * project_id. ; .
      * ID
      */
     metricsDefinitionsGetByIdRaw(requestParameters: MetricsDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>>;
     /**
-     * . .
+     * project_id. ; .
      * ID
      */
     metricsDefinitionsGetById(requestParameters: MetricsDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto>;

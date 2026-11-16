@@ -9,12 +9,19 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LeadTableIssueDto } from './LeadTableIssueDto';
 /**
  * ImportProcessResultDto.
  * @export
  * @interface ImportProcessResultDto
  */
 export interface ImportProcessResultDto {
+    /**
+     * ;
+     * @type {Array<LeadTableIssueDto>}
+     * @memberof ImportProcessResultDto
+     */
+    fileErrors?: Array<LeadTableIssueDto>;
     /**
      *
      * @type {number}

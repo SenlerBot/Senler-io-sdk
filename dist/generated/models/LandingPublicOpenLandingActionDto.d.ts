@@ -33,6 +33,12 @@ export interface LandingPublicOpenLandingActionDto {
      * @memberof LandingPublicOpenLandingActionDto
      */
     landingPublicId: string | null;
+    /**
+     * - ; Mini App .
+     * @type {string}
+     * @memberof LandingPublicOpenLandingActionDto
+     */
+    webUrl: string | null;
 }
 /**
  * @export

@@ -16,17 +16,23 @@
  */
 export interface LandingHtmlBlockPayloadDto {
     /**
-     * HTML . .
+     * HTML-. style, style on* ( onclick), iframe : css, addEventListener js. script ; JavaScript.
      * @type {string}
      * @memberof LandingHtmlBlockPayloadDto
      */
     html: string;
     /**
-     * CSS HTML-. :scope .
+     * CSS HTML-, style. :scope . ; CSS . , .
      * @type {string}
      * @memberof LandingHtmlBlockPayloadDto
      */
     css: string;
+    /**
+     * JavaScript script; addEventListener. ; ID , payload.js . . HTML , SenlerLanding SDK; . payload js .
+     * @type {string}
+     * @memberof LandingHtmlBlockPayloadDto
+     */
+    js?: string;
 }
 /**
  * Check if a given object implements the LandingHtmlBlockPayloadDto interface.

@@ -103,6 +103,7 @@ export declare const AutomationTableFilterDtoVariableTypeEnum: {
     readonly Date: "date";
     readonly Array: "array";
     readonly Object: "object";
+    readonly Reaction: "reaction";
 };
 export type AutomationTableFilterDtoVariableTypeEnum = typeof AutomationTableFilterDtoVariableTypeEnum[keyof typeof AutomationTableFilterDtoVariableTypeEnum];
 /**

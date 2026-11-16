@@ -35,6 +35,7 @@ function SearchLeadsDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'messageRecipientsOnly': json['message_recipients_only'] == null ? undefined : json['message_recipients_only'],
         'projectId': json['project_id'],
         'filters': json['filters'] == null ? undefined : (0, LeadsFilterDto_1.LeadsFilterDtoFromJSON)(json['filters']),
         'limit': json['limit'] == null ? undefined : json['limit'],
@@ -50,6 +51,7 @@ function SearchLeadsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'message_recipients_only': value['messageRecipientsOnly'],
         'project_id': value['projectId'],
         'filters': (0, LeadsFilterDto_1.LeadsFilterDtoToJSON)(value['filters']),
         'limit': value['limit'],

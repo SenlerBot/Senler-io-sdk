@@ -82,7 +82,10 @@ export const ResourcePackageDraftPreviewResponseDtoRootResourceTypeEnum = {
     KnowledgeFile: 'knowledge_file',
     KnowledgeTable: 'knowledge_table',
     Landing: 'landing',
-    MetricDefinition: 'metric_definition'
+    MetricDefinition: 'metric_definition',
+    BookingService: 'booking_service',
+    BookingSpecialist: 'booking_specialist',
+    BookingResource: 'booking_resource'
 } as const;
 export type ResourcePackageDraftPreviewResponseDtoRootResourceTypeEnum = typeof ResourcePackageDraftPreviewResponseDtoRootResourceTypeEnum[keyof typeof ResourcePackageDraftPreviewResponseDtoRootResourceTypeEnum];
 

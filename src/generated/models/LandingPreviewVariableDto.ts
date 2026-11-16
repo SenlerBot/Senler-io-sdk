@@ -32,7 +32,7 @@ export interface LandingPreviewVariableDto {
      */
     name: string;
     /**
-     * : string, number, boolean, json, date, array, object.
+     * : string, number, boolean, json, date, array, object, reaction.
      * @type {string}
      * @memberof LandingPreviewVariableDto
      */
@@ -67,7 +67,8 @@ export const LandingPreviewVariableDtoTypeEnum = {
     Json: 'json',
     Date: 'date',
     Array: 'array',
-    Object: 'object'
+    Object: 'object',
+    Reaction: 'reaction'
 } as const;
 export type LandingPreviewVariableDtoTypeEnum = typeof LandingPreviewVariableDtoTypeEnum[keyof typeof LandingPreviewVariableDtoTypeEnum];
 

@@ -74,7 +74,7 @@ export interface SupportDirectoryOperatorDto {
      */
     effectiveGroupIds: Array<string>;
     /**
-     *
+     * ,
      * @type {boolean}
      * @memberof SupportDirectoryOperatorDto
      */

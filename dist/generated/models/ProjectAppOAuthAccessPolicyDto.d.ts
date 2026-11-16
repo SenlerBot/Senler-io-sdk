@@ -67,6 +67,8 @@ export declare const ProjectAppOAuthAccessPolicyDtoAllowedPermissionsEnum: {
     readonly CanManageSegments: "can_manage_segments";
     readonly CanViewLandings: "can_view_landings";
     readonly CanManageLandings: "can_manage_landings";
+    readonly CanViewBookings: "can_view_bookings";
+    readonly CanManageBookings: "can_manage_bookings";
     readonly CanViewTrafficMarks: "can_view_traffic_marks";
     readonly CanManageTrafficMarks: "can_manage_traffic_marks";
     readonly CanViewAutomations: "can_view_automations";

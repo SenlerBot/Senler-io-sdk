@@ -22,6 +22,12 @@ export interface UpdateAgentModelDto {
      */
     selectedModelId?: string | null;
     /**
+     * . .
+     * @type {boolean}
+     * @memberof UpdateAgentModelDto
+     */
+    enableModelFallback?: boolean;
+    /**
      *
      * @type {boolean}
      * @memberof UpdateAgentModelDto

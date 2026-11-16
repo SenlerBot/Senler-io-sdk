@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface AutomationTriggerTestConditionResponseDto {
     /**
-     * : bot_started, chat_member_added, chat_member_removed, message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, segment_subscribed, app_event_received.
+     * : bot_started, chat_member_added, chat_member_removed, message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, dialog_closed, dialog_operator_assigned, dialog_operator_unassigned, dialog_snoozed, segment_subscribed, app_event_received, booking_changed.
      * @type {string}
      * @memberof AutomationTriggerTestConditionResponseDto
      */
@@ -137,8 +137,13 @@ export const AutomationTriggerTestConditionResponseDtoEventTypeEnum = {
     LikeAdded: 'like_added',
     LikeRemoved: 'like_removed',
     LeadBlacklisted: 'lead_blacklisted',
+    DialogClosed: 'dialog_closed',
+    DialogOperatorAssigned: 'dialog_operator_assigned',
+    DialogOperatorUnassigned: 'dialog_operator_unassigned',
+    DialogSnoozed: 'dialog_snoozed',
     SegmentSubscribed: 'segment_subscribed',
-    AppEventReceived: 'app_event_received'
+    AppEventReceived: 'app_event_received',
+    BookingChanged: 'booking_changed'
 } as const;
 export type AutomationTriggerTestConditionResponseDtoEventTypeEnum = typeof AutomationTriggerTestConditionResponseDtoEventTypeEnum[keyof typeof AutomationTriggerTestConditionResponseDtoEventTypeEnum];
 

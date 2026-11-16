@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandingsVariantEventsAcceptLanguageEnum = exports.LandingsResolveAcceptLanguageEnum = exports.LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum = exports.LandingsLaunchVariablesAcceptLanguageEnum = exports.LandingsLaunchUnsubscribeAcceptLanguageEnum = exports.LandingsLaunchSubscriptionStatusAcceptLanguageEnum = exports.LandingsLaunchSubscribeAcceptLanguageEnum = exports.LandingsLaunchMiniAppLaunchAcceptLanguageEnum = exports.LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum = exports.GetProjectsLandingsAnalyticsAcceptLanguageEnum = exports.GetProjectsLandingsAcceptLanguageEnum = exports.GetLandingsLaunchAcceptLanguageEnum = exports.GetLandingsAcceptLanguageEnum = exports.LandingsPublicApi = void 0;
+exports.LandingsVariantEventsAcceptLanguageEnum = exports.LandingsSdkSubscriptionAcceptLanguageEnum = exports.LandingsResolveAcceptLanguageEnum = exports.LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum = exports.LandingsLaunchVariablesAcceptLanguageEnum = exports.LandingsLaunchUnsubscribeAcceptLanguageEnum = exports.LandingsLaunchSubscriptionStatusAcceptLanguageEnum = exports.LandingsLaunchSubscribeAcceptLanguageEnum = exports.LandingsLaunchMiniAppLaunchAcceptLanguageEnum = exports.LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum = exports.GetProjectsLandingsAnalyticsAcceptLanguageEnum = exports.GetProjectsLandingsAcceptLanguageEnum = exports.GetLandingsSdkLandingAcceptLanguageEnum = exports.GetLandingsLaunchAcceptLanguageEnum = exports.GetLandingsDomainsResolveAcceptLanguageEnum = exports.GetLandingsDomainsCertificateAcceptLanguageEnum = exports.GetLandingsAcceptLanguageEnum = exports.LandingsPublicApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -83,6 +83,76 @@ class LandingsPublicApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * HTTPS-. 200 TXT- DNS-.
+     *
+     */
+    async getLandingsDomainsCertificateRaw(requestParameters, initOverrides) {
+        if (requestParameters['domain'] == null) {
+            throw new runtime.RequiredError('domain', 'Required parameter "domain" was null or undefined when calling getLandingsDomainsCertificate().');
+        }
+        const queryParameters = {};
+        if (requestParameters['domain'] != null) {
+            queryParameters['domain'] = requestParameters['domain'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/public/landings/domains/certificate`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingDomainMutationResultDtoFromJSON)(jsonValue));
+    }
+    /**
+     * HTTPS-. 200 TXT- DNS-.
+     *
+     */
+    async getLandingsDomainsCertificate(requestParameters, initOverrides) {
+        const response = await this.getLandingsDomainsCertificateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
+    async getLandingsDomainsResolveRaw(requestParameters, initOverrides) {
+        if (requestParameters['hostname'] == null) {
+            throw new runtime.RequiredError('hostname', 'Required parameter "hostname" was null or undefined when calling getLandingsDomainsResolve().');
+        }
+        if (requestParameters['path'] == null) {
+            throw new runtime.RequiredError('path', 'Required parameter "path" was null or undefined when calling getLandingsDomainsResolve().');
+        }
+        const queryParameters = {};
+        if (requestParameters['hostname'] != null) {
+            queryParameters['hostname'] = requestParameters['hostname'];
+        }
+        if (requestParameters['path'] != null) {
+            queryParameters['path'] = requestParameters['path'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/public/landings/domains/resolve`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingDomainResolutionDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async getLandingsDomainsResolve(requestParameters, initOverrides) {
+        const response = await this.getLandingsDomainsResolveRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * .
      *
      */
@@ -109,6 +179,38 @@ class LandingsPublicApi extends runtime.BaseAPI {
      */
     async getLandingsLaunch(requestParameters, initOverrides) {
         const response = await this.getLandingsLaunchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * ID .
+     * SDK
+     */
+    async getLandingsSdkLandingRaw(requestParameters, initOverrides) {
+        if (requestParameters['landingPublicId'] == null) {
+            throw new runtime.RequiredError('landingPublicId', 'Required parameter "landingPublicId" was null or undefined when calling getLandingsSdkLanding().');
+        }
+        if (requestParameters['targetLandingId'] == null) {
+            throw new runtime.RequiredError('targetLandingId', 'Required parameter "targetLandingId" was null or undefined when calling getLandingsSdkLanding().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/public/landings/{landingPublicId}/sdk/landing/{targetLandingId}`.replace(`{${"landingPublicId"}}`, encodeURIComponent(String(requestParameters['landingPublicId']))).replace(`{${"targetLandingId"}}`, encodeURIComponent(String(requestParameters['targetLandingId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingSdkNavigationResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * ID .
+     * SDK
+     */
+    async getLandingsSdkLanding(requestParameters, initOverrides) {
+        const response = await this.getLandingsSdkLandingRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -469,6 +571,40 @@ class LandingsPublicApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * . ; . .
+     * SDK ID
+     */
+    async landingsSdkSubscriptionRaw(requestParameters, initOverrides) {
+        if (requestParameters['landingPublicId'] == null) {
+            throw new runtime.RequiredError('landingPublicId', 'Required parameter "landingPublicId" was null or undefined when calling landingsSdkSubscription().');
+        }
+        if (requestParameters['landingSdkSubscriptionRequestDto'] == null) {
+            throw new runtime.RequiredError('landingSdkSubscriptionRequestDto', 'Required parameter "landingSdkSubscriptionRequestDto" was null or undefined when calling landingsSdkSubscription().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/public/landings/{landingPublicId}/sdk/subscription`.replace(`{${"landingPublicId"}}`, encodeURIComponent(String(requestParameters['landingPublicId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.LandingSdkSubscriptionRequestDtoToJSON)(requestParameters['landingSdkSubscriptionRequestDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingSdkSubscriptionResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . ; . .
+     * SDK ID
+     */
+    async landingsSdkSubscription(requestParameters, initOverrides) {
+        const response = await this.landingsSdkSubscriptionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * . ; .
      *
      */
@@ -513,7 +649,28 @@ exports.GetLandingsAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.GetLandingsDomainsCertificateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetLandingsDomainsResolveAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.GetLandingsLaunchAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetLandingsSdkLandingAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -584,6 +741,13 @@ exports.LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum = {
  * @export
  */
 exports.LandingsResolveAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LandingsSdkSubscriptionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

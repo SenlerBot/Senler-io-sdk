@@ -90,6 +90,12 @@ export interface AutomationTaskResponseDto {
      */
     errorMessage?: string | null;
     /**
+     * . , URL .
+     * @type {string}
+     * @memberof AutomationTaskResponseDto
+     */
+    errorDetails?: string;
+    /**
      * created at.
      * @type {Date}
      * @memberof AutomationTaskResponseDto
@@ -143,6 +149,7 @@ export declare const AutomationTaskResponseDtoWaitKindEnum: {
     readonly Reply: "reply";
     readonly Interaction: "interaction";
     readonly AppCallback: "app_callback";
+    readonly AutomationResult: "automation_result";
 };
 export type AutomationTaskResponseDtoWaitKindEnum = typeof AutomationTaskResponseDtoWaitKindEnum[keyof typeof AutomationTaskResponseDtoWaitKindEnum];
 /**

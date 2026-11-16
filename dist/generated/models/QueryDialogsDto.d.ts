@@ -16,6 +16,12 @@
  */
 export interface QueryDialogsDto {
     /**
+     * . , .
+     * @type {boolean}
+     * @memberof QueryDialogsDto
+     */
+    messageRecipientsOnly?: boolean;
+    /**
      * (UUID )
      * @type {Array<string>}
      * @memberof QueryDialogsDto

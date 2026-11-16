@@ -30,6 +30,12 @@ export interface CreateInvitationDto {
     email?: string;
     /**
      * ,
+     * @type {string}
+     * @memberof CreateInvitationDto
+     */
+    bookingSpecialistId?: string;
+    /**
+     * ,
      * @type {ProjectRole}
      * @memberof CreateInvitationDto
      */

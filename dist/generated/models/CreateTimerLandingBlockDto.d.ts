@@ -29,7 +29,7 @@ export interface CreateTimerLandingBlockDto {
      */
     pageVariantId?: string;
     /**
-     *
+     * order_revision . 409 .
      * @type {number}
      * @memberof CreateTimerLandingBlockDto
      */

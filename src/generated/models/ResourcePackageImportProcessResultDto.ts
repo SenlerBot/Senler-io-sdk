@@ -28,6 +28,12 @@ import {
  */
 export interface ResourcePackageImportProcessResultDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof ResourcePackageImportProcessResultDto
+     */
+    activated: boolean;
+    /**
      * UUID
      * @type {string}
      * @memberof ResourcePackageImportProcessResultDto
@@ -117,6 +123,7 @@ export const ResourcePackageImportProcessResultDtoStageEnum = {
     DialogVariables: 'dialog_variables',
     MetricDefinitions: 'metric_definitions',
     Segments: 'segments',
+    Bookings: 'bookings',
     Landings: 'landings',
     Deliveries: 'deliveries',
     KnowledgeFolders: 'knowledge_folders',
@@ -135,6 +142,7 @@ export type ResourcePackageImportProcessResultDtoStageEnum = typeof ResourcePack
  * Check if a given object implements the ResourcePackageImportProcessResultDto interface.
  */
 export function instanceOfResourcePackageImportProcessResultDto(value: object): value is ResourcePackageImportProcessResultDto {
+    if (!('activated' in value) || value['activated'] === undefined) return false;
     if (!('importId' in value) || value['importId'] === undefined) return false;
     if (!('packageId' in value) || value['packageId'] === undefined) return false;
     if (!('targetProjectId' in value) || value['targetProjectId'] === undefined) return false;
@@ -157,6 +165,7 @@ export function ResourcePackageImportProcessResultDtoFromJSONTyped(json: any, ig
     }
     return {
 
+        'activated': json['activated'],
         'importId': json['import_id'],
         'packageId': json['package_id'],
         'targetProjectId': json['target_project_id'],
@@ -182,6 +191,7 @@ export function ResourcePackageImportProcessResultDtoToJSONTyped(value?: Resourc
 
     return {
 
+        'activated': value['activated'],
         'import_id': value['importId'],
         'package_id': value['packageId'],
         'target_project_id': value['targetProjectId'],

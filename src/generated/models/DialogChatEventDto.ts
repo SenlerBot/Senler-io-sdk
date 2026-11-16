@@ -83,6 +83,13 @@ import {
     EventErrorDtoToJSON,
     EventErrorDtoToJSONTyped,
 } from './EventErrorDto';
+import type { EventLiveVoiceDto } from './EventLiveVoiceDto';
+import {
+    EventLiveVoiceDtoFromJSON,
+    EventLiveVoiceDtoFromJSONTyped,
+    EventLiveVoiceDtoToJSON,
+    EventLiveVoiceDtoToJSONTyped,
+} from './EventLiveVoiceDto';
 import type { EventMessageDto } from './EventMessageDto';
 import {
     EventMessageDtoFromJSON,
@@ -202,6 +209,12 @@ import {
  * @interface DialogChatEventDto
  */
 export interface DialogChatEventDto {
+    /**
+     *
+     * @type {EventLiveVoiceDto}
+     * @memberof DialogChatEventDto
+     */
+    liveVoice?: EventLiveVoiceDto;
     /**
      *
      * @type {EventFunnelDto}
@@ -609,6 +622,7 @@ export function DialogChatEventDtoFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
 
+        'liveVoice': json['live_voice'] == null ? undefined : EventLiveVoiceDtoFromJSON(json['live_voice']),
         'funnel': json['funnel'] == null ? undefined : EventFunnelDtoFromJSON(json['funnel']),
         'automationObservation': json['automation_observation'] == null ? undefined : AutomationFunnelObservationDtoFromJSON(json['automation_observation']),
         'id': json['id'],
@@ -669,6 +683,7 @@ export function DialogChatEventDtoToJSONTyped(value?: DialogChatEventDto | null,
 
     return {
 
+        'live_voice': EventLiveVoiceDtoToJSON(value['liveVoice']),
         'funnel': EventFunnelDtoToJSON(value['funnel']),
         'automation_observation': AutomationFunnelObservationDtoToJSON(value['automationObservation']),
         'id': value['id'],

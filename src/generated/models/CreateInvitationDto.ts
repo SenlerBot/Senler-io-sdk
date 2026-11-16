@@ -41,6 +41,12 @@ export interface CreateInvitationDto {
     email?: string;
     /**
      * ,
+     * @type {string}
+     * @memberof CreateInvitationDto
+     */
+    bookingSpecialistId?: string;
+    /**
+     * ,
      * @type {ProjectRole}
      * @memberof CreateInvitationDto
      */
@@ -69,6 +75,7 @@ export function CreateInvitationDtoFromJSONTyped(json: any, ignoreDiscriminator:
 
         'userId': json['user_id'] == null ? undefined : json['user_id'],
         'email': json['email'] == null ? undefined : json['email'],
+        'bookingSpecialistId': json['booking_specialist_id'] == null ? undefined : json['booking_specialist_id'],
         'role': ProjectRoleFromJSON(json['role']),
     };
 }
@@ -86,6 +93,7 @@ export function CreateInvitationDtoToJSONTyped(value?: CreateInvitationDto | nul
 
         'user_id': value['userId'],
         'email': value['email'],
+        'booking_specialist_id': value['bookingSpecialistId'],
         'role': ProjectRoleToJSON(value['role']),
     };
 }

@@ -127,6 +127,11 @@ export interface ProjectsOrdersCryptoSubmitRequest {
     submitCryptoPaymentDto: SubmitCryptoPaymentDto;
     acceptLanguage?: ProjectsOrdersCryptoSubmitAcceptLanguageEnum;
 }
+export interface ProjectsOrdersRefreshRequest {
+    projectId: string;
+    orderId: string;
+    acceptLanguage?: ProjectsOrdersRefreshAcceptLanguageEnum;
+}
 export interface ProjectsPaymentSettingsRequest {
     projectId: string;
     savePaymentSettingsDto: SavePaymentSettingsDto;
@@ -294,12 +299,12 @@ export declare class BillingApi extends runtime.BaseAPI {
      */
     getProjectsSubscriptionPrepaidRenewalCancellationPreview(requestParameters: GetProjectsSubscriptionPrepaidRenewalCancellationPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PrepaidRenewalCancellationPreviewDto>;
     /**
-     * status (current/upgrade/downgrade) . endpoint .
+     * status (current/upgrade/downgrade) . .
      *
      */
     getProjectsTariffsRaw(requestParameters: GetProjectsTariffsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectTariffsResponseDto>>;
     /**
-     * status (current/upgrade/downgrade) . endpoint .
+     * status (current/upgrade/downgrade) . .
      *
      */
     getProjectsTariffs(requestParameters: GetProjectsTariffsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectTariffsResponseDto>;
@@ -373,6 +378,16 @@ export declare class BillingApi extends runtime.BaseAPI {
      * - crypto intent
      */
     projectsOrdersCryptoSubmit(requestParameters: ProjectsOrdersCryptoSubmitRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CryptoPaymentStatusResponseDto>;
+    /**
+     * - . . 30 .
+     *
+     */
+    projectsOrdersRefreshRaw(requestParameters: ProjectsOrdersRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * - . . 30 .
+     *
+     */
+    projectsOrdersRefresh(requestParameters: ProjectsOrdersRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
      * , , . (RU), . RU: email . : email + .
      *
@@ -651,6 +666,14 @@ export declare const ProjectsOrdersCryptoSubmitAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type ProjectsOrdersCryptoSubmitAcceptLanguageEnum = typeof ProjectsOrdersCryptoSubmitAcceptLanguageEnum[keyof typeof ProjectsOrdersCryptoSubmitAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProjectsOrdersRefreshAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProjectsOrdersRefreshAcceptLanguageEnum = typeof ProjectsOrdersRefreshAcceptLanguageEnum[keyof typeof ProjectsOrdersRefreshAcceptLanguageEnum];
 /**
  * @export
  */

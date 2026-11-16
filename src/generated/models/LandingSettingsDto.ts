@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { LandingSdkPermissionsDto } from './LandingSdkPermissionsDto';
+import {
+    LandingSdkPermissionsDtoFromJSON,
+    LandingSdkPermissionsDtoFromJSONTyped,
+    LandingSdkPermissionsDtoToJSON,
+    LandingSdkPermissionsDtoToJSONTyped,
+} from './LandingSdkPermissionsDto';
 import type { LandingTheme } from './LandingTheme';
 import {
     LandingThemeFromJSON,
@@ -28,17 +35,17 @@ import {
  */
 export interface LandingSettingsDto {
     /**
+     * HTML- : , . SDK.
+     * @type {LandingSdkPermissionsDto}
+     * @memberof LandingSettingsDto
+     */
+    sdkPermissions?: LandingSdkPermissionsDto;
+    /**
      * CSS . :scope .
      * @type {string}
      * @memberof LandingSettingsDto
      */
     customCss?: string;
-    /**
-     * CSS- HTML-.
-     * @type {string}
-     * @memberof LandingSettingsDto
-     */
-    htmlCss?: string;
     /**
      * . null
      * @type {string}
@@ -117,8 +124,8 @@ export function LandingSettingsDtoFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
 
+        'sdkPermissions': json['sdk_permissions'] == null ? undefined : LandingSdkPermissionsDtoFromJSON(json['sdk_permissions']),
         'customCss': json['custom_css'] == null ? undefined : json['custom_css'],
-        'htmlCss': json['html_css'] == null ? undefined : json['html_css'],
         'visitorName': json['visitor_name'] == null ? undefined : json['visitor_name'],
         'language': json['language'],
         'listVisible': json['list_visible'],
@@ -140,8 +147,8 @@ export function LandingSettingsDtoToJSONTyped(value?: LandingSettingsDto | null,
 
     return {
 
+        'sdk_permissions': LandingSdkPermissionsDtoToJSON(value['sdkPermissions']),
         'custom_css': value['customCss'],
-        'html_css': value['htmlCss'],
         'visitor_name': value['visitorName'],
         'language': value['language'],
         'list_visible': value['listVisible'],

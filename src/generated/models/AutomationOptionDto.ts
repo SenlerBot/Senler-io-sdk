@@ -97,6 +97,12 @@ export interface AutomationOptionDto {
      * @memberof AutomationOptionDto
      */
     publishedVersionId: string | null;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof AutomationOptionDto
+     */
+    returnsResult: boolean;
 }
 
 
@@ -156,6 +162,7 @@ export function instanceOfAutomationOptionDto(value: object): value is Automatio
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('isReadOnly' in value) || value['isReadOnly'] === undefined) return false;
     if (!('publishedVersionId' in value) || value['publishedVersionId'] === undefined) return false;
+    if (!('returnsResult' in value) || value['returnsResult'] === undefined) return false;
     return true;
 }
 
@@ -182,6 +189,7 @@ export function AutomationOptionDtoFromJSONTyped(json: any, ignoreDiscriminator:
         'status': json['status'],
         'isReadOnly': json['is_read_only'],
         'publishedVersionId': json['published_version_id'],
+        'returnsResult': json['returns_result'],
     };
 }
 
@@ -209,5 +217,6 @@ export function AutomationOptionDtoToJSONTyped(value?: AutomationOptionDto | nul
         'status': value['status'],
         'is_read_only': value['isReadOnly'],
         'published_version_id': value['publishedVersionId'],
+        'returns_result': value['returnsResult'],
     };
 }

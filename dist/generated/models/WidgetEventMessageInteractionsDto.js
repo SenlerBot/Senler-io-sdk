@@ -23,6 +23,7 @@ const WidgetPlatformActionDto_1 = require("./WidgetPlatformActionDto");
 const WidgetEventMessageForwardingDto_1 = require("./WidgetEventMessageForwardingDto");
 const WidgetEventMessageViewsDto_1 = require("./WidgetEventMessageViewsDto");
 const WidgetEventMessageMentionsDto_1 = require("./WidgetEventMessageMentionsDto");
+const WidgetInteractiveMessageDto_1 = require("./WidgetInteractiveMessageDto");
 const WidgetEventMessageRepliesDto_1 = require("./WidgetEventMessageRepliesDto");
 const WidgetEventMessagePinningDto_1 = require("./WidgetEventMessagePinningDto");
 const WidgetEventMessageReactionDto_1 = require("./WidgetEventMessageReactionDto");
@@ -40,6 +41,7 @@ function WidgetEventMessageInteractionsDtoFromJSONTyped(json, ignoreDiscriminato
         return json;
     }
     return {
+        'interactiveWidget': json['interactive_widget'] == null ? undefined : (0, WidgetInteractiveMessageDto_1.WidgetInteractiveMessageDtoFromJSON)(json['interactive_widget']),
         'reactions': json['reactions'] == null ? undefined : (json['reactions'].map(WidgetEventMessageReactionDto_1.WidgetEventMessageReactionDtoFromJSON)),
         'editing': json['editing'] == null ? undefined : (0, WidgetEventEditingDto_1.WidgetEventEditingDtoFromJSON)(json['editing']),
         'replies': json['replies'] == null ? undefined : (0, WidgetEventMessageRepliesDto_1.WidgetEventMessageRepliesDtoFromJSON)(json['replies']),
@@ -59,6 +61,7 @@ function WidgetEventMessageInteractionsDtoToJSONTyped(value, ignoreDiscriminator
         return value;
     }
     return {
+        'interactive_widget': (0, WidgetInteractiveMessageDto_1.WidgetInteractiveMessageDtoToJSON)(value['interactiveWidget']),
         'reactions': value['reactions'] == null ? undefined : (value['reactions'].map(WidgetEventMessageReactionDto_1.WidgetEventMessageReactionDtoToJSON)),
         'editing': (0, WidgetEventEditingDto_1.WidgetEventEditingDtoToJSON)(value['editing']),
         'replies': (0, WidgetEventMessageRepliesDto_1.WidgetEventMessageRepliesDtoToJSON)(value['replies']),

@@ -18,7 +18,7 @@ exports.UpdateLandingDraftDtoFromJSON = UpdateLandingDraftDtoFromJSON;
 exports.UpdateLandingDraftDtoFromJSONTyped = UpdateLandingDraftDtoFromJSONTyped;
 exports.UpdateLandingDraftDtoToJSON = UpdateLandingDraftDtoToJSON;
 exports.UpdateLandingDraftDtoToJSONTyped = UpdateLandingDraftDtoToJSONTyped;
-const LandingSettingsDto_1 = require("./LandingSettingsDto");
+const LandingSettingsInputDto_1 = require("./LandingSettingsInputDto");
 /**
  * Check if a given object implements the UpdateLandingDraftDto interface.
  */
@@ -38,7 +38,7 @@ function UpdateLandingDraftDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'expectedSettingsRevision': json['expected_settings_revision'],
-        'settings': (0, LandingSettingsDto_1.LandingSettingsDtoFromJSON)(json['settings']),
+        'settings': (0, LandingSettingsInputDto_1.LandingSettingsInputDtoFromJSON)(json['settings']),
     };
 }
 function UpdateLandingDraftDtoToJSON(json) {
@@ -50,6 +50,6 @@ function UpdateLandingDraftDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'expected_settings_revision': value['expectedSettingsRevision'],
-        'settings': (0, LandingSettingsDto_1.LandingSettingsDtoToJSON)(value['settings']),
+        'settings': (0, LandingSettingsInputDto_1.LandingSettingsInputDtoToJSON)(value['settings']),
     };
 }

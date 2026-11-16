@@ -13,6 +13,20 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AutomationCallResultDto } from './AutomationCallResultDto';
+import {
+    AutomationCallResultDtoFromJSON,
+    AutomationCallResultDtoFromJSONTyped,
+    AutomationCallResultDtoToJSON,
+    AutomationCallResultDtoToJSONTyped,
+} from './AutomationCallResultDto';
+import type { AutomationBookingLeadFilter } from './AutomationBookingLeadFilter';
+import {
+    AutomationBookingLeadFilterFromJSON,
+    AutomationBookingLeadFilterFromJSONTyped,
+    AutomationBookingLeadFilterToJSON,
+    AutomationBookingLeadFilterToJSONTyped,
+} from './AutomationBookingLeadFilter';
 import type { AutomationHttpConfigDto } from './AutomationHttpConfigDto';
 import {
     AutomationHttpConfigDtoFromJSON,
@@ -111,6 +125,20 @@ import {
     AutomationTableWriteDtoToJSON,
     AutomationTableWriteDtoToJSONTyped,
 } from './AutomationTableWriteDto';
+import type { AutomationGroupedConditionDto } from './AutomationGroupedConditionDto';
+import {
+    AutomationGroupedConditionDtoFromJSON,
+    AutomationGroupedConditionDtoFromJSONTyped,
+    AutomationGroupedConditionDtoToJSON,
+    AutomationGroupedConditionDtoToJSONTyped,
+} from './AutomationGroupedConditionDto';
+import type { AutomationTelegramWidgetConfigDto } from './AutomationTelegramWidgetConfigDto';
+import {
+    AutomationTelegramWidgetConfigDtoFromJSON,
+    AutomationTelegramWidgetConfigDtoFromJSONTyped,
+    AutomationTelegramWidgetConfigDtoToJSON,
+    AutomationTelegramWidgetConfigDtoToJSONTyped,
+} from './AutomationTelegramWidgetConfigDto';
 import type { AutomationTableFilterDto } from './AutomationTableFilterDto';
 import {
     AutomationTableFilterDtoFromJSON,
@@ -118,6 +146,27 @@ import {
     AutomationTableFilterDtoToJSON,
     AutomationTableFilterDtoToJSONTyped,
 } from './AutomationTableFilterDto';
+import type { AutomationBookingInputsDto } from './AutomationBookingInputsDto';
+import {
+    AutomationBookingInputsDtoFromJSON,
+    AutomationBookingInputsDtoFromJSONTyped,
+    AutomationBookingInputsDtoToJSON,
+    AutomationBookingInputsDtoToJSONTyped,
+} from './AutomationBookingInputsDto';
+import type { AutomationBookingOperation } from './AutomationBookingOperation';
+import {
+    AutomationBookingOperationFromJSON,
+    AutomationBookingOperationFromJSONTyped,
+    AutomationBookingOperationToJSON,
+    AutomationBookingOperationToJSONTyped,
+} from './AutomationBookingOperation';
+import type { AutomationCallParameterDto } from './AutomationCallParameterDto';
+import {
+    AutomationCallParameterDtoFromJSON,
+    AutomationCallParameterDtoFromJSONTyped,
+    AutomationCallParameterDtoToJSON,
+    AutomationCallParameterDtoToJSONTyped,
+} from './AutomationCallParameterDto';
 
 /**
  * AutomationNodeConfigDto.
@@ -126,31 +175,391 @@ import {
  */
 export interface AutomationNodeConfigDto {
     /**
-     * Calendar days before the birthday to start the branch; 0 starts on the birthday
+     * Mongo ID .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    segmentId?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    funnelId?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    funnelStageId?: string;
+    /**
+     * Mongo ID .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    targetAutomationId?: string;
+    /**
+     * UUID .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentId?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    agentRole?: AutomationNodeConfigDtoAgentRoleEnum;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    operatorGroupId?: string;
+    /**
+     * . .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    operatorUserId?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    operatorCondition?: AutomationNodeConfigDtoOperatorConditionEnum;
+    /**
+     * , .
+     * @type {Array<string>}
+     * @memberof AutomationNodeConfigDto
+     */
+    channelTypes?: Array<AutomationNodeConfigDtoChannelTypesEnum>;
+    /**
+     * UUID .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableId?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableSheetId?: string;
+    /**
+     * first_row ; custom .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableStructureMode?: AutomationNodeConfigDtoTableStructureModeEnum;
+    /**
+     * A1. custom.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableHeaderRange?: string;
+    /**
+     * A1. .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableDataRange?: string;
+    /**
+     * . .
+     * @type {Array<AutomationTableFilterDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableFilters?: Array<AutomationTableFilterDto>;
+    /**
+     * , , , .
+     * @type {Array<AutomationTableOutputDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableOutputs?: Array<AutomationTableOutputDto>;
+    /**
+     * .
+     * @type {Array<AutomationTableResultFieldDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableResultFields?: Array<AutomationTableResultFieldDto>;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableResultMode?: AutomationNodeConfigDtoTableResultModeEnum;
+    /**
+     * : .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableFirstRowSaveMode?: AutomationNodeConfigDtoTableFirstRowSaveModeEnum;
+    /**
+     * : .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableResultVariableScope?: AutomationNodeConfigDtoTableResultVariableScopeEnum;
+    /**
+     * : .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    tableResultVariableName?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    dateTimeCondition?: AutomationNodeConfigDtoDateTimeConditionEnum;
+    /**
+     * ISO 8601.
+     * @type {Date}
+     * @memberof AutomationNodeConfigDto
+     */
+    dateTimeStart?: Date;
+    /**
+     * ISO 8601.
+     * @type {Date}
+     * @memberof AutomationNodeConfigDto
+     */
+    dateTimeEnd?: Date;
+    /**
+     * 1 () 7.
+     * @type {Array<number>}
+     * @memberof AutomationNodeConfigDto
+     */
+    dateTimeWeekdays?: Array<number>;
+    /**
+     * HH:mm.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    dateTimeStartTime?: string;
+    /**
+     * HH:mm.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    dateTimeEndTime?: string;
+    /**
+     * IANA .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    dateTimeTimezone?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    variableScope?: AutomationNodeConfigDtoVariableScopeEnum;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    variableName?: string;
+    /**
+     * . , , .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    variableType?: AutomationNodeConfigDtoVariableTypeEnum;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    variableOperation?: AutomationNodeConfigDtoVariableOperationEnum;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    variableOperator?: AutomationNodeConfigDtoVariableOperatorEnum;
+    /**
+     * , .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    variableValueType?: AutomationNodeConfigDtoVariableValueTypeEnum;
+    /**
+     * . JSON scalar, object array. (mixed type)
+     * @type {{ [key: string]: any; }}
+     * @memberof AutomationNodeConfigDto
+     */
+    variableValue?: { [key: string]: any; } | null;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    variableDurationUnit?: AutomationNodeConfigDtoVariableDurationUnitEnum;
+    /**
+     * Telegram
+     * @type {AutomationTelegramWidgetConfigDto}
+     * @memberof AutomationNodeConfigDto
+     */
+    telegramWidget?: AutomationTelegramWidgetConfigDto;
+    /**
+     * UUID , .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageDeleteNodeId?: string;
+    /**
+     * . , .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageDeleteAutomationId?: string;
+    /**
+     * -
+     * @type {AutomationBookingOperation}
+     * @memberof AutomationNodeConfigDto
+     */
+    bookingOperation?: AutomationBookingOperation;
+    /**
+     *
+     * @type {AutomationBookingInputsDto}
+     * @memberof AutomationNodeConfigDto
+     */
+    bookingInputs?: AutomationBookingInputsDto;
+    /**
+     * -
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    bookingResultVariableScope?: AutomationNodeConfigDtoBookingResultVariableScopeEnum;
+    /**
+     * -
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    bookingResultVariable?: string;
+    /**
+     * ,
+     * @type {Array<string>}
+     * @memberof AutomationNodeConfigDto
+     */
+    bookingEvents?: Array<AutomationNodeConfigDtoBookingEventsEnum>;
+    /**
+     * ;
+     * @type {Array<string>}
+     * @memberof AutomationNodeConfigDto
+     */
+    bookingServiceIds?: Array<string>;
+    /**
+     * : all , with_lead , without_lead . .
+     * @type {AutomationBookingLeadFilter}
+     * @memberof AutomationNodeConfigDto
+     */
+    bookingLeadFilter?: AutomationBookingLeadFilter;
+    /**
+     *
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    bookingEventVariableName?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    codeLanguage?: AutomationNodeConfigDtoCodeLanguageEnum;
+    /**
+     * JavaScript Python; 64 UTF-8.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    codeSource?: string;
+    /**
+     * , flow.branch(key).
+     * @type {Array<AutomationAppStepBranchSnapshotDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    codeBranches?: Array<AutomationAppStepBranchSnapshotDto>;
+    /**
+     *
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    callDescription?: string;
+    /**
+     * ,
+     * @type {Array<AutomationCallParameterDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    inputParameters?: Array<AutomationCallParameterDto>;
+    /**
+     *
+     * @type {Array<AutomationCallParameterDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    resultParameters?: Array<AutomationCallParameterDto>;
+    /**
+     *
+     * @type {Array<AutomationRunVariableBindingDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    resultBindings?: Array<AutomationRunVariableBindingDto>;
+    /**
+     * .
+     * @type {Array<AutomationCallResultDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    callResults?: Array<AutomationCallResultDto>;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    waitResult?: boolean;
+    /**
+     * : all, any.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    conditionGroupOperator?: AutomationNodeConfigDtoConditionGroupOperatorEnum;
+    /**
+     * condition group show branches.
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    conditionGroupShowBranches?: boolean;
+    /**
+     * condition group conditions.
+     * @type {Array<AutomationGroupedConditionDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    conditionGroupConditions?: Array<AutomationGroupedConditionDto>;
+    /**
+     * ; 0
      * @type {number}
      * @memberof AutomationNodeConfigDto
      */
     birthdayDaysBefore?: number;
     /**
-     * Local birthday branch start time (HH:mm)
+     * , :
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
     birthdayTime?: string;
     /**
-     * IANA time zone for birthday greetings
+     * IANA
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
     birthdayTimezone?: string;
     /**
-     * Repeat every year, or start once per lead and birthday entry
+     *
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
     birthdayRepeat?: AutomationNodeConfigDtoBirthdayRepeatEnum;
     /**
-     * How to celebrate February 29 in non-leap years
+     * 29
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
@@ -384,24 +793,6 @@ export interface AutomationNodeConfigDto {
      */
     dialogScope?: string;
     /**
-     * Mongo ID .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    segmentId?: string;
-    /**
-     * .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    funnelId?: string;
-    /**
-     * .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    funnelStageId?: string;
-    /**
      * .
      * @type {Array<string>}
      * @memberof AutomationNodeConfigDto
@@ -414,29 +805,11 @@ export interface AutomationNodeConfigDto {
      */
     removeMarkerIds?: Array<string>;
     /**
-     * Mongo ID .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    targetAutomationId?: string;
-    /**
      * .
      * @type {Array<AutomationRunVariableBindingDto>}
      * @memberof AutomationNodeConfigDto
      */
     targetRunVariableBindings?: Array<AutomationRunVariableBindingDto>;
-    /**
-     * UUID .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    agentId?: string;
-    /**
-     * .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    agentRole?: AutomationNodeConfigDtoAgentRoleEnum;
     /**
      * , . .
      * @type {boolean}
@@ -457,18 +830,6 @@ export interface AutomationNodeConfigDto {
     operatorAssignmentMode?: AutomationNodeConfigDtoOperatorAssignmentModeEnum;
     /**
      * .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    operatorGroupId?: string;
-    /**
-     * . .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    operatorUserId?: string;
-    /**
-     * .
      * @type {boolean}
      * @memberof AutomationNodeConfigDto
      */
@@ -479,12 +840,6 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     operatorExcludeBackgroundAgent?: boolean;
-    /**
-     * .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    operatorCondition?: AutomationNodeConfigDtoOperatorConditionEnum;
     /**
      * . - .
      * @type {boolean}
@@ -576,84 +931,6 @@ export interface AutomationNodeConfigDto {
      */
     agentResponseJsonVariableName?: string;
     /**
-     * , .
-     * @type {Array<string>}
-     * @memberof AutomationNodeConfigDto
-     */
-    channelTypes?: Array<AutomationNodeConfigDtoChannelTypesEnum>;
-    /**
-     * UUID .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    tableId?: string;
-    /**
-     * .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    tableSheetId?: string;
-    /**
-     * first_row ; custom .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    tableStructureMode?: AutomationNodeConfigDtoTableStructureModeEnum;
-    /**
-     * A1. custom.
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    tableHeaderRange?: string;
-    /**
-     * A1. .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    tableDataRange?: string;
-    /**
-     * . .
-     * @type {Array<AutomationTableFilterDto>}
-     * @memberof AutomationNodeConfigDto
-     */
-    tableFilters?: Array<AutomationTableFilterDto>;
-    /**
-     * , , , .
-     * @type {Array<AutomationTableOutputDto>}
-     * @memberof AutomationNodeConfigDto
-     */
-    tableOutputs?: Array<AutomationTableOutputDto>;
-    /**
-     * .
-     * @type {Array<AutomationTableResultFieldDto>}
-     * @memberof AutomationNodeConfigDto
-     */
-    tableResultFields?: Array<AutomationTableResultFieldDto>;
-    /**
-     * .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    tableResultMode?: AutomationNodeConfigDtoTableResultModeEnum;
-    /**
-     * : .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    tableFirstRowSaveMode?: AutomationNodeConfigDtoTableFirstRowSaveModeEnum;
-    /**
-     * : .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    tableResultVariableScope?: AutomationNodeConfigDtoTableResultVariableScopeEnum;
-    /**
-     * : .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    tableResultVariableName?: string;
-    /**
      * : update , append , upsert , .
      * @type {string}
      * @memberof AutomationNodeConfigDto
@@ -673,48 +950,6 @@ export interface AutomationNodeConfigDto {
     tableWrites?: Array<AutomationTableWriteDto>;
     /**
      * .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    dateTimeCondition?: AutomationNodeConfigDtoDateTimeConditionEnum;
-    /**
-     * ISO 8601.
-     * @type {Date}
-     * @memberof AutomationNodeConfigDto
-     */
-    dateTimeStart?: Date;
-    /**
-     * ISO 8601.
-     * @type {Date}
-     * @memberof AutomationNodeConfigDto
-     */
-    dateTimeEnd?: Date;
-    /**
-     * 1 () 7.
-     * @type {Array<number>}
-     * @memberof AutomationNodeConfigDto
-     */
-    dateTimeWeekdays?: Array<number>;
-    /**
-     * HH:mm.
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    dateTimeStartTime?: string;
-    /**
-     * HH:mm.
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    dateTimeEndTime?: string;
-    /**
-     * IANA .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    dateTimeTimezone?: string;
-    /**
-     * .
      * @type {Array<AutomationRandomBranchDto>}
      * @memberof AutomationNodeConfigDto
      */
@@ -726,53 +961,11 @@ export interface AutomationNodeConfigDto {
      */
     agentBranches?: Array<AutomationAgentBranchDto>;
     /**
-     * .
+     * mathjs action.set_variable variable_operation=formula. {{ }}: number(run.year). : getFormulaCatalog; : previewFormula. variable_value .
      * @type {string}
      * @memberof AutomationNodeConfigDto
      */
-    variableScope?: AutomationNodeConfigDtoVariableScopeEnum;
-    /**
-     * .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    variableName?: string;
-    /**
-     * . , , .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    variableType?: AutomationNodeConfigDtoVariableTypeEnum;
-    /**
-     * .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    variableOperation?: AutomationNodeConfigDtoVariableOperationEnum;
-    /**
-     * .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    variableOperator?: AutomationNodeConfigDtoVariableOperatorEnum;
-    /**
-     * , .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    variableValueType?: AutomationNodeConfigDtoVariableValueTypeEnum;
-    /**
-     * . JSON scalar, object array. (mixed type)
-     * @type {{ [key: string]: any; }}
-     * @memberof AutomationNodeConfigDto
-     */
-    variableValue?: { [key: string]: any; } | null;
-    /**
-     * .
-     * @type {string}
-     * @memberof AutomationNodeConfigDto
-     */
-    variableDurationUnit?: AutomationNodeConfigDtoVariableDurationUnitEnum;
+    variableFormula?: string;
     /**
      * . {{lead_data.first_name}}, {{lead.name}}, {{run.code}}.
      * @type {string}
@@ -905,6 +1098,30 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     messageWaitForReply?: boolean;
+    /**
+     * . reaction .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageWaitForReaction?: boolean;
+    /**
+     * reaction . .
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageAllowRepeatedReactions?: boolean;
+    /**
+     * reaction .
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageReactionVariableScope?: AutomationNodeConfigDtoMessageReactionVariableScopeEnum;
+    /**
+     * reaction, reaction.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    messageReactionVariableName?: string;
     /**
      * . . .
      * @type {boolean}
@@ -1115,6 +1332,237 @@ export interface AutomationNodeConfigDto {
 /**
  * @export
  */
+export const AutomationNodeConfigDtoAgentRoleEnum = {
+    Primary: 'primary',
+    Background: 'background'
+} as const;
+export type AutomationNodeConfigDtoAgentRoleEnum = typeof AutomationNodeConfigDtoAgentRoleEnum[keyof typeof AutomationNodeConfigDtoAgentRoleEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoOperatorConditionEnum = {
+    Assigned: 'assigned',
+    Group: 'group'
+} as const;
+export type AutomationNodeConfigDtoOperatorConditionEnum = typeof AutomationNodeConfigDtoOperatorConditionEnum[keyof typeof AutomationNodeConfigDtoOperatorConditionEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoChannelTypesEnum = {
+    Vk: 'vk',
+    Tg: 'tg',
+    Max: 'max',
+    Discord: 'discord',
+    Widget: 'widget',
+    Streamvi: 'streamvi',
+    Email: 'email',
+    Avito: 'avito',
+    Inst: 'inst',
+    Facebook: 'facebook',
+    Whatsapp: 'whatsapp'
+} as const;
+export type AutomationNodeConfigDtoChannelTypesEnum = typeof AutomationNodeConfigDtoChannelTypesEnum[keyof typeof AutomationNodeConfigDtoChannelTypesEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoTableStructureModeEnum = {
+    FirstRow: 'first_row',
+    Custom: 'custom'
+} as const;
+export type AutomationNodeConfigDtoTableStructureModeEnum = typeof AutomationNodeConfigDtoTableStructureModeEnum[keyof typeof AutomationNodeConfigDtoTableStructureModeEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoTableResultModeEnum = {
+    None: 'none',
+    FirstRow: 'first_row',
+    AllRows: 'all_rows'
+} as const;
+export type AutomationNodeConfigDtoTableResultModeEnum = typeof AutomationNodeConfigDtoTableResultModeEnum[keyof typeof AutomationNodeConfigDtoTableResultModeEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoTableFirstRowSaveModeEnum = {
+    Object: 'object',
+    Fields: 'fields'
+} as const;
+export type AutomationNodeConfigDtoTableFirstRowSaveModeEnum = typeof AutomationNodeConfigDtoTableFirstRowSaveModeEnum[keyof typeof AutomationNodeConfigDtoTableFirstRowSaveModeEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoTableResultVariableScopeEnum = {
+    Run: 'run',
+    Lead: 'lead',
+    Dialog: 'dialog',
+    Project: 'project'
+} as const;
+export type AutomationNodeConfigDtoTableResultVariableScopeEnum = typeof AutomationNodeConfigDtoTableResultVariableScopeEnum[keyof typeof AutomationNodeConfigDtoTableResultVariableScopeEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoDateTimeConditionEnum = {
+    Before: 'before',
+    After: 'after',
+    Between: 'between',
+    Weekday: 'weekday',
+    TimeRange: 'time_range'
+} as const;
+export type AutomationNodeConfigDtoDateTimeConditionEnum = typeof AutomationNodeConfigDtoDateTimeConditionEnum[keyof typeof AutomationNodeConfigDtoDateTimeConditionEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoVariableScopeEnum = {
+    Run: 'run',
+    Lead: 'lead',
+    Dialog: 'dialog',
+    Project: 'project'
+} as const;
+export type AutomationNodeConfigDtoVariableScopeEnum = typeof AutomationNodeConfigDtoVariableScopeEnum[keyof typeof AutomationNodeConfigDtoVariableScopeEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoVariableTypeEnum = {
+    String: 'string',
+    Number: 'number',
+    Boolean: 'boolean',
+    Json: 'json',
+    Date: 'date',
+    Array: 'array',
+    Object: 'object',
+    Reaction: 'reaction'
+} as const;
+export type AutomationNodeConfigDtoVariableTypeEnum = typeof AutomationNodeConfigDtoVariableTypeEnum[keyof typeof AutomationNodeConfigDtoVariableTypeEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoVariableOperationEnum = {
+    Set: 'set',
+    Clear: 'clear',
+    SetIfUnset: 'set_if_unset',
+    AppendText: 'append_text',
+    PrependText: 'prepend_text',
+    Increase: 'increase',
+    Decrease: 'decrease',
+    Toggle: 'toggle',
+    SetNow: 'set_now',
+    ShiftForward: 'shift_forward',
+    ShiftBackward: 'shift_backward',
+    AppendItems: 'append_items',
+    PrependItems: 'prepend_items',
+    AddUniqueItems: 'add_unique_items',
+    RemoveItems: 'remove_items',
+    MergeObject: 'merge_object',
+    RemoveObjectKeys: 'remove_object_keys',
+    Formula: 'formula'
+} as const;
+export type AutomationNodeConfigDtoVariableOperationEnum = typeof AutomationNodeConfigDtoVariableOperationEnum[keyof typeof AutomationNodeConfigDtoVariableOperationEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoVariableOperatorEnum = {
+    Exists: 'exists',
+    NotExists: 'not_exists',
+    Equals: 'equals',
+    NotEquals: 'not_equals',
+    GreaterThan: 'greater_than',
+    GreaterThanOrEqual: 'greater_than_or_equal',
+    LessThan: 'less_than',
+    LessThanOrEqual: 'less_than_or_equal',
+    Before: 'before',
+    After: 'after',
+    Contains: 'contains',
+    HasAttachments: 'has_attachments',
+    NoAttachments: 'no_attachments',
+    AttachmentType: 'attachment_type',
+    AttachmentFormat: 'attachment_format'
+} as const;
+export type AutomationNodeConfigDtoVariableOperatorEnum = typeof AutomationNodeConfigDtoVariableOperatorEnum[keyof typeof AutomationNodeConfigDtoVariableOperatorEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoVariableValueTypeEnum = {
+    String: 'string',
+    Number: 'number',
+    Boolean: 'boolean',
+    Json: 'json',
+    Date: 'date',
+    Array: 'array',
+    Object: 'object',
+    Reaction: 'reaction'
+} as const;
+export type AutomationNodeConfigDtoVariableValueTypeEnum = typeof AutomationNodeConfigDtoVariableValueTypeEnum[keyof typeof AutomationNodeConfigDtoVariableValueTypeEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoVariableDurationUnitEnum = {
+    Minute: 'minute',
+    Hour: 'hour',
+    Day: 'day'
+} as const;
+export type AutomationNodeConfigDtoVariableDurationUnitEnum = typeof AutomationNodeConfigDtoVariableDurationUnitEnum[keyof typeof AutomationNodeConfigDtoVariableDurationUnitEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoBookingResultVariableScopeEnum = {
+    Run: 'run',
+    Lead: 'lead',
+    Dialog: 'dialog',
+    Project: 'project'
+} as const;
+export type AutomationNodeConfigDtoBookingResultVariableScopeEnum = typeof AutomationNodeConfigDtoBookingResultVariableScopeEnum[keyof typeof AutomationNodeConfigDtoBookingResultVariableScopeEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoBookingEventsEnum = {
+    AppointmentCreated: 'appointment.created',
+    AppointmentNotificationsConnected: 'appointment.notifications_connected',
+    AppointmentMove: 'appointment.move',
+    AppointmentStatus: 'appointment.status',
+    AppointmentSeats: 'appointment.seats',
+    AppointmentWaitlisted: 'appointment.waitlisted',
+    AppointmentPromote: 'appointment.promote',
+    SessionRescheduled: 'session.rescheduled',
+    SessionCancelled: 'session.cancelled',
+    SessionUpdated: 'session.updated'
+} as const;
+export type AutomationNodeConfigDtoBookingEventsEnum = typeof AutomationNodeConfigDtoBookingEventsEnum[keyof typeof AutomationNodeConfigDtoBookingEventsEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoCodeLanguageEnum = {
+    Javascript: 'javascript',
+    Python: 'python'
+} as const;
+export type AutomationNodeConfigDtoCodeLanguageEnum = typeof AutomationNodeConfigDtoCodeLanguageEnum[keyof typeof AutomationNodeConfigDtoCodeLanguageEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoConditionGroupOperatorEnum = {
+    All: 'all',
+    Any: 'any'
+} as const;
+export type AutomationNodeConfigDtoConditionGroupOperatorEnum = typeof AutomationNodeConfigDtoConditionGroupOperatorEnum[keyof typeof AutomationNodeConfigDtoConditionGroupOperatorEnum];
+
+/**
+ * @export
+ */
 export const AutomationNodeConfigDtoBirthdayRepeatEnum = {
     Yearly: 'yearly',
     Once: 'once'
@@ -1155,8 +1603,13 @@ export const AutomationNodeConfigDtoEventTypeEnum = {
     LikeAdded: 'like_added',
     LikeRemoved: 'like_removed',
     LeadBlacklisted: 'lead_blacklisted',
+    DialogClosed: 'dialog_closed',
+    DialogOperatorAssigned: 'dialog_operator_assigned',
+    DialogOperatorUnassigned: 'dialog_operator_unassigned',
+    DialogSnoozed: 'dialog_snoozed',
     SegmentSubscribed: 'segment_subscribed',
-    AppEventReceived: 'app_event_received'
+    AppEventReceived: 'app_event_received',
+    BookingChanged: 'booking_changed'
 } as const;
 export type AutomationNodeConfigDtoEventTypeEnum = typeof AutomationNodeConfigDtoEventTypeEnum[keyof typeof AutomationNodeConfigDtoEventTypeEnum];
 
@@ -1239,30 +1692,12 @@ export type AutomationNodeConfigDtoIncomingMessageVariableScopeEnum = typeof Aut
 /**
  * @export
  */
-export const AutomationNodeConfigDtoAgentRoleEnum = {
-    Primary: 'primary',
-    Background: 'background'
-} as const;
-export type AutomationNodeConfigDtoAgentRoleEnum = typeof AutomationNodeConfigDtoAgentRoleEnum[keyof typeof AutomationNodeConfigDtoAgentRoleEnum];
-
-/**
- * @export
- */
 export const AutomationNodeConfigDtoOperatorAssignmentModeEnum = {
     Auto: 'auto',
     Group: 'group',
     Operator: 'operator'
 } as const;
 export type AutomationNodeConfigDtoOperatorAssignmentModeEnum = typeof AutomationNodeConfigDtoOperatorAssignmentModeEnum[keyof typeof AutomationNodeConfigDtoOperatorAssignmentModeEnum];
-
-/**
- * @export
- */
-export const AutomationNodeConfigDtoOperatorConditionEnum = {
-    Assigned: 'assigned',
-    Group: 'group'
-} as const;
-export type AutomationNodeConfigDtoOperatorConditionEnum = typeof AutomationNodeConfigDtoOperatorConditionEnum[keyof typeof AutomationNodeConfigDtoOperatorConditionEnum];
 
 /**
  * @export
@@ -1333,63 +1768,6 @@ export type AutomationNodeConfigDtoAgentResponseJsonVariableScopeEnum = typeof A
 /**
  * @export
  */
-export const AutomationNodeConfigDtoChannelTypesEnum = {
-    Vk: 'vk',
-    Tg: 'tg',
-    Max: 'max',
-    Discord: 'discord',
-    Widget: 'widget',
-    Streamvi: 'streamvi',
-    Email: 'email',
-    Avito: 'avito',
-    Inst: 'inst',
-    Facebook: 'facebook',
-    Whatsapp: 'whatsapp'
-} as const;
-export type AutomationNodeConfigDtoChannelTypesEnum = typeof AutomationNodeConfigDtoChannelTypesEnum[keyof typeof AutomationNodeConfigDtoChannelTypesEnum];
-
-/**
- * @export
- */
-export const AutomationNodeConfigDtoTableStructureModeEnum = {
-    FirstRow: 'first_row',
-    Custom: 'custom'
-} as const;
-export type AutomationNodeConfigDtoTableStructureModeEnum = typeof AutomationNodeConfigDtoTableStructureModeEnum[keyof typeof AutomationNodeConfigDtoTableStructureModeEnum];
-
-/**
- * @export
- */
-export const AutomationNodeConfigDtoTableResultModeEnum = {
-    None: 'none',
-    FirstRow: 'first_row',
-    AllRows: 'all_rows'
-} as const;
-export type AutomationNodeConfigDtoTableResultModeEnum = typeof AutomationNodeConfigDtoTableResultModeEnum[keyof typeof AutomationNodeConfigDtoTableResultModeEnum];
-
-/**
- * @export
- */
-export const AutomationNodeConfigDtoTableFirstRowSaveModeEnum = {
-    Object: 'object',
-    Fields: 'fields'
-} as const;
-export type AutomationNodeConfigDtoTableFirstRowSaveModeEnum = typeof AutomationNodeConfigDtoTableFirstRowSaveModeEnum[keyof typeof AutomationNodeConfigDtoTableFirstRowSaveModeEnum];
-
-/**
- * @export
- */
-export const AutomationNodeConfigDtoTableResultVariableScopeEnum = {
-    Run: 'run',
-    Lead: 'lead',
-    Dialog: 'dialog',
-    Project: 'project'
-} as const;
-export type AutomationNodeConfigDtoTableResultVariableScopeEnum = typeof AutomationNodeConfigDtoTableResultVariableScopeEnum[keyof typeof AutomationNodeConfigDtoTableResultVariableScopeEnum];
-
-/**
- * @export
- */
 export const AutomationNodeConfigDtoTableWriteModeEnum = {
     Update: 'update',
     Append: 'append',
@@ -1406,113 +1784,6 @@ export const AutomationNodeConfigDtoTableMatchModeEnum = {
     All: 'all'
 } as const;
 export type AutomationNodeConfigDtoTableMatchModeEnum = typeof AutomationNodeConfigDtoTableMatchModeEnum[keyof typeof AutomationNodeConfigDtoTableMatchModeEnum];
-
-/**
- * @export
- */
-export const AutomationNodeConfigDtoDateTimeConditionEnum = {
-    Before: 'before',
-    After: 'after',
-    Between: 'between',
-    Weekday: 'weekday',
-    TimeRange: 'time_range'
-} as const;
-export type AutomationNodeConfigDtoDateTimeConditionEnum = typeof AutomationNodeConfigDtoDateTimeConditionEnum[keyof typeof AutomationNodeConfigDtoDateTimeConditionEnum];
-
-/**
- * @export
- */
-export const AutomationNodeConfigDtoVariableScopeEnum = {
-    Run: 'run',
-    Lead: 'lead',
-    Dialog: 'dialog',
-    Project: 'project'
-} as const;
-export type AutomationNodeConfigDtoVariableScopeEnum = typeof AutomationNodeConfigDtoVariableScopeEnum[keyof typeof AutomationNodeConfigDtoVariableScopeEnum];
-
-/**
- * @export
- */
-export const AutomationNodeConfigDtoVariableTypeEnum = {
-    String: 'string',
-    Number: 'number',
-    Boolean: 'boolean',
-    Json: 'json',
-    Date: 'date',
-    Array: 'array',
-    Object: 'object'
-} as const;
-export type AutomationNodeConfigDtoVariableTypeEnum = typeof AutomationNodeConfigDtoVariableTypeEnum[keyof typeof AutomationNodeConfigDtoVariableTypeEnum];
-
-/**
- * @export
- */
-export const AutomationNodeConfigDtoVariableOperationEnum = {
-    Set: 'set',
-    Clear: 'clear',
-    SetIfUnset: 'set_if_unset',
-    AppendText: 'append_text',
-    PrependText: 'prepend_text',
-    Increase: 'increase',
-    Decrease: 'decrease',
-    Toggle: 'toggle',
-    SetNow: 'set_now',
-    ShiftForward: 'shift_forward',
-    ShiftBackward: 'shift_backward',
-    AppendItems: 'append_items',
-    PrependItems: 'prepend_items',
-    AddUniqueItems: 'add_unique_items',
-    RemoveItems: 'remove_items',
-    MergeObject: 'merge_object',
-    RemoveObjectKeys: 'remove_object_keys'
-} as const;
-export type AutomationNodeConfigDtoVariableOperationEnum = typeof AutomationNodeConfigDtoVariableOperationEnum[keyof typeof AutomationNodeConfigDtoVariableOperationEnum];
-
-/**
- * @export
- */
-export const AutomationNodeConfigDtoVariableOperatorEnum = {
-    Exists: 'exists',
-    NotExists: 'not_exists',
-    Equals: 'equals',
-    NotEquals: 'not_equals',
-    GreaterThan: 'greater_than',
-    GreaterThanOrEqual: 'greater_than_or_equal',
-    LessThan: 'less_than',
-    LessThanOrEqual: 'less_than_or_equal',
-    Before: 'before',
-    After: 'after',
-    Contains: 'contains',
-    HasAttachments: 'has_attachments',
-    NoAttachments: 'no_attachments',
-    AttachmentType: 'attachment_type',
-    AttachmentFormat: 'attachment_format'
-} as const;
-export type AutomationNodeConfigDtoVariableOperatorEnum = typeof AutomationNodeConfigDtoVariableOperatorEnum[keyof typeof AutomationNodeConfigDtoVariableOperatorEnum];
-
-/**
- * @export
- */
-export const AutomationNodeConfigDtoVariableValueTypeEnum = {
-    String: 'string',
-    Number: 'number',
-    Boolean: 'boolean',
-    Json: 'json',
-    Date: 'date',
-    Array: 'array',
-    Object: 'object'
-} as const;
-export type AutomationNodeConfigDtoVariableValueTypeEnum = typeof AutomationNodeConfigDtoVariableValueTypeEnum[keyof typeof AutomationNodeConfigDtoVariableValueTypeEnum];
-
-/**
- * @export
- */
-export const AutomationNodeConfigDtoVariableDurationUnitEnum = {
-    Minute: 'minute',
-    Hour: 'hour',
-    Day: 'day'
-} as const;
-export type AutomationNodeConfigDtoVariableDurationUnitEnum = typeof AutomationNodeConfigDtoVariableDurationUnitEnum[keyof typeof AutomationNodeConfigDtoVariableDurationUnitEnum];
 
 /**
  * @export
@@ -1597,6 +1868,17 @@ export const AutomationNodeConfigDtoMessageTargetVariableScopeEnum = {
     Project: 'project'
 } as const;
 export type AutomationNodeConfigDtoMessageTargetVariableScopeEnum = typeof AutomationNodeConfigDtoMessageTargetVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageTargetVariableScopeEnum];
+
+/**
+ * @export
+ */
+export const AutomationNodeConfigDtoMessageReactionVariableScopeEnum = {
+    Run: 'run',
+    Lead: 'lead',
+    Dialog: 'dialog',
+    Project: 'project'
+} as const;
+export type AutomationNodeConfigDtoMessageReactionVariableScopeEnum = typeof AutomationNodeConfigDtoMessageReactionVariableScopeEnum[keyof typeof AutomationNodeConfigDtoMessageReactionVariableScopeEnum];
 
 /**
  * @export
@@ -1724,6 +2006,66 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
 
+        'segmentId': json['segment_id'] == null ? undefined : json['segment_id'],
+        'funnelId': json['funnel_id'] == null ? undefined : json['funnel_id'],
+        'funnelStageId': json['funnel_stage_id'] == null ? undefined : json['funnel_stage_id'],
+        'targetAutomationId': json['target_automation_id'] == null ? undefined : json['target_automation_id'],
+        'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
+        'agentRole': json['agent_role'] == null ? undefined : json['agent_role'],
+        'operatorGroupId': json['operator_group_id'] == null ? undefined : json['operator_group_id'],
+        'operatorUserId': json['operator_user_id'] == null ? undefined : json['operator_user_id'],
+        'operatorCondition': json['operator_condition'] == null ? undefined : json['operator_condition'],
+        'channelTypes': json['channel_types'] == null ? undefined : json['channel_types'],
+        'tableId': json['table_id'] == null ? undefined : json['table_id'],
+        'tableSheetId': json['table_sheet_id'] == null ? undefined : json['table_sheet_id'],
+        'tableStructureMode': json['table_structure_mode'] == null ? undefined : json['table_structure_mode'],
+        'tableHeaderRange': json['table_header_range'] == null ? undefined : json['table_header_range'],
+        'tableDataRange': json['table_data_range'] == null ? undefined : json['table_data_range'],
+        'tableFilters': json['table_filters'] == null ? undefined : ((json['table_filters'] as Array<any>).map(AutomationTableFilterDtoFromJSON)),
+        'tableOutputs': json['table_outputs'] == null ? undefined : ((json['table_outputs'] as Array<any>).map(AutomationTableOutputDtoFromJSON)),
+        'tableResultFields': json['table_result_fields'] == null ? undefined : ((json['table_result_fields'] as Array<any>).map(AutomationTableResultFieldDtoFromJSON)),
+        'tableResultMode': json['table_result_mode'] == null ? undefined : json['table_result_mode'],
+        'tableFirstRowSaveMode': json['table_first_row_save_mode'] == null ? undefined : json['table_first_row_save_mode'],
+        'tableResultVariableScope': json['table_result_variable_scope'] == null ? undefined : json['table_result_variable_scope'],
+        'tableResultVariableName': json['table_result_variable_name'] == null ? undefined : json['table_result_variable_name'],
+        'dateTimeCondition': json['date_time_condition'] == null ? undefined : json['date_time_condition'],
+        'dateTimeStart': json['date_time_start'] == null ? undefined : (new Date(json['date_time_start'])),
+        'dateTimeEnd': json['date_time_end'] == null ? undefined : (new Date(json['date_time_end'])),
+        'dateTimeWeekdays': json['date_time_weekdays'] == null ? undefined : json['date_time_weekdays'],
+        'dateTimeStartTime': json['date_time_start_time'] == null ? undefined : json['date_time_start_time'],
+        'dateTimeEndTime': json['date_time_end_time'] == null ? undefined : json['date_time_end_time'],
+        'dateTimeTimezone': json['date_time_timezone'] == null ? undefined : json['date_time_timezone'],
+        'variableScope': json['variable_scope'] == null ? undefined : json['variable_scope'],
+        'variableName': json['variable_name'] == null ? undefined : json['variable_name'],
+        'variableType': json['variable_type'] == null ? undefined : json['variable_type'],
+        'variableOperation': json['variable_operation'] == null ? undefined : json['variable_operation'],
+        'variableOperator': json['variable_operator'] == null ? undefined : json['variable_operator'],
+        'variableValueType': json['variable_value_type'] == null ? undefined : json['variable_value_type'],
+        'variableValue': json['variable_value'] == null ? undefined : json['variable_value'],
+        'variableDurationUnit': json['variable_duration_unit'] == null ? undefined : json['variable_duration_unit'],
+        'telegramWidget': json['telegram_widget'] == null ? undefined : AutomationTelegramWidgetConfigDtoFromJSON(json['telegram_widget']),
+        'messageDeleteNodeId': json['message_delete_node_id'] == null ? undefined : json['message_delete_node_id'],
+        'messageDeleteAutomationId': json['message_delete_automation_id'] == null ? undefined : json['message_delete_automation_id'],
+        'bookingOperation': json['booking_operation'] == null ? undefined : AutomationBookingOperationFromJSON(json['booking_operation']),
+        'bookingInputs': json['booking_inputs'] == null ? undefined : AutomationBookingInputsDtoFromJSON(json['booking_inputs']),
+        'bookingResultVariableScope': json['booking_result_variable_scope'] == null ? undefined : json['booking_result_variable_scope'],
+        'bookingResultVariable': json['booking_result_variable'] == null ? undefined : json['booking_result_variable'],
+        'bookingEvents': json['booking_events'] == null ? undefined : json['booking_events'],
+        'bookingServiceIds': json['booking_service_ids'] == null ? undefined : json['booking_service_ids'],
+        'bookingLeadFilter': json['booking_lead_filter'] == null ? undefined : AutomationBookingLeadFilterFromJSON(json['booking_lead_filter']),
+        'bookingEventVariableName': json['booking_event_variable_name'] == null ? undefined : json['booking_event_variable_name'],
+        'codeLanguage': json['code_language'] == null ? undefined : json['code_language'],
+        'codeSource': json['code_source'] == null ? undefined : json['code_source'],
+        'codeBranches': json['code_branches'] == null ? undefined : ((json['code_branches'] as Array<any>).map(AutomationAppStepBranchSnapshotDtoFromJSON)),
+        'callDescription': json['call_description'] == null ? undefined : json['call_description'],
+        'inputParameters': json['input_parameters'] == null ? undefined : ((json['input_parameters'] as Array<any>).map(AutomationCallParameterDtoFromJSON)),
+        'resultParameters': json['result_parameters'] == null ? undefined : ((json['result_parameters'] as Array<any>).map(AutomationCallParameterDtoFromJSON)),
+        'resultBindings': json['result_bindings'] == null ? undefined : ((json['result_bindings'] as Array<any>).map(AutomationRunVariableBindingDtoFromJSON)),
+        'callResults': json['call_results'] == null ? undefined : ((json['call_results'] as Array<any>).map(AutomationCallResultDtoFromJSON)),
+        'waitResult': json['wait_result'] == null ? undefined : json['wait_result'],
+        'conditionGroupOperator': json['condition_group_operator'] == null ? undefined : json['condition_group_operator'],
+        'conditionGroupShowBranches': json['condition_group_show_branches'] == null ? undefined : json['condition_group_show_branches'],
+        'conditionGroupConditions': json['condition_group_conditions'] == null ? undefined : ((json['condition_group_conditions'] as Array<any>).map(AutomationGroupedConditionDtoFromJSON)),
         'birthdayDaysBefore': json['birthday_days_before'] == null ? undefined : json['birthday_days_before'],
         'birthdayTime': json['birthday_time'] == null ? undefined : json['birthday_time'],
         'birthdayTimezone': json['birthday_timezone'] == null ? undefined : json['birthday_timezone'],
@@ -1767,23 +2109,14 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
         'membershipSpaceId': json['membership_space_id'] == null ? undefined : json['membership_space_id'],
         'dialogIds': json['dialog_ids'] == null ? undefined : json['dialog_ids'],
         'dialogScope': json['dialog_scope'] == null ? undefined : json['dialog_scope'],
-        'segmentId': json['segment_id'] == null ? undefined : json['segment_id'],
-        'funnelId': json['funnel_id'] == null ? undefined : json['funnel_id'],
-        'funnelStageId': json['funnel_stage_id'] == null ? undefined : json['funnel_stage_id'],
         'addMarkerIds': json['add_marker_ids'] == null ? undefined : json['add_marker_ids'],
         'removeMarkerIds': json['remove_marker_ids'] == null ? undefined : json['remove_marker_ids'],
-        'targetAutomationId': json['target_automation_id'] == null ? undefined : json['target_automation_id'],
         'targetRunVariableBindings': json['target_run_variable_bindings'] == null ? undefined : ((json['target_run_variable_bindings'] as Array<any>).map(AutomationRunVariableBindingDtoFromJSON)),
-        'agentId': json['agent_id'] == null ? undefined : json['agent_id'],
-        'agentRole': json['agent_role'] == null ? undefined : json['agent_role'],
         'agentProcessCurrentMessage': json['agent_process_current_message'] == null ? undefined : json['agent_process_current_message'],
         'agentDisableAutoAssignment': json['agent_disable_auto_assignment'] == null ? undefined : json['agent_disable_auto_assignment'],
         'operatorAssignmentMode': json['operator_assignment_mode'] == null ? undefined : json['operator_assignment_mode'],
-        'operatorGroupId': json['operator_group_id'] == null ? undefined : json['operator_group_id'],
-        'operatorUserId': json['operator_user_id'] == null ? undefined : json['operator_user_id'],
         'operatorExcludePrimaryAgent': json['operator_exclude_primary_agent'] == null ? undefined : json['operator_exclude_primary_agent'],
         'operatorExcludeBackgroundAgent': json['operator_exclude_background_agent'] == null ? undefined : json['operator_exclude_background_agent'],
-        'operatorCondition': json['operator_condition'] == null ? undefined : json['operator_condition'],
         'agentIncludeDialogHistory': json['agent_include_dialog_history'] == null ? undefined : json['agent_include_dialog_history'],
         'agentCommandText': json['agent_command_text'] == null ? undefined : json['agent_command_text'],
         'agentCommandAttachments': json['agent_command_attachments'] == null ? undefined : ((json['agent_command_attachments'] as Array<any>).map(AutomationMessageAttachmentDtoFromJSON)),
@@ -1799,39 +2132,12 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
         'agentResponseButtonsVariableName': json['agent_response_buttons_variable_name'] == null ? undefined : json['agent_response_buttons_variable_name'],
         'agentResponseJsonVariableScope': json['agent_response_json_variable_scope'] == null ? undefined : json['agent_response_json_variable_scope'],
         'agentResponseJsonVariableName': json['agent_response_json_variable_name'] == null ? undefined : json['agent_response_json_variable_name'],
-        'channelTypes': json['channel_types'] == null ? undefined : json['channel_types'],
-        'tableId': json['table_id'] == null ? undefined : json['table_id'],
-        'tableSheetId': json['table_sheet_id'] == null ? undefined : json['table_sheet_id'],
-        'tableStructureMode': json['table_structure_mode'] == null ? undefined : json['table_structure_mode'],
-        'tableHeaderRange': json['table_header_range'] == null ? undefined : json['table_header_range'],
-        'tableDataRange': json['table_data_range'] == null ? undefined : json['table_data_range'],
-        'tableFilters': json['table_filters'] == null ? undefined : ((json['table_filters'] as Array<any>).map(AutomationTableFilterDtoFromJSON)),
-        'tableOutputs': json['table_outputs'] == null ? undefined : ((json['table_outputs'] as Array<any>).map(AutomationTableOutputDtoFromJSON)),
-        'tableResultFields': json['table_result_fields'] == null ? undefined : ((json['table_result_fields'] as Array<any>).map(AutomationTableResultFieldDtoFromJSON)),
-        'tableResultMode': json['table_result_mode'] == null ? undefined : json['table_result_mode'],
-        'tableFirstRowSaveMode': json['table_first_row_save_mode'] == null ? undefined : json['table_first_row_save_mode'],
-        'tableResultVariableScope': json['table_result_variable_scope'] == null ? undefined : json['table_result_variable_scope'],
-        'tableResultVariableName': json['table_result_variable_name'] == null ? undefined : json['table_result_variable_name'],
         'tableWriteMode': json['table_write_mode'] == null ? undefined : json['table_write_mode'],
         'tableMatchMode': json['table_match_mode'] == null ? undefined : json['table_match_mode'],
         'tableWrites': json['table_writes'] == null ? undefined : ((json['table_writes'] as Array<any>).map(AutomationTableWriteDtoFromJSON)),
-        'dateTimeCondition': json['date_time_condition'] == null ? undefined : json['date_time_condition'],
-        'dateTimeStart': json['date_time_start'] == null ? undefined : (new Date(json['date_time_start'])),
-        'dateTimeEnd': json['date_time_end'] == null ? undefined : (new Date(json['date_time_end'])),
-        'dateTimeWeekdays': json['date_time_weekdays'] == null ? undefined : json['date_time_weekdays'],
-        'dateTimeStartTime': json['date_time_start_time'] == null ? undefined : json['date_time_start_time'],
-        'dateTimeEndTime': json['date_time_end_time'] == null ? undefined : json['date_time_end_time'],
-        'dateTimeTimezone': json['date_time_timezone'] == null ? undefined : json['date_time_timezone'],
         'randomBranches': json['random_branches'] == null ? undefined : ((json['random_branches'] as Array<any>).map(AutomationRandomBranchDtoFromJSON)),
         'agentBranches': json['agent_branches'] == null ? undefined : ((json['agent_branches'] as Array<any>).map(AutomationAgentBranchDtoFromJSON)),
-        'variableScope': json['variable_scope'] == null ? undefined : json['variable_scope'],
-        'variableName': json['variable_name'] == null ? undefined : json['variable_name'],
-        'variableType': json['variable_type'] == null ? undefined : json['variable_type'],
-        'variableOperation': json['variable_operation'] == null ? undefined : json['variable_operation'],
-        'variableOperator': json['variable_operator'] == null ? undefined : json['variable_operator'],
-        'variableValueType': json['variable_value_type'] == null ? undefined : json['variable_value_type'],
-        'variableValue': json['variable_value'] == null ? undefined : json['variable_value'],
-        'variableDurationUnit': json['variable_duration_unit'] == null ? undefined : json['variable_duration_unit'],
+        'variableFormula': json['variable_formula'] == null ? undefined : json['variable_formula'],
         'messageText': json['message_text'] == null ? undefined : json['message_text'],
         'messageAttachments': json['message_attachments'] == null ? undefined : ((json['message_attachments'] as Array<any>).map(AutomationMessageAttachmentDtoFromJSON)),
         'messageLeadContact': json['message_lead_contact'] == null ? undefined : AutomationLeadContactDtoFromJSON(json['message_lead_contact']),
@@ -1854,6 +2160,10 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
         'messageTargetVariableName': json['message_target_variable_name'] == null ? undefined : json['message_target_variable_name'],
         'messageReplyToSource': json['message_reply_to_source'] == null ? undefined : json['message_reply_to_source'],
         'messageWaitForReply': json['message_wait_for_reply'] == null ? undefined : json['message_wait_for_reply'],
+        'messageWaitForReaction': json['message_wait_for_reaction'] == null ? undefined : json['message_wait_for_reaction'],
+        'messageAllowRepeatedReactions': json['message_allow_repeated_reactions'] == null ? undefined : json['message_allow_repeated_reactions'],
+        'messageReactionVariableScope': json['message_reaction_variable_scope'] == null ? undefined : json['message_reaction_variable_scope'],
+        'messageReactionVariableName': json['message_reaction_variable_name'] == null ? undefined : json['message_reaction_variable_name'],
         'keepReplyAfterChoice': json['keep_reply_after_choice'] == null ? undefined : json['keep_reply_after_choice'],
         'messageReplyVariableScope': json['message_reply_variable_scope'] == null ? undefined : json['message_reply_variable_scope'],
         'messageReplyVariableName': json['message_reply_variable_name'] == null ? undefined : json['message_reply_variable_name'],
@@ -1902,6 +2212,66 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
 
     return {
 
+        'segment_id': value['segmentId'],
+        'funnel_id': value['funnelId'],
+        'funnel_stage_id': value['funnelStageId'],
+        'target_automation_id': value['targetAutomationId'],
+        'agent_id': value['agentId'],
+        'agent_role': value['agentRole'],
+        'operator_group_id': value['operatorGroupId'],
+        'operator_user_id': value['operatorUserId'],
+        'operator_condition': value['operatorCondition'],
+        'channel_types': value['channelTypes'],
+        'table_id': value['tableId'],
+        'table_sheet_id': value['tableSheetId'],
+        'table_structure_mode': value['tableStructureMode'],
+        'table_header_range': value['tableHeaderRange'],
+        'table_data_range': value['tableDataRange'],
+        'table_filters': value['tableFilters'] == null ? undefined : ((value['tableFilters'] as Array<any>).map(AutomationTableFilterDtoToJSON)),
+        'table_outputs': value['tableOutputs'] == null ? undefined : ((value['tableOutputs'] as Array<any>).map(AutomationTableOutputDtoToJSON)),
+        'table_result_fields': value['tableResultFields'] == null ? undefined : ((value['tableResultFields'] as Array<any>).map(AutomationTableResultFieldDtoToJSON)),
+        'table_result_mode': value['tableResultMode'],
+        'table_first_row_save_mode': value['tableFirstRowSaveMode'],
+        'table_result_variable_scope': value['tableResultVariableScope'],
+        'table_result_variable_name': value['tableResultVariableName'],
+        'date_time_condition': value['dateTimeCondition'],
+        'date_time_start': value['dateTimeStart'] == null ? undefined : ((value['dateTimeStart']).toISOString()),
+        'date_time_end': value['dateTimeEnd'] == null ? undefined : ((value['dateTimeEnd']).toISOString()),
+        'date_time_weekdays': value['dateTimeWeekdays'],
+        'date_time_start_time': value['dateTimeStartTime'],
+        'date_time_end_time': value['dateTimeEndTime'],
+        'date_time_timezone': value['dateTimeTimezone'],
+        'variable_scope': value['variableScope'],
+        'variable_name': value['variableName'],
+        'variable_type': value['variableType'],
+        'variable_operation': value['variableOperation'],
+        'variable_operator': value['variableOperator'],
+        'variable_value_type': value['variableValueType'],
+        'variable_value': value['variableValue'],
+        'variable_duration_unit': value['variableDurationUnit'],
+        'telegram_widget': AutomationTelegramWidgetConfigDtoToJSON(value['telegramWidget']),
+        'message_delete_node_id': value['messageDeleteNodeId'],
+        'message_delete_automation_id': value['messageDeleteAutomationId'],
+        'booking_operation': AutomationBookingOperationToJSON(value['bookingOperation']),
+        'booking_inputs': AutomationBookingInputsDtoToJSON(value['bookingInputs']),
+        'booking_result_variable_scope': value['bookingResultVariableScope'],
+        'booking_result_variable': value['bookingResultVariable'],
+        'booking_events': value['bookingEvents'],
+        'booking_service_ids': value['bookingServiceIds'],
+        'booking_lead_filter': AutomationBookingLeadFilterToJSON(value['bookingLeadFilter']),
+        'booking_event_variable_name': value['bookingEventVariableName'],
+        'code_language': value['codeLanguage'],
+        'code_source': value['codeSource'],
+        'code_branches': value['codeBranches'] == null ? undefined : ((value['codeBranches'] as Array<any>).map(AutomationAppStepBranchSnapshotDtoToJSON)),
+        'call_description': value['callDescription'],
+        'input_parameters': value['inputParameters'] == null ? undefined : ((value['inputParameters'] as Array<any>).map(AutomationCallParameterDtoToJSON)),
+        'result_parameters': value['resultParameters'] == null ? undefined : ((value['resultParameters'] as Array<any>).map(AutomationCallParameterDtoToJSON)),
+        'result_bindings': value['resultBindings'] == null ? undefined : ((value['resultBindings'] as Array<any>).map(AutomationRunVariableBindingDtoToJSON)),
+        'call_results': value['callResults'] == null ? undefined : ((value['callResults'] as Array<any>).map(AutomationCallResultDtoToJSON)),
+        'wait_result': value['waitResult'],
+        'condition_group_operator': value['conditionGroupOperator'],
+        'condition_group_show_branches': value['conditionGroupShowBranches'],
+        'condition_group_conditions': value['conditionGroupConditions'] == null ? undefined : ((value['conditionGroupConditions'] as Array<any>).map(AutomationGroupedConditionDtoToJSON)),
         'birthday_days_before': value['birthdayDaysBefore'],
         'birthday_time': value['birthdayTime'],
         'birthday_timezone': value['birthdayTimezone'],
@@ -1945,23 +2315,14 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
         'membership_space_id': value['membershipSpaceId'],
         'dialog_ids': value['dialogIds'],
         'dialog_scope': value['dialogScope'],
-        'segment_id': value['segmentId'],
-        'funnel_id': value['funnelId'],
-        'funnel_stage_id': value['funnelStageId'],
         'add_marker_ids': value['addMarkerIds'],
         'remove_marker_ids': value['removeMarkerIds'],
-        'target_automation_id': value['targetAutomationId'],
         'target_run_variable_bindings': value['targetRunVariableBindings'] == null ? undefined : ((value['targetRunVariableBindings'] as Array<any>).map(AutomationRunVariableBindingDtoToJSON)),
-        'agent_id': value['agentId'],
-        'agent_role': value['agentRole'],
         'agent_process_current_message': value['agentProcessCurrentMessage'],
         'agent_disable_auto_assignment': value['agentDisableAutoAssignment'],
         'operator_assignment_mode': value['operatorAssignmentMode'],
-        'operator_group_id': value['operatorGroupId'],
-        'operator_user_id': value['operatorUserId'],
         'operator_exclude_primary_agent': value['operatorExcludePrimaryAgent'],
         'operator_exclude_background_agent': value['operatorExcludeBackgroundAgent'],
-        'operator_condition': value['operatorCondition'],
         'agent_include_dialog_history': value['agentIncludeDialogHistory'],
         'agent_command_text': value['agentCommandText'],
         'agent_command_attachments': value['agentCommandAttachments'] == null ? undefined : ((value['agentCommandAttachments'] as Array<any>).map(AutomationMessageAttachmentDtoToJSON)),
@@ -1977,39 +2338,12 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
         'agent_response_buttons_variable_name': value['agentResponseButtonsVariableName'],
         'agent_response_json_variable_scope': value['agentResponseJsonVariableScope'],
         'agent_response_json_variable_name': value['agentResponseJsonVariableName'],
-        'channel_types': value['channelTypes'],
-        'table_id': value['tableId'],
-        'table_sheet_id': value['tableSheetId'],
-        'table_structure_mode': value['tableStructureMode'],
-        'table_header_range': value['tableHeaderRange'],
-        'table_data_range': value['tableDataRange'],
-        'table_filters': value['tableFilters'] == null ? undefined : ((value['tableFilters'] as Array<any>).map(AutomationTableFilterDtoToJSON)),
-        'table_outputs': value['tableOutputs'] == null ? undefined : ((value['tableOutputs'] as Array<any>).map(AutomationTableOutputDtoToJSON)),
-        'table_result_fields': value['tableResultFields'] == null ? undefined : ((value['tableResultFields'] as Array<any>).map(AutomationTableResultFieldDtoToJSON)),
-        'table_result_mode': value['tableResultMode'],
-        'table_first_row_save_mode': value['tableFirstRowSaveMode'],
-        'table_result_variable_scope': value['tableResultVariableScope'],
-        'table_result_variable_name': value['tableResultVariableName'],
         'table_write_mode': value['tableWriteMode'],
         'table_match_mode': value['tableMatchMode'],
         'table_writes': value['tableWrites'] == null ? undefined : ((value['tableWrites'] as Array<any>).map(AutomationTableWriteDtoToJSON)),
-        'date_time_condition': value['dateTimeCondition'],
-        'date_time_start': value['dateTimeStart'] == null ? undefined : ((value['dateTimeStart']).toISOString()),
-        'date_time_end': value['dateTimeEnd'] == null ? undefined : ((value['dateTimeEnd']).toISOString()),
-        'date_time_weekdays': value['dateTimeWeekdays'],
-        'date_time_start_time': value['dateTimeStartTime'],
-        'date_time_end_time': value['dateTimeEndTime'],
-        'date_time_timezone': value['dateTimeTimezone'],
         'random_branches': value['randomBranches'] == null ? undefined : ((value['randomBranches'] as Array<any>).map(AutomationRandomBranchDtoToJSON)),
         'agent_branches': value['agentBranches'] == null ? undefined : ((value['agentBranches'] as Array<any>).map(AutomationAgentBranchDtoToJSON)),
-        'variable_scope': value['variableScope'],
-        'variable_name': value['variableName'],
-        'variable_type': value['variableType'],
-        'variable_operation': value['variableOperation'],
-        'variable_operator': value['variableOperator'],
-        'variable_value_type': value['variableValueType'],
-        'variable_value': value['variableValue'],
-        'variable_duration_unit': value['variableDurationUnit'],
+        'variable_formula': value['variableFormula'],
         'message_text': value['messageText'],
         'message_attachments': value['messageAttachments'] == null ? undefined : ((value['messageAttachments'] as Array<any>).map(AutomationMessageAttachmentDtoToJSON)),
         'message_lead_contact': AutomationLeadContactDtoToJSON(value['messageLeadContact']),
@@ -2032,6 +2366,10 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
         'message_target_variable_name': value['messageTargetVariableName'],
         'message_reply_to_source': value['messageReplyToSource'],
         'message_wait_for_reply': value['messageWaitForReply'],
+        'message_wait_for_reaction': value['messageWaitForReaction'],
+        'message_allow_repeated_reactions': value['messageAllowRepeatedReactions'],
+        'message_reaction_variable_scope': value['messageReactionVariableScope'],
+        'message_reaction_variable_name': value['messageReactionVariableName'],
         'keep_reply_after_choice': value['keepReplyAfterChoice'],
         'message_reply_variable_scope': value['messageReplyVariableScope'],
         'message_reply_variable_name': value['messageReplyVariableName'],

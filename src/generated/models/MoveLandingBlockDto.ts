@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface MoveLandingBlockDto {
     /**
-     *
+     * order_revision . 409 .
      * @type {number}
      * @memberof MoveLandingBlockDto
      */

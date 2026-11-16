@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateDraftWizardAcceptLanguageEnum = exports.UpdateDraftVariablesBindingsAcceptLanguageEnum = exports.UpdateDraftVariablesAccessModeAcceptLanguageEnum = exports.UpdateDraftTrainingAcceptLanguageEnum = exports.UpdateDraftStatusAcceptLanguageEnum = exports.UpdateDraftStatusStatusEnum = exports.UpdateDraftServersAcceptLanguageEnum = exports.UpdateDraftSegmentsSelectedAcceptLanguageEnum = exports.UpdateDraftSegmentsNoneAcceptLanguageEnum = exports.UpdateDraftSegmentsAllAcceptLanguageEnum = exports.UpdateDraftProfileAcceptLanguageEnum = exports.UpdateDraftModelAcceptLanguageEnum = exports.UpdateDraftMetricsAcceptLanguageEnum = exports.UpdateDraftKnowledgeBaseAcceptLanguageEnum = exports.UpdateDraftFunnelsAcceptLanguageEnum = exports.UpdateDraftCreationAcceptLanguageEnum = exports.UpdateDraftContextAcceptLanguageEnum = exports.UpdateDraftCapabilitiesAcceptLanguageEnum = exports.UpdateDraftAssignmentAcceptLanguageEnum = exports.GetInstructionReferenceAcceptLanguageEnum = exports.GetInstructionReferenceLocaleEnum = exports.GetInstructionReferenceResourceTypeEnum = exports.DraftsAcceptLanguageEnum = exports.DraftSnapshotAcceptLanguageEnum = exports.DraftPublishAcceptLanguageEnum = exports.AgentAuthoringApi = void 0;
+exports.UpdateDraftWizardAcceptLanguageEnum = exports.UpdateDraftVariablesBindingsAcceptLanguageEnum = exports.UpdateDraftVariablesAccessModeAcceptLanguageEnum = exports.UpdateDraftTrainingAcceptLanguageEnum = exports.UpdateDraftStatusAcceptLanguageEnum = exports.UpdateDraftStatusStatusEnum = exports.UpdateDraftServersAcceptLanguageEnum = exports.UpdateDraftSegmentsSelectedAcceptLanguageEnum = exports.UpdateDraftSegmentsNoneAcceptLanguageEnum = exports.UpdateDraftSegmentsAllAcceptLanguageEnum = exports.UpdateDraftProfileAcceptLanguageEnum = exports.UpdateDraftModelAcceptLanguageEnum = exports.UpdateDraftMetricsAcceptLanguageEnum = exports.UpdateDraftKnowledgeBaseAcceptLanguageEnum = exports.UpdateDraftFunnelsAcceptLanguageEnum = exports.UpdateDraftCreationAcceptLanguageEnum = exports.UpdateDraftContextAcceptLanguageEnum = exports.UpdateDraftCapabilitiesAcceptLanguageEnum = exports.UpdateDraftBookingAcceptLanguageEnum = exports.UpdateDraftAssignmentAcceptLanguageEnum = exports.GetInstructionReferenceAcceptLanguageEnum = exports.GetInstructionReferenceLocaleEnum = exports.GetInstructionReferenceResourceTypeEnum = exports.DraftsAcceptLanguageEnum = exports.DraftSnapshotAcceptLanguageEnum = exports.DraftPublishAcceptLanguageEnum = exports.AgentAuthoringApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -298,6 +298,55 @@ class AgentAuthoringApi extends runtime.BaseAPI {
      */
     async updateDraftAssignment(requestParameters, initOverrides) {
         const response = await this.updateDraftAssignmentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . .
+     * -
+     */
+    async updateDraftBookingRaw(requestParameters, initOverrides) {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling updateDraftBooking().');
+        }
+        if (requestParameters['updateAgentBookingDto'] == null) {
+            throw new runtime.RequiredError('updateAgentBookingDto', 'Required parameter "updateAgentBookingDto" was null or undefined when calling updateDraftBooking().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+        const response = await this.request({
+            path: `/api/agents/{id}/draft/booking`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateAgentBookingDtoToJSON)(requestParameters['updateAgentBookingDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AgentDraftSettingsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     * -
+     */
+    async updateDraftBooking(requestParameters, initOverrides) {
+        const response = await this.updateDraftBookingRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -1183,6 +1232,13 @@ exports.GetInstructionReferenceAcceptLanguageEnum = {
  * @export
  */
 exports.UpdateDraftAssignmentAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateDraftBookingAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

@@ -44,7 +44,8 @@ exports.EventAiDtoUsagePurposeEnum = {
     KnowledgeImageDescription: 'knowledge_image_description',
     AgentSetup: 'agent_setup',
     AnalyticsInsightSummary: 'analytics_insight_summary',
-    ResponseMetricsExtraction: 'response_metrics_extraction'
+    ResponseMetricsExtraction: 'response_metrics_extraction',
+    ContextCompaction: 'context_compaction'
 };
 /**
  * @export

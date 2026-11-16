@@ -53,6 +53,8 @@ function ImportLeadsParamsDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'fileImport': json['file_import'] == null ? undefined : json['file_import'],
+        'fileExpiresAt': json['file_expires_at'] == null ? undefined : (new Date(json['file_expires_at'])),
         'channelId': json['channel_id'],
         'channelType': json['channel_type'],
         'leadSource': json['lead_source'] == null ? undefined : json['lead_source'],
@@ -66,6 +68,8 @@ function ImportLeadsParamsDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'file_import': value['fileImport'],
+        'file_expires_at': value['fileExpiresAt'] == null ? undefined : ((value['fileExpiresAt']).toISOString()),
         'channel_id': value['channelId'],
         'channel_type': value['channelType'],
         'lead_source': value['leadSource'],

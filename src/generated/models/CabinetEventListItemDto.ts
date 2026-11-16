@@ -451,6 +451,7 @@ export const CabinetEventListItemDtoActionTypeEnum = {
     AiActionExecuted: 'ai_action_executed',
     AiProviderCallCompleted: 'ai_provider_call_completed',
     AnalyticsUsageCharged: 'analytics_usage_charged',
+    LiveVoiceUsageCharged: 'live_voice_usage_charged',
     ErrorRaised: 'error_raised',
     StateChanged: 'state_changed',
     RolledBack: 'rolled_back',

@@ -56,7 +56,8 @@ export const LeadVariableMatchDtoTypeEnum = {
     Json: 'json',
     Date: 'date',
     Array: 'array',
-    Object: 'object'
+    Object: 'object',
+    Reaction: 'reaction'
 } as const;
 export type LeadVariableMatchDtoTypeEnum = typeof LeadVariableMatchDtoTypeEnum[keyof typeof LeadVariableMatchDtoTypeEnum];
 

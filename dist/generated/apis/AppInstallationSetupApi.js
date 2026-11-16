@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SetupStepsSubscriptionLinksAcceptLanguageEnum = exports.SetupStepsSetDefaultAgentAcceptLanguageEnum = exports.SetupStepsFillVariablesAcceptLanguageEnum = exports.SetupStepsCustomInstructionAcceptLanguageEnum = exports.SetupStepsAssignAgentToDialogAcceptLanguageEnum = exports.AppInstallationSetupApi = void 0;
+exports.SetupStepsSubscriptionLinksAcceptLanguageEnum = exports.SetupStepsSetDefaultAgentAcceptLanguageEnum = exports.SetupStepsSelectRecipientAcceptLanguageEnum = exports.SetupStepsFillVariablesAcceptLanguageEnum = exports.SetupStepsCustomInstructionAcceptLanguageEnum = exports.SetupStepsConfigureConsentsAcceptLanguageEnum = exports.SetupStepsAssignAgentToDialogAcceptLanguageEnum = exports.AppInstallationSetupApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,8 +54,8 @@ const index_1 = require("../models/index");
  */
 class AppInstallationSetupApi extends runtime.BaseAPI {
     /**
-     * .
-     * assign_agent_to_dialog
+     * assign_agent_to_dialog . ; . . installation_id steps[].id assign_agent_to_dialog .
+     *
      */
     async setupStepsAssignAgentToDialogRaw(requestParameters, initOverrides) {
         if (requestParameters['installationId'] == null) {
@@ -87,11 +87,52 @@ class AppInstallationSetupApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.InstallationSetupResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
-     * assign_agent_to_dialog
+     * assign_agent_to_dialog . ; . . installation_id steps[].id assign_agent_to_dialog .
+     *
      */
     async setupStepsAssignAgentToDialog(requestParameters, initOverrides) {
         const response = await this.setupStepsAssignAgentToDialogRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , . API .
+     *
+     */
+    async setupStepsConfigureConsentsRaw(requestParameters, initOverrides) {
+        if (requestParameters['installationId'] == null) {
+            throw new runtime.RequiredError('installationId', 'Required parameter "installationId" was null or undefined when calling setupStepsConfigureConsents().');
+        }
+        if (requestParameters['stepId'] == null) {
+            throw new runtime.RequiredError('stepId', 'Required parameter "stepId" was null or undefined when calling setupStepsConfigureConsents().');
+        }
+        if (requestParameters['submitConfigureConsentsStepDto'] == null) {
+            throw new runtime.RequiredError('submitConfigureConsentsStepDto', 'Required parameter "submitConfigureConsentsStepDto" was null or undefined when calling setupStepsConfigureConsents().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_apps"]);
+        }
+        const response = await this.request({
+            path: `/api/project-apps/installed/{installationId}/setup/steps/{stepId}/configure-consents`.replace(`{${"installationId"}}`, encodeURIComponent(String(requestParameters['installationId']))).replace(`{${"stepId"}}`, encodeURIComponent(String(requestParameters['stepId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SubmitConfigureConsentsStepDtoToJSON)(requestParameters['submitConfigureConsentsStepDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.InstallationSetupResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , . API .
+     *
+     */
+    async setupStepsConfigureConsents(requestParameters, initOverrides) {
+        const response = await this.setupStepsConfigureConsentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -174,6 +215,47 @@ class AppInstallationSetupApi extends runtime.BaseAPI {
      */
     async setupStepsFillVariables(requestParameters, initOverrides) {
         const response = await this.setupStepsFillVariablesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * dialog_id lead_id. ID .
+     *
+     */
+    async setupStepsSelectRecipientRaw(requestParameters, initOverrides) {
+        if (requestParameters['installationId'] == null) {
+            throw new runtime.RequiredError('installationId', 'Required parameter "installationId" was null or undefined when calling setupStepsSelectRecipient().');
+        }
+        if (requestParameters['stepId'] == null) {
+            throw new runtime.RequiredError('stepId', 'Required parameter "stepId" was null or undefined when calling setupStepsSelectRecipient().');
+        }
+        if (requestParameters['submitRecipientStepDto'] == null) {
+            throw new runtime.RequiredError('submitRecipientStepDto', 'Required parameter "submitRecipientStepDto" was null or undefined when calling setupStepsSelectRecipient().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_apps"]);
+        }
+        const response = await this.request({
+            path: `/api/project-apps/installed/{installationId}/setup/steps/{stepId}/select-recipient`.replace(`{${"installationId"}}`, encodeURIComponent(String(requestParameters['installationId']))).replace(`{${"stepId"}}`, encodeURIComponent(String(requestParameters['stepId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SubmitRecipientStepDtoToJSON)(requestParameters['submitRecipientStepDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.InstallationSetupResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * dialog_id lead_id. ID .
+     *
+     */
+    async setupStepsSelectRecipient(requestParameters, initOverrides) {
+        const response = await this.setupStepsSelectRecipientRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -270,6 +352,13 @@ exports.SetupStepsAssignAgentToDialogAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.SetupStepsConfigureConsentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.SetupStepsCustomInstructionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -278,6 +367,13 @@ exports.SetupStepsCustomInstructionAcceptLanguageEnum = {
  * @export
  */
 exports.SetupStepsFillVariablesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.SetupStepsSelectRecipientAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

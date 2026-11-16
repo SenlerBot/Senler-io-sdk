@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ArrayVariableValueDto, BooleanVariableValueDto, CreateArrayVariableDto, CreateBooleanVariableDto, CreateDateVariableDto, CreateJsonArrayVariableDto, CreateJsonBooleanVariableDto, CreateJsonNullVariableDto, CreateJsonNumberVariableDto, CreateJsonObjectVariableDto, CreateJsonStringVariableDto, CreateNumberVariableDto, CreateObjectVariableDto, CreateStringVariableDto, DateVariableValueDto, NumberVariableValueDto, ObjectVariableValueDto, ProjectVariableListResponseDto, ProjectVariableResponseDto, ProjectVariablesDeactivate200Response, StringVariableValueDto, UpdateVariableMetadataDto, VariableSchemaValueDto } from '../models/index';
+import type { ArrayVariableValueDto, BooleanVariableValueDto, CreateArrayVariableDto, CreateBooleanVariableDto, CreateDateVariableDto, CreateJsonArrayVariableDto, CreateJsonBooleanVariableDto, CreateJsonNullVariableDto, CreateJsonNumberVariableDto, CreateJsonObjectVariableDto, CreateJsonStringVariableDto, CreateNumberVariableDto, CreateObjectVariableDto, CreateReactionVariableDto, CreateStringVariableDto, DateVariableValueDto, NumberVariableValueDto, ObjectVariableValueDto, ProjectVariableListResponseDto, ProjectVariableResponseDto, ProjectVariablesDeactivate200Response, ReactionVariableValueDto, StringVariableValueDto, UpdateVariableMetadataDto, VariableSchemaValueDto } from '../models/index';
 export interface BooleanRequest {
     projectId: string;
     createBooleanVariableDto: CreateBooleanVariableDto;
@@ -89,6 +89,11 @@ export interface ProjectVariablesListRequest {
     limit?: number;
     search?: string;
     acceptLanguage?: ProjectVariablesListAcceptLanguageEnum;
+}
+export interface ReactionRequest {
+    projectId: string;
+    createReactionVariableDto: CreateReactionVariableDto;
+    acceptLanguage?: ReactionAcceptLanguageEnum;
 }
 export interface StringRequest {
     projectId: string;
@@ -178,6 +183,12 @@ export interface UpdateTypeObjectRequest {
     objectVariableValueDto: ObjectVariableValueDto;
     acceptLanguage?: UpdateTypeObjectAcceptLanguageEnum;
 }
+export interface UpdateTypeReactionRequest {
+    projectId: string;
+    name: string;
+    reactionVariableValueDto: ReactionVariableValueDto;
+    acceptLanguage?: UpdateTypeReactionAcceptLanguageEnum;
+}
 export interface UpdateTypeStringRequest {
     projectId: string;
     name: string;
@@ -218,6 +229,12 @@ export interface UpdateValueObjectRequest {
     name: string;
     objectVariableValueDto: ObjectVariableValueDto;
     acceptLanguage?: UpdateValueObjectAcceptLanguageEnum;
+}
+export interface UpdateValueReactionRequest {
+    projectId: string;
+    name: string;
+    reactionVariableValueDto: ReactionVariableValueDto;
+    acceptLanguage?: UpdateValueReactionAcceptLanguageEnum;
 }
 export interface UpdateValueStringRequest {
     projectId: string;
@@ -380,6 +397,14 @@ export declare class ProjectVariablesApi extends runtime.BaseAPI {
      */
     projectVariablesList(requestParameters: ProjectVariablesListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableListResponseDto>;
     /**
+     *
+     */
+    reactionRaw(requestParameters: ReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     *
+     */
+    reaction(requestParameters: ReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
      * .
      *
      */
@@ -530,6 +555,14 @@ export declare class ProjectVariablesApi extends runtime.BaseAPI {
      */
     updateTypeObject(requestParameters: UpdateTypeObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
     /**
+     *
+     */
+    updateTypeReactionRaw(requestParameters: UpdateTypeReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     *
+     */
+    updateTypeReaction(requestParameters: UpdateTypeReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
      * .
      * string
      */
@@ -599,6 +632,14 @@ export declare class ProjectVariablesApi extends runtime.BaseAPI {
      * -
      */
     updateValueObject(requestParameters: UpdateValueObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
+    /**
+     *
+     */
+    updateValueReactionRaw(requestParameters: UpdateValueReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectVariableResponseDto>>;
+    /**
+     *
+     */
+    updateValueReaction(requestParameters: UpdateValueReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectVariableResponseDto>;
     /**
      * .
      *
@@ -733,6 +774,14 @@ export type ProjectVariablesListAcceptLanguageEnum = typeof ProjectVariablesList
 /**
  * @export
  */
+export declare const ReactionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ReactionAcceptLanguageEnum = typeof ReactionAcceptLanguageEnum[keyof typeof ReactionAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const StringAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -853,6 +902,14 @@ export type UpdateTypeObjectAcceptLanguageEnum = typeof UpdateTypeObjectAcceptLa
 /**
  * @export
  */
+export declare const UpdateTypeReactionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateTypeReactionAcceptLanguageEnum = typeof UpdateTypeReactionAcceptLanguageEnum[keyof typeof UpdateTypeReactionAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const UpdateTypeStringAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -906,6 +963,14 @@ export declare const UpdateValueObjectAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateValueObjectAcceptLanguageEnum = typeof UpdateValueObjectAcceptLanguageEnum[keyof typeof UpdateValueObjectAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateValueReactionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateValueReactionAcceptLanguageEnum = typeof UpdateValueReactionAcceptLanguageEnum[keyof typeof UpdateValueReactionAcceptLanguageEnum];
 /**
  * @export
  */

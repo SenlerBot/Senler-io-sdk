@@ -9,12 +9,19 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LandingProductBookingButtonDto } from './LandingProductBookingButtonDto';
 /**
  * LandingProductItemDto.
  * @export
  * @interface LandingProductItemDto
  */
 export interface LandingProductItemDto {
+    /**
+     * button.
+     * @type {LandingProductBookingButtonDto}
+     * @memberof LandingProductItemDto
+     */
+    button?: LandingProductBookingButtonDto | null;
     /**
      * id.
      * @type {string}

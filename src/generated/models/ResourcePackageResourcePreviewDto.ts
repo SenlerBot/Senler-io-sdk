@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface ResourcePackageResourcePreviewDto {
     /**
+     * , . .
+     * @type {Array<string>}
+     * @memberof ResourcePackageResourcePreviewDto
+     */
+    unresolvedLandingLinks?: Array<string>;
+    /**
      * ID
      * @type {string}
      * @memberof ResourcePackageResourcePreviewDto
@@ -56,7 +62,10 @@ export const ResourcePackageResourcePreviewDtoResourceTypeEnum = {
     KnowledgeFile: 'knowledge_file',
     KnowledgeTable: 'knowledge_table',
     Landing: 'landing',
-    MetricDefinition: 'metric_definition'
+    MetricDefinition: 'metric_definition',
+    BookingService: 'booking_service',
+    BookingSpecialist: 'booking_specialist',
+    BookingResource: 'booking_resource'
 } as const;
 export type ResourcePackageResourcePreviewDtoResourceTypeEnum = typeof ResourcePackageResourcePreviewDtoResourceTypeEnum[keyof typeof ResourcePackageResourcePreviewDtoResourceTypeEnum];
 
@@ -81,6 +90,7 @@ export function ResourcePackageResourcePreviewDtoFromJSONTyped(json: any, ignore
     }
     return {
 
+        'unresolvedLandingLinks': json['unresolved_landing_links'] == null ? undefined : json['unresolved_landing_links'],
         'localId': json['local_id'],
         'resourceType': json['resource_type'],
         'name': json['name'],
@@ -98,6 +108,7 @@ export function ResourcePackageResourcePreviewDtoToJSONTyped(value?: ResourcePac
 
     return {
 
+        'unresolved_landing_links': value['unresolvedLandingLinks'],
         'local_id': value['localId'],
         'resource_type': value['resourceType'],
         'name': value['name'],

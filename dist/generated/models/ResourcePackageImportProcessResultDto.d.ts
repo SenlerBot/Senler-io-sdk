@@ -17,6 +17,12 @@ import type { ResourcePackagePlanItemDto } from './ResourcePackagePlanItemDto';
  */
 export interface ResourcePackageImportProcessResultDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof ResourcePackageImportProcessResultDto
+     */
+    activated: boolean;
+    /**
      * UUID
      * @type {string}
      * @memberof ResourcePackageImportProcessResultDto
@@ -105,6 +111,7 @@ export declare const ResourcePackageImportProcessResultDtoStageEnum: {
     readonly DialogVariables: "dialog_variables";
     readonly MetricDefinitions: "metric_definitions";
     readonly Segments: "segments";
+    readonly Bookings: "bookings";
     readonly Landings: "landings";
     readonly Deliveries: "deliveries";
     readonly KnowledgeFolders: "knowledge_folders";

@@ -14,6 +14,7 @@ import type { EventMessageEditingDto } from './EventMessageEditingDto';
 import type { EventMessageReactionDto } from './EventMessageReactionDto';
 import type { EventMessageForwardingDto } from './EventMessageForwardingDto';
 import type { EventMessageMentionsDto } from './EventMessageMentionsDto';
+import type { EventTelegramWidgetDto } from './EventTelegramWidgetDto';
 import type { EventMessagePinningDto } from './EventMessagePinningDto';
 import type { EventMessageRepliesDto } from './EventMessageRepliesDto';
 import type { EventMessageViewsDto } from './EventMessageViewsDto';
@@ -25,6 +26,12 @@ import type { EventPlatformActionDto } from './EventPlatformActionDto';
  * @interface EventMessageInteractionsDto
  */
 export interface EventMessageInteractionsDto {
+    /**
+     * Telegram
+     * @type {EventTelegramWidgetDto}
+     * @memberof EventMessageInteractionsDto
+     */
+    telegramWidget?: EventTelegramWidgetDto;
     /**
      *
      * @type {Array<EventMessageReactionDto>}

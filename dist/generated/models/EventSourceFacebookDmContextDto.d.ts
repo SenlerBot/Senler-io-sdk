@@ -43,7 +43,7 @@ export interface EventSourceFacebookDmContextDto {
      */
     kind: EventSourceFacebookDmContextDtoKindEnum;
     /**
-     *
+     * Facebook
      * @type {EventSourceFacebookDataDto}
      * @memberof EventSourceFacebookDmContextDto
      */

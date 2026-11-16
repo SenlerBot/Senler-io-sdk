@@ -29,6 +29,7 @@ const WidgetEventToolDto_1 = require("./WidgetEventToolDto");
 const EventSenderDto_1 = require("./EventSenderDto");
 const WidgetButtonClickDto_1 = require("./WidgetButtonClickDto");
 const WidgetEventStatusDto_1 = require("./WidgetEventStatusDto");
+const EventLiveVoiceDto_1 = require("./EventLiveVoiceDto");
 const WidgetAttachmentDto_1 = require("./WidgetAttachmentDto");
 /**
  * @export
@@ -90,6 +91,7 @@ function WidgetEventListItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'liveVoice': json['live_voice'] == null ? undefined : (0, EventLiveVoiceDto_1.EventLiveVoiceDtoFromJSON)(json['live_voice']),
         'id': json['id'],
         'dialogId': json['dialog_id'],
         'actionType': json['action_type'],
@@ -118,6 +120,7 @@ function WidgetEventListItemDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'live_voice': (0, EventLiveVoiceDto_1.EventLiveVoiceDtoToJSON)(value['liveVoice']),
         'id': value['id'],
         'dialog_id': value['dialogId'],
         'action_type': value['actionType'],

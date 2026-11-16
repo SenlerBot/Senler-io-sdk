@@ -55,25 +55,25 @@ export interface AnalysisJobDto {
      */
     modelId: string;
     /**
-     * Frozen analysis period for an insight; null for diagnostics.
+     * ; null .
      * @type {string}
      * @memberof AnalysisJobDto
      */
     period: AnalysisJobDtoPeriodEnum | null;
     /**
-     * How this insight was started; null for diagnostics.
+     * ; null .
      * @type {string}
      * @memberof AnalysisJobDto
      */
     trigger: AnalysisJobDtoTriggerEnum | null;
     /**
-     * Authorized total, in credit minor units (1 credit = 10000 units).
+     * ; 1 = 10000 .
      * @type {number}
      * @memberof AnalysisJobDto
      */
     budgetCredits: number;
     /**
-     * Actual charges, in credit minor units (1 credit = 10000 units).
+     * ; 1 = 10000 .
      * @type {number}
      * @memberof AnalysisJobDto
      */
@@ -85,13 +85,13 @@ export interface AnalysisJobDto {
      */
     completedItems: number;
     /**
-     * Known total; null while the amount of work is unknown.
+     * ; null, .
      * @type {number}
      * @memberof AnalysisJobDto
      */
     totalItems: number | null;
     /**
-     * Saved report identifier.
+     * .
      * @type {string}
      * @memberof AnalysisJobDto
      */

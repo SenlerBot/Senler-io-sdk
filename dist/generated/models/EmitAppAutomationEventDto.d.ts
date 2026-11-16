@@ -35,7 +35,7 @@ export interface EmitAppAutomationEventDto {
      */
     occurredAt?: Date;
     /**
-     *
+     * ,
      * @type {AppAutomationEventRoutingDto}
      * @memberof EmitAppAutomationEventDto
      */

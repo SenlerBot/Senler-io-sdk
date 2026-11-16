@@ -20,6 +20,13 @@ import {
     AgentSelectedModelSummaryDtoToJSON,
     AgentSelectedModelSummaryDtoToJSONTyped,
 } from './AgentSelectedModelSummaryDto';
+import type { AgentBookingPolicyDto } from './AgentBookingPolicyDto';
+import {
+    AgentBookingPolicyDtoFromJSON,
+    AgentBookingPolicyDtoFromJSONTyped,
+    AgentBookingPolicyDtoToJSON,
+    AgentBookingPolicyDtoToJSONTyped,
+} from './AgentBookingPolicyDto';
 import type { OperatorHandoffPolicyDto } from './OperatorHandoffPolicyDto';
 import {
     OperatorHandoffPolicyDtoFromJSON,
@@ -34,6 +41,13 @@ import {
     KnowledgeBaseSourceBindingDtoToJSON,
     KnowledgeBaseSourceBindingDtoToJSONTyped,
 } from './KnowledgeBaseSourceBindingDto';
+import type { AgentAutomationCallDto } from './AgentAutomationCallDto';
+import {
+    AgentAutomationCallDtoFromJSON,
+    AgentAutomationCallDtoFromJSONTyped,
+    AgentAutomationCallDtoToJSON,
+    AgentAutomationCallDtoToJSONTyped,
+} from './AgentAutomationCallDto';
 import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
 import {
     AgentAssignmentPolicyDtoFromJSON,
@@ -55,6 +69,36 @@ import {
  * @interface AgentDraftSettingsStateResponseDto
  */
 export interface AgentDraftSettingsStateResponseDto {
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    enableLiveVoice: boolean;
+    /**
+     * UUID
+     * @type {string}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    liveVoiceModelId?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    liveVoiceVoice: AgentDraftSettingsStateResponseDtoLiveVoiceVoiceEnum;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    liveVoiceCommentary: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    liveVoiceInterruptions: boolean;
     /**
      * : , . .
      * @type {string}
@@ -145,6 +189,12 @@ export interface AgentDraftSettingsStateResponseDto {
      * @memberof AgentDraftSettingsStateResponseDto
      */
     selectedModelId?: string | null;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    enableModelFallback?: boolean;
     /**
      * ID . null .
      * @type {string}
@@ -434,6 +484,12 @@ export interface AgentDraftSettingsStateResponseDto {
      */
     automationEventPolicy: AgentAutomationEventPolicyDto;
     /**
+     *
+     * @type {Array<AgentAutomationCallDto>}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    callableAutomations: Array<AgentAutomationCallDto>;
+    /**
      * . false ; enable_ai_response=true. enable_preliminary_response enable_user_message=false. AI- .
      * @type {boolean}
      * @memberof AgentDraftSettingsStateResponseDto
@@ -560,6 +616,12 @@ export interface AgentDraftSettingsStateResponseDto {
      */
     funnelAccessPolicy: { [key: string]: any; };
     /**
+     * -
+     * @type {AgentBookingPolicyDto}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    bookingPolicy: AgentBookingPolicyDto;
+    /**
      * recipient messaging tools (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof AgentDraftSettingsStateResponseDto
@@ -601,6 +663,23 @@ export interface AgentDraftSettingsStateResponseDto {
 /**
  * @export
  */
+export const AgentDraftSettingsStateResponseDtoLiveVoiceVoiceEnum = {
+    Marin: 'marin',
+    Cedar: 'cedar',
+    Coral: 'coral',
+    Sage: 'sage',
+    Alloy: 'alloy',
+    Ash: 'ash',
+    Ballad: 'ballad',
+    Echo: 'echo',
+    Shimmer: 'shimmer',
+    Verse: 'verse'
+} as const;
+export type AgentDraftSettingsStateResponseDtoLiveVoiceVoiceEnum = typeof AgentDraftSettingsStateResponseDtoLiveVoiceVoiceEnum[keyof typeof AgentDraftSettingsStateResponseDtoLiveVoiceVoiceEnum];
+
+/**
+ * @export
+ */
 export const AgentDraftSettingsStateResponseDtoDialogContextModeEnum = {
     AllDialog: 'all_dialog',
     CurrentSession: 'current_session',
@@ -617,6 +696,7 @@ export const AgentDraftSettingsStateResponseDtoConflictFieldsEnum = {
     AvatarUrl: 'avatar_url',
     AgentType: 'agent_type',
     SelectedModelId: 'selected_model_id',
+    EnableModelFallback: 'enable_model_fallback',
     EventSummaryMode: 'event_summary_mode',
     DialogSummaryMode: 'dialog_summary_mode',
     DialogContextMode: 'dialog_context_mode',
@@ -650,6 +730,11 @@ export const AgentDraftSettingsStateResponseDtoConflictFieldsEnum = {
     EnableCustomAttachments: 'enable_custom_attachments',
     EnableImageGeneration: 'enable_image_generation',
     ImageGenerationModelId: 'image_generation_model_id',
+    EnableLiveVoice: 'enable_live_voice',
+    LiveVoiceModelId: 'live_voice_model_id',
+    LiveVoiceVoice: 'live_voice_voice',
+    LiveVoiceCommentary: 'live_voice_commentary',
+    LiveVoiceInterruptions: 'live_voice_interruptions',
     EnableAudioGeneration: 'enable_audio_generation',
     AudioGenerationModelId: 'audio_generation_model_id',
     EnableVoiceCloning: 'enable_voice_cloning',
@@ -667,6 +752,7 @@ export const AgentDraftSettingsStateResponseDtoConflictFieldsEnum = {
     CancelPendingResponseOnProjectOperatorMessage: 'cancel_pending_response_on_project_operator_message',
     CancelPendingResponseOnAutomationMessage: 'cancel_pending_response_on_automation_message',
     AutomationEventPolicy: 'automation_event_policy',
+    CallableAutomations: 'callable_automations',
     EnableUserMessage: 'enable_user_message',
     EnableStreaming: 'enable_streaming',
     DisableLinkPreview: 'disable_link_preview',
@@ -688,6 +774,7 @@ export const AgentDraftSettingsStateResponseDtoConflictFieldsEnum = {
     VariablesAccessMode: 'variables_access_mode',
     SegmentAccessPolicy: 'segment_access_policy',
     FunnelAccessPolicy: 'funnel_access_policy',
+    BookingPolicy: 'booking_policy',
     RecipientMessagingPolicy: 'recipient_messaging_policy',
     AgentAssignmentPolicy: 'agent_assignment_policy',
     OperatorHandoffPolicy: 'operator_handoff_policy',
@@ -862,6 +949,10 @@ export type AgentDraftSettingsStateResponseDtoVariablesAccessModeEnum = typeof A
  * Check if a given object implements the AgentDraftSettingsStateResponseDto interface.
  */
 export function instanceOfAgentDraftSettingsStateResponseDto(value: object): value is AgentDraftSettingsStateResponseDto {
+    if (!('enableLiveVoice' in value) || value['enableLiveVoice'] === undefined) return false;
+    if (!('liveVoiceVoice' in value) || value['liveVoiceVoice'] === undefined) return false;
+    if (!('liveVoiceCommentary' in value) || value['liveVoiceCommentary'] === undefined) return false;
+    if (!('liveVoiceInterruptions' in value) || value['liveVoiceInterruptions'] === undefined) return false;
     if (!('dialogContextMode' in value) || value['dialogContextMode'] === undefined) return false;
     if (!('conflictFields' in value) || value['conflictFields'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
@@ -904,6 +995,7 @@ export function instanceOfAgentDraftSettingsStateResponseDto(value: object): val
     if (!('cancelPendingResponseOnProjectOperatorMessage' in value) || value['cancelPendingResponseOnProjectOperatorMessage'] === undefined) return false;
     if (!('cancelPendingResponseOnAutomationMessage' in value) || value['cancelPendingResponseOnAutomationMessage'] === undefined) return false;
     if (!('automationEventPolicy' in value) || value['automationEventPolicy'] === undefined) return false;
+    if (!('callableAutomations' in value) || value['callableAutomations'] === undefined) return false;
     if (!('enableUserMessage' in value) || value['enableUserMessage'] === undefined) return false;
     if (!('enableStreaming' in value) || value['enableStreaming'] === undefined) return false;
     if (!('disableLinkPreview' in value) || value['disableLinkPreview'] === undefined) return false;
@@ -925,6 +1017,7 @@ export function instanceOfAgentDraftSettingsStateResponseDto(value: object): val
     if (!('variablesAccessMode' in value) || value['variablesAccessMode'] === undefined) return false;
     if (!('segmentAccessPolicy' in value) || value['segmentAccessPolicy'] === undefined) return false;
     if (!('funnelAccessPolicy' in value) || value['funnelAccessPolicy'] === undefined) return false;
+    if (!('bookingPolicy' in value) || value['bookingPolicy'] === undefined) return false;
     if (!('recipientMessagingPolicy' in value) || value['recipientMessagingPolicy'] === undefined) return false;
     if (!('agentAssignmentPolicy' in value) || value['agentAssignmentPolicy'] === undefined) return false;
     if (!('operatorHandoffPolicy' in value) || value['operatorHandoffPolicy'] === undefined) return false;
@@ -944,6 +1037,11 @@ export function AgentDraftSettingsStateResponseDtoFromJSONTyped(json: any, ignor
     }
     return {
 
+        'enableLiveVoice': json['enable_live_voice'],
+        'liveVoiceModelId': json['live_voice_model_id'] == null ? undefined : json['live_voice_model_id'],
+        'liveVoiceVoice': json['live_voice_voice'],
+        'liveVoiceCommentary': json['live_voice_commentary'],
+        'liveVoiceInterruptions': json['live_voice_interruptions'],
         'dialogContextMode': json['dialog_context_mode'],
         'conflictFields': json['conflict_fields'],
         'id': json['id'],
@@ -959,6 +1057,7 @@ export function AgentDraftSettingsStateResponseDtoFromJSONTyped(json: any, ignor
         'projectId': json['project_id'],
         'meta': json['meta'] == null ? undefined : json['meta'],
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
+        'enableModelFallback': json['enable_model_fallback'] == null ? undefined : json['enable_model_fallback'],
         'metricsModelId': json['metrics_model_id'] == null ? undefined : json['metrics_model_id'],
         'selectedModel': json['selected_model'] == null ? undefined : AgentSelectedModelSummaryDtoFromJSON(json['selected_model']),
         'metricsCollectionEnabled': json['metrics_collection_enabled'],
@@ -1007,6 +1106,7 @@ export function AgentDraftSettingsStateResponseDtoFromJSONTyped(json: any, ignor
         'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'],
         'cancelPendingResponseOnAutomationMessage': json['cancel_pending_response_on_automation_message'],
         'automationEventPolicy': AgentAutomationEventPolicyDtoFromJSON(json['automation_event_policy']),
+        'callableAutomations': ((json['callable_automations'] as Array<any>).map(AgentAutomationCallDtoFromJSON)),
         'enableUserMessage': json['enable_user_message'],
         'enableStreaming': json['enable_streaming'],
         'disableLinkPreview': json['disable_link_preview'],
@@ -1028,6 +1128,7 @@ export function AgentDraftSettingsStateResponseDtoFromJSONTyped(json: any, ignor
         'variablesAccessMode': json['variables_access_mode'],
         'segmentAccessPolicy': json['segment_access_policy'],
         'funnelAccessPolicy': json['funnel_access_policy'],
+        'bookingPolicy': AgentBookingPolicyDtoFromJSON(json['booking_policy']),
         'recipientMessagingPolicy': json['recipient_messaging_policy'],
         'agentAssignmentPolicy': AgentAssignmentPolicyDtoFromJSON(json['agent_assignment_policy']),
         'operatorHandoffPolicy': OperatorHandoffPolicyDtoFromJSON(json['operator_handoff_policy']),
@@ -1048,6 +1149,11 @@ export function AgentDraftSettingsStateResponseDtoToJSONTyped(value?: AgentDraft
 
     return {
 
+        'enable_live_voice': value['enableLiveVoice'],
+        'live_voice_model_id': value['liveVoiceModelId'],
+        'live_voice_voice': value['liveVoiceVoice'],
+        'live_voice_commentary': value['liveVoiceCommentary'],
+        'live_voice_interruptions': value['liveVoiceInterruptions'],
         'dialog_context_mode': value['dialogContextMode'],
         'conflict_fields': value['conflictFields'],
         'id': value['id'],
@@ -1063,6 +1169,7 @@ export function AgentDraftSettingsStateResponseDtoToJSONTyped(value?: AgentDraft
         'project_id': value['projectId'],
         'meta': value['meta'],
         'selected_model_id': value['selectedModelId'],
+        'enable_model_fallback': value['enableModelFallback'],
         'metrics_model_id': value['metricsModelId'],
         'selected_model': AgentSelectedModelSummaryDtoToJSON(value['selectedModel']),
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
@@ -1111,6 +1218,7 @@ export function AgentDraftSettingsStateResponseDtoToJSONTyped(value?: AgentDraft
         'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
         'cancel_pending_response_on_automation_message': value['cancelPendingResponseOnAutomationMessage'],
         'automation_event_policy': AgentAutomationEventPolicyDtoToJSON(value['automationEventPolicy']),
+        'callable_automations': ((value['callableAutomations'] as Array<any>).map(AgentAutomationCallDtoToJSON)),
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
         'disable_link_preview': value['disableLinkPreview'],
@@ -1132,6 +1240,7 @@ export function AgentDraftSettingsStateResponseDtoToJSONTyped(value?: AgentDraft
         'variables_access_mode': value['variablesAccessMode'],
         'segment_access_policy': value['segmentAccessPolicy'],
         'funnel_access_policy': value['funnelAccessPolicy'],
+        'booking_policy': AgentBookingPolicyDtoToJSON(value['bookingPolicy']),
         'recipient_messaging_policy': value['recipientMessagingPolicy'],
         'agent_assignment_policy': AgentAssignmentPolicyDtoToJSON(value['agentAssignmentPolicy']),
         'operator_handoff_policy': OperatorHandoffPolicyDtoToJSON(value['operatorHandoffPolicy']),

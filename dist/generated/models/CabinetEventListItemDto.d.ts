@@ -347,6 +347,7 @@ export declare const CabinetEventListItemDtoActionTypeEnum: {
     readonly AiActionExecuted: "ai_action_executed";
     readonly AiProviderCallCompleted: "ai_provider_call_completed";
     readonly AnalyticsUsageCharged: "analytics_usage_charged";
+    readonly LiveVoiceUsageCharged: "live_voice_usage_charged";
     readonly ErrorRaised: "error_raised";
     readonly StateChanged: "state_changed";
     readonly RolledBack: "rolled_back";

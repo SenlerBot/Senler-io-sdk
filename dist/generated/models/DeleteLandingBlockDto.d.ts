@@ -22,7 +22,7 @@ export interface DeleteLandingBlockDto {
      */
     expectedRevision: number;
     /**
-     *
+     * order_revision . 409 .
      * @type {number}
      * @memberof DeleteLandingBlockDto
      */

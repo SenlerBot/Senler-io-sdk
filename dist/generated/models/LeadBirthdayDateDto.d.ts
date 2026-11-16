@@ -28,7 +28,7 @@ export interface LeadBirthdayDateDto {
      */
     month: number;
     /**
-     * Birth year, omitted when undisclosed. Never inferred.
+     * ; , . .
      * @type {number}
      * @memberof LeadBirthdayDateDto
      */

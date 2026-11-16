@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ChannelResponseDtoTypeEnum = void 0;
+exports.ChannelResponseDtoBillingStatusEnum = exports.ChannelResponseDtoTypeEnum = void 0;
 exports.instanceOfChannelResponseDto = instanceOfChannelResponseDto;
 exports.ChannelResponseDtoFromJSON = ChannelResponseDtoFromJSON;
 exports.ChannelResponseDtoFromJSONTyped = ChannelResponseDtoFromJSONTyped;
@@ -52,6 +52,18 @@ exports.ChannelResponseDtoTypeEnum = {
     Whatsapp: 'whatsapp'
 };
 /**
+ * @export
+ */
+exports.ChannelResponseDtoBillingStatusEnum = {
+    Active: 'active',
+    Suspending: 'suspending',
+    Suspended: 'suspended',
+    SourceActive: 'source_active',
+    Restoring: 'restoring',
+    RestoreFailed: 'restore_failed',
+    ReconnectRequired: 'reconnect_required'
+};
+/**
  * Check if a given object implements the ChannelResponseDto interface.
  */
 function instanceOfChannelResponseDto(value) {
@@ -84,6 +96,9 @@ function ChannelResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'externalId': json['external_id'] == null ? undefined : json['external_id'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
         'isPaused': json['is_paused'],
+        'billingStatus': json['billing_status'] == null ? undefined : json['billing_status'],
+        'billingSuspendedAt': json['billing_suspended_at'] == null ? undefined : (new Date(json['billing_suspended_at'])),
+        'billingError': json['billing_error'] == null ? undefined : json['billing_error'],
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
@@ -127,6 +142,9 @@ function ChannelResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'external_id': value['externalId'],
         'avatar_url': value['avatarUrl'],
         'is_paused': value['isPaused'],
+        'billing_status': value['billingStatus'],
+        'billing_suspended_at': value['billingSuspendedAt'] == null ? undefined : (value['billingSuspendedAt'].toISOString()),
+        'billing_error': value['billingError'],
         'project_id': value['projectId'],
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),

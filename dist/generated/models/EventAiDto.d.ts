@@ -200,6 +200,7 @@ export declare const EventAiDtoUsagePurposeEnum: {
     readonly AgentSetup: "agent_setup";
     readonly AnalyticsInsightSummary: "analytics_insight_summary";
     readonly ResponseMetricsExtraction: "response_metrics_extraction";
+    readonly ContextCompaction: "context_compaction";
 };
 export type EventAiDtoUsagePurposeEnum = typeof EventAiDtoUsagePurposeEnum[keyof typeof EventAiDtoUsagePurposeEnum];
 /**

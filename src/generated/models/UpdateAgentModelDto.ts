@@ -26,6 +26,12 @@ export interface UpdateAgentModelDto {
      */
     selectedModelId?: string | null;
     /**
+     * . .
+     * @type {boolean}
+     * @memberof UpdateAgentModelDto
+     */
+    enableModelFallback?: boolean;
+    /**
      *
      * @type {boolean}
      * @memberof UpdateAgentModelDto
@@ -51,6 +57,7 @@ export function UpdateAgentModelDtoFromJSONTyped(json: any, ignoreDiscriminator:
     return {
 
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
+        'enableModelFallback': json['enable_model_fallback'] == null ? undefined : json['enable_model_fallback'],
         'confirmModelChange': json['confirm_model_change'] == null ? undefined : json['confirm_model_change'],
     };
 }
@@ -67,6 +74,7 @@ export function UpdateAgentModelDtoToJSONTyped(value?: UpdateAgentModelDto | nul
     return {
 
         'selected_model_id': value['selectedModelId'],
+        'enable_model_fallback': value['enableModelFallback'],
         'confirm_model_change': value['confirmModelChange'],
     };
 }

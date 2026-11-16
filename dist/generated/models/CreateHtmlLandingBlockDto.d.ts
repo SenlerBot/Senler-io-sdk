@@ -29,7 +29,7 @@ export interface CreateHtmlLandingBlockDto {
      */
     pageVariantId?: string;
     /**
-     *
+     * order_revision . 409 .
      * @type {number}
      * @memberof CreateHtmlLandingBlockDto
      */
@@ -53,7 +53,7 @@ export interface CreateHtmlLandingBlockDto {
      */
     beforeBlockId?: string;
     /**
-     * HTML-.
+     * html, css js HTML- .
      * @type {LandingHtmlBlockPayloadDto}
      * @memberof CreateHtmlLandingBlockDto
      */

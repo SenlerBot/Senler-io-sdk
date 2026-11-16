@@ -171,6 +171,7 @@ exports.AuditApi = AuditApi;
  * @export
  */
 exports.AuditListEntityTypeEnum = {
+    BookingConfig: 'booking_config',
     ProjectWebhook: 'project_webhook',
     Funnel: 'funnel',
     Project: 'project',

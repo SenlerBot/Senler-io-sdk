@@ -28,7 +28,7 @@ import {
  */
 export interface UpdateTimerLandingBlockDto {
     /**
-     *
+     * revision . 409 .
      * @type {number}
      * @memberof UpdateTimerLandingBlockDto
      */

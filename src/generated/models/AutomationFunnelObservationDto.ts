@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface AutomationFunnelObservationDto {
     /**
-     * ID MongoDB
+     *
      * @type {string}
      * @memberof AutomationFunnelObservationDto
      */

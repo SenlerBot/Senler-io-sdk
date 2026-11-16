@@ -17,13 +17,13 @@ import type { LeadBirthdayDateDto } from './LeadBirthdayDateDto';
  */
 export interface UpdateLeadBirthdayDto {
     /**
-     * Manual mode protects both the date and an intentional empty value from channel updates.
+     * .
      * @type {string}
      * @memberof UpdateLeadBirthdayDto
      */
     mode: UpdateLeadBirthdayDtoModeEnum;
     /**
-     * Required in manual mode. Null explicitly clears the birthday. Omit in channel mode.
+     * . null . .
      * @type {LeadBirthdayDateDto}
      * @memberof UpdateLeadBirthdayDto
      */

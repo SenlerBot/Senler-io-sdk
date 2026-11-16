@@ -34,7 +34,7 @@ export interface AutomationHttpRequestConfigDto {
      */
     method: AutomationHttpRequestConfigDtoMethodEnum;
     /**
-     * HTTP endpoint template. Project variables use {{project.name}}.
+     * HTTP-. {{project.name}}.
      * @type {string}
      * @memberof AutomationHttpRequestConfigDto
      */
@@ -58,7 +58,7 @@ export interface AutomationHttpRequestConfigDto {
      */
     bodyMode: AutomationHttpRequestConfigDtoBodyModeEnum;
     /**
-     * JSON or text template. A complete variable token in a JSON string preserves its value type.
+     * JSON . , JSON, .
      * @type {string}
      * @memberof AutomationHttpRequestConfigDto
      */
@@ -70,7 +70,7 @@ export interface AutomationHttpRequestConfigDto {
      */
     form: Array<AutomationHttpFieldDto>;
     /**
-     * Total time budget including retries.
+     * , .
      * @type {number}
      * @memberof AutomationHttpRequestConfigDto
      */

@@ -82,6 +82,9 @@ export declare const ResourcePackageResponseDtoRootResourceTypeEnum: {
     readonly KnowledgeTable: "knowledge_table";
     readonly Landing: "landing";
     readonly MetricDefinition: "metric_definition";
+    readonly BookingService: "booking_service";
+    readonly BookingSpecialist: "booking_specialist";
+    readonly BookingResource: "booking_resource";
 };
 export type ResourcePackageResponseDtoRootResourceTypeEnum = typeof ResourcePackageResponseDtoRootResourceTypeEnum[keyof typeof ResourcePackageResponseDtoRootResourceTypeEnum];
 /**

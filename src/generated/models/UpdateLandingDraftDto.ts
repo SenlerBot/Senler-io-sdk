@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LandingSettingsDto } from './LandingSettingsDto';
+import type { LandingSettingsInputDto } from './LandingSettingsInputDto';
 import {
-    LandingSettingsDtoFromJSON,
-    LandingSettingsDtoFromJSONTyped,
-    LandingSettingsDtoToJSON,
-    LandingSettingsDtoToJSONTyped,
-} from './LandingSettingsDto';
+    LandingSettingsInputDtoFromJSON,
+    LandingSettingsInputDtoFromJSONTyped,
+    LandingSettingsInputDtoToJSON,
+    LandingSettingsInputDtoToJSONTyped,
+} from './LandingSettingsInputDto';
 
 /**
  * UpdateLandingDraftDto.
@@ -28,17 +28,17 @@ import {
  */
 export interface UpdateLandingDraftDto {
     /**
-     *
+     * settings_revision . 409 .
      * @type {number}
      * @memberof UpdateLandingDraftDto
      */
     expectedSettingsRevision: number;
     /**
-     *
-     * @type {LandingSettingsDto}
+     * . settings , custom_css SDK.
+     * @type {LandingSettingsInputDto}
      * @memberof UpdateLandingDraftDto
      */
-    settings: LandingSettingsDto;
+    settings: LandingSettingsInputDto;
 }
 
 /**
@@ -61,7 +61,7 @@ export function UpdateLandingDraftDtoFromJSONTyped(json: any, ignoreDiscriminato
     return {
 
         'expectedSettingsRevision': json['expected_settings_revision'],
-        'settings': LandingSettingsDtoFromJSON(json['settings']),
+        'settings': LandingSettingsInputDtoFromJSON(json['settings']),
     };
 }
 
@@ -77,6 +77,6 @@ export function UpdateLandingDraftDtoToJSONTyped(value?: UpdateLandingDraftDto |
     return {
 
         'expected_settings_revision': value['expectedSettingsRevision'],
-        'settings': LandingSettingsDtoToJSON(value['settings']),
+        'settings': LandingSettingsInputDtoToJSON(value['settings']),
     };
 }

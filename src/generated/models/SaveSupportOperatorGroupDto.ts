@@ -31,6 +31,18 @@ export interface SaveSupportOperatorGroupDto {
      * @memberof SaveSupportOperatorGroupDto
      */
     memberIds?: Array<string>;
+    /**
+     * , . true.
+     * @type {boolean}
+     * @memberof SaveSupportOperatorGroupDto
+     */
+    requireShiftCheckIn?: boolean;
+    /**
+     * . require_shift_check_in. true.
+     * @type {boolean}
+     * @memberof SaveSupportOperatorGroupDto
+     */
+    requireSchedule?: boolean;
 }
 
 /**
@@ -53,6 +65,8 @@ export function SaveSupportOperatorGroupDtoFromJSONTyped(json: any, ignoreDiscri
 
         'name': json['name'],
         'memberIds': json['member_ids'] == null ? undefined : json['member_ids'],
+        'requireShiftCheckIn': json['require_shift_check_in'] == null ? undefined : json['require_shift_check_in'],
+        'requireSchedule': json['require_schedule'] == null ? undefined : json['require_schedule'],
     };
 }
 
@@ -69,5 +83,7 @@ export function SaveSupportOperatorGroupDtoToJSONTyped(value?: SaveSupportOperat
 
         'name': value['name'],
         'member_ids': value['memberIds'],
+        'require_shift_check_in': value['requireShiftCheckIn'],
+        'require_schedule': value['requireSchedule'],
     };
 }

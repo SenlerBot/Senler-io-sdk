@@ -12,12 +12,19 @@
 import type { LocalizedTextDto } from './LocalizedTextDto';
 import type { BillingTransactionDtoDetailsByAgentValue } from './BillingTransactionDtoDetailsByAgentValue';
 import type { BillingTransactionDtoDetailsByModelValue } from './BillingTransactionDtoDetailsByModelValue';
+import type { ReferralTransactionDetailsDto } from './ReferralTransactionDetailsDto';
 /**
  * BillingTransactionDto.
  * @export
  * @interface BillingTransactionDto
  */
 export interface BillingTransactionDto {
+    /**
+     * . .
+     * @type {ReferralTransactionDetailsDto}
+     * @memberof BillingTransactionDto
+     */
+    referral?: ReferralTransactionDetailsDto | null;
     /**
      * ID
      * @type {string}

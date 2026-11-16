@@ -19,12 +19,17 @@ import type {
   ErrorResponse,
   LandingAcquisitionIdentityDto,
   LandingBotSubscriptionLinkResponseDto,
+  LandingDomainMutationResultDto,
+  LandingDomainResolutionDto,
   LandingLaunchContextResponseDto,
   LandingMiniAppLaunchResponseDto,
   LandingPublicAnalyticsDto,
   LandingPublicCatalogResponseDto,
   LandingPublicResponseDto,
   LandingResolvedResponseDto,
+  LandingSdkNavigationResponseDto,
+  LandingSdkSubscriptionRequestDto,
+  LandingSdkSubscriptionResponseDto,
   LandingSubscriptionRequestDto,
   LandingSubscriptionResponseDto,
   LandingSubscriptionStatusResponseDto,
@@ -43,6 +48,10 @@ import {
     LandingAcquisitionIdentityDtoToJSON,
     LandingBotSubscriptionLinkResponseDtoFromJSON,
     LandingBotSubscriptionLinkResponseDtoToJSON,
+    LandingDomainMutationResultDtoFromJSON,
+    LandingDomainMutationResultDtoToJSON,
+    LandingDomainResolutionDtoFromJSON,
+    LandingDomainResolutionDtoToJSON,
     LandingLaunchContextResponseDtoFromJSON,
     LandingLaunchContextResponseDtoToJSON,
     LandingMiniAppLaunchResponseDtoFromJSON,
@@ -55,6 +64,12 @@ import {
     LandingPublicResponseDtoToJSON,
     LandingResolvedResponseDtoFromJSON,
     LandingResolvedResponseDtoToJSON,
+    LandingSdkNavigationResponseDtoFromJSON,
+    LandingSdkNavigationResponseDtoToJSON,
+    LandingSdkSubscriptionRequestDtoFromJSON,
+    LandingSdkSubscriptionRequestDtoToJSON,
+    LandingSdkSubscriptionResponseDtoFromJSON,
+    LandingSdkSubscriptionResponseDtoToJSON,
     LandingSubscriptionRequestDtoFromJSON,
     LandingSubscriptionRequestDtoToJSON,
     LandingSubscriptionResponseDtoFromJSON,
@@ -78,9 +93,26 @@ export interface GetLandingsRequest {
     acceptLanguage?: GetLandingsAcceptLanguageEnum;
 }
 
+export interface GetLandingsDomainsCertificateRequest {
+    domain: string;
+    acceptLanguage?: GetLandingsDomainsCertificateAcceptLanguageEnum;
+}
+
+export interface GetLandingsDomainsResolveRequest {
+    hostname: string;
+    path: string;
+    acceptLanguage?: GetLandingsDomainsResolveAcceptLanguageEnum;
+}
+
 export interface GetLandingsLaunchRequest {
     token: string;
     acceptLanguage?: GetLandingsLaunchAcceptLanguageEnum;
+}
+
+export interface GetLandingsSdkLandingRequest {
+    landingPublicId: string;
+    targetLandingId: string;
+    acceptLanguage?: GetLandingsSdkLandingAcceptLanguageEnum;
 }
 
 export interface GetProjectsLandingsRequest {
@@ -146,6 +178,12 @@ export interface LandingsResolveRequest {
     acceptLanguage?: LandingsResolveAcceptLanguageEnum;
 }
 
+export interface LandingsSdkSubscriptionRequest {
+    landingPublicId: string;
+    landingSdkSubscriptionRequestDto: LandingSdkSubscriptionRequestDto;
+    acceptLanguage?: LandingsSdkSubscriptionAcceptLanguageEnum;
+}
+
 export interface LandingsVariantEventsRequest {
     landingPublicId: string;
     recordLandingVariantEventDto: RecordLandingVariantEventDto;
@@ -197,6 +235,103 @@ export class LandingsPublicApi extends runtime.BaseAPI {
     }
 
     /**
+     * HTTPS-. 200 TXT- DNS-.
+     *
+     */
+    async getLandingsDomainsCertificateRaw(requestParameters: GetLandingsDomainsCertificateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingDomainMutationResultDto>> {
+        if (requestParameters['domain'] == null) {
+            throw new runtime.RequiredError(
+                'domain',
+                'Required parameter "domain" was null or undefined when calling getLandingsDomainsCertificate().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['domain'] != null) {
+            queryParameters['domain'] = requestParameters['domain'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        const response = await this.request({
+            path: `/api/public/landings/domains/certificate`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingDomainMutationResultDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * HTTPS-. 200 TXT- DNS-.
+     *
+     */
+    async getLandingsDomainsCertificate(requestParameters: GetLandingsDomainsCertificateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingDomainMutationResultDto> {
+        const response = await this.getLandingsDomainsCertificateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async getLandingsDomainsResolveRaw(requestParameters: GetLandingsDomainsResolveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingDomainResolutionDto>> {
+        if (requestParameters['hostname'] == null) {
+            throw new runtime.RequiredError(
+                'hostname',
+                'Required parameter "hostname" was null or undefined when calling getLandingsDomainsResolve().'
+            );
+        }
+
+        if (requestParameters['path'] == null) {
+            throw new runtime.RequiredError(
+                'path',
+                'Required parameter "path" was null or undefined when calling getLandingsDomainsResolve().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['hostname'] != null) {
+            queryParameters['hostname'] = requestParameters['hostname'];
+        }
+
+        if (requestParameters['path'] != null) {
+            queryParameters['path'] = requestParameters['path'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        const response = await this.request({
+            path: `/api/public/landings/domains/resolve`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingDomainResolutionDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async getLandingsDomainsResolve(requestParameters: GetLandingsDomainsResolveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingDomainResolutionDto> {
+        const response = await this.getLandingsDomainsResolveRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * .
      *
      */
@@ -232,6 +367,52 @@ export class LandingsPublicApi extends runtime.BaseAPI {
      */
     async getLandingsLaunch(requestParameters: GetLandingsLaunchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingLaunchContextResponseDto> {
         const response = await this.getLandingsLaunchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * ID .
+     * SDK
+     */
+    async getLandingsSdkLandingRaw(requestParameters: GetLandingsSdkLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingSdkNavigationResponseDto>> {
+        if (requestParameters['landingPublicId'] == null) {
+            throw new runtime.RequiredError(
+                'landingPublicId',
+                'Required parameter "landingPublicId" was null or undefined when calling getLandingsSdkLanding().'
+            );
+        }
+
+        if (requestParameters['targetLandingId'] == null) {
+            throw new runtime.RequiredError(
+                'targetLandingId',
+                'Required parameter "targetLandingId" was null or undefined when calling getLandingsSdkLanding().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        const response = await this.request({
+            path: `/api/public/landings/{landingPublicId}/sdk/landing/{targetLandingId}`.replace(`{${"landingPublicId"}}`, encodeURIComponent(String(requestParameters['landingPublicId']))).replace(`{${"targetLandingId"}}`, encodeURIComponent(String(requestParameters['targetLandingId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingSdkNavigationResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * ID .
+     * SDK
+     */
+    async getLandingsSdkLanding(requestParameters: GetLandingsSdkLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingSdkNavigationResponseDto> {
+        const response = await this.getLandingsSdkLandingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -754,6 +935,55 @@ export class LandingsPublicApi extends runtime.BaseAPI {
     }
 
     /**
+     * . ; . .
+     * SDK ID
+     */
+    async landingsSdkSubscriptionRaw(requestParameters: LandingsSdkSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingSdkSubscriptionResponseDto>> {
+        if (requestParameters['landingPublicId'] == null) {
+            throw new runtime.RequiredError(
+                'landingPublicId',
+                'Required parameter "landingPublicId" was null or undefined when calling landingsSdkSubscription().'
+            );
+        }
+
+        if (requestParameters['landingSdkSubscriptionRequestDto'] == null) {
+            throw new runtime.RequiredError(
+                'landingSdkSubscriptionRequestDto',
+                'Required parameter "landingSdkSubscriptionRequestDto" was null or undefined when calling landingsSdkSubscription().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        const response = await this.request({
+            path: `/api/public/landings/{landingPublicId}/sdk/subscription`.replace(`{${"landingPublicId"}}`, encodeURIComponent(String(requestParameters['landingPublicId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: LandingSdkSubscriptionRequestDtoToJSON(requestParameters['landingSdkSubscriptionRequestDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingSdkSubscriptionResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . ; . .
+     * SDK ID
+     */
+    async landingsSdkSubscription(requestParameters: LandingsSdkSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingSdkSubscriptionResponseDto> {
+        const response = await this.landingsSdkSubscriptionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * . ; .
      *
      */
@@ -814,11 +1044,35 @@ export type GetLandingsAcceptLanguageEnum = typeof GetLandingsAcceptLanguageEnum
 /**
  * @export
  */
+export const GetLandingsDomainsCertificateAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetLandingsDomainsCertificateAcceptLanguageEnum = typeof GetLandingsDomainsCertificateAcceptLanguageEnum[keyof typeof GetLandingsDomainsCertificateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetLandingsDomainsResolveAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetLandingsDomainsResolveAcceptLanguageEnum = typeof GetLandingsDomainsResolveAcceptLanguageEnum[keyof typeof GetLandingsDomainsResolveAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const GetLandingsLaunchAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
 export type GetLandingsLaunchAcceptLanguageEnum = typeof GetLandingsLaunchAcceptLanguageEnum[keyof typeof GetLandingsLaunchAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetLandingsSdkLandingAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetLandingsSdkLandingAcceptLanguageEnum = typeof GetLandingsSdkLandingAcceptLanguageEnum[keyof typeof GetLandingsSdkLandingAcceptLanguageEnum];
 /**
  * @export
  */
@@ -899,6 +1153,14 @@ export const LandingsResolveAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type LandingsResolveAcceptLanguageEnum = typeof LandingsResolveAcceptLanguageEnum[keyof typeof LandingsResolveAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const LandingsSdkSubscriptionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type LandingsSdkSubscriptionAcceptLanguageEnum = typeof LandingsSdkSubscriptionAcceptLanguageEnum[keyof typeof LandingsSdkSubscriptionAcceptLanguageEnum];
 /**
  * @export
  */

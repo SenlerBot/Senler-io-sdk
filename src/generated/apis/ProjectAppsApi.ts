@@ -77,13 +77,6 @@ export interface GetActionsMethodsRequest {
     acceptLanguage?: GetActionsMethodsAcceptLanguageEnum;
 }
 
-export interface GetCatalogRequest {
-    projectId: string;
-    search?: string;
-    type?: GetCatalogTypeEnum;
-    acceptLanguage?: GetCatalogAcceptLanguageEnum;
-}
-
 export interface GetCatalog2Request {
     projectId: string;
     appId: string;
@@ -126,6 +119,13 @@ export interface InstalledSetupStepsSkipRequest {
 export interface InstalledVersionRetryRequest {
     installationId: string;
     acceptLanguage?: InstalledVersionRetryAcceptLanguageEnum;
+}
+
+export interface ProjectAppsGetCatalogRequest {
+    projectId: string;
+    search?: string;
+    type?: ProjectAppsGetCatalogTypeEnum;
+    acceptLanguage?: ProjectAppsGetCatalogAcceptLanguageEnum;
 }
 
 export interface UpdateInstalledDeveloperDialogAccessRequest {
@@ -371,62 +371,6 @@ export class ProjectAppsApi extends runtime.BaseAPI {
      */
     async getActionsMethods(requestParameters: GetActionsMethodsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AppActionMethodResponseDto>> {
         const response = await this.getActionsMethodsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * , .
-     *
-     */
-    async getCatalogRaw(requestParameters: GetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ProjectAppCatalogItemResponseDto>>> {
-        if (requestParameters['projectId'] == null) {
-            throw new runtime.RequiredError(
-                'projectId',
-                'Required parameter "projectId" was null or undefined when calling getCatalog().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['projectId'] != null) {
-            queryParameters['project_id'] = requestParameters['projectId'];
-        }
-
-        if (requestParameters['search'] != null) {
-            queryParameters['search'] = requestParameters['search'];
-        }
-
-        if (requestParameters['type'] != null) {
-            queryParameters['type'] = requestParameters['type'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
-        }
-
-        const response = await this.request({
-            path: `/api/project-apps/catalog`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ProjectAppCatalogItemResponseDtoFromJSON));
-    }
-
-    /**
-     * , .
-     *
-     */
-    async getCatalog(requestParameters: GetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProjectAppCatalogItemResponseDto>> {
-        const response = await this.getCatalogRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -813,6 +757,62 @@ export class ProjectAppsApi extends runtime.BaseAPI {
     }
 
     /**
+     * , .
+     *
+     */
+    async projectAppsGetCatalogRaw(requestParameters: ProjectAppsGetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ProjectAppCatalogItemResponseDto>>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling projectAppsGetCatalog().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
+        }
+
+        if (requestParameters['type'] != null) {
+            queryParameters['type'] = requestParameters['type'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        const response = await this.request({
+            path: `/api/project-apps/catalog`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ProjectAppCatalogItemResponseDtoFromJSON));
+    }
+
+    /**
+     * , .
+     *
+     */
+    async projectAppsGetCatalog(requestParameters: ProjectAppsGetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProjectAppCatalogItemResponseDto>> {
+        const response = await this.projectAppsGetCatalogRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * .
      *
      */
@@ -957,23 +957,6 @@ export type GetActionsMethodsAcceptLanguageEnum = typeof GetActionsMethodsAccept
 /**
  * @export
  */
-export const GetCatalogTypeEnum = {
-    Oauth: 'oauth',
-    SalesFunnel: 'sales_funnel',
-    Plugin: 'plugin'
-} as const;
-export type GetCatalogTypeEnum = typeof GetCatalogTypeEnum[keyof typeof GetCatalogTypeEnum];
-/**
- * @export
- */
-export const GetCatalogAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type GetCatalogAcceptLanguageEnum = typeof GetCatalogAcceptLanguageEnum[keyof typeof GetCatalogAcceptLanguageEnum];
-/**
- * @export
- */
 export const GetCatalog2AcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1044,6 +1027,23 @@ export const InstalledVersionRetryAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type InstalledVersionRetryAcceptLanguageEnum = typeof InstalledVersionRetryAcceptLanguageEnum[keyof typeof InstalledVersionRetryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ProjectAppsGetCatalogTypeEnum = {
+    Oauth: 'oauth',
+    SalesFunnel: 'sales_funnel',
+    Plugin: 'plugin'
+} as const;
+export type ProjectAppsGetCatalogTypeEnum = typeof ProjectAppsGetCatalogTypeEnum[keyof typeof ProjectAppsGetCatalogTypeEnum];
+/**
+ * @export
+ */
+export const ProjectAppsGetCatalogAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ProjectAppsGetCatalogAcceptLanguageEnum = typeof ProjectAppsGetCatalogAcceptLanguageEnum[keyof typeof ProjectAppsGetCatalogAcceptLanguageEnum];
 /**
  * @export
  */

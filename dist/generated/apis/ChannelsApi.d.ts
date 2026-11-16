@@ -11,6 +11,10 @@
  */
 import * as runtime from '../runtime';
 import type { ChannelTokenResponseDto, ConfirmS3UploadDto, FinishMigrationNowResponseDto, GetAvatarUploadUrlDto, GetChannelAccessUserResponseDto, GetChannelResponseDto, GetChannelUserResponseDto, GetChannelsUserResponseDto, MigrationBackfillEstimateResponseDto, MigrationEstimateDto, MigrationEstimateResponseDto, S3UploadUrlResponseDto, SenlerStatusDto, StartMigrationBackfillResponseDto, StartMigrationDto, StartMigrationResponseDto, SuccessResponseDto, SyncChannelResponseDto, UpdateChannelDto, UpdateChannelResponseDto, UploadAvatarFromUrlDto, WidgetCodeResponseDto } from '../models/index';
+export interface BillingRetryRequest {
+    id: string;
+    acceptLanguage?: BillingRetryAcceptLanguageEnum;
+}
 export interface ChannelsAvatarConfirmRequest {
     id: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
@@ -108,6 +112,16 @@ export interface TokensSyncRequest {
  *
  */
 export declare class ChannelsApi extends runtime.BaseAPI {
+    /**
+     * . ; .
+     *
+     */
+    billingRetryRaw(requestParameters: BillingRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>>;
+    /**
+     * . ; .
+     *
+     */
+    billingRetry(requestParameters: BillingRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
     /**
      * avatar_url S3. .
      *
@@ -319,6 +333,14 @@ export declare class ChannelsApi extends runtime.BaseAPI {
      */
     tokensSync(requestParameters: TokensSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SyncChannelResponseDto>;
 }
+/**
+ * @export
+ */
+export declare const BillingRetryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type BillingRetryAcceptLanguageEnum = typeof BillingRetryAcceptLanguageEnum[keyof typeof BillingRetryAcceptLanguageEnum];
 /**
  * @export
  */

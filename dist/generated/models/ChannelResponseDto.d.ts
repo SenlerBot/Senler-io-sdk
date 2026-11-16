@@ -86,6 +86,24 @@ export interface ChannelResponseDto {
      */
     isPaused: boolean;
     /**
+     * .
+     * @type {string}
+     * @memberof ChannelResponseDto
+     */
+    billingStatus?: ChannelResponseDtoBillingStatusEnum;
+    /**
+     * .
+     * @type {Date}
+     * @memberof ChannelResponseDto
+     */
+    billingSuspendedAt?: Date | null;
+    /**
+     * , .
+     * @type {string}
+     * @memberof ChannelResponseDto
+     */
+    billingError?: string | null;
+    /**
      * ID
      * @type {string}
      * @memberof ChannelResponseDto
@@ -247,6 +265,19 @@ export declare const ChannelResponseDtoTypeEnum: {
     readonly Whatsapp: "whatsapp";
 };
 export type ChannelResponseDtoTypeEnum = typeof ChannelResponseDtoTypeEnum[keyof typeof ChannelResponseDtoTypeEnum];
+/**
+ * @export
+ */
+export declare const ChannelResponseDtoBillingStatusEnum: {
+    readonly Active: "active";
+    readonly Suspending: "suspending";
+    readonly Suspended: "suspended";
+    readonly SourceActive: "source_active";
+    readonly Restoring: "restoring";
+    readonly RestoreFailed: "restore_failed";
+    readonly ReconnectRequired: "reconnect_required";
+};
+export type ChannelResponseDtoBillingStatusEnum = typeof ChannelResponseDtoBillingStatusEnum[keyof typeof ChannelResponseDtoBillingStatusEnum];
 /**
  * Check if a given object implements the ChannelResponseDto interface.
  */

@@ -32,7 +32,7 @@ export interface ResumeAnalysisJobDto {
      */
     jobId: string;
     /**
-     * New total spending limit in credit minor units (1 credit = 10000 units).
+     * ; 1 = 10000 .
      * @type {number}
      * @memberof ResumeAnalysisJobDto
      */

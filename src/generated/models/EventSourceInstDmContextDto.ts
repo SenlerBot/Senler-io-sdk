@@ -66,7 +66,7 @@ export interface EventSourceInstDmContextDto {
      */
     kind: EventSourceInstDmContextDtoKindEnum;
     /**
-     *
+     * Instagram
      * @type {EventSourceInstDataDto}
      * @memberof EventSourceInstDmContextDto
      */

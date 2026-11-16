@@ -17,13 +17,13 @@ import type { AutomationHttpRequestConfigDto } from './AutomationHttpRequestConf
  */
 export interface AutomationHttpPreviewDto {
     /**
-     * Final test request. Variable placeholders are sent literally, without resolution.
+     * . , .
      * @type {AutomationHttpRequestConfigDto}
      * @memberof AutomationHttpPreviewDto
      */
     request: AutomationHttpRequestConfigDto;
     /**
-     * Unique identifier of this explicit test request. Reuse on a transport retry.
+     * . - .
      * @type {string}
      * @memberof AutomationHttpPreviewDto
      */

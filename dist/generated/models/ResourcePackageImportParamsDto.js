@@ -34,6 +34,8 @@ function ResourcePackageImportParamsDtoFromJSONTyped(json, ignoreDiscriminator) 
         return json;
     }
     return {
+        'resourcePackageActivate': json['resource_package_activate'] == null ? undefined : json['resource_package_activate'],
+        'channelIds': json['channel_ids'] == null ? undefined : json['channel_ids'],
         'resourcePackageId': json['resource_package_id'],
         'resourcePackageLinkId': json['resource_package_link_id'] == null ? undefined : json['resource_package_link_id'],
         'name': json['name'] == null ? undefined : json['name'],
@@ -47,6 +49,8 @@ function ResourcePackageImportParamsDtoToJSONTyped(value, ignoreDiscriminator = 
         return value;
     }
     return {
+        'resource_package_activate': value['resourcePackageActivate'],
+        'channel_ids': value['channelIds'],
         'resource_package_id': value['resourcePackageId'],
         'resource_package_link_id': value['resourcePackageLinkId'],
         'name': value['name'],

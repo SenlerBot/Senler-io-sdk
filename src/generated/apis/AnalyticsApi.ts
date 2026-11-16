@@ -297,8 +297,8 @@ export interface UpdateSummarizeSettingsRequest {
 export class AnalyticsApi extends runtime.BaseAPI {
 
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Pause analysis after the current paid request has been saved
+     * . ; AI.
+     *
      */
     async analysisJobsPauseRaw(requestParameters: AnalysisJobsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalysisJobDto>> {
         if (requestParameters['analysisJobQueryDto'] == null) {
@@ -348,8 +348,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Pause analysis after the current paid request has been saved
+     * . ; AI.
+     *
      */
     async analysisJobsPause(requestParameters: AnalysisJobsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto> {
         const response = await this.analysisJobsPauseRaw(requestParameters, initOverrides);
@@ -357,8 +357,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Resume the same analysis with saved progress and an authorized spending limit
+     * . ; AI.
+     *
      */
     async analysisJobsResumeRaw(requestParameters: AnalysisJobsResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalysisJobDto>> {
         if (requestParameters['resumeAnalysisJobDto'] == null) {
@@ -408,8 +408,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Resume the same analysis with saved progress and an authorized spending limit
+     * . ; AI.
+     *
      */
     async analysisJobsResume(requestParameters: AnalysisJobsResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto> {
         const response = await this.analysisJobsResumeRaw(requestParameters, initOverrides);
@@ -417,8 +417,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * For runs started with check_mode=dialog_tests. Preserves saved results, stops test dialogs and prevents resuming this run. Returns immediately; active work is stopped by the background worker.
-     * Stop an editor dialog test permanently
+     * check_mode=dialog_tests. , . ; .
+     *
      */
     async analysisJobsStopRaw(requestParameters: AnalysisJobsStopRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalysisJobDto>> {
         if (requestParameters['analysisJobQueryDto'] == null) {
@@ -468,8 +468,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * For runs started with check_mode=dialog_tests. Preserves saved results, stops test dialogs and prevents resuming this run. Returns immediately; active work is stopped by the background worker.
-     * Stop an editor dialog test permanently
+     * check_mode=dialog_tests. , . ; .
+     *
      */
     async analysisJobsStop(requestParameters: AnalysisJobsStopRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto> {
         const response = await this.analysisJobsStopRaw(requestParameters, initOverrides);
@@ -693,8 +693,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Read background analysis progress
+     * . ; AI.
+     *
      */
     async getAnalysisJobsRaw(requestParameters: GetAnalysisJobsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalysisJobDto>> {
         if (requestParameters['projectId'] == null) {
@@ -756,8 +756,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Read background analysis progress
+     * . ; AI.
+     *
      */
     async getAnalysisJobs(requestParameters: GetAnalysisJobsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto> {
         const response = await this.getAnalysisJobsRaw(requestParameters, initOverrides);
@@ -765,8 +765,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns up to 20 project summaries, including paused runs and older saved reports. Pass next_cursor to read the next page. No AI calls or writes.
-     * List saved and unfinished AI summaries
+     * 20 , . next_cursor. AI .
+     * AI-
      */
     async getAnalysisJobsInsightHistoryRaw(requestParameters: GetAnalysisJobsInsightHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InsightHistoryDto>> {
         if (requestParameters['projectId'] == null) {
@@ -821,8 +821,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns up to 20 project summaries, including paused runs and older saved reports. Pass next_cursor to read the next page. No AI calls or writes.
-     * List saved and unfinished AI summaries
+     * 20 , . next_cursor. AI .
+     * AI-
      */
     async getAnalysisJobsInsightHistory(requestParameters: GetAnalysisJobsInsightHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InsightHistoryDto> {
         const response = await this.getAnalysisJobsInsightHistoryRaw(requestParameters, initOverrides);
@@ -830,8 +830,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Read the latest background analysis
+     * . ; AI.
+     *
      */
     async getAnalysisJobsLatestRaw(requestParameters: GetAnalysisJobsLatestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalysisJobDto>> {
         if (requestParameters['projectId'] == null) {
@@ -893,8 +893,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Read the latest background analysis
+     * . ; AI.
+     *
      */
     async getAnalysisJobsLatest(requestParameters: GetAnalysisJobsLatestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto> {
         const response = await this.getAnalysisJobsLatestRaw(requestParameters, initOverrides);

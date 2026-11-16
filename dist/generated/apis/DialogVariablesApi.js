@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ValuesArrayRemoveItemsAcceptLanguageEnum = exports.ValuesArrayPrependItemsAcceptLanguageEnum = exports.ValuesArrayAppendItemsAcceptLanguageEnum = exports.ValuesArrayAddUniqueItemsAcceptLanguageEnum = exports.UpdateValuesStringAcceptLanguageEnum = exports.UpdateValuesStringWriteModeEnum = exports.UpdateValuesObjectAcceptLanguageEnum = exports.UpdateValuesObjectWriteModeEnum = exports.UpdateValuesNumberAcceptLanguageEnum = exports.UpdateValuesNumberWriteModeEnum = exports.UpdateValuesNullAcceptLanguageEnum = exports.UpdateValuesNullWriteModeEnum = exports.UpdateValuesDateAcceptLanguageEnum = exports.UpdateValuesDateWriteModeEnum = exports.UpdateValuesBooleanAcceptLanguageEnum = exports.UpdateValuesBooleanWriteModeEnum = exports.UpdateValuesArrayAcceptLanguageEnum = exports.UpdateValuesArrayWriteModeEnum = exports.GetValues2AcceptLanguageEnum = exports.GetValuesAcceptLanguageEnum = exports.DeleteValuesAcceptLanguageEnum = exports.DialogVariablesApi = void 0;
+exports.ValuesArrayRemoveItemsAcceptLanguageEnum = exports.ValuesArrayPrependItemsAcceptLanguageEnum = exports.ValuesArrayAppendItemsAcceptLanguageEnum = exports.ValuesArrayAddUniqueItemsAcceptLanguageEnum = exports.UpdateValuesStringAcceptLanguageEnum = exports.UpdateValuesStringWriteModeEnum = exports.UpdateValuesReactionAcceptLanguageEnum = exports.UpdateValuesReactionWriteModeEnum = exports.UpdateValuesObjectAcceptLanguageEnum = exports.UpdateValuesObjectWriteModeEnum = exports.UpdateValuesNumberAcceptLanguageEnum = exports.UpdateValuesNumberWriteModeEnum = exports.UpdateValuesNullAcceptLanguageEnum = exports.UpdateValuesNullWriteModeEnum = exports.UpdateValuesDateAcceptLanguageEnum = exports.UpdateValuesDateWriteModeEnum = exports.UpdateValuesBooleanAcceptLanguageEnum = exports.UpdateValuesBooleanWriteModeEnum = exports.UpdateValuesArrayAcceptLanguageEnum = exports.UpdateValuesArrayWriteModeEnum = exports.GetValues2AcceptLanguageEnum = exports.GetValuesAcceptLanguageEnum = exports.DeleteValuesAcceptLanguageEnum = exports.DialogVariablesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -520,6 +520,61 @@ class DialogVariablesApi extends runtime.BaseAPI {
      * write_mode.
      *
      */
+    async updateValuesReactionRaw(requestParameters, initOverrides) {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling updateValuesReaction().');
+        }
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError('name', 'Required parameter "name" was null or undefined when calling updateValuesReaction().');
+        }
+        if (requestParameters['reactionVariableValueDto'] == null) {
+            throw new runtime.RequiredError('reactionVariableValueDto', 'Required parameter "reactionVariableValueDto" was null or undefined when calling updateValuesReaction().');
+        }
+        const queryParameters = {};
+        if (requestParameters['writeMode'] != null) {
+            queryParameters['write_mode'] = requestParameters['writeMode'];
+        }
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialog_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialog_variables"]);
+        }
+        const response = await this.request({
+            path: `/api/dialog-variables/{dialogId}/values/{name}/reaction`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ReactionVariableValueDtoToJSON)(requestParameters['reactionVariableValueDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DialogVariableWriteResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * write_mode.
+     *
+     */
+    async updateValuesReaction(requestParameters, initOverrides) {
+        const response = await this.updateValuesReactionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * write_mode.
+     *
+     */
     async updateValuesStringRaw(requestParameters, initOverrides) {
         if (requestParameters['dialogId'] == null) {
             throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling updateValuesString().');
@@ -895,6 +950,20 @@ exports.UpdateValuesObjectWriteModeEnum = {
  * @export
  */
 exports.UpdateValuesObjectAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateValuesReactionWriteModeEnum = {
+    Overwrite: 'overwrite',
+    IfAbsent: 'if_absent'
+};
+/**
+ * @export
+ */
+exports.UpdateValuesReactionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

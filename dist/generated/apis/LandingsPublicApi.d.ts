@@ -10,14 +10,28 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateLandingSubscriptionContextDto, LandingAcquisitionIdentityDto, LandingBotSubscriptionLinkResponseDto, LandingLaunchContextResponseDto, LandingMiniAppLaunchResponseDto, LandingPublicAnalyticsDto, LandingPublicCatalogResponseDto, LandingPublicResponseDto, LandingResolvedResponseDto, LandingSubscriptionRequestDto, LandingSubscriptionResponseDto, LandingSubscriptionStatusResponseDto, LandingUnsubscriptionRequestDto, LandingVariablesDto, RecordLandingVariantEventDto, ResolveLandingDto, ResolveLandingVariablesRequestDto } from '../models/index';
+import type { CreateLandingSubscriptionContextDto, LandingAcquisitionIdentityDto, LandingBotSubscriptionLinkResponseDto, LandingDomainMutationResultDto, LandingDomainResolutionDto, LandingLaunchContextResponseDto, LandingMiniAppLaunchResponseDto, LandingPublicAnalyticsDto, LandingPublicCatalogResponseDto, LandingPublicResponseDto, LandingResolvedResponseDto, LandingSdkNavigationResponseDto, LandingSdkSubscriptionRequestDto, LandingSdkSubscriptionResponseDto, LandingSubscriptionRequestDto, LandingSubscriptionResponseDto, LandingSubscriptionStatusResponseDto, LandingUnsubscriptionRequestDto, LandingVariablesDto, RecordLandingVariantEventDto, ResolveLandingDto, ResolveLandingVariablesRequestDto } from '../models/index';
 export interface GetLandingsRequest {
     landingPublicId: string;
     acceptLanguage?: GetLandingsAcceptLanguageEnum;
 }
+export interface GetLandingsDomainsCertificateRequest {
+    domain: string;
+    acceptLanguage?: GetLandingsDomainsCertificateAcceptLanguageEnum;
+}
+export interface GetLandingsDomainsResolveRequest {
+    hostname: string;
+    path: string;
+    acceptLanguage?: GetLandingsDomainsResolveAcceptLanguageEnum;
+}
 export interface GetLandingsLaunchRequest {
     token: string;
     acceptLanguage?: GetLandingsLaunchAcceptLanguageEnum;
+}
+export interface GetLandingsSdkLandingRequest {
+    landingPublicId: string;
+    targetLandingId: string;
+    acceptLanguage?: GetLandingsSdkLandingAcceptLanguageEnum;
 }
 export interface GetProjectsLandingsRequest {
     projectPublicId: string;
@@ -72,6 +86,11 @@ export interface LandingsResolveRequest {
     resolveLandingDto: ResolveLandingDto;
     acceptLanguage?: LandingsResolveAcceptLanguageEnum;
 }
+export interface LandingsSdkSubscriptionRequest {
+    landingPublicId: string;
+    landingSdkSubscriptionRequestDto: LandingSdkSubscriptionRequestDto;
+    acceptLanguage?: LandingsSdkSubscriptionAcceptLanguageEnum;
+}
 export interface LandingsVariantEventsRequest {
     landingPublicId: string;
     recordLandingVariantEventDto: RecordLandingVariantEventDto;
@@ -92,6 +111,26 @@ export declare class LandingsPublicApi extends runtime.BaseAPI {
      */
     getLandings(requestParameters: GetLandingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicResponseDto>;
     /**
+     * HTTPS-. 200 TXT- DNS-.
+     *
+     */
+    getLandingsDomainsCertificateRaw(requestParameters: GetLandingsDomainsCertificateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingDomainMutationResultDto>>;
+    /**
+     * HTTPS-. 200 TXT- DNS-.
+     *
+     */
+    getLandingsDomainsCertificate(requestParameters: GetLandingsDomainsCertificateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingDomainMutationResultDto>;
+    /**
+     * .
+     *
+     */
+    getLandingsDomainsResolveRaw(requestParameters: GetLandingsDomainsResolveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingDomainResolutionDto>>;
+    /**
+     * .
+     *
+     */
+    getLandingsDomainsResolve(requestParameters: GetLandingsDomainsResolveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingDomainResolutionDto>;
+    /**
      * .
      *
      */
@@ -101,6 +140,16 @@ export declare class LandingsPublicApi extends runtime.BaseAPI {
      *
      */
     getLandingsLaunch(requestParameters: GetLandingsLaunchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingLaunchContextResponseDto>;
+    /**
+     * ID .
+     * SDK
+     */
+    getLandingsSdkLandingRaw(requestParameters: GetLandingsSdkLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingSdkNavigationResponseDto>>;
+    /**
+     * ID .
+     * SDK
+     */
+    getLandingsSdkLanding(requestParameters: GetLandingsSdkLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingSdkNavigationResponseDto>;
     /**
      * channel_public_id . channel_public_id .
      *
@@ -202,6 +251,16 @@ export declare class LandingsPublicApi extends runtime.BaseAPI {
      */
     landingsResolve(requestParameters: LandingsResolveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResolvedResponseDto>;
     /**
+     * . ; . .
+     * SDK ID
+     */
+    landingsSdkSubscriptionRaw(requestParameters: LandingsSdkSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingSdkSubscriptionResponseDto>>;
+    /**
+     * . ; . .
+     * SDK ID
+     */
+    landingsSdkSubscription(requestParameters: LandingsSdkSubscriptionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingSdkSubscriptionResponseDto>;
+    /**
      * . ; .
      *
      */
@@ -223,11 +282,35 @@ export type GetLandingsAcceptLanguageEnum = typeof GetLandingsAcceptLanguageEnum
 /**
  * @export
  */
+export declare const GetLandingsDomainsCertificateAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLandingsDomainsCertificateAcceptLanguageEnum = typeof GetLandingsDomainsCertificateAcceptLanguageEnum[keyof typeof GetLandingsDomainsCertificateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetLandingsDomainsResolveAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLandingsDomainsResolveAcceptLanguageEnum = typeof GetLandingsDomainsResolveAcceptLanguageEnum[keyof typeof GetLandingsDomainsResolveAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetLandingsLaunchAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
 };
 export type GetLandingsLaunchAcceptLanguageEnum = typeof GetLandingsLaunchAcceptLanguageEnum[keyof typeof GetLandingsLaunchAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetLandingsSdkLandingAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLandingsSdkLandingAcceptLanguageEnum = typeof GetLandingsSdkLandingAcceptLanguageEnum[keyof typeof GetLandingsSdkLandingAcceptLanguageEnum];
 /**
  * @export
  */
@@ -308,6 +391,14 @@ export declare const LandingsResolveAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type LandingsResolveAcceptLanguageEnum = typeof LandingsResolveAcceptLanguageEnum[keyof typeof LandingsResolveAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LandingsSdkSubscriptionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingsSdkSubscriptionAcceptLanguageEnum = typeof LandingsSdkSubscriptionAcceptLanguageEnum[keyof typeof LandingsSdkSubscriptionAcceptLanguageEnum];
 /**
  * @export
  */

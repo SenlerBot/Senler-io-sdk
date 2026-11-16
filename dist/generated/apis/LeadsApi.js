@@ -47,7 +47,7 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetByVariableSearchArrayNotEmptyOrderEnum = exports.GetByVariableSearchArrayLengthEqualsAcceptLanguageEnum = exports.GetByVariableSearchArrayLengthEqualsOrderEnum = exports.GetByVariableSearchArrayLengthAtMostAcceptLanguageEnum = exports.GetByVariableSearchArrayLengthAtMostOrderEnum = exports.GetByVariableSearchArrayLengthAtLeastAcceptLanguageEnum = exports.GetByVariableSearchArrayLengthAtLeastOrderEnum = exports.GetByVariableSearchArrayEmptyAcceptLanguageEnum = exports.GetByVariableSearchArrayEmptyOrderEnum = exports.GetByVariableCountExistsAcceptLanguageEnum = exports.GetByVariableCountEqualsStringAcceptLanguageEnum = exports.GetByVariableCountEqualsNumberAcceptLanguageEnum = exports.GetByVariableCountEqualsNullAcceptLanguageEnum = exports.GetByVariableCountEqualsBooleanAcceptLanguageEnum = exports.GetByVariableCountArrayNotEmptyAcceptLanguageEnum = exports.GetByVariableCountArrayLengthEqualsAcceptLanguageEnum = exports.GetByVariableCountArrayLengthAtMostAcceptLanguageEnum = exports.GetByVariableCountArrayLengthAtLeastAcceptLanguageEnum = exports.GetByVariableCountArrayEmptyAcceptLanguageEnum = exports.ExportByDeliveryAcceptLanguageEnum = exports.DeleteSegmentsAcceptLanguageEnum = exports.ByVariableSearchExistsAcceptLanguageEnum = exports.ByVariableSearchEqualsStringAcceptLanguageEnum = exports.ByVariableSearchEqualsNumberAcceptLanguageEnum = exports.ByVariableSearchEqualsNullAcceptLanguageEnum = exports.ByVariableSearchEqualsBooleanAcceptLanguageEnum = exports.ByVariableSearchArrayContainsAnyAcceptLanguageEnum = exports.ByVariableSearchArrayContainsAllAcceptLanguageEnum = exports.ByVariableSearchArrayContainsAcceptLanguageEnum = exports.ByVariableExportExistsAcceptLanguageEnum = exports.ByVariableExportEqualsStringAcceptLanguageEnum = exports.ByVariableExportEqualsNumberAcceptLanguageEnum = exports.ByVariableExportEqualsNullAcceptLanguageEnum = exports.ByVariableExportEqualsBooleanAcceptLanguageEnum = exports.ByVariableExportArrayNotEmptyAcceptLanguageEnum = exports.ByVariableExportArrayLengthEqualsAcceptLanguageEnum = exports.ByVariableExportArrayLengthAtMostAcceptLanguageEnum = exports.ByVariableExportArrayLengthAtLeastAcceptLanguageEnum = exports.ByVariableExportArrayEmptyAcceptLanguageEnum = exports.ByVariableExportArrayContainsAnyAcceptLanguageEnum = exports.ByVariableExportArrayContainsAllAcceptLanguageEnum = exports.ByVariableExportArrayContainsAcceptLanguageEnum = exports.ByVariableCountArrayContainsAnyAcceptLanguageEnum = exports.ByVariableCountArrayContainsAllAcceptLanguageEnum = exports.ByVariableCountArrayContainsAcceptLanguageEnum = exports.AutomationOperationAcceptLanguageEnum = exports.AgentOperationAcceptLanguageEnum = exports.ImportAcceptLanguageEnum = exports.ExportAcceptLanguageEnum = exports.LeadsApi = void 0;
-exports.VerifySubscriptionAcceptLanguageEnum = exports.UpdateSyncProfileAcceptLanguageEnum = exports.UpdateProjectOperatorAcceptLanguageEnum = exports.UpdateNotesAcceptLanguageEnum = exports.UpdateBlacklistAcceptLanguageEnum = exports.UpdateBirthdayAcceptLanguageEnum = exports.SegmentsAcceptLanguageEnum = exports.SegmentOperationAcceptLanguageEnum = exports.SearchByDeliveryAcceptLanguageEnum = exports.SearchByAutomationAcceptLanguageEnum = exports.SearchAcceptLanguageEnum = exports.RefreshAcceptLanguageEnum = exports.LeadsGetByIdAcceptLanguageEnum = exports.GetSubscriptionUtmTreeAcceptLanguageEnum = exports.GetSubscriptionUtmTreeChannelTypeEnum = exports.GetConsentAcceptancesAcceptLanguageEnum = exports.GetByVariableSearchArrayNotEmptyAcceptLanguageEnum = void 0;
+exports.VerifySubscriptionAcceptLanguageEnum = exports.UpdateSyncProfileAcceptLanguageEnum = exports.UpdateProjectOperatorAcceptLanguageEnum = exports.UpdateNotesAcceptLanguageEnum = exports.UpdateBlacklistAcceptLanguageEnum = exports.UpdateBirthdayAcceptLanguageEnum = exports.SegmentsAcceptLanguageEnum = exports.SegmentOperationAcceptLanguageEnum = exports.SearchByDeliveryAcceptLanguageEnum = exports.SearchByAutomationAcceptLanguageEnum = exports.SearchAcceptLanguageEnum = exports.RefreshAcceptLanguageEnum = exports.LeadsGetByIdAcceptLanguageEnum = exports.ImportTableSuggestAcceptLanguageEnum = exports.ImportTableStartAcceptLanguageEnum = exports.ImportTablePreviewAcceptLanguageEnum = exports.ImportTableParseAcceptLanguageEnum = exports.ImportFileUploadAcceptLanguageEnum = exports.ImportFileStartAcceptLanguageEnum = exports.ImportFileRetryAcceptLanguageEnum = exports.ImportFileResumeAcceptLanguageEnum = exports.ImportFilePreviewAcceptLanguageEnum = exports.ImportFileInspectAcceptLanguageEnum = exports.GetSubscriptionUtmTreeAcceptLanguageEnum = exports.GetSubscriptionUtmTreeChannelTypeEnum = exports.GetImportFileStatusAcceptLanguageEnum = exports.GetImportFileErrorsAcceptLanguageEnum = exports.GetConsentAcceptancesAcceptLanguageEnum = exports.GetByVariableSearchArrayNotEmptyAcceptLanguageEnum = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -2494,6 +2494,124 @@ class LeadsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * 1000 . done=true. .
+     *
+     */
+    async getImportFileErrorsRaw(requestParameters, initOverrides) {
+        if (requestParameters['channelId'] == null) {
+            throw new runtime.RequiredError('channelId', 'Required parameter "channelId" was null or undefined when calling getImportFileErrors().');
+        }
+        if (requestParameters['processId'] == null) {
+            throw new runtime.RequiredError('processId', 'Required parameter "processId" was null or undefined when calling getImportFileErrors().');
+        }
+        if (requestParameters['chunk'] == null) {
+            throw new runtime.RequiredError('chunk', 'Required parameter "chunk" was null or undefined when calling getImportFileErrors().');
+        }
+        if (requestParameters['offset'] == null) {
+            throw new runtime.RequiredError('offset', 'Required parameter "offset" was null or undefined when calling getImportFileErrors().');
+        }
+        const queryParameters = {};
+        if (requestParameters['channelId'] != null) {
+            queryParameters['channel_id'] = requestParameters['channelId'];
+        }
+        if (requestParameters['processId'] != null) {
+            queryParameters['process_id'] = requestParameters['processId'];
+        }
+        if (requestParameters['chunk'] != null) {
+            queryParameters['chunk'] = requestParameters['chunk'];
+        }
+        if (requestParameters['offset'] != null) {
+            queryParameters['offset'] = requestParameters['offset'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/import/file/errors`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadFileErrorsPageDtoFromJSON)(jsonValue));
+    }
+    /**
+     * 1000 . done=true. .
+     *
+     */
+    async getImportFileErrors(requestParameters, initOverrides) {
+        const response = await this.getImportFileErrorsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , . .
+     *
+     */
+    async getImportFileStatusRaw(requestParameters, initOverrides) {
+        if (requestParameters['channelId'] == null) {
+            throw new runtime.RequiredError('channelId', 'Required parameter "channelId" was null or undefined when calling getImportFileStatus().');
+        }
+        if (requestParameters['processId'] == null) {
+            throw new runtime.RequiredError('processId', 'Required parameter "processId" was null or undefined when calling getImportFileStatus().');
+        }
+        const queryParameters = {};
+        if (requestParameters['channelId'] != null) {
+            queryParameters['channel_id'] = requestParameters['channelId'];
+        }
+        if (requestParameters['processId'] != null) {
+            queryParameters['process_id'] = requestParameters['processId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/import/file/status`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadFilePreviewStateDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , . .
+     *
+     */
+    async getImportFileStatus(requestParameters, initOverrides) {
+        const response = await this.getImportFileStatusRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * parent_id utm_source, parent_id . q . , , .
      * UTM
      */
@@ -2562,6 +2680,466 @@ class LeadsApi extends runtime.BaseAPI {
      */
     async getSubscriptionUtmTree(requestParameters, initOverrides) {
         const response = await this.getSubscriptionUtmTreeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , . 50 . .
+     *
+     */
+    async importFileInspectRaw(requestParameters, initOverrides) {
+        if (requestParameters['inspectLeadFileDto'] == null) {
+            throw new runtime.RequiredError('inspectLeadFileDto', 'Required parameter "inspectLeadFileDto" was null or undefined when calling importFileInspect().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/import/file/inspect`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.InspectLeadFileDtoToJSON)(requestParameters['inspectLeadFileDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ParsedLeadTableDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , . 50 . .
+     *
+     */
+    async importFileInspect(requestParameters, initOverrides) {
+        const response = await this.importFileInspectRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . . .
+     *
+     */
+    async importFilePreviewRaw(requestParameters, initOverrides) {
+        if (requestParameters['prepareLeadFileDto'] == null) {
+            throw new runtime.RequiredError('prepareLeadFileDto', 'Required parameter "prepareLeadFileDto" was null or undefined when calling importFilePreview().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/import/file/preview`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.PrepareLeadFileDtoToJSON)(requestParameters['prepareLeadFileDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadFilePreviewStateDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . . .
+     *
+     */
+    async importFilePreview(requestParameters, initOverrides) {
+        const response = await this.importFilePreviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , . .
+     *
+     */
+    async importFileResumeRaw(requestParameters, initOverrides) {
+        if (requestParameters['leadFileJobReferenceDto'] == null) {
+            throw new runtime.RequiredError('leadFileJobReferenceDto', 'Required parameter "leadFileJobReferenceDto" was null or undefined when calling importFileResume().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/import/file/resume`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.LeadFileJobReferenceDtoToJSON)(requestParameters['leadFileJobReferenceDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , . .
+     *
+     */
+    async importFileResume(requestParameters, initOverrides) {
+        const response = await this.importFileResumeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . . .
+     *
+     */
+    async importFileRetryRaw(requestParameters, initOverrides) {
+        if (requestParameters['leadFileJobReferenceDto'] == null) {
+            throw new runtime.RequiredError('leadFileJobReferenceDto', 'Required parameter "leadFileJobReferenceDto" was null or undefined when calling importFileRetry().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/import/file/retry`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.LeadFileJobReferenceDtoToJSON)(requestParameters['leadFileJobReferenceDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadFilePreviewStateDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . . .
+     *
+     */
+    async importFileRetry(requestParameters, initOverrides) {
+        const response = await this.importFileRetryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . , . ; .
+     *
+     */
+    async importFileStartRaw(requestParameters, initOverrides) {
+        if (requestParameters['startLeadFileDto'] == null) {
+            throw new runtime.RequiredError('startLeadFileDto', 'Required parameter "startLeadFileDto" was null or undefined when calling importFileStart().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/import/file/start`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.StartLeadFileDtoToJSON)(requestParameters['startLeadFileDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . , . ; .
+     *
+     */
+    async importFileStart(requestParameters, initOverrides) {
+        const response = await this.importFileStartRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * 2 . .
+     * CSV, TSV TXT
+     */
+    async importFileUploadRaw(requestParameters, initOverrides) {
+        if (requestParameters['createLeadFileDto'] == null) {
+            throw new runtime.RequiredError('createLeadFileDto', 'Required parameter "createLeadFileDto" was null or undefined when calling importFileUpload().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/import/file/upload`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateLeadFileDtoToJSON)(requestParameters['createLeadFileDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadFileUploadDtoFromJSON)(jsonValue));
+    }
+    /**
+     * 2 . .
+     * CSV, TSV TXT
+     */
+    async importFileUpload(requestParameters, initOverrides) {
+        const response = await this.importFileUploadRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * 10 , 10 000 64 . , ID. . .
+     * CSV, TSV TXT
+     */
+    async importTableParseRaw(requestParameters, initOverrides) {
+        if (requestParameters['parseLeadTableDto'] == null) {
+            throw new runtime.RequiredError('parseLeadTableDto', 'Required parameter "parseLeadTableDto" was null or undefined when calling importTableParse().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/import/table/parse`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ParseLeadTableDtoToJSON)(requestParameters['parseLeadTableDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ParsedLeadTableDtoFromJSON)(jsonValue));
+    }
+    /**
+     * 10 , 10 000 64 . , ID. . .
+     * CSV, TSV TXT
+     */
+    async importTableParse(requestParameters, initOverrides) {
+        const response = await this.importTableParseRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , , . . .
+     *
+     */
+    async importTablePreviewRaw(requestParameters, initOverrides) {
+        if (requestParameters['previewLeadTableDto'] == null) {
+            throw new runtime.RequiredError('previewLeadTableDto', 'Required parameter "previewLeadTableDto" was null or undefined when calling importTablePreview().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/import/table/preview`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.PreviewLeadTableDtoToJSON)(requestParameters['previewLeadTableDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadTablePreviewDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , , . . .
+     *
+     */
+    async importTablePreview(requestParameters, initOverrides) {
+        const response = await this.importTablePreviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . , . , , .
+     *
+     */
+    async importTableStartRaw(requestParameters, initOverrides) {
+        if (requestParameters['startLeadTableDto'] == null) {
+            throw new runtime.RequiredError('startLeadTableDto', 'Required parameter "startLeadTableDto" was null or undefined when calling importTableStart().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/import/table/start`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.StartLeadTableDtoToJSON)(requestParameters['startLeadTableDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . , . , , .
+     *
+     */
+    async importTableStart(requestParameters, initOverrides) {
+        const response = await this.importTableStartRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . . GPT Luna ; .
+     * GPT Luna
+     */
+    async importTableSuggestRaw(requestParameters, initOverrides) {
+        if (requestParameters['suggestLeadTableDto'] == null) {
+            throw new runtime.RequiredError('suggestLeadTableDto', 'Required parameter "suggestLeadTableDto" was null or undefined when calling importTableSuggest().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+        const response = await this.request({
+            path: `/api/leads/import/table/suggest`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SuggestLeadTableDtoToJSON)(requestParameters['suggestLeadTableDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SuggestedLeadTableDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . . GPT Luna ; .
+     * GPT Luna
+     */
+    async importTableSuggest(requestParameters, initOverrides) {
+        const response = await this.importTableSuggestRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -3543,6 +4121,20 @@ exports.GetConsentAcceptancesAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.GetImportFileErrorsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetImportFileStatusAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.GetSubscriptionUtmTreeChannelTypeEnum = {
     Vk: 'vk',
     Tg: 'tg',
@@ -3560,6 +4152,76 @@ exports.GetSubscriptionUtmTreeChannelTypeEnum = {
  * @export
  */
 exports.GetSubscriptionUtmTreeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ImportFileInspectAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ImportFilePreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ImportFileResumeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ImportFileRetryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ImportFileStartAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ImportFileUploadAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ImportTableParseAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ImportTablePreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ImportTableStartAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ImportTableSuggestAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

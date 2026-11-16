@@ -66,6 +66,12 @@ export interface InvitationListItemDto {
      */
     email?: string;
     /**
+     * ID ,
+     * @type {string}
+     * @memberof InvitationListItemDto
+     */
+    bookingSpecialistId?: string;
+    /**
      * ,
      * @type {ProjectRole}
      * @memberof InvitationListItemDto
@@ -151,6 +157,7 @@ export function InvitationListItemDtoFromJSONTyped(json: any, ignoreDiscriminato
         'projectId': json['project_id'],
         'userId': json['user_id'] == null ? undefined : json['user_id'],
         'email': json['email'] == null ? undefined : json['email'],
+        'bookingSpecialistId': json['booking_specialist_id'] == null ? undefined : json['booking_specialist_id'],
         'role': ProjectRoleFromJSON(json['role']),
         'status': InvitationStatusFromJSON(json['status']),
         'expiresAt': json['expires_at'],
@@ -178,6 +185,7 @@ export function InvitationListItemDtoToJSONTyped(value?: InvitationListItemDto |
         'project_id': value['projectId'],
         'user_id': value['userId'],
         'email': value['email'],
+        'booking_specialist_id': value['bookingSpecialistId'],
         'role': ProjectRoleToJSON(value['role']),
         'status': InvitationStatusToJSON(value['status']),
         'expires_at': value['expiresAt'],

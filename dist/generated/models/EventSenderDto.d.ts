@@ -17,7 +17,7 @@ import type { EventSenderProfileDto } from './EventSenderProfileDto';
  */
 export interface EventSenderDto {
     /**
-     * ID (agent_id, lead_id, user_id, channel_id, space_id)
+     * ID (agent_id, lead_id, user_id, channel_id, space_id, app_id, api_key_id, delivery_id)
      * @type {string}
      * @memberof EventSenderDto
      */
@@ -54,6 +54,9 @@ export declare const EventSenderDtoTypeEnum: {
     readonly Lead: "lead";
     readonly User: "user";
     readonly Admin: "admin";
+    readonly App: "app";
+    readonly ApiKey: "api_key";
+    readonly Delivery: "delivery";
     readonly Assistant: "assistant";
     readonly System: "system";
     readonly Segment: "segment";

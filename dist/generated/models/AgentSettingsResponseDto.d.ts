@@ -10,15 +10,17 @@
  * Do not edit the class manually.
  */
 import type { TrainingMode } from './TrainingMode';
-import type { AgentStatus } from './AgentStatus';
-import type { AgentAppOriginDto } from './AgentAppOriginDto';
 import type { AgentSelectedModelSummaryDto } from './AgentSelectedModelSummaryDto';
-import type { WizardStep } from './WizardStep';
-import type { OperatorHandoffPolicyDto } from './OperatorHandoffPolicyDto';
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 import type { McpServerResponseDto } from './McpServerResponseDto';
-import type { AgentMcpServerListResponseDto } from './AgentMcpServerListResponseDto';
 import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
+import type { AgentStatus } from './AgentStatus';
+import type { AgentAppOriginDto } from './AgentAppOriginDto';
+import type { WizardStep } from './WizardStep';
+import type { AgentBookingPolicyDto } from './AgentBookingPolicyDto';
+import type { OperatorHandoffPolicyDto } from './OperatorHandoffPolicyDto';
+import type { AgentMcpServerListResponseDto } from './AgentMcpServerListResponseDto';
+import type { AgentAutomationCallDto } from './AgentAutomationCallDto';
 import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicyDto';
 /**
  * AgentSettingsResponseDto.
@@ -26,6 +28,36 @@ import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicy
  * @interface AgentSettingsResponseDto
  */
 export interface AgentSettingsResponseDto {
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    enableLiveVoice: boolean;
+    /**
+     * UUID
+     * @type {string}
+     * @memberof AgentSettingsResponseDto
+     */
+    liveVoiceModelId?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof AgentSettingsResponseDto
+     */
+    liveVoiceVoice: AgentSettingsResponseDtoLiveVoiceVoiceEnum;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    liveVoiceCommentary: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    liveVoiceInterruptions: boolean;
     /**
      * : , . .
      * @type {string}
@@ -130,6 +162,12 @@ export interface AgentSettingsResponseDto {
      * @memberof AgentSettingsResponseDto
      */
     selectedModelId?: string | null;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    enableModelFallback?: boolean;
     /**
      * ID . null .
      * @type {string}
@@ -437,6 +475,12 @@ export interface AgentSettingsResponseDto {
      */
     automationEventPolicy: AgentAutomationEventPolicyDto;
     /**
+     *
+     * @type {Array<AgentAutomationCallDto>}
+     * @memberof AgentSettingsResponseDto
+     */
+    callableAutomations: Array<AgentAutomationCallDto>;
+    /**
      * . false ; enable_ai_response=true. enable_preliminary_response enable_user_message=false. AI- .
      * @type {boolean}
      * @memberof AgentSettingsResponseDto
@@ -569,6 +613,12 @@ export interface AgentSettingsResponseDto {
         [key: string]: any;
     };
     /**
+     * -
+     * @type {AgentBookingPolicyDto}
+     * @memberof AgentSettingsResponseDto
+     */
+    bookingPolicy: AgentBookingPolicyDto;
+    /**
      * recipient messaging tools (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof AgentSettingsResponseDto
@@ -601,6 +651,22 @@ export interface AgentSettingsResponseDto {
      */
     updatedAt: Date;
 }
+/**
+ * @export
+ */
+export declare const AgentSettingsResponseDtoLiveVoiceVoiceEnum: {
+    readonly Marin: "marin";
+    readonly Cedar: "cedar";
+    readonly Coral: "coral";
+    readonly Sage: "sage";
+    readonly Alloy: "alloy";
+    readonly Ash: "ash";
+    readonly Ballad: "ballad";
+    readonly Echo: "echo";
+    readonly Shimmer: "shimmer";
+    readonly Verse: "verse";
+};
+export type AgentSettingsResponseDtoLiveVoiceVoiceEnum = typeof AgentSettingsResponseDtoLiveVoiceVoiceEnum[keyof typeof AgentSettingsResponseDtoLiveVoiceVoiceEnum];
 /**
  * @export
  */

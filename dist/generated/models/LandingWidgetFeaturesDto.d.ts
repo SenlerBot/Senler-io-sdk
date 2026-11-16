@@ -32,6 +32,12 @@ export interface LandingWidgetFeaturesDto {
      * @type {boolean}
      * @memberof LandingWidgetFeaturesDto
      */
+    liveVoice?: boolean;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof LandingWidgetFeaturesDto
+     */
     emoji?: boolean;
     /**
      * .

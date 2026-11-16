@@ -29,7 +29,7 @@ export interface CreateVideoLandingBlockDto {
      */
     pageVariantId?: string;
     /**
-     *
+     * order_revision . 409 .
      * @type {number}
      * @memberof CreateVideoLandingBlockDto
      */

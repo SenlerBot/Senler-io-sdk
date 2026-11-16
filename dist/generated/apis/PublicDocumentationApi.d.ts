@@ -35,7 +35,7 @@ export interface GetPageRequest {
 }
 export interface PublicDocumentationGetSearchRequest {
     query: string;
-    includeApi?: boolean;
+    searchIn?: PublicDocumentationGetSearchSearchInEnum;
     locale?: PublicDocumentationGetSearchLocaleEnum;
     scope?: PublicDocumentationGetSearchScopeEnum;
     app?: string;
@@ -98,13 +98,13 @@ export declare class PublicDocumentationApi extends runtime.BaseAPI {
      */
     getPage(requestParameters: GetPageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicDocumentationPageDto>;
     /**
-     * . include_api=true HTTP-; API . app ID .
-     * Senler
+     * search_in=documentation ( ) Senler . search_in=api HTTP-, , . locale, scope, app audience . app ID .
+     * API Senler
      */
     publicDocumentationGetSearchRaw(requestParameters: PublicDocumentationGetSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicDocumentationSearchResponseDto>>;
     /**
-     * . include_api=true HTTP-; API . app ID .
-     * Senler
+     * search_in=documentation ( ) Senler . search_in=api HTTP-, , . locale, scope, app audience . app ID .
+     * API Senler
      */
     publicDocumentationGetSearch(requestParameters: PublicDocumentationGetSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicDocumentationSearchResponseDto>;
 }
@@ -148,6 +148,14 @@ export declare const GetPageAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetPageAcceptLanguageEnum = typeof GetPageAcceptLanguageEnum[keyof typeof GetPageAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const PublicDocumentationGetSearchSearchInEnum: {
+    readonly Documentation: "documentation";
+    readonly Api: "api";
+};
+export type PublicDocumentationGetSearchSearchInEnum = typeof PublicDocumentationGetSearchSearchInEnum[keyof typeof PublicDocumentationGetSearchSearchInEnum];
 /**
  * @export
  */

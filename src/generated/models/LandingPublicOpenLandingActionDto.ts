@@ -37,6 +37,12 @@ export interface LandingPublicOpenLandingActionDto {
      * @memberof LandingPublicOpenLandingActionDto
      */
     landingPublicId: string | null;
+    /**
+     * - ; Mini App .
+     * @type {string}
+     * @memberof LandingPublicOpenLandingActionDto
+     */
+    webUrl: string | null;
 }
 
 
@@ -56,6 +62,7 @@ export function instanceOfLandingPublicOpenLandingActionDto(value: object): valu
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('landingPublicId' in value) || value['landingPublicId'] === undefined) return false;
+    if (!('webUrl' in value) || value['webUrl'] === undefined) return false;
     return true;
 }
 
@@ -72,6 +79,7 @@ export function LandingPublicOpenLandingActionDtoFromJSONTyped(json: any, ignore
         'id': json['id'],
         'type': json['type'],
         'landingPublicId': json['landing_public_id'],
+        'webUrl': json['web_url'],
     };
 }
 
@@ -89,5 +97,6 @@ export function LandingPublicOpenLandingActionDtoToJSONTyped(value?: LandingPubl
         'id': value['id'],
         'type': value['type'],
         'landing_public_id': value['landingPublicId'],
+        'web_url': value['webUrl'],
     };
 }

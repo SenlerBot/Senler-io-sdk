@@ -17,7 +17,7 @@ import type { AgentLandingVariantInitialContentDtoAction } from './AgentLandingV
  */
 export interface UpdateAgentLandingBlockDto {
     /**
-     *
+     * revision . 409 .
      * @type {number}
      * @memberof UpdateAgentLandingBlockDto
      */
@@ -35,7 +35,7 @@ export interface UpdateAgentLandingBlockDto {
      */
     isVisible: boolean;
     /**
-     * ; type (mixed type)
+     * payload, ; type . . (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof UpdateAgentLandingBlockDto
      */
@@ -64,6 +64,7 @@ export declare const UpdateAgentLandingBlockDtoTypeEnum: {
     readonly Video: "video";
     readonly Timer: "timer";
     readonly Widget: "widget";
+    readonly Booking: "booking";
     readonly Other: "other";
 };
 export type UpdateAgentLandingBlockDtoTypeEnum = typeof UpdateAgentLandingBlockDtoTypeEnum[keyof typeof UpdateAgentLandingBlockDtoTypeEnum];

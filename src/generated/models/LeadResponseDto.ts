@@ -69,7 +69,7 @@ export interface LeadResponseDto {
      */
     readonly analyticsIdentifiers: Array<LeadAnalyticsIdentifierDto>;
     /**
-     * Effective birthday. A missing year remains absent.
+     * . , .
      * @type {LeadBirthdayDateDto}
      * @memberof LeadResponseDto
      */
@@ -81,19 +81,37 @@ export interface LeadResponseDto {
      */
     birthdayMode: LeadResponseDtoBirthdayModeEnum;
     /**
-     * Most recently available channel birthday, independent of manual override.
+     * ; import
+     * @type {string}
+     * @memberof LeadResponseDto
+     */
+    birthdaySource?: LeadResponseDtoBirthdaySourceEnum | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LeadResponseDto
+     */
+    city?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LeadResponseDto
+     */
+    country?: string | null;
+    /**
+     * , .
      * @type {LeadBirthdayDateDto}
      * @memberof LeadResponseDto
      */
     birthdayChannel: LeadBirthdayDateDto | null;
     /**
-     * Time the effective birthday source was updated
+     *
      * @type {Date}
      * @memberof LeadResponseDto
      */
     birthdayUpdatedAt?: Date | null;
     /**
-     * Time the channel birthday was checked successfully
+     *
      * @type {Date}
      * @memberof LeadResponseDto
      */
@@ -287,6 +305,16 @@ export type LeadResponseDtoBirthdayModeEnum = typeof LeadResponseDtoBirthdayMode
 /**
  * @export
  */
+export const LeadResponseDtoBirthdaySourceEnum = {
+    Manual: 'manual',
+    Channel: 'channel',
+    Import: 'import'
+} as const;
+export type LeadResponseDtoBirthdaySourceEnum = typeof LeadResponseDtoBirthdaySourceEnum[keyof typeof LeadResponseDtoBirthdaySourceEnum];
+
+/**
+ * @export
+ */
 export const LeadResponseDtoChannelTypeEnum = {
     Vk: 'vk',
     Tg: 'tg',
@@ -372,6 +400,9 @@ export function LeadResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: boo
         'analyticsIdentifiers': ((json['analytics_identifiers'] as Array<any>).map(LeadAnalyticsIdentifierDtoFromJSON)),
         'birthday': LeadBirthdayDateDtoFromJSON(json['birthday']),
         'birthdayMode': json['birthday_mode'],
+        'birthdaySource': json['birthday_source'] == null ? undefined : json['birthday_source'],
+        'city': json['city'] == null ? undefined : json['city'],
+        'country': json['country'] == null ? undefined : json['country'],
         'birthdayChannel': LeadBirthdayDateDtoFromJSON(json['birthday_channel']),
         'birthdayUpdatedAt': json['birthday_updated_at'] == null ? undefined : (new Date(json['birthday_updated_at'])),
         'birthdayChannelUpdatedAt': json['birthday_channel_updated_at'] == null ? undefined : (new Date(json['birthday_channel_updated_at'])),
@@ -420,6 +451,9 @@ export function LeadResponseDtoToJSONTyped(value?: Omit<LeadResponseDto, 'analyt
 
         'birthday': LeadBirthdayDateDtoToJSON(value['birthday']),
         'birthday_mode': value['birthdayMode'],
+        'birthday_source': value['birthdaySource'],
+        'city': value['city'],
+        'country': value['country'],
         'birthday_channel': LeadBirthdayDateDtoToJSON(value['birthdayChannel']),
         'birthday_updated_at': value['birthdayUpdatedAt'] == null ? undefined : ((value['birthdayUpdatedAt'] as any).toISOString()),
         'birthday_channel_updated_at': value['birthdayChannelUpdatedAt'] == null ? undefined : ((value['birthdayChannelUpdatedAt'] as any).toISOString()),

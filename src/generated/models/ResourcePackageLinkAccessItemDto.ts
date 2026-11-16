@@ -128,7 +128,10 @@ export const ResourcePackageLinkAccessItemDtoRootResourceTypeEnum = {
     KnowledgeFile: 'knowledge_file',
     KnowledgeTable: 'knowledge_table',
     Landing: 'landing',
-    MetricDefinition: 'metric_definition'
+    MetricDefinition: 'metric_definition',
+    BookingService: 'booking_service',
+    BookingSpecialist: 'booking_specialist',
+    BookingResource: 'booking_resource'
 } as const;
 export type ResourcePackageLinkAccessItemDtoRootResourceTypeEnum = typeof ResourcePackageLinkAccessItemDtoRootResourceTypeEnum[keyof typeof ResourcePackageLinkAccessItemDtoRootResourceTypeEnum];
 
@@ -145,7 +148,8 @@ export const ResourcePackageLinkAccessItemDtoSourceSectionEnum = {
     DialogVariables: 'dialog_variables',
     Segments: 'segments',
     Landings: 'landings',
-    Metrics: 'metrics'
+    Metrics: 'metrics',
+    Bookings: 'bookings'
 } as const;
 export type ResourcePackageLinkAccessItemDtoSourceSectionEnum = typeof ResourcePackageLinkAccessItemDtoSourceSectionEnum[keyof typeof ResourcePackageLinkAccessItemDtoSourceSectionEnum];
 

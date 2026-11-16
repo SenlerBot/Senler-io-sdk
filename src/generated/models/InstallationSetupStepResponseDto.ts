@@ -34,6 +34,13 @@ import {
     LocalizedTextDtoToJSON,
     LocalizedTextDtoToJSONTyped,
 } from './LocalizedTextDto';
+import type { InstallationConsentSegmentResponseDto } from './InstallationConsentSegmentResponseDto';
+import {
+    InstallationConsentSegmentResponseDtoFromJSON,
+    InstallationConsentSegmentResponseDtoFromJSONTyped,
+    InstallationConsentSegmentResponseDtoToJSON,
+    InstallationConsentSegmentResponseDtoToJSONTyped,
+} from './InstallationConsentSegmentResponseDto';
 import type { InstallationSubscriptionLinkResponseDto } from './InstallationSubscriptionLinkResponseDto';
 import {
     InstallationSubscriptionLinkResponseDtoFromJSON,
@@ -122,6 +129,12 @@ export interface InstallationSetupStepResponseDto {
      */
     subscriptionLinks: Array<InstallationSubscriptionLinkResponseDto>;
     /**
+     *
+     * @type {InstallationConsentSegmentResponseDto}
+     * @memberof InstallationSetupStepResponseDto
+     */
+    consentSegment?: InstallationConsentSegmentResponseDto;
+    /**
      * ID
      * @type {string}
      * @memberof InstallationSetupStepResponseDto
@@ -168,10 +181,12 @@ export type InstallationSetupStepResponseDtoPhaseEnum = typeof InstallationSetup
  */
 export const InstallationSetupStepResponseDtoTypeEnum = {
     FillVariables: 'fill_variables',
+    SelectRecipient: 'select_recipient',
     SetDefaultAgent: 'set_default_agent',
     AssignAgentToDialog: 'assign_agent_to_dialog',
     CustomInstruction: 'custom_instruction',
-    SubscriptionLinks: 'subscription_links'
+    SubscriptionLinks: 'subscription_links',
+    ConfigureConsents: 'configure_consents'
 } as const;
 export type InstallationSetupStepResponseDtoTypeEnum = typeof InstallationSetupStepResponseDtoTypeEnum[keyof typeof InstallationSetupStepResponseDtoTypeEnum];
 
@@ -223,6 +238,7 @@ export function InstallationSetupStepResponseDtoFromJSONTyped(json: any, ignoreD
         'variables': ((json['variables'] as Array<any>).map(InstallationSetupStepVariableResponseDtoFromJSON)),
         'defaultAssignment': json['default_assignment'] == null ? undefined : DefaultAssignmentResponseDtoFromJSON(json['default_assignment']),
         'subscriptionLinks': ((json['subscription_links'] as Array<any>).map(InstallationSubscriptionLinkResponseDtoFromJSON)),
+        'consentSegment': json['consent_segment'] == null ? undefined : InstallationConsentSegmentResponseDtoFromJSON(json['consent_segment']),
         'currentDefaultAgentId': json['current_default_agent_id'] == null ? undefined : json['current_default_agent_id'],
         'currentDialogId': json['current_dialog_id'] == null ? undefined : json['current_dialog_id'],
         'order': json['order'],
@@ -253,6 +269,7 @@ export function InstallationSetupStepResponseDtoToJSONTyped(value?: Installation
         'variables': ((value['variables'] as Array<any>).map(InstallationSetupStepVariableResponseDtoToJSON)),
         'default_assignment': DefaultAssignmentResponseDtoToJSON(value['defaultAssignment']),
         'subscription_links': ((value['subscriptionLinks'] as Array<any>).map(InstallationSubscriptionLinkResponseDtoToJSON)),
+        'consent_segment': InstallationConsentSegmentResponseDtoToJSON(value['consentSegment']),
         'current_default_agent_id': value['currentDefaultAgentId'],
         'current_dialog_id': value['currentDialogId'],
         'order': value['order'],

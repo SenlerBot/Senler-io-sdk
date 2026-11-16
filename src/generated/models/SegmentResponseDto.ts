@@ -28,6 +28,12 @@ import {
  */
 export interface SegmentResponseDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof SegmentResponseDto
+     */
+    suppressAgentResponseOnSubscription: boolean;
+    /**
      * ID
      * @type {string}
      * @memberof SegmentResponseDto
@@ -99,6 +105,7 @@ export interface SegmentResponseDto {
  * Check if a given object implements the SegmentResponseDto interface.
  */
 export function instanceOfSegmentResponseDto(value: object): value is SegmentResponseDto {
+    if (!('suppressAgentResponseOnSubscription' in value) || value['suppressAgentResponseOnSubscription'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('projectId' in value) || value['projectId'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
@@ -123,6 +130,7 @@ export function SegmentResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
 
+        'suppressAgentResponseOnSubscription': json['suppress_agent_response_on_subscription'],
         'id': json['id'],
         'projectId': json['project_id'],
         'name': json['name'],
@@ -148,6 +156,7 @@ export function SegmentResponseDtoToJSONTyped(value?: SegmentResponseDto | null,
 
     return {
 
+        'suppress_agent_response_on_subscription': value['suppressAgentResponseOnSubscription'],
         'id': value['id'],
         'project_id': value['projectId'],
         'name': value['name'],

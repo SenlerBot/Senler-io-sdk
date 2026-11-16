@@ -255,6 +255,12 @@ export interface ProjectsOrdersCryptoSubmitRequest {
     acceptLanguage?: ProjectsOrdersCryptoSubmitAcceptLanguageEnum;
 }
 
+export interface ProjectsOrdersRefreshRequest {
+    projectId: string;
+    orderId: string;
+    acceptLanguage?: ProjectsOrdersRefreshAcceptLanguageEnum;
+}
+
 export interface ProjectsPaymentSettingsRequest {
     projectId: string;
     savePaymentSettingsDto: SavePaymentSettingsDto;
@@ -1113,7 +1119,7 @@ export class BillingApi extends runtime.BaseAPI {
     }
 
     /**
-     * status (current/upgrade/downgrade) . endpoint .
+     * status (current/upgrade/downgrade) . .
      *
      */
     async getProjectsTariffsRaw(requestParameters: GetProjectsTariffsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectTariffsResponseDto>> {
@@ -1161,7 +1167,7 @@ export class BillingApi extends runtime.BaseAPI {
     }
 
     /**
-     * status (current/upgrade/downgrade) . endpoint .
+     * status (current/upgrade/downgrade) . .
      *
      */
     async getProjectsTariffs(requestParameters: GetProjectsTariffsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectTariffsResponseDto> {
@@ -1688,6 +1694,69 @@ export class BillingApi extends runtime.BaseAPI {
     async projectsOrdersCryptoSubmit(requestParameters: ProjectsOrdersCryptoSubmitRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CryptoPaymentStatusResponseDto> {
         const response = await this.projectsOrdersCryptoSubmitRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+
+    /**
+     * - . . 30 .
+     *
+     */
+    async projectsOrdersRefreshRaw(requestParameters: ProjectsOrdersRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling projectsOrdersRefresh().'
+            );
+        }
+
+        if (requestParameters['orderId'] == null) {
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter "orderId" was null or undefined when calling projectsOrdersRefresh().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_billing"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_billing"]);
+        }
+
+        const response = await this.request({
+            path: `/api/billing/projects/{projectId}/orders/{orderId}/refresh`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"orderId"}}`, encodeURIComponent(String(requestParameters['orderId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * - . . 30 .
+     *
+     */
+    async projectsOrdersRefresh(requestParameters: ProjectsOrdersRefreshRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.projectsOrdersRefreshRaw(requestParameters, initOverrides);
     }
 
     /**
@@ -2333,6 +2402,14 @@ export const ProjectsOrdersCryptoSubmitAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type ProjectsOrdersCryptoSubmitAcceptLanguageEnum = typeof ProjectsOrdersCryptoSubmitAcceptLanguageEnum[keyof typeof ProjectsOrdersCryptoSubmitAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ProjectsOrdersRefreshAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ProjectsOrdersRefreshAcceptLanguageEnum = typeof ProjectsOrdersRefreshAcceptLanguageEnum[keyof typeof ProjectsOrdersRefreshAcceptLanguageEnum];
 /**
  * @export
  */

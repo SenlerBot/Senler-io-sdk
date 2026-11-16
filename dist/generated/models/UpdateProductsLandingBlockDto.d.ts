@@ -17,7 +17,7 @@ import type { LandingProductsBlockPayloadDto } from './LandingProductsBlockPaylo
  */
 export interface UpdateProductsLandingBlockDto {
     /**
-     *
+     * revision . 409 .
      * @type {number}
      * @memberof UpdateProductsLandingBlockDto
      */

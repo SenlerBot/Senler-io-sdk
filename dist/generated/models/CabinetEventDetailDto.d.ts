@@ -19,6 +19,7 @@ import type { DialogChatEventDtoDeliveryRef } from './DialogChatEventDtoDelivery
 import type { EventTypingDto } from './EventTypingDto';
 import type { EventMessageInteractionsDto } from './EventMessageInteractionsDto';
 import type { EventErrorDto } from './EventErrorDto';
+import type { EventLiveVoiceDto } from './EventLiveVoiceDto';
 import type { EventMessageDto } from './EventMessageDto';
 import type { EventTimerDto } from './EventTimerDto';
 import type { EventStatusDto } from './EventStatusDto';
@@ -41,6 +42,12 @@ import type { EventAttachmentCabinetDto } from './EventAttachmentCabinetDto';
  * @interface CabinetEventDetailDto
  */
 export interface CabinetEventDetailDto {
+    /**
+     *
+     * @type {EventLiveVoiceDto}
+     * @memberof CabinetEventDetailDto
+     */
+    liveVoice?: EventLiveVoiceDto;
     /**
      *
      * @type {EventFunnelDto}
@@ -417,6 +424,7 @@ export declare const CabinetEventDetailDtoActionTypeEnum: {
     readonly AiActionExecuted: "ai_action_executed";
     readonly AiProviderCallCompleted: "ai_provider_call_completed";
     readonly AnalyticsUsageCharged: "analytics_usage_charged";
+    readonly LiveVoiceUsageCharged: "live_voice_usage_charged";
     readonly ErrorRaised: "error_raised";
     readonly StateChanged: "state_changed";
     readonly RolledBack: "rolled_back";

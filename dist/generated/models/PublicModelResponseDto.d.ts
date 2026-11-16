@@ -295,6 +295,7 @@ export type PublicModelResponseDtoQualityLevelEnum = typeof PublicModelResponseD
 export declare const PublicModelResponseDtoTypeEnum: {
     readonly Decision: "decision";
     readonly Text: "text";
+    readonly LiveVoice: "live_voice";
     readonly ImageGeneration: "image_generation";
     readonly AudioGeneration: "audio_generation";
     readonly SpeechRecognition: "speech_recognition";

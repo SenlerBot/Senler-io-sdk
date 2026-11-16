@@ -23,6 +23,7 @@ const runtime_1 = require("../runtime");
 const LocalizedTextDto_1 = require("./LocalizedTextDto");
 const BillingTransactionDtoDetailsByAgentValue_1 = require("./BillingTransactionDtoDetailsByAgentValue");
 const BillingTransactionDtoDetailsByModelValue_1 = require("./BillingTransactionDtoDetailsByModelValue");
+const ReferralTransactionDetailsDto_1 = require("./ReferralTransactionDetailsDto");
 /**
  * @export
  */
@@ -82,6 +83,7 @@ function BillingTransactionDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'referral': json['referral'] == null ? undefined : (0, ReferralTransactionDetailsDto_1.ReferralTransactionDetailsDtoFromJSON)(json['referral']),
         'id': json['id'],
         'projectId': json['project_id'],
         'type': json['type'],
@@ -128,6 +130,7 @@ function BillingTransactionDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'referral': (0, ReferralTransactionDetailsDto_1.ReferralTransactionDetailsDtoToJSON)(value['referral']),
         'id': value['id'],
         'project_id': value['projectId'],
         'type': value['type'],

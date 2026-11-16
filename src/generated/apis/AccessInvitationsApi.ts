@@ -186,7 +186,7 @@ export class AccessInvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * user_id email. pending- ( 4 ). .
+     * user_id email. pending- ( 4 ). . can_manage_bookings.
      *
      */
     async accessInvitationsInvitationsRaw(requestParameters: AccessInvitationsInvitationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InvitationCreatedResponseDto>> {
@@ -231,7 +231,7 @@ export class AccessInvitationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * user_id email. pending- ( 4 ). .
+     * user_id email. pending- ( 4 ). . can_manage_bookings.
      *
      */
     async accessInvitationsInvitations(requestParameters: AccessInvitationsInvitationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InvitationCreatedResponseDto> {

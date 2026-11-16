@@ -20,6 +20,18 @@ import { mapValues } from '../runtime';
  */
 export interface ImportLeadsParamsDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof ImportLeadsParamsDto
+     */
+    fileImport?: boolean;
+    /**
+     *
+     * @type {Date}
+     * @memberof ImportLeadsParamsDto
+     */
+    fileExpiresAt?: Date;
+    /**
      * ID
      * @type {string}
      * @memberof ImportLeadsParamsDto
@@ -78,6 +90,8 @@ export function ImportLeadsParamsDtoFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
 
+        'fileImport': json['file_import'] == null ? undefined : json['file_import'],
+        'fileExpiresAt': json['file_expires_at'] == null ? undefined : (new Date(json['file_expires_at'])),
         'channelId': json['channel_id'],
         'channelType': json['channel_type'],
         'leadSource': json['lead_source'] == null ? undefined : json['lead_source'],
@@ -95,6 +109,8 @@ export function ImportLeadsParamsDtoToJSONTyped(value?: ImportLeadsParamsDto | n
 
     return {
 
+        'file_import': value['fileImport'],
+        'file_expires_at': value['fileExpiresAt'] == null ? undefined : ((value['fileExpiresAt']).toISOString()),
         'channel_id': value['channelId'],
         'channel_type': value['channelType'],
         'lead_source': value['leadSource'],

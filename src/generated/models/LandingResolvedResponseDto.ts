@@ -49,6 +49,12 @@ import {
  */
 export interface LandingResolvedResponseDto {
     /**
+     * ; null
+     * @type {string}
+     * @memberof LandingResolvedResponseDto
+     */
+    bookingToken: string | null;
+    /**
      *
      * @type {LandingPublicResponseDto}
      * @memberof LandingResolvedResponseDto
@@ -85,25 +91,25 @@ export interface LandingResolvedResponseDto {
      */
     exposureMarkers: Array<LandingExperimentMarkerDto>;
     /**
-     * ;
+     * ; . .
      * @type {Array<LandingExperimentExposureDto>}
      * @memberof LandingResolvedResponseDto
      * @deprecated
      */
-    exposures: Array<LandingExperimentExposureDto>;
+    exposures?: Array<LandingExperimentExposureDto>;
 }
 
 /**
  * Check if a given object implements the LandingResolvedResponseDto interface.
  */
 export function instanceOfLandingResolvedResponseDto(value: object): value is LandingResolvedResponseDto {
+    if (!('bookingToken' in value) || value['bookingToken'] === undefined) return false;
     if (!('landing' in value) || value['landing'] === undefined) return false;
     if (!('visitId' in value) || value['visitId'] === undefined) return false;
     if (!('pageVariantId' in value) || value['pageVariantId'] === undefined) return false;
     if (!('selectedBlocks' in value) || value['selectedBlocks'] === undefined) return false;
     if (!('eventToken' in value) || value['eventToken'] === undefined) return false;
     if (!('exposureMarkers' in value) || value['exposureMarkers'] === undefined) return false;
-    if (!('exposures' in value) || value['exposures'] === undefined) return false;
     return true;
 }
 
@@ -117,13 +123,14 @@ export function LandingResolvedResponseDtoFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
 
+        'bookingToken': json['booking_token'],
         'landing': LandingPublicResponseDtoFromJSON(json['landing']),
         'visitId': json['visit_id'],
         'pageVariantId': json['page_variant_id'],
         'selectedBlocks': ((json['selected_blocks'] as Array<any>).map(LandingResolvedBlockDtoFromJSON)),
         'eventToken': json['event_token'],
         'exposureMarkers': ((json['exposure_markers'] as Array<any>).map(LandingExperimentMarkerDtoFromJSON)),
-        'exposures': ((json['exposures'] as Array<any>).map(LandingExperimentExposureDtoFromJSON)),
+        'exposures': json['exposures'] == null ? undefined : ((json['exposures'] as Array<any>).map(LandingExperimentExposureDtoFromJSON)),
     };
 }
 
@@ -138,12 +145,13 @@ export function LandingResolvedResponseDtoToJSONTyped(value?: LandingResolvedRes
 
     return {
 
+        'booking_token': value['bookingToken'],
         'landing': LandingPublicResponseDtoToJSON(value['landing']),
         'visit_id': value['visitId'],
         'page_variant_id': value['pageVariantId'],
         'selected_blocks': ((value['selectedBlocks'] as Array<any>).map(LandingResolvedBlockDtoToJSON)),
         'event_token': value['eventToken'],
         'exposure_markers': ((value['exposureMarkers'] as Array<any>).map(LandingExperimentMarkerDtoToJSON)),
-        'exposures': ((value['exposures'] as Array<any>).map(LandingExperimentExposureDtoToJSON)),
+        'exposures': value['exposures'] == null ? undefined : ((value['exposures'] as Array<any>).map(LandingExperimentExposureDtoToJSON)),
     };
 }

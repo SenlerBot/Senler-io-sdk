@@ -28,11 +28,11 @@ export interface SupportScheduleSettingsDto {
      */
     enabled: boolean;
     /**
-     * IANA timezone,
+     * IANA,
      * @type {string}
      * @memberof SupportScheduleSettingsDto
      */
-    timezone: string;
+    readonly timezone: string;
 }
 /**
  * Check if a given object implements the SupportScheduleSettingsDto interface.
@@ -41,4 +41,4 @@ export declare function instanceOfSupportScheduleSettingsDto(value: object): val
 export declare function SupportScheduleSettingsDtoFromJSON(json: any): SupportScheduleSettingsDto;
 export declare function SupportScheduleSettingsDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean): SupportScheduleSettingsDto;
 export declare function SupportScheduleSettingsDtoToJSON(json: any): SupportScheduleSettingsDto;
-export declare function SupportScheduleSettingsDtoToJSONTyped(value?: SupportScheduleSettingsDto | null, ignoreDiscriminator?: boolean): any;
+export declare function SupportScheduleSettingsDtoToJSONTyped(value?: Omit<SupportScheduleSettingsDto, 'timezone'> | null, ignoreDiscriminator?: boolean): any;

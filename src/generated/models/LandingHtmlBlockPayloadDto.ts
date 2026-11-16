@@ -20,17 +20,23 @@ import { mapValues } from '../runtime';
  */
 export interface LandingHtmlBlockPayloadDto {
     /**
-     * HTML . .
+     * HTML-. style, style on* ( onclick), iframe : css, addEventListener js. script ; JavaScript.
      * @type {string}
      * @memberof LandingHtmlBlockPayloadDto
      */
     html: string;
     /**
-     * CSS HTML-. :scope .
+     * CSS HTML-, style. :scope . ; CSS . , .
      * @type {string}
      * @memberof LandingHtmlBlockPayloadDto
      */
     css: string;
+    /**
+     * JavaScript script; addEventListener. ; ID , payload.js . . HTML , SenlerLanding SDK; . payload js .
+     * @type {string}
+     * @memberof LandingHtmlBlockPayloadDto
+     */
+    js?: string;
 }
 
 /**
@@ -54,6 +60,7 @@ export function LandingHtmlBlockPayloadDtoFromJSONTyped(json: any, ignoreDiscrim
 
         'html': json['html'],
         'css': json['css'],
+        'js': json['js'] == null ? undefined : json['js'],
     };
 }
 
@@ -70,5 +77,6 @@ export function LandingHtmlBlockPayloadDtoToJSONTyped(value?: LandingHtmlBlockPa
 
         'html': value['html'],
         'css': value['css'],
+        'js': value['js'],
     };
 }

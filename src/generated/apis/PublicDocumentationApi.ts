@@ -69,7 +69,7 @@ export interface GetPageRequest {
 
 export interface PublicDocumentationGetSearchRequest {
     query: string;
-    includeApi?: boolean;
+    searchIn?: PublicDocumentationGetSearchSearchInEnum;
     locale?: PublicDocumentationGetSearchLocaleEnum;
     scope?: PublicDocumentationGetSearchScopeEnum;
     app?: string;
@@ -297,8 +297,8 @@ export class PublicDocumentationApi extends runtime.BaseAPI {
     }
 
     /**
-     * . include_api=true HTTP-; API . app ID .
-     * Senler
+     * search_in=documentation ( ) Senler . search_in=api HTTP-, , . locale, scope, app audience . app ID .
+     * API Senler
      */
     async publicDocumentationGetSearchRaw(requestParameters: PublicDocumentationGetSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicDocumentationSearchResponseDto>> {
         if (requestParameters['query'] == null) {
@@ -314,8 +314,8 @@ export class PublicDocumentationApi extends runtime.BaseAPI {
             queryParameters['query'] = requestParameters['query'];
         }
 
-        if (requestParameters['includeApi'] != null) {
-            queryParameters['include_api'] = requestParameters['includeApi'];
+        if (requestParameters['searchIn'] != null) {
+            queryParameters['search_in'] = requestParameters['searchIn'];
         }
 
         if (requestParameters['locale'] != null) {
@@ -355,8 +355,8 @@ export class PublicDocumentationApi extends runtime.BaseAPI {
     }
 
     /**
-     * . include_api=true HTTP-; API . app ID .
-     * Senler
+     * search_in=documentation ( ) Senler . search_in=api HTTP-, , . locale, scope, app audience . app ID .
+     * API Senler
      */
     async publicDocumentationGetSearch(requestParameters: PublicDocumentationGetSearchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicDocumentationSearchResponseDto> {
         const response = await this.publicDocumentationGetSearchRaw(requestParameters, initOverrides);
@@ -405,6 +405,14 @@ export const GetPageAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetPageAcceptLanguageEnum = typeof GetPageAcceptLanguageEnum[keyof typeof GetPageAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const PublicDocumentationGetSearchSearchInEnum = {
+    Documentation: 'documentation',
+    Api: 'api'
+} as const;
+export type PublicDocumentationGetSearchSearchInEnum = typeof PublicDocumentationGetSearchSearchInEnum[keyof typeof PublicDocumentationGetSearchSearchInEnum];
 /**
  * @export
  */

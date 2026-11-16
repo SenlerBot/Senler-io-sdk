@@ -29,15 +29,15 @@ export interface AssetsUploadUrlRequest {
 export interface BlocksMoveRequest {
     landingId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     moveLandingBlockDto: MoveLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: BlocksMoveAcceptLanguageEnum;
 }
 export interface DeleteBlocksRequest {
     landingId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     deleteLandingBlockDto: DeleteLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: DeleteBlocksAcceptLanguageEnum;
 }
 export interface DuplicateRequest {
@@ -57,11 +57,6 @@ export interface GetShareLinksRequest {
     landingId: string;
     acceptLanguage?: GetShareLinksAcceptLanguageEnum;
 }
-export interface GetStatisticsRequest {
-    landingId: string;
-    days?: GetStatisticsDaysEnum;
-    acceptLanguage?: GetStatisticsAcceptLanguageEnum;
-}
 export interface LandingsCreateRequest {
     projectId: string;
     createLandingDto: CreateLandingDto;
@@ -75,29 +70,35 @@ export interface LandingsGetByIdRequest {
     landingId: string;
     acceptLanguage?: LandingsGetByIdAcceptLanguageEnum;
 }
+export interface LandingsGetStatisticsRequest {
+    landingId: string;
+    days?: LandingsGetStatisticsDaysEnum;
+    acceptLanguage?: LandingsGetStatisticsAcceptLanguageEnum;
+}
 export interface LandingsListRequest {
     projectId: string;
     limit?: number;
     offset?: number;
+    domainId?: string;
     automatic?: boolean;
     search?: string;
     acceptLanguage?: LandingsListAcceptLanguageEnum;
 }
 export interface LandingsPublishRequest {
     landingId: string;
-    xLandingEditorSessionId: string;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingsPublishAcceptLanguageEnum;
 }
 export interface LandingsUpdateRequest {
     landingId: string;
-    xLandingEditorSessionId: string;
     updateLandingDto: UpdateLandingDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingsUpdateAcceptLanguageEnum;
 }
 export interface PersonalizationRequest {
     landingId: string;
-    xLandingEditorSessionId: string;
     mutateLandingPersonalizationDto: MutateLandingPersonalizationDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: PersonalizationAcceptLanguageEnum;
 }
 export interface PreviewRequest {
@@ -113,19 +114,19 @@ export interface PreviewLeadRequest {
 export interface PublicationsRestoreRequest {
     landingId: string;
     publicationId: string;
-    xLandingEditorSessionId: string;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: PublicationsRestoreAcceptLanguageEnum;
 }
 export interface UpdateDraftRequest {
     landingId: string;
-    xLandingEditorSessionId: string;
     updateLandingDraftDto: UpdateLandingDraftDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateDraftAcceptLanguageEnum;
 }
 export interface UpdateRealtimeFocusRequest {
     landingId: string;
-    xLandingEditorSessionId: string;
     updateLandingRealtimeFocusDto: UpdateLandingRealtimeFocusDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateRealtimeFocusAcceptLanguageEnum;
 }
 /**
@@ -193,12 +194,12 @@ export declare class LandingsApi extends runtime.BaseAPI {
      */
     duplicate(requestParameters: DuplicateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
     /**
-     * . .
+     * , snapshot . . valid , , JavaScript; .
      *
      */
     getPublicationValidationRaw(requestParameters: GetPublicationValidationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicationValidationDto>>;
     /**
-     * . .
+     * , snapshot . . valid , , JavaScript; .
      *
      */
     getPublicationValidation(requestParameters: GetPublicationValidationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationValidationDto>;
@@ -223,16 +224,6 @@ export declare class LandingsApi extends runtime.BaseAPI {
      */
     getShareLinks(requestParameters: GetShareLinksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingShareLinksResponseDto>;
     /**
-     * , , . , . . .
-     * ,
-     */
-    getStatisticsRaw(requestParameters: GetStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingStatisticsReportDto>>;
-    /**
-     * , , . , . . .
-     * ,
-     */
-    getStatistics(requestParameters: GetStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingStatisticsReportDto>;
-    /**
      * , .
      *
      */
@@ -253,15 +244,25 @@ export declare class LandingsApi extends runtime.BaseAPI {
      */
     landingsDeactivate(requestParameters: LandingsDeactivateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingSummaryResponseDto>;
     /**
-     * , .
+     * , . payload, settings ; payload .
      *
      */
     landingsGetByIdRaw(requestParameters: LandingsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>>;
     /**
-     * , .
+     * , . payload, settings ; payload .
      *
      */
     landingsGetById(requestParameters: LandingsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
+    /**
+     * , , . , . . .
+     * ,
+     */
+    landingsGetStatisticsRaw(requestParameters: LandingsGetStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingStatisticsReportDto>>;
+    /**
+     * , , . , . . .
+     * ,
+     */
+    landingsGetStatistics(requestParameters: LandingsGetStatisticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingStatisticsReportDto>;
     /**
      * . .
      *
@@ -273,12 +274,12 @@ export declare class LandingsApi extends runtime.BaseAPI {
      */
     landingsList(requestParameters: LandingsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingListResponseDto>;
     /**
-     * .
+     * . getPublicationValidation. , : .
      *
      */
     landingsPublishRaw(requestParameters: LandingsPublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>>;
     /**
-     * .
+     * . getPublicationValidation. , : .
      *
      */
     landingsPublish(requestParameters: LandingsPublishRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
@@ -333,12 +334,12 @@ export declare class LandingsApi extends runtime.BaseAPI {
      */
     publicationsRestore(requestParameters: PublicationsRestoreRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
     /**
-     * .
+     * settings expected_settings_revision. . .
      *
      */
     updateDraftRaw(requestParameters: UpdateDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>>;
     /**
-     * .
+     * settings expected_settings_revision. . .
      *
      */
     updateDraft(requestParameters: UpdateDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
@@ -428,23 +429,6 @@ export type GetShareLinksAcceptLanguageEnum = typeof GetShareLinksAcceptLanguage
 /**
  * @export
  */
-export declare const GetStatisticsDaysEnum: {
-    readonly NUMBER_7: 7;
-    readonly NUMBER_30: 30;
-    readonly NUMBER_90: 90;
-};
-export type GetStatisticsDaysEnum = typeof GetStatisticsDaysEnum[keyof typeof GetStatisticsDaysEnum];
-/**
- * @export
- */
-export declare const GetStatisticsAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetStatisticsAcceptLanguageEnum = typeof GetStatisticsAcceptLanguageEnum[keyof typeof GetStatisticsAcceptLanguageEnum];
-/**
- * @export
- */
 export declare const LandingsCreateAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -466,6 +450,23 @@ export declare const LandingsGetByIdAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type LandingsGetByIdAcceptLanguageEnum = typeof LandingsGetByIdAcceptLanguageEnum[keyof typeof LandingsGetByIdAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LandingsGetStatisticsDaysEnum: {
+    readonly NUMBER_7: 7;
+    readonly NUMBER_30: 30;
+    readonly NUMBER_90: 90;
+};
+export type LandingsGetStatisticsDaysEnum = typeof LandingsGetStatisticsDaysEnum[keyof typeof LandingsGetStatisticsDaysEnum];
+/**
+ * @export
+ */
+export declare const LandingsGetStatisticsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingsGetStatisticsAcceptLanguageEnum = typeof LandingsGetStatisticsAcceptLanguageEnum[keyof typeof LandingsGetStatisticsAcceptLanguageEnum];
 /**
  * @export
  */

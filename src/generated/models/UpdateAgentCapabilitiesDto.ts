@@ -20,6 +20,13 @@ import {
     OperatorHandoffPolicyDtoToJSON,
     OperatorHandoffPolicyDtoToJSONTyped,
 } from './OperatorHandoffPolicyDto';
+import type { AgentAutomationCallDto } from './AgentAutomationCallDto';
+import {
+    AgentAutomationCallDtoFromJSON,
+    AgentAutomationCallDtoFromJSONTyped,
+    AgentAutomationCallDtoToJSON,
+    AgentAutomationCallDtoToJSONTyped,
+} from './AgentAutomationCallDto';
 import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
 import {
     AgentAssignmentPolicyDtoFromJSON,
@@ -41,6 +48,36 @@ import {
  * @interface UpdateAgentCapabilitiesDto
  */
 export interface UpdateAgentCapabilitiesDto {
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    enableLiveVoice?: boolean;
+    /**
+     * UUID . .
+     * @type {string}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    liveVoiceModelId?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    liveVoiceVoice?: UpdateAgentCapabilitiesDtoLiveVoiceVoiceEnum;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    liveVoiceCommentary?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    liveVoiceInterruptions?: boolean;
     /**
      * : , . .
      * @type {string}
@@ -186,6 +223,12 @@ export interface UpdateAgentCapabilitiesDto {
      */
     automationEventPolicy?: AgentAutomationEventPolicyDto;
     /**
+     * , , .
+     * @type {Array<AgentAutomationCallDto>}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    callableAutomations?: Array<AgentAutomationCallDto>;
+    /**
      * . false ; enable_ai_response=true. enable_preliminary_response enable_user_message=false. AI- .
      * @type {boolean}
      * @memberof UpdateAgentCapabilitiesDto
@@ -311,6 +354,23 @@ export interface UpdateAgentCapabilitiesDto {
 /**
  * @export
  */
+export const UpdateAgentCapabilitiesDtoLiveVoiceVoiceEnum = {
+    Marin: 'marin',
+    Cedar: 'cedar',
+    Coral: 'coral',
+    Sage: 'sage',
+    Alloy: 'alloy',
+    Ash: 'ash',
+    Ballad: 'ballad',
+    Echo: 'echo',
+    Shimmer: 'shimmer',
+    Verse: 'verse'
+} as const;
+export type UpdateAgentCapabilitiesDtoLiveVoiceVoiceEnum = typeof UpdateAgentCapabilitiesDtoLiveVoiceVoiceEnum[keyof typeof UpdateAgentCapabilitiesDtoLiveVoiceVoiceEnum];
+
+/**
+ * @export
+ */
 export const UpdateAgentCapabilitiesDtoDialogContextModeEnum = {
     AllDialog: 'all_dialog',
     CurrentSession: 'current_session',
@@ -346,6 +406,11 @@ export function UpdateAgentCapabilitiesDtoFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
 
+        'enableLiveVoice': json['enable_live_voice'] == null ? undefined : json['enable_live_voice'],
+        'liveVoiceModelId': json['live_voice_model_id'] == null ? undefined : json['live_voice_model_id'],
+        'liveVoiceVoice': json['live_voice_voice'] == null ? undefined : json['live_voice_voice'],
+        'liveVoiceCommentary': json['live_voice_commentary'] == null ? undefined : json['live_voice_commentary'],
+        'liveVoiceInterruptions': json['live_voice_interruptions'] == null ? undefined : json['live_voice_interruptions'],
         'dialogContextMode': json['dialog_context_mode'] == null ? undefined : json['dialog_context_mode'],
         'enableButtons': json['enable_buttons'] == null ? undefined : json['enable_buttons'],
         'maxToolIterations': json['max_tool_iterations'] == null ? undefined : json['max_tool_iterations'],
@@ -370,6 +435,7 @@ export function UpdateAgentCapabilitiesDtoFromJSONTyped(json: any, ignoreDiscrim
         'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'] == null ? undefined : json['cancel_pending_response_on_project_operator_message'],
         'cancelPendingResponseOnAutomationMessage': json['cancel_pending_response_on_automation_message'] == null ? undefined : json['cancel_pending_response_on_automation_message'],
         'automationEventPolicy': json['automation_event_policy'] == null ? undefined : AgentAutomationEventPolicyDtoFromJSON(json['automation_event_policy']),
+        'callableAutomations': json['callable_automations'] == null ? undefined : ((json['callable_automations'] as Array<any>).map(AgentAutomationCallDtoFromJSON)),
         'enableUserMessage': json['enable_user_message'] == null ? undefined : json['enable_user_message'],
         'enableStreaming': json['enable_streaming'] == null ? undefined : json['enable_streaming'],
         'disableLinkPreview': json['disable_link_preview'] == null ? undefined : json['disable_link_preview'],
@@ -404,6 +470,11 @@ export function UpdateAgentCapabilitiesDtoToJSONTyped(value?: UpdateAgentCapabil
 
     return {
 
+        'enable_live_voice': value['enableLiveVoice'],
+        'live_voice_model_id': value['liveVoiceModelId'],
+        'live_voice_voice': value['liveVoiceVoice'],
+        'live_voice_commentary': value['liveVoiceCommentary'],
+        'live_voice_interruptions': value['liveVoiceInterruptions'],
         'dialog_context_mode': value['dialogContextMode'],
         'enable_buttons': value['enableButtons'],
         'max_tool_iterations': value['maxToolIterations'],
@@ -428,6 +499,7 @@ export function UpdateAgentCapabilitiesDtoToJSONTyped(value?: UpdateAgentCapabil
         'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
         'cancel_pending_response_on_automation_message': value['cancelPendingResponseOnAutomationMessage'],
         'automation_event_policy': AgentAutomationEventPolicyDtoToJSON(value['automationEventPolicy']),
+        'callable_automations': value['callableAutomations'] == null ? undefined : ((value['callableAutomations'] as Array<any>).map(AgentAutomationCallDtoToJSON)),
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
         'disable_link_preview': value['disableLinkPreview'],

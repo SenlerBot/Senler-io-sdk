@@ -87,6 +87,7 @@ export declare const InstallationSetupStepVariableResponseDtoTypeEnum: {
     readonly Date: "date";
     readonly Array: "array";
     readonly Object: "object";
+    readonly Reaction: "reaction";
 };
 export type InstallationSetupStepVariableResponseDtoTypeEnum = typeof InstallationSetupStepVariableResponseDtoTypeEnum[keyof typeof InstallationSetupStepVariableResponseDtoTypeEnum];
 /**

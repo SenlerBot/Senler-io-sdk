@@ -51,6 +51,7 @@ export interface GetBulkPreviewRequest {
     projectId: string;
     action: GetBulkPreviewActionEnum;
     scope: GetBulkPreviewScopeEnum;
+    messageRecipientsOnly?: boolean;
     operatorUserIds?: Array<string>;
     supportGroupId?: Array<string>;
     supportGroupAssignment?: GetBulkPreviewSupportGroupAssignmentEnum;

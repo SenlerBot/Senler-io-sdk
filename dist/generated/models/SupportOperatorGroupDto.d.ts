@@ -39,6 +39,18 @@ export interface SupportOperatorGroupDto {
      * @memberof SupportOperatorGroupDto
      */
     memberIds: Array<string>;
+    /**
+     *
+     * @type {boolean}
+     * @memberof SupportOperatorGroupDto
+     */
+    requireShiftCheckIn: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof SupportOperatorGroupDto
+     */
+    requireSchedule: boolean;
 }
 /**
  * Check if a given object implements the SupportOperatorGroupDto interface.

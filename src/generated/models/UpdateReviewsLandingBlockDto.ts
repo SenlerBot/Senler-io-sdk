@@ -28,7 +28,7 @@ import {
  */
 export interface UpdateReviewsLandingBlockDto {
     /**
-     *
+     * revision . 409 .
      * @type {number}
      * @memberof UpdateReviewsLandingBlockDto
      */

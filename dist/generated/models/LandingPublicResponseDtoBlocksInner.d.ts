@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LandingPublicBookingBlockDto } from './LandingPublicBookingBlockDto';
 import type { LandingPublicButtonBlockDto } from './LandingPublicButtonBlockDto';
 import type { LandingPublicCoverBlockDto } from './LandingPublicCoverBlockDto';
 import type { LandingPublicFeaturesBlockDto } from './LandingPublicFeaturesBlockDto';
@@ -27,6 +28,8 @@ import type { LandingPublicWidgetBlockDto } from './LandingPublicWidgetBlockDto'
  * @export
  */
 export type LandingPublicResponseDtoBlocksInner = {
+    type: 'booking';
+} & LandingPublicBookingBlockDto | {
     type: 'button';
 } & LandingPublicButtonBlockDto | {
     type: 'cover';

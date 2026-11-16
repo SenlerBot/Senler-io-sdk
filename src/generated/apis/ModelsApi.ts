@@ -89,6 +89,7 @@ export class ModelsApi extends runtime.BaseAPI {
 export const ModelsListTypeEnum = {
     Decision: 'decision',
     Text: 'text',
+    LiveVoice: 'live_voice',
     ImageGeneration: 'image_generation',
     AudioGeneration: 'audio_generation',
     SpeechRecognition: 'speech_recognition'

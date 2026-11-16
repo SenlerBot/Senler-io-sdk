@@ -12,6 +12,13 @@
  * Do not edit the class manually.
  */
 
+import type { LandingOpenBookingActionDto } from './LandingOpenBookingActionDto';
+import {
+    instanceOfLandingOpenBookingActionDto,
+    LandingOpenBookingActionDtoFromJSON,
+    LandingOpenBookingActionDtoFromJSONTyped,
+    LandingOpenBookingActionDtoToJSON,
+} from './LandingOpenBookingActionDto';
 import type { LandingPublicOpenLandingActionDto } from './LandingPublicOpenLandingActionDto';
 import {
     instanceOfLandingPublicOpenLandingActionDto,
@@ -39,7 +46,7 @@ import {
  *
  * @export
  */
-export type LandingPublicButtonBlockDtoAction = { type: 'open_landing' } & LandingPublicOpenLandingActionDto | { type: 'open_url' } & LandingPublicOpenUrlActionDto | { type: 'subscribe_segment' } & LandingPublicSubscribeActionDto;
+export type LandingPublicButtonBlockDtoAction = { type: 'open_booking' } & LandingOpenBookingActionDto | { type: 'open_landing' } & LandingPublicOpenLandingActionDto | { type: 'open_url' } & LandingPublicOpenUrlActionDto | { type: 'subscribe_segment' } & LandingPublicSubscribeActionDto;
 
 export function LandingPublicButtonBlockDtoActionFromJSON(json: any): LandingPublicButtonBlockDtoAction {
     return LandingPublicButtonBlockDtoActionFromJSONTyped(json, false);
@@ -50,6 +57,8 @@ export function LandingPublicButtonBlockDtoActionFromJSONTyped(json: any, ignore
         return json;
     }
     switch (json['type']) {
+        case 'open_booking':
+            return Object.assign({}, LandingOpenBookingActionDtoFromJSONTyped(json, true), { type: 'open_booking' } as const);
         case 'open_landing':
             return Object.assign({}, LandingPublicOpenLandingActionDtoFromJSONTyped(json, true), { type: 'open_landing' } as const);
         case 'open_url':
@@ -70,6 +79,8 @@ export function LandingPublicButtonBlockDtoActionToJSONTyped(value?: LandingPubl
         return value;
     }
     switch (value['type']) {
+        case 'open_booking':
+            return Object.assign({}, LandingOpenBookingActionDtoToJSON(value), { type: 'open_booking' } as const);
         case 'open_landing':
             return Object.assign({}, LandingPublicOpenLandingActionDtoToJSON(value), { type: 'open_landing' } as const);
         case 'open_url':

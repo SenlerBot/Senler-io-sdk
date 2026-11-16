@@ -27,6 +27,7 @@ import type {
   NumberVariableValueDto,
   ObjectVariableValueDto,
   ProjectVariablesDeactivate200Response,
+  ReactionVariableValueDto,
   StringVariableValueDto,
 } from '../models/index';
 import {
@@ -54,6 +55,8 @@ import {
     ObjectVariableValueDtoToJSON,
     ProjectVariablesDeactivate200ResponseFromJSON,
     ProjectVariablesDeactivate200ResponseToJSON,
+    ReactionVariableValueDtoFromJSON,
+    ReactionVariableValueDtoToJSON,
     StringVariableValueDtoFromJSON,
     StringVariableValueDtoToJSON,
 } from '../models/index';
@@ -120,6 +123,14 @@ export interface LeadVariablesUpdateValuesObjectRequest {
     objectVariableValueDto: ObjectVariableValueDto;
     writeMode?: LeadVariablesUpdateValuesObjectWriteModeEnum;
     acceptLanguage?: LeadVariablesUpdateValuesObjectAcceptLanguageEnum;
+}
+
+export interface LeadVariablesUpdateValuesReactionRequest {
+    leadId: string;
+    name: string;
+    reactionVariableValueDto: ReactionVariableValueDto;
+    writeMode?: LeadVariablesUpdateValuesReactionWriteModeEnum;
+    acceptLanguage?: LeadVariablesUpdateValuesReactionAcceptLanguageEnum;
 }
 
 export interface LeadVariablesUpdateValuesStringRequest {
@@ -814,6 +825,84 @@ export class LeadVariablesApi extends runtime.BaseAPI {
      * .
      *
      */
+    async leadVariablesUpdateValuesReactionRaw(requestParameters: LeadVariablesUpdateValuesReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>> {
+        if (requestParameters['leadId'] == null) {
+            throw new runtime.RequiredError(
+                'leadId',
+                'Required parameter "leadId" was null or undefined when calling leadVariablesUpdateValuesReaction().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling leadVariablesUpdateValuesReaction().'
+            );
+        }
+
+        if (requestParameters['reactionVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'reactionVariableValueDto',
+                'Required parameter "reactionVariableValueDto" was null or undefined when calling leadVariablesUpdateValuesReaction().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['writeMode'] != null) {
+            queryParameters['write_mode'] = requestParameters['writeMode'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/lead-variables/{leadId}/values/{name}/reaction`.replace(`{${"leadId"}}`, encodeURIComponent(String(requestParameters['leadId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ReactionVariableValueDtoToJSON(requestParameters['reactionVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LeadVariableWriteResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async leadVariablesUpdateValuesReaction(requestParameters: LeadVariablesUpdateValuesReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadVariableWriteResponseDto> {
+        const response = await this.leadVariablesUpdateValuesReactionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
     async leadVariablesUpdateValuesStringRaw(requestParameters: LeadVariablesUpdateValuesStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadVariableWriteResponseDto>> {
         if (requestParameters['leadId'] == null) {
             throw new runtime.RequiredError(
@@ -1322,6 +1411,22 @@ export const LeadVariablesUpdateValuesObjectAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type LeadVariablesUpdateValuesObjectAcceptLanguageEnum = typeof LeadVariablesUpdateValuesObjectAcceptLanguageEnum[keyof typeof LeadVariablesUpdateValuesObjectAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const LeadVariablesUpdateValuesReactionWriteModeEnum = {
+    Overwrite: 'overwrite',
+    IfAbsent: 'if_absent'
+} as const;
+export type LeadVariablesUpdateValuesReactionWriteModeEnum = typeof LeadVariablesUpdateValuesReactionWriteModeEnum[keyof typeof LeadVariablesUpdateValuesReactionWriteModeEnum];
+/**
+ * @export
+ */
+export const LeadVariablesUpdateValuesReactionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type LeadVariablesUpdateValuesReactionAcceptLanguageEnum = typeof LeadVariablesUpdateValuesReactionAcceptLanguageEnum[keyof typeof LeadVariablesUpdateValuesReactionAcceptLanguageEnum];
 /**
  * @export
  */

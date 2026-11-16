@@ -96,7 +96,8 @@ export const InstallationSetupStepVariableResponseDtoTypeEnum = {
     Json: 'json',
     Date: 'date',
     Array: 'array',
-    Object: 'object'
+    Object: 'object',
+    Reaction: 'reaction'
 } as const;
 export type InstallationSetupStepVariableResponseDtoTypeEnum = typeof InstallationSetupStepVariableResponseDtoTypeEnum[keyof typeof InstallationSetupStepVariableResponseDtoTypeEnum];
 

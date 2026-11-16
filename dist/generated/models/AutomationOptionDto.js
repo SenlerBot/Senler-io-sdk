@@ -81,6 +81,8 @@ function instanceOfAutomationOptionDto(value) {
         return false;
     if (!('publishedVersionId' in value) || value['publishedVersionId'] === undefined)
         return false;
+    if (!('returnsResult' in value) || value['returnsResult'] === undefined)
+        return false;
     return true;
 }
 function AutomationOptionDtoFromJSON(json) {
@@ -104,6 +106,7 @@ function AutomationOptionDtoFromJSONTyped(json, ignoreDiscriminator) {
         'status': json['status'],
         'isReadOnly': json['is_read_only'],
         'publishedVersionId': json['published_version_id'],
+        'returnsResult': json['returns_result'],
     };
 }
 function AutomationOptionDtoToJSON(json) {
@@ -127,5 +130,6 @@ function AutomationOptionDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'status': value['status'],
         'is_read_only': value['isReadOnly'],
         'published_version_id': value['publishedVersionId'],
+        'returns_result': value['returnsResult'],
     };
 }

@@ -15,18 +15,23 @@
 
 import * as runtime from '../runtime';
 import type {
+  AddSupportScheduleOperatorDto,
   ErrorResponse,
   GetMemberChannelsResponseDto,
   GetProjectMemberResponseDto,
   ProjectMemberListItemDto,
   RolePresetsResponseDto,
+  SaveSupportScheduleOperatorsDto,
   SuccessResponseDto,
+  SupportScheduleCandidatesResponseDto,
   TransferOwnershipDto,
   TransferOwnershipResponseDto,
   UpdateProjectMemberDto,
   UpdateProjectMemberResponseDto,
 } from '../models/index';
 import {
+    AddSupportScheduleOperatorDtoFromJSON,
+    AddSupportScheduleOperatorDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
     GetMemberChannelsResponseDtoFromJSON,
@@ -37,8 +42,12 @@ import {
     ProjectMemberListItemDtoToJSON,
     RolePresetsResponseDtoFromJSON,
     RolePresetsResponseDtoToJSON,
+    SaveSupportScheduleOperatorsDtoFromJSON,
+    SaveSupportScheduleOperatorsDtoToJSON,
     SuccessResponseDtoFromJSON,
     SuccessResponseDtoToJSON,
+    SupportScheduleCandidatesResponseDtoFromJSON,
+    SupportScheduleCandidatesResponseDtoToJSON,
     TransferOwnershipDtoFromJSON,
     TransferOwnershipDtoToJSON,
     TransferOwnershipResponseDtoFromJSON,
@@ -83,10 +92,30 @@ export interface GetRolePresetsRequest {
     acceptLanguage?: GetRolePresetsAcceptLanguageEnum;
 }
 
+export interface GetSupportScheduleOperatorCandidatesRequest {
+    projectId: string;
+    after?: string;
+    search?: string;
+    limit?: number;
+    acceptLanguage?: GetSupportScheduleOperatorCandidatesAcceptLanguageEnum;
+}
+
 export interface OwnershipTransferRequest {
     projectId: string;
     transferOwnershipDto: TransferOwnershipDto;
     acceptLanguage?: OwnershipTransferAcceptLanguageEnum;
+}
+
+export interface SupportScheduleOperatorsRequest {
+    projectId: string;
+    addSupportScheduleOperatorDto: AddSupportScheduleOperatorDto;
+    acceptLanguage?: SupportScheduleOperatorsAcceptLanguageEnum;
+}
+
+export interface UpdateSupportScheduleOperatorsRequest {
+    projectId: string;
+    saveSupportScheduleOperatorsDto: SaveSupportScheduleOperatorsDto;
+    acceptLanguage?: UpdateSupportScheduleOperatorsAcceptLanguageEnum;
 }
 
 /**
@@ -450,6 +479,75 @@ export class AccessApi extends runtime.BaseAPI {
     }
 
     /**
+     * , , , email.
+     *
+     */
+    async getSupportScheduleOperatorCandidatesRaw(requestParameters: GetSupportScheduleOperatorCandidatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SupportScheduleCandidatesResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getSupportScheduleOperatorCandidates().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['after'] != null) {
+            queryParameters['after'] = requestParameters['after'];
+        }
+
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/access/{projectId}/support-schedule/operator-candidates`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SupportScheduleCandidatesResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , , , email.
+     *
+     */
+    async getSupportScheduleOperatorCandidates(requestParameters: GetSupportScheduleOperatorCandidatesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SupportScheduleCandidatesResponseDto> {
+        const response = await this.getSupportScheduleOperatorCandidatesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * . .
      *
      */
@@ -500,6 +598,140 @@ export class AccessApi extends runtime.BaseAPI {
      */
     async ownershipTransfer(requestParameters: OwnershipTransferRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TransferOwnershipResponseDto> {
         const response = await this.ownershipTransferRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * .
+     *
+     */
+    async supportScheduleOperatorsRaw(requestParameters: SupportScheduleOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateProjectMemberResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling supportScheduleOperators().'
+            );
+        }
+
+        if (requestParameters['addSupportScheduleOperatorDto'] == null) {
+            throw new runtime.RequiredError(
+                'addSupportScheduleOperatorDto',
+                'Required parameter "addSupportScheduleOperatorDto" was null or undefined when calling supportScheduleOperators().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_access"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
+        }
+
+        const response = await this.request({
+            path: `/api/access/{projectId}/support-schedule/operators`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: AddSupportScheduleOperatorDtoToJSON(requestParameters['addSupportScheduleOperatorDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateProjectMemberResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async supportScheduleOperators(requestParameters: SupportScheduleOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateProjectMemberResponseDto> {
+        const response = await this.supportScheduleOperatorsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . .
+     *
+     */
+    async updateSupportScheduleOperatorsRaw(requestParameters: UpdateSupportScheduleOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling updateSupportScheduleOperators().'
+            );
+        }
+
+        if (requestParameters['saveSupportScheduleOperatorsDto'] == null) {
+            throw new runtime.RequiredError(
+                'saveSupportScheduleOperatorsDto',
+                'Required parameter "saveSupportScheduleOperatorsDto" was null or undefined when calling updateSupportScheduleOperators().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_access"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_access"]);
+        }
+
+        const response = await this.request({
+            path: `/api/access/{projectId}/support-schedule/operators`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SaveSupportScheduleOperatorsDtoToJSON(requestParameters['saveSupportScheduleOperatorsDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SuccessResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async updateSupportScheduleOperators(requestParameters: UpdateSupportScheduleOperatorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto> {
+        const response = await this.updateSupportScheduleOperatorsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -556,8 +788,32 @@ export type GetRolePresetsAcceptLanguageEnum = typeof GetRolePresetsAcceptLangua
 /**
  * @export
  */
+export const GetSupportScheduleOperatorCandidatesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetSupportScheduleOperatorCandidatesAcceptLanguageEnum = typeof GetSupportScheduleOperatorCandidatesAcceptLanguageEnum[keyof typeof GetSupportScheduleOperatorCandidatesAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const OwnershipTransferAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 } as const;
 export type OwnershipTransferAcceptLanguageEnum = typeof OwnershipTransferAcceptLanguageEnum[keyof typeof OwnershipTransferAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const SupportScheduleOperatorsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type SupportScheduleOperatorsAcceptLanguageEnum = typeof SupportScheduleOperatorsAcceptLanguageEnum[keyof typeof SupportScheduleOperatorsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateSupportScheduleOperatorsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateSupportScheduleOperatorsAcceptLanguageEnum = typeof UpdateSupportScheduleOperatorsAcceptLanguageEnum[keyof typeof UpdateSupportScheduleOperatorsAcceptLanguageEnum];

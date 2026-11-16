@@ -20,6 +20,7 @@ import type {
   CountVariableLeadsByArrayItemsDto,
   CreateExportProcessDto,
   CreateImportProcessDto,
+  CreateLeadFileDto,
   CreateLeadsAgentOperationProcessDto,
   CreateLeadsAutomationOperationProcessDto,
   CreateLeadsRefreshProcessDto,
@@ -33,9 +34,19 @@ import type {
   ExportVariableLeadsByNumberDto,
   ExportVariableLeadsByStringDto,
   ExportVariableLeadsDto,
+  InspectLeadFileDto,
+  LeadFileErrorsPageDto,
+  LeadFileJobReferenceDto,
+  LeadFilePreviewStateDto,
+  LeadFileUploadDto,
   LeadResponseDto,
   LeadSubscriptionUtmTreeResponseDto,
+  LeadTablePreviewDto,
   LeadsListResponseDto,
+  ParseLeadTableDto,
+  ParsedLeadTableDto,
+  PrepareLeadFileDto,
+  PreviewLeadTableDto,
   ProcessResponseDto,
   SearchLeadsByAutomationDto,
   SearchLeadsByAutomationResponseDto,
@@ -50,6 +61,10 @@ import type {
   SearchVariableLeadsByStringDto,
   SearchVariableLeadsDto,
   SegmentLeadConsentAcceptancesResponseDto,
+  StartLeadFileDto,
+  StartLeadTableDto,
+  SuggestLeadTableDto,
+  SuggestedLeadTableDto,
   SyncLeadProfileDto,
   SyncLeadProfileResponseDto,
   UpdateBlacklistDto,
@@ -70,6 +85,8 @@ import {
     CreateExportProcessDtoToJSON,
     CreateImportProcessDtoFromJSON,
     CreateImportProcessDtoToJSON,
+    CreateLeadFileDtoFromJSON,
+    CreateLeadFileDtoToJSON,
     CreateLeadsAgentOperationProcessDtoFromJSON,
     CreateLeadsAgentOperationProcessDtoToJSON,
     CreateLeadsAutomationOperationProcessDtoFromJSON,
@@ -96,12 +113,32 @@ import {
     ExportVariableLeadsByStringDtoToJSON,
     ExportVariableLeadsDtoFromJSON,
     ExportVariableLeadsDtoToJSON,
+    InspectLeadFileDtoFromJSON,
+    InspectLeadFileDtoToJSON,
+    LeadFileErrorsPageDtoFromJSON,
+    LeadFileErrorsPageDtoToJSON,
+    LeadFileJobReferenceDtoFromJSON,
+    LeadFileJobReferenceDtoToJSON,
+    LeadFilePreviewStateDtoFromJSON,
+    LeadFilePreviewStateDtoToJSON,
+    LeadFileUploadDtoFromJSON,
+    LeadFileUploadDtoToJSON,
     LeadResponseDtoFromJSON,
     LeadResponseDtoToJSON,
     LeadSubscriptionUtmTreeResponseDtoFromJSON,
     LeadSubscriptionUtmTreeResponseDtoToJSON,
+    LeadTablePreviewDtoFromJSON,
+    LeadTablePreviewDtoToJSON,
     LeadsListResponseDtoFromJSON,
     LeadsListResponseDtoToJSON,
+    ParseLeadTableDtoFromJSON,
+    ParseLeadTableDtoToJSON,
+    ParsedLeadTableDtoFromJSON,
+    ParsedLeadTableDtoToJSON,
+    PrepareLeadFileDtoFromJSON,
+    PrepareLeadFileDtoToJSON,
+    PreviewLeadTableDtoFromJSON,
+    PreviewLeadTableDtoToJSON,
     ProcessResponseDtoFromJSON,
     ProcessResponseDtoToJSON,
     SearchLeadsByAutomationDtoFromJSON,
@@ -130,6 +167,14 @@ import {
     SearchVariableLeadsDtoToJSON,
     SegmentLeadConsentAcceptancesResponseDtoFromJSON,
     SegmentLeadConsentAcceptancesResponseDtoToJSON,
+    StartLeadFileDtoFromJSON,
+    StartLeadFileDtoToJSON,
+    StartLeadTableDtoFromJSON,
+    StartLeadTableDtoToJSON,
+    SuggestLeadTableDtoFromJSON,
+    SuggestLeadTableDtoToJSON,
+    SuggestedLeadTableDtoFromJSON,
+    SuggestedLeadTableDtoToJSON,
     SyncLeadProfileDtoFromJSON,
     SyncLeadProfileDtoToJSON,
     SyncLeadProfileResponseDtoFromJSON,
@@ -458,6 +503,20 @@ export interface GetConsentAcceptancesRequest {
     acceptLanguage?: GetConsentAcceptancesAcceptLanguageEnum;
 }
 
+export interface GetImportFileErrorsRequest {
+    channelId: string;
+    processId: string;
+    chunk: number;
+    offset: number;
+    acceptLanguage?: GetImportFileErrorsAcceptLanguageEnum;
+}
+
+export interface GetImportFileStatusRequest {
+    channelId: string;
+    processId: string;
+    acceptLanguage?: GetImportFileStatusAcceptLanguageEnum;
+}
+
 export interface GetSubscriptionUtmTreeRequest {
     projectId: string;
     channelId?: Array<string>;
@@ -469,6 +528,56 @@ export interface GetSubscriptionUtmTreeRequest {
     cursor?: string;
     limit?: number;
     acceptLanguage?: GetSubscriptionUtmTreeAcceptLanguageEnum;
+}
+
+export interface ImportFileInspectRequest {
+    inspectLeadFileDto: InspectLeadFileDto;
+    acceptLanguage?: ImportFileInspectAcceptLanguageEnum;
+}
+
+export interface ImportFilePreviewRequest {
+    prepareLeadFileDto: PrepareLeadFileDto;
+    acceptLanguage?: ImportFilePreviewAcceptLanguageEnum;
+}
+
+export interface ImportFileResumeRequest {
+    leadFileJobReferenceDto: LeadFileJobReferenceDto;
+    acceptLanguage?: ImportFileResumeAcceptLanguageEnum;
+}
+
+export interface ImportFileRetryRequest {
+    leadFileJobReferenceDto: LeadFileJobReferenceDto;
+    acceptLanguage?: ImportFileRetryAcceptLanguageEnum;
+}
+
+export interface ImportFileStartRequest {
+    startLeadFileDto: StartLeadFileDto;
+    acceptLanguage?: ImportFileStartAcceptLanguageEnum;
+}
+
+export interface ImportFileUploadRequest {
+    createLeadFileDto: CreateLeadFileDto;
+    acceptLanguage?: ImportFileUploadAcceptLanguageEnum;
+}
+
+export interface ImportTableParseRequest {
+    parseLeadTableDto: ParseLeadTableDto;
+    acceptLanguage?: ImportTableParseAcceptLanguageEnum;
+}
+
+export interface ImportTablePreviewRequest {
+    previewLeadTableDto: PreviewLeadTableDto;
+    acceptLanguage?: ImportTablePreviewAcceptLanguageEnum;
+}
+
+export interface ImportTableStartRequest {
+    startLeadTableDto: StartLeadTableDto;
+    acceptLanguage?: ImportTableStartAcceptLanguageEnum;
+}
+
+export interface ImportTableSuggestRequest {
+    suggestLeadTableDto: SuggestLeadTableDto;
+    acceptLanguage?: ImportTableSuggestAcceptLanguageEnum;
 }
 
 export interface LeadsGetByIdRequest {
@@ -3808,6 +3917,172 @@ export class LeadsApi extends runtime.BaseAPI {
     }
 
     /**
+     * 1000 . done=true. .
+     *
+     */
+    async getImportFileErrorsRaw(requestParameters: GetImportFileErrorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadFileErrorsPageDto>> {
+        if (requestParameters['channelId'] == null) {
+            throw new runtime.RequiredError(
+                'channelId',
+                'Required parameter "channelId" was null or undefined when calling getImportFileErrors().'
+            );
+        }
+
+        if (requestParameters['processId'] == null) {
+            throw new runtime.RequiredError(
+                'processId',
+                'Required parameter "processId" was null or undefined when calling getImportFileErrors().'
+            );
+        }
+
+        if (requestParameters['chunk'] == null) {
+            throw new runtime.RequiredError(
+                'chunk',
+                'Required parameter "chunk" was null or undefined when calling getImportFileErrors().'
+            );
+        }
+
+        if (requestParameters['offset'] == null) {
+            throw new runtime.RequiredError(
+                'offset',
+                'Required parameter "offset" was null or undefined when calling getImportFileErrors().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['channelId'] != null) {
+            queryParameters['channel_id'] = requestParameters['channelId'];
+        }
+
+        if (requestParameters['processId'] != null) {
+            queryParameters['process_id'] = requestParameters['processId'];
+        }
+
+        if (requestParameters['chunk'] != null) {
+            queryParameters['chunk'] = requestParameters['chunk'];
+        }
+
+        if (requestParameters['offset'] != null) {
+            queryParameters['offset'] = requestParameters['offset'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+
+        const response = await this.request({
+            path: `/api/leads/import/file/errors`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LeadFileErrorsPageDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * 1000 . done=true. .
+     *
+     */
+    async getImportFileErrors(requestParameters: GetImportFileErrorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadFileErrorsPageDto> {
+        const response = await this.getImportFileErrorsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , . .
+     *
+     */
+    async getImportFileStatusRaw(requestParameters: GetImportFileStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadFilePreviewStateDto>> {
+        if (requestParameters['channelId'] == null) {
+            throw new runtime.RequiredError(
+                'channelId',
+                'Required parameter "channelId" was null or undefined when calling getImportFileStatus().'
+            );
+        }
+
+        if (requestParameters['processId'] == null) {
+            throw new runtime.RequiredError(
+                'processId',
+                'Required parameter "processId" was null or undefined when calling getImportFileStatus().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['channelId'] != null) {
+            queryParameters['channel_id'] = requestParameters['channelId'];
+        }
+
+        if (requestParameters['processId'] != null) {
+            queryParameters['process_id'] = requestParameters['processId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+
+        const response = await this.request({
+            path: `/api/leads/import/file/status`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LeadFilePreviewStateDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , . .
+     *
+     */
+    async getImportFileStatus(requestParameters: GetImportFileStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadFilePreviewStateDto> {
+        const response = await this.getImportFileStatusRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * parent_id utm_source, parent_id . q . , , .
      * UTM
      */
@@ -3897,6 +4172,606 @@ export class LeadsApi extends runtime.BaseAPI {
      */
     async getSubscriptionUtmTree(requestParameters: GetSubscriptionUtmTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadSubscriptionUtmTreeResponseDto> {
         const response = await this.getSubscriptionUtmTreeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , . 50 . .
+     *
+     */
+    async importFileInspectRaw(requestParameters: ImportFileInspectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ParsedLeadTableDto>> {
+        if (requestParameters['inspectLeadFileDto'] == null) {
+            throw new runtime.RequiredError(
+                'inspectLeadFileDto',
+                'Required parameter "inspectLeadFileDto" was null or undefined when calling importFileInspect().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+
+        const response = await this.request({
+            path: `/api/leads/import/file/inspect`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: InspectLeadFileDtoToJSON(requestParameters['inspectLeadFileDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ParsedLeadTableDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , . 50 . .
+     *
+     */
+    async importFileInspect(requestParameters: ImportFileInspectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ParsedLeadTableDto> {
+        const response = await this.importFileInspectRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . . .
+     *
+     */
+    async importFilePreviewRaw(requestParameters: ImportFilePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadFilePreviewStateDto>> {
+        if (requestParameters['prepareLeadFileDto'] == null) {
+            throw new runtime.RequiredError(
+                'prepareLeadFileDto',
+                'Required parameter "prepareLeadFileDto" was null or undefined when calling importFilePreview().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+
+        const response = await this.request({
+            path: `/api/leads/import/file/preview`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PrepareLeadFileDtoToJSON(requestParameters['prepareLeadFileDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LeadFilePreviewStateDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . . .
+     *
+     */
+    async importFilePreview(requestParameters: ImportFilePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadFilePreviewStateDto> {
+        const response = await this.importFilePreviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , . .
+     *
+     */
+    async importFileResumeRaw(requestParameters: ImportFileResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>> {
+        if (requestParameters['leadFileJobReferenceDto'] == null) {
+            throw new runtime.RequiredError(
+                'leadFileJobReferenceDto',
+                'Required parameter "leadFileJobReferenceDto" was null or undefined when calling importFileResume().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+
+        const response = await this.request({
+            path: `/api/leads/import/file/resume`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: LeadFileJobReferenceDtoToJSON(requestParameters['leadFileJobReferenceDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProcessResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , . .
+     *
+     */
+    async importFileResume(requestParameters: ImportFileResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto> {
+        const response = await this.importFileResumeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . . .
+     *
+     */
+    async importFileRetryRaw(requestParameters: ImportFileRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadFilePreviewStateDto>> {
+        if (requestParameters['leadFileJobReferenceDto'] == null) {
+            throw new runtime.RequiredError(
+                'leadFileJobReferenceDto',
+                'Required parameter "leadFileJobReferenceDto" was null or undefined when calling importFileRetry().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+
+        const response = await this.request({
+            path: `/api/leads/import/file/retry`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: LeadFileJobReferenceDtoToJSON(requestParameters['leadFileJobReferenceDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LeadFilePreviewStateDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . . .
+     *
+     */
+    async importFileRetry(requestParameters: ImportFileRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadFilePreviewStateDto> {
+        const response = await this.importFileRetryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . , . ; .
+     *
+     */
+    async importFileStartRaw(requestParameters: ImportFileStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>> {
+        if (requestParameters['startLeadFileDto'] == null) {
+            throw new runtime.RequiredError(
+                'startLeadFileDto',
+                'Required parameter "startLeadFileDto" was null or undefined when calling importFileStart().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+
+        const response = await this.request({
+            path: `/api/leads/import/file/start`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: StartLeadFileDtoToJSON(requestParameters['startLeadFileDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProcessResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . , . ; .
+     *
+     */
+    async importFileStart(requestParameters: ImportFileStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto> {
+        const response = await this.importFileStartRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * 2 . .
+     * CSV, TSV TXT
+     */
+    async importFileUploadRaw(requestParameters: ImportFileUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadFileUploadDto>> {
+        if (requestParameters['createLeadFileDto'] == null) {
+            throw new runtime.RequiredError(
+                'createLeadFileDto',
+                'Required parameter "createLeadFileDto" was null or undefined when calling importFileUpload().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+
+        const response = await this.request({
+            path: `/api/leads/import/file/upload`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateLeadFileDtoToJSON(requestParameters['createLeadFileDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LeadFileUploadDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * 2 . .
+     * CSV, TSV TXT
+     */
+    async importFileUpload(requestParameters: ImportFileUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadFileUploadDto> {
+        const response = await this.importFileUploadRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * 10 , 10 000 64 . , ID. . .
+     * CSV, TSV TXT
+     */
+    async importTableParseRaw(requestParameters: ImportTableParseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ParsedLeadTableDto>> {
+        if (requestParameters['parseLeadTableDto'] == null) {
+            throw new runtime.RequiredError(
+                'parseLeadTableDto',
+                'Required parameter "parseLeadTableDto" was null or undefined when calling importTableParse().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+
+        const response = await this.request({
+            path: `/api/leads/import/table/parse`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ParseLeadTableDtoToJSON(requestParameters['parseLeadTableDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ParsedLeadTableDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * 10 , 10 000 64 . , ID. . .
+     * CSV, TSV TXT
+     */
+    async importTableParse(requestParameters: ImportTableParseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ParsedLeadTableDto> {
+        const response = await this.importTableParseRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , , . . .
+     *
+     */
+    async importTablePreviewRaw(requestParameters: ImportTablePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadTablePreviewDto>> {
+        if (requestParameters['previewLeadTableDto'] == null) {
+            throw new runtime.RequiredError(
+                'previewLeadTableDto',
+                'Required parameter "previewLeadTableDto" was null or undefined when calling importTablePreview().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+
+        const response = await this.request({
+            path: `/api/leads/import/table/preview`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PreviewLeadTableDtoToJSON(requestParameters['previewLeadTableDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LeadTablePreviewDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , , . . .
+     *
+     */
+    async importTablePreview(requestParameters: ImportTablePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadTablePreviewDto> {
+        const response = await this.importTablePreviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . , . , , .
+     *
+     */
+    async importTableStartRaw(requestParameters: ImportTableStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>> {
+        if (requestParameters['startLeadTableDto'] == null) {
+            throw new runtime.RequiredError(
+                'startLeadTableDto',
+                'Required parameter "startLeadTableDto" was null or undefined when calling importTableStart().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+
+        const response = await this.request({
+            path: `/api/leads/import/table/start`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: StartLeadTableDtoToJSON(requestParameters['startLeadTableDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProcessResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . , . , , .
+     *
+     */
+    async importTableStart(requestParameters: ImportTableStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto> {
+        const response = await this.importTableStartRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . . GPT Luna ; .
+     * GPT Luna
+     */
+    async importTableSuggestRaw(requestParameters: ImportTableSuggestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuggestedLeadTableDto>> {
+        if (requestParameters['suggestLeadTableDto'] == null) {
+            throw new runtime.RequiredError(
+                'suggestLeadTableDto',
+                'Required parameter "suggestLeadTableDto" was null or undefined when calling importTableSuggest().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_leads"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_leads"]);
+        }
+
+        const response = await this.request({
+            path: `/api/leads/import/table/suggest`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SuggestLeadTableDtoToJSON(requestParameters['suggestLeadTableDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SuggestedLeadTableDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . . GPT Luna ; .
+     * GPT Luna
+     */
+    async importTableSuggest(requestParameters: ImportTableSuggestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuggestedLeadTableDto> {
+        const response = await this.importTableSuggestRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -5134,6 +6009,22 @@ export type GetConsentAcceptancesAcceptLanguageEnum = typeof GetConsentAcceptanc
 /**
  * @export
  */
+export const GetImportFileErrorsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetImportFileErrorsAcceptLanguageEnum = typeof GetImportFileErrorsAcceptLanguageEnum[keyof typeof GetImportFileErrorsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetImportFileStatusAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetImportFileStatusAcceptLanguageEnum = typeof GetImportFileStatusAcceptLanguageEnum[keyof typeof GetImportFileStatusAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const GetSubscriptionUtmTreeChannelTypeEnum = {
     Vk: 'vk',
     Tg: 'tg',
@@ -5156,6 +6047,86 @@ export const GetSubscriptionUtmTreeAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetSubscriptionUtmTreeAcceptLanguageEnum = typeof GetSubscriptionUtmTreeAcceptLanguageEnum[keyof typeof GetSubscriptionUtmTreeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ImportFileInspectAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ImportFileInspectAcceptLanguageEnum = typeof ImportFileInspectAcceptLanguageEnum[keyof typeof ImportFileInspectAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ImportFilePreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ImportFilePreviewAcceptLanguageEnum = typeof ImportFilePreviewAcceptLanguageEnum[keyof typeof ImportFilePreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ImportFileResumeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ImportFileResumeAcceptLanguageEnum = typeof ImportFileResumeAcceptLanguageEnum[keyof typeof ImportFileResumeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ImportFileRetryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ImportFileRetryAcceptLanguageEnum = typeof ImportFileRetryAcceptLanguageEnum[keyof typeof ImportFileRetryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ImportFileStartAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ImportFileStartAcceptLanguageEnum = typeof ImportFileStartAcceptLanguageEnum[keyof typeof ImportFileStartAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ImportFileUploadAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ImportFileUploadAcceptLanguageEnum = typeof ImportFileUploadAcceptLanguageEnum[keyof typeof ImportFileUploadAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ImportTableParseAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ImportTableParseAcceptLanguageEnum = typeof ImportTableParseAcceptLanguageEnum[keyof typeof ImportTableParseAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ImportTablePreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ImportTablePreviewAcceptLanguageEnum = typeof ImportTablePreviewAcceptLanguageEnum[keyof typeof ImportTablePreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ImportTableStartAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ImportTableStartAcceptLanguageEnum = typeof ImportTableStartAcceptLanguageEnum[keyof typeof ImportTableStartAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ImportTableSuggestAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ImportTableSuggestAcceptLanguageEnum = typeof ImportTableSuggestAcceptLanguageEnum[keyof typeof ImportTableSuggestAcceptLanguageEnum];
 /**
  * @export
  */

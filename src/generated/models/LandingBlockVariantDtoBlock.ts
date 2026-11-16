@@ -12,6 +12,13 @@
  * Do not edit the class manually.
  */
 
+import type { LandingBookingBlockResponseDto } from './LandingBookingBlockResponseDto';
+import {
+    instanceOfLandingBookingBlockResponseDto,
+    LandingBookingBlockResponseDtoFromJSON,
+    LandingBookingBlockResponseDtoFromJSONTyped,
+    LandingBookingBlockResponseDtoToJSON,
+} from './LandingBookingBlockResponseDto';
 import type { LandingButtonBlockResponseDto } from './LandingButtonBlockResponseDto';
 import {
     instanceOfLandingButtonBlockResponseDto,
@@ -102,7 +109,7 @@ import {
  *
  * @export
  */
-export type LandingBlockVariantDtoBlock = { type: 'button' } & LandingButtonBlockResponseDto | { type: 'cover' } & LandingCoverBlockResponseDto | { type: 'features' } & LandingFeaturesBlockResponseDto | { type: 'html' } & LandingHtmlBlockResponseDto | { type: 'image' } & LandingImageBlockResponseDto | { type: 'other' } & LandingOtherBlockResponseDto | { type: 'products' } & LandingProductsBlockResponseDto | { type: 'reviews' } & LandingReviewsBlockResponseDto | { type: 'text' } & LandingTextBlockResponseDto | { type: 'timer' } & LandingTimerBlockResponseDto | { type: 'video' } & LandingVideoBlockResponseDto | { type: 'widget' } & LandingWidgetBlockResponseDto;
+export type LandingBlockVariantDtoBlock = { type: 'booking' } & LandingBookingBlockResponseDto | { type: 'button' } & LandingButtonBlockResponseDto | { type: 'cover' } & LandingCoverBlockResponseDto | { type: 'features' } & LandingFeaturesBlockResponseDto | { type: 'html' } & LandingHtmlBlockResponseDto | { type: 'image' } & LandingImageBlockResponseDto | { type: 'other' } & LandingOtherBlockResponseDto | { type: 'products' } & LandingProductsBlockResponseDto | { type: 'reviews' } & LandingReviewsBlockResponseDto | { type: 'text' } & LandingTextBlockResponseDto | { type: 'timer' } & LandingTimerBlockResponseDto | { type: 'video' } & LandingVideoBlockResponseDto | { type: 'widget' } & LandingWidgetBlockResponseDto;
 
 export function LandingBlockVariantDtoBlockFromJSON(json: any): LandingBlockVariantDtoBlock {
     return LandingBlockVariantDtoBlockFromJSONTyped(json, false);
@@ -113,6 +120,8 @@ export function LandingBlockVariantDtoBlockFromJSONTyped(json: any, ignoreDiscri
         return json;
     }
     switch (json['type']) {
+        case 'booking':
+            return Object.assign({}, LandingBookingBlockResponseDtoFromJSONTyped(json, true), { type: 'booking' } as const);
         case 'button':
             return Object.assign({}, LandingButtonBlockResponseDtoFromJSONTyped(json, true), { type: 'button' } as const);
         case 'cover':
@@ -151,6 +160,8 @@ export function LandingBlockVariantDtoBlockToJSONTyped(value?: LandingBlockVaria
         return value;
     }
     switch (value['type']) {
+        case 'booking':
+            return Object.assign({}, LandingBookingBlockResponseDtoToJSON(value), { type: 'booking' } as const);
         case 'button':
             return Object.assign({}, LandingButtonBlockResponseDtoToJSON(value), { type: 'button' } as const);
         case 'cover':

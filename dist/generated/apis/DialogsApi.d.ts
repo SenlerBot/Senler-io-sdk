@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CabinetAiCostSummaryDto, CreateDialogDto, CreateDialogResponseDto, CurrentTestDialogDataDto, DialogAiResponseQueueDto, DialogDetailsDto, DialogMessageNoteDto, DialogMessageNoteMarkersDto, DialogNavigationResponseDto, DirectMessageDto, EventPollOptionVotersResponseDto, EventPollSnapshotRefreshResponseDto, EventReactionUsersResponseDto, GetEvents200Response, LeadConversationEventsDto, LeadConversationSummaryDto, MarkAllDialogsReadBoundaryResponseDto, PaginatedDialogsDto, QueryDialogsDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SendMessageResponseDto, UnreadCountResponseDto, UpdateDialogMessageNoteDto } from '../models/index';
+import type { CabinetAiCostSummaryDto, CreateDialogDto, CreateDialogResponseDto, CurrentTestDialogDataDto, DialogAiResponseQueueDto, DialogDetailsDto, DialogMessageNoteDto, DialogMessageNoteMarkersDto, DialogNavigationResponseDto, DirectMessageDto, EventPollOptionVotersResponseDto, EventPollSnapshotRefreshResponseDto, EventReactionUsersResponseDto, GetEvents200Response, LeadConversationEventsDto, LeadConversationSummaryDto, LiveVoiceArchiveDto, MarkAllDialogsReadBoundaryResponseDto, PaginatedDialogsDto, QueryDialogsDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SendMessageResponseDto, UnreadCountResponseDto, UpdateDialogMessageNoteDto } from '../models/index';
 export interface DialogsCreateRequest {
     createDialogDto: CreateDialogDto;
     acceptLanguage?: DialogsCreateAcceptLanguageEnum;
@@ -24,9 +24,8 @@ export interface DialogsListRequest {
     acceptLanguage?: DialogsListAcceptLanguageEnum;
 }
 export interface DirectMessageRequest {
-    idempotencyKey: string;
     directMessageDto: DirectMessageDto;
-    idempotencyKey2?: string;
+    idempotencyKey?: string;
     acceptLanguage?: DirectMessageAcceptLanguageEnum;
 }
 export interface EventsPollSnapshotRefreshRequest {
@@ -90,6 +89,12 @@ export interface GetLeadConversationEventsRequest {
     after?: string;
     limit?: number;
     acceptLanguage?: GetLeadConversationEventsAcceptLanguageEnum;
+}
+export interface GetLiveVoiceRequest {
+    dialogId: string;
+    sessionId: string;
+    after?: number;
+    acceptLanguage?: GetLiveVoiceAcceptLanguageEnum;
 }
 export interface GetMarkAllReadBoundaryRequest {
     projectId: string;
@@ -261,6 +266,16 @@ export declare class DialogsApi extends runtime.BaseAPI {
      *
      */
     getLeadConversationEvents(requestParameters: GetLeadConversationEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadConversationEventsDto>;
+    /**
+     * . after , 200 .
+     *
+     */
+    getLiveVoiceRaw(requestParameters: GetLiveVoiceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LiveVoiceArchiveDto>>;
+    /**
+     * . after , 200 .
+     *
+     */
+    getLiveVoice(requestParameters: GetLiveVoiceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LiveVoiceArchiveDto>;
     /**
      * . read_before POST /api/dialogs/mark-all-read, .
      *
@@ -456,6 +471,14 @@ export declare const GetLeadConversationEventsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetLeadConversationEventsAcceptLanguageEnum = typeof GetLeadConversationEventsAcceptLanguageEnum[keyof typeof GetLeadConversationEventsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetLiveVoiceAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLiveVoiceAcceptLanguageEnum = typeof GetLiveVoiceAcceptLanguageEnum[keyof typeof GetLiveVoiceAcceptLanguageEnum];
 /**
  * @export
  */

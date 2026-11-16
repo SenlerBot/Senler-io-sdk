@@ -27,6 +27,7 @@ import type {
   ErrorResponse,
   NumberVariableValueDto,
   ObjectVariableValueDto,
+  ReactionVariableValueDto,
   StringVariableValueDto,
 } from '../models/index';
 import {
@@ -54,6 +55,8 @@ import {
     NumberVariableValueDtoToJSON,
     ObjectVariableValueDtoFromJSON,
     ObjectVariableValueDtoToJSON,
+    ReactionVariableValueDtoFromJSON,
+    ReactionVariableValueDtoToJSON,
     StringVariableValueDtoFromJSON,
     StringVariableValueDtoToJSON,
 } from '../models/index';
@@ -120,6 +123,14 @@ export interface UpdateValuesObjectRequest {
     objectVariableValueDto: ObjectVariableValueDto;
     writeMode?: UpdateValuesObjectWriteModeEnum;
     acceptLanguage?: UpdateValuesObjectAcceptLanguageEnum;
+}
+
+export interface UpdateValuesReactionRequest {
+    dialogId: string;
+    name: string;
+    reactionVariableValueDto: ReactionVariableValueDto;
+    writeMode?: UpdateValuesReactionWriteModeEnum;
+    acceptLanguage?: UpdateValuesReactionAcceptLanguageEnum;
 }
 
 export interface UpdateValuesStringRequest {
@@ -814,6 +825,84 @@ export class DialogVariablesApi extends runtime.BaseAPI {
      * write_mode.
      *
      */
+    async updateValuesReactionRaw(requestParameters: UpdateValuesReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogVariableWriteResponseDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling updateValuesReaction().'
+            );
+        }
+
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError(
+                'name',
+                'Required parameter "name" was null or undefined when calling updateValuesReaction().'
+            );
+        }
+
+        if (requestParameters['reactionVariableValueDto'] == null) {
+            throw new runtime.RequiredError(
+                'reactionVariableValueDto',
+                'Required parameter "reactionVariableValueDto" was null or undefined when calling updateValuesReaction().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['writeMode'] != null) {
+            queryParameters['write_mode'] = requestParameters['writeMode'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialog_variables"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialog_variables"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialog-variables/{dialogId}/values/{name}/reaction`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ReactionVariableValueDtoToJSON(requestParameters['reactionVariableValueDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DialogVariableWriteResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * write_mode.
+     *
+     */
+    async updateValuesReaction(requestParameters: UpdateValuesReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogVariableWriteResponseDto> {
+        const response = await this.updateValuesReactionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * write_mode.
+     *
+     */
     async updateValuesStringRaw(requestParameters: UpdateValuesStringRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogVariableWriteResponseDto>> {
         if (requestParameters['dialogId'] == null) {
             throw new runtime.RequiredError(
@@ -1322,6 +1411,22 @@ export const UpdateValuesObjectAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateValuesObjectAcceptLanguageEnum = typeof UpdateValuesObjectAcceptLanguageEnum[keyof typeof UpdateValuesObjectAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateValuesReactionWriteModeEnum = {
+    Overwrite: 'overwrite',
+    IfAbsent: 'if_absent'
+} as const;
+export type UpdateValuesReactionWriteModeEnum = typeof UpdateValuesReactionWriteModeEnum[keyof typeof UpdateValuesReactionWriteModeEnum];
+/**
+ * @export
+ */
+export const UpdateValuesReactionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateValuesReactionAcceptLanguageEnum = typeof UpdateValuesReactionAcceptLanguageEnum[keyof typeof UpdateValuesReactionAcceptLanguageEnum];
 /**
  * @export
  */

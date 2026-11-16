@@ -19,7 +19,7 @@ import type { LandingButtonContentDto } from './LandingButtonContentDto';
  */
 export interface SetAgentLandingSubscribeActionDto {
     /**
-     * .
+     * revision . 409 .
      * @type {number}
      * @memberof SetAgentLandingSubscribeActionDto
      */

@@ -190,33 +190,33 @@ export interface UpdateSummarizeSettingsRequest {
  */
 export declare class AnalyticsApi extends runtime.BaseAPI {
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Pause analysis after the current paid request has been saved
+     * . ; AI.
+     *
      */
     analysisJobsPauseRaw(requestParameters: AnalysisJobsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalysisJobDto>>;
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Pause analysis after the current paid request has been saved
+     * . ; AI.
+     *
      */
     analysisJobsPause(requestParameters: AnalysisJobsPauseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto>;
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Resume the same analysis with saved progress and an authorized spending limit
+     * . ; AI.
+     *
      */
     analysisJobsResumeRaw(requestParameters: AnalysisJobsResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalysisJobDto>>;
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Resume the same analysis with saved progress and an authorized spending limit
+     * . ; AI.
+     *
      */
     analysisJobsResume(requestParameters: AnalysisJobsResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto>;
     /**
-     * For runs started with check_mode=dialog_tests. Preserves saved results, stops test dialogs and prevents resuming this run. Returns immediately; active work is stopped by the background worker.
-     * Stop an editor dialog test permanently
+     * check_mode=dialog_tests. , . ; .
+     *
      */
     analysisJobsStopRaw(requestParameters: AnalysisJobsStopRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalysisJobDto>>;
     /**
-     * For runs started with check_mode=dialog_tests. Preserves saved results, stops test dialogs and prevents resuming this run. Returns immediately; active work is stopped by the background worker.
-     * Stop an editor dialog test permanently
+     * check_mode=dialog_tests. , . ; .
+     *
      */
     analysisJobsStop(requestParameters: AnalysisJobsStopRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto>;
     /**
@@ -250,33 +250,33 @@ export declare class AnalyticsApi extends runtime.BaseAPI {
      */
     getAgentsTopMetrics(requestParameters: GetAgentsTopMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DrillDownByAgentResponseDto>;
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Read background analysis progress
+     * . ; AI.
+     *
      */
     getAnalysisJobsRaw(requestParameters: GetAnalysisJobsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalysisJobDto>>;
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Read background analysis progress
+     * . ; AI.
+     *
      */
     getAnalysisJobs(requestParameters: GetAnalysisJobsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto>;
     /**
-     * Returns up to 20 project summaries, including paused runs and older saved reports. Pass next_cursor to read the next page. No AI calls or writes.
-     * List saved and unfinished AI summaries
+     * 20 , . next_cursor. AI .
+     * AI-
      */
     getAnalysisJobsInsightHistoryRaw(requestParameters: GetAnalysisJobsInsightHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InsightHistoryDto>>;
     /**
-     * Returns up to 20 project summaries, including paused runs and older saved reports. Pass next_cursor to read the next page. No AI calls or writes.
-     * List saved and unfinished AI summaries
+     * 20 , . next_cursor. AI .
+     * AI-
      */
     getAnalysisJobsInsightHistory(requestParameters: GetAnalysisJobsInsightHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InsightHistoryDto>;
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Read the latest background analysis
+     * . ; AI.
+     *
      */
     getAnalysisJobsLatestRaw(requestParameters: GetAnalysisJobsLatestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AnalysisJobDto>>;
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Read the latest background analysis
+     * . ; AI.
+     *
      */
     getAnalysisJobsLatest(requestParameters: GetAnalysisJobsLatestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto>;
     /**

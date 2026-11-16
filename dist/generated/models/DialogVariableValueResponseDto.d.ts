@@ -65,6 +65,7 @@ export declare const DialogVariableValueResponseDtoTypeEnum: {
     readonly Date: "date";
     readonly Array: "array";
     readonly Object: "object";
+    readonly Reaction: "reaction";
 };
 export type DialogVariableValueResponseDtoTypeEnum = typeof DialogVariableValueResponseDtoTypeEnum[keyof typeof DialogVariableValueResponseDtoTypeEnum];
 /**

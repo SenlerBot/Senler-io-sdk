@@ -48,6 +48,13 @@ import {
     WidgetEventMessageMentionsDtoToJSON,
     WidgetEventMessageMentionsDtoToJSONTyped,
 } from './WidgetEventMessageMentionsDto';
+import type { WidgetInteractiveMessageDto } from './WidgetInteractiveMessageDto';
+import {
+    WidgetInteractiveMessageDtoFromJSON,
+    WidgetInteractiveMessageDtoFromJSONTyped,
+    WidgetInteractiveMessageDtoToJSON,
+    WidgetInteractiveMessageDtoToJSONTyped,
+} from './WidgetInteractiveMessageDto';
 import type { WidgetEventMessageRepliesDto } from './WidgetEventMessageRepliesDto';
 import {
     WidgetEventMessageRepliesDtoFromJSON,
@@ -76,6 +83,12 @@ import {
  * @interface WidgetEventMessageInteractionsDto
  */
 export interface WidgetEventMessageInteractionsDto {
+    /**
+     * HTML- .
+     * @type {WidgetInteractiveMessageDto}
+     * @memberof WidgetEventMessageInteractionsDto
+     */
+    interactiveWidget?: WidgetInteractiveMessageDto;
     /**
      *
      * @type {Array<WidgetEventMessageReactionDto>}
@@ -149,6 +162,7 @@ export function WidgetEventMessageInteractionsDtoFromJSONTyped(json: any, ignore
     }
     return {
 
+        'interactiveWidget': json['interactive_widget'] == null ? undefined : WidgetInteractiveMessageDtoFromJSON(json['interactive_widget']),
         'reactions': json['reactions'] == null ? undefined : ((json['reactions'] as Array<any>).map(WidgetEventMessageReactionDtoFromJSON)),
         'editing': json['editing'] == null ? undefined : WidgetEventEditingDtoFromJSON(json['editing']),
         'replies': json['replies'] == null ? undefined : WidgetEventMessageRepliesDtoFromJSON(json['replies']),
@@ -172,6 +186,7 @@ export function WidgetEventMessageInteractionsDtoToJSONTyped(value?: WidgetEvent
 
     return {
 
+        'interactive_widget': WidgetInteractiveMessageDtoToJSON(value['interactiveWidget']),
         'reactions': value['reactions'] == null ? undefined : ((value['reactions'] as Array<any>).map(WidgetEventMessageReactionDtoToJSON)),
         'editing': WidgetEventEditingDtoToJSON(value['editing']),
         'replies': WidgetEventMessageRepliesDtoToJSON(value['replies']),

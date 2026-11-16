@@ -40,7 +40,12 @@ export declare const ValidateAutomationNodeConfigDtoTypeEnum: {
     readonly TriggerIncomingMessage: "trigger.incoming_message";
     readonly TriggerSegmentEntered: "trigger.segment_entered";
     readonly TriggerEvent: "trigger.event";
+    readonly TriggerMessageEvent: "trigger.message_event";
+    readonly TriggerDialogEvent: "trigger.dialog_event";
+    readonly TriggerLeadEvent: "trigger.lead_event";
     readonly TriggerAppEvent: "trigger.app_event";
+    readonly TriggerBooking: "trigger.booking";
+    readonly ConditionGroup: "condition.group";
     readonly ConditionVariable: "condition.variable";
     readonly ConditionAi: "condition.ai";
     readonly ConditionDateTime: "condition.date_time";
@@ -54,7 +59,9 @@ export declare const ValidateAutomationNodeConfigDtoTypeEnum: {
     readonly BranchRandom: "branch.random";
     readonly ActionSetVariable: "action.set_variable";
     readonly ActionMessage: "action.message";
+    readonly ActionDeleteMessage: "action.delete_message";
     readonly ActionPoll: "action.poll";
+    readonly ActionTelegramWidget: "action.telegram_widget";
     readonly ActionTyping: "action.typing";
     readonly ActionAgentRequest: "action.agent_request";
     readonly ActionAddSegment: "action.add_segment";
@@ -67,9 +74,12 @@ export declare const ValidateAutomationNodeConfigDtoTypeEnum: {
     readonly ActionHandoffToOperator: "action.handoff_to_operator";
     readonly ActionTableWrite: "action.table_write";
     readonly ActionHttp: "action.http";
+    readonly ActionCode: "action.code";
     readonly ActionApp: "action.app";
+    readonly ActionBooking: "action.booking";
     readonly ControlWait: "control.wait";
     readonly ControlLoop: "control.loop";
+    readonly ControlReturn: "control.return";
 };
 export type ValidateAutomationNodeConfigDtoTypeEnum = typeof ValidateAutomationNodeConfigDtoTypeEnum[keyof typeof ValidateAutomationNodeConfigDtoTypeEnum];
 /**

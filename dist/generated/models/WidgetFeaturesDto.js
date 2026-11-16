@@ -32,6 +32,7 @@ function WidgetFeaturesDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'liveVoice': json['live_voice'] == null ? undefined : json['live_voice'],
         'fileUpload': json['file_upload'] == null ? undefined : json['file_upload'],
         'voiceMessages': json['voice_messages'] == null ? undefined : json['voice_messages'],
         'emoji': json['emoji'] == null ? undefined : json['emoji'],
@@ -47,6 +48,7 @@ function WidgetFeaturesDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'live_voice': value['liveVoice'],
         'file_upload': value['fileUpload'],
         'voice_messages': value['voiceMessages'],
         'emoji': value['emoji'],

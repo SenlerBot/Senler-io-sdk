@@ -19,6 +19,13 @@ import {
     AgentLandingSubscribeActionInputDtoFromJSONTyped,
     AgentLandingSubscribeActionInputDtoToJSON,
 } from './AgentLandingSubscribeActionInputDto';
+import type { LandingOpenBookingActionInputDto } from './LandingOpenBookingActionInputDto';
+import {
+    instanceOfLandingOpenBookingActionInputDto,
+    LandingOpenBookingActionInputDtoFromJSON,
+    LandingOpenBookingActionInputDtoFromJSONTyped,
+    LandingOpenBookingActionInputDtoToJSON,
+} from './LandingOpenBookingActionInputDto';
 import type { LandingOpenLandingActionInputDto } from './LandingOpenLandingActionInputDto';
 import {
     instanceOfLandingOpenLandingActionInputDto,
@@ -39,7 +46,7 @@ import {
  *
  * @export
  */
-export type AgentLandingVariantInitialContentDtoAction = { type: 'open_landing' } & LandingOpenLandingActionInputDto | { type: 'open_url' } & LandingOpenUrlActionInputDto | { type: 'subscribe_segment' } & AgentLandingSubscribeActionInputDto;
+export type AgentLandingVariantInitialContentDtoAction = { type: 'open_booking' } & LandingOpenBookingActionInputDto | { type: 'open_landing' } & LandingOpenLandingActionInputDto | { type: 'open_url' } & LandingOpenUrlActionInputDto | { type: 'subscribe_segment' } & AgentLandingSubscribeActionInputDto;
 
 export function AgentLandingVariantInitialContentDtoActionFromJSON(json: any): AgentLandingVariantInitialContentDtoAction {
     return AgentLandingVariantInitialContentDtoActionFromJSONTyped(json, false);
@@ -50,6 +57,8 @@ export function AgentLandingVariantInitialContentDtoActionFromJSONTyped(json: an
         return json;
     }
     switch (json['type']) {
+        case 'open_booking':
+            return Object.assign({}, LandingOpenBookingActionInputDtoFromJSONTyped(json, true), { type: 'open_booking' } as const);
         case 'open_landing':
             return Object.assign({}, LandingOpenLandingActionInputDtoFromJSONTyped(json, true), { type: 'open_landing' } as const);
         case 'open_url':
@@ -70,6 +79,8 @@ export function AgentLandingVariantInitialContentDtoActionToJSONTyped(value?: Ag
         return value;
     }
     switch (value['type']) {
+        case 'open_booking':
+            return Object.assign({}, LandingOpenBookingActionInputDtoToJSON(value), { type: 'open_booking' } as const);
         case 'open_landing':
             return Object.assign({}, LandingOpenLandingActionInputDtoToJSON(value), { type: 'open_landing' } as const);
         case 'open_url':

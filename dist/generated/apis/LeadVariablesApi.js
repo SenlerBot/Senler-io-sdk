@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LeadVariablesValuesArrayRemoveItemsAcceptLanguageEnum = exports.LeadVariablesValuesArrayPrependItemsAcceptLanguageEnum = exports.LeadVariablesValuesArrayAppendItemsAcceptLanguageEnum = exports.LeadVariablesValuesArrayAddUniqueItemsAcceptLanguageEnum = exports.LeadVariablesUpdateValuesStringAcceptLanguageEnum = exports.LeadVariablesUpdateValuesStringWriteModeEnum = exports.LeadVariablesUpdateValuesObjectAcceptLanguageEnum = exports.LeadVariablesUpdateValuesObjectWriteModeEnum = exports.LeadVariablesUpdateValuesNumberAcceptLanguageEnum = exports.LeadVariablesUpdateValuesNumberWriteModeEnum = exports.LeadVariablesUpdateValuesNullAcceptLanguageEnum = exports.LeadVariablesUpdateValuesNullWriteModeEnum = exports.LeadVariablesUpdateValuesDateAcceptLanguageEnum = exports.LeadVariablesUpdateValuesDateWriteModeEnum = exports.LeadVariablesUpdateValuesBooleanAcceptLanguageEnum = exports.LeadVariablesUpdateValuesBooleanWriteModeEnum = exports.LeadVariablesUpdateValuesArrayAcceptLanguageEnum = exports.LeadVariablesUpdateValuesArrayWriteModeEnum = exports.LeadVariablesGetValues2AcceptLanguageEnum = exports.LeadVariablesGetValuesAcceptLanguageEnum = exports.LeadVariablesDeleteValuesAcceptLanguageEnum = exports.LeadVariablesApi = void 0;
+exports.LeadVariablesValuesArrayRemoveItemsAcceptLanguageEnum = exports.LeadVariablesValuesArrayPrependItemsAcceptLanguageEnum = exports.LeadVariablesValuesArrayAppendItemsAcceptLanguageEnum = exports.LeadVariablesValuesArrayAddUniqueItemsAcceptLanguageEnum = exports.LeadVariablesUpdateValuesStringAcceptLanguageEnum = exports.LeadVariablesUpdateValuesStringWriteModeEnum = exports.LeadVariablesUpdateValuesReactionAcceptLanguageEnum = exports.LeadVariablesUpdateValuesReactionWriteModeEnum = exports.LeadVariablesUpdateValuesObjectAcceptLanguageEnum = exports.LeadVariablesUpdateValuesObjectWriteModeEnum = exports.LeadVariablesUpdateValuesNumberAcceptLanguageEnum = exports.LeadVariablesUpdateValuesNumberWriteModeEnum = exports.LeadVariablesUpdateValuesNullAcceptLanguageEnum = exports.LeadVariablesUpdateValuesNullWriteModeEnum = exports.LeadVariablesUpdateValuesDateAcceptLanguageEnum = exports.LeadVariablesUpdateValuesDateWriteModeEnum = exports.LeadVariablesUpdateValuesBooleanAcceptLanguageEnum = exports.LeadVariablesUpdateValuesBooleanWriteModeEnum = exports.LeadVariablesUpdateValuesArrayAcceptLanguageEnum = exports.LeadVariablesUpdateValuesArrayWriteModeEnum = exports.LeadVariablesGetValues2AcceptLanguageEnum = exports.LeadVariablesGetValuesAcceptLanguageEnum = exports.LeadVariablesDeleteValuesAcceptLanguageEnum = exports.LeadVariablesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -520,6 +520,61 @@ class LeadVariablesApi extends runtime.BaseAPI {
      * .
      *
      */
+    async leadVariablesUpdateValuesReactionRaw(requestParameters, initOverrides) {
+        if (requestParameters['leadId'] == null) {
+            throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling leadVariablesUpdateValuesReaction().');
+        }
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError('name', 'Required parameter "name" was null or undefined when calling leadVariablesUpdateValuesReaction().');
+        }
+        if (requestParameters['reactionVariableValueDto'] == null) {
+            throw new runtime.RequiredError('reactionVariableValueDto', 'Required parameter "reactionVariableValueDto" was null or undefined when calling leadVariablesUpdateValuesReaction().');
+        }
+        const queryParameters = {};
+        if (requestParameters['writeMode'] != null) {
+            queryParameters['write_mode'] = requestParameters['writeMode'];
+        }
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_lead_variables"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_lead_variables"]);
+        }
+        const response = await this.request({
+            path: `/api/lead-variables/{leadId}/values/{name}/reaction`.replace(`{${"leadId"}}`, encodeURIComponent(String(requestParameters['leadId']))).replace(`{${"name"}}`, encodeURIComponent(String(requestParameters['name']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ReactionVariableValueDtoToJSON)(requestParameters['reactionVariableValueDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LeadVariableWriteResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * .
+     *
+     */
+    async leadVariablesUpdateValuesReaction(requestParameters, initOverrides) {
+        const response = await this.leadVariablesUpdateValuesReactionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * .
+     *
+     */
     async leadVariablesUpdateValuesStringRaw(requestParameters, initOverrides) {
         if (requestParameters['leadId'] == null) {
             throw new runtime.RequiredError('leadId', 'Required parameter "leadId" was null or undefined when calling leadVariablesUpdateValuesString().');
@@ -895,6 +950,20 @@ exports.LeadVariablesUpdateValuesObjectWriteModeEnum = {
  * @export
  */
 exports.LeadVariablesUpdateValuesObjectAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LeadVariablesUpdateValuesReactionWriteModeEnum = {
+    Overwrite: 'overwrite',
+    IfAbsent: 'if_absent'
+};
+/**
+ * @export
+ */
+exports.LeadVariablesUpdateValuesReactionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

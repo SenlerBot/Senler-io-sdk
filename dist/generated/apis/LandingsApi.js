@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateRealtimeFocusAcceptLanguageEnum = exports.UpdateDraftAcceptLanguageEnum = exports.PublicationsRestoreAcceptLanguageEnum = exports.PreviewLeadAcceptLanguageEnum = exports.PreviewAcceptLanguageEnum = exports.PersonalizationAcceptLanguageEnum = exports.LandingsUpdateAcceptLanguageEnum = exports.LandingsPublishAcceptLanguageEnum = exports.LandingsListAcceptLanguageEnum = exports.LandingsGetByIdAcceptLanguageEnum = exports.LandingsDeactivateAcceptLanguageEnum = exports.LandingsCreateAcceptLanguageEnum = exports.GetStatisticsAcceptLanguageEnum = exports.GetStatisticsDaysEnum = exports.GetShareLinksAcceptLanguageEnum = exports.GetPublicationsAcceptLanguageEnum = exports.GetPublicationValidationAcceptLanguageEnum = exports.DuplicateAcceptLanguageEnum = exports.DeleteBlocksAcceptLanguageEnum = exports.BlocksMoveAcceptLanguageEnum = exports.AssetsUploadUrlAcceptLanguageEnum = exports.AssetsFromUrlAcceptLanguageEnum = exports.AssetsConfirmAcceptLanguageEnum = exports.LandingsApi = void 0;
+exports.UpdateRealtimeFocusAcceptLanguageEnum = exports.UpdateDraftAcceptLanguageEnum = exports.PublicationsRestoreAcceptLanguageEnum = exports.PreviewLeadAcceptLanguageEnum = exports.PreviewAcceptLanguageEnum = exports.PersonalizationAcceptLanguageEnum = exports.LandingsUpdateAcceptLanguageEnum = exports.LandingsPublishAcceptLanguageEnum = exports.LandingsListAcceptLanguageEnum = exports.LandingsGetStatisticsAcceptLanguageEnum = exports.LandingsGetStatisticsDaysEnum = exports.LandingsGetByIdAcceptLanguageEnum = exports.LandingsDeactivateAcceptLanguageEnum = exports.LandingsCreateAcceptLanguageEnum = exports.GetShareLinksAcceptLanguageEnum = exports.GetPublicationsAcceptLanguageEnum = exports.GetPublicationValidationAcceptLanguageEnum = exports.DuplicateAcceptLanguageEnum = exports.DeleteBlocksAcceptLanguageEnum = exports.BlocksMoveAcceptLanguageEnum = exports.AssetsUploadUrlAcceptLanguageEnum = exports.AssetsFromUrlAcceptLanguageEnum = exports.AssetsConfirmAcceptLanguageEnum = exports.LandingsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -211,9 +211,6 @@ class LandingsApi extends runtime.BaseAPI {
         if (requestParameters['blockId'] == null) {
             throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling blocksMove().');
         }
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling blocksMove().');
-        }
         if (requestParameters['moveLandingBlockDto'] == null) {
             throw new runtime.RequiredError('moveLandingBlockDto', 'Required parameter "moveLandingBlockDto" was null or undefined when calling blocksMove().');
         }
@@ -268,9 +265,6 @@ class LandingsApi extends runtime.BaseAPI {
         }
         if (requestParameters['blockId'] == null) {
             throw new runtime.RequiredError('blockId', 'Required parameter "blockId" was null or undefined when calling deleteBlocks().');
-        }
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling deleteBlocks().');
         }
         if (requestParameters['deleteLandingBlockDto'] == null) {
             throw new runtime.RequiredError('deleteLandingBlockDto', 'Required parameter "deleteLandingBlockDto" was null or undefined when calling deleteBlocks().');
@@ -366,7 +360,7 @@ class LandingsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * . .
+     * , snapshot . . valid , , JavaScript; .
      *
      */
     async getPublicationValidationRaw(requestParameters, initOverrides) {
@@ -402,7 +396,7 @@ class LandingsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingPublicationValidationDtoFromJSON)(jsonValue));
     }
     /**
-     * . .
+     * , snapshot . . valid , , JavaScript; .
      *
      */
     async getPublicationValidation(requestParameters, initOverrides) {
@@ -495,53 +489,6 @@ class LandingsApi extends runtime.BaseAPI {
      */
     async getShareLinks(requestParameters, initOverrides) {
         const response = await this.getShareLinksRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * , , . , . . .
-     * ,
-     */
-    async getStatisticsRaw(requestParameters, initOverrides) {
-        if (requestParameters['landingId'] == null) {
-            throw new runtime.RequiredError('landingId', 'Required parameter "landingId" was null or undefined when calling getStatistics().');
-        }
-        const queryParameters = {};
-        if (requestParameters['days'] != null) {
-            queryParameters['days'] = requestParameters['days'];
-        }
-        const headerParameters = {};
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
-        }
-        const response = await this.request({
-            path: `/api/landings/{landingId}/statistics`.replace(`{${"landingId"}}`, encodeURIComponent(String(requestParameters['landingId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingStatisticsReportDtoFromJSON)(jsonValue));
-    }
-    /**
-     * , , . , . . .
-     * ,
-     */
-    async getStatistics(requestParameters, initOverrides) {
-        const response = await this.getStatisticsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -641,7 +588,7 @@ class LandingsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , .
+     * , . payload, settings ; payload .
      *
      */
     async landingsGetByIdRaw(requestParameters, initOverrides) {
@@ -677,11 +624,58 @@ class LandingsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * , .
+     * , . payload, settings ; payload .
      *
      */
     async landingsGetById(requestParameters, initOverrides) {
         const response = await this.landingsGetByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , , . , . . .
+     * ,
+     */
+    async landingsGetStatisticsRaw(requestParameters, initOverrides) {
+        if (requestParameters['landingId'] == null) {
+            throw new runtime.RequiredError('landingId', 'Required parameter "landingId" was null or undefined when calling landingsGetStatistics().');
+        }
+        const queryParameters = {};
+        if (requestParameters['days'] != null) {
+            queryParameters['days'] = requestParameters['days'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/landings/{landingId}/statistics`.replace(`{${"landingId"}}`, encodeURIComponent(String(requestParameters['landingId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingStatisticsReportDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , , . , . . .
+     * ,
+     */
+    async landingsGetStatistics(requestParameters, initOverrides) {
+        const response = await this.landingsGetStatisticsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -701,6 +695,9 @@ class LandingsApi extends runtime.BaseAPI {
         }
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['domainId'] != null) {
+            queryParameters['domain_id'] = requestParameters['domainId'];
         }
         if (requestParameters['automatic'] != null) {
             queryParameters['automatic'] = requestParameters['automatic'];
@@ -744,15 +741,12 @@ class LandingsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     * . getPublicationValidation. , : .
      *
      */
     async landingsPublishRaw(requestParameters, initOverrides) {
         if (requestParameters['landingId'] == null) {
             throw new runtime.RequiredError('landingId', 'Required parameter "landingId" was null or undefined when calling landingsPublish().');
-        }
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsPublish().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -786,7 +780,7 @@ class LandingsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * . getPublicationValidation. , : .
      *
      */
     async landingsPublish(requestParameters, initOverrides) {
@@ -800,9 +794,6 @@ class LandingsApi extends runtime.BaseAPI {
     async landingsUpdateRaw(requestParameters, initOverrides) {
         if (requestParameters['landingId'] == null) {
             throw new runtime.RequiredError('landingId', 'Required parameter "landingId" was null or undefined when calling landingsUpdate().');
-        }
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingsUpdate().');
         }
         if (requestParameters['updateLandingDto'] == null) {
             throw new runtime.RequiredError('updateLandingDto', 'Required parameter "updateLandingDto" was null or undefined when calling landingsUpdate().');
@@ -855,9 +846,6 @@ class LandingsApi extends runtime.BaseAPI {
     async personalizationRaw(requestParameters, initOverrides) {
         if (requestParameters['landingId'] == null) {
             throw new runtime.RequiredError('landingId', 'Required parameter "landingId" was null or undefined when calling personalization().');
-        }
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling personalization().');
         }
         if (requestParameters['mutateLandingPersonalizationDto'] == null) {
             throw new runtime.RequiredError('mutateLandingPersonalizationDto', 'Required parameter "mutateLandingPersonalizationDto" was null or undefined when calling personalization().');
@@ -1012,9 +1000,6 @@ class LandingsApi extends runtime.BaseAPI {
         if (requestParameters['publicationId'] == null) {
             throw new runtime.RequiredError('publicationId', 'Required parameter "publicationId" was null or undefined when calling publicationsRestore().');
         }
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling publicationsRestore().');
-        }
         const queryParameters = {};
         const headerParameters = {};
         if (requestParameters['xLandingEditorSessionId'] != null) {
@@ -1055,15 +1040,12 @@ class LandingsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * .
+     * settings expected_settings_revision. . .
      *
      */
     async updateDraftRaw(requestParameters, initOverrides) {
         if (requestParameters['landingId'] == null) {
             throw new runtime.RequiredError('landingId', 'Required parameter "landingId" was null or undefined when calling updateDraft().');
-        }
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateDraft().');
         }
         if (requestParameters['updateLandingDraftDto'] == null) {
             throw new runtime.RequiredError('updateLandingDraftDto', 'Required parameter "updateLandingDraftDto" was null or undefined when calling updateDraft().');
@@ -1102,7 +1084,7 @@ class LandingsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * .
+     * settings expected_settings_revision. . .
      *
      */
     async updateDraft(requestParameters, initOverrides) {
@@ -1116,9 +1098,6 @@ class LandingsApi extends runtime.BaseAPI {
     async updateRealtimeFocusRaw(requestParameters, initOverrides) {
         if (requestParameters['landingId'] == null) {
             throw new runtime.RequiredError('landingId', 'Required parameter "landingId" was null or undefined when calling updateRealtimeFocus().');
-        }
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError('xLandingEditorSessionId', 'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateRealtimeFocus().');
         }
         if (requestParameters['updateLandingRealtimeFocusDto'] == null) {
             throw new runtime.RequiredError('updateLandingRealtimeFocusDto', 'Required parameter "updateLandingRealtimeFocusDto" was null or undefined when calling updateRealtimeFocus().');
@@ -1232,21 +1211,6 @@ exports.GetShareLinksAcceptLanguageEnum = {
 /**
  * @export
  */
-exports.GetStatisticsDaysEnum = {
-    NUMBER_7: 7,
-    NUMBER_30: 30,
-    NUMBER_90: 90
-};
-/**
- * @export
- */
-exports.GetStatisticsAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-};
-/**
- * @export
- */
 exports.LandingsCreateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1262,6 +1226,21 @@ exports.LandingsDeactivateAcceptLanguageEnum = {
  * @export
  */
 exports.LandingsGetByIdAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LandingsGetStatisticsDaysEnum = {
+    NUMBER_7: 7,
+    NUMBER_30: 30,
+    NUMBER_90: 90
+};
+/**
+ * @export
+ */
+exports.LandingsGetStatisticsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

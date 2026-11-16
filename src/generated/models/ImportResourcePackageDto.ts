@@ -31,6 +31,18 @@ export interface ImportResourcePackageDto {
      * @memberof ImportResourcePackageDto
      */
     name?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ImportResourcePackageDto
+     */
+    activate?: boolean;
+    /**
+     * . .
+     * @type {Array<string>}
+     * @memberof ImportResourcePackageDto
+     */
+    channelIds?: Array<string>;
 }
 
 /**
@@ -53,6 +65,8 @@ export function ImportResourcePackageDtoFromJSONTyped(json: any, ignoreDiscrimin
 
         'targetProjectId': json['target_project_id'],
         'name': json['name'] == null ? undefined : json['name'],
+        'activate': json['activate'] == null ? undefined : json['activate'],
+        'channelIds': json['channel_ids'] == null ? undefined : json['channel_ids'],
     };
 }
 
@@ -69,5 +83,7 @@ export function ImportResourcePackageDtoToJSONTyped(value?: ImportResourcePackag
 
         'target_project_id': value['targetProjectId'],
         'name': value['name'],
+        'activate': value['activate'],
+        'channel_ids': value['channelIds'],
     };
 }

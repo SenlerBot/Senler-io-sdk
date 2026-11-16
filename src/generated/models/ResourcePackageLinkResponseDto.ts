@@ -77,7 +77,8 @@ export const ResourcePackageLinkResponseDtoSourceSectionEnum = {
     DialogVariables: 'dialog_variables',
     Segments: 'segments',
     Landings: 'landings',
-    Metrics: 'metrics'
+    Metrics: 'metrics',
+    Bookings: 'bookings'
 } as const;
 export type ResourcePackageLinkResponseDtoSourceSectionEnum = typeof ResourcePackageLinkResponseDtoSourceSectionEnum[keyof typeof ResourcePackageLinkResponseDtoSourceSectionEnum];
 

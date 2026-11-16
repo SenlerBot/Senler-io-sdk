@@ -20,6 +20,12 @@ import type { LandingExperimentMarkerDto } from './LandingExperimentMarkerDto';
  */
 export interface LandingResolvedResponseDto {
     /**
+     * ; null
+     * @type {string}
+     * @memberof LandingResolvedResponseDto
+     */
+    bookingToken: string | null;
+    /**
      *
      * @type {LandingPublicResponseDto}
      * @memberof LandingResolvedResponseDto
@@ -56,12 +62,12 @@ export interface LandingResolvedResponseDto {
      */
     exposureMarkers: Array<LandingExperimentMarkerDto>;
     /**
-     * ;
+     * ; . .
      * @type {Array<LandingExperimentExposureDto>}
      * @memberof LandingResolvedResponseDto
      * @deprecated
      */
-    exposures: Array<LandingExperimentExposureDto>;
+    exposures?: Array<LandingExperimentExposureDto>;
 }
 /**
  * Check if a given object implements the LandingResolvedResponseDto interface.

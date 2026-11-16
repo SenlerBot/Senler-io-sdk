@@ -83,6 +83,13 @@ import {
     WidgetEventStatusDtoToJSON,
     WidgetEventStatusDtoToJSONTyped,
 } from './WidgetEventStatusDto';
+import type { EventLiveVoiceDto } from './EventLiveVoiceDto';
+import {
+    EventLiveVoiceDtoFromJSON,
+    EventLiveVoiceDtoFromJSONTyped,
+    EventLiveVoiceDtoToJSON,
+    EventLiveVoiceDtoToJSONTyped,
+} from './EventLiveVoiceDto';
 import type { WidgetAttachmentDto } from './WidgetAttachmentDto';
 import {
     WidgetAttachmentDtoFromJSON,
@@ -97,6 +104,12 @@ import {
  * @interface WidgetEventListItemDto
  */
 export interface WidgetEventListItemDto {
+    /**
+     *
+     * @type {EventLiveVoiceDto}
+     * @memberof WidgetEventListItemDto
+     */
+    liveVoice?: EventLiveVoiceDto;
     /**
      * ID
      * @type {string}
@@ -268,6 +281,7 @@ export function WidgetEventListItemDtoFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
 
+        'liveVoice': json['live_voice'] == null ? undefined : EventLiveVoiceDtoFromJSON(json['live_voice']),
         'id': json['id'],
         'dialogId': json['dialog_id'],
         'actionType': json['action_type'],
@@ -300,6 +314,7 @@ export function WidgetEventListItemDtoToJSONTyped(value?: WidgetEventListItemDto
 
     return {
 
+        'live_voice': EventLiveVoiceDtoToJSON(value['liveVoice']),
         'id': value['id'],
         'dialog_id': value['dialogId'],
         'action_type': value['actionType'],

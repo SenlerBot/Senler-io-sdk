@@ -28,7 +28,7 @@ export interface LandingConditionDto {
      */
     name: string;
     /**
-     * : string, number, boolean, json, date, array, object.
+     * : string, number, boolean, json, date, array, object, reaction.
      * @type {string}
      * @memberof LandingConditionDto
      */
@@ -71,6 +71,7 @@ export declare const LandingConditionDtoVariableTypeEnum: {
     readonly Date: "date";
     readonly Array: "array";
     readonly Object: "object";
+    readonly Reaction: "reaction";
 };
 export type LandingConditionDtoVariableTypeEnum = typeof LandingConditionDtoVariableTypeEnum[keyof typeof LandingConditionDtoVariableTypeEnum];
 /**

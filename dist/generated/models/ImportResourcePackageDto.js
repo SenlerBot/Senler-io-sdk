@@ -36,6 +36,8 @@ function ImportResourcePackageDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'targetProjectId': json['target_project_id'],
         'name': json['name'] == null ? undefined : json['name'],
+        'activate': json['activate'] == null ? undefined : json['activate'],
+        'channelIds': json['channel_ids'] == null ? undefined : json['channel_ids'],
     };
 }
 function ImportResourcePackageDtoToJSON(json) {
@@ -48,5 +50,7 @@ function ImportResourcePackageDtoToJSONTyped(value, ignoreDiscriminator = false)
     return {
         'target_project_id': value['targetProjectId'],
         'name': value['name'],
+        'activate': value['activate'],
+        'channel_ids': value['channelIds'],
     };
 }

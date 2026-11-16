@@ -29,12 +29,6 @@ export interface GetActionsMethodsRequest {
     projectId: string;
     acceptLanguage?: GetActionsMethodsAcceptLanguageEnum;
 }
-export interface GetCatalogRequest {
-    projectId: string;
-    search?: string;
-    type?: GetCatalogTypeEnum;
-    acceptLanguage?: GetCatalogAcceptLanguageEnum;
-}
 export interface GetCatalog2Request {
     projectId: string;
     appId: string;
@@ -70,6 +64,12 @@ export interface InstalledSetupStepsSkipRequest {
 export interface InstalledVersionRetryRequest {
     installationId: string;
     acceptLanguage?: InstalledVersionRetryAcceptLanguageEnum;
+}
+export interface ProjectAppsGetCatalogRequest {
+    projectId: string;
+    search?: string;
+    type?: ProjectAppsGetCatalogTypeEnum;
+    acceptLanguage?: ProjectAppsGetCatalogAcceptLanguageEnum;
 }
 export interface UpdateInstalledDeveloperDialogAccessRequest {
     installationId: string;
@@ -125,16 +125,6 @@ export declare class ProjectAppsApi extends runtime.BaseAPI {
      * MCP-
      */
     getActionsMethods(requestParameters: GetActionsMethodsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AppActionMethodResponseDto>>;
-    /**
-     * , .
-     *
-     */
-    getCatalogRaw(requestParameters: GetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ProjectAppCatalogItemResponseDto>>>;
-    /**
-     * , .
-     *
-     */
-    getCatalog(requestParameters: GetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProjectAppCatalogItemResponseDto>>;
     /**
      * .
      *
@@ -216,6 +206,16 @@ export declare class ProjectAppsApi extends runtime.BaseAPI {
      */
     installedVersionRetry(requestParameters: InstalledVersionRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CatalogInstallationResponseDto>;
     /**
+     * , .
+     *
+     */
+    projectAppsGetCatalogRaw(requestParameters: ProjectAppsGetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ProjectAppCatalogItemResponseDto>>>;
+    /**
+     * , .
+     *
+     */
+    projectAppsGetCatalog(requestParameters: ProjectAppsGetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProjectAppCatalogItemResponseDto>>;
+    /**
      * .
      *
      */
@@ -268,23 +268,6 @@ export declare const GetActionsMethodsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetActionsMethodsAcceptLanguageEnum = typeof GetActionsMethodsAcceptLanguageEnum[keyof typeof GetActionsMethodsAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const GetCatalogTypeEnum: {
-    readonly Oauth: "oauth";
-    readonly SalesFunnel: "sales_funnel";
-    readonly Plugin: "plugin";
-};
-export type GetCatalogTypeEnum = typeof GetCatalogTypeEnum[keyof typeof GetCatalogTypeEnum];
-/**
- * @export
- */
-export declare const GetCatalogAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type GetCatalogAcceptLanguageEnum = typeof GetCatalogAcceptLanguageEnum[keyof typeof GetCatalogAcceptLanguageEnum];
 /**
  * @export
  */
@@ -358,6 +341,23 @@ export declare const InstalledVersionRetryAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type InstalledVersionRetryAcceptLanguageEnum = typeof InstalledVersionRetryAcceptLanguageEnum[keyof typeof InstalledVersionRetryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ProjectAppsGetCatalogTypeEnum: {
+    readonly Oauth: "oauth";
+    readonly SalesFunnel: "sales_funnel";
+    readonly Plugin: "plugin";
+};
+export type ProjectAppsGetCatalogTypeEnum = typeof ProjectAppsGetCatalogTypeEnum[keyof typeof ProjectAppsGetCatalogTypeEnum];
+/**
+ * @export
+ */
+export declare const ProjectAppsGetCatalogAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ProjectAppsGetCatalogAcceptLanguageEnum = typeof ProjectAppsGetCatalogAcceptLanguageEnum[keyof typeof ProjectAppsGetCatalogAcceptLanguageEnum];
 /**
  * @export
  */

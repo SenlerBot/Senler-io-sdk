@@ -82,6 +82,7 @@ export interface MetricsDefinitionsDeactivateRequest {
 
 export interface MetricsDefinitionsGetByIdRequest {
     id: string;
+    projectId: string;
     acceptLanguage?: MetricsDefinitionsGetByIdAcceptLanguageEnum;
 }
 
@@ -439,7 +440,7 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . .
+     * project_id. ; .
      * ID
      */
     async metricsDefinitionsGetByIdRaw(requestParameters: MetricsDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MetricDefinitionDto>> {
@@ -450,7 +451,18 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling metricsDefinitionsGetById().'
+            );
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -487,7 +499,7 @@ export class MetricsDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . .
+     * project_id. ; .
      * ID
      */
     async metricsDefinitionsGetById(requestParameters: MetricsDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MetricDefinitionDto> {

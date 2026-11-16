@@ -22,6 +22,7 @@ exports.InstallationSetupStepResponseDtoToJSONTyped = InstallationSetupStepRespo
 const DefaultAssignmentResponseDto_1 = require("./DefaultAssignmentResponseDto");
 const InstallationSetupStepStateResponseDto_1 = require("./InstallationSetupStepStateResponseDto");
 const LocalizedTextDto_1 = require("./LocalizedTextDto");
+const InstallationConsentSegmentResponseDto_1 = require("./InstallationConsentSegmentResponseDto");
 const InstallationSubscriptionLinkResponseDto_1 = require("./InstallationSubscriptionLinkResponseDto");
 const InstallationSetupStepVariableResponseDto_1 = require("./InstallationSetupStepVariableResponseDto");
 /**
@@ -36,10 +37,12 @@ exports.InstallationSetupStepResponseDtoPhaseEnum = {
  */
 exports.InstallationSetupStepResponseDtoTypeEnum = {
     FillVariables: 'fill_variables',
+    SelectRecipient: 'select_recipient',
     SetDefaultAgent: 'set_default_agent',
     AssignAgentToDialog: 'assign_agent_to_dialog',
     CustomInstruction: 'custom_instruction',
-    SubscriptionLinks: 'subscription_links'
+    SubscriptionLinks: 'subscription_links',
+    ConfigureConsents: 'configure_consents'
 };
 /**
  * @export
@@ -93,6 +96,7 @@ function InstallationSetupStepResponseDtoFromJSONTyped(json, ignoreDiscriminator
         'variables': (json['variables'].map(InstallationSetupStepVariableResponseDto_1.InstallationSetupStepVariableResponseDtoFromJSON)),
         'defaultAssignment': json['default_assignment'] == null ? undefined : (0, DefaultAssignmentResponseDto_1.DefaultAssignmentResponseDtoFromJSON)(json['default_assignment']),
         'subscriptionLinks': (json['subscription_links'].map(InstallationSubscriptionLinkResponseDto_1.InstallationSubscriptionLinkResponseDtoFromJSON)),
+        'consentSegment': json['consent_segment'] == null ? undefined : (0, InstallationConsentSegmentResponseDto_1.InstallationConsentSegmentResponseDtoFromJSON)(json['consent_segment']),
         'currentDefaultAgentId': json['current_default_agent_id'] == null ? undefined : json['current_default_agent_id'],
         'currentDialogId': json['current_dialog_id'] == null ? undefined : json['current_dialog_id'],
         'order': json['order'],
@@ -119,6 +123,7 @@ function InstallationSetupStepResponseDtoToJSONTyped(value, ignoreDiscriminator 
         'variables': (value['variables'].map(InstallationSetupStepVariableResponseDto_1.InstallationSetupStepVariableResponseDtoToJSON)),
         'default_assignment': (0, DefaultAssignmentResponseDto_1.DefaultAssignmentResponseDtoToJSON)(value['defaultAssignment']),
         'subscription_links': (value['subscriptionLinks'].map(InstallationSubscriptionLinkResponseDto_1.InstallationSubscriptionLinkResponseDtoToJSON)),
+        'consent_segment': (0, InstallationConsentSegmentResponseDto_1.InstallationConsentSegmentResponseDtoToJSON)(value['consentSegment']),
         'current_default_agent_id': value['currentDefaultAgentId'],
         'current_dialog_id': value['currentDialogId'],
         'order': value['order'],

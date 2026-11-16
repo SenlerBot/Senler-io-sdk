@@ -38,7 +38,12 @@ exports.AutomationBatchAddNodeOperationDtoNodeTypeEnum = {
     TriggerIncomingMessage: 'trigger.incoming_message',
     TriggerSegmentEntered: 'trigger.segment_entered',
     TriggerEvent: 'trigger.event',
+    TriggerMessageEvent: 'trigger.message_event',
+    TriggerDialogEvent: 'trigger.dialog_event',
+    TriggerLeadEvent: 'trigger.lead_event',
     TriggerAppEvent: 'trigger.app_event',
+    TriggerBooking: 'trigger.booking',
+    ConditionGroup: 'condition.group',
     ConditionVariable: 'condition.variable',
     ConditionAi: 'condition.ai',
     ConditionDateTime: 'condition.date_time',
@@ -52,7 +57,9 @@ exports.AutomationBatchAddNodeOperationDtoNodeTypeEnum = {
     BranchRandom: 'branch.random',
     ActionSetVariable: 'action.set_variable',
     ActionMessage: 'action.message',
+    ActionDeleteMessage: 'action.delete_message',
     ActionPoll: 'action.poll',
+    ActionTelegramWidget: 'action.telegram_widget',
     ActionTyping: 'action.typing',
     ActionAgentRequest: 'action.agent_request',
     ActionAddSegment: 'action.add_segment',
@@ -65,9 +72,12 @@ exports.AutomationBatchAddNodeOperationDtoNodeTypeEnum = {
     ActionHandoffToOperator: 'action.handoff_to_operator',
     ActionTableWrite: 'action.table_write',
     ActionHttp: 'action.http',
+    ActionCode: 'action.code',
     ActionApp: 'action.app',
+    ActionBooking: 'action.booking',
     ControlWait: 'control.wait',
-    ControlLoop: 'control.loop'
+    ControlLoop: 'control.loop',
+    ControlReturn: 'control.return'
 };
 /**
  * Check if a given object implements the AutomationBatchAddNodeOperationDto interface.

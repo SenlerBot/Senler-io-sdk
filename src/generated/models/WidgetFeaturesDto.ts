@@ -24,6 +24,12 @@ export interface WidgetFeaturesDto {
      * @type {boolean}
      * @memberof WidgetFeaturesDto
      */
+    liveVoice?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof WidgetFeaturesDto
+     */
     fileUpload?: boolean;
     /**
      *
@@ -68,6 +74,7 @@ export function WidgetFeaturesDtoFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
 
+        'liveVoice': json['live_voice'] == null ? undefined : json['live_voice'],
         'fileUpload': json['file_upload'] == null ? undefined : json['file_upload'],
         'voiceMessages': json['voice_messages'] == null ? undefined : json['voice_messages'],
         'emoji': json['emoji'] == null ? undefined : json['emoji'],
@@ -87,6 +94,7 @@ export function WidgetFeaturesDtoToJSONTyped(value?: WidgetFeaturesDto | null, i
 
     return {
 
+        'live_voice': value['liveVoice'],
         'file_upload': value['fileUpload'],
         'voice_messages': value['voiceMessages'],
         'emoji': value['emoji'],

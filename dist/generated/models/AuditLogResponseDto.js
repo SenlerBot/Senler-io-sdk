@@ -47,6 +47,7 @@ exports.AuditLogResponseDtoDelegatedActorTypeEnum = {
  * @export
  */
 exports.AuditLogResponseDtoEntityTypeEnum = {
+    BookingConfig: 'booking_config',
     ProjectWebhook: 'project_webhook',
     Funnel: 'funnel',
     Project: 'project',

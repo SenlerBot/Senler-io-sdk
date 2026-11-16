@@ -70,7 +70,8 @@ export const CreateLeadVariableDefinitionDtoTypeEnum = {
     Json: 'json',
     Date: 'date',
     Array: 'array',
-    Object: 'object'
+    Object: 'object',
+    Reaction: 'reaction'
 } as const;
 export type CreateLeadVariableDefinitionDtoTypeEnum = typeof CreateLeadVariableDefinitionDtoTypeEnum[keyof typeof CreateLeadVariableDefinitionDtoTypeEnum];
 

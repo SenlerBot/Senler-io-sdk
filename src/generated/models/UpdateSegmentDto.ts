@@ -28,6 +28,12 @@ import {
  */
 export interface UpdateSegmentDto {
     /**
+     * . .
+     * @type {boolean}
+     * @memberof UpdateSegmentDto
+     */
+    suppressAgentResponseOnSubscription?: boolean;
+    /**
      *
      * @type {string}
      * @memberof UpdateSegmentDto
@@ -64,6 +70,7 @@ export function UpdateSegmentDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
 
+        'suppressAgentResponseOnSubscription': json['suppress_agent_response_on_subscription'] == null ? undefined : json['suppress_agent_response_on_subscription'],
         'name': json['name'] == null ? undefined : json['name'],
         'requiredConsents': json['required_consents'] == null ? undefined : ((json['required_consents'] as Array<any>).map(SegmentRequiredConsentDtoFromJSON)),
         'consentPromptText': json['consent_prompt_text'] == null ? undefined : json['consent_prompt_text'],
@@ -81,6 +88,7 @@ export function UpdateSegmentDtoToJSONTyped(value?: UpdateSegmentDto | null, ign
 
     return {
 
+        'suppress_agent_response_on_subscription': value['suppressAgentResponseOnSubscription'],
         'name': value['name'],
         'required_consents': value['requiredConsents'] == null ? undefined : ((value['requiredConsents'] as Array<any>).map(SegmentRequiredConsentDtoToJSON)),
         'consent_prompt_text': value['consentPromptText'],

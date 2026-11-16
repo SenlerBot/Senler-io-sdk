@@ -28,7 +28,7 @@ export interface LeadConversationSummaryDto {
      */
     dialogsCount: number;
     /**
-     * MongoDB ClickHouse
+     *
      * @type {boolean}
      * @memberof LeadConversationSummaryDto
      */

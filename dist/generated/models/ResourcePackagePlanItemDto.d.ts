@@ -75,6 +75,9 @@ export declare const ResourcePackagePlanItemDtoResourceTypeEnum: {
     readonly KnowledgeTable: "knowledge_table";
     readonly Landing: "landing";
     readonly MetricDefinition: "metric_definition";
+    readonly BookingService: "booking_service";
+    readonly BookingSpecialist: "booking_specialist";
+    readonly BookingResource: "booking_resource";
     readonly AgentKnowledgeSource: "agent_knowledge_source";
     readonly AutomationChannelBinding: "automation_channel_binding";
     readonly AutomationMessageTarget: "automation_message_target";

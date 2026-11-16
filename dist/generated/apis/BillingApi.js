@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateProjectsAutoPurchaseAcceptLanguageEnum = exports.ProjectsSubscriptionRenewalPreviewAcceptLanguageEnum = exports.ProjectsSubscriptionRenewAcceptLanguageEnum = exports.ProjectsSubscriptionPreviewAcceptLanguageEnum = exports.ProjectsSubscriptionConfirmAcceptLanguageEnum = exports.ProjectsPaymentSettingsAcceptLanguageEnum = exports.ProjectsOrdersCryptoSubmitAcceptLanguageEnum = exports.ProjectsOrdersCryptoIntentAcceptLanguageEnum = exports.ProjectsOrdersAcceptLanguageEnum = exports.ProjectsOneTimeAddonsPreviewAcceptLanguageEnum = exports.ProjectsOneTimeAddonsConfirmAcceptLanguageEnum = exports.GetTransactionsDetailsAcceptLanguageEnum = exports.GetTransactionsDetailsGroupByEnum = exports.GetProjectsTransactionsAcceptLanguageEnum = exports.GetProjectsTransactionsCurrencyEnum = exports.GetProjectsTransactionsTypeEnum = exports.GetProjectsTariffsAcceptLanguageEnum = exports.GetProjectsSubscriptionPrepaidRenewalCancellationPreviewAcceptLanguageEnum = exports.GetProjectsSubscriptionCatalogAcceptLanguageEnum = exports.GetProjectsSubscriptionAcceptLanguageEnum = exports.GetProjectsPaymentSettingsAcceptLanguageEnum = exports.GetProjectsOrdersCryptoStatusAcceptLanguageEnum = exports.GetProjectsOrdersAcceptLanguageEnum = exports.GetProjectsCreditUsageSummaryAcceptLanguageEnum = exports.GetProjectsCreditTransactionsAcceptLanguageEnum = exports.GetProjectsCreditTransactionsTypeEnum = exports.GetProjectsBalanceAcceptLanguageEnum = exports.GetCreditTransactionsDetailsAcceptLanguageEnum = exports.GetCreditTransactionsDetailsGroupByEnum = exports.DeleteProjectsSubscriptionScheduledConfigurationAcceptLanguageEnum = exports.DeleteProjectsSubscriptionRenewalAcceptLanguageEnum = exports.DeleteProjectsSubscriptionPrepaidRenewalAcceptLanguageEnum = exports.BillingApi = void 0;
+exports.UpdateProjectsAutoPurchaseAcceptLanguageEnum = exports.ProjectsSubscriptionRenewalPreviewAcceptLanguageEnum = exports.ProjectsSubscriptionRenewAcceptLanguageEnum = exports.ProjectsSubscriptionPreviewAcceptLanguageEnum = exports.ProjectsSubscriptionConfirmAcceptLanguageEnum = exports.ProjectsPaymentSettingsAcceptLanguageEnum = exports.ProjectsOrdersRefreshAcceptLanguageEnum = exports.ProjectsOrdersCryptoSubmitAcceptLanguageEnum = exports.ProjectsOrdersCryptoIntentAcceptLanguageEnum = exports.ProjectsOrdersAcceptLanguageEnum = exports.ProjectsOneTimeAddonsPreviewAcceptLanguageEnum = exports.ProjectsOneTimeAddonsConfirmAcceptLanguageEnum = exports.GetTransactionsDetailsAcceptLanguageEnum = exports.GetTransactionsDetailsGroupByEnum = exports.GetProjectsTransactionsAcceptLanguageEnum = exports.GetProjectsTransactionsCurrencyEnum = exports.GetProjectsTransactionsTypeEnum = exports.GetProjectsTariffsAcceptLanguageEnum = exports.GetProjectsSubscriptionPrepaidRenewalCancellationPreviewAcceptLanguageEnum = exports.GetProjectsSubscriptionCatalogAcceptLanguageEnum = exports.GetProjectsSubscriptionAcceptLanguageEnum = exports.GetProjectsPaymentSettingsAcceptLanguageEnum = exports.GetProjectsOrdersCryptoStatusAcceptLanguageEnum = exports.GetProjectsOrdersAcceptLanguageEnum = exports.GetProjectsCreditUsageSummaryAcceptLanguageEnum = exports.GetProjectsCreditTransactionsAcceptLanguageEnum = exports.GetProjectsCreditTransactionsTypeEnum = exports.GetProjectsBalanceAcceptLanguageEnum = exports.GetCreditTransactionsDetailsAcceptLanguageEnum = exports.GetCreditTransactionsDetailsGroupByEnum = exports.DeleteProjectsSubscriptionScheduledConfigurationAcceptLanguageEnum = exports.DeleteProjectsSubscriptionRenewalAcceptLanguageEnum = exports.DeleteProjectsSubscriptionPrepaidRenewalAcceptLanguageEnum = exports.BillingApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -674,7 +674,7 @@ class BillingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * status (current/upgrade/downgrade) . endpoint .
+     * status (current/upgrade/downgrade) . .
      *
      */
     async getProjectsTariffsRaw(requestParameters, initOverrides) {
@@ -710,7 +710,7 @@ class BillingApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectTariffsResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * status (current/upgrade/downgrade) . endpoint .
+     * status (current/upgrade/downgrade) . .
      *
      */
     async getProjectsTariffs(requestParameters, initOverrides) {
@@ -1094,6 +1094,52 @@ class BillingApi extends runtime.BaseAPI {
     async projectsOrdersCryptoSubmit(requestParameters, initOverrides) {
         const response = await this.projectsOrdersCryptoSubmitRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+    /**
+     * - . . 30 .
+     *
+     */
+    async projectsOrdersRefreshRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling projectsOrdersRefresh().');
+        }
+        if (requestParameters['orderId'] == null) {
+            throw new runtime.RequiredError('orderId', 'Required parameter "orderId" was null or undefined when calling projectsOrdersRefresh().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_billing"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_billing"]);
+        }
+        const response = await this.request({
+            path: `/api/billing/projects/{projectId}/orders/{orderId}/refresh`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters['projectId']))).replace(`{${"orderId"}}`, encodeURIComponent(String(requestParameters['orderId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.VoidApiResponse(response);
+    }
+    /**
+     * - . . 30 .
+     *
+     */
+    async projectsOrdersRefresh(requestParameters, initOverrides) {
+        await this.projectsOrdersRefreshRaw(requestParameters, initOverrides);
     }
     /**
      * , , . (RU), . RU: email . : email + .
@@ -1591,6 +1637,13 @@ exports.ProjectsOrdersCryptoIntentAcceptLanguageEnum = {
  * @export
  */
 exports.ProjectsOrdersCryptoSubmitAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ProjectsOrdersRefreshAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

@@ -28,7 +28,7 @@ import {
  */
 export interface UpdateLandingBlockDto {
     /**
-     *
+     * revision . 409 .
      * @type {number}
      * @memberof UpdateLandingBlockDto
      */
@@ -46,7 +46,7 @@ export interface UpdateLandingBlockDto {
      */
     isVisible: boolean;
     /**
-     * ; type (mixed type)
+     * payload, ; type . . (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof UpdateLandingBlockDto
      */
@@ -75,6 +75,7 @@ export const UpdateLandingBlockDtoTypeEnum = {
     Video: 'video',
     Timer: 'timer',
     Widget: 'widget',
+    Booking: 'booking',
     Other: 'other'
 } as const;
 export type UpdateLandingBlockDtoTypeEnum = typeof UpdateLandingBlockDtoTypeEnum[keyof typeof UpdateLandingBlockDtoTypeEnum];

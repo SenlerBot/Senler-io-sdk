@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CountLeadsByVariableResponseDto, CountVariableLeadsByArrayItemDto, CountVariableLeadsByArrayItemsDto, CreateExportProcessDto, CreateImportProcessDto, CreateLeadsAgentOperationProcessDto, CreateLeadsAutomationOperationProcessDto, CreateLeadsRefreshProcessDto, CreateLeadsSegmentOperationProcessDto, ExportLeadsByDeliveryDto, ExportVariableLeadsByArrayItemDto, ExportVariableLeadsByArrayItemsDto, ExportVariableLeadsByArrayLengthDto, ExportVariableLeadsByBooleanDto, ExportVariableLeadsByNumberDto, ExportVariableLeadsByStringDto, ExportVariableLeadsDto, LeadResponseDto, LeadSubscriptionUtmTreeResponseDto, LeadsListResponseDto, ProcessResponseDto, SearchLeadsByAutomationDto, SearchLeadsByAutomationResponseDto, SearchLeadsByDeliveryDto, SearchLeadsByDeliveryResponseDto, SearchLeadsByVariableResponseDto, SearchLeadsDto, SearchVariableLeadsByArrayItemDto, SearchVariableLeadsByArrayItemsDto, SearchVariableLeadsByBooleanDto, SearchVariableLeadsByNumberDto, SearchVariableLeadsByStringDto, SearchVariableLeadsDto, SegmentLeadConsentAcceptancesResponseDto, SyncLeadProfileDto, SyncLeadProfileResponseDto, UpdateBlacklistDto, UpdateLeadBirthdayDto, UpdateLeadNotesDto, UpdateLeadProjectOperatorDto, VerifySubscriptionAndAddDto, VerifySubscriptionAndAddResponseDto } from '../models/index';
+import type { CountLeadsByVariableResponseDto, CountVariableLeadsByArrayItemDto, CountVariableLeadsByArrayItemsDto, CreateExportProcessDto, CreateImportProcessDto, CreateLeadFileDto, CreateLeadsAgentOperationProcessDto, CreateLeadsAutomationOperationProcessDto, CreateLeadsRefreshProcessDto, CreateLeadsSegmentOperationProcessDto, ExportLeadsByDeliveryDto, ExportVariableLeadsByArrayItemDto, ExportVariableLeadsByArrayItemsDto, ExportVariableLeadsByArrayLengthDto, ExportVariableLeadsByBooleanDto, ExportVariableLeadsByNumberDto, ExportVariableLeadsByStringDto, ExportVariableLeadsDto, InspectLeadFileDto, LeadFileErrorsPageDto, LeadFileJobReferenceDto, LeadFilePreviewStateDto, LeadFileUploadDto, LeadResponseDto, LeadSubscriptionUtmTreeResponseDto, LeadTablePreviewDto, LeadsListResponseDto, ParseLeadTableDto, ParsedLeadTableDto, PrepareLeadFileDto, PreviewLeadTableDto, ProcessResponseDto, SearchLeadsByAutomationDto, SearchLeadsByAutomationResponseDto, SearchLeadsByDeliveryDto, SearchLeadsByDeliveryResponseDto, SearchLeadsByVariableResponseDto, SearchLeadsDto, SearchVariableLeadsByArrayItemDto, SearchVariableLeadsByArrayItemsDto, SearchVariableLeadsByBooleanDto, SearchVariableLeadsByNumberDto, SearchVariableLeadsByStringDto, SearchVariableLeadsDto, SegmentLeadConsentAcceptancesResponseDto, StartLeadFileDto, StartLeadTableDto, SuggestLeadTableDto, SuggestedLeadTableDto, SyncLeadProfileDto, SyncLeadProfileResponseDto, UpdateBlacklistDto, UpdateLeadBirthdayDto, UpdateLeadNotesDto, UpdateLeadProjectOperatorDto, VerifySubscriptionAndAddDto, VerifySubscriptionAndAddResponseDto } from '../models/index';
 export interface ExportRequest {
     createExportProcessDto: CreateExportProcessDto;
     acceptLanguage?: ExportAcceptLanguageEnum;
@@ -275,6 +275,18 @@ export interface GetConsentAcceptancesRequest {
     leadId: string;
     acceptLanguage?: GetConsentAcceptancesAcceptLanguageEnum;
 }
+export interface GetImportFileErrorsRequest {
+    channelId: string;
+    processId: string;
+    chunk: number;
+    offset: number;
+    acceptLanguage?: GetImportFileErrorsAcceptLanguageEnum;
+}
+export interface GetImportFileStatusRequest {
+    channelId: string;
+    processId: string;
+    acceptLanguage?: GetImportFileStatusAcceptLanguageEnum;
+}
 export interface GetSubscriptionUtmTreeRequest {
     projectId: string;
     channelId?: Array<string>;
@@ -286,6 +298,46 @@ export interface GetSubscriptionUtmTreeRequest {
     cursor?: string;
     limit?: number;
     acceptLanguage?: GetSubscriptionUtmTreeAcceptLanguageEnum;
+}
+export interface ImportFileInspectRequest {
+    inspectLeadFileDto: InspectLeadFileDto;
+    acceptLanguage?: ImportFileInspectAcceptLanguageEnum;
+}
+export interface ImportFilePreviewRequest {
+    prepareLeadFileDto: PrepareLeadFileDto;
+    acceptLanguage?: ImportFilePreviewAcceptLanguageEnum;
+}
+export interface ImportFileResumeRequest {
+    leadFileJobReferenceDto: LeadFileJobReferenceDto;
+    acceptLanguage?: ImportFileResumeAcceptLanguageEnum;
+}
+export interface ImportFileRetryRequest {
+    leadFileJobReferenceDto: LeadFileJobReferenceDto;
+    acceptLanguage?: ImportFileRetryAcceptLanguageEnum;
+}
+export interface ImportFileStartRequest {
+    startLeadFileDto: StartLeadFileDto;
+    acceptLanguage?: ImportFileStartAcceptLanguageEnum;
+}
+export interface ImportFileUploadRequest {
+    createLeadFileDto: CreateLeadFileDto;
+    acceptLanguage?: ImportFileUploadAcceptLanguageEnum;
+}
+export interface ImportTableParseRequest {
+    parseLeadTableDto: ParseLeadTableDto;
+    acceptLanguage?: ImportTableParseAcceptLanguageEnum;
+}
+export interface ImportTablePreviewRequest {
+    previewLeadTableDto: PreviewLeadTableDto;
+    acceptLanguage?: ImportTablePreviewAcceptLanguageEnum;
+}
+export interface ImportTableStartRequest {
+    startLeadTableDto: StartLeadTableDto;
+    acceptLanguage?: ImportTableStartAcceptLanguageEnum;
+}
+export interface ImportTableSuggestRequest {
+    suggestLeadTableDto: SuggestLeadTableDto;
+    acceptLanguage?: ImportTableSuggestAcceptLanguageEnum;
 }
 export interface LeadsGetByIdRequest {
     id: string;
@@ -810,6 +862,26 @@ export declare class LeadsApi extends runtime.BaseAPI {
      */
     getConsentAcceptances(requestParameters: GetConsentAcceptancesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SegmentLeadConsentAcceptancesResponseDto>;
     /**
+     * 1000 . done=true. .
+     *
+     */
+    getImportFileErrorsRaw(requestParameters: GetImportFileErrorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadFileErrorsPageDto>>;
+    /**
+     * 1000 . done=true. .
+     *
+     */
+    getImportFileErrors(requestParameters: GetImportFileErrorsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadFileErrorsPageDto>;
+    /**
+     * , . .
+     *
+     */
+    getImportFileStatusRaw(requestParameters: GetImportFileStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadFilePreviewStateDto>>;
+    /**
+     * , . .
+     *
+     */
+    getImportFileStatus(requestParameters: GetImportFileStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadFilePreviewStateDto>;
+    /**
      * parent_id utm_source, parent_id . q . , , .
      * UTM
      */
@@ -819,6 +891,106 @@ export declare class LeadsApi extends runtime.BaseAPI {
      * UTM
      */
     getSubscriptionUtmTree(requestParameters: GetSubscriptionUtmTreeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadSubscriptionUtmTreeResponseDto>;
+    /**
+     * , . 50 . .
+     *
+     */
+    importFileInspectRaw(requestParameters: ImportFileInspectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ParsedLeadTableDto>>;
+    /**
+     * , . 50 . .
+     *
+     */
+    importFileInspect(requestParameters: ImportFileInspectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ParsedLeadTableDto>;
+    /**
+     * . . .
+     *
+     */
+    importFilePreviewRaw(requestParameters: ImportFilePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadFilePreviewStateDto>>;
+    /**
+     * . . .
+     *
+     */
+    importFilePreview(requestParameters: ImportFilePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadFilePreviewStateDto>;
+    /**
+     * , . .
+     *
+     */
+    importFileResumeRaw(requestParameters: ImportFileResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * , . .
+     *
+     */
+    importFileResume(requestParameters: ImportFileResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * . . .
+     *
+     */
+    importFileRetryRaw(requestParameters: ImportFileRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadFilePreviewStateDto>>;
+    /**
+     * . . .
+     *
+     */
+    importFileRetry(requestParameters: ImportFileRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadFilePreviewStateDto>;
+    /**
+     * . , . ; .
+     *
+     */
+    importFileStartRaw(requestParameters: ImportFileStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * . , . ; .
+     *
+     */
+    importFileStart(requestParameters: ImportFileStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * 2 . .
+     * CSV, TSV TXT
+     */
+    importFileUploadRaw(requestParameters: ImportFileUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadFileUploadDto>>;
+    /**
+     * 2 . .
+     * CSV, TSV TXT
+     */
+    importFileUpload(requestParameters: ImportFileUploadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadFileUploadDto>;
+    /**
+     * 10 , 10 000 64 . , ID. . .
+     * CSV, TSV TXT
+     */
+    importTableParseRaw(requestParameters: ImportTableParseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ParsedLeadTableDto>>;
+    /**
+     * 10 , 10 000 64 . , ID. . .
+     * CSV, TSV TXT
+     */
+    importTableParse(requestParameters: ImportTableParseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ParsedLeadTableDto>;
+    /**
+     * , , . . .
+     *
+     */
+    importTablePreviewRaw(requestParameters: ImportTablePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LeadTablePreviewDto>>;
+    /**
+     * , , . . .
+     *
+     */
+    importTablePreview(requestParameters: ImportTablePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LeadTablePreviewDto>;
+    /**
+     * . , . , , .
+     *
+     */
+    importTableStartRaw(requestParameters: ImportTableStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * . , . , , .
+     *
+     */
+    importTableStart(requestParameters: ImportTableStartRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
+    /**
+     * . . GPT Luna ; .
+     * GPT Luna
+     */
+    importTableSuggestRaw(requestParameters: ImportTableSuggestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuggestedLeadTableDto>>;
+    /**
+     * . . GPT Luna ; .
+     * GPT Luna
+     */
+    importTableSuggest(requestParameters: ImportTableSuggestRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuggestedLeadTableDto>;
     /**
      * .
      * ID
@@ -1366,6 +1538,22 @@ export type GetConsentAcceptancesAcceptLanguageEnum = typeof GetConsentAcceptanc
 /**
  * @export
  */
+export declare const GetImportFileErrorsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetImportFileErrorsAcceptLanguageEnum = typeof GetImportFileErrorsAcceptLanguageEnum[keyof typeof GetImportFileErrorsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetImportFileStatusAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetImportFileStatusAcceptLanguageEnum = typeof GetImportFileStatusAcceptLanguageEnum[keyof typeof GetImportFileStatusAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetSubscriptionUtmTreeChannelTypeEnum: {
     readonly Vk: "vk";
     readonly Tg: "tg";
@@ -1388,6 +1576,86 @@ export declare const GetSubscriptionUtmTreeAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetSubscriptionUtmTreeAcceptLanguageEnum = typeof GetSubscriptionUtmTreeAcceptLanguageEnum[keyof typeof GetSubscriptionUtmTreeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ImportFileInspectAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ImportFileInspectAcceptLanguageEnum = typeof ImportFileInspectAcceptLanguageEnum[keyof typeof ImportFileInspectAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ImportFilePreviewAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ImportFilePreviewAcceptLanguageEnum = typeof ImportFilePreviewAcceptLanguageEnum[keyof typeof ImportFilePreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ImportFileResumeAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ImportFileResumeAcceptLanguageEnum = typeof ImportFileResumeAcceptLanguageEnum[keyof typeof ImportFileResumeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ImportFileRetryAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ImportFileRetryAcceptLanguageEnum = typeof ImportFileRetryAcceptLanguageEnum[keyof typeof ImportFileRetryAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ImportFileStartAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ImportFileStartAcceptLanguageEnum = typeof ImportFileStartAcceptLanguageEnum[keyof typeof ImportFileStartAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ImportFileUploadAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ImportFileUploadAcceptLanguageEnum = typeof ImportFileUploadAcceptLanguageEnum[keyof typeof ImportFileUploadAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ImportTableParseAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ImportTableParseAcceptLanguageEnum = typeof ImportTableParseAcceptLanguageEnum[keyof typeof ImportTableParseAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ImportTablePreviewAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ImportTablePreviewAcceptLanguageEnum = typeof ImportTablePreviewAcceptLanguageEnum[keyof typeof ImportTablePreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ImportTableStartAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ImportTableStartAcceptLanguageEnum = typeof ImportTableStartAcceptLanguageEnum[keyof typeof ImportTableStartAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ImportTableSuggestAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ImportTableSuggestAcceptLanguageEnum = typeof ImportTableSuggestAcceptLanguageEnum[keyof typeof ImportTableSuggestAcceptLanguageEnum];
 /**
  * @export
  */

@@ -74,6 +74,12 @@ export interface ChannelBriefDto {
      */
     isPaused: boolean;
     /**
+     * .
+     * @type {string}
+     * @memberof ChannelBriefDto
+     */
+    billingStatus?: ChannelBriefDtoBillingStatusEnum;
+    /**
      * Username / (TG: bot_username, MAX: bot_username, VK: screen_name)
      * @type {string}
      * @memberof ChannelBriefDto
@@ -145,6 +151,19 @@ export declare const ChannelBriefDtoTypeEnum: {
     readonly Whatsapp: "whatsapp";
 };
 export type ChannelBriefDtoTypeEnum = typeof ChannelBriefDtoTypeEnum[keyof typeof ChannelBriefDtoTypeEnum];
+/**
+ * @export
+ */
+export declare const ChannelBriefDtoBillingStatusEnum: {
+    readonly Active: "active";
+    readonly Suspending: "suspending";
+    readonly Suspended: "suspended";
+    readonly SourceActive: "source_active";
+    readonly Restoring: "restoring";
+    readonly RestoreFailed: "restore_failed";
+    readonly ReconnectRequired: "reconnect_required";
+};
+export type ChannelBriefDtoBillingStatusEnum = typeof ChannelBriefDtoBillingStatusEnum[keyof typeof ChannelBriefDtoBillingStatusEnum];
 /**
  * Check if a given object implements the ChannelBriefDto interface.
  */

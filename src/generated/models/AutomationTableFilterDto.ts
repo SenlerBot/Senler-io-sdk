@@ -109,7 +109,8 @@ export const AutomationTableFilterDtoVariableTypeEnum = {
     Json: 'json',
     Date: 'date',
     Array: 'array',
-    Object: 'object'
+    Object: 'object',
+    Reaction: 'reaction'
 } as const;
 export type AutomationTableFilterDtoVariableTypeEnum = typeof AutomationTableFilterDtoVariableTypeEnum[keyof typeof AutomationTableFilterDtoVariableTypeEnum];
 

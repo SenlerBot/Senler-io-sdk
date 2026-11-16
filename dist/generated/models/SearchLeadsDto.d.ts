@@ -17,6 +17,12 @@ import type { LeadsFilterDto } from './LeadsFilterDto';
  */
 export interface SearchLeadsDto {
     /**
+     * . ; next_cursor.
+     * @type {boolean}
+     * @memberof SearchLeadsDto
+     */
+    messageRecipientsOnly?: boolean;
+    /**
      * UUID
      * @type {string}
      * @memberof SearchLeadsDto

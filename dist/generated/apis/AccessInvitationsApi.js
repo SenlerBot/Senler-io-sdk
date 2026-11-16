@@ -148,7 +148,7 @@ class AccessInvitationsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * user_id email. pending- ( 4 ). .
+     * user_id email. pending- ( 4 ). . can_manage_bookings.
      *
      */
     async accessInvitationsInvitationsRaw(requestParameters, initOverrides) {
@@ -178,7 +178,7 @@ class AccessInvitationsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.InvitationCreatedResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * user_id email. pending- ( 4 ). .
+     * user_id email. pending- ( 4 ). . can_manage_bookings.
      *
      */
     async accessInvitationsInvitations(requestParameters, initOverrides) {

@@ -16,23 +16,29 @@
 import * as runtime from '../runtime';
 import type {
   AppVersionStepResponseDto,
+  CreateConfigureConsentsStepDto,
   CreateCustomInstructionStepDto,
   CreateDefaultAgentStepDto,
   CreateDialogAssignmentStepDto,
   CreateFillVariablesStepDto,
+  CreateRecipientStepDto,
   CreateSubscriptionLinksStepDto,
   ErrorResponse,
   ReorderAppVersionStepsDto,
   SuccessResponseDto,
+  UpdateConfigureConsentsStepDto,
   UpdateCustomInstructionStepDto,
   UpdateDefaultAgentStepDto,
   UpdateDialogAssignmentStepDto,
   UpdateFillVariablesStepDto,
+  UpdateRecipientStepDto,
   UpdateSubscriptionLinksStepDto,
 } from '../models/index';
 import {
     AppVersionStepResponseDtoFromJSON,
     AppVersionStepResponseDtoToJSON,
+    CreateConfigureConsentsStepDtoFromJSON,
+    CreateConfigureConsentsStepDtoToJSON,
     CreateCustomInstructionStepDtoFromJSON,
     CreateCustomInstructionStepDtoToJSON,
     CreateDefaultAgentStepDtoFromJSON,
@@ -41,6 +47,8 @@ import {
     CreateDialogAssignmentStepDtoToJSON,
     CreateFillVariablesStepDtoFromJSON,
     CreateFillVariablesStepDtoToJSON,
+    CreateRecipientStepDtoFromJSON,
+    CreateRecipientStepDtoToJSON,
     CreateSubscriptionLinksStepDtoFromJSON,
     CreateSubscriptionLinksStepDtoToJSON,
     ErrorResponseFromJSON,
@@ -49,6 +57,8 @@ import {
     ReorderAppVersionStepsDtoToJSON,
     SuccessResponseDtoFromJSON,
     SuccessResponseDtoToJSON,
+    UpdateConfigureConsentsStepDtoFromJSON,
+    UpdateConfigureConsentsStepDtoToJSON,
     UpdateCustomInstructionStepDtoFromJSON,
     UpdateCustomInstructionStepDtoToJSON,
     UpdateDefaultAgentStepDtoFromJSON,
@@ -57,6 +67,8 @@ import {
     UpdateDialogAssignmentStepDtoToJSON,
     UpdateFillVariablesStepDtoFromJSON,
     UpdateFillVariablesStepDtoToJSON,
+    UpdateRecipientStepDtoFromJSON,
+    UpdateRecipientStepDtoToJSON,
     UpdateSubscriptionLinksStepDtoFromJSON,
     UpdateSubscriptionLinksStepDtoToJSON,
 } from '../models/index';
@@ -82,6 +94,14 @@ export interface UpdateVersionsStepsAssignAgentToDialogRequest {
     acceptLanguage?: UpdateVersionsStepsAssignAgentToDialogAcceptLanguageEnum;
 }
 
+export interface UpdateVersionsStepsConfigureConsentsRequest {
+    appId: string;
+    versionId: string;
+    stepId: string;
+    updateConfigureConsentsStepDto: UpdateConfigureConsentsStepDto;
+    acceptLanguage?: UpdateVersionsStepsConfigureConsentsAcceptLanguageEnum;
+}
+
 export interface UpdateVersionsStepsCustomInstructionRequest {
     appId: string;
     versionId: string;
@@ -103,6 +123,14 @@ export interface UpdateVersionsStepsReorderRequest {
     versionId: string;
     reorderAppVersionStepsDto: ReorderAppVersionStepsDto;
     acceptLanguage?: UpdateVersionsStepsReorderAcceptLanguageEnum;
+}
+
+export interface UpdateVersionsStepsSelectRecipientRequest {
+    appId: string;
+    versionId: string;
+    stepId: string;
+    updateRecipientStepDto: UpdateRecipientStepDto;
+    acceptLanguage?: UpdateVersionsStepsSelectRecipientAcceptLanguageEnum;
 }
 
 export interface UpdateVersionsStepsSetDefaultAgentRequest {
@@ -128,6 +156,13 @@ export interface VersionsStepsAssignAgentToDialogRequest {
     acceptLanguage?: VersionsStepsAssignAgentToDialogAcceptLanguageEnum;
 }
 
+export interface VersionsStepsConfigureConsentsRequest {
+    appId: string;
+    versionId: string;
+    createConfigureConsentsStepDto: CreateConfigureConsentsStepDto;
+    acceptLanguage?: VersionsStepsConfigureConsentsAcceptLanguageEnum;
+}
+
 export interface VersionsStepsCustomInstructionRequest {
     appId: string;
     versionId: string;
@@ -140,6 +175,13 @@ export interface VersionsStepsFillVariablesRequest {
     versionId: string;
     createFillVariablesStepDto: CreateFillVariablesStepDto;
     acceptLanguage?: VersionsStepsFillVariablesAcceptLanguageEnum;
+}
+
+export interface VersionsStepsSelectRecipientRequest {
+    appId: string;
+    versionId: string;
+    createRecipientStepDto: CreateRecipientStepDto;
+    acceptLanguage?: VersionsStepsSelectRecipientAcceptLanguageEnum;
 }
 
 export interface VersionsStepsSetDefaultAgentRequest {
@@ -335,6 +377,74 @@ export class AppVersionStepsApi extends runtime.BaseAPI {
      */
     async updateVersionsStepsAssignAgentToDialog(requestParameters: UpdateVersionsStepsAssignAgentToDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppVersionStepResponseDto> {
         const response = await this.updateVersionsStepsAssignAgentToDialogRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * configure_consents .
+     *
+     */
+    async updateVersionsStepsConfigureConsentsRaw(requestParameters: UpdateVersionsStepsConfigureConsentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppVersionStepResponseDto>> {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError(
+                'appId',
+                'Required parameter "appId" was null or undefined when calling updateVersionsStepsConfigureConsents().'
+            );
+        }
+
+        if (requestParameters['versionId'] == null) {
+            throw new runtime.RequiredError(
+                'versionId',
+                'Required parameter "versionId" was null or undefined when calling updateVersionsStepsConfigureConsents().'
+            );
+        }
+
+        if (requestParameters['stepId'] == null) {
+            throw new runtime.RequiredError(
+                'stepId',
+                'Required parameter "stepId" was null or undefined when calling updateVersionsStepsConfigureConsents().'
+            );
+        }
+
+        if (requestParameters['updateConfigureConsentsStepDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateConfigureConsentsStepDto',
+                'Required parameter "updateConfigureConsentsStepDto" was null or undefined when calling updateVersionsStepsConfigureConsents().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        const response = await this.request({
+            path: `/api/apps/{appId}/versions/{versionId}/steps/{stepId}/configure-consents`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))).replace(`{${"stepId"}}`, encodeURIComponent(String(requestParameters['stepId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateConfigureConsentsStepDtoToJSON(requestParameters['updateConfigureConsentsStepDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AppVersionStepResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * configure_consents .
+     *
+     */
+    async updateVersionsStepsConfigureConsents(requestParameters: UpdateVersionsStepsConfigureConsentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppVersionStepResponseDto> {
+        const response = await this.updateVersionsStepsConfigureConsentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -536,6 +646,74 @@ export class AppVersionStepsApi extends runtime.BaseAPI {
     }
 
     /**
+     * select_recipient .
+     *
+     */
+    async updateVersionsStepsSelectRecipientRaw(requestParameters: UpdateVersionsStepsSelectRecipientRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppVersionStepResponseDto>> {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError(
+                'appId',
+                'Required parameter "appId" was null or undefined when calling updateVersionsStepsSelectRecipient().'
+            );
+        }
+
+        if (requestParameters['versionId'] == null) {
+            throw new runtime.RequiredError(
+                'versionId',
+                'Required parameter "versionId" was null or undefined when calling updateVersionsStepsSelectRecipient().'
+            );
+        }
+
+        if (requestParameters['stepId'] == null) {
+            throw new runtime.RequiredError(
+                'stepId',
+                'Required parameter "stepId" was null or undefined when calling updateVersionsStepsSelectRecipient().'
+            );
+        }
+
+        if (requestParameters['updateRecipientStepDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateRecipientStepDto',
+                'Required parameter "updateRecipientStepDto" was null or undefined when calling updateVersionsStepsSelectRecipient().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        const response = await this.request({
+            path: `/api/apps/{appId}/versions/{versionId}/steps/{stepId}/select-recipient`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))).replace(`{${"stepId"}}`, encodeURIComponent(String(requestParameters['stepId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateRecipientStepDtoToJSON(requestParameters['updateRecipientStepDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AppVersionStepResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * select_recipient .
+     *
+     */
+    async updateVersionsStepsSelectRecipient(requestParameters: UpdateVersionsStepsSelectRecipientRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppVersionStepResponseDto> {
+        const response = await this.updateVersionsStepsSelectRecipientRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * .
      * set_default_agent
      */
@@ -733,6 +911,67 @@ export class AppVersionStepsApi extends runtime.BaseAPI {
     }
 
     /**
+     * . .
+     *
+     */
+    async versionsStepsConfigureConsentsRaw(requestParameters: VersionsStepsConfigureConsentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppVersionStepResponseDto>> {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError(
+                'appId',
+                'Required parameter "appId" was null or undefined when calling versionsStepsConfigureConsents().'
+            );
+        }
+
+        if (requestParameters['versionId'] == null) {
+            throw new runtime.RequiredError(
+                'versionId',
+                'Required parameter "versionId" was null or undefined when calling versionsStepsConfigureConsents().'
+            );
+        }
+
+        if (requestParameters['createConfigureConsentsStepDto'] == null) {
+            throw new runtime.RequiredError(
+                'createConfigureConsentsStepDto',
+                'Required parameter "createConfigureConsentsStepDto" was null or undefined when calling versionsStepsConfigureConsents().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        const response = await this.request({
+            path: `/api/apps/{appId}/versions/{versionId}/steps/configure-consents`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateConfigureConsentsStepDtoToJSON(requestParameters['createConfigureConsentsStepDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AppVersionStepResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async versionsStepsConfigureConsents(requestParameters: VersionsStepsConfigureConsentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppVersionStepResponseDto> {
+        const response = await this.versionsStepsConfigureConsentsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * .
      * custom_instruction
      */
@@ -851,6 +1090,67 @@ export class AppVersionStepsApi extends runtime.BaseAPI {
      */
     async versionsStepsFillVariables(requestParameters: VersionsStepsFillVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppVersionStepResponseDto> {
         const response = await this.versionsStepsFillVariablesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * ID .
+     *
+     */
+    async versionsStepsSelectRecipientRaw(requestParameters: VersionsStepsSelectRecipientRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppVersionStepResponseDto>> {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError(
+                'appId',
+                'Required parameter "appId" was null or undefined when calling versionsStepsSelectRecipient().'
+            );
+        }
+
+        if (requestParameters['versionId'] == null) {
+            throw new runtime.RequiredError(
+                'versionId',
+                'Required parameter "versionId" was null or undefined when calling versionsStepsSelectRecipient().'
+            );
+        }
+
+        if (requestParameters['createRecipientStepDto'] == null) {
+            throw new runtime.RequiredError(
+                'createRecipientStepDto',
+                'Required parameter "createRecipientStepDto" was null or undefined when calling versionsStepsSelectRecipient().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        const response = await this.request({
+            path: `/api/apps/{appId}/versions/{versionId}/steps/select-recipient`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateRecipientStepDtoToJSON(requestParameters['createRecipientStepDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AppVersionStepResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * ID .
+     *
+     */
+    async versionsStepsSelectRecipient(requestParameters: VersionsStepsSelectRecipientRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppVersionStepResponseDto> {
+        const response = await this.versionsStepsSelectRecipientRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1005,6 +1305,14 @@ export type UpdateVersionsStepsAssignAgentToDialogAcceptLanguageEnum = typeof Up
 /**
  * @export
  */
+export const UpdateVersionsStepsConfigureConsentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVersionsStepsConfigureConsentsAcceptLanguageEnum = typeof UpdateVersionsStepsConfigureConsentsAcceptLanguageEnum[keyof typeof UpdateVersionsStepsConfigureConsentsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const UpdateVersionsStepsCustomInstructionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1026,6 +1334,14 @@ export const UpdateVersionsStepsReorderAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateVersionsStepsReorderAcceptLanguageEnum = typeof UpdateVersionsStepsReorderAcceptLanguageEnum[keyof typeof UpdateVersionsStepsReorderAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateVersionsStepsSelectRecipientAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateVersionsStepsSelectRecipientAcceptLanguageEnum = typeof UpdateVersionsStepsSelectRecipientAcceptLanguageEnum[keyof typeof UpdateVersionsStepsSelectRecipientAcceptLanguageEnum];
 /**
  * @export
  */
@@ -1053,6 +1369,14 @@ export type VersionsStepsAssignAgentToDialogAcceptLanguageEnum = typeof Versions
 /**
  * @export
  */
+export const VersionsStepsConfigureConsentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type VersionsStepsConfigureConsentsAcceptLanguageEnum = typeof VersionsStepsConfigureConsentsAcceptLanguageEnum[keyof typeof VersionsStepsConfigureConsentsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const VersionsStepsCustomInstructionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1066,6 +1390,14 @@ export const VersionsStepsFillVariablesAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type VersionsStepsFillVariablesAcceptLanguageEnum = typeof VersionsStepsFillVariablesAcceptLanguageEnum[keyof typeof VersionsStepsFillVariablesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const VersionsStepsSelectRecipientAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type VersionsStepsSelectRecipientAcceptLanguageEnum = typeof VersionsStepsSelectRecipientAcceptLanguageEnum[keyof typeof VersionsStepsSelectRecipientAcceptLanguageEnum];
 /**
  * @export
  */

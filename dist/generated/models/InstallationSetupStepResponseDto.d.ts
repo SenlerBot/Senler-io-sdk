@@ -12,6 +12,7 @@
 import type { DefaultAssignmentResponseDto } from './DefaultAssignmentResponseDto';
 import type { InstallationSetupStepStateResponseDto } from './InstallationSetupStepStateResponseDto';
 import type { LocalizedTextDto } from './LocalizedTextDto';
+import type { InstallationConsentSegmentResponseDto } from './InstallationConsentSegmentResponseDto';
 import type { InstallationSubscriptionLinkResponseDto } from './InstallationSubscriptionLinkResponseDto';
 import type { InstallationSetupStepVariableResponseDto } from './InstallationSetupStepVariableResponseDto';
 /**
@@ -87,6 +88,12 @@ export interface InstallationSetupStepResponseDto {
      */
     subscriptionLinks: Array<InstallationSubscriptionLinkResponseDto>;
     /**
+     *
+     * @type {InstallationConsentSegmentResponseDto}
+     * @memberof InstallationSetupStepResponseDto
+     */
+    consentSegment?: InstallationConsentSegmentResponseDto;
+    /**
      * ID
      * @type {string}
      * @memberof InstallationSetupStepResponseDto
@@ -130,10 +137,12 @@ export type InstallationSetupStepResponseDtoPhaseEnum = typeof InstallationSetup
  */
 export declare const InstallationSetupStepResponseDtoTypeEnum: {
     readonly FillVariables: "fill_variables";
+    readonly SelectRecipient: "select_recipient";
     readonly SetDefaultAgent: "set_default_agent";
     readonly AssignAgentToDialog: "assign_agent_to_dialog";
     readonly CustomInstruction: "custom_instruction";
     readonly SubscriptionLinks: "subscription_links";
+    readonly ConfigureConsents: "configure_consents";
 };
 export type InstallationSetupStepResponseDtoTypeEnum = typeof InstallationSetupStepResponseDtoTypeEnum[keyof typeof InstallationSetupStepResponseDtoTypeEnum];
 /**

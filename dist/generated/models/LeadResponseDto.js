@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LeadResponseDtoLeadTypeEnum = exports.LeadResponseDtoLeadSourceEnum = exports.LeadResponseDtoChannelTypeEnum = exports.LeadResponseDtoBirthdayModeEnum = void 0;
+exports.LeadResponseDtoLeadTypeEnum = exports.LeadResponseDtoLeadSourceEnum = exports.LeadResponseDtoChannelTypeEnum = exports.LeadResponseDtoBirthdaySourceEnum = exports.LeadResponseDtoBirthdayModeEnum = void 0;
 exports.instanceOfLeadResponseDto = instanceOfLeadResponseDto;
 exports.LeadResponseDtoFromJSON = LeadResponseDtoFromJSON;
 exports.LeadResponseDtoFromJSONTyped = LeadResponseDtoFromJSONTyped;
@@ -31,6 +31,14 @@ const SegmentMembershipResponseDto_1 = require("./SegmentMembershipResponseDto")
 exports.LeadResponseDtoBirthdayModeEnum = {
     Channel: 'channel',
     Manual: 'manual'
+};
+/**
+ * @export
+ */
+exports.LeadResponseDtoBirthdaySourceEnum = {
+    Manual: 'manual',
+    Channel: 'channel',
+    Import: 'import'
 };
 /**
  * @export
@@ -131,6 +139,9 @@ function LeadResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'analyticsIdentifiers': (json['analytics_identifiers'].map(LeadAnalyticsIdentifierDto_1.LeadAnalyticsIdentifierDtoFromJSON)),
         'birthday': (0, LeadBirthdayDateDto_1.LeadBirthdayDateDtoFromJSON)(json['birthday']),
         'birthdayMode': json['birthday_mode'],
+        'birthdaySource': json['birthday_source'] == null ? undefined : json['birthday_source'],
+        'city': json['city'] == null ? undefined : json['city'],
+        'country': json['country'] == null ? undefined : json['country'],
         'birthdayChannel': (0, LeadBirthdayDateDto_1.LeadBirthdayDateDtoFromJSON)(json['birthday_channel']),
         'birthdayUpdatedAt': json['birthday_updated_at'] == null ? undefined : (new Date(json['birthday_updated_at'])),
         'birthdayChannelUpdatedAt': json['birthday_channel_updated_at'] == null ? undefined : (new Date(json['birthday_channel_updated_at'])),
@@ -175,6 +186,9 @@ function LeadResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'birthday': (0, LeadBirthdayDateDto_1.LeadBirthdayDateDtoToJSON)(value['birthday']),
         'birthday_mode': value['birthdayMode'],
+        'birthday_source': value['birthdaySource'],
+        'city': value['city'],
+        'country': value['country'],
         'birthday_channel': (0, LeadBirthdayDateDto_1.LeadBirthdayDateDtoToJSON)(value['birthdayChannel']),
         'birthday_updated_at': value['birthdayUpdatedAt'] == null ? undefined : (value['birthdayUpdatedAt'].toISOString()),
         'birthday_channel_updated_at': value['birthdayChannelUpdatedAt'] == null ? undefined : (value['birthdayChannelUpdatedAt'].toISOString()),

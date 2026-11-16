@@ -83,6 +83,13 @@ import {
     EventErrorDtoToJSON,
     EventErrorDtoToJSONTyped,
 } from './EventErrorDto';
+import type { EventLiveVoiceDto } from './EventLiveVoiceDto';
+import {
+    EventLiveVoiceDtoFromJSON,
+    EventLiveVoiceDtoFromJSONTyped,
+    EventLiveVoiceDtoToJSON,
+    EventLiveVoiceDtoToJSONTyped,
+} from './EventLiveVoiceDto';
 import type { EventMessageDto } from './EventMessageDto';
 import {
     EventMessageDtoFromJSON,
@@ -202,6 +209,12 @@ import {
  * @interface CabinetEventDetailDto
  */
 export interface CabinetEventDetailDto {
+    /**
+     *
+     * @type {EventLiveVoiceDto}
+     * @memberof CabinetEventDetailDto
+     */
+    liveVoice?: EventLiveVoiceDto;
     /**
      *
      * @type {EventFunnelDto}
@@ -581,6 +594,7 @@ export const CabinetEventDetailDtoActionTypeEnum = {
     AiActionExecuted: 'ai_action_executed',
     AiProviderCallCompleted: 'ai_provider_call_completed',
     AnalyticsUsageCharged: 'analytics_usage_charged',
+    LiveVoiceUsageCharged: 'live_voice_usage_charged',
     ErrorRaised: 'error_raised',
     StateChanged: 'state_changed',
     RolledBack: 'rolled_back',
@@ -662,6 +676,7 @@ export function CabinetEventDetailDtoFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
 
+        'liveVoice': json['live_voice'] == null ? undefined : EventLiveVoiceDtoFromJSON(json['live_voice']),
         'funnel': json['funnel'] == null ? undefined : EventFunnelDtoFromJSON(json['funnel']),
         'automationObservation': json['automation_observation'] == null ? undefined : AutomationFunnelObservationDtoFromJSON(json['automation_observation']),
         'id': json['id'],
@@ -724,6 +739,7 @@ export function CabinetEventDetailDtoToJSONTyped(value?: CabinetEventDetailDto |
 
     return {
 
+        'live_voice': EventLiveVoiceDtoToJSON(value['liveVoice']),
         'funnel': EventFunnelDtoToJSON(value['funnel']),
         'automation_observation': AutomationFunnelObservationDtoToJSON(value['automationObservation']),
         'id': value['id'],

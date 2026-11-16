@@ -13,12 +13,26 @@
  */
 
 import { mapValues } from '../runtime';
+import type { LeadTableIssueDto } from './LeadTableIssueDto';
+import {
+    LeadTableIssueDtoFromJSON,
+    LeadTableIssueDtoFromJSONTyped,
+    LeadTableIssueDtoToJSON,
+    LeadTableIssueDtoToJSONTyped,
+} from './LeadTableIssueDto';
+
 /**
  * ImportProcessResultDto.
  * @export
  * @interface ImportProcessResultDto
  */
 export interface ImportProcessResultDto {
+    /**
+     * ;
+     * @type {Array<LeadTableIssueDto>}
+     * @memberof ImportProcessResultDto
+     */
+    fileErrors?: Array<LeadTableIssueDto>;
     /**
      *
      * @type {number}
@@ -71,6 +85,7 @@ export function ImportProcessResultDtoFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
 
+        'fileErrors': json['file_errors'] == null ? undefined : ((json['file_errors'] as Array<any>).map(LeadTableIssueDtoFromJSON)),
         'skipped': json['skipped'] == null ? undefined : json['skipped'],
         'imported': json['imported'],
         'updated': json['updated'],
@@ -90,6 +105,7 @@ export function ImportProcessResultDtoToJSONTyped(value?: ImportProcessResultDto
 
     return {
 
+        'file_errors': value['fileErrors'] == null ? undefined : ((value['fileErrors'] as Array<any>).map(LeadTableIssueDtoToJSON)),
         'skipped': value['skipped'],
         'imported': value['imported'],
         'updated': value['updated'],

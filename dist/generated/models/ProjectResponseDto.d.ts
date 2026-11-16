@@ -78,6 +78,12 @@ export interface ProjectResponseDto {
      */
     defaultLanguage: ProjectResponseDtoDefaultLanguageEnum;
     /**
+     * IANA
+     * @type {string}
+     * @memberof ProjectResponseDto
+     */
+    timezone: string;
+    /**
      *
      * @type {number}
      * @memberof ProjectResponseDto

@@ -172,6 +172,18 @@ export interface PermissionsDto {
      */
     canManageLandings: boolean;
     /**
+     * -
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canViewBookings: boolean;
+    /**
+     * -
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canManageBookings: boolean;
+    /**
      *
      * @type {boolean}
      * @memberof PermissionsDto

@@ -28,7 +28,7 @@ import {
  */
 export interface UpdateLandingActionBlockDto {
     /**
-     *
+     * revision . 409 .
      * @type {number}
      * @memberof UpdateLandingActionBlockDto
      */
@@ -46,7 +46,7 @@ export interface UpdateLandingActionBlockDto {
      */
     isVisible: boolean;
     /**
-     * ; type (mixed type)
+     * payload, ; type . . (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof UpdateLandingActionBlockDto
      */

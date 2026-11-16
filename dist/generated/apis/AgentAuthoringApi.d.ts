@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AgentDraftSettingsResponseDto, AgentInstructionReferenceResponseDto, AgentSettingsResponseDto, CreateAgentAuthoringDraftDto, PublishAgentAuthoringDraftDto, UpdateAgentAssignmentDto, UpdateAgentCapabilitiesDto, UpdateAgentContextDto, UpdateAgentDraftCreationDto, UpdateAgentDraftMetricsDto, UpdateAgentDraftTrainingDto, UpdateAgentDraftWizardDto, UpdateAgentFunnelsDto, UpdateAgentKnowledgeBaseDto, UpdateAgentModelDto, UpdateAgentProfileDto, UpdateAgentSegmentPermissionsDto, UpdateAgentSelectedSegmentsDto, UpdateAgentServersDto, UpdateAgentVariableAccessModeDto, UpdateAgentVariableBindingsDto } from '../models/index';
+import type { AgentDraftSettingsResponseDto, AgentInstructionReferenceResponseDto, AgentSettingsResponseDto, CreateAgentAuthoringDraftDto, PublishAgentAuthoringDraftDto, UpdateAgentAssignmentDto, UpdateAgentBookingDto, UpdateAgentCapabilitiesDto, UpdateAgentContextDto, UpdateAgentDraftCreationDto, UpdateAgentDraftMetricsDto, UpdateAgentDraftTrainingDto, UpdateAgentDraftWizardDto, UpdateAgentFunnelsDto, UpdateAgentKnowledgeBaseDto, UpdateAgentModelDto, UpdateAgentProfileDto, UpdateAgentSegmentPermissionsDto, UpdateAgentSelectedSegmentsDto, UpdateAgentServersDto, UpdateAgentVariableAccessModeDto, UpdateAgentVariableBindingsDto } from '../models/index';
 export interface DraftPublishRequest {
     id: string;
     publishAgentAuthoringDraftDto: PublishAgentAuthoringDraftDto;
@@ -35,6 +35,11 @@ export interface UpdateDraftAssignmentRequest {
     id: string;
     updateAgentAssignmentDto: UpdateAgentAssignmentDto;
     acceptLanguage?: UpdateDraftAssignmentAcceptLanguageEnum;
+}
+export interface UpdateDraftBookingRequest {
+    id: string;
+    updateAgentBookingDto: UpdateAgentBookingDto;
+    acceptLanguage?: UpdateDraftBookingAcceptLanguageEnum;
 }
 export interface UpdateDraftCapabilitiesRequest {
     id: string;
@@ -174,6 +179,16 @@ export declare class AgentAuthoringApi extends runtime.BaseAPI {
      *
      */
     updateDraftAssignment(requestParameters: UpdateDraftAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
+    /**
+     * . .
+     * -
+     */
+    updateDraftBookingRaw(requestParameters: UpdateDraftBookingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>>;
+    /**
+     * . .
+     * -
+     */
+    updateDraftBooking(requestParameters: UpdateDraftBookingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
     /**
      * .
      *
@@ -410,6 +425,14 @@ export declare const UpdateDraftAssignmentAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateDraftAssignmentAcceptLanguageEnum = typeof UpdateDraftAssignmentAcceptLanguageEnum[keyof typeof UpdateDraftAssignmentAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateDraftBookingAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateDraftBookingAcceptLanguageEnum = typeof UpdateDraftBookingAcceptLanguageEnum[keyof typeof UpdateDraftBookingAcceptLanguageEnum];
 /**
  * @export
  */

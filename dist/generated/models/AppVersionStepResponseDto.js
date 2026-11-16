@@ -35,10 +35,12 @@ exports.AppVersionStepResponseDtoPhaseEnum = {
  */
 exports.AppVersionStepResponseDtoTypeEnum = {
     FillVariables: 'fill_variables',
+    SelectRecipient: 'select_recipient',
     SetDefaultAgent: 'set_default_agent',
     AssignAgentToDialog: 'assign_agent_to_dialog',
     CustomInstruction: 'custom_instruction',
-    SubscriptionLinks: 'subscription_links'
+    SubscriptionLinks: 'subscription_links',
+    ConfigureConsents: 'configure_consents'
 };
 /**
  * @export
@@ -97,6 +99,7 @@ function AppVersionStepResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'description': json['description'] == null ? undefined : (0, LocalizedTextDto_1.LocalizedTextDtoFromJSON)(json['description']),
         'isRequired': json['is_required'],
         'agentResourceId': json['agent_resource_id'] == null ? undefined : json['agent_resource_id'],
+        'segmentResourceId': json['segment_resource_id'] == null ? undefined : json['segment_resource_id'],
         'role': json['role'] == null ? undefined : json['role'],
         'variables': (json['variables'].map(AppVersionStepVariableResponseDto_1.AppVersionStepVariableResponseDtoFromJSON)),
         'defaultAssignment': json['default_assignment'] == null ? undefined : (0, DefaultAssignmentResponseDto_1.DefaultAssignmentResponseDtoFromJSON)(json['default_assignment']),
@@ -124,6 +127,7 @@ function AppVersionStepResponseDtoToJSONTyped(value, ignoreDiscriminator = false
         'description': (0, LocalizedTextDto_1.LocalizedTextDtoToJSON)(value['description']),
         'is_required': value['isRequired'],
         'agent_resource_id': value['agentResourceId'],
+        'segment_resource_id': value['segmentResourceId'],
         'role': value['role'],
         'variables': (value['variables'].map(AppVersionStepVariableResponseDto_1.AppVersionStepVariableResponseDtoToJSON)),
         'default_assignment': (0, DefaultAssignmentResponseDto_1.DefaultAssignmentResponseDtoToJSON)(value['defaultAssignment']),

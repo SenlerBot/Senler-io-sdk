@@ -72,6 +72,7 @@ export declare const ResourcePackageLinkResponseDtoSourceSectionEnum: {
     readonly Segments: "segments";
     readonly Landings: "landings";
     readonly Metrics: "metrics";
+    readonly Bookings: "bookings";
 };
 export type ResourcePackageLinkResponseDtoSourceSectionEnum = typeof ResourcePackageLinkResponseDtoSourceSectionEnum[keyof typeof ResourcePackageLinkResponseDtoSourceSectionEnum];
 /**

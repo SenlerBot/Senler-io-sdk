@@ -81,12 +81,12 @@ export declare class DialogVariableDefinitionsApi extends runtime.BaseAPI {
      */
     dialogVariableDefinitionsGetById(requestParameters: DialogVariableDefinitionsGetByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogVariableDefinitionResponseDto>;
     /**
-     * MongoDB ID. .
+     * . .
      * ID
      */
     dialogVariableDefinitionsGetByIdsRaw(requestParameters: DialogVariableDefinitionsGetByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DialogVariableDefinitionResponseDto>>>;
     /**
-     * MongoDB ID. .
+     * . .
      * ID
      */
     dialogVariableDefinitionsGetByIds(requestParameters: DialogVariableDefinitionsGetByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DialogVariableDefinitionResponseDto>>;

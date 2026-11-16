@@ -18,9 +18,11 @@ import type {
   ErrorResponse,
   InstallationSetupResponseDto,
   ReconfigureInstallationStepDto,
+  SubmitConfigureConsentsStepDto,
   SubmitDefaultAgentStepDto,
   SubmitDialogAssignmentStepDto,
   SubmitFillVariablesStepDto,
+  SubmitRecipientStepDto,
   SubmitSubscriptionLinksStepDto,
 } from '../models/index';
 import {
@@ -30,12 +32,16 @@ import {
     InstallationSetupResponseDtoToJSON,
     ReconfigureInstallationStepDtoFromJSON,
     ReconfigureInstallationStepDtoToJSON,
+    SubmitConfigureConsentsStepDtoFromJSON,
+    SubmitConfigureConsentsStepDtoToJSON,
     SubmitDefaultAgentStepDtoFromJSON,
     SubmitDefaultAgentStepDtoToJSON,
     SubmitDialogAssignmentStepDtoFromJSON,
     SubmitDialogAssignmentStepDtoToJSON,
     SubmitFillVariablesStepDtoFromJSON,
     SubmitFillVariablesStepDtoToJSON,
+    SubmitRecipientStepDtoFromJSON,
+    SubmitRecipientStepDtoToJSON,
     SubmitSubscriptionLinksStepDtoFromJSON,
     SubmitSubscriptionLinksStepDtoToJSON,
 } from '../models/index';
@@ -45,6 +51,13 @@ export interface SetupStepsAssignAgentToDialogRequest {
     stepId: string;
     submitDialogAssignmentStepDto: SubmitDialogAssignmentStepDto;
     acceptLanguage?: SetupStepsAssignAgentToDialogAcceptLanguageEnum;
+}
+
+export interface SetupStepsConfigureConsentsRequest {
+    installationId: string;
+    stepId: string;
+    submitConfigureConsentsStepDto: SubmitConfigureConsentsStepDto;
+    acceptLanguage?: SetupStepsConfigureConsentsAcceptLanguageEnum;
 }
 
 export interface SetupStepsCustomInstructionRequest {
@@ -59,6 +72,13 @@ export interface SetupStepsFillVariablesRequest {
     stepId: string;
     submitFillVariablesStepDto: SubmitFillVariablesStepDto;
     acceptLanguage?: SetupStepsFillVariablesAcceptLanguageEnum;
+}
+
+export interface SetupStepsSelectRecipientRequest {
+    installationId: string;
+    stepId: string;
+    submitRecipientStepDto: SubmitRecipientStepDto;
+    acceptLanguage?: SetupStepsSelectRecipientAcceptLanguageEnum;
 }
 
 export interface SetupStepsSetDefaultAgentRequest {
@@ -81,8 +101,8 @@ export interface SetupStepsSubscriptionLinksRequest {
 export class AppInstallationSetupApi extends runtime.BaseAPI {
 
     /**
-     * .
-     * assign_agent_to_dialog
+     * assign_agent_to_dialog . ; . . installation_id steps[].id assign_agent_to_dialog .
+     *
      */
     async setupStepsAssignAgentToDialogRaw(requestParameters: SetupStepsAssignAgentToDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InstallationSetupResponseDto>> {
         if (requestParameters['installationId'] == null) {
@@ -133,11 +153,72 @@ export class AppInstallationSetupApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
-     * assign_agent_to_dialog
+     * assign_agent_to_dialog . ; . . installation_id steps[].id assign_agent_to_dialog .
+     *
      */
     async setupStepsAssignAgentToDialog(requestParameters: SetupStepsAssignAgentToDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InstallationSetupResponseDto> {
         const response = await this.setupStepsAssignAgentToDialogRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , . API .
+     *
+     */
+    async setupStepsConfigureConsentsRaw(requestParameters: SetupStepsConfigureConsentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InstallationSetupResponseDto>> {
+        if (requestParameters['installationId'] == null) {
+            throw new runtime.RequiredError(
+                'installationId',
+                'Required parameter "installationId" was null or undefined when calling setupStepsConfigureConsents().'
+            );
+        }
+
+        if (requestParameters['stepId'] == null) {
+            throw new runtime.RequiredError(
+                'stepId',
+                'Required parameter "stepId" was null or undefined when calling setupStepsConfigureConsents().'
+            );
+        }
+
+        if (requestParameters['submitConfigureConsentsStepDto'] == null) {
+            throw new runtime.RequiredError(
+                'submitConfigureConsentsStepDto',
+                'Required parameter "submitConfigureConsentsStepDto" was null or undefined when calling setupStepsConfigureConsents().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_apps"]);
+        }
+
+        const response = await this.request({
+            path: `/api/project-apps/installed/{installationId}/setup/steps/{stepId}/configure-consents`.replace(`{${"installationId"}}`, encodeURIComponent(String(requestParameters['installationId']))).replace(`{${"stepId"}}`, encodeURIComponent(String(requestParameters['stepId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SubmitConfigureConsentsStepDtoToJSON(requestParameters['submitConfigureConsentsStepDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => InstallationSetupResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , . API .
+     *
+     */
+    async setupStepsConfigureConsents(requestParameters: SetupStepsConfigureConsentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InstallationSetupResponseDto> {
+        const response = await this.setupStepsConfigureConsentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -260,6 +341,67 @@ export class AppInstallationSetupApi extends runtime.BaseAPI {
      */
     async setupStepsFillVariables(requestParameters: SetupStepsFillVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InstallationSetupResponseDto> {
         const response = await this.setupStepsFillVariablesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * dialog_id lead_id. ID .
+     *
+     */
+    async setupStepsSelectRecipientRaw(requestParameters: SetupStepsSelectRecipientRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<InstallationSetupResponseDto>> {
+        if (requestParameters['installationId'] == null) {
+            throw new runtime.RequiredError(
+                'installationId',
+                'Required parameter "installationId" was null or undefined when calling setupStepsSelectRecipient().'
+            );
+        }
+
+        if (requestParameters['stepId'] == null) {
+            throw new runtime.RequiredError(
+                'stepId',
+                'Required parameter "stepId" was null or undefined when calling setupStepsSelectRecipient().'
+            );
+        }
+
+        if (requestParameters['submitRecipientStepDto'] == null) {
+            throw new runtime.RequiredError(
+                'submitRecipientStepDto',
+                'Required parameter "submitRecipientStepDto" was null or undefined when calling setupStepsSelectRecipient().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_project_apps"]);
+        }
+
+        const response = await this.request({
+            path: `/api/project-apps/installed/{installationId}/setup/steps/{stepId}/select-recipient`.replace(`{${"installationId"}}`, encodeURIComponent(String(requestParameters['installationId']))).replace(`{${"stepId"}}`, encodeURIComponent(String(requestParameters['stepId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SubmitRecipientStepDtoToJSON(requestParameters['submitRecipientStepDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => InstallationSetupResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * dialog_id lead_id. ID .
+     *
+     */
+    async setupStepsSelectRecipient(requestParameters: SetupStepsSelectRecipientRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<InstallationSetupResponseDto> {
+        const response = await this.setupStepsSelectRecipientRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -398,6 +540,14 @@ export type SetupStepsAssignAgentToDialogAcceptLanguageEnum = typeof SetupStepsA
 /**
  * @export
  */
+export const SetupStepsConfigureConsentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type SetupStepsConfigureConsentsAcceptLanguageEnum = typeof SetupStepsConfigureConsentsAcceptLanguageEnum[keyof typeof SetupStepsConfigureConsentsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const SetupStepsCustomInstructionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -411,6 +561,14 @@ export const SetupStepsFillVariablesAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type SetupStepsFillVariablesAcceptLanguageEnum = typeof SetupStepsFillVariablesAcceptLanguageEnum[keyof typeof SetupStepsFillVariablesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const SetupStepsSelectRecipientAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type SetupStepsSelectRecipientAcceptLanguageEnum = typeof SetupStepsSelectRecipientAcceptLanguageEnum[keyof typeof SetupStepsSelectRecipientAcceptLanguageEnum];
 /**
  * @export
  */

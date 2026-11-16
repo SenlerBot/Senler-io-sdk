@@ -209,7 +209,7 @@ class DialogVariableDefinitionsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * MongoDB ID. .
+     * . .
      * ID
      */
     async dialogVariableDefinitionsGetByIdsRaw(requestParameters, initOverrides) {
@@ -257,7 +257,7 @@ class DialogVariableDefinitionsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.DialogVariableDefinitionResponseDtoFromJSON));
     }
     /**
-     * MongoDB ID. .
+     * . .
      * ID
      */
     async dialogVariableDefinitionsGetByIds(requestParameters, initOverrides) {

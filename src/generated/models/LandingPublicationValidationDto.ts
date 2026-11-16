@@ -42,13 +42,13 @@ import {
  */
 export interface LandingPublicationValidationDto {
     /**
-     * ,
+     * , ;
      * @type {LandingPublicationSnapshotDto}
      * @memberof LandingPublicationValidationDto
      */
     snapshot: LandingPublicationSnapshotDto;
     /**
-     *
+     * . , JavaScript
      * @type {boolean}
      * @memberof LandingPublicationValidationDto
      */

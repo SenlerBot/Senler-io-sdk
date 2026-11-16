@@ -28,7 +28,7 @@ import {
  */
 export interface EventSenderDto {
     /**
-     * ID (agent_id, lead_id, user_id, channel_id, space_id)
+     * ID (agent_id, lead_id, user_id, channel_id, space_id, app_id, api_key_id, delivery_id)
      * @type {string}
      * @memberof EventSenderDto
      */
@@ -67,6 +67,9 @@ export const EventSenderDtoTypeEnum = {
     Lead: 'lead',
     User: 'user',
     Admin: 'admin',
+    App: 'app',
+    ApiKey: 'api_key',
+    Delivery: 'delivery',
     Assistant: 'assistant',
     System: 'system',
     Segment: 'segment',

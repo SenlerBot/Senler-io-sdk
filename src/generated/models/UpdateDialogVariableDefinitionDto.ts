@@ -64,7 +64,8 @@ export const UpdateDialogVariableDefinitionDtoTypeEnum = {
     Json: 'json',
     Date: 'date',
     Array: 'array',
-    Object: 'object'
+    Object: 'object',
+    Reaction: 'reaction'
 } as const;
 export type UpdateDialogVariableDefinitionDtoTypeEnum = typeof UpdateDialogVariableDefinitionDtoTypeEnum[keyof typeof UpdateDialogVariableDefinitionDtoTypeEnum];
 

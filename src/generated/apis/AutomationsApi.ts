@@ -19,7 +19,12 @@ import type {
   AutomationAttachmentsResponseDto,
   AutomationAttentionSummaryDto,
   AutomationAvatarUploadUrlResponseDto,
+  AutomationCodePreviewDto,
+  AutomationCodePreviewResponseDto,
   AutomationEdgeResponseDto,
+  AutomationFormulaCatalogDto,
+  AutomationFormulaPreviewDto,
+  AutomationFormulaPreviewResponseDto,
   AutomationGraphResponseDto,
   AutomationHttpPreviewDto,
   AutomationHttpPreviewResponseDto,
@@ -89,8 +94,18 @@ import {
     AutomationAttentionSummaryDtoToJSON,
     AutomationAvatarUploadUrlResponseDtoFromJSON,
     AutomationAvatarUploadUrlResponseDtoToJSON,
+    AutomationCodePreviewDtoFromJSON,
+    AutomationCodePreviewDtoToJSON,
+    AutomationCodePreviewResponseDtoFromJSON,
+    AutomationCodePreviewResponseDtoToJSON,
     AutomationEdgeResponseDtoFromJSON,
     AutomationEdgeResponseDtoToJSON,
+    AutomationFormulaCatalogDtoFromJSON,
+    AutomationFormulaCatalogDtoToJSON,
+    AutomationFormulaPreviewDtoFromJSON,
+    AutomationFormulaPreviewDtoToJSON,
+    AutomationFormulaPreviewResponseDtoFromJSON,
+    AutomationFormulaPreviewResponseDtoToJSON,
     AutomationGraphResponseDtoFromJSON,
     AutomationGraphResponseDtoToJSON,
     AutomationHttpPreviewDtoFromJSON,
@@ -351,6 +366,12 @@ export interface EdgesRequest {
     acceptLanguage?: EdgesAcceptLanguageEnum;
 }
 
+export interface FormulaPreviewRequest {
+    projectId: string;
+    automationFormulaPreviewDto: AutomationFormulaPreviewDto;
+    acceptLanguage?: FormulaPreviewAcceptLanguageEnum;
+}
+
 export interface GetAttachmentsRequest {
     automationId: string;
     acceptLanguage?: GetAttachmentsAcceptLanguageEnum;
@@ -382,6 +403,11 @@ export interface GetDialogsRunsRequest {
     cursor?: string;
     limit?: number;
     acceptLanguage?: GetDialogsRunsAcceptLanguageEnum;
+}
+
+export interface GetFormulaCatalogRequest {
+    projectId: string;
+    acceptLanguage?: GetFormulaCatalogAcceptLanguageEnum;
 }
 
 export interface GetFunnelOptionsRequest {
@@ -423,6 +449,7 @@ export interface GetNodesSearchRequest {
     automationId: string;
     view?: GetNodesSearchViewEnum;
     expectedRevision?: number;
+    messageSourcesOnly?: boolean;
     nodeIds?: Array<string>;
     search?: string;
     types?: Array<GetNodesSearchTypesEnum>;
@@ -503,6 +530,13 @@ export interface NodesRequest {
     createAutomationNodeDto: CreateAutomationNodeDto;
     xAutomationEditorSessionId?: string;
     acceptLanguage?: NodesAcceptLanguageEnum;
+}
+
+export interface NodesCodePreviewRequest {
+    automationId: string;
+    nodeId: string;
+    automationCodePreviewDto: AutomationCodePreviewDto;
+    acceptLanguage?: NodesCodePreviewAcceptLanguageEnum;
 }
 
 export interface NodesHttpPreviewRequest {
@@ -2054,6 +2088,77 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
+     * mathjs-, . evaluate=false variables[].reference. evaluate=true ; null. , , . result_type . valid=false error .
+     *
+     */
+    async formulaPreviewRaw(requestParameters: FormulaPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationFormulaPreviewResponseDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling formulaPreview().'
+            );
+        }
+
+        if (requestParameters['automationFormulaPreviewDto'] == null) {
+            throw new runtime.RequiredError(
+                'automationFormulaPreviewDto',
+                'Required parameter "automationFormulaPreviewDto" was null or undefined when calling formulaPreview().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/formula-preview`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: AutomationFormulaPreviewDtoToJSON(requestParameters['automationFormulaPreviewDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationFormulaPreviewResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * mathjs-, . evaluate=false variables[].reference. evaluate=true ; null. , , . result_type . valid=false error .
+     *
+     */
+    async formulaPreview(requestParameters: FormulaPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationFormulaPreviewResponseDto> {
+        const response = await this.formulaPreviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * , .
      *
      */
@@ -2330,6 +2435,67 @@ export class AutomationsApi extends runtime.BaseAPI {
      */
     async getDialogsRuns(requestParameters: GetDialogsRunsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAutomationRunsResponseDto> {
         const response = await this.getDialogsRunsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * MCP. . action.set_variable variable_operation=formula, variable_formula variable_value_type, variable_value. {{ }}: number(run.year). previewFormula. variable_value .
+     *
+     */
+    async getFormulaCatalogRaw(requestParameters: GetFormulaCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationFormulaCatalogDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getFormulaCatalog().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/formula-catalog`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationFormulaCatalogDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * MCP. . action.set_variable variable_operation=formula, variable_formula variable_value_type, variable_value. {{ }}: number(run.year). previewFormula. variable_value .
+     *
+     */
+    async getFormulaCatalog(requestParameters: GetFormulaCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationFormulaCatalogDto> {
+        const response = await this.getFormulaCatalogRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2696,6 +2862,10 @@ export class AutomationsApi extends runtime.BaseAPI {
 
         if (requestParameters['expectedRevision'] != null) {
             queryParameters['expected_revision'] = requestParameters['expectedRevision'];
+        }
+
+        if (requestParameters['messageSourcesOnly'] != null) {
+            queryParameters['message_sources_only'] = requestParameters['messageSourcesOnly'];
         }
 
         if (requestParameters['nodeIds'] != null) {
@@ -3413,6 +3583,80 @@ export class AutomationsApi extends runtime.BaseAPI {
      */
     async nodes(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto> {
         const response = await this.nodesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . , . ; . , request_id .
+     *
+     */
+    async nodesCodePreviewRaw(requestParameters: NodesCodePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationCodePreviewResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling nodesCodePreview().'
+            );
+        }
+
+        if (requestParameters['nodeId'] == null) {
+            throw new runtime.RequiredError(
+                'nodeId',
+                'Required parameter "nodeId" was null or undefined when calling nodesCodePreview().'
+            );
+        }
+
+        if (requestParameters['automationCodePreviewDto'] == null) {
+            throw new runtime.RequiredError(
+                'automationCodePreviewDto',
+                'Required parameter "automationCodePreviewDto" was null or undefined when calling nodesCodePreview().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/nodes/{nodeId}/code-preview`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"nodeId"}}`, encodeURIComponent(String(requestParameters['nodeId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: AutomationCodePreviewDtoToJSON(requestParameters['automationCodePreviewDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationCodePreviewResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . , . ; . , request_id .
+     *
+     */
+    async nodesCodePreview(requestParameters: NodesCodePreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationCodePreviewResponseDto> {
+        const response = await this.nodesCodePreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -4720,6 +4964,14 @@ export type EdgesAcceptLanguageEnum = typeof EdgesAcceptLanguageEnum[keyof typeo
 /**
  * @export
  */
+export const FormulaPreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type FormulaPreviewAcceptLanguageEnum = typeof FormulaPreviewAcceptLanguageEnum[keyof typeof FormulaPreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const GetAttachmentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -4771,6 +5023,14 @@ export const GetDialogsRunsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetDialogsRunsAcceptLanguageEnum = typeof GetDialogsRunsAcceptLanguageEnum[keyof typeof GetDialogsRunsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetFormulaCatalogAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetFormulaCatalogAcceptLanguageEnum = typeof GetFormulaCatalogAcceptLanguageEnum[keyof typeof GetFormulaCatalogAcceptLanguageEnum];
 /**
  * @export
  */
@@ -4854,7 +5114,12 @@ export const GetNodesSearchTypesEnum = {
     TriggerIncomingMessage: 'trigger.incoming_message',
     TriggerSegmentEntered: 'trigger.segment_entered',
     TriggerEvent: 'trigger.event',
+    TriggerMessageEvent: 'trigger.message_event',
+    TriggerDialogEvent: 'trigger.dialog_event',
+    TriggerLeadEvent: 'trigger.lead_event',
     TriggerAppEvent: 'trigger.app_event',
+    TriggerBooking: 'trigger.booking',
+    ConditionGroup: 'condition.group',
     ConditionVariable: 'condition.variable',
     ConditionAi: 'condition.ai',
     ConditionDateTime: 'condition.date_time',
@@ -4868,7 +5133,9 @@ export const GetNodesSearchTypesEnum = {
     BranchRandom: 'branch.random',
     ActionSetVariable: 'action.set_variable',
     ActionMessage: 'action.message',
+    ActionDeleteMessage: 'action.delete_message',
     ActionPoll: 'action.poll',
+    ActionTelegramWidget: 'action.telegram_widget',
     ActionTyping: 'action.typing',
     ActionAgentRequest: 'action.agent_request',
     ActionAddSegment: 'action.add_segment',
@@ -4881,9 +5148,12 @@ export const GetNodesSearchTypesEnum = {
     ActionHandoffToOperator: 'action.handoff_to_operator',
     ActionTableWrite: 'action.table_write',
     ActionHttp: 'action.http',
+    ActionCode: 'action.code',
     ActionApp: 'action.app',
+    ActionBooking: 'action.booking',
     ControlWait: 'control.wait',
-    ControlLoop: 'control.loop'
+    ControlLoop: 'control.loop',
+    ControlReturn: 'control.return'
 } as const;
 export type GetNodesSearchTypesEnum = typeof GetNodesSearchTypesEnum[keyof typeof GetNodesSearchTypesEnum];
 /**
@@ -5013,6 +5283,14 @@ export const NodesAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type NodesAcceptLanguageEnum = typeof NodesAcceptLanguageEnum[keyof typeof NodesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const NodesCodePreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type NodesCodePreviewAcceptLanguageEnum = typeof NodesCodePreviewAcceptLanguageEnum[keyof typeof NodesCodePreviewAcceptLanguageEnum];
 /**
  * @export
  */

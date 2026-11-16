@@ -123,6 +123,9 @@ export declare const ResourcePackageLinkAccessItemDtoRootResourceTypeEnum: {
     readonly KnowledgeTable: "knowledge_table";
     readonly Landing: "landing";
     readonly MetricDefinition: "metric_definition";
+    readonly BookingService: "booking_service";
+    readonly BookingSpecialist: "booking_specialist";
+    readonly BookingResource: "booking_resource";
 };
 export type ResourcePackageLinkAccessItemDtoRootResourceTypeEnum = typeof ResourcePackageLinkAccessItemDtoRootResourceTypeEnum[keyof typeof ResourcePackageLinkAccessItemDtoRootResourceTypeEnum];
 /**
@@ -139,6 +142,7 @@ export declare const ResourcePackageLinkAccessItemDtoSourceSectionEnum: {
     readonly Segments: "segments";
     readonly Landings: "landings";
     readonly Metrics: "metrics";
+    readonly Bookings: "bookings";
 };
 export type ResourcePackageLinkAccessItemDtoSourceSectionEnum = typeof ResourcePackageLinkAccessItemDtoSourceSectionEnum[keyof typeof ResourcePackageLinkAccessItemDtoSourceSectionEnum];
 /**

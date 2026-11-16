@@ -17,6 +17,7 @@ exports.LandingPublicButtonBlockDtoActionFromJSON = LandingPublicButtonBlockDtoA
 exports.LandingPublicButtonBlockDtoActionFromJSONTyped = LandingPublicButtonBlockDtoActionFromJSONTyped;
 exports.LandingPublicButtonBlockDtoActionToJSON = LandingPublicButtonBlockDtoActionToJSON;
 exports.LandingPublicButtonBlockDtoActionToJSONTyped = LandingPublicButtonBlockDtoActionToJSONTyped;
+const LandingOpenBookingActionDto_1 = require("./LandingOpenBookingActionDto");
 const LandingPublicOpenLandingActionDto_1 = require("./LandingPublicOpenLandingActionDto");
 const LandingPublicOpenUrlActionDto_1 = require("./LandingPublicOpenUrlActionDto");
 const LandingPublicSubscribeActionDto_1 = require("./LandingPublicSubscribeActionDto");
@@ -28,6 +29,8 @@ function LandingPublicButtonBlockDtoActionFromJSONTyped(json, ignoreDiscriminato
         return json;
     }
     switch (json['type']) {
+        case 'open_booking':
+            return Object.assign({}, (0, LandingOpenBookingActionDto_1.LandingOpenBookingActionDtoFromJSONTyped)(json, true), { type: 'open_booking' });
         case 'open_landing':
             return Object.assign({}, (0, LandingPublicOpenLandingActionDto_1.LandingPublicOpenLandingActionDtoFromJSONTyped)(json, true), { type: 'open_landing' });
         case 'open_url':
@@ -46,6 +49,8 @@ function LandingPublicButtonBlockDtoActionToJSONTyped(value, ignoreDiscriminator
         return value;
     }
     switch (value['type']) {
+        case 'open_booking':
+            return Object.assign({}, (0, LandingOpenBookingActionDto_1.LandingOpenBookingActionDtoToJSON)(value), { type: 'open_booking' });
         case 'open_landing':
             return Object.assign({}, (0, LandingPublicOpenLandingActionDto_1.LandingPublicOpenLandingActionDtoToJSON)(value), { type: 'open_landing' });
         case 'open_url':

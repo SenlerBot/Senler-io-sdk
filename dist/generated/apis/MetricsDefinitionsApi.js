@@ -277,14 +277,20 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
         await this.metricsDefinitionsDeactivateRaw(requestParameters, initOverrides);
     }
     /**
-     * . .
+     * project_id. ; .
      * ID
      */
     async metricsDefinitionsGetByIdRaw(requestParameters, initOverrides) {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling metricsDefinitionsGetById().');
         }
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling metricsDefinitionsGetById().');
+        }
         const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
         const headerParameters = {};
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -313,7 +319,7 @@ class MetricsDefinitionsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MetricDefinitionDtoFromJSON)(jsonValue));
     }
     /**
-     * . .
+     * project_id. ; .
      * ID
      */
     async metricsDefinitionsGetById(requestParameters, initOverrides) {

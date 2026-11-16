@@ -38,6 +38,7 @@ function LandingHtmlBlockPayloadDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'html': json['html'],
         'css': json['css'],
+        'js': json['js'] == null ? undefined : json['js'],
     };
 }
 function LandingHtmlBlockPayloadDtoToJSON(json) {
@@ -50,5 +51,6 @@ function LandingHtmlBlockPayloadDtoToJSONTyped(value, ignoreDiscriminator = fals
     return {
         'html': value['html'],
         'css': value['css'],
+        'js': value['js'],
     };
 }

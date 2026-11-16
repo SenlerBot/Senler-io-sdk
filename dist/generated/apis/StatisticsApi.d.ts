@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CabinetStatisticsAiResponseToolsResponseDto, CabinetStatisticsCommunicationsResponseDto, CabinetStatisticsCostsResponseDto, CabinetStatisticsLeadSubscriptionEventsResponseDto, CabinetStatisticsLeadsResponseDto, CabinetStatisticsOverviewResponseDto } from '../models/index';
+import type { CabinetStatisticsAiResponseToolsResponseDto, CabinetStatisticsCommunicationsResponseDto, CabinetStatisticsCostsResponseDto, CabinetStatisticsLeadSubscriptionEventsResponseDto, CabinetStatisticsLeadsResponseDto, CabinetStatisticsOverviewResponseDto, LiveVoiceStatisticsDto } from '../models/index';
 export interface GetCommunicationsRequest {
     period: GetCommunicationsPeriodEnum;
     projectId: string;
@@ -61,6 +61,14 @@ export interface GetOverviewRequest {
     operatorUserId?: string;
     timezone?: string;
     acceptLanguage?: GetOverviewAcceptLanguageEnum;
+}
+export interface StatisticsGetLiveVoiceRequest {
+    period: StatisticsGetLiveVoicePeriodEnum;
+    projectId: string;
+    channelId?: string;
+    operatorUserId?: string;
+    timezone?: string;
+    acceptLanguage?: StatisticsGetLiveVoiceAcceptLanguageEnum;
 }
 /**
  *
@@ -126,6 +134,16 @@ export declare class StatisticsApi extends runtime.BaseAPI {
      *
      */
     getOverview(requestParameters: GetOverviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CabinetStatisticsOverviewResponseDto>;
+    /**
+     * . . AI-.
+     *
+     */
+    statisticsGetLiveVoiceRaw(requestParameters: StatisticsGetLiveVoiceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LiveVoiceStatisticsDto>>;
+    /**
+     * . . AI-.
+     *
+     */
+    statisticsGetLiveVoice(requestParameters: StatisticsGetLiveVoiceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LiveVoiceStatisticsDto>;
 }
 /**
  * @export
@@ -235,3 +253,21 @@ export declare const GetOverviewAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetOverviewAcceptLanguageEnum = typeof GetOverviewAcceptLanguageEnum[keyof typeof GetOverviewAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const StatisticsGetLiveVoicePeriodEnum: {
+    readonly _24h: "24h";
+    readonly _7d: "7d";
+    readonly _30d: "30d";
+    readonly _90d: "90d";
+};
+export type StatisticsGetLiveVoicePeriodEnum = typeof StatisticsGetLiveVoicePeriodEnum[keyof typeof StatisticsGetLiveVoicePeriodEnum];
+/**
+ * @export
+ */
+export declare const StatisticsGetLiveVoiceAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type StatisticsGetLiveVoiceAcceptLanguageEnum = typeof StatisticsGetLiveVoiceAcceptLanguageEnum[keyof typeof StatisticsGetLiveVoiceAcceptLanguageEnum];

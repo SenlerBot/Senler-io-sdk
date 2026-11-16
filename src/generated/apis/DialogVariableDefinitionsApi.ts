@@ -295,7 +295,7 @@ export class DialogVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * MongoDB ID. .
+     * . .
      * ID
      */
     async dialogVariableDefinitionsGetByIdsRaw(requestParameters: DialogVariableDefinitionsGetByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DialogVariableDefinitionResponseDto>>> {
@@ -362,7 +362,7 @@ export class DialogVariableDefinitionsApi extends runtime.BaseAPI {
     }
 
     /**
-     * MongoDB ID. .
+     * . .
      * ID
      */
     async dialogVariableDefinitionsGetByIds(requestParameters: DialogVariableDefinitionsGetByIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DialogVariableDefinitionResponseDto>> {

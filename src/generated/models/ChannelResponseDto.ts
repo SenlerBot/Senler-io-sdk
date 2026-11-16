@@ -187,6 +187,24 @@ export interface ChannelResponseDto {
      */
     isPaused: boolean;
     /**
+     * .
+     * @type {string}
+     * @memberof ChannelResponseDto
+     */
+    billingStatus?: ChannelResponseDtoBillingStatusEnum;
+    /**
+     * .
+     * @type {Date}
+     * @memberof ChannelResponseDto
+     */
+    billingSuspendedAt?: Date | null;
+    /**
+     * , .
+     * @type {string}
+     * @memberof ChannelResponseDto
+     */
+    billingError?: string | null;
+    /**
      * ID
      * @type {string}
      * @memberof ChannelResponseDto
@@ -351,6 +369,20 @@ export const ChannelResponseDtoTypeEnum = {
 } as const;
 export type ChannelResponseDtoTypeEnum = typeof ChannelResponseDtoTypeEnum[keyof typeof ChannelResponseDtoTypeEnum];
 
+/**
+ * @export
+ */
+export const ChannelResponseDtoBillingStatusEnum = {
+    Active: 'active',
+    Suspending: 'suspending',
+    Suspended: 'suspended',
+    SourceActive: 'source_active',
+    Restoring: 'restoring',
+    RestoreFailed: 'restore_failed',
+    ReconnectRequired: 'reconnect_required'
+} as const;
+export type ChannelResponseDtoBillingStatusEnum = typeof ChannelResponseDtoBillingStatusEnum[keyof typeof ChannelResponseDtoBillingStatusEnum];
+
 
 /**
  * Check if a given object implements the ChannelResponseDto interface.
@@ -383,6 +415,9 @@ export function ChannelResponseDtoFromJSONTyped(json: any, ignoreDiscriminator: 
         'externalId': json['external_id'] == null ? undefined : json['external_id'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
         'isPaused': json['is_paused'],
+        'billingStatus': json['billing_status'] == null ? undefined : json['billing_status'],
+        'billingSuspendedAt': json['billing_suspended_at'] == null ? undefined : (new Date(json['billing_suspended_at'])),
+        'billingError': json['billing_error'] == null ? undefined : json['billing_error'],
         'projectId': json['project_id'] == null ? undefined : json['project_id'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
@@ -430,6 +465,9 @@ export function ChannelResponseDtoToJSONTyped(value?: ChannelResponseDto | null,
         'external_id': value['externalId'],
         'avatar_url': value['avatarUrl'],
         'is_paused': value['isPaused'],
+        'billing_status': value['billingStatus'],
+        'billing_suspended_at': value['billingSuspendedAt'] == null ? undefined : ((value['billingSuspendedAt'] as any).toISOString()),
+        'billing_error': value['billingError'],
         'project_id': value['projectId'],
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),

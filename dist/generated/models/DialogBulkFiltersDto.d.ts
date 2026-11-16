@@ -16,6 +16,12 @@
  */
 export interface DialogBulkFiltersDto {
     /**
+     * . , .
+     * @type {boolean}
+     * @memberof DialogBulkFiltersDto
+     */
+    messageRecipientsOnly?: boolean;
+    /**
      * (UUID )
      * @type {Array<string>}
      * @memberof DialogBulkFiltersDto

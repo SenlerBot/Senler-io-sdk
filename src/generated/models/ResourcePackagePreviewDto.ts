@@ -94,7 +94,10 @@ export const ResourcePackagePreviewDtoRootResourceTypeEnum = {
     KnowledgeFile: 'knowledge_file',
     KnowledgeTable: 'knowledge_table',
     Landing: 'landing',
-    MetricDefinition: 'metric_definition'
+    MetricDefinition: 'metric_definition',
+    BookingService: 'booking_service',
+    BookingSpecialist: 'booking_specialist',
+    BookingResource: 'booking_resource'
 } as const;
 export type ResourcePackagePreviewDtoRootResourceTypeEnum = typeof ResourcePackagePreviewDtoRootResourceTypeEnum[keyof typeof ResourcePackagePreviewDtoRootResourceTypeEnum];
 

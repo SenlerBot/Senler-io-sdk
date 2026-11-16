@@ -19,7 +19,7 @@ exports.LandingPublicSubscribeActionDtoFromJSON = LandingPublicSubscribeActionDt
 exports.LandingPublicSubscribeActionDtoFromJSONTyped = LandingPublicSubscribeActionDtoFromJSONTyped;
 exports.LandingPublicSubscribeActionDtoToJSON = LandingPublicSubscribeActionDtoToJSON;
 exports.LandingPublicSubscribeActionDtoToJSONTyped = LandingPublicSubscribeActionDtoToJSONTyped;
-const LandingPublicSubscribeActionDtoSubscription_1 = require("./LandingPublicSubscribeActionDtoSubscription");
+const LandingSdkSubscriptionResponseDtoSubscription_1 = require("./LandingSdkSubscriptionResponseDtoSubscription");
 const LandingContactCaptureDto_1 = require("./LandingContactCaptureDto");
 /**
  * @export
@@ -52,7 +52,7 @@ function LandingPublicSubscribeActionDtoFromJSONTyped(json, ignoreDiscriminator)
         'id': json['id'],
         'type': json['type'],
         'contactCapture': (0, LandingContactCaptureDto_1.LandingContactCaptureDtoFromJSON)(json['contact_capture']),
-        'subscription': (0, LandingPublicSubscribeActionDtoSubscription_1.LandingPublicSubscribeActionDtoSubscriptionFromJSON)(json['subscription']),
+        'subscription': (0, LandingSdkSubscriptionResponseDtoSubscription_1.LandingSdkSubscriptionResponseDtoSubscriptionFromJSON)(json['subscription']),
     };
 }
 function LandingPublicSubscribeActionDtoToJSON(json) {
@@ -66,6 +66,6 @@ function LandingPublicSubscribeActionDtoToJSONTyped(value, ignoreDiscriminator =
         'id': value['id'],
         'type': value['type'],
         'contact_capture': (0, LandingContactCaptureDto_1.LandingContactCaptureDtoToJSON)(value['contactCapture']),
-        'subscription': (0, LandingPublicSubscribeActionDtoSubscription_1.LandingPublicSubscribeActionDtoSubscriptionToJSON)(value['subscription']),
+        'subscription': (0, LandingSdkSubscriptionResponseDtoSubscription_1.LandingSdkSubscriptionResponseDtoSubscriptionToJSON)(value['subscription']),
     };
 }

@@ -100,7 +100,8 @@ export const DialogVariableDefinitionResponseDtoTypeEnum = {
     Json: 'json',
     Date: 'date',
     Array: 'array',
-    Object: 'object'
+    Object: 'object',
+    Reaction: 'reaction'
 } as const;
 export type DialogVariableDefinitionResponseDtoTypeEnum = typeof DialogVariableDefinitionResponseDtoTypeEnum[keyof typeof DialogVariableDefinitionResponseDtoTypeEnum];
 

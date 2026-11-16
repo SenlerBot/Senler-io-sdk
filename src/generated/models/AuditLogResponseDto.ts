@@ -157,6 +157,7 @@ export type AuditLogResponseDtoDelegatedActorTypeEnum = typeof AuditLogResponseD
  * @export
  */
 export const AuditLogResponseDtoEntityTypeEnum = {
+    BookingConfig: 'booking_config',
     ProjectWebhook: 'project_webhook',
     Funnel: 'funnel',
     Project: 'project',

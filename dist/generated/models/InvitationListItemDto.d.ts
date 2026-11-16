@@ -43,6 +43,12 @@ export interface InvitationListItemDto {
      */
     email?: string;
     /**
+     * ID ,
+     * @type {string}
+     * @memberof InvitationListItemDto
+     */
+    bookingSpecialistId?: string;
+    /**
      * ,
      * @type {ProjectRole}
      * @memberof InvitationListItemDto

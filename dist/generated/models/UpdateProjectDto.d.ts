@@ -18,6 +18,12 @@ import type { ProjectAttachmentUploadLimitsByChannelDto } from './ProjectAttachm
  */
 export interface UpdateProjectDto {
     /**
+     * IANA;
+     * @type {string}
+     * @memberof UpdateProjectDto
+     */
+    timezone?: string;
+    /**
      *
      * @type {string}
      * @memberof UpdateProjectDto

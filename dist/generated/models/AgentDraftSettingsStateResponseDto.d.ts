@@ -10,8 +10,10 @@
  * Do not edit the class manually.
  */
 import type { AgentSelectedModelSummaryDto } from './AgentSelectedModelSummaryDto';
+import type { AgentBookingPolicyDto } from './AgentBookingPolicyDto';
 import type { OperatorHandoffPolicyDto } from './OperatorHandoffPolicyDto';
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
+import type { AgentAutomationCallDto } from './AgentAutomationCallDto';
 import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
 import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicyDto';
 /**
@@ -20,6 +22,36 @@ import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicy
  * @interface AgentDraftSettingsStateResponseDto
  */
 export interface AgentDraftSettingsStateResponseDto {
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    enableLiveVoice: boolean;
+    /**
+     * UUID
+     * @type {string}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    liveVoiceModelId?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    liveVoiceVoice: AgentDraftSettingsStateResponseDtoLiveVoiceVoiceEnum;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    liveVoiceCommentary: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    liveVoiceInterruptions: boolean;
     /**
      * : , . .
      * @type {string}
@@ -112,6 +144,12 @@ export interface AgentDraftSettingsStateResponseDto {
      * @memberof AgentDraftSettingsStateResponseDto
      */
     selectedModelId?: string | null;
+    /**
+     * . .
+     * @type {boolean}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    enableModelFallback?: boolean;
     /**
      * ID . null .
      * @type {string}
@@ -401,6 +439,12 @@ export interface AgentDraftSettingsStateResponseDto {
      */
     automationEventPolicy: AgentAutomationEventPolicyDto;
     /**
+     *
+     * @type {Array<AgentAutomationCallDto>}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    callableAutomations: Array<AgentAutomationCallDto>;
+    /**
      * . false ; enable_ai_response=true. enable_preliminary_response enable_user_message=false. AI- .
      * @type {boolean}
      * @memberof AgentDraftSettingsStateResponseDto
@@ -533,6 +577,12 @@ export interface AgentDraftSettingsStateResponseDto {
         [key: string]: any;
     };
     /**
+     * -
+     * @type {AgentBookingPolicyDto}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    bookingPolicy: AgentBookingPolicyDto;
+    /**
      * recipient messaging tools (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof AgentDraftSettingsStateResponseDto
@@ -574,6 +624,22 @@ export interface AgentDraftSettingsStateResponseDto {
 /**
  * @export
  */
+export declare const AgentDraftSettingsStateResponseDtoLiveVoiceVoiceEnum: {
+    readonly Marin: "marin";
+    readonly Cedar: "cedar";
+    readonly Coral: "coral";
+    readonly Sage: "sage";
+    readonly Alloy: "alloy";
+    readonly Ash: "ash";
+    readonly Ballad: "ballad";
+    readonly Echo: "echo";
+    readonly Shimmer: "shimmer";
+    readonly Verse: "verse";
+};
+export type AgentDraftSettingsStateResponseDtoLiveVoiceVoiceEnum = typeof AgentDraftSettingsStateResponseDtoLiveVoiceVoiceEnum[keyof typeof AgentDraftSettingsStateResponseDtoLiveVoiceVoiceEnum];
+/**
+ * @export
+ */
 export declare const AgentDraftSettingsStateResponseDtoDialogContextModeEnum: {
     readonly AllDialog: "all_dialog";
     readonly CurrentSession: "current_session";
@@ -589,6 +655,7 @@ export declare const AgentDraftSettingsStateResponseDtoConflictFieldsEnum: {
     readonly AvatarUrl: "avatar_url";
     readonly AgentType: "agent_type";
     readonly SelectedModelId: "selected_model_id";
+    readonly EnableModelFallback: "enable_model_fallback";
     readonly EventSummaryMode: "event_summary_mode";
     readonly DialogSummaryMode: "dialog_summary_mode";
     readonly DialogContextMode: "dialog_context_mode";
@@ -622,6 +689,11 @@ export declare const AgentDraftSettingsStateResponseDtoConflictFieldsEnum: {
     readonly EnableCustomAttachments: "enable_custom_attachments";
     readonly EnableImageGeneration: "enable_image_generation";
     readonly ImageGenerationModelId: "image_generation_model_id";
+    readonly EnableLiveVoice: "enable_live_voice";
+    readonly LiveVoiceModelId: "live_voice_model_id";
+    readonly LiveVoiceVoice: "live_voice_voice";
+    readonly LiveVoiceCommentary: "live_voice_commentary";
+    readonly LiveVoiceInterruptions: "live_voice_interruptions";
     readonly EnableAudioGeneration: "enable_audio_generation";
     readonly AudioGenerationModelId: "audio_generation_model_id";
     readonly EnableVoiceCloning: "enable_voice_cloning";
@@ -639,6 +711,7 @@ export declare const AgentDraftSettingsStateResponseDtoConflictFieldsEnum: {
     readonly CancelPendingResponseOnProjectOperatorMessage: "cancel_pending_response_on_project_operator_message";
     readonly CancelPendingResponseOnAutomationMessage: "cancel_pending_response_on_automation_message";
     readonly AutomationEventPolicy: "automation_event_policy";
+    readonly CallableAutomations: "callable_automations";
     readonly EnableUserMessage: "enable_user_message";
     readonly EnableStreaming: "enable_streaming";
     readonly DisableLinkPreview: "disable_link_preview";
@@ -660,6 +733,7 @@ export declare const AgentDraftSettingsStateResponseDtoConflictFieldsEnum: {
     readonly VariablesAccessMode: "variables_access_mode";
     readonly SegmentAccessPolicy: "segment_access_policy";
     readonly FunnelAccessPolicy: "funnel_access_policy";
+    readonly BookingPolicy: "booking_policy";
     readonly RecipientMessagingPolicy: "recipient_messaging_policy";
     readonly AgentAssignmentPolicy: "agent_assignment_policy";
     readonly OperatorHandoffPolicy: "operator_handoff_policy";

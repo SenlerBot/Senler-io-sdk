@@ -36,6 +36,8 @@ function SaveSupportOperatorGroupDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'name': json['name'],
         'memberIds': json['member_ids'] == null ? undefined : json['member_ids'],
+        'requireShiftCheckIn': json['require_shift_check_in'] == null ? undefined : json['require_shift_check_in'],
+        'requireSchedule': json['require_schedule'] == null ? undefined : json['require_schedule'],
     };
 }
 function SaveSupportOperatorGroupDtoToJSON(json) {
@@ -48,5 +50,7 @@ function SaveSupportOperatorGroupDtoToJSONTyped(value, ignoreDiscriminator = fal
     return {
         'name': value['name'],
         'member_ids': value['memberIds'],
+        'require_shift_check_in': value['requireShiftCheckIn'],
+        'require_schedule': value['requireSchedule'],
     };
 }

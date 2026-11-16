@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface EventButtonClickDto {
     /**
+     * Telegram-; 64 UTF-8.
+     * @type {string}
+     * @memberof EventButtonClickDto
+     */
+    widgetData?: string;
+    /**
      * .
      * @type {string}
      * @memberof EventButtonClickDto
@@ -92,6 +98,7 @@ export function EventButtonClickDtoFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
 
+        'widgetData': json['widget_data'] == null ? undefined : json['widget_data'],
         'buttonInstanceId': json['button_instance_id'] == null ? undefined : json['button_instance_id'],
         'callbackData': json['callback_data'] == null ? undefined : json['callback_data'],
         'buttonText': json['button_text'] == null ? undefined : json['button_text'],
@@ -115,6 +122,7 @@ export function EventButtonClickDtoToJSONTyped(value?: EventButtonClickDto | nul
 
     return {
 
+        'widget_data': value['widgetData'],
         'button_instance_id': value['buttonInstanceId'],
         'callback_data': value['callbackData'],
         'button_text': value['buttonText'],

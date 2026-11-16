@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { OperatorHandoffPolicyDto } from './OperatorHandoffPolicyDto';
+import type { AgentAutomationCallDto } from './AgentAutomationCallDto';
 import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
 import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicyDto';
 /**
@@ -18,6 +19,36 @@ import type { AgentAutomationEventPolicyDto } from './AgentAutomationEventPolicy
  * @interface UpdateAgentCapabilitiesDto
  */
 export interface UpdateAgentCapabilitiesDto {
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    enableLiveVoice?: boolean;
+    /**
+     * UUID . .
+     * @type {string}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    liveVoiceModelId?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    liveVoiceVoice?: UpdateAgentCapabilitiesDtoLiveVoiceVoiceEnum;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    liveVoiceCommentary?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    liveVoiceInterruptions?: boolean;
     /**
      * : , . .
      * @type {string}
@@ -163,6 +194,12 @@ export interface UpdateAgentCapabilitiesDto {
      */
     automationEventPolicy?: AgentAutomationEventPolicyDto;
     /**
+     * , , .
+     * @type {Array<AgentAutomationCallDto>}
+     * @memberof UpdateAgentCapabilitiesDto
+     */
+    callableAutomations?: Array<AgentAutomationCallDto>;
+    /**
      * . false ; enable_ai_response=true. enable_preliminary_response enable_user_message=false. AI- .
      * @type {boolean}
      * @memberof UpdateAgentCapabilitiesDto
@@ -285,6 +322,22 @@ export interface UpdateAgentCapabilitiesDto {
      */
     operatorHandoffPolicy?: OperatorHandoffPolicyDto;
 }
+/**
+ * @export
+ */
+export declare const UpdateAgentCapabilitiesDtoLiveVoiceVoiceEnum: {
+    readonly Marin: "marin";
+    readonly Cedar: "cedar";
+    readonly Coral: "coral";
+    readonly Sage: "sage";
+    readonly Alloy: "alloy";
+    readonly Ash: "ash";
+    readonly Ballad: "ballad";
+    readonly Echo: "echo";
+    readonly Shimmer: "shimmer";
+    readonly Verse: "verse";
+};
+export type UpdateAgentCapabilitiesDtoLiveVoiceVoiceEnum = typeof UpdateAgentCapabilitiesDtoLiveVoiceVoiceEnum[keyof typeof UpdateAgentCapabilitiesDtoLiveVoiceVoiceEnum];
 /**
  * @export
  */

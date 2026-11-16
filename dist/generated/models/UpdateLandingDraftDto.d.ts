@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { LandingSettingsDto } from './LandingSettingsDto';
+import type { LandingSettingsInputDto } from './LandingSettingsInputDto';
 /**
  * UpdateLandingDraftDto.
  * @export
@@ -17,17 +17,17 @@ import type { LandingSettingsDto } from './LandingSettingsDto';
  */
 export interface UpdateLandingDraftDto {
     /**
-     *
+     * settings_revision . 409 .
      * @type {number}
      * @memberof UpdateLandingDraftDto
      */
     expectedSettingsRevision: number;
     /**
-     *
-     * @type {LandingSettingsDto}
+     * . settings , custom_css SDK.
+     * @type {LandingSettingsInputDto}
      * @memberof UpdateLandingDraftDto
      */
-    settings: LandingSettingsDto;
+    settings: LandingSettingsInputDto;
 }
 /**
  * Check if a given object implements the UpdateLandingDraftDto interface.

@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VersionsStepsSubscriptionLinksAcceptLanguageEnum = exports.VersionsStepsSetDefaultAgentAcceptLanguageEnum = exports.VersionsStepsFillVariablesAcceptLanguageEnum = exports.VersionsStepsCustomInstructionAcceptLanguageEnum = exports.VersionsStepsAssignAgentToDialogAcceptLanguageEnum = exports.UpdateVersionsStepsSubscriptionLinksAcceptLanguageEnum = exports.UpdateVersionsStepsSetDefaultAgentAcceptLanguageEnum = exports.UpdateVersionsStepsReorderAcceptLanguageEnum = exports.UpdateVersionsStepsFillVariablesAcceptLanguageEnum = exports.UpdateVersionsStepsCustomInstructionAcceptLanguageEnum = exports.UpdateVersionsStepsAssignAgentToDialogAcceptLanguageEnum = exports.GetVersionsStepsAcceptLanguageEnum = exports.DeleteVersionsStepsAcceptLanguageEnum = exports.AppVersionStepsApi = void 0;
+exports.VersionsStepsSubscriptionLinksAcceptLanguageEnum = exports.VersionsStepsSetDefaultAgentAcceptLanguageEnum = exports.VersionsStepsSelectRecipientAcceptLanguageEnum = exports.VersionsStepsFillVariablesAcceptLanguageEnum = exports.VersionsStepsCustomInstructionAcceptLanguageEnum = exports.VersionsStepsConfigureConsentsAcceptLanguageEnum = exports.VersionsStepsAssignAgentToDialogAcceptLanguageEnum = exports.UpdateVersionsStepsSubscriptionLinksAcceptLanguageEnum = exports.UpdateVersionsStepsSetDefaultAgentAcceptLanguageEnum = exports.UpdateVersionsStepsSelectRecipientAcceptLanguageEnum = exports.UpdateVersionsStepsReorderAcceptLanguageEnum = exports.UpdateVersionsStepsFillVariablesAcceptLanguageEnum = exports.UpdateVersionsStepsCustomInstructionAcceptLanguageEnum = exports.UpdateVersionsStepsConfigureConsentsAcceptLanguageEnum = exports.UpdateVersionsStepsAssignAgentToDialogAcceptLanguageEnum = exports.GetVersionsStepsAcceptLanguageEnum = exports.DeleteVersionsStepsAcceptLanguageEnum = exports.AppVersionStepsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -170,6 +170,50 @@ class AppVersionStepsApi extends runtime.BaseAPI {
      */
     async updateVersionsStepsAssignAgentToDialog(requestParameters, initOverrides) {
         const response = await this.updateVersionsStepsAssignAgentToDialogRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * configure_consents .
+     *
+     */
+    async updateVersionsStepsConfigureConsentsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling updateVersionsStepsConfigureConsents().');
+        }
+        if (requestParameters['versionId'] == null) {
+            throw new runtime.RequiredError('versionId', 'Required parameter "versionId" was null or undefined when calling updateVersionsStepsConfigureConsents().');
+        }
+        if (requestParameters['stepId'] == null) {
+            throw new runtime.RequiredError('stepId', 'Required parameter "stepId" was null or undefined when calling updateVersionsStepsConfigureConsents().');
+        }
+        if (requestParameters['updateConfigureConsentsStepDto'] == null) {
+            throw new runtime.RequiredError('updateConfigureConsentsStepDto', 'Required parameter "updateConfigureConsentsStepDto" was null or undefined when calling updateVersionsStepsConfigureConsents().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/versions/{versionId}/steps/{stepId}/configure-consents`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))).replace(`{${"stepId"}}`, encodeURIComponent(String(requestParameters['stepId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateConfigureConsentsStepDtoToJSON)(requestParameters['updateConfigureConsentsStepDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppVersionStepResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * configure_consents .
+     *
+     */
+    async updateVersionsStepsConfigureConsents(requestParameters, initOverrides) {
+        const response = await this.updateVersionsStepsConfigureConsentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -302,6 +346,50 @@ class AppVersionStepsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * select_recipient .
+     *
+     */
+    async updateVersionsStepsSelectRecipientRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling updateVersionsStepsSelectRecipient().');
+        }
+        if (requestParameters['versionId'] == null) {
+            throw new runtime.RequiredError('versionId', 'Required parameter "versionId" was null or undefined when calling updateVersionsStepsSelectRecipient().');
+        }
+        if (requestParameters['stepId'] == null) {
+            throw new runtime.RequiredError('stepId', 'Required parameter "stepId" was null or undefined when calling updateVersionsStepsSelectRecipient().');
+        }
+        if (requestParameters['updateRecipientStepDto'] == null) {
+            throw new runtime.RequiredError('updateRecipientStepDto', 'Required parameter "updateRecipientStepDto" was null or undefined when calling updateVersionsStepsSelectRecipient().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/versions/{versionId}/steps/{stepId}/select-recipient`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))).replace(`{${"stepId"}}`, encodeURIComponent(String(requestParameters['stepId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.UpdateRecipientStepDtoToJSON)(requestParameters['updateRecipientStepDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppVersionStepResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * select_recipient .
+     *
+     */
+    async updateVersionsStepsSelectRecipient(requestParameters, initOverrides) {
+        const response = await this.updateVersionsStepsSelectRecipientRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * .
      * set_default_agent
      */
@@ -431,6 +519,47 @@ class AppVersionStepsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * . .
+     *
+     */
+    async versionsStepsConfigureConsentsRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling versionsStepsConfigureConsents().');
+        }
+        if (requestParameters['versionId'] == null) {
+            throw new runtime.RequiredError('versionId', 'Required parameter "versionId" was null or undefined when calling versionsStepsConfigureConsents().');
+        }
+        if (requestParameters['createConfigureConsentsStepDto'] == null) {
+            throw new runtime.RequiredError('createConfigureConsentsStepDto', 'Required parameter "createConfigureConsentsStepDto" was null or undefined when calling versionsStepsConfigureConsents().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/versions/{versionId}/steps/configure-consents`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateConfigureConsentsStepDtoToJSON)(requestParameters['createConfigureConsentsStepDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppVersionStepResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async versionsStepsConfigureConsents(requestParameters, initOverrides) {
+        const response = await this.versionsStepsConfigureConsentsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * .
      * custom_instruction
      */
@@ -510,6 +639,47 @@ class AppVersionStepsApi extends runtime.BaseAPI {
      */
     async versionsStepsFillVariables(requestParameters, initOverrides) {
         const response = await this.versionsStepsFillVariablesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * ID .
+     *
+     */
+    async versionsStepsSelectRecipientRaw(requestParameters, initOverrides) {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError('appId', 'Required parameter "appId" was null or undefined when calling versionsStepsSelectRecipient().');
+        }
+        if (requestParameters['versionId'] == null) {
+            throw new runtime.RequiredError('versionId', 'Required parameter "versionId" was null or undefined when calling versionsStepsSelectRecipient().');
+        }
+        if (requestParameters['createRecipientStepDto'] == null) {
+            throw new runtime.RequiredError('createRecipientStepDto', 'Required parameter "createRecipientStepDto" was null or undefined when calling versionsStepsSelectRecipient().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        const response = await this.request({
+            path: `/api/apps/{appId}/versions/{versionId}/steps/select-recipient`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"versionId"}}`, encodeURIComponent(String(requestParameters['versionId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.CreateRecipientStepDtoToJSON)(requestParameters['createRecipientStepDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AppVersionStepResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * ID .
+     *
+     */
+    async versionsStepsSelectRecipient(requestParameters, initOverrides) {
+        const response = await this.versionsStepsSelectRecipientRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -620,6 +790,13 @@ exports.UpdateVersionsStepsAssignAgentToDialogAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.UpdateVersionsStepsConfigureConsentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.UpdateVersionsStepsCustomInstructionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -635,6 +812,13 @@ exports.UpdateVersionsStepsFillVariablesAcceptLanguageEnum = {
  * @export
  */
 exports.UpdateVersionsStepsReorderAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.UpdateVersionsStepsSelectRecipientAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -662,6 +846,13 @@ exports.VersionsStepsAssignAgentToDialogAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.VersionsStepsConfigureConsentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.VersionsStepsCustomInstructionAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -670,6 +861,13 @@ exports.VersionsStepsCustomInstructionAcceptLanguageEnum = {
  * @export
  */
 exports.VersionsStepsFillVariablesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.VersionsStepsSelectRecipientAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

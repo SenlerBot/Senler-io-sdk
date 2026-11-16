@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateResourcePackageDto, CreateResourcePackageLinkDto, ImportResourcePackageDto, ProcessResponseDto, ResourcePackageDraftPreviewResponseDto, ResourcePackageLinkAccessListResponseDto, ResourcePackageLinkAccessPreviewResponseDto, ResourcePackageLinkPreviewResponseDto, ResourcePackageLinkResponseDto, ResourcePackageLinkRevokeResponseDto, ResourcePackagePlanResponseDto, ResourcePackageResponseDto, UpdateResourcePackageLinkDto } from '../models/index';
+import type { CreateResourcePackageCommandDto, CreateResourcePackageDto, CreateResourcePackageLinkDto, ImportResourcePackageCommandDto, ImportResourcePackageDto, ProcessResponseDto, ResourcePackageDraftPreviewResponseDto, ResourcePackageLinkAccessListResponseDto, ResourcePackageLinkAccessPreviewResponseDto, ResourcePackageLinkPreviewResponseDto, ResourcePackageLinkResponseDto, ResourcePackageLinkRevokeResponseDto, ResourcePackagePlanResponseDto, ResourcePackageResponseDto, ResumeResourcePackageImportDto, UpdateResourcePackageLinkDto } from '../models/index';
 export interface GetResourcePackageLinksRequest {
     projectId: string;
     state?: GetResourcePackageLinksStateEnum;
@@ -26,9 +26,14 @@ export interface GetResourcePackageLinksPreviewRequest {
     token: string;
     acceptLanguage?: GetResourcePackageLinksPreviewAcceptLanguageEnum;
 }
+export interface ResourcePackageImportsResumeRequest {
+    processId: string;
+    resumeResourcePackageImportDto: ResumeResourcePackageImportDto;
+    acceptLanguage?: ResourcePackageImportsResumeAcceptLanguageEnum;
+}
 export interface ResourcePackageLinksImportRequest {
     token: string;
-    importResourcePackageDto: ImportResourcePackageDto;
+    importResourcePackageCommandDto: ImportResourcePackageCommandDto;
     acceptLanguage?: ResourcePackageLinksImportAcceptLanguageEnum;
 }
 export interface ResourcePackageLinksPlanRequest {
@@ -41,12 +46,12 @@ export interface ResourcePackageLinksRevokeRequest {
     acceptLanguage?: ResourcePackageLinksRevokeAcceptLanguageEnum;
 }
 export interface ResourcePackagesRequest {
-    createResourcePackageDto: CreateResourcePackageDto;
+    createResourcePackageCommandDto: CreateResourcePackageCommandDto;
     acceptLanguage?: ResourcePackagesAcceptLanguageEnum;
 }
 export interface ResourcePackagesImportRequest {
     id: string;
-    importResourcePackageDto: ImportResourcePackageDto;
+    importResourcePackageCommandDto: ImportResourcePackageCommandDto;
     acceptLanguage?: ResourcePackagesImportAcceptLanguageEnum;
 }
 export interface ResourcePackagesPreviewRequest {
@@ -97,6 +102,16 @@ export declare class ResourcePackagesApi extends runtime.BaseAPI {
      *
      */
     getResourcePackageLinksPreview(requestParameters: GetResourcePackageLinksPreviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ResourcePackageLinkPreviewResponseDto>;
+    /**
+     * . .
+     *
+     */
+    resourcePackageImportsResumeRaw(requestParameters: ResourcePackageImportsResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    resourcePackageImportsResume(requestParameters: ResourcePackageImportsResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto>;
     /**
      * . .
      *
@@ -210,6 +225,14 @@ export declare const GetResourcePackageLinksPreviewAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetResourcePackageLinksPreviewAcceptLanguageEnum = typeof GetResourcePackageLinksPreviewAcceptLanguageEnum[keyof typeof GetResourcePackageLinksPreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const ResourcePackageImportsResumeAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type ResourcePackageImportsResumeAcceptLanguageEnum = typeof ResourcePackageImportsResumeAcceptLanguageEnum[keyof typeof ResourcePackageImportsResumeAcceptLanguageEnum];
 /**
  * @export
  */

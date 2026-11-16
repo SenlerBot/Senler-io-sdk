@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateResourcePackageLinksAcceptLanguageEnum = exports.ResourcePackagesShareLinksAcceptLanguageEnum = exports.ResourcePackagesPreviewAcceptLanguageEnum = exports.ResourcePackagesImportAcceptLanguageEnum = exports.ResourcePackagesAcceptLanguageEnum = exports.ResourcePackageLinksRevokeAcceptLanguageEnum = exports.ResourcePackageLinksPlanAcceptLanguageEnum = exports.ResourcePackageLinksImportAcceptLanguageEnum = exports.GetResourcePackageLinksPreviewAcceptLanguageEnum = exports.GetResourcePackageLinksAccessPreviewAcceptLanguageEnum = exports.GetResourcePackageLinksAcceptLanguageEnum = exports.GetResourcePackageLinksStateEnum = exports.ResourcePackagesApi = void 0;
+exports.UpdateResourcePackageLinksAcceptLanguageEnum = exports.ResourcePackagesShareLinksAcceptLanguageEnum = exports.ResourcePackagesPreviewAcceptLanguageEnum = exports.ResourcePackagesImportAcceptLanguageEnum = exports.ResourcePackagesAcceptLanguageEnum = exports.ResourcePackageLinksRevokeAcceptLanguageEnum = exports.ResourcePackageLinksPlanAcceptLanguageEnum = exports.ResourcePackageLinksImportAcceptLanguageEnum = exports.ResourcePackageImportsResumeAcceptLanguageEnum = exports.GetResourcePackageLinksPreviewAcceptLanguageEnum = exports.GetResourcePackageLinksAccessPreviewAcceptLanguageEnum = exports.GetResourcePackageLinksAcceptLanguageEnum = exports.GetResourcePackageLinksStateEnum = exports.ResourcePackagesApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -168,12 +168,50 @@ class ResourcePackagesApi extends runtime.BaseAPI {
      * . .
      *
      */
+    async resourcePackageImportsResumeRaw(requestParameters, initOverrides) {
+        if (requestParameters['processId'] == null) {
+            throw new runtime.RequiredError('processId', 'Required parameter "processId" was null or undefined when calling resourcePackageImportsResume().');
+        }
+        if (requestParameters['resumeResourcePackageImportDto'] == null) {
+            throw new runtime.RequiredError('resumeResourcePackageImportDto', 'Required parameter "resumeResourcePackageImportDto" was null or undefined when calling resourcePackageImportsResume().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        const response = await this.request({
+            path: `/api/resource-package-imports/{processId}/resume`.replace(`{${"processId"}}`, encodeURIComponent(String(requestParameters['processId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ResumeResourcePackageImportDtoToJSON)(requestParameters['resumeResourcePackageImportDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async resourcePackageImportsResume(requestParameters, initOverrides) {
+        const response = await this.resourcePackageImportsResumeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . .
+     *
+     */
     async resourcePackageLinksImportRaw(requestParameters, initOverrides) {
         if (requestParameters['token'] == null) {
             throw new runtime.RequiredError('token', 'Required parameter "token" was null or undefined when calling resourcePackageLinksImport().');
         }
-        if (requestParameters['importResourcePackageDto'] == null) {
-            throw new runtime.RequiredError('importResourcePackageDto', 'Required parameter "importResourcePackageDto" was null or undefined when calling resourcePackageLinksImport().');
+        if (requestParameters['importResourcePackageCommandDto'] == null) {
+            throw new runtime.RequiredError('importResourcePackageCommandDto', 'Required parameter "importResourcePackageCommandDto" was null or undefined when calling resourcePackageLinksImport().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -190,7 +228,7 @@ class ResourcePackagesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.ImportResourcePackageDtoToJSON)(requestParameters['importResourcePackageDto']),
+            body: (0, index_1.ImportResourcePackageCommandDtoToJSON)(requestParameters['importResourcePackageCommandDto']),
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
     }
@@ -278,8 +316,8 @@ class ResourcePackagesApi extends runtime.BaseAPI {
      *
      */
     async resourcePackagesRaw(requestParameters, initOverrides) {
-        if (requestParameters['createResourcePackageDto'] == null) {
-            throw new runtime.RequiredError('createResourcePackageDto', 'Required parameter "createResourcePackageDto" was null or undefined when calling resourcePackages().');
+        if (requestParameters['createResourcePackageCommandDto'] == null) {
+            throw new runtime.RequiredError('createResourcePackageCommandDto', 'Required parameter "createResourcePackageCommandDto" was null or undefined when calling resourcePackages().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -296,7 +334,7 @@ class ResourcePackagesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.CreateResourcePackageDtoToJSON)(requestParameters['createResourcePackageDto']),
+            body: (0, index_1.CreateResourcePackageCommandDtoToJSON)(requestParameters['createResourcePackageCommandDto']),
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ResourcePackageResponseDtoFromJSON)(jsonValue));
     }
@@ -316,8 +354,8 @@ class ResourcePackagesApi extends runtime.BaseAPI {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError('id', 'Required parameter "id" was null or undefined when calling resourcePackagesImport().');
         }
-        if (requestParameters['importResourcePackageDto'] == null) {
-            throw new runtime.RequiredError('importResourcePackageDto', 'Required parameter "importResourcePackageDto" was null or undefined when calling resourcePackagesImport().');
+        if (requestParameters['importResourcePackageCommandDto'] == null) {
+            throw new runtime.RequiredError('importResourcePackageCommandDto', 'Required parameter "importResourcePackageCommandDto" was null or undefined when calling resourcePackagesImport().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -334,7 +372,7 @@ class ResourcePackagesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.ImportResourcePackageDtoToJSON)(requestParameters['importResourcePackageDto']),
+            body: (0, index_1.ImportResourcePackageCommandDtoToJSON)(requestParameters['importResourcePackageCommandDto']),
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProcessResponseDtoFromJSON)(jsonValue));
     }
@@ -484,6 +522,13 @@ exports.GetResourcePackageLinksAccessPreviewAcceptLanguageEnum = {
  * @export
  */
 exports.GetResourcePackageLinksPreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.ResourcePackageImportsResumeAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

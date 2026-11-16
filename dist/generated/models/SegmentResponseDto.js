@@ -23,6 +23,8 @@ const SegmentConsentSnapshotDto_1 = require("./SegmentConsentSnapshotDto");
  * Check if a given object implements the SegmentResponseDto interface.
  */
 function instanceOfSegmentResponseDto(value) {
+    if (!('suppressAgentResponseOnSubscription' in value) || value['suppressAgentResponseOnSubscription'] === undefined)
+        return false;
     if (!('id' in value) || value['id'] === undefined)
         return false;
     if (!('projectId' in value) || value['projectId'] === undefined)
@@ -55,6 +57,7 @@ function SegmentResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'suppressAgentResponseOnSubscription': json['suppress_agent_response_on_subscription'],
         'id': json['id'],
         'projectId': json['project_id'],
         'name': json['name'],
@@ -76,6 +79,7 @@ function SegmentResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'suppress_agent_response_on_subscription': value['suppressAgentResponseOnSubscription'],
         'id': value['id'],
         'project_id': value['projectId'],
         'name': value['name'],

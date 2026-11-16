@@ -55,7 +55,7 @@ export interface DiagnosticsResultDto {
      */
     checkMode?: DiagnosticsResultDtoCheckModeEnum;
     /**
-     * Background execution independent of the current page.
+     * , .
      * @type {AnalysisJobDto}
      * @memberof DiagnosticsResultDto
      */

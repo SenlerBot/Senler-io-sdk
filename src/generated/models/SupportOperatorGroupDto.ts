@@ -43,6 +43,18 @@ export interface SupportOperatorGroupDto {
      * @memberof SupportOperatorGroupDto
      */
     memberIds: Array<string>;
+    /**
+     *
+     * @type {boolean}
+     * @memberof SupportOperatorGroupDto
+     */
+    requireShiftCheckIn: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof SupportOperatorGroupDto
+     */
+    requireSchedule: boolean;
 }
 
 /**
@@ -53,6 +65,8 @@ export function instanceOfSupportOperatorGroupDto(value: object): value is Suppo
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('isActive' in value) || value['isActive'] === undefined) return false;
     if (!('memberIds' in value) || value['memberIds'] === undefined) return false;
+    if (!('requireShiftCheckIn' in value) || value['requireShiftCheckIn'] === undefined) return false;
+    if (!('requireSchedule' in value) || value['requireSchedule'] === undefined) return false;
     return true;
 }
 
@@ -70,6 +84,8 @@ export function SupportOperatorGroupDtoFromJSONTyped(json: any, ignoreDiscrimina
         'name': json['name'],
         'isActive': json['is_active'],
         'memberIds': json['member_ids'],
+        'requireShiftCheckIn': json['require_shift_check_in'],
+        'requireSchedule': json['require_schedule'],
     };
 }
 
@@ -88,5 +104,7 @@ export function SupportOperatorGroupDtoToJSONTyped(value?: SupportOperatorGroupD
         'name': value['name'],
         'is_active': value['isActive'],
         'member_ids': value['memberIds'],
+        'require_shift_check_in': value['requireShiftCheckIn'],
+        'require_schedule': value['requireSchedule'],
     };
 }

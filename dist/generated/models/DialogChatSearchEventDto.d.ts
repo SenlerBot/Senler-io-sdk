@@ -19,6 +19,7 @@ import type { DialogChatEventDtoDeliveryRef } from './DialogChatEventDtoDelivery
 import type { EventTypingDto } from './EventTypingDto';
 import type { EventMessageInteractionsDto } from './EventMessageInteractionsDto';
 import type { EventErrorDto } from './EventErrorDto';
+import type { EventLiveVoiceDto } from './EventLiveVoiceDto';
 import type { EventMessageDto } from './EventMessageDto';
 import type { EventTimerDto } from './EventTimerDto';
 import type { EventStatusDto } from './EventStatusDto';
@@ -42,6 +43,12 @@ import type { EventAttachmentCabinetDto } from './EventAttachmentCabinetDto';
  * @interface DialogChatSearchEventDto
  */
 export interface DialogChatSearchEventDto {
+    /**
+     *
+     * @type {EventLiveVoiceDto}
+     * @memberof DialogChatSearchEventDto
+     */
+    liveVoice?: EventLiveVoiceDto;
     /**
      *
      * @type {EventFunnelDto}

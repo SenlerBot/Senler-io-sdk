@@ -35,6 +35,7 @@ exports.UpdateLandingBlockDtoTypeEnum = {
     Video: 'video',
     Timer: 'timer',
     Widget: 'widget',
+    Booking: 'booking',
     Other: 'other'
 };
 /**

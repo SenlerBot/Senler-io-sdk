@@ -22,6 +22,7 @@ import type {
   CabinetStatisticsLeadsResponseDto,
   CabinetStatisticsOverviewResponseDto,
   ErrorResponse,
+  LiveVoiceStatisticsDto,
 } from '../models/index';
 import {
     CabinetStatisticsAiResponseToolsResponseDtoFromJSON,
@@ -38,6 +39,8 @@ import {
     CabinetStatisticsOverviewResponseDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    LiveVoiceStatisticsDtoFromJSON,
+    LiveVoiceStatisticsDtoToJSON,
 } from '../models/index';
 
 export interface GetCommunicationsRequest {
@@ -95,6 +98,15 @@ export interface GetOverviewRequest {
     operatorUserId?: string;
     timezone?: string;
     acceptLanguage?: GetOverviewAcceptLanguageEnum;
+}
+
+export interface StatisticsGetLiveVoiceRequest {
+    period: StatisticsGetLiveVoicePeriodEnum;
+    projectId: string;
+    channelId?: string;
+    operatorUserId?: string;
+    timezone?: string;
+    acceptLanguage?: StatisticsGetLiveVoiceAcceptLanguageEnum;
 }
 
 /**
@@ -618,6 +630,90 @@ export class StatisticsApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+    /**
+     * . . AI-.
+     *
+     */
+    async statisticsGetLiveVoiceRaw(requestParameters: StatisticsGetLiveVoiceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LiveVoiceStatisticsDto>> {
+        if (requestParameters['period'] == null) {
+            throw new runtime.RequiredError(
+                'period',
+                'Required parameter "period" was null or undefined when calling statisticsGetLiveVoice().'
+            );
+        }
+
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling statisticsGetLiveVoice().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['period'] != null) {
+            queryParameters['period'] = requestParameters['period'];
+        }
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['channelId'] != null) {
+            queryParameters['channel_id'] = requestParameters['channelId'];
+        }
+
+        if (requestParameters['operatorUserId'] != null) {
+            queryParameters['operator_user_id'] = requestParameters['operatorUserId'];
+        }
+
+        if (requestParameters['timezone'] != null) {
+            queryParameters['timezone'] = requestParameters['timezone'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/analytics/live-voice`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LiveVoiceStatisticsDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . . AI-.
+     *
+     */
+    async statisticsGetLiveVoice(requestParameters: StatisticsGetLiveVoiceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LiveVoiceStatisticsDto> {
+        const response = await this.statisticsGetLiveVoiceRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
 }
 
 /**
@@ -728,3 +824,21 @@ export const GetOverviewAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetOverviewAcceptLanguageEnum = typeof GetOverviewAcceptLanguageEnum[keyof typeof GetOverviewAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const StatisticsGetLiveVoicePeriodEnum = {
+    _24h: '24h',
+    _7d: '7d',
+    _30d: '30d',
+    _90d: '90d'
+} as const;
+export type StatisticsGetLiveVoicePeriodEnum = typeof StatisticsGetLiveVoicePeriodEnum[keyof typeof StatisticsGetLiveVoicePeriodEnum];
+/**
+ * @export
+ */
+export const StatisticsGetLiveVoiceAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type StatisticsGetLiveVoiceAcceptLanguageEnum = typeof StatisticsGetLiveVoiceAcceptLanguageEnum[keyof typeof StatisticsGetLiveVoiceAcceptLanguageEnum];

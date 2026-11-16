@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ArrayVariableItemsDto, ArrayVariableValueDto, BooleanVariableValueDto, DateVariableValueDto, DeleteValues200Response, DialogVariableArrayMutationResponseDto, DialogVariableResponseDto, DialogVariableValueResponseDto, DialogVariableWriteResponseDto, NumberVariableValueDto, ObjectVariableValueDto, StringVariableValueDto } from '../models/index';
+import type { ArrayVariableItemsDto, ArrayVariableValueDto, BooleanVariableValueDto, DateVariableValueDto, DeleteValues200Response, DialogVariableArrayMutationResponseDto, DialogVariableResponseDto, DialogVariableValueResponseDto, DialogVariableWriteResponseDto, NumberVariableValueDto, ObjectVariableValueDto, ReactionVariableValueDto, StringVariableValueDto } from '../models/index';
 export interface DeleteValuesRequest {
     dialogId: string;
     name: string;
@@ -65,6 +65,13 @@ export interface UpdateValuesObjectRequest {
     objectVariableValueDto: ObjectVariableValueDto;
     writeMode?: UpdateValuesObjectWriteModeEnum;
     acceptLanguage?: UpdateValuesObjectAcceptLanguageEnum;
+}
+export interface UpdateValuesReactionRequest {
+    dialogId: string;
+    name: string;
+    reactionVariableValueDto: ReactionVariableValueDto;
+    writeMode?: UpdateValuesReactionWriteModeEnum;
+    acceptLanguage?: UpdateValuesReactionAcceptLanguageEnum;
 }
 export interface UpdateValuesStringRequest {
     dialogId: string;
@@ -195,6 +202,16 @@ export declare class DialogVariablesApi extends runtime.BaseAPI {
      *
      */
     updateValuesObject(requestParameters: UpdateValuesObjectRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogVariableWriteResponseDto>;
+    /**
+     * write_mode.
+     *
+     */
+    updateValuesReactionRaw(requestParameters: UpdateValuesReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DialogVariableWriteResponseDto>>;
+    /**
+     * write_mode.
+     *
+     */
+    updateValuesReaction(requestParameters: UpdateValuesReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogVariableWriteResponseDto>;
     /**
      * write_mode.
      *
@@ -366,6 +383,22 @@ export declare const UpdateValuesObjectAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateValuesObjectAcceptLanguageEnum = typeof UpdateValuesObjectAcceptLanguageEnum[keyof typeof UpdateValuesObjectAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateValuesReactionWriteModeEnum: {
+    readonly Overwrite: "overwrite";
+    readonly IfAbsent: "if_absent";
+};
+export type UpdateValuesReactionWriteModeEnum = typeof UpdateValuesReactionWriteModeEnum[keyof typeof UpdateValuesReactionWriteModeEnum];
+/**
+ * @export
+ */
+export declare const UpdateValuesReactionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateValuesReactionAcceptLanguageEnum = typeof UpdateValuesReactionAcceptLanguageEnum[keyof typeof UpdateValuesReactionAcceptLanguageEnum];
 /**
  * @export
  */

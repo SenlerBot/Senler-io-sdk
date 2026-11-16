@@ -39,6 +39,7 @@ exports.PublicModelResponseDtoQualityLevelEnum = {
 exports.PublicModelResponseDtoTypeEnum = {
     Decision: 'decision',
     Text: 'text',
+    LiveVoice: 'live_voice',
     ImageGeneration: 'image_generation',
     AudioGeneration: 'audio_generation',
     SpeechRecognition: 'speech_recognition'

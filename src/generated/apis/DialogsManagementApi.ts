@@ -145,6 +145,7 @@ export interface GetBulkPreviewRequest {
     projectId: string;
     action: GetBulkPreviewActionEnum;
     scope: GetBulkPreviewScopeEnum;
+    messageRecipientsOnly?: boolean;
     operatorUserIds?: Array<string>;
     supportGroupId?: Array<string>;
     supportGroupAssignment?: GetBulkPreviewSupportGroupAssignmentEnum;
@@ -813,6 +814,10 @@ export class DialogsManagementApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['messageRecipientsOnly'] != null) {
+            queryParameters['message_recipients_only'] = requestParameters['messageRecipientsOnly'];
+        }
 
         if (requestParameters['operatorUserIds'] != null) {
             queryParameters['operator_user_ids'] = requestParameters['operatorUserIds'];

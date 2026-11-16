@@ -27,6 +27,18 @@ export interface ImportResourcePackageDto {
      * @memberof ImportResourcePackageDto
      */
     name?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ImportResourcePackageDto
+     */
+    activate?: boolean;
+    /**
+     * . .
+     * @type {Array<string>}
+     * @memberof ImportResourcePackageDto
+     */
+    channelIds?: Array<string>;
 }
 /**
  * Check if a given object implements the ImportResourcePackageDto interface.

@@ -37,6 +37,7 @@ function CreateInvitationDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'userId': json['user_id'] == null ? undefined : json['user_id'],
         'email': json['email'] == null ? undefined : json['email'],
+        'bookingSpecialistId': json['booking_specialist_id'] == null ? undefined : json['booking_specialist_id'],
         'role': (0, ProjectRole_1.ProjectRoleFromJSON)(json['role']),
     };
 }
@@ -50,6 +51,7 @@ function CreateInvitationDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'user_id': value['userId'],
         'email': value['email'],
+        'booking_specialist_id': value['bookingSpecialistId'],
         'role': (0, ProjectRole_1.ProjectRoleToJSON)(value['role']),
     };
 }

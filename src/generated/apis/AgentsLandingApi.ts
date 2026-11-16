@@ -94,8 +94,8 @@ import {
 export interface DeleteLandingBlocksRequest {
     agentId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     deleteLandingBlockDto: DeleteLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: DeleteLandingBlocksAcceptLanguageEnum;
 }
 
@@ -146,15 +146,15 @@ export interface LandingAssetsUploadUrlRequest {
 export interface LandingBlocksMoveRequest {
     agentId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     moveLandingBlockDto: MoveLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingBlocksMoveAcceptLanguageEnum;
 }
 
 export interface LandingPersonalizationRequest {
     agentId: string;
-    xLandingEditorSessionId: string;
     mutateAgentLandingPersonalizationDto: MutateAgentLandingPersonalizationDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingPersonalizationAcceptLanguageEnum;
 }
 
@@ -172,15 +172,15 @@ export interface LandingPreviewLeadRequest {
 
 export interface UpdateLandingDraftRequest {
     agentId: string;
-    xLandingEditorSessionId: string;
     updateLandingDraftDto: UpdateLandingDraftDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingDraftAcceptLanguageEnum;
 }
 
 export interface UpdateLandingRealtimeFocusRequest {
     agentId: string;
-    xLandingEditorSessionId: string;
     updateLandingRealtimeFocusDto: UpdateLandingRealtimeFocusDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingRealtimeFocusAcceptLanguageEnum;
 }
 
@@ -205,13 +205,6 @@ export class AgentsLandingApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'blockId',
                 'Required parameter "blockId" was null or undefined when calling deleteLandingBlocks().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling deleteLandingBlocks().'
             );
         }
 
@@ -332,7 +325,7 @@ export class AgentsLandingApi extends runtime.BaseAPI {
     }
 
     /**
-     * . , , .
+     * . snapshot. valid , JavaScript; .
      *
      */
     async getLandingPublicationValidationRaw(requestParameters: GetLandingPublicationValidationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicationValidationDto>> {
@@ -380,7 +373,7 @@ export class AgentsLandingApi extends runtime.BaseAPI {
     }
 
     /**
-     * . , , .
+     * . snapshot. valid , JavaScript; .
      *
      */
     async getLandingPublicationValidation(requestParameters: GetLandingPublicationValidationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationValidationDto> {
@@ -783,13 +776,6 @@ export class AgentsLandingApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingBlocksMove().'
-            );
-        }
-
         if (requestParameters['moveLandingBlockDto'] == null) {
             throw new runtime.RequiredError(
                 'moveLandingBlockDto',
@@ -858,13 +844,6 @@ export class AgentsLandingApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'agentId',
                 'Required parameter "agentId" was null or undefined when calling landingPersonalization().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling landingPersonalization().'
             );
         }
 
@@ -1062,7 +1041,7 @@ export class AgentsLandingApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * settings expected_settings_revision; . .
      *
      */
     async updateLandingDraftRaw(requestParameters: UpdateLandingDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>> {
@@ -1070,13 +1049,6 @@ export class AgentsLandingApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'agentId',
                 'Required parameter "agentId" was null or undefined when calling updateLandingDraft().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingDraft().'
             );
         }
 
@@ -1131,7 +1103,7 @@ export class AgentsLandingApi extends runtime.BaseAPI {
     }
 
     /**
-     * .
+     * settings expected_settings_revision; . .
      *
      */
     async updateLandingDraft(requestParameters: UpdateLandingDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto> {
@@ -1148,13 +1120,6 @@ export class AgentsLandingApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'agentId',
                 'Required parameter "agentId" was null or undefined when calling updateLandingRealtimeFocus().'
-            );
-        }
-
-        if (requestParameters['xLandingEditorSessionId'] == null) {
-            throw new runtime.RequiredError(
-                'xLandingEditorSessionId',
-                'Required parameter "xLandingEditorSessionId" was null or undefined when calling updateLandingRealtimeFocus().'
             );
         }
 

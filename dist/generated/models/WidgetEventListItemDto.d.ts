@@ -19,6 +19,7 @@ import type { WidgetEventToolDto } from './WidgetEventToolDto';
 import type { EventSenderDto } from './EventSenderDto';
 import type { WidgetButtonClickDto } from './WidgetButtonClickDto';
 import type { WidgetEventStatusDto } from './WidgetEventStatusDto';
+import type { EventLiveVoiceDto } from './EventLiveVoiceDto';
 import type { WidgetAttachmentDto } from './WidgetAttachmentDto';
 /**
  * WidgetEventListItemDto.
@@ -26,6 +27,12 @@ import type { WidgetAttachmentDto } from './WidgetAttachmentDto';
  * @interface WidgetEventListItemDto
  */
 export interface WidgetEventListItemDto {
+    /**
+     *
+     * @type {EventLiveVoiceDto}
+     * @memberof WidgetEventListItemDto
+     */
+    liveVoice?: EventLiveVoiceDto;
     /**
      * ID
      * @type {string}

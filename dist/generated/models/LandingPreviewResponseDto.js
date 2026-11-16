@@ -27,6 +27,8 @@ const LandingExperimentMarkerDto_1 = require("./LandingExperimentMarkerDto");
  * Check if a given object implements the LandingPreviewResponseDto interface.
  */
 function instanceOfLandingPreviewResponseDto(value) {
+    if (!('bookingToken' in value) || value['bookingToken'] === undefined)
+        return false;
     if (!('landing' in value) || value['landing'] === undefined)
         return false;
     if (!('visitId' in value) || value['visitId'] === undefined)
@@ -38,8 +40,6 @@ function instanceOfLandingPreviewResponseDto(value) {
     if (!('eventToken' in value) || value['eventToken'] === undefined)
         return false;
     if (!('exposureMarkers' in value) || value['exposureMarkers'] === undefined)
-        return false;
-    if (!('exposures' in value) || value['exposures'] === undefined)
         return false;
     if (!('decisions' in value) || value['decisions'] === undefined)
         return false;
@@ -55,13 +55,14 @@ function LandingPreviewResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'bookingToken': json['booking_token'],
         'landing': (0, LandingPublicResponseDto_1.LandingPublicResponseDtoFromJSON)(json['landing']),
         'visitId': json['visit_id'],
         'pageVariantId': json['page_variant_id'],
         'selectedBlocks': (json['selected_blocks'].map(LandingResolvedBlockDto_1.LandingResolvedBlockDtoFromJSON)),
         'eventToken': json['event_token'],
         'exposureMarkers': (json['exposure_markers'].map(LandingExperimentMarkerDto_1.LandingExperimentMarkerDtoFromJSON)),
-        'exposures': (json['exposures'].map(LandingExperimentExposureDto_1.LandingExperimentExposureDtoFromJSON)),
+        'exposures': json['exposures'] == null ? undefined : (json['exposures'].map(LandingExperimentExposureDto_1.LandingExperimentExposureDtoFromJSON)),
         'decisions': (json['decisions'].map(LandingRuleDecisionDto_1.LandingRuleDecisionDtoFromJSON)),
         'unavailableContext': json['unavailable_context'],
     };
@@ -74,13 +75,14 @@ function LandingPreviewResponseDtoToJSONTyped(value, ignoreDiscriminator = false
         return value;
     }
     return {
+        'booking_token': value['bookingToken'],
         'landing': (0, LandingPublicResponseDto_1.LandingPublicResponseDtoToJSON)(value['landing']),
         'visit_id': value['visitId'],
         'page_variant_id': value['pageVariantId'],
         'selected_blocks': (value['selectedBlocks'].map(LandingResolvedBlockDto_1.LandingResolvedBlockDtoToJSON)),
         'event_token': value['eventToken'],
         'exposure_markers': (value['exposureMarkers'].map(LandingExperimentMarkerDto_1.LandingExperimentMarkerDtoToJSON)),
-        'exposures': (value['exposures'].map(LandingExperimentExposureDto_1.LandingExperimentExposureDtoToJSON)),
+        'exposures': value['exposures'] == null ? undefined : (value['exposures'].map(LandingExperimentExposureDto_1.LandingExperimentExposureDtoToJSON)),
         'decisions': (value['decisions'].map(LandingRuleDecisionDto_1.LandingRuleDecisionDtoToJSON)),
         'unavailable_context': value['unavailableContext'],
     };

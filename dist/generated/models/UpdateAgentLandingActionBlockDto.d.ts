@@ -17,7 +17,7 @@ import type { AgentLandingVariantInitialContentDtoAction } from './AgentLandingV
  */
 export interface UpdateAgentLandingActionBlockDto {
     /**
-     *
+     * revision . 409 .
      * @type {number}
      * @memberof UpdateAgentLandingActionBlockDto
      */
@@ -35,7 +35,7 @@ export interface UpdateAgentLandingActionBlockDto {
      */
     isVisible: boolean;
     /**
-     * ; type (mixed type)
+     * payload, ; type . . (mixed type)
      * @type {{ [key: string]: any; }}
      * @memberof UpdateAgentLandingActionBlockDto
      */

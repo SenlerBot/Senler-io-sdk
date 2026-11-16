@@ -39,6 +39,7 @@ exports.ResourcePackageImportProcessResultDtoStageEnum = {
     DialogVariables: 'dialog_variables',
     MetricDefinitions: 'metric_definitions',
     Segments: 'segments',
+    Bookings: 'bookings',
     Landings: 'landings',
     Deliveries: 'deliveries',
     KnowledgeFolders: 'knowledge_folders',
@@ -54,6 +55,8 @@ exports.ResourcePackageImportProcessResultDtoStageEnum = {
  * Check if a given object implements the ResourcePackageImportProcessResultDto interface.
  */
 function instanceOfResourcePackageImportProcessResultDto(value) {
+    if (!('activated' in value) || value['activated'] === undefined)
+        return false;
     if (!('importId' in value) || value['importId'] === undefined)
         return false;
     if (!('packageId' in value) || value['packageId'] === undefined)
@@ -82,6 +85,7 @@ function ResourcePackageImportProcessResultDtoFromJSONTyped(json, ignoreDiscrimi
         return json;
     }
     return {
+        'activated': json['activated'],
         'importId': json['import_id'],
         'packageId': json['package_id'],
         'targetProjectId': json['target_project_id'],
@@ -103,6 +107,7 @@ function ResourcePackageImportProcessResultDtoToJSONTyped(value, ignoreDiscrimin
         return value;
     }
     return {
+        'activated': value['activated'],
         'import_id': value['importId'],
         'package_id': value['packageId'],
         'target_project_id': value['targetProjectId'],

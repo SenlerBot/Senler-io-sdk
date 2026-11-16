@@ -17,7 +17,7 @@ import type { SimulateAutomationTriggerTestEventPayloadDto } from './SimulateAut
  */
 export interface SimulateAutomationTriggerTestEventDto {
     /**
-     * : bot_started, chat_member_added, chat_member_removed, message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, segment_subscribed, app_event_received.
+     * : bot_started, chat_member_added, chat_member_removed, message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, dialog_closed, dialog_operator_assigned, dialog_operator_unassigned, dialog_snoozed, segment_subscribed, app_event_received, booking_changed.
      * @type {string}
      * @memberof SimulateAutomationTriggerTestEventDto
      */
@@ -42,8 +42,13 @@ export declare const SimulateAutomationTriggerTestEventDtoEventTypeEnum: {
     readonly LikeAdded: "like_added";
     readonly LikeRemoved: "like_removed";
     readonly LeadBlacklisted: "lead_blacklisted";
+    readonly DialogClosed: "dialog_closed";
+    readonly DialogOperatorAssigned: "dialog_operator_assigned";
+    readonly DialogOperatorUnassigned: "dialog_operator_unassigned";
+    readonly DialogSnoozed: "dialog_snoozed";
     readonly SegmentSubscribed: "segment_subscribed";
     readonly AppEventReceived: "app_event_received";
+    readonly BookingChanged: "booking_changed";
 };
 export type SimulateAutomationTriggerTestEventDtoEventTypeEnum = typeof SimulateAutomationTriggerTestEventDtoEventTypeEnum[keyof typeof SimulateAutomationTriggerTestEventDtoEventTypeEnum];
 /**

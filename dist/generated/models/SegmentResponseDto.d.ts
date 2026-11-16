@@ -17,6 +17,12 @@ import type { SegmentConsentSnapshotDto } from './SegmentConsentSnapshotDto';
  */
 export interface SegmentResponseDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof SegmentResponseDto
+     */
+    suppressAgentResponseOnSubscription: boolean;
+    /**
      * ID
      * @type {string}
      * @memberof SegmentResponseDto

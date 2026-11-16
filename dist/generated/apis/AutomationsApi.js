@@ -46,8 +46,8 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetRuns2AcceptLanguageEnum = exports.GetRunsAcceptLanguageEnum = exports.GetRunsStateEnum = exports.GetRunsStatusEnum = exports.GetOptionsAcceptLanguageEnum = exports.GetOptionsChannelTypeEnum = exports.GetOptionsTypeEnum = exports.GetOperatorOptionsAcceptLanguageEnum = exports.GetOperationsAcceptLanguageEnum = exports.GetNodesSearchAcceptLanguageEnum = exports.GetNodesSearchTypesEnum = exports.GetNodesSearchViewEnum = exports.GetNodesHttpResponseSampleAcceptLanguageEnum = exports.GetNodesAcceptLanguageEnum = exports.GetNodesViewEnum = exports.GetNodeTypesAcceptLanguageEnum = exports.GetNodeTypesAutomationTypeEnum = exports.GetGraphAcceptLanguageEnum = exports.GetGraphViewEnum = exports.GetFunnelOptionsAcceptLanguageEnum = exports.GetDialogsRunsAcceptLanguageEnum = exports.GetDialogsRunsStateEnum = exports.GetDialogsRunsStatusEnum = exports.GetChannelsDeliveryRecoveryAcceptLanguageEnum = exports.GetAttentionAcceptLanguageEnum = exports.GetAttachmentsAcceptLanguageEnum = exports.EdgesAcceptLanguageEnum = exports.DeleteTestTriggerSessionsAcceptLanguageEnum = exports.DeleteNodesAcceptLanguageEnum = exports.DeleteEdgesAcceptLanguageEnum = exports.ChannelsDeliveryRecoveryRetryAcceptLanguageEnum = exports.BatchAcceptLanguageEnum = exports.AutomationsUpdateAcceptLanguageEnum = exports.AutomationsTestDialogMessagesAcceptLanguageEnum = exports.AutomationsPauseAcceptLanguageEnum = exports.AutomationsListAcceptLanguageEnum = exports.AutomationsListChannelTypeEnum = exports.AutomationsListTypeEnum = exports.AutomationsGetVersionsAcceptLanguageEnum = exports.AutomationsGetTestDialogAcceptLanguageEnum = exports.AutomationsGetByIdAcceptLanguageEnum = exports.AutomationsDeactivateAcceptLanguageEnum = exports.AutomationsCreateAcceptLanguageEnum = exports.AutomationsAvatarUploadUrlAcceptLanguageEnum = exports.AutomationsAvatarFromUrlAcceptLanguageEnum = exports.AutomationsAvatarConfirmAcceptLanguageEnum = exports.AttachmentsUploadUrlAcceptLanguageEnum = exports.AttachmentsFromUrlAcceptLanguageEnum = exports.AttachmentsConfirmAcceptLanguageEnum = exports.AutomationsApi = void 0;
-exports.VersionsRestoreAcceptLanguageEnum = exports.ValidateAcceptLanguageEnum = exports.UpdateNodesHttpResponseSampleAcceptLanguageEnum = exports.UpdateNodesAcceptLanguageEnum = exports.TestTriggerSessionsEventsAcceptLanguageEnum = exports.TestTriggerSessionsAcceptLanguageEnum = exports.TestRunsAcceptLanguageEnum = exports.RunsTasksRetryAcceptLanguageEnum = exports.RunsPauseAcceptLanguageEnum = exports.RunsIncidentsResolveAcceptLanguageEnum = exports.RunsCancelAcceptLanguageEnum = exports.RunsAcceptLanguageEnum = exports.ResumeAcceptLanguageEnum = exports.PublishAcceptLanguageEnum = exports.NodesValidateAcceptLanguageEnum = exports.NodesHttpPreviewAcceptLanguageEnum = exports.NodesAcceptLanguageEnum = exports.LayoutAcceptLanguageEnum = exports.GetTestTriggerSessionsCurrentAcceptLanguageEnum = exports.GetTestTriggerSessionsAcceptLanguageEnum = void 0;
+exports.GetRunsStateEnum = exports.GetRunsStatusEnum = exports.GetOptionsAcceptLanguageEnum = exports.GetOptionsChannelTypeEnum = exports.GetOptionsTypeEnum = exports.GetOperatorOptionsAcceptLanguageEnum = exports.GetOperationsAcceptLanguageEnum = exports.GetNodesSearchAcceptLanguageEnum = exports.GetNodesSearchTypesEnum = exports.GetNodesSearchViewEnum = exports.GetNodesHttpResponseSampleAcceptLanguageEnum = exports.GetNodesAcceptLanguageEnum = exports.GetNodesViewEnum = exports.GetNodeTypesAcceptLanguageEnum = exports.GetNodeTypesAutomationTypeEnum = exports.GetGraphAcceptLanguageEnum = exports.GetGraphViewEnum = exports.GetFunnelOptionsAcceptLanguageEnum = exports.GetFormulaCatalogAcceptLanguageEnum = exports.GetDialogsRunsAcceptLanguageEnum = exports.GetDialogsRunsStateEnum = exports.GetDialogsRunsStatusEnum = exports.GetChannelsDeliveryRecoveryAcceptLanguageEnum = exports.GetAttentionAcceptLanguageEnum = exports.GetAttachmentsAcceptLanguageEnum = exports.FormulaPreviewAcceptLanguageEnum = exports.EdgesAcceptLanguageEnum = exports.DeleteTestTriggerSessionsAcceptLanguageEnum = exports.DeleteNodesAcceptLanguageEnum = exports.DeleteEdgesAcceptLanguageEnum = exports.ChannelsDeliveryRecoveryRetryAcceptLanguageEnum = exports.BatchAcceptLanguageEnum = exports.AutomationsUpdateAcceptLanguageEnum = exports.AutomationsTestDialogMessagesAcceptLanguageEnum = exports.AutomationsPauseAcceptLanguageEnum = exports.AutomationsListAcceptLanguageEnum = exports.AutomationsListChannelTypeEnum = exports.AutomationsListTypeEnum = exports.AutomationsGetVersionsAcceptLanguageEnum = exports.AutomationsGetTestDialogAcceptLanguageEnum = exports.AutomationsGetByIdAcceptLanguageEnum = exports.AutomationsDeactivateAcceptLanguageEnum = exports.AutomationsCreateAcceptLanguageEnum = exports.AutomationsAvatarUploadUrlAcceptLanguageEnum = exports.AutomationsAvatarFromUrlAcceptLanguageEnum = exports.AutomationsAvatarConfirmAcceptLanguageEnum = exports.AttachmentsUploadUrlAcceptLanguageEnum = exports.AttachmentsFromUrlAcceptLanguageEnum = exports.AttachmentsConfirmAcceptLanguageEnum = exports.AutomationsApi = void 0;
+exports.VersionsRestoreAcceptLanguageEnum = exports.ValidateAcceptLanguageEnum = exports.UpdateNodesHttpResponseSampleAcceptLanguageEnum = exports.UpdateNodesAcceptLanguageEnum = exports.TestTriggerSessionsEventsAcceptLanguageEnum = exports.TestTriggerSessionsAcceptLanguageEnum = exports.TestRunsAcceptLanguageEnum = exports.RunsTasksRetryAcceptLanguageEnum = exports.RunsPauseAcceptLanguageEnum = exports.RunsIncidentsResolveAcceptLanguageEnum = exports.RunsCancelAcceptLanguageEnum = exports.RunsAcceptLanguageEnum = exports.ResumeAcceptLanguageEnum = exports.PublishAcceptLanguageEnum = exports.NodesValidateAcceptLanguageEnum = exports.NodesHttpPreviewAcceptLanguageEnum = exports.NodesCodePreviewAcceptLanguageEnum = exports.NodesAcceptLanguageEnum = exports.LayoutAcceptLanguageEnum = exports.GetTestTriggerSessionsCurrentAcceptLanguageEnum = exports.GetTestTriggerSessionsAcceptLanguageEnum = exports.GetRuns2AcceptLanguageEnum = exports.GetRunsAcceptLanguageEnum = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -1116,6 +1116,58 @@ class AutomationsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * mathjs-, . evaluate=false variables[].reference. evaluate=true ; null. , , . result_type . valid=false error .
+     *
+     */
+    async formulaPreviewRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling formulaPreview().');
+        }
+        if (requestParameters['automationFormulaPreviewDto'] == null) {
+            throw new runtime.RequiredError('automationFormulaPreviewDto', 'Required parameter "automationFormulaPreviewDto" was null or undefined when calling formulaPreview().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/automations/formula-preview`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.AutomationFormulaPreviewDtoToJSON)(requestParameters['automationFormulaPreviewDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationFormulaPreviewResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * mathjs-, . evaluate=false variables[].reference. evaluate=true ; null. , , . result_type . valid=false error .
+     *
+     */
+    async formulaPreview(requestParameters, initOverrides) {
+        const response = await this.formulaPreviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * , .
      *
      */
@@ -1328,6 +1380,53 @@ class AutomationsApi extends runtime.BaseAPI {
      */
     async getDialogsRuns(requestParameters, initOverrides) {
         const response = await this.getDialogsRunsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * MCP. . action.set_variable variable_operation=formula, variable_formula variable_value_type, variable_value. {{ }}: number(run.year). previewFormula. variable_value .
+     *
+     */
+    async getFormulaCatalogRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getFormulaCatalog().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/automations/formula-catalog`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationFormulaCatalogDtoFromJSON)(jsonValue));
+    }
+    /**
+     * MCP. . action.set_variable variable_operation=formula, variable_formula variable_value_type, variable_value. {{ }}: number(run.year). previewFormula. variable_value .
+     *
+     */
+    async getFormulaCatalog(requestParameters, initOverrides) {
+        const response = await this.getFormulaCatalogRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -1603,6 +1702,9 @@ class AutomationsApi extends runtime.BaseAPI {
         }
         if (requestParameters['expectedRevision'] != null) {
             queryParameters['expected_revision'] = requestParameters['expectedRevision'];
+        }
+        if (requestParameters['messageSourcesOnly'] != null) {
+            queryParameters['message_sources_only'] = requestParameters['messageSourcesOnly'];
         }
         if (requestParameters['nodeIds'] != null) {
             queryParameters['node_ids'] = requestParameters['nodeIds'];
@@ -2145,6 +2247,58 @@ class AutomationsApi extends runtime.BaseAPI {
      */
     async nodes(requestParameters, initOverrides) {
         const response = await this.nodesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . , . ; . , request_id .
+     *
+     */
+    async nodesCodePreviewRaw(requestParameters, initOverrides) {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError('automationId', 'Required parameter "automationId" was null or undefined when calling nodesCodePreview().');
+        }
+        if (requestParameters['nodeId'] == null) {
+            throw new runtime.RequiredError('nodeId', 'Required parameter "nodeId" was null or undefined when calling nodesCodePreview().');
+        }
+        if (requestParameters['automationCodePreviewDto'] == null) {
+            throw new runtime.RequiredError('automationCodePreviewDto', 'Required parameter "automationCodePreviewDto" was null or undefined when calling nodesCodePreview().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_automations"]);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_automations"]);
+        }
+        const response = await this.request({
+            path: `/api/automations/{automationId}/nodes/{nodeId}/code-preview`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))).replace(`{${"nodeId"}}`, encodeURIComponent(String(requestParameters['nodeId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.AutomationCodePreviewDtoToJSON)(requestParameters['automationCodePreviewDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationCodePreviewResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . , . ; . , request_id .
+     *
+     */
+    async nodesCodePreview(requestParameters, initOverrides) {
+        const response = await this.nodesCodePreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -3119,6 +3273,13 @@ exports.EdgesAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.FormulaPreviewAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.GetAttachmentsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -3161,6 +3322,13 @@ exports.GetDialogsRunsStateEnum = {
  * @export
  */
 exports.GetDialogsRunsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetFormulaCatalogAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };
@@ -3238,7 +3406,12 @@ exports.GetNodesSearchTypesEnum = {
     TriggerIncomingMessage: 'trigger.incoming_message',
     TriggerSegmentEntered: 'trigger.segment_entered',
     TriggerEvent: 'trigger.event',
+    TriggerMessageEvent: 'trigger.message_event',
+    TriggerDialogEvent: 'trigger.dialog_event',
+    TriggerLeadEvent: 'trigger.lead_event',
     TriggerAppEvent: 'trigger.app_event',
+    TriggerBooking: 'trigger.booking',
+    ConditionGroup: 'condition.group',
     ConditionVariable: 'condition.variable',
     ConditionAi: 'condition.ai',
     ConditionDateTime: 'condition.date_time',
@@ -3252,7 +3425,9 @@ exports.GetNodesSearchTypesEnum = {
     BranchRandom: 'branch.random',
     ActionSetVariable: 'action.set_variable',
     ActionMessage: 'action.message',
+    ActionDeleteMessage: 'action.delete_message',
     ActionPoll: 'action.poll',
+    ActionTelegramWidget: 'action.telegram_widget',
     ActionTyping: 'action.typing',
     ActionAgentRequest: 'action.agent_request',
     ActionAddSegment: 'action.add_segment',
@@ -3265,9 +3440,12 @@ exports.GetNodesSearchTypesEnum = {
     ActionHandoffToOperator: 'action.handoff_to_operator',
     ActionTableWrite: 'action.table_write',
     ActionHttp: 'action.http',
+    ActionCode: 'action.code',
     ActionApp: 'action.app',
+    ActionBooking: 'action.booking',
     ControlWait: 'control.wait',
-    ControlLoop: 'control.loop'
+    ControlLoop: 'control.loop',
+    ControlReturn: 'control.return'
 };
 /**
  * @export
@@ -3379,6 +3557,13 @@ exports.LayoutAcceptLanguageEnum = {
  * @export
  */
 exports.NodesAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.NodesCodePreviewAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

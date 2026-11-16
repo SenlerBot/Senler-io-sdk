@@ -28,6 +28,12 @@ import {
  */
 export interface SearchLeadsDto {
     /**
+     * . ; next_cursor.
+     * @type {boolean}
+     * @memberof SearchLeadsDto
+     */
+    messageRecipientsOnly?: boolean;
+    /**
      * UUID
      * @type {string}
      * @memberof SearchLeadsDto
@@ -77,6 +83,7 @@ export function SearchLeadsDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
 
+        'messageRecipientsOnly': json['message_recipients_only'] == null ? undefined : json['message_recipients_only'],
         'projectId': json['project_id'],
         'filters': json['filters'] == null ? undefined : LeadsFilterDtoFromJSON(json['filters']),
         'limit': json['limit'] == null ? undefined : json['limit'],
@@ -96,6 +103,7 @@ export function SearchLeadsDtoToJSONTyped(value?: SearchLeadsDto | null, ignoreD
 
     return {
 
+        'message_recipients_only': value['messageRecipientsOnly'],
         'project_id': value['projectId'],
         'filters': LeadsFilterDtoToJSON(value['filters']),
         'limit': value['limit'],

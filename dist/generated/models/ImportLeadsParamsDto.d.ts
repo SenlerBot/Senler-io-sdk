@@ -16,6 +16,18 @@
  */
 export interface ImportLeadsParamsDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof ImportLeadsParamsDto
+     */
+    fileImport?: boolean;
+    /**
+     *
+     * @type {Date}
+     * @memberof ImportLeadsParamsDto
+     */
+    fileExpiresAt?: Date;
+    /**
      * ID
      * @type {string}
      * @memberof ImportLeadsParamsDto

@@ -40,7 +40,7 @@ export interface CreateCoverLandingBlockDto {
      */
     pageVariantId?: string;
     /**
-     *
+     * order_revision . 409 .
      * @type {number}
      * @memberof CreateCoverLandingBlockDto
      */

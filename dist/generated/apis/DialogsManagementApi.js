@@ -404,6 +404,9 @@ class DialogsManagementApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('scope', 'Required parameter "scope" was null or undefined when calling getBulkPreview().');
         }
         const queryParameters = {};
+        if (requestParameters['messageRecipientsOnly'] != null) {
+            queryParameters['message_recipients_only'] = requestParameters['messageRecipientsOnly'];
+        }
         if (requestParameters['operatorUserIds'] != null) {
             queryParameters['operator_user_ids'] = requestParameters['operatorUserIds'];
         }

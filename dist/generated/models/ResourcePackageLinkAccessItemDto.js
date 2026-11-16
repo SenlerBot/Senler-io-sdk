@@ -35,7 +35,10 @@ exports.ResourcePackageLinkAccessItemDtoRootResourceTypeEnum = {
     KnowledgeFile: 'knowledge_file',
     KnowledgeTable: 'knowledge_table',
     Landing: 'landing',
-    MetricDefinition: 'metric_definition'
+    MetricDefinition: 'metric_definition',
+    BookingService: 'booking_service',
+    BookingSpecialist: 'booking_specialist',
+    BookingResource: 'booking_resource'
 };
 /**
  * @export
@@ -50,7 +53,8 @@ exports.ResourcePackageLinkAccessItemDtoSourceSectionEnum = {
     DialogVariables: 'dialog_variables',
     Segments: 'segments',
     Landings: 'landings',
-    Metrics: 'metrics'
+    Metrics: 'metrics',
+    Bookings: 'bookings'
 };
 /**
  * @export

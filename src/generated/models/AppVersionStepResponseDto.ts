@@ -109,6 +109,12 @@ export interface AppVersionStepResponseDto {
      */
     agentResourceId?: string | null;
     /**
+     * ID
+     * @type {string}
+     * @memberof AppVersionStepResponseDto
+     */
+    segmentResourceId?: string | null;
+    /**
      * ,
      * @type {string}
      * @memberof AppVersionStepResponseDto
@@ -167,10 +173,12 @@ export type AppVersionStepResponseDtoPhaseEnum = typeof AppVersionStepResponseDt
  */
 export const AppVersionStepResponseDtoTypeEnum = {
     FillVariables: 'fill_variables',
+    SelectRecipient: 'select_recipient',
     SetDefaultAgent: 'set_default_agent',
     AssignAgentToDialog: 'assign_agent_to_dialog',
     CustomInstruction: 'custom_instruction',
-    SubscriptionLinks: 'subscription_links'
+    SubscriptionLinks: 'subscription_links',
+    ConfigureConsents: 'configure_consents'
 } as const;
 export type AppVersionStepResponseDtoTypeEnum = typeof AppVersionStepResponseDtoTypeEnum[keyof typeof AppVersionStepResponseDtoTypeEnum];
 
@@ -224,6 +232,7 @@ export function AppVersionStepResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
         'description': json['description'] == null ? undefined : LocalizedTextDtoFromJSON(json['description']),
         'isRequired': json['is_required'],
         'agentResourceId': json['agent_resource_id'] == null ? undefined : json['agent_resource_id'],
+        'segmentResourceId': json['segment_resource_id'] == null ? undefined : json['segment_resource_id'],
         'role': json['role'] == null ? undefined : json['role'],
         'variables': ((json['variables'] as Array<any>).map(AppVersionStepVariableResponseDtoFromJSON)),
         'defaultAssignment': json['default_assignment'] == null ? undefined : DefaultAssignmentResponseDtoFromJSON(json['default_assignment']),
@@ -255,6 +264,7 @@ export function AppVersionStepResponseDtoToJSONTyped(value?: AppVersionStepRespo
         'description': LocalizedTextDtoToJSON(value['description']),
         'is_required': value['isRequired'],
         'agent_resource_id': value['agentResourceId'],
+        'segment_resource_id': value['segmentResourceId'],
         'role': value['role'],
         'variables': ((value['variables'] as Array<any>).map(AppVersionStepVariableResponseDtoToJSON)),
         'default_assignment': DefaultAssignmentResponseDtoToJSON(value['defaultAssignment']),

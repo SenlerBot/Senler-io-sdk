@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { LandingSdkSubscriptionResponseDto } from './LandingSdkSubscriptionResponseDto';
+import {
+    LandingSdkSubscriptionResponseDtoFromJSON,
+    LandingSdkSubscriptionResponseDtoFromJSONTyped,
+    LandingSdkSubscriptionResponseDtoToJSON,
+    LandingSdkSubscriptionResponseDtoToJSONTyped,
+} from './LandingSdkSubscriptionResponseDto';
 import type { LandingLaunchSubscribeActionDto } from './LandingLaunchSubscribeActionDto';
 import {
     LandingLaunchSubscribeActionDtoFromJSON,
@@ -27,6 +34,12 @@ import {
  * @interface LandingLaunchContextResponseDto
  */
 export interface LandingLaunchContextResponseDto {
+    /**
+     * SDK
+     * @type {LandingSdkSubscriptionResponseDto}
+     * @memberof LandingLaunchContextResponseDto
+     */
+    sdkSubscription?: LandingSdkSubscriptionResponseDto;
     /**
      * ID
      * @type {string}
@@ -102,6 +115,7 @@ export function LandingLaunchContextResponseDtoFromJSONTyped(json: any, ignoreDi
     }
     return {
 
+        'sdkSubscription': json['sdk_subscription'] == null ? undefined : LandingSdkSubscriptionResponseDtoFromJSON(json['sdk_subscription']),
         'projectPublicId': json['project_public_id'],
         'landingPublicId': json['landing_public_id'],
         'action': LandingLaunchSubscribeActionDtoFromJSON(json['action']),
@@ -124,6 +138,7 @@ export function LandingLaunchContextResponseDtoToJSONTyped(value?: LandingLaunch
 
     return {
 
+        'sdk_subscription': LandingSdkSubscriptionResponseDtoToJSON(value['sdkSubscription']),
         'project_public_id': value['projectPublicId'],
         'landing_public_id': value['landingPublicId'],
         'action': LandingLaunchSubscribeActionDtoToJSON(value['action']),

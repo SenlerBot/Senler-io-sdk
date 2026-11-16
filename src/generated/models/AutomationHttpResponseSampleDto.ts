@@ -20,13 +20,13 @@ import { mapValues } from '../runtime';
  */
 export interface AutomationHttpResponseSampleDto {
     /**
-     * Shared JSON example as original text, or null when no example is saved.
+     * JSON ; null, .
      * @type {string}
      * @memberof AutomationHttpResponseSampleDto
      */
     body: string | null;
     /**
-     * Revision used to prevent concurrent example overwrites.
+     * .
      * @type {number}
      * @memberof AutomationHttpResponseSampleDto
      */

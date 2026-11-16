@@ -47,7 +47,7 @@ export interface RecordLandingVariantEventDto {
      */
     eventId: string;
     /**
-     * : view, exposure, click, activity.
+     * : view, click, activity.
      * @type {string}
      * @memberof RecordLandingVariantEventDto
      */
@@ -71,7 +71,6 @@ export interface RecordLandingVariantEventDto {
  */
 export declare const RecordLandingVariantEventDtoKindEnum: {
     readonly View: "view";
-    readonly Exposure: "exposure";
     readonly Click: "click";
     readonly Activity: "activity";
 };

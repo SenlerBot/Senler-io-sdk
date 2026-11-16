@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateEventsNoteAcceptLanguageEnum = exports.TestDialogMessagesAcceptLanguageEnum = exports.GetUnreadCountAcceptLanguageEnum = exports.GetTestDialogAcceptLanguageEnum = exports.GetNavigationAcceptLanguageEnum = exports.GetMessageNotesAcceptLanguageEnum = exports.GetMarkAllReadBoundaryAcceptLanguageEnum = exports.GetLeadConversationEventsAcceptLanguageEnum = exports.GetLeadConversationAcceptLanguageEnum = exports.GetEventsReactionUsersAcceptLanguageEnum = exports.GetEventsPollOptionVotersAcceptLanguageEnum = exports.GetEventsNoteAcceptLanguageEnum = exports.GetEventsAcceptLanguageEnum = exports.GetEventsAttachmentTypesEnum = exports.GetEventsSortByEnum = exports.GetAiResponseQueueAcceptLanguageEnum = exports.GetAiCostsAcceptLanguageEnum = exports.EventsPollSnapshotRefreshAcceptLanguageEnum = exports.DirectMessageAcceptLanguageEnum = exports.DialogsListAcceptLanguageEnum = exports.DialogsGetByIdAcceptLanguageEnum = exports.DialogsCreateAcceptLanguageEnum = exports.DialogsApi = void 0;
+exports.UpdateEventsNoteAcceptLanguageEnum = exports.TestDialogMessagesAcceptLanguageEnum = exports.GetUnreadCountAcceptLanguageEnum = exports.GetTestDialogAcceptLanguageEnum = exports.GetNavigationAcceptLanguageEnum = exports.GetMessageNotesAcceptLanguageEnum = exports.GetMarkAllReadBoundaryAcceptLanguageEnum = exports.GetLiveVoiceAcceptLanguageEnum = exports.GetLeadConversationEventsAcceptLanguageEnum = exports.GetLeadConversationAcceptLanguageEnum = exports.GetEventsReactionUsersAcceptLanguageEnum = exports.GetEventsPollOptionVotersAcceptLanguageEnum = exports.GetEventsNoteAcceptLanguageEnum = exports.GetEventsAcceptLanguageEnum = exports.GetEventsAttachmentTypesEnum = exports.GetEventsSortByEnum = exports.GetAiResponseQueueAcceptLanguageEnum = exports.GetAiCostsAcceptLanguageEnum = exports.EventsPollSnapshotRefreshAcceptLanguageEnum = exports.DirectMessageAcceptLanguageEnum = exports.DialogsListAcceptLanguageEnum = exports.DialogsGetByIdAcceptLanguageEnum = exports.DialogsCreateAcceptLanguageEnum = exports.DialogsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -183,9 +183,6 @@ class DialogsApi extends runtime.BaseAPI {
      *
      */
     async directMessageRaw(requestParameters, initOverrides) {
-        if (requestParameters['idempotencyKey'] == null) {
-            throw new runtime.RequiredError('idempotencyKey', 'Required parameter "idempotencyKey" was null or undefined when calling directMessage().');
-        }
         if (requestParameters['directMessageDto'] == null) {
             throw new runtime.RequiredError('directMessageDto', 'Required parameter "directMessageDto" was null or undefined when calling directMessage().');
         }
@@ -194,9 +191,6 @@ class DialogsApi extends runtime.BaseAPI {
         headerParameters['Content-Type'] = 'application/json';
         if (requestParameters['idempotencyKey'] != null) {
             headerParameters['idempotency-key'] = String(requestParameters['idempotencyKey']);
-        }
-        if (requestParameters['idempotencyKey2'] != null) {
-            headerParameters['Idempotency-Key'] = String(requestParameters['idempotencyKey2']);
         }
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -711,6 +705,56 @@ class DialogsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * . after , 200 .
+     *
+     */
+    async getLiveVoiceRaw(requestParameters, initOverrides) {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError('dialogId', 'Required parameter "dialogId" was null or undefined when calling getLiveVoice().');
+        }
+        if (requestParameters['sessionId'] == null) {
+            throw new runtime.RequiredError('sessionId', 'Required parameter "sessionId" was null or undefined when calling getLiveVoice().');
+        }
+        const queryParameters = {};
+        if (requestParameters['after'] != null) {
+            queryParameters['after'] = requestParameters['after'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/dialogs/{dialog_id}/live-voice/{session_id}`.replace(`{${"dialog_id"}}`, encodeURIComponent(String(requestParameters['dialogId']))).replace(`{${"session_id"}}`, encodeURIComponent(String(requestParameters['sessionId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LiveVoiceArchiveDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . after , 200 .
+     *
+     */
+    async getLiveVoice(requestParameters, initOverrides) {
+        const response = await this.getLiveVoiceRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * . read_before POST /api/dialogs/mark-all-read, .
      *
      */
@@ -1113,6 +1157,13 @@ exports.GetLeadConversationAcceptLanguageEnum = {
  * @export
  */
 exports.GetLeadConversationEventsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetLiveVoiceAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

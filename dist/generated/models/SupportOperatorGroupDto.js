@@ -30,6 +30,10 @@ function instanceOfSupportOperatorGroupDto(value) {
         return false;
     if (!('memberIds' in value) || value['memberIds'] === undefined)
         return false;
+    if (!('requireShiftCheckIn' in value) || value['requireShiftCheckIn'] === undefined)
+        return false;
+    if (!('requireSchedule' in value) || value['requireSchedule'] === undefined)
+        return false;
     return true;
 }
 function SupportOperatorGroupDtoFromJSON(json) {
@@ -44,6 +48,8 @@ function SupportOperatorGroupDtoFromJSONTyped(json, ignoreDiscriminator) {
         'name': json['name'],
         'isActive': json['is_active'],
         'memberIds': json['member_ids'],
+        'requireShiftCheckIn': json['require_shift_check_in'],
+        'requireSchedule': json['require_schedule'],
     };
 }
 function SupportOperatorGroupDtoToJSON(json) {
@@ -58,5 +64,7 @@ function SupportOperatorGroupDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'name': value['name'],
         'is_active': value['isActive'],
         'member_ids': value['memberIds'],
+        'require_shift_check_in': value['requireShiftCheckIn'],
+        'require_schedule': value['requireSchedule'],
     };
 }

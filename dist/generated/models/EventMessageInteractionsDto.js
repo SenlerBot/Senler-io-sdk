@@ -23,6 +23,7 @@ const EventMessageEditingDto_1 = require("./EventMessageEditingDto");
 const EventMessageReactionDto_1 = require("./EventMessageReactionDto");
 const EventMessageForwardingDto_1 = require("./EventMessageForwardingDto");
 const EventMessageMentionsDto_1 = require("./EventMessageMentionsDto");
+const EventTelegramWidgetDto_1 = require("./EventTelegramWidgetDto");
 const EventMessagePinningDto_1 = require("./EventMessagePinningDto");
 const EventMessageRepliesDto_1 = require("./EventMessageRepliesDto");
 const EventMessageViewsDto_1 = require("./EventMessageViewsDto");
@@ -42,6 +43,7 @@ function EventMessageInteractionsDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'telegramWidget': json['telegram_widget'] == null ? undefined : (0, EventTelegramWidgetDto_1.EventTelegramWidgetDtoFromJSON)(json['telegram_widget']),
         'reactions': json['reactions'] == null ? undefined : (json['reactions'].map(EventMessageReactionDto_1.EventMessageReactionDtoFromJSON)),
         'poll': json['poll'] == null ? undefined : (0, EventPollSnapshotDto_1.EventPollSnapshotDtoFromJSON)(json['poll']),
         'checklist': json['checklist'] == null ? undefined : (0, EventChecklistSnapshotDto_1.EventChecklistSnapshotDtoFromJSON)(json['checklist']),
@@ -63,6 +65,7 @@ function EventMessageInteractionsDtoToJSONTyped(value, ignoreDiscriminator = fal
         return value;
     }
     return {
+        'telegram_widget': (0, EventTelegramWidgetDto_1.EventTelegramWidgetDtoToJSON)(value['telegramWidget']),
         'reactions': value['reactions'] == null ? undefined : (value['reactions'].map(EventMessageReactionDto_1.EventMessageReactionDtoToJSON)),
         'poll': (0, EventPollSnapshotDto_1.EventPollSnapshotDtoToJSON)(value['poll']),
         'checklist': (0, EventChecklistSnapshotDto_1.EventChecklistSnapshotDtoToJSON)(value['checklist']),

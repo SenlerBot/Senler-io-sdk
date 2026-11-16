@@ -106,7 +106,8 @@ export const ProjectVariableResponseDtoTypeEnum = {
     Json: 'json',
     Date: 'date',
     Array: 'array',
-    Object: 'object'
+    Object: 'object',
+    Reaction: 'reaction'
 } as const;
 export type ProjectVariableResponseDtoTypeEnum = typeof ProjectVariableResponseDtoTypeEnum[keyof typeof ProjectVariableResponseDtoTypeEnum];
 

@@ -48,6 +48,13 @@ import {
     EventMessageMentionsDtoToJSON,
     EventMessageMentionsDtoToJSONTyped,
 } from './EventMessageMentionsDto';
+import type { EventTelegramWidgetDto } from './EventTelegramWidgetDto';
+import {
+    EventTelegramWidgetDtoFromJSON,
+    EventTelegramWidgetDtoFromJSONTyped,
+    EventTelegramWidgetDtoToJSON,
+    EventTelegramWidgetDtoToJSONTyped,
+} from './EventTelegramWidgetDto';
 import type { EventMessagePinningDto } from './EventMessagePinningDto';
 import {
     EventMessagePinningDtoFromJSON,
@@ -90,6 +97,12 @@ import {
  * @interface EventMessageInteractionsDto
  */
 export interface EventMessageInteractionsDto {
+    /**
+     * Telegram
+     * @type {EventTelegramWidgetDto}
+     * @memberof EventMessageInteractionsDto
+     */
+    telegramWidget?: EventTelegramWidgetDto;
     /**
      *
      * @type {Array<EventMessageReactionDto>}
@@ -175,6 +188,7 @@ export function EventMessageInteractionsDtoFromJSONTyped(json: any, ignoreDiscri
     }
     return {
 
+        'telegramWidget': json['telegram_widget'] == null ? undefined : EventTelegramWidgetDtoFromJSON(json['telegram_widget']),
         'reactions': json['reactions'] == null ? undefined : ((json['reactions'] as Array<any>).map(EventMessageReactionDtoFromJSON)),
         'poll': json['poll'] == null ? undefined : EventPollSnapshotDtoFromJSON(json['poll']),
         'checklist': json['checklist'] == null ? undefined : EventChecklistSnapshotDtoFromJSON(json['checklist']),
@@ -200,6 +214,7 @@ export function EventMessageInteractionsDtoToJSONTyped(value?: EventMessageInter
 
     return {
 
+        'telegram_widget': EventTelegramWidgetDtoToJSON(value['telegramWidget']),
         'reactions': value['reactions'] == null ? undefined : ((value['reactions'] as Array<any>).map(EventMessageReactionDtoToJSON)),
         'poll': EventPollSnapshotDtoToJSON(value['poll']),
         'checklist': EventChecklistSnapshotDtoToJSON(value['checklist']),

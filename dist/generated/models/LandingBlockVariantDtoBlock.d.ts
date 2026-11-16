@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LandingBookingBlockResponseDto } from './LandingBookingBlockResponseDto';
 import type { LandingButtonBlockResponseDto } from './LandingButtonBlockResponseDto';
 import type { LandingCoverBlockResponseDto } from './LandingCoverBlockResponseDto';
 import type { LandingFeaturesBlockResponseDto } from './LandingFeaturesBlockResponseDto';
@@ -27,6 +28,8 @@ import type { LandingWidgetBlockResponseDto } from './LandingWidgetBlockResponse
  * @export
  */
 export type LandingBlockVariantDtoBlock = {
+    type: 'booking';
+} & LandingBookingBlockResponseDto | {
     type: 'button';
 } & LandingButtonBlockResponseDto | {
     type: 'cover';

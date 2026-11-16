@@ -32,8 +32,13 @@ exports.AutomationTriggerTestConditionResponseDtoEventTypeEnum = {
     LikeAdded: 'like_added',
     LikeRemoved: 'like_removed',
     LeadBlacklisted: 'lead_blacklisted',
+    DialogClosed: 'dialog_closed',
+    DialogOperatorAssigned: 'dialog_operator_assigned',
+    DialogOperatorUnassigned: 'dialog_operator_unassigned',
+    DialogSnoozed: 'dialog_snoozed',
     SegmentSubscribed: 'segment_subscribed',
-    AppEventReceived: 'app_event_received'
+    AppEventReceived: 'app_event_received',
+    BookingChanged: 'booking_changed'
 };
 /**
  * @export

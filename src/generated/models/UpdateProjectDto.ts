@@ -35,6 +35,12 @@ import {
  */
 export interface UpdateProjectDto {
     /**
+     * IANA;
+     * @type {string}
+     * @memberof UpdateProjectDto
+     */
+    timezone?: string;
+    /**
      *
      * @type {string}
      * @memberof UpdateProjectDto
@@ -145,6 +151,7 @@ export function UpdateProjectDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
 
+        'timezone': json['timezone'] == null ? undefined : json['timezone'],
         'name': json['name'] == null ? undefined : json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
@@ -171,6 +178,7 @@ export function UpdateProjectDtoToJSONTyped(value?: UpdateProjectDto | null, ign
 
     return {
 
+        'timezone': value['timezone'],
         'name': value['name'],
         'description': value['description'],
         'avatar_url': value['avatarUrl'],

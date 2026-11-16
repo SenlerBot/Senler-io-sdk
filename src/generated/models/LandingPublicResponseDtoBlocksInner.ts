@@ -12,6 +12,13 @@
  * Do not edit the class manually.
  */
 
+import type { LandingPublicBookingBlockDto } from './LandingPublicBookingBlockDto';
+import {
+    instanceOfLandingPublicBookingBlockDto,
+    LandingPublicBookingBlockDtoFromJSON,
+    LandingPublicBookingBlockDtoFromJSONTyped,
+    LandingPublicBookingBlockDtoToJSON,
+} from './LandingPublicBookingBlockDto';
 import type { LandingPublicButtonBlockDto } from './LandingPublicButtonBlockDto';
 import {
     instanceOfLandingPublicButtonBlockDto,
@@ -102,7 +109,7 @@ import {
  * : . , .
  * @export
  */
-export type LandingPublicResponseDtoBlocksInner = { type: 'button' } & LandingPublicButtonBlockDto | { type: 'cover' } & LandingPublicCoverBlockDto | { type: 'features' } & LandingPublicFeaturesBlockDto | { type: 'html' } & LandingPublicHtmlBlockDto | { type: 'image' } & LandingPublicImageBlockDto | { type: 'other' } & LandingPublicOtherBlockDto | { type: 'products' } & LandingPublicProductsBlockDto | { type: 'reviews' } & LandingPublicReviewsBlockDto | { type: 'text' } & LandingPublicTextBlockDto | { type: 'timer' } & LandingPublicTimerBlockDto | { type: 'video' } & LandingPublicVideoBlockDto | { type: 'widget' } & LandingPublicWidgetBlockDto;
+export type LandingPublicResponseDtoBlocksInner = { type: 'booking' } & LandingPublicBookingBlockDto | { type: 'button' } & LandingPublicButtonBlockDto | { type: 'cover' } & LandingPublicCoverBlockDto | { type: 'features' } & LandingPublicFeaturesBlockDto | { type: 'html' } & LandingPublicHtmlBlockDto | { type: 'image' } & LandingPublicImageBlockDto | { type: 'other' } & LandingPublicOtherBlockDto | { type: 'products' } & LandingPublicProductsBlockDto | { type: 'reviews' } & LandingPublicReviewsBlockDto | { type: 'text' } & LandingPublicTextBlockDto | { type: 'timer' } & LandingPublicTimerBlockDto | { type: 'video' } & LandingPublicVideoBlockDto | { type: 'widget' } & LandingPublicWidgetBlockDto;
 
 export function LandingPublicResponseDtoBlocksInnerFromJSON(json: any): LandingPublicResponseDtoBlocksInner {
     return LandingPublicResponseDtoBlocksInnerFromJSONTyped(json, false);
@@ -113,6 +120,8 @@ export function LandingPublicResponseDtoBlocksInnerFromJSONTyped(json: any, igno
         return json;
     }
     switch (json['type']) {
+        case 'booking':
+            return Object.assign({}, LandingPublicBookingBlockDtoFromJSONTyped(json, true), { type: 'booking' } as const);
         case 'button':
             return Object.assign({}, LandingPublicButtonBlockDtoFromJSONTyped(json, true), { type: 'button' } as const);
         case 'cover':
@@ -151,6 +160,8 @@ export function LandingPublicResponseDtoBlocksInnerToJSONTyped(value?: LandingPu
         return value;
     }
     switch (value['type']) {
+        case 'booking':
+            return Object.assign({}, LandingPublicBookingBlockDtoToJSON(value), { type: 'booking' } as const);
         case 'button':
             return Object.assign({}, LandingPublicButtonBlockDtoToJSON(value), { type: 'button' } as const);
         case 'cover':

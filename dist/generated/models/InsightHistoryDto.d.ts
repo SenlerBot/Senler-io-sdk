@@ -17,13 +17,13 @@ import type { InsightHistoryItemDto } from './InsightHistoryItemDto';
  */
 export interface InsightHistoryDto {
     /**
-     * Up to 20 saved or unfinished summaries, newest first.
+     * 20 , .
      * @type {Array<InsightHistoryItemDto>}
      * @memberof InsightHistoryDto
      */
     items: Array<InsightHistoryItemDto>;
     /**
-     * Pass this value as cursor for the next page. Null when there are no older runs.
+     * cursor ; null, .
      * @type {string}
      * @memberof InsightHistoryDto
      */

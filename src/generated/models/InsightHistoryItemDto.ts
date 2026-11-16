@@ -42,19 +42,19 @@ import {
  */
 export interface InsightHistoryItemDto {
     /**
-     * Stable run identifier, including reports created before background execution.
+     * , , .
      * @type {string}
      * @memberof InsightHistoryItemDto
      */
     id: string;
     /**
-     * Background job to reopen, or null for a saved report.
+     * ; null .
      * @type {string}
      * @memberof InsightHistoryItemDto
      */
     jobId: string | null;
     /**
-     * Saved summary to reopen, or null until it is ready.
+     * ; null .
      * @type {string}
      * @memberof InsightHistoryItemDto
      */
@@ -78,7 +78,7 @@ export interface InsightHistoryItemDto {
      */
     trigger: SummarizationTrigger;
     /**
-     * Actual charges in credit minor units (1 credit = 10000 units).
+     * ; 1 = 10000 .
      * @type {number}
      * @memberof InsightHistoryItemDto
      */

@@ -32,6 +32,7 @@ import type {
   GetEvents200Response,
   LeadConversationEventsDto,
   LeadConversationSummaryDto,
+  LiveVoiceArchiveDto,
   MarkAllDialogsReadBoundaryResponseDto,
   PaginatedDialogsDto,
   QueryDialogsDto,
@@ -76,6 +77,8 @@ import {
     LeadConversationEventsDtoToJSON,
     LeadConversationSummaryDtoFromJSON,
     LeadConversationSummaryDtoToJSON,
+    LiveVoiceArchiveDtoFromJSON,
+    LiveVoiceArchiveDtoToJSON,
     MarkAllDialogsReadBoundaryResponseDtoFromJSON,
     MarkAllDialogsReadBoundaryResponseDtoToJSON,
     PaginatedDialogsDtoFromJSON,
@@ -110,9 +113,8 @@ export interface DialogsListRequest {
 }
 
 export interface DirectMessageRequest {
-    idempotencyKey: string;
     directMessageDto: DirectMessageDto;
-    idempotencyKey2?: string;
+    idempotencyKey?: string;
     acceptLanguage?: DirectMessageAcceptLanguageEnum;
 }
 
@@ -185,6 +187,13 @@ export interface GetLeadConversationEventsRequest {
     after?: string;
     limit?: number;
     acceptLanguage?: GetLeadConversationEventsAcceptLanguageEnum;
+}
+
+export interface GetLiveVoiceRequest {
+    dialogId: string;
+    sessionId: string;
+    after?: number;
+    acceptLanguage?: GetLiveVoiceAcceptLanguageEnum;
 }
 
 export interface GetMarkAllReadBoundaryRequest {
@@ -404,13 +413,6 @@ export class DialogsApi extends runtime.BaseAPI {
      *
      */
     async directMessageRaw(requestParameters: DirectMessageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SendMessageResponseDto>> {
-        if (requestParameters['idempotencyKey'] == null) {
-            throw new runtime.RequiredError(
-                'idempotencyKey',
-                'Required parameter "idempotencyKey" was null or undefined when calling directMessage().'
-            );
-        }
-
         if (requestParameters['directMessageDto'] == null) {
             throw new runtime.RequiredError(
                 'directMessageDto',
@@ -426,10 +428,6 @@ export class DialogsApi extends runtime.BaseAPI {
 
         if (requestParameters['idempotencyKey'] != null) {
             headerParameters['idempotency-key'] = String(requestParameters['idempotencyKey']);
-        }
-
-        if (requestParameters['idempotencyKey2'] != null) {
-            headerParameters['Idempotency-Key'] = String(requestParameters['idempotencyKey2']);
         }
 
         if (requestParameters['acceptLanguage'] != null) {
@@ -1111,6 +1109,74 @@ export class DialogsApi extends runtime.BaseAPI {
     }
 
     /**
+     * . after , 200 .
+     *
+     */
+    async getLiveVoiceRaw(requestParameters: GetLiveVoiceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LiveVoiceArchiveDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling getLiveVoice().'
+            );
+        }
+
+        if (requestParameters['sessionId'] == null) {
+            throw new runtime.RequiredError(
+                'sessionId',
+                'Required parameter "sessionId" was null or undefined when calling getLiveVoice().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['after'] != null) {
+            queryParameters['after'] = requestParameters['after'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{dialog_id}/live-voice/{session_id}`.replace(`{${"dialog_id"}}`, encodeURIComponent(String(requestParameters['dialogId']))).replace(`{${"session_id"}}`, encodeURIComponent(String(requestParameters['sessionId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LiveVoiceArchiveDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . after , 200 .
+     *
+     */
+    async getLiveVoice(requestParameters: GetLiveVoiceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LiveVoiceArchiveDto> {
+        const response = await this.getLiveVoiceRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * . read_before POST /api/dialogs/mark-all-read, .
      *
      */
@@ -1634,6 +1700,14 @@ export const GetLeadConversationEventsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetLeadConversationEventsAcceptLanguageEnum = typeof GetLeadConversationEventsAcceptLanguageEnum[keyof typeof GetLeadConversationEventsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetLiveVoiceAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetLiveVoiceAcceptLanguageEnum = typeof GetLiveVoiceAcceptLanguageEnum[keyof typeof GetLiveVoiceAcceptLanguageEnum];
 /**
  * @export
  */

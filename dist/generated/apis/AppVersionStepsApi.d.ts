@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AppVersionStepResponseDto, CreateCustomInstructionStepDto, CreateDefaultAgentStepDto, CreateDialogAssignmentStepDto, CreateFillVariablesStepDto, CreateSubscriptionLinksStepDto, ReorderAppVersionStepsDto, SuccessResponseDto, UpdateCustomInstructionStepDto, UpdateDefaultAgentStepDto, UpdateDialogAssignmentStepDto, UpdateFillVariablesStepDto, UpdateSubscriptionLinksStepDto } from '../models/index';
+import type { AppVersionStepResponseDto, CreateConfigureConsentsStepDto, CreateCustomInstructionStepDto, CreateDefaultAgentStepDto, CreateDialogAssignmentStepDto, CreateFillVariablesStepDto, CreateRecipientStepDto, CreateSubscriptionLinksStepDto, ReorderAppVersionStepsDto, SuccessResponseDto, UpdateConfigureConsentsStepDto, UpdateCustomInstructionStepDto, UpdateDefaultAgentStepDto, UpdateDialogAssignmentStepDto, UpdateFillVariablesStepDto, UpdateRecipientStepDto, UpdateSubscriptionLinksStepDto } from '../models/index';
 export interface DeleteVersionsStepsRequest {
     appId: string;
     versionId: string;
@@ -28,6 +28,13 @@ export interface UpdateVersionsStepsAssignAgentToDialogRequest {
     stepId: string;
     updateDialogAssignmentStepDto: UpdateDialogAssignmentStepDto;
     acceptLanguage?: UpdateVersionsStepsAssignAgentToDialogAcceptLanguageEnum;
+}
+export interface UpdateVersionsStepsConfigureConsentsRequest {
+    appId: string;
+    versionId: string;
+    stepId: string;
+    updateConfigureConsentsStepDto: UpdateConfigureConsentsStepDto;
+    acceptLanguage?: UpdateVersionsStepsConfigureConsentsAcceptLanguageEnum;
 }
 export interface UpdateVersionsStepsCustomInstructionRequest {
     appId: string;
@@ -49,6 +56,13 @@ export interface UpdateVersionsStepsReorderRequest {
     reorderAppVersionStepsDto: ReorderAppVersionStepsDto;
     acceptLanguage?: UpdateVersionsStepsReorderAcceptLanguageEnum;
 }
+export interface UpdateVersionsStepsSelectRecipientRequest {
+    appId: string;
+    versionId: string;
+    stepId: string;
+    updateRecipientStepDto: UpdateRecipientStepDto;
+    acceptLanguage?: UpdateVersionsStepsSelectRecipientAcceptLanguageEnum;
+}
 export interface UpdateVersionsStepsSetDefaultAgentRequest {
     appId: string;
     versionId: string;
@@ -69,6 +83,12 @@ export interface VersionsStepsAssignAgentToDialogRequest {
     createDialogAssignmentStepDto: CreateDialogAssignmentStepDto;
     acceptLanguage?: VersionsStepsAssignAgentToDialogAcceptLanguageEnum;
 }
+export interface VersionsStepsConfigureConsentsRequest {
+    appId: string;
+    versionId: string;
+    createConfigureConsentsStepDto: CreateConfigureConsentsStepDto;
+    acceptLanguage?: VersionsStepsConfigureConsentsAcceptLanguageEnum;
+}
 export interface VersionsStepsCustomInstructionRequest {
     appId: string;
     versionId: string;
@@ -80,6 +100,12 @@ export interface VersionsStepsFillVariablesRequest {
     versionId: string;
     createFillVariablesStepDto: CreateFillVariablesStepDto;
     acceptLanguage?: VersionsStepsFillVariablesAcceptLanguageEnum;
+}
+export interface VersionsStepsSelectRecipientRequest {
+    appId: string;
+    versionId: string;
+    createRecipientStepDto: CreateRecipientStepDto;
+    acceptLanguage?: VersionsStepsSelectRecipientAcceptLanguageEnum;
 }
 export interface VersionsStepsSetDefaultAgentRequest {
     appId: string;
@@ -128,6 +154,16 @@ export declare class AppVersionStepsApi extends runtime.BaseAPI {
      */
     updateVersionsStepsAssignAgentToDialog(requestParameters: UpdateVersionsStepsAssignAgentToDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppVersionStepResponseDto>;
     /**
+     * configure_consents .
+     *
+     */
+    updateVersionsStepsConfigureConsentsRaw(requestParameters: UpdateVersionsStepsConfigureConsentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppVersionStepResponseDto>>;
+    /**
+     * configure_consents .
+     *
+     */
+    updateVersionsStepsConfigureConsents(requestParameters: UpdateVersionsStepsConfigureConsentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppVersionStepResponseDto>;
+    /**
      * .
      * custom_instruction
      */
@@ -157,6 +193,16 @@ export declare class AppVersionStepsApi extends runtime.BaseAPI {
      *
      */
     updateVersionsStepsReorder(requestParameters: UpdateVersionsStepsReorderRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto>;
+    /**
+     * select_recipient .
+     *
+     */
+    updateVersionsStepsSelectRecipientRaw(requestParameters: UpdateVersionsStepsSelectRecipientRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppVersionStepResponseDto>>;
+    /**
+     * select_recipient .
+     *
+     */
+    updateVersionsStepsSelectRecipient(requestParameters: UpdateVersionsStepsSelectRecipientRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppVersionStepResponseDto>;
     /**
      * .
      * set_default_agent
@@ -188,6 +234,16 @@ export declare class AppVersionStepsApi extends runtime.BaseAPI {
      */
     versionsStepsAssignAgentToDialog(requestParameters: VersionsStepsAssignAgentToDialogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppVersionStepResponseDto>;
     /**
+     * . .
+     *
+     */
+    versionsStepsConfigureConsentsRaw(requestParameters: VersionsStepsConfigureConsentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppVersionStepResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    versionsStepsConfigureConsents(requestParameters: VersionsStepsConfigureConsentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppVersionStepResponseDto>;
+    /**
      * .
      * custom_instruction
      */
@@ -207,6 +263,16 @@ export declare class AppVersionStepsApi extends runtime.BaseAPI {
      * fill_variables
      */
     versionsStepsFillVariables(requestParameters: VersionsStepsFillVariablesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppVersionStepResponseDto>;
+    /**
+     * ID .
+     *
+     */
+    versionsStepsSelectRecipientRaw(requestParameters: VersionsStepsSelectRecipientRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppVersionStepResponseDto>>;
+    /**
+     * ID .
+     *
+     */
+    versionsStepsSelectRecipient(requestParameters: VersionsStepsSelectRecipientRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppVersionStepResponseDto>;
     /**
      * .
      * set_default_agent
@@ -255,6 +321,14 @@ export type UpdateVersionsStepsAssignAgentToDialogAcceptLanguageEnum = typeof Up
 /**
  * @export
  */
+export declare const UpdateVersionsStepsConfigureConsentsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateVersionsStepsConfigureConsentsAcceptLanguageEnum = typeof UpdateVersionsStepsConfigureConsentsAcceptLanguageEnum[keyof typeof UpdateVersionsStepsConfigureConsentsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const UpdateVersionsStepsCustomInstructionAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -276,6 +350,14 @@ export declare const UpdateVersionsStepsReorderAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateVersionsStepsReorderAcceptLanguageEnum = typeof UpdateVersionsStepsReorderAcceptLanguageEnum[keyof typeof UpdateVersionsStepsReorderAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateVersionsStepsSelectRecipientAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateVersionsStepsSelectRecipientAcceptLanguageEnum = typeof UpdateVersionsStepsSelectRecipientAcceptLanguageEnum[keyof typeof UpdateVersionsStepsSelectRecipientAcceptLanguageEnum];
 /**
  * @export
  */
@@ -303,6 +385,14 @@ export type VersionsStepsAssignAgentToDialogAcceptLanguageEnum = typeof Versions
 /**
  * @export
  */
+export declare const VersionsStepsConfigureConsentsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type VersionsStepsConfigureConsentsAcceptLanguageEnum = typeof VersionsStepsConfigureConsentsAcceptLanguageEnum[keyof typeof VersionsStepsConfigureConsentsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const VersionsStepsCustomInstructionAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -316,6 +406,14 @@ export declare const VersionsStepsFillVariablesAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type VersionsStepsFillVariablesAcceptLanguageEnum = typeof VersionsStepsFillVariablesAcceptLanguageEnum[keyof typeof VersionsStepsFillVariablesAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const VersionsStepsSelectRecipientAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type VersionsStepsSelectRecipientAcceptLanguageEnum = typeof VersionsStepsSelectRecipientAcceptLanguageEnum[keyof typeof VersionsStepsSelectRecipientAcceptLanguageEnum];
 /**
  * @export
  */

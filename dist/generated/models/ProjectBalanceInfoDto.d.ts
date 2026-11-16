@@ -17,6 +17,12 @@ import type { TariffSubscriptionDto } from './TariffSubscriptionDto';
  */
 export interface ProjectBalanceInfoDto {
     /**
+     * , : , , . Null, . .
+     * @type {string}
+     * @memberof ProjectBalanceInfoDto
+     */
+    billingAttention: ProjectBalanceInfoDtoBillingAttentionEnum | null;
+    /**
      * (RUB=, USD=)
      * @type {string}
      * @memberof ProjectBalanceInfoDto
@@ -125,6 +131,16 @@ export interface ProjectBalanceInfoDto {
      */
     effectiveCreditsRemaining: number;
 }
+/**
+ * @export
+ */
+export declare const ProjectBalanceInfoDtoBillingAttentionEnum: {
+    readonly TariffInactive: "tariff_inactive";
+    readonly TariffExpired: "tariff_expired";
+    readonly RenewalFailed: "renewal_failed";
+    readonly CreditsExhausted: "credits_exhausted";
+};
+export type ProjectBalanceInfoDtoBillingAttentionEnum = typeof ProjectBalanceInfoDtoBillingAttentionEnum[keyof typeof ProjectBalanceInfoDtoBillingAttentionEnum];
 /**
  * @export
  */

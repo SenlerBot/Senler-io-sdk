@@ -32,7 +32,8 @@ exports.CreateResourcePackageLinkDtoSourceSectionEnum = {
     DialogVariables: 'dialog_variables',
     Segments: 'segments',
     Landings: 'landings',
-    Metrics: 'metrics'
+    Metrics: 'metrics',
+    Bookings: 'bookings'
 };
 /**
  * @export

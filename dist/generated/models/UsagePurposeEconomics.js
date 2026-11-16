@@ -38,6 +38,7 @@ exports.UsagePurposeEconomicsPurposeEnum = {
     DialogOperatorReply: 'dialog_operator_reply',
     DialogMedia: 'dialog_media',
     DialogMetrics: 'dialog_metrics',
+    ContextCompaction: 'context_compaction',
     KnowledgeImageDescription: 'knowledge_image_description',
     AgentSetup: 'agent_setup',
     AnalyticsInsightSummary: 'analytics_insight_summary',

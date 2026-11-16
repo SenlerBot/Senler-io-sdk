@@ -28,7 +28,7 @@ import {
  */
 export interface UpdateHtmlLandingBlockDto {
     /**
-     *
+     * revision . 409 .
      * @type {number}
      * @memberof UpdateHtmlLandingBlockDto
      */
@@ -40,7 +40,7 @@ export interface UpdateHtmlLandingBlockDto {
      */
     isVisible: boolean;
     /**
-     * HTML-.
+     * payload: html, css js. ; js .
      * @type {LandingHtmlBlockPayloadDto}
      * @memberof UpdateHtmlLandingBlockDto
      */

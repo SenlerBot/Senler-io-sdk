@@ -47,6 +47,8 @@ function instanceOfProjectResponseDto(value) {
         return false;
     if (!('defaultLanguage' in value) || value['defaultLanguage'] === undefined)
         return false;
+    if (!('timezone' in value) || value['timezone'] === undefined)
+        return false;
     if (!('attachmentUploadLimitMb' in value) || value['attachmentUploadLimitMb'] === undefined)
         return false;
     if (!('isActive' in value) || value['isActive'] === undefined)
@@ -75,6 +77,7 @@ function ProjectResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'primaryChannelId': json['primary_channel_id'] == null ? undefined : json['primary_channel_id'],
         'ownerUserId': json['owner_user_id'] == null ? undefined : json['owner_user_id'],
         'defaultLanguage': json['default_language'],
+        'timezone': json['timezone'],
         'attachmentUploadLimitMb': json['attachment_upload_limit_mb'],
         'attachmentUploadLimitsByChannelMb': json['attachment_upload_limits_by_channel_mb'] == null ? undefined : (0, ProjectAttachmentUploadLimitsByChannelDto_1.ProjectAttachmentUploadLimitsByChannelDtoFromJSON)(json['attachment_upload_limits_by_channel_mb']),
         'isActive': json['is_active'],
@@ -101,6 +104,7 @@ function ProjectResponseDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'primary_channel_id': value['primaryChannelId'],
         'owner_user_id': value['ownerUserId'],
         'default_language': value['defaultLanguage'],
+        'timezone': value['timezone'],
         'attachment_upload_limit_mb': value['attachmentUploadLimitMb'],
         'attachment_upload_limits_by_channel_mb': (0, ProjectAttachmentUploadLimitsByChannelDto_1.ProjectAttachmentUploadLimitsByChannelDtoToJSON)(value['attachmentUploadLimitsByChannelMb']),
         'is_active': value['isActive'],

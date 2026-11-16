@@ -55,8 +55,8 @@ const index_1 = require("../models/index");
  */
 class AnalyticsApi extends runtime.BaseAPI {
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Pause analysis after the current paid request has been saved
+     * . ; AI.
+     *
      */
     async analysisJobsPauseRaw(requestParameters, initOverrides) {
         if (requestParameters['analysisJobQueryDto'] == null) {
@@ -93,16 +93,16 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AnalysisJobDtoFromJSON)(jsonValue));
     }
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Pause analysis after the current paid request has been saved
+     * . ; AI.
+     *
      */
     async analysisJobsPause(requestParameters, initOverrides) {
         const response = await this.analysisJobsPauseRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Resume the same analysis with saved progress and an authorized spending limit
+     * . ; AI.
+     *
      */
     async analysisJobsResumeRaw(requestParameters, initOverrides) {
         if (requestParameters['resumeAnalysisJobDto'] == null) {
@@ -139,16 +139,16 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AnalysisJobDtoFromJSON)(jsonValue));
     }
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Resume the same analysis with saved progress and an authorized spending limit
+     * . ; AI.
+     *
      */
     async analysisJobsResume(requestParameters, initOverrides) {
         const response = await this.analysisJobsResumeRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * For runs started with check_mode=dialog_tests. Preserves saved results, stops test dialogs and prevents resuming this run. Returns immediately; active work is stopped by the background worker.
-     * Stop an editor dialog test permanently
+     * check_mode=dialog_tests. , . ; .
+     *
      */
     async analysisJobsStopRaw(requestParameters, initOverrides) {
         if (requestParameters['analysisJobQueryDto'] == null) {
@@ -185,8 +185,8 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AnalysisJobDtoFromJSON)(jsonValue));
     }
     /**
-     * For runs started with check_mode=dialog_tests. Preserves saved results, stops test dialogs and prevents resuming this run. Returns immediately; active work is stopped by the background worker.
-     * Stop an editor dialog test permanently
+     * check_mode=dialog_tests. , . ; .
+     *
      */
     async analysisJobsStop(requestParameters, initOverrides) {
         const response = await this.analysisJobsStopRaw(requestParameters, initOverrides);
@@ -356,8 +356,8 @@ class AnalyticsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Read background analysis progress
+     * . ; AI.
+     *
      */
     async getAnalysisJobsRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -401,16 +401,16 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AnalysisJobDtoFromJSON)(jsonValue));
     }
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Read background analysis progress
+     * . ; AI.
+     *
      */
     async getAnalysisJobs(requestParameters, initOverrides) {
         const response = await this.getAnalysisJobsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Returns up to 20 project summaries, including paused runs and older saved reports. Pass next_cursor to read the next page. No AI calls or writes.
-     * List saved and unfinished AI summaries
+     * 20 , . next_cursor. AI .
+     * AI-
      */
     async getAnalysisJobsInsightHistoryRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -451,16 +451,16 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.InsightHistoryDtoFromJSON)(jsonValue));
     }
     /**
-     * Returns up to 20 project summaries, including paused runs and older saved reports. Pass next_cursor to read the next page. No AI calls or writes.
-     * List saved and unfinished AI summaries
+     * 20 , . next_cursor. AI .
+     * AI-
      */
     async getAnalysisJobsInsightHistory(requestParameters, initOverrides) {
         const response = await this.getAnalysisJobsInsightHistoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Read the latest background analysis
+     * . ; AI.
+     *
      */
     async getAnalysisJobsLatestRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -504,8 +504,8 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AnalysisJobDtoFromJSON)(jsonValue));
     }
     /**
-     * Uses persisted, project-scoped work. Public calls never wait for AI; internal workers process bounded stages and recover only the active queue.
-     * Read the latest background analysis
+     * . ; AI.
+     *
      */
     async getAnalysisJobsLatest(requestParameters, initOverrides) {
         const response = await this.getAnalysisJobsLatestRaw(requestParameters, initOverrides);

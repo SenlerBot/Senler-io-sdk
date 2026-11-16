@@ -364,7 +364,7 @@ class ProjectWebhooksApi extends runtime.BaseAPI {
         await this.hermesResetRaw(requestParameters, initOverrides);
     }
     /**
-     * kind=hermes URL: hermes.connection_url. Senler, bindHermes client_id, relay_url. , status=disabled. . . kind=http ( ): HTTP- HTTPS- . signature_scheme=standard-webhooks: webhook-id / webhook-timestamp / webhook-signature. senler-v1 (Senler Webhook Standard) . , . status=disabled , update. x-project-id ID ; event_id . senler-v1 x-webhook-signature: HMAC-SHA256 hex v1.timestamp.event_id.canonicalJson(payload), . canonicalJson , . MCP: . , .
+     * kind=hermes URL: hermes.connection_url. Senler, bindHermes client_id, relay_url. , status=disabled. . . kind=http ( ): HTTP- HTTPS- . signature_scheme=standard-webhooks: webhook-id / webhook-timestamp / webhook-signature. senler-v1 ( Senler) . , . status=disabled , update. x-project-id ID ; event_id . senler-v1 x-webhook-signature: HMAC-SHA256 hex v1.timestamp.event_id.canonicalJson(payload), . canonicalJson , . MCP: . , .
      *
      */
     async projectWebhooksCreateRaw(requestParameters, initOverrides) {
@@ -397,7 +397,7 @@ class ProjectWebhooksApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ProjectWebhookResponseDtoFromJSON)(jsonValue));
     }
     /**
-     * kind=hermes URL: hermes.connection_url. Senler, bindHermes client_id, relay_url. , status=disabled. . . kind=http ( ): HTTP- HTTPS- . signature_scheme=standard-webhooks: webhook-id / webhook-timestamp / webhook-signature. senler-v1 (Senler Webhook Standard) . , . status=disabled , update. x-project-id ID ; event_id . senler-v1 x-webhook-signature: HMAC-SHA256 hex v1.timestamp.event_id.canonicalJson(payload), . canonicalJson , . MCP: . , .
+     * kind=hermes URL: hermes.connection_url. Senler, bindHermes client_id, relay_url. , status=disabled. . . kind=http ( ): HTTP- HTTPS- . signature_scheme=standard-webhooks: webhook-id / webhook-timestamp / webhook-signature. senler-v1 ( Senler) . , . status=disabled , update. x-project-id ID ; event_id . senler-v1 x-webhook-signature: HMAC-SHA256 hex v1.timestamp.event_id.canonicalJson(payload), . canonicalJson , . MCP: . , .
      *
      */
     async projectWebhooksCreate(requestParameters, initOverrides) {

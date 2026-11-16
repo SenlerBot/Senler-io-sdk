@@ -38,7 +38,8 @@ exports.LandingPreviewVariableDtoTypeEnum = {
     Json: 'json',
     Date: 'date',
     Array: 'array',
-    Object: 'object'
+    Object: 'object',
+    Reaction: 'reaction'
 };
 /**
  * Check if a given object implements the LandingPreviewVariableDto interface.

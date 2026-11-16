@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LandingSdkPermissionsDto } from './LandingSdkPermissionsDto';
 import type { LandingTheme } from './LandingTheme';
 /**
  * LandingSettingsDto.
@@ -17,17 +18,17 @@ import type { LandingTheme } from './LandingTheme';
  */
 export interface LandingSettingsDto {
     /**
+     * HTML- : , . SDK.
+     * @type {LandingSdkPermissionsDto}
+     * @memberof LandingSettingsDto
+     */
+    sdkPermissions?: LandingSdkPermissionsDto;
+    /**
      * CSS . :scope .
      * @type {string}
      * @memberof LandingSettingsDto
      */
     customCss?: string;
-    /**
-     * CSS- HTML-.
-     * @type {string}
-     * @memberof LandingSettingsDto
-     */
-    htmlCss?: string;
     /**
      * . null
      * @type {string}

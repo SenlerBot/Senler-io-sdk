@@ -107,6 +107,12 @@ export interface AutomationTaskResponseDto {
      */
     errorMessage?: string | null;
     /**
+     * . , URL .
+     * @type {string}
+     * @memberof AutomationTaskResponseDto
+     */
+    errorDetails?: string;
+    /**
      * created at.
      * @type {Date}
      * @memberof AutomationTaskResponseDto
@@ -162,7 +168,8 @@ export const AutomationTaskResponseDtoWaitKindEnum = {
     Button: 'button',
     Reply: 'reply',
     Interaction: 'interaction',
-    AppCallback: 'app_callback'
+    AppCallback: 'app_callback',
+    AutomationResult: 'automation_result'
 } as const;
 export type AutomationTaskResponseDtoWaitKindEnum = typeof AutomationTaskResponseDtoWaitKindEnum[keyof typeof AutomationTaskResponseDtoWaitKindEnum];
 
@@ -210,6 +217,7 @@ export function AutomationTaskResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
         'maxAttempts': json['max_attempts'],
         'availableAt': (new Date(json['available_at'])),
         'errorMessage': json['error_message'] == null ? undefined : json['error_message'],
+        'errorDetails': json['error_details'] == null ? undefined : json['error_details'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'processingStartedAt': (json['processing_started_at'] == null ? null : new Date(json['processing_started_at'])),
@@ -241,6 +249,7 @@ export function AutomationTaskResponseDtoToJSONTyped(value?: AutomationTaskRespo
         'max_attempts': value['maxAttempts'],
         'available_at': ((value['availableAt']).toISOString()),
         'error_message': value['errorMessage'],
+        'error_details': value['errorDetails'],
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
         'processing_started_at': (value['processingStartedAt'] == null ? null : (value['processingStartedAt'] as any).toISOString()),

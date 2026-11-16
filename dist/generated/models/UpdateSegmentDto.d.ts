@@ -17,6 +17,12 @@ import type { SegmentRequiredConsentDto } from './SegmentRequiredConsentDto';
  */
 export interface UpdateSegmentDto {
     /**
+     * . .
+     * @type {boolean}
+     * @memberof UpdateSegmentDto
+     */
+    suppressAgentResponseOnSubscription?: boolean;
+    /**
      *
      * @type {string}
      * @memberof UpdateSegmentDto

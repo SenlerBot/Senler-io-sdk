@@ -15,9 +15,11 @@
 
 import * as runtime from '../runtime';
 import type {
+  CreateResourcePackageCommandDto,
   CreateResourcePackageDto,
   CreateResourcePackageLinkDto,
   ErrorResponse,
+  ImportResourcePackageCommandDto,
   ImportResourcePackageDto,
   ProcessResponseDto,
   ResourcePackageDraftPreviewResponseDto,
@@ -28,15 +30,20 @@ import type {
   ResourcePackageLinkRevokeResponseDto,
   ResourcePackagePlanResponseDto,
   ResourcePackageResponseDto,
+  ResumeResourcePackageImportDto,
   UpdateResourcePackageLinkDto,
 } from '../models/index';
 import {
+    CreateResourcePackageCommandDtoFromJSON,
+    CreateResourcePackageCommandDtoToJSON,
     CreateResourcePackageDtoFromJSON,
     CreateResourcePackageDtoToJSON,
     CreateResourcePackageLinkDtoFromJSON,
     CreateResourcePackageLinkDtoToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    ImportResourcePackageCommandDtoFromJSON,
+    ImportResourcePackageCommandDtoToJSON,
     ImportResourcePackageDtoFromJSON,
     ImportResourcePackageDtoToJSON,
     ProcessResponseDtoFromJSON,
@@ -57,6 +64,8 @@ import {
     ResourcePackagePlanResponseDtoToJSON,
     ResourcePackageResponseDtoFromJSON,
     ResourcePackageResponseDtoToJSON,
+    ResumeResourcePackageImportDtoFromJSON,
+    ResumeResourcePackageImportDtoToJSON,
     UpdateResourcePackageLinkDtoFromJSON,
     UpdateResourcePackageLinkDtoToJSON,
 } from '../models/index';
@@ -79,9 +88,15 @@ export interface GetResourcePackageLinksPreviewRequest {
     acceptLanguage?: GetResourcePackageLinksPreviewAcceptLanguageEnum;
 }
 
+export interface ResourcePackageImportsResumeRequest {
+    processId: string;
+    resumeResourcePackageImportDto: ResumeResourcePackageImportDto;
+    acceptLanguage?: ResourcePackageImportsResumeAcceptLanguageEnum;
+}
+
 export interface ResourcePackageLinksImportRequest {
     token: string;
-    importResourcePackageDto: ImportResourcePackageDto;
+    importResourcePackageCommandDto: ImportResourcePackageCommandDto;
     acceptLanguage?: ResourcePackageLinksImportAcceptLanguageEnum;
 }
 
@@ -97,13 +112,13 @@ export interface ResourcePackageLinksRevokeRequest {
 }
 
 export interface ResourcePackagesRequest {
-    createResourcePackageDto: CreateResourcePackageDto;
+    createResourcePackageCommandDto: CreateResourcePackageCommandDto;
     acceptLanguage?: ResourcePackagesAcceptLanguageEnum;
 }
 
 export interface ResourcePackagesImportRequest {
     id: string;
-    importResourcePackageDto: ImportResourcePackageDto;
+    importResourcePackageCommandDto: ImportResourcePackageCommandDto;
     acceptLanguage?: ResourcePackagesImportAcceptLanguageEnum;
 }
 
@@ -281,6 +296,60 @@ export class ResourcePackagesApi extends runtime.BaseAPI {
      * . .
      *
      */
+    async resourcePackageImportsResumeRaw(requestParameters: ResourcePackageImportsResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>> {
+        if (requestParameters['processId'] == null) {
+            throw new runtime.RequiredError(
+                'processId',
+                'Required parameter "processId" was null or undefined when calling resourcePackageImportsResume().'
+            );
+        }
+
+        if (requestParameters['resumeResourcePackageImportDto'] == null) {
+            throw new runtime.RequiredError(
+                'resumeResourcePackageImportDto',
+                'Required parameter "resumeResourcePackageImportDto" was null or undefined when calling resourcePackageImportsResume().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        const response = await this.request({
+            path: `/api/resource-package-imports/{processId}/resume`.replace(`{${"processId"}}`, encodeURIComponent(String(requestParameters['processId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ResumeResourcePackageImportDtoToJSON(requestParameters['resumeResourcePackageImportDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProcessResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async resourcePackageImportsResume(requestParameters: ResourcePackageImportsResumeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessResponseDto> {
+        const response = await this.resourcePackageImportsResumeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . .
+     *
+     */
     async resourcePackageLinksImportRaw(requestParameters: ResourcePackageLinksImportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessResponseDto>> {
         if (requestParameters['token'] == null) {
             throw new runtime.RequiredError(
@@ -289,10 +358,10 @@ export class ResourcePackagesApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['importResourcePackageDto'] == null) {
+        if (requestParameters['importResourcePackageCommandDto'] == null) {
             throw new runtime.RequiredError(
-                'importResourcePackageDto',
-                'Required parameter "importResourcePackageDto" was null or undefined when calling resourcePackageLinksImport().'
+                'importResourcePackageCommandDto',
+                'Required parameter "importResourcePackageCommandDto" was null or undefined when calling resourcePackageLinksImport().'
             );
         }
 
@@ -316,7 +385,7 @@ export class ResourcePackagesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ImportResourcePackageDtoToJSON(requestParameters['importResourcePackageDto']),
+            body: ImportResourcePackageCommandDtoToJSON(requestParameters['importResourcePackageCommandDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ProcessResponseDtoFromJSON(jsonValue));
@@ -434,10 +503,10 @@ export class ResourcePackagesApi extends runtime.BaseAPI {
      *
      */
     async resourcePackagesRaw(requestParameters: ResourcePackagesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ResourcePackageResponseDto>> {
-        if (requestParameters['createResourcePackageDto'] == null) {
+        if (requestParameters['createResourcePackageCommandDto'] == null) {
             throw new runtime.RequiredError(
-                'createResourcePackageDto',
-                'Required parameter "createResourcePackageDto" was null or undefined when calling resourcePackages().'
+                'createResourcePackageCommandDto',
+                'Required parameter "createResourcePackageCommandDto" was null or undefined when calling resourcePackages().'
             );
         }
 
@@ -461,7 +530,7 @@ export class ResourcePackagesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateResourcePackageDtoToJSON(requestParameters['createResourcePackageDto']),
+            body: CreateResourcePackageCommandDtoToJSON(requestParameters['createResourcePackageCommandDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ResourcePackageResponseDtoFromJSON(jsonValue));
@@ -488,10 +557,10 @@ export class ResourcePackagesApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['importResourcePackageDto'] == null) {
+        if (requestParameters['importResourcePackageCommandDto'] == null) {
             throw new runtime.RequiredError(
-                'importResourcePackageDto',
-                'Required parameter "importResourcePackageDto" was null or undefined when calling resourcePackagesImport().'
+                'importResourcePackageCommandDto',
+                'Required parameter "importResourcePackageCommandDto" was null or undefined when calling resourcePackagesImport().'
             );
         }
 
@@ -515,7 +584,7 @@ export class ResourcePackagesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ImportResourcePackageDtoToJSON(requestParameters['importResourcePackageDto']),
+            body: ImportResourcePackageCommandDtoToJSON(requestParameters['importResourcePackageCommandDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ProcessResponseDtoFromJSON(jsonValue));
@@ -719,6 +788,14 @@ export const GetResourcePackageLinksPreviewAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetResourcePackageLinksPreviewAcceptLanguageEnum = typeof GetResourcePackageLinksPreviewAcceptLanguageEnum[keyof typeof GetResourcePackageLinksPreviewAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const ResourcePackageImportsResumeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type ResourcePackageImportsResumeAcceptLanguageEnum = typeof ResourcePackageImportsResumeAcceptLanguageEnum[keyof typeof ResourcePackageImportsResumeAcceptLanguageEnum];
 /**
  * @export
  */

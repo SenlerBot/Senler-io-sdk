@@ -68,7 +68,8 @@ export const LeadVariableValueResponseDtoTypeEnum = {
     Json: 'json',
     Date: 'date',
     Array: 'array',
-    Object: 'object'
+    Object: 'object',
+    Reaction: 'reaction'
 } as const;
 export type LeadVariableValueResponseDtoTypeEnum = typeof LeadVariableValueResponseDtoTypeEnum[keyof typeof LeadVariableValueResponseDtoTypeEnum];
 

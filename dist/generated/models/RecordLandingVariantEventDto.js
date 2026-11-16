@@ -24,7 +24,6 @@ exports.RecordLandingVariantEventDtoToJSONTyped = RecordLandingVariantEventDtoTo
  */
 exports.RecordLandingVariantEventDtoKindEnum = {
     View: 'view',
-    Exposure: 'exposure',
     Click: 'click',
     Activity: 'activity'
 };

@@ -17,7 +17,7 @@ import type { LandingTimerBlockPayloadDto } from './LandingTimerBlockPayloadDto'
  */
 export interface UpdateTimerLandingBlockDto {
     /**
-     *
+     * revision . 409 .
      * @type {number}
      * @memberof UpdateTimerLandingBlockDto
      */

@@ -57,6 +57,7 @@ export declare const AutomationAppStepFieldSnapshotDtoTypeEnum: {
     readonly Date: "date";
     readonly Array: "array";
     readonly Object: "object";
+    readonly Reaction: "reaction";
 };
 export type AutomationAppStepFieldSnapshotDtoTypeEnum = typeof AutomationAppStepFieldSnapshotDtoTypeEnum[keyof typeof AutomationAppStepFieldSnapshotDtoTypeEnum];
 /**

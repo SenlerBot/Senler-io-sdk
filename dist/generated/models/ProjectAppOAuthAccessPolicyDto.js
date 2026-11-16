@@ -57,6 +57,8 @@ exports.ProjectAppOAuthAccessPolicyDtoAllowedPermissionsEnum = {
     CanManageSegments: 'can_manage_segments',
     CanViewLandings: 'can_view_landings',
     CanManageLandings: 'can_manage_landings',
+    CanViewBookings: 'can_view_bookings',
+    CanManageBookings: 'can_manage_bookings',
     CanViewTrafficMarks: 'can_view_traffic_marks',
     CanManageTrafficMarks: 'can_manage_traffic_marks',
     CanViewAutomations: 'can_view_automations',

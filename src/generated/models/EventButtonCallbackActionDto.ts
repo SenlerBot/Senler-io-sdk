@@ -32,7 +32,7 @@ export interface EventButtonCallbackActionDto {
      */
     data: string;
     /**
-     * VK . callback.
+     * VK . .
      * @type {boolean}
      * @memberof EventButtonCallbackActionDto
      */

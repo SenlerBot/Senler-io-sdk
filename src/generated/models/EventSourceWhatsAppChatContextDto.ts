@@ -66,7 +66,7 @@ export interface EventSourceWhatsAppChatContextDto {
      */
     kind: EventSourceWhatsAppChatContextDtoKindEnum;
     /**
-     *
+     * WhatsApp
      * @type {EventSourceWhatsAppDataDto}
      * @memberof EventSourceWhatsAppChatContextDto
      */

@@ -14,8 +14,8 @@ import type { AgentLandingLinksResponseDto, ConfirmS3UploadDto, DeleteLandingBlo
 export interface DeleteLandingBlocksRequest {
     agentId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     deleteLandingBlockDto: DeleteLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: DeleteLandingBlocksAcceptLanguageEnum;
 }
 export interface GetLandingRequest {
@@ -57,14 +57,14 @@ export interface LandingAssetsUploadUrlRequest {
 export interface LandingBlocksMoveRequest {
     agentId: string;
     blockId: string;
-    xLandingEditorSessionId: string;
     moveLandingBlockDto: MoveLandingBlockDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingBlocksMoveAcceptLanguageEnum;
 }
 export interface LandingPersonalizationRequest {
     agentId: string;
-    xLandingEditorSessionId: string;
     mutateAgentLandingPersonalizationDto: MutateAgentLandingPersonalizationDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: LandingPersonalizationAcceptLanguageEnum;
 }
 export interface LandingPreviewRequest {
@@ -79,14 +79,14 @@ export interface LandingPreviewLeadRequest {
 }
 export interface UpdateLandingDraftRequest {
     agentId: string;
-    xLandingEditorSessionId: string;
     updateLandingDraftDto: UpdateLandingDraftDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingDraftAcceptLanguageEnum;
 }
 export interface UpdateLandingRealtimeFocusRequest {
     agentId: string;
-    xLandingEditorSessionId: string;
     updateLandingRealtimeFocusDto: UpdateLandingRealtimeFocusDto;
+    xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingRealtimeFocusAcceptLanguageEnum;
 }
 /**
@@ -114,12 +114,12 @@ export declare class AgentsLandingApi extends runtime.BaseAPI {
      */
     getLanding(requestParameters: GetLandingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;
     /**
-     * . , , .
+     * . snapshot. valid , JavaScript; .
      *
      */
     getLandingPublicationValidationRaw(requestParameters: GetLandingPublicationValidationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingPublicationValidationDto>>;
     /**
-     * . , , .
+     * . snapshot. valid , JavaScript; .
      *
      */
     getLandingPublicationValidation(requestParameters: GetLandingPublicationValidationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicationValidationDto>;
@@ -224,12 +224,12 @@ export declare class AgentsLandingApi extends runtime.BaseAPI {
      */
     landingPreviewLead(requestParameters: LandingPreviewLeadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPreviewResponseDto>;
     /**
-     * .
+     * settings expected_settings_revision; . .
      *
      */
     updateLandingDraftRaw(requestParameters: UpdateLandingDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingResponseDto>>;
     /**
-     * .
+     * settings expected_settings_revision; . .
      *
      */
     updateLandingDraft(requestParameters: UpdateLandingDraftRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingResponseDto>;

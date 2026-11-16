@@ -28,7 +28,7 @@ export interface LandingPreviewVariableDto {
      */
     name: string;
     /**
-     * : string, number, boolean, json, date, array, object.
+     * : string, number, boolean, json, date, array, object, reaction.
      * @type {string}
      * @memberof LandingPreviewVariableDto
      */
@@ -63,6 +63,7 @@ export declare const LandingPreviewVariableDtoTypeEnum: {
     readonly Date: "date";
     readonly Array: "array";
     readonly Object: "object";
+    readonly Reaction: "reaction";
 };
 export type LandingPreviewVariableDtoTypeEnum = typeof LandingPreviewVariableDtoTypeEnum[keyof typeof LandingPreviewVariableDtoTypeEnum];
 /**

@@ -22,7 +22,7 @@ export interface AutomationHttpResponseMappingDto {
      */
     source: AutomationHttpResponseMappingDtoSourceEnum;
     /**
-     * JSON Pointer (for example /data/items/0/id), header name, or empty for the whole value.
+     * JSON Pointer, /data/items/0/id, .
      * @type {string}
      * @memberof AutomationHttpResponseMappingDto
      */

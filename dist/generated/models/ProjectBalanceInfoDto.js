@@ -13,13 +13,22 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProjectBalanceInfoDtoCurrencyEnum = void 0;
+exports.ProjectBalanceInfoDtoCurrencyEnum = exports.ProjectBalanceInfoDtoBillingAttentionEnum = void 0;
 exports.instanceOfProjectBalanceInfoDto = instanceOfProjectBalanceInfoDto;
 exports.ProjectBalanceInfoDtoFromJSON = ProjectBalanceInfoDtoFromJSON;
 exports.ProjectBalanceInfoDtoFromJSONTyped = ProjectBalanceInfoDtoFromJSONTyped;
 exports.ProjectBalanceInfoDtoToJSON = ProjectBalanceInfoDtoToJSON;
 exports.ProjectBalanceInfoDtoToJSONTyped = ProjectBalanceInfoDtoToJSONTyped;
 const TariffSubscriptionDto_1 = require("./TariffSubscriptionDto");
+/**
+ * @export
+ */
+exports.ProjectBalanceInfoDtoBillingAttentionEnum = {
+    TariffInactive: 'tariff_inactive',
+    TariffExpired: 'tariff_expired',
+    RenewalFailed: 'renewal_failed',
+    CreditsExhausted: 'credits_exhausted'
+};
 /**
  * @export
  */
@@ -31,6 +40,8 @@ exports.ProjectBalanceInfoDtoCurrencyEnum = {
  * Check if a given object implements the ProjectBalanceInfoDto interface.
  */
 function instanceOfProjectBalanceInfoDto(value) {
+    if (!('billingAttention' in value) || value['billingAttention'] === undefined)
+        return false;
     if (!('currency' in value) || value['currency'] === undefined)
         return false;
     if (!('depositBalance' in value) || value['depositBalance'] === undefined)
@@ -75,6 +86,7 @@ function ProjectBalanceInfoDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'billingAttention': json['billing_attention'],
         'currency': json['currency'],
         'depositBalance': json['deposit_balance'],
         'bonusBalance': json['bonus_balance'],
@@ -103,6 +115,7 @@ function ProjectBalanceInfoDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'billing_attention': value['billingAttention'],
         'currency': value['currency'],
         'deposit_balance': value['depositBalance'],
         'bonus_balance': value['bonusBalance'],

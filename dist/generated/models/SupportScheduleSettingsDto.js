@@ -53,6 +53,5 @@ function SupportScheduleSettingsDtoToJSONTyped(value, ignoreDiscriminator = fals
     return {
         'project_id': value['projectId'],
         'enabled': value['enabled'],
-        'timezone': value['timezone'],
     };
 }

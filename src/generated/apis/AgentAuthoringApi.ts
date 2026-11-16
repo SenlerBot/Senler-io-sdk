@@ -22,6 +22,7 @@ import type {
   ErrorResponse,
   PublishAgentAuthoringDraftDto,
   UpdateAgentAssignmentDto,
+  UpdateAgentBookingDto,
   UpdateAgentCapabilitiesDto,
   UpdateAgentContextDto,
   UpdateAgentDraftCreationDto,
@@ -53,6 +54,8 @@ import {
     PublishAgentAuthoringDraftDtoToJSON,
     UpdateAgentAssignmentDtoFromJSON,
     UpdateAgentAssignmentDtoToJSON,
+    UpdateAgentBookingDtoFromJSON,
+    UpdateAgentBookingDtoToJSON,
     UpdateAgentCapabilitiesDtoFromJSON,
     UpdateAgentCapabilitiesDtoToJSON,
     UpdateAgentContextDtoFromJSON,
@@ -113,6 +116,12 @@ export interface UpdateDraftAssignmentRequest {
     id: string;
     updateAgentAssignmentDto: UpdateAgentAssignmentDto;
     acceptLanguage?: UpdateDraftAssignmentAcceptLanguageEnum;
+}
+
+export interface UpdateDraftBookingRequest {
+    id: string;
+    updateAgentBookingDto: UpdateAgentBookingDto;
+    acceptLanguage?: UpdateDraftBookingAcceptLanguageEnum;
 }
 
 export interface UpdateDraftCapabilitiesRequest {
@@ -552,6 +561,73 @@ export class AgentAuthoringApi extends runtime.BaseAPI {
      */
     async updateDraftAssignment(requestParameters: UpdateDraftAssignmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto> {
         const response = await this.updateDraftAssignmentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * . .
+     * -
+     */
+    async updateDraftBookingRaw(requestParameters: UpdateDraftBookingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateDraftBooking().'
+            );
+        }
+
+        if (requestParameters['updateAgentBookingDto'] == null) {
+            throw new runtime.RequiredError(
+                'updateAgentBookingDto',
+                'Required parameter "updateAgentBookingDto" was null or undefined when calling updateDraftBooking().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}/draft/booking`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateAgentBookingDtoToJSON(requestParameters['updateAgentBookingDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentDraftSettingsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     * -
+     */
+    async updateDraftBooking(requestParameters: UpdateDraftBookingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto> {
+        const response = await this.updateDraftBookingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1748,6 +1824,14 @@ export const UpdateDraftAssignmentAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateDraftAssignmentAcceptLanguageEnum = typeof UpdateDraftAssignmentAcceptLanguageEnum[keyof typeof UpdateDraftAssignmentAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateDraftBookingAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateDraftBookingAcceptLanguageEnum = typeof UpdateDraftBookingAcceptLanguageEnum[keyof typeof UpdateDraftBookingAcceptLanguageEnum];
 /**
  * @export
  */

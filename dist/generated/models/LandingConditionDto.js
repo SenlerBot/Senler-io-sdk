@@ -40,7 +40,8 @@ exports.LandingConditionDtoVariableTypeEnum = {
     Json: 'json',
     Date: 'date',
     Array: 'array',
-    Object: 'object'
+    Object: 'object',
+    Reaction: 'reaction'
 };
 /**
  * @export

@@ -28,6 +28,12 @@ import {
  */
 export interface ProjectBalanceInfoDto {
     /**
+     * , : , , . Null, . .
+     * @type {string}
+     * @memberof ProjectBalanceInfoDto
+     */
+    billingAttention: ProjectBalanceInfoDtoBillingAttentionEnum | null;
+    /**
      * (RUB=, USD=)
      * @type {string}
      * @memberof ProjectBalanceInfoDto
@@ -141,6 +147,17 @@ export interface ProjectBalanceInfoDto {
 /**
  * @export
  */
+export const ProjectBalanceInfoDtoBillingAttentionEnum = {
+    TariffInactive: 'tariff_inactive',
+    TariffExpired: 'tariff_expired',
+    RenewalFailed: 'renewal_failed',
+    CreditsExhausted: 'credits_exhausted'
+} as const;
+export type ProjectBalanceInfoDtoBillingAttentionEnum = typeof ProjectBalanceInfoDtoBillingAttentionEnum[keyof typeof ProjectBalanceInfoDtoBillingAttentionEnum];
+
+/**
+ * @export
+ */
 export const ProjectBalanceInfoDtoCurrencyEnum = {
     Usd: 'USD',
     Rub: 'RUB'
@@ -152,6 +169,7 @@ export type ProjectBalanceInfoDtoCurrencyEnum = typeof ProjectBalanceInfoDtoCurr
  * Check if a given object implements the ProjectBalanceInfoDto interface.
  */
 export function instanceOfProjectBalanceInfoDto(value: object): value is ProjectBalanceInfoDto {
+    if (!('billingAttention' in value) || value['billingAttention'] === undefined) return false;
     if (!('currency' in value) || value['currency'] === undefined) return false;
     if (!('depositBalance' in value) || value['depositBalance'] === undefined) return false;
     if (!('bonusBalance' in value) || value['bonusBalance'] === undefined) return false;
@@ -182,6 +200,7 @@ export function ProjectBalanceInfoDtoFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
 
+        'billingAttention': json['billing_attention'],
         'currency': json['currency'],
         'depositBalance': json['deposit_balance'],
         'bonusBalance': json['bonus_balance'],
@@ -214,6 +233,7 @@ export function ProjectBalanceInfoDtoToJSONTyped(value?: ProjectBalanceInfoDto |
 
     return {
 
+        'billing_attention': value['billingAttention'],
         'currency': value['currency'],
         'deposit_balance': value['depositBalance'],
         'bonus_balance': value['bonusBalance'],

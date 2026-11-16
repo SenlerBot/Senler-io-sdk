@@ -18,6 +18,7 @@ exports.LandingProductItemDtoFromJSON = LandingProductItemDtoFromJSON;
 exports.LandingProductItemDtoFromJSONTyped = LandingProductItemDtoFromJSONTyped;
 exports.LandingProductItemDtoToJSON = LandingProductItemDtoToJSON;
 exports.LandingProductItemDtoToJSONTyped = LandingProductItemDtoToJSONTyped;
+const LandingProductBookingButtonDto_1 = require("./LandingProductBookingButtonDto");
 /**
  * Check if a given object implements the LandingProductItemDto interface.
  */
@@ -34,6 +35,7 @@ function LandingProductItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'button': json['button'] == null ? undefined : (0, LandingProductBookingButtonDto_1.LandingProductBookingButtonDtoFromJSON)(json['button']),
         'id': json['id'],
         'name': json['name'] == null ? undefined : json['name'],
         'category': json['category'] == null ? undefined : json['category'],
@@ -50,6 +52,7 @@ function LandingProductItemDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'button': (0, LandingProductBookingButtonDto_1.LandingProductBookingButtonDtoToJSON)(value['button']),
         'id': value['id'],
         'name': value['name'],
         'category': value['category'],

@@ -88,6 +88,11 @@ import {
     WidgetCodeResponseDtoToJSON,
 } from '../models/index';
 
+export interface BillingRetryRequest {
+    id: string;
+    acceptLanguage?: BillingRetryAcceptLanguageEnum;
+}
+
 export interface ChannelsAvatarConfirmRequest {
     id: string;
     confirmS3UploadDto: ConfirmS3UploadDto;
@@ -206,6 +211,63 @@ export interface TokensSyncRequest {
  *
  */
 export class ChannelsApi extends runtime.BaseAPI {
+
+    /**
+     * . ; .
+     *
+     */
+    async billingRetryRaw(requestParameters: BillingRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling billingRetry().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_channels"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_channels"]);
+        }
+
+        const response = await this.request({
+            path: `/api/channels/{id}/billing-retry`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SuccessResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . ; .
+     *
+     */
+    async billingRetry(requestParameters: BillingRetryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessResponseDto> {
+        const response = await this.billingRetryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * avatar_url S3. .
@@ -1485,6 +1547,14 @@ export class ChannelsApi extends runtime.BaseAPI {
 
 }
 
+/**
+ * @export
+ */
+export const BillingRetryAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type BillingRetryAcceptLanguageEnum = typeof BillingRetryAcceptLanguageEnum[keyof typeof BillingRetryAcceptLanguageEnum];
 /**
  * @export
  */

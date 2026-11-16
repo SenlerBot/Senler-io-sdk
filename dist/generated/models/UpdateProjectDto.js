@@ -49,6 +49,7 @@ function UpdateProjectDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'timezone': json['timezone'] == null ? undefined : json['timezone'],
         'name': json['name'] == null ? undefined : json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
@@ -71,6 +72,7 @@ function UpdateProjectDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'timezone': value['timezone'],
         'name': value['name'],
         'description': value['description'],
         'avatar_url': value['avatarUrl'],

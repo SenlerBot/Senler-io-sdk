@@ -62,7 +62,8 @@ export const AutomationAppStepFieldSnapshotDtoTypeEnum = {
     Json: 'json',
     Date: 'date',
     Array: 'array',
-    Object: 'object'
+    Object: 'object',
+    Reaction: 'reaction'
 } as const;
 export type AutomationAppStepFieldSnapshotDtoTypeEnum = typeof AutomationAppStepFieldSnapshotDtoTypeEnum[keyof typeof AutomationAppStepFieldSnapshotDtoTypeEnum];
 

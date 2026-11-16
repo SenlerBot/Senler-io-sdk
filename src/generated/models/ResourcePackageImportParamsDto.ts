@@ -20,6 +20,18 @@ import { mapValues } from '../runtime';
  */
 export interface ResourcePackageImportParamsDto {
     /**
+     *
+     * @type {boolean}
+     * @memberof ResourcePackageImportParamsDto
+     */
+    resourcePackageActivate?: boolean;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof ResourcePackageImportParamsDto
+     */
+    channelIds?: Array<string>;
+    /**
      * UUID
      * @type {string}
      * @memberof ResourcePackageImportParamsDto
@@ -57,6 +69,8 @@ export function ResourcePackageImportParamsDtoFromJSONTyped(json: any, ignoreDis
     }
     return {
 
+        'resourcePackageActivate': json['resource_package_activate'] == null ? undefined : json['resource_package_activate'],
+        'channelIds': json['channel_ids'] == null ? undefined : json['channel_ids'],
         'resourcePackageId': json['resource_package_id'],
         'resourcePackageLinkId': json['resource_package_link_id'] == null ? undefined : json['resource_package_link_id'],
         'name': json['name'] == null ? undefined : json['name'],
@@ -74,6 +88,8 @@ export function ResourcePackageImportParamsDtoToJSONTyped(value?: ResourcePackag
 
     return {
 
+        'resource_package_activate': value['resourcePackageActivate'],
+        'channel_ids': value['channelIds'],
         'resource_package_id': value['resourcePackageId'],
         'resource_package_link_id': value['resourcePackageLinkId'],
         'name': value['name'],

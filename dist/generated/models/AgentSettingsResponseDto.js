@@ -13,23 +13,40 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AgentSettingsResponseDtoVariablesAccessModeEnum = exports.AgentSettingsResponseDtoWidgetAiProgressModeEnum = exports.AgentSettingsResponseDtoAutoAssignmentRoleEnum = exports.AgentSettingsResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentSettingsResponseDtoAutoAssignmentModeEnum = exports.AgentSettingsResponseDtoKeywordDialogScopeEnum = exports.AgentSettingsResponseDtoKeywordAssignmentRoleEnum = exports.AgentSettingsResponseDtoStartButtonMatchModeEnum = exports.AgentSettingsResponseDtoAutostartModeEnum = exports.AgentSettingsResponseDtoKnowledgeBasePermissionsEnum = exports.AgentSettingsResponseDtoServerBindingModeEnum = exports.AgentSettingsResponseDtoAgentTypeEnum = exports.AgentSettingsResponseDtoDialogContextModeEnum = void 0;
+exports.AgentSettingsResponseDtoVariablesAccessModeEnum = exports.AgentSettingsResponseDtoWidgetAiProgressModeEnum = exports.AgentSettingsResponseDtoAutoAssignmentRoleEnum = exports.AgentSettingsResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentSettingsResponseDtoAutoAssignmentModeEnum = exports.AgentSettingsResponseDtoKeywordDialogScopeEnum = exports.AgentSettingsResponseDtoKeywordAssignmentRoleEnum = exports.AgentSettingsResponseDtoStartButtonMatchModeEnum = exports.AgentSettingsResponseDtoAutostartModeEnum = exports.AgentSettingsResponseDtoKnowledgeBasePermissionsEnum = exports.AgentSettingsResponseDtoServerBindingModeEnum = exports.AgentSettingsResponseDtoAgentTypeEnum = exports.AgentSettingsResponseDtoDialogContextModeEnum = exports.AgentSettingsResponseDtoLiveVoiceVoiceEnum = void 0;
 exports.instanceOfAgentSettingsResponseDto = instanceOfAgentSettingsResponseDto;
 exports.AgentSettingsResponseDtoFromJSON = AgentSettingsResponseDtoFromJSON;
 exports.AgentSettingsResponseDtoFromJSONTyped = AgentSettingsResponseDtoFromJSONTyped;
 exports.AgentSettingsResponseDtoToJSON = AgentSettingsResponseDtoToJSON;
 exports.AgentSettingsResponseDtoToJSONTyped = AgentSettingsResponseDtoToJSONTyped;
 const TrainingMode_1 = require("./TrainingMode");
-const AgentStatus_1 = require("./AgentStatus");
-const AgentAppOriginDto_1 = require("./AgentAppOriginDto");
 const AgentSelectedModelSummaryDto_1 = require("./AgentSelectedModelSummaryDto");
-const WizardStep_1 = require("./WizardStep");
-const OperatorHandoffPolicyDto_1 = require("./OperatorHandoffPolicyDto");
 const KnowledgeBaseSourceBindingDto_1 = require("./KnowledgeBaseSourceBindingDto");
 const McpServerResponseDto_1 = require("./McpServerResponseDto");
-const AgentMcpServerListResponseDto_1 = require("./AgentMcpServerListResponseDto");
 const AgentAssignmentPolicyDto_1 = require("./AgentAssignmentPolicyDto");
+const AgentStatus_1 = require("./AgentStatus");
+const AgentAppOriginDto_1 = require("./AgentAppOriginDto");
+const WizardStep_1 = require("./WizardStep");
+const AgentBookingPolicyDto_1 = require("./AgentBookingPolicyDto");
+const OperatorHandoffPolicyDto_1 = require("./OperatorHandoffPolicyDto");
+const AgentMcpServerListResponseDto_1 = require("./AgentMcpServerListResponseDto");
+const AgentAutomationCallDto_1 = require("./AgentAutomationCallDto");
 const AgentAutomationEventPolicyDto_1 = require("./AgentAutomationEventPolicyDto");
+/**
+ * @export
+ */
+exports.AgentSettingsResponseDtoLiveVoiceVoiceEnum = {
+    Marin: 'marin',
+    Cedar: 'cedar',
+    Coral: 'coral',
+    Sage: 'sage',
+    Alloy: 'alloy',
+    Ash: 'ash',
+    Ballad: 'ballad',
+    Echo: 'echo',
+    Shimmer: 'shimmer',
+    Verse: 'verse'
+};
 /**
  * @export
  */
@@ -157,6 +174,14 @@ exports.AgentSettingsResponseDtoVariablesAccessModeEnum = {
  * Check if a given object implements the AgentSettingsResponseDto interface.
  */
 function instanceOfAgentSettingsResponseDto(value) {
+    if (!('enableLiveVoice' in value) || value['enableLiveVoice'] === undefined)
+        return false;
+    if (!('liveVoiceVoice' in value) || value['liveVoiceVoice'] === undefined)
+        return false;
+    if (!('liveVoiceCommentary' in value) || value['liveVoiceCommentary'] === undefined)
+        return false;
+    if (!('liveVoiceInterruptions' in value) || value['liveVoiceInterruptions'] === undefined)
+        return false;
     if (!('dialogContextMode' in value) || value['dialogContextMode'] === undefined)
         return false;
     if (!('id' in value) || value['id'] === undefined)
@@ -245,6 +270,8 @@ function instanceOfAgentSettingsResponseDto(value) {
         return false;
     if (!('automationEventPolicy' in value) || value['automationEventPolicy'] === undefined)
         return false;
+    if (!('callableAutomations' in value) || value['callableAutomations'] === undefined)
+        return false;
     if (!('enableUserMessage' in value) || value['enableUserMessage'] === undefined)
         return false;
     if (!('enableStreaming' in value) || value['enableStreaming'] === undefined)
@@ -287,6 +314,8 @@ function instanceOfAgentSettingsResponseDto(value) {
         return false;
     if (!('funnelAccessPolicy' in value) || value['funnelAccessPolicy'] === undefined)
         return false;
+    if (!('bookingPolicy' in value) || value['bookingPolicy'] === undefined)
+        return false;
     if (!('recipientMessagingPolicy' in value) || value['recipientMessagingPolicy'] === undefined)
         return false;
     if (!('agentAssignmentPolicy' in value) || value['agentAssignmentPolicy'] === undefined)
@@ -307,6 +336,11 @@ function AgentSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'enableLiveVoice': json['enable_live_voice'],
+        'liveVoiceModelId': json['live_voice_model_id'] == null ? undefined : json['live_voice_model_id'],
+        'liveVoiceVoice': json['live_voice_voice'],
+        'liveVoiceCommentary': json['live_voice_commentary'],
+        'liveVoiceInterruptions': json['live_voice_interruptions'],
         'dialogContextMode': json['dialog_context_mode'],
         'id': json['id'],
         'name': json['name'],
@@ -324,6 +358,7 @@ function AgentSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'appOrigin': json['app_origin'] == null ? undefined : (0, AgentAppOriginDto_1.AgentAppOriginDtoFromJSON)(json['app_origin']),
         'isActive': json['is_active'],
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
+        'enableModelFallback': json['enable_model_fallback'] == null ? undefined : json['enable_model_fallback'],
         'metricsModelId': json['metrics_model_id'] == null ? undefined : json['metrics_model_id'],
         'selectedModel': json['selected_model'] == null ? undefined : (0, AgentSelectedModelSummaryDto_1.AgentSelectedModelSummaryDtoFromJSON)(json['selected_model']),
         'metricsCollectionEnabled': json['metrics_collection_enabled'],
@@ -375,6 +410,7 @@ function AgentSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'cancelPendingResponseOnProjectOperatorMessage': json['cancel_pending_response_on_project_operator_message'],
         'cancelPendingResponseOnAutomationMessage': json['cancel_pending_response_on_automation_message'],
         'automationEventPolicy': (0, AgentAutomationEventPolicyDto_1.AgentAutomationEventPolicyDtoFromJSON)(json['automation_event_policy']),
+        'callableAutomations': (json['callable_automations'].map(AgentAutomationCallDto_1.AgentAutomationCallDtoFromJSON)),
         'enableUserMessage': json['enable_user_message'],
         'enableStreaming': json['enable_streaming'],
         'disableLinkPreview': json['disable_link_preview'],
@@ -396,6 +432,7 @@ function AgentSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'variablesAccessMode': json['variables_access_mode'],
         'segmentAccessPolicy': json['segment_access_policy'],
         'funnelAccessPolicy': json['funnel_access_policy'],
+        'bookingPolicy': (0, AgentBookingPolicyDto_1.AgentBookingPolicyDtoFromJSON)(json['booking_policy']),
         'recipientMessagingPolicy': json['recipient_messaging_policy'],
         'agentAssignmentPolicy': (0, AgentAssignmentPolicyDto_1.AgentAssignmentPolicyDtoFromJSON)(json['agent_assignment_policy']),
         'operatorHandoffPolicy': (0, OperatorHandoffPolicyDto_1.OperatorHandoffPolicyDtoFromJSON)(json['operator_handoff_policy']),
@@ -411,6 +448,11 @@ function AgentSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         return value;
     }
     return {
+        'enable_live_voice': value['enableLiveVoice'],
+        'live_voice_model_id': value['liveVoiceModelId'],
+        'live_voice_voice': value['liveVoiceVoice'],
+        'live_voice_commentary': value['liveVoiceCommentary'],
+        'live_voice_interruptions': value['liveVoiceInterruptions'],
         'dialog_context_mode': value['dialogContextMode'],
         'id': value['id'],
         'name': value['name'],
@@ -428,6 +470,7 @@ function AgentSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'app_origin': (0, AgentAppOriginDto_1.AgentAppOriginDtoToJSON)(value['appOrigin']),
         'is_active': value['isActive'],
         'selected_model_id': value['selectedModelId'],
+        'enable_model_fallback': value['enableModelFallback'],
         'metrics_model_id': value['metricsModelId'],
         'selected_model': (0, AgentSelectedModelSummaryDto_1.AgentSelectedModelSummaryDtoToJSON)(value['selectedModel']),
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
@@ -479,6 +522,7 @@ function AgentSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'cancel_pending_response_on_project_operator_message': value['cancelPendingResponseOnProjectOperatorMessage'],
         'cancel_pending_response_on_automation_message': value['cancelPendingResponseOnAutomationMessage'],
         'automation_event_policy': (0, AgentAutomationEventPolicyDto_1.AgentAutomationEventPolicyDtoToJSON)(value['automationEventPolicy']),
+        'callable_automations': (value['callableAutomations'].map(AgentAutomationCallDto_1.AgentAutomationCallDtoToJSON)),
         'enable_user_message': value['enableUserMessage'],
         'enable_streaming': value['enableStreaming'],
         'disable_link_preview': value['disableLinkPreview'],
@@ -500,6 +544,7 @@ function AgentSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
         'variables_access_mode': value['variablesAccessMode'],
         'segment_access_policy': value['segmentAccessPolicy'],
         'funnel_access_policy': value['funnelAccessPolicy'],
+        'booking_policy': (0, AgentBookingPolicyDto_1.AgentBookingPolicyDtoToJSON)(value['bookingPolicy']),
         'recipient_messaging_policy': value['recipientMessagingPolicy'],
         'agent_assignment_policy': (0, AgentAssignmentPolicyDto_1.AgentAssignmentPolicyDtoToJSON)(value['agentAssignmentPolicy']),
         'operator_handoff_policy': (0, OperatorHandoffPolicyDto_1.OperatorHandoffPolicyDtoToJSON)(value['operatorHandoffPolicy']),

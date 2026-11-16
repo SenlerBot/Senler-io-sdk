@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LandingPublicSubscribeActionDtoSubscription } from './LandingPublicSubscribeActionDtoSubscription';
+import type { LandingSdkSubscriptionResponseDtoSubscription } from './LandingSdkSubscriptionResponseDtoSubscription';
 import {
-    LandingPublicSubscribeActionDtoSubscriptionFromJSON,
-    LandingPublicSubscribeActionDtoSubscriptionFromJSONTyped,
-    LandingPublicSubscribeActionDtoSubscriptionToJSON,
-    LandingPublicSubscribeActionDtoSubscriptionToJSONTyped,
-} from './LandingPublicSubscribeActionDtoSubscription';
+    LandingSdkSubscriptionResponseDtoSubscriptionFromJSON,
+    LandingSdkSubscriptionResponseDtoSubscriptionFromJSONTyped,
+    LandingSdkSubscriptionResponseDtoSubscriptionToJSON,
+    LandingSdkSubscriptionResponseDtoSubscriptionToJSONTyped,
+} from './LandingSdkSubscriptionResponseDtoSubscription';
 import type { LandingContactCaptureDto } from './LandingContactCaptureDto';
 import {
     LandingContactCaptureDtoFromJSON,
@@ -54,10 +54,10 @@ export interface LandingPublicSubscribeActionDto {
     contactCapture: LandingContactCaptureDto;
     /**
      *
-     * @type {LandingPublicSubscribeActionDtoSubscription}
+     * @type {LandingSdkSubscriptionResponseDtoSubscription}
      * @memberof LandingPublicSubscribeActionDto
      */
-    subscription: LandingPublicSubscribeActionDtoSubscription;
+    subscription: LandingSdkSubscriptionResponseDtoSubscription;
 }
 
 
@@ -94,7 +94,7 @@ export function LandingPublicSubscribeActionDtoFromJSONTyped(json: any, ignoreDi
         'id': json['id'],
         'type': json['type'],
         'contactCapture': LandingContactCaptureDtoFromJSON(json['contact_capture']),
-        'subscription': LandingPublicSubscribeActionDtoSubscriptionFromJSON(json['subscription']),
+        'subscription': LandingSdkSubscriptionResponseDtoSubscriptionFromJSON(json['subscription']),
     };
 }
 
@@ -112,6 +112,6 @@ export function LandingPublicSubscribeActionDtoToJSONTyped(value?: LandingPublic
         'id': value['id'],
         'type': value['type'],
         'contact_capture': LandingContactCaptureDtoToJSON(value['contactCapture']),
-        'subscription': LandingPublicSubscribeActionDtoSubscriptionToJSON(value['subscription']),
+        'subscription': LandingSdkSubscriptionResponseDtoSubscriptionToJSON(value['subscription']),
     };
 }

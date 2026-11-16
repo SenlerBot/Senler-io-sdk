@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ChannelBriefDtoTypeEnum = void 0;
+exports.ChannelBriefDtoBillingStatusEnum = exports.ChannelBriefDtoTypeEnum = void 0;
 exports.instanceOfChannelBriefDto = instanceOfChannelBriefDto;
 exports.ChannelBriefDtoFromJSON = ChannelBriefDtoFromJSON;
 exports.ChannelBriefDtoFromJSONTyped = ChannelBriefDtoFromJSONTyped;
@@ -38,6 +38,18 @@ exports.ChannelBriefDtoTypeEnum = {
     Inst: 'inst',
     Facebook: 'facebook',
     Whatsapp: 'whatsapp'
+};
+/**
+ * @export
+ */
+exports.ChannelBriefDtoBillingStatusEnum = {
+    Active: 'active',
+    Suspending: 'suspending',
+    Suspended: 'suspended',
+    SourceActive: 'source_active',
+    Restoring: 'restoring',
+    RestoreFailed: 'restore_failed',
+    ReconnectRequired: 'reconnect_required'
 };
 /**
  * Check if a given object implements the ChannelBriefDto interface.
@@ -68,6 +80,7 @@ function ChannelBriefDtoFromJSONTyped(json, ignoreDiscriminator) {
         'externalId': json['external_id'] == null ? undefined : json['external_id'],
         'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
         'isPaused': json['is_paused'],
+        'billingStatus': json['billing_status'] == null ? undefined : json['billing_status'],
         'botUsername': json['bot_username'] == null ? undefined : json['bot_username'],
         'migration': json['migration'] == null ? undefined : (0, ChannelMigrationStatusDto_1.ChannelMigrationStatusDtoFromJSON)(json['migration']),
         'migrationBackfill': json['migration_backfill'] == null ? undefined : (0, ChannelMigrationBackfillDto_1.ChannelMigrationBackfillDtoFromJSON)(json['migration_backfill']),
@@ -96,6 +109,7 @@ function ChannelBriefDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'external_id': value['externalId'],
         'avatar_url': value['avatarUrl'],
         'is_paused': value['isPaused'],
+        'billing_status': value['billingStatus'],
         'bot_username': value['botUsername'],
         'migration': (0, ChannelMigrationStatusDto_1.ChannelMigrationStatusDtoToJSON)(value['migration']),
         'migration_backfill': (0, ChannelMigrationBackfillDto_1.ChannelMigrationBackfillDtoToJSON)(value['migrationBackfill']),

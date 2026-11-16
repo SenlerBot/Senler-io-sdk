@@ -176,6 +176,18 @@ export interface PermissionsDto {
      */
     canManageLandings: boolean;
     /**
+     * -
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canViewBookings: boolean;
+    /**
+     * -
+     * @type {boolean}
+     * @memberof PermissionsDto
+     */
+    canManageBookings: boolean;
+    /**
      *
      * @type {boolean}
      * @memberof PermissionsDto
@@ -393,6 +405,8 @@ export function instanceOfPermissionsDto(value: object): value is PermissionsDto
     if (!('canManageSegments' in value) || value['canManageSegments'] === undefined) return false;
     if (!('canViewLandings' in value) || value['canViewLandings'] === undefined) return false;
     if (!('canManageLandings' in value) || value['canManageLandings'] === undefined) return false;
+    if (!('canViewBookings' in value) || value['canViewBookings'] === undefined) return false;
+    if (!('canManageBookings' in value) || value['canManageBookings'] === undefined) return false;
     if (!('canViewTrafficMarks' in value) || value['canViewTrafficMarks'] === undefined) return false;
     if (!('canManageTrafficMarks' in value) || value['canManageTrafficMarks'] === undefined) return false;
     if (!('canViewAutomations' in value) || value['canViewAutomations'] === undefined) return false;
@@ -463,6 +477,8 @@ export function PermissionsDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'canManageSegments': json['can_manage_segments'],
         'canViewLandings': json['can_view_landings'],
         'canManageLandings': json['can_manage_landings'],
+        'canViewBookings': json['can_view_bookings'],
+        'canManageBookings': json['can_manage_bookings'],
         'canViewTrafficMarks': json['can_view_traffic_marks'],
         'canManageTrafficMarks': json['can_manage_traffic_marks'],
         'canViewAutomations': json['can_view_automations'],
@@ -534,6 +550,8 @@ export function PermissionsDtoToJSONTyped(value?: PermissionsDto | null, ignoreD
         'can_manage_segments': value['canManageSegments'],
         'can_view_landings': value['canViewLandings'],
         'can_manage_landings': value['canManageLandings'],
+        'can_view_bookings': value['canViewBookings'],
+        'can_manage_bookings': value['canManageBookings'],
         'can_view_traffic_marks': value['canViewTrafficMarks'],
         'can_manage_traffic_marks': value['canManageTrafficMarks'],
         'can_view_automations': value['canViewAutomations'],

@@ -36,6 +36,12 @@ export interface LandingWidgetFeaturesDto {
      * @type {boolean}
      * @memberof LandingWidgetFeaturesDto
      */
+    liveVoice?: boolean;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof LandingWidgetFeaturesDto
+     */
     emoji?: boolean;
     /**
      * .
@@ -76,6 +82,7 @@ export function LandingWidgetFeaturesDtoFromJSONTyped(json: any, ignoreDiscrimin
 
         'fileUpload': json['file_upload'] == null ? undefined : json['file_upload'],
         'voiceMessages': json['voice_messages'] == null ? undefined : json['voice_messages'],
+        'liveVoice': json['live_voice'] == null ? undefined : json['live_voice'],
         'emoji': json['emoji'] == null ? undefined : json['emoji'],
         'splitView': json['split_view'] == null ? undefined : json['split_view'],
         'elementSelection': json['element_selection'] == null ? undefined : json['element_selection'],
@@ -96,6 +103,7 @@ export function LandingWidgetFeaturesDtoToJSONTyped(value?: LandingWidgetFeature
 
         'file_upload': value['fileUpload'],
         'voice_messages': value['voiceMessages'],
+        'live_voice': value['liveVoice'],
         'emoji': value['emoji'],
         'split_view': value['splitView'],
         'element_selection': value['elementSelection'],
