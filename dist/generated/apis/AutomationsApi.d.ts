@@ -179,6 +179,7 @@ export interface GetGraphRequest {
 }
 export interface GetNodeTypesRequest {
     projectId: string;
+    catalogIds?: Array<string>;
     automationType?: GetNodeTypesAutomationTypeEnum;
     timezone?: string;
     acceptLanguage?: GetNodeTypesAcceptLanguageEnum;
@@ -524,12 +525,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     automationsUpdate(requestParameters: AutomationsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto>;
     /**
-     * 100 Mongo-. graph , , . , . : layoutAutomation . . position . ; .
+     * 100 Mongo-. config_schema default_config getNodeTypes catalog_ids, . graph : . graph , , . , . : layoutAutomation . . position . ; .
      *
      */
     batchRaw(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>>;
     /**
-     * 100 Mongo-. graph , , . , . : layoutAutomation . . position . ; .
+     * 100 Mongo-. config_schema default_config getNodeTypes catalog_ids, . graph : . graph , , . , . : layoutAutomation . . position . ; .
      *
      */
     batch(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto>;
@@ -664,12 +665,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     getGraph(requestParameters: GetGraphRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto>;
     /**
-     * , . MCP- React Flow.
+     * , , , config_schema default_config. catalog_ids, . default_config config_schema . MCP- React Flow.
      *
      */
     getNodeTypesRaw(requestParameters: GetNodeTypesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeCatalogResponseDto>>;
     /**
-     * , . MCP- React Flow.
+     * , , , config_schema default_config. catalog_ids, . default_config config_schema . MCP- React Flow.
      *
      */
     getNodeTypes(requestParameters: GetNodeTypesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeCatalogResponseDto>;
@@ -784,12 +785,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     layout(requestParameters: LayoutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto>;
     /**
-     * . , ; layoutAutomation . applyAutomationBatch. position . graph . .
+     * . config getNodeTypes catalog_ids: default_config config_schema . , ; layoutAutomation . applyAutomationBatch. position . graph . .
      *
      */
     nodesRaw(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeResponseDto>>;
     /**
-     * . , ; layoutAutomation . applyAutomationBatch. position . graph . .
+     * . config getNodeTypes catalog_ids: default_config config_schema . , ; layoutAutomation . applyAutomationBatch. position . graph . .
      *
      */
     nodes(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto>;

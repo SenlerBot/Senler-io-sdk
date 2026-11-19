@@ -22,6 +22,8 @@ exports.SupportScheduleAssignmentDtoToJSONTyped = SupportScheduleAssignmentDtoTo
  * Check if a given object implements the SupportScheduleAssignmentDto interface.
  */
 function instanceOfSupportScheduleAssignmentDto(value) {
+    if (!('isVacation' in value) || value['isVacation'] === undefined)
+        return false;
     if (!('isDayOff' in value) || value['isDayOff'] === undefined)
         return false;
     if (!('groupIds' in value) || value['groupIds'] === undefined)
@@ -50,6 +52,7 @@ function SupportScheduleAssignmentDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'isVacation': json['is_vacation'],
         'isDayOff': json['is_day_off'],
         'groupIds': json['group_ids'] == null ? null : json['group_ids'],
         'id': json['id'],
@@ -69,6 +72,7 @@ function SupportScheduleAssignmentDtoToJSONTyped(value, ignoreDiscriminator = fa
         return value;
     }
     return {
+        'is_vacation': value['isVacation'],
         'is_day_off': value['isDayOff'],
         'group_ids': value['groupIds'],
         'id': value['id'],

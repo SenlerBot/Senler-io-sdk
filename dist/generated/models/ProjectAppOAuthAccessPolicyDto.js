@@ -19,6 +19,7 @@ exports.ProjectAppOAuthAccessPolicyDtoFromJSON = ProjectAppOAuthAccessPolicyDtoF
 exports.ProjectAppOAuthAccessPolicyDtoFromJSONTyped = ProjectAppOAuthAccessPolicyDtoFromJSONTyped;
 exports.ProjectAppOAuthAccessPolicyDtoToJSON = ProjectAppOAuthAccessPolicyDtoToJSON;
 exports.ProjectAppOAuthAccessPolicyDtoToJSONTyped = ProjectAppOAuthAccessPolicyDtoToJSONTyped;
+const AppOAuthPermissionPurposeDto_1 = require("./AppOAuthPermissionPurposeDto");
 /**
  * @export
  */
@@ -104,6 +105,9 @@ function ProjectAppOAuthAccessPolicyDtoFromJSONTyped(json, ignoreDiscriminator) 
     }
     return {
         'permissionMode': json['permission_mode'],
+        'allowScopeSelection': json['allow_scope_selection'] == null ? undefined : json['allow_scope_selection'],
+        'requiredPermissions': json['required_permissions'] == null ? undefined : json['required_permissions'],
+        'permissionPurposes': json['permission_purposes'] == null ? undefined : (json['permission_purposes'].map(AppOAuthPermissionPurposeDto_1.AppOAuthPermissionPurposeDtoFromJSON)),
         'allowedPermissions': json['allowed_permissions'],
     };
 }
@@ -116,6 +120,9 @@ function ProjectAppOAuthAccessPolicyDtoToJSONTyped(value, ignoreDiscriminator = 
     }
     return {
         'permission_mode': value['permissionMode'],
+        'allow_scope_selection': value['allowScopeSelection'],
+        'required_permissions': value['requiredPermissions'],
+        'permission_purposes': value['permissionPurposes'] == null ? undefined : (value['permissionPurposes'].map(AppOAuthPermissionPurposeDto_1.AppOAuthPermissionPurposeDtoToJSON)),
         'allowed_permissions': value['allowedPermissions'],
     };
 }

@@ -32,6 +32,7 @@ function UpdateSupportScheduleAssignmentDtoFromJSONTyped(json, ignoreDiscriminat
         return json;
     }
     return {
+        'isVacation': json['is_vacation'] == null ? undefined : json['is_vacation'],
         'isDayOff': json['is_day_off'] == null ? undefined : json['is_day_off'],
         'groupIds': json['group_ids'] == null ? undefined : json['group_ids'],
         'startsAt': json['starts_at'] == null ? undefined : (new Date(json['starts_at'])),
@@ -49,6 +50,7 @@ function UpdateSupportScheduleAssignmentDtoToJSONTyped(value, ignoreDiscriminato
         return value;
     }
     return {
+        'is_vacation': value['isVacation'],
         'is_day_off': value['isDayOff'],
         'group_ids': value['groupIds'],
         'starts_at': value['startsAt'] == null ? undefined : ((value['startsAt']).toISOString()),

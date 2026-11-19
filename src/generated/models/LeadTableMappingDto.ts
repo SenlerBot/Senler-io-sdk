@@ -26,7 +26,7 @@ export interface LeadTableMappingDto {
      */
     column: number;
     /**
-     * : , ID MAX, , , , , , , analytics:google_analytics, analytics:yandex_metrica variable:< >
+     * : skip, messenger ( ), ID MAX, , , , , , , analytics:google_analytics, analytics:yandex_metrica variable:< >
      * @type {string}
      * @memberof LeadTableMappingDto
      */

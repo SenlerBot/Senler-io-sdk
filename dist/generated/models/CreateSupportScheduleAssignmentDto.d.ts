@@ -16,7 +16,13 @@
  */
 export interface CreateSupportScheduleAssignmentDto {
     /**
-     * . ; .
+     * . true is_day_off; . .
+     * @type {boolean}
+     * @memberof CreateSupportScheduleAssignmentDto
+     */
+    isVacation?: boolean;
+    /**
+     * ( ) . ; .
      * @type {boolean}
      * @memberof CreateSupportScheduleAssignmentDto
      */

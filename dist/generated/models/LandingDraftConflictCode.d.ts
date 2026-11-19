@@ -15,6 +15,8 @@
  */
 export declare const LandingDraftConflictCode: {
     readonly LandingBlockRevisionStale: "landing_block_revision_stale";
+    readonly LandingHtmlFragmentNotFound: "landing_html_fragment_not_found";
+    readonly LandingHtmlFragmentAmbiguous: "landing_html_fragment_ambiguous";
     readonly LandingBlockLimitReached: "landing_block_limit_reached";
     readonly LandingActionIdDuplicate: "landing_action_id_duplicate";
     readonly LandingOrderRevisionStale: "landing_order_revision_stale";

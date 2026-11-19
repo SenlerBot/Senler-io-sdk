@@ -40,6 +40,18 @@ export interface StatisticsAiResponseToolDto {
      */
     mcpServerId: string | null;
     /**
+     * MCP- ; null,
+     * @type {string}
+     * @memberof StatisticsAiResponseToolDto
+     */
+    mcpServerName: string | null;
+    /**
+     * method_name MCP- execute. , . Null
+     * @type {string}
+     * @memberof StatisticsAiResponseToolDto
+     */
+    methodName: string | null;
+    /**
      *
      * @type {number}
      * @memberof StatisticsAiResponseToolDto

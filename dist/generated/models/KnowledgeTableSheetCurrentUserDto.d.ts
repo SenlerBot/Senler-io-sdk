@@ -16,7 +16,7 @@
  */
 export interface KnowledgeTableSheetCurrentUserDto {
     /**
-     * UUID : , API- OAuth-
+     * ID : UUID API- OAuth-
      * @type {string}
      * @memberof KnowledgeTableSheetCurrentUserDto
      */

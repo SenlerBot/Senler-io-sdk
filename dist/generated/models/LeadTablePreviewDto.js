@@ -19,6 +19,7 @@ exports.LeadTablePreviewDtoFromJSONTyped = LeadTablePreviewDtoFromJSONTyped;
 exports.LeadTablePreviewDtoToJSON = LeadTablePreviewDtoToJSON;
 exports.LeadTablePreviewDtoToJSONTyped = LeadTablePreviewDtoToJSONTyped;
 const LeadTableRowPreviewDto_1 = require("./LeadTableRowPreviewDto");
+const LeadTableExcludedChannelDto_1 = require("./LeadTableExcludedChannelDto");
 const LeadTableIssueDto_1 = require("./LeadTableIssueDto");
 /**
  * Check if a given object implements the LeadTablePreviewDto interface.
@@ -52,6 +53,7 @@ function LeadTablePreviewDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'excludedChannels': json['excluded_channels'] == null ? undefined : (json['excluded_channels'].map(LeadTableExcludedChannelDto_1.LeadTableExcludedChannelDtoFromJSON)),
         'excludedColumns': json['excluded_columns'] == null ? undefined : json['excluded_columns'],
         'fingerprint': json['fingerprint'],
         'total': json['total'],
@@ -72,6 +74,7 @@ function LeadTablePreviewDtoToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'excluded_channels': value['excludedChannels'] == null ? undefined : (value['excludedChannels'].map(LeadTableExcludedChannelDto_1.LeadTableExcludedChannelDtoToJSON)),
         'excluded_columns': value['excludedColumns'],
         'fingerprint': value['fingerprint'],
         'total': value['total'],

@@ -53,6 +53,10 @@ function instanceOfStatisticsAiResponseToolDto(value) {
         return false;
     if (!('mcpServerId' in value) || value['mcpServerId'] === undefined)
         return false;
+    if (!('mcpServerName' in value) || value['mcpServerName'] === undefined)
+        return false;
+    if (!('methodName' in value) || value['methodName'] === undefined)
+        return false;
     if (!('calls' in value) || value['calls'] === undefined)
         return false;
     if (!('failedCalls' in value) || value['failedCalls'] === undefined)
@@ -79,6 +83,8 @@ function StatisticsAiResponseToolDtoFromJSONTyped(json, ignoreDiscriminator) {
         'kind': json['kind'],
         'category': json['category'],
         'mcpServerId': json['mcp_server_id'],
+        'mcpServerName': json['mcp_server_name'],
+        'methodName': json['method_name'],
         'calls': json['calls'],
         'failedCalls': json['failed_calls'],
         'credits': json['credits'],
@@ -99,6 +105,8 @@ function StatisticsAiResponseToolDtoToJSONTyped(value, ignoreDiscriminator = fal
         'kind': value['kind'],
         'category': value['category'],
         'mcp_server_id': value['mcpServerId'],
+        'mcp_server_name': value['mcpServerName'],
+        'method_name': value['methodName'],
         'calls': value['calls'],
         'failed_calls': value['failedCalls'],
         'credits': value['credits'],

@@ -20,6 +20,13 @@ import {
     LeadTableRowPreviewDtoToJSON,
     LeadTableRowPreviewDtoToJSONTyped,
 } from './LeadTableRowPreviewDto';
+import type { LeadTableExcludedChannelDto } from './LeadTableExcludedChannelDto';
+import {
+    LeadTableExcludedChannelDtoFromJSON,
+    LeadTableExcludedChannelDtoFromJSONTyped,
+    LeadTableExcludedChannelDtoToJSON,
+    LeadTableExcludedChannelDtoToJSONTyped,
+} from './LeadTableExcludedChannelDto';
 import type { LeadTableIssueDto } from './LeadTableIssueDto';
 import {
     LeadTableIssueDtoFromJSON,
@@ -34,6 +41,12 @@ import {
  * @interface LeadTablePreviewDto
  */
 export interface LeadTablePreviewDto {
+    /**
+     * , skipped.
+     * @type {Array<LeadTableExcludedChannelDto>}
+     * @memberof LeadTablePreviewDto
+     */
+    excludedChannels?: Array<LeadTableExcludedChannelDto>;
     /**
      * ,
      * @type {Array<string>}
@@ -122,6 +135,7 @@ export function LeadTablePreviewDtoFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
 
+        'excludedChannels': json['excluded_channels'] == null ? undefined : ((json['excluded_channels'] as Array<any>).map(LeadTableExcludedChannelDtoFromJSON)),
         'excludedColumns': json['excluded_columns'] == null ? undefined : json['excluded_columns'],
         'fingerprint': json['fingerprint'],
         'total': json['total'],
@@ -146,6 +160,7 @@ export function LeadTablePreviewDtoToJSONTyped(value?: LeadTablePreviewDto | nul
 
     return {
 
+        'excluded_channels': value['excludedChannels'] == null ? undefined : ((value['excludedChannels'] as Array<any>).map(LeadTableExcludedChannelDtoToJSON)),
         'excluded_columns': value['excludedColumns'],
         'fingerprint': value['fingerprint'],
         'total': value['total'],

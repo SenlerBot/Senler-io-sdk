@@ -44,6 +44,18 @@ export interface StatisticsAiResponseToolDto {
      */
     mcpServerId: string | null;
     /**
+     * MCP- ; null,
+     * @type {string}
+     * @memberof StatisticsAiResponseToolDto
+     */
+    mcpServerName: string | null;
+    /**
+     * method_name MCP- execute. , . Null
+     * @type {string}
+     * @memberof StatisticsAiResponseToolDto
+     */
+    methodName: string | null;
+    /**
      *
      * @type {number}
      * @memberof StatisticsAiResponseToolDto
@@ -117,6 +129,8 @@ export function instanceOfStatisticsAiResponseToolDto(value: object): value is S
     if (!('kind' in value) || value['kind'] === undefined) return false;
     if (!('category' in value) || value['category'] === undefined) return false;
     if (!('mcpServerId' in value) || value['mcpServerId'] === undefined) return false;
+    if (!('mcpServerName' in value) || value['mcpServerName'] === undefined) return false;
+    if (!('methodName' in value) || value['methodName'] === undefined) return false;
     if (!('calls' in value) || value['calls'] === undefined) return false;
     if (!('failedCalls' in value) || value['failedCalls'] === undefined) return false;
     if (!('credits' in value) || value['credits'] === undefined) return false;
@@ -140,6 +154,8 @@ export function StatisticsAiResponseToolDtoFromJSONTyped(json: any, ignoreDiscri
         'kind': json['kind'],
         'category': json['category'],
         'mcpServerId': json['mcp_server_id'],
+        'mcpServerName': json['mcp_server_name'],
+        'methodName': json['method_name'],
         'calls': json['calls'],
         'failedCalls': json['failed_calls'],
         'credits': json['credits'],
@@ -164,6 +180,8 @@ export function StatisticsAiResponseToolDtoToJSONTyped(value?: StatisticsAiRespo
         'kind': value['kind'],
         'category': value['category'],
         'mcp_server_id': value['mcpServerId'],
+        'mcp_server_name': value['mcpServerName'],
+        'method_name': value['methodName'],
         'calls': value['calls'],
         'failed_calls': value['failedCalls'],
         'credits': value['credits'],

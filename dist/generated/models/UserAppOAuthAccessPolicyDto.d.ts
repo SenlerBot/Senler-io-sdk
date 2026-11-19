@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { AppOAuthPermissionPurposeDto } from './AppOAuthPermissionPurposeDto';
 /**
  * UserAppOAuthAccessPolicyDto.
  * @export
@@ -21,6 +22,24 @@ export interface UserAppOAuthAccessPolicyDto {
      * @memberof UserAppOAuthAccessPolicyDto
      */
     permissionMode: UserAppOAuthAccessPolicyDtoPermissionModeEnum;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UserAppOAuthAccessPolicyDto
+     */
+    allowScopeSelection?: boolean;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof UserAppOAuthAccessPolicyDto
+     */
+    requiredPermissions?: Array<string>;
+    /**
+     *
+     * @type {Array<AppOAuthPermissionPurposeDto>}
+     * @memberof UserAppOAuthAccessPolicyDto
+     */
+    permissionPurposes?: Array<AppOAuthPermissionPurposeDto>;
     /**
      * , OAuth-
      * @type {Array<string>}

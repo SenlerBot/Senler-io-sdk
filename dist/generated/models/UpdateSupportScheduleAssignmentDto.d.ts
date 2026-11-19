@@ -16,7 +16,13 @@
  */
 export interface UpdateSupportScheduleAssignmentDto {
     /**
-     * . true ; false .
+     * . true is_day_off. false , is_day_off . , is_day_off: false.
+     * @type {boolean}
+     * @memberof UpdateSupportScheduleAssignmentDto
+     */
+    isVacation?: boolean;
+    /**
+     * ( ) . true ; false , is_vacation true.
      * @type {boolean}
      * @memberof UpdateSupportScheduleAssignmentDto
      */

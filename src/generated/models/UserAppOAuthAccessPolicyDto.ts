@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AppOAuthPermissionPurposeDto } from './AppOAuthPermissionPurposeDto';
+import {
+    AppOAuthPermissionPurposeDtoFromJSON,
+    AppOAuthPermissionPurposeDtoFromJSONTyped,
+    AppOAuthPermissionPurposeDtoToJSON,
+    AppOAuthPermissionPurposeDtoToJSONTyped,
+} from './AppOAuthPermissionPurposeDto';
+
 /**
  * UserAppOAuthAccessPolicyDto.
  * @export
@@ -25,6 +33,24 @@ export interface UserAppOAuthAccessPolicyDto {
      * @memberof UserAppOAuthAccessPolicyDto
      */
     permissionMode: UserAppOAuthAccessPolicyDtoPermissionModeEnum;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UserAppOAuthAccessPolicyDto
+     */
+    allowScopeSelection?: boolean;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof UserAppOAuthAccessPolicyDto
+     */
+    requiredPermissions?: Array<string>;
+    /**
+     *
+     * @type {Array<AppOAuthPermissionPurposeDto>}
+     * @memberof UserAppOAuthAccessPolicyDto
+     */
+    permissionPurposes?: Array<AppOAuthPermissionPurposeDto>;
     /**
      * , OAuth-
      * @type {Array<string>}
@@ -141,6 +167,9 @@ export function UserAppOAuthAccessPolicyDtoFromJSONTyped(json: any, ignoreDiscri
     return {
 
         'permissionMode': json['permission_mode'],
+        'allowScopeSelection': json['allow_scope_selection'] == null ? undefined : json['allow_scope_selection'],
+        'requiredPermissions': json['required_permissions'] == null ? undefined : json['required_permissions'],
+        'permissionPurposes': json['permission_purposes'] == null ? undefined : ((json['permission_purposes'] as Array<any>).map(AppOAuthPermissionPurposeDtoFromJSON)),
         'allowedPermissions': json['allowed_permissions'],
     };
 }
@@ -157,6 +186,9 @@ export function UserAppOAuthAccessPolicyDtoToJSONTyped(value?: UserAppOAuthAcces
     return {
 
         'permission_mode': value['permissionMode'],
+        'allow_scope_selection': value['allowScopeSelection'],
+        'required_permissions': value['requiredPermissions'],
+        'permission_purposes': value['permissionPurposes'] == null ? undefined : ((value['permissionPurposes'] as Array<any>).map(AppOAuthPermissionPurposeDtoToJSON)),
         'allowed_permissions': value['allowedPermissions'],
     };
 }

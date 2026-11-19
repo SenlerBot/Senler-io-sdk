@@ -20,7 +20,13 @@ import { mapValues } from '../runtime';
  */
 export interface CreateSupportScheduleAssignmentDto {
     /**
-     * . ; .
+     * . true is_day_off; . .
+     * @type {boolean}
+     * @memberof CreateSupportScheduleAssignmentDto
+     */
+    isVacation?: boolean;
+    /**
+     * ( ) . ; .
      * @type {boolean}
      * @memberof CreateSupportScheduleAssignmentDto
      */
@@ -83,6 +89,7 @@ export function CreateSupportScheduleAssignmentDtoFromJSONTyped(json: any, ignor
     }
     return {
 
+        'isVacation': json['is_vacation'] == null ? undefined : json['is_vacation'],
         'isDayOff': json['is_day_off'] == null ? undefined : json['is_day_off'],
         'groupIds': json['group_ids'] == null ? undefined : json['group_ids'],
         'startsAt': (new Date(json['starts_at'])),
@@ -104,6 +111,7 @@ export function CreateSupportScheduleAssignmentDtoToJSONTyped(value?: CreateSupp
 
     return {
 
+        'is_vacation': value['isVacation'],
         'is_day_off': value['isDayOff'],
         'group_ids': value['groupIds'],
         'starts_at': ((value['startsAt']).toISOString()),

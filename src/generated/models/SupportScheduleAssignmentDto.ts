@@ -20,7 +20,13 @@ import { mapValues } from '../runtime';
  */
 export interface SupportScheduleAssignmentDto {
     /**
-     * :
+     * : (is_day_off)
+     * @type {boolean}
+     * @memberof SupportScheduleAssignmentDto
+     */
+    isVacation: boolean;
+    /**
+     * ( ):
      * @type {boolean}
      * @memberof SupportScheduleAssignmentDto
      */
@@ -79,6 +85,7 @@ export interface SupportScheduleAssignmentDto {
  * Check if a given object implements the SupportScheduleAssignmentDto interface.
  */
 export function instanceOfSupportScheduleAssignmentDto(value: object): value is SupportScheduleAssignmentDto {
+    if (!('isVacation' in value) || value['isVacation'] === undefined) return false;
     if (!('isDayOff' in value) || value['isDayOff'] === undefined) return false;
     if (!('groupIds' in value) || value['groupIds'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
@@ -101,6 +108,7 @@ export function SupportScheduleAssignmentDtoFromJSONTyped(json: any, ignoreDiscr
     }
     return {
 
+        'isVacation': json['is_vacation'],
         'isDayOff': json['is_day_off'],
         'groupIds': json['group_ids'] == null ? null : json['group_ids'],
         'id': json['id'],
@@ -124,6 +132,7 @@ export function SupportScheduleAssignmentDtoToJSONTyped(value?: SupportScheduleA
 
     return {
 
+        'is_vacation': value['isVacation'],
         'is_day_off': value['isDayOff'],
         'group_ids': value['groupIds'],
         'id': value['id'],

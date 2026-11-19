@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { LeadTableRowPreviewDto } from './LeadTableRowPreviewDto';
+import type { LeadTableExcludedChannelDto } from './LeadTableExcludedChannelDto';
 import type { LeadTableIssueDto } from './LeadTableIssueDto';
 /**
  * LeadTablePreviewDto.
@@ -17,6 +18,12 @@ import type { LeadTableIssueDto } from './LeadTableIssueDto';
  * @interface LeadTablePreviewDto
  */
 export interface LeadTablePreviewDto {
+    /**
+     * , skipped.
+     * @type {Array<LeadTableExcludedChannelDto>}
+     * @memberof LeadTablePreviewDto
+     */
+    excludedChannels?: Array<LeadTableExcludedChannelDto>;
     /**
      * ,
      * @type {Array<string>}

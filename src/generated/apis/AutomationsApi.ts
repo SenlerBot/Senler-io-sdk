@@ -423,6 +423,7 @@ export interface GetGraphRequest {
 
 export interface GetNodeTypesRequest {
     projectId: string;
+    catalogIds?: Array<string>;
     automationType?: GetNodeTypesAutomationTypeEnum;
     timezone?: string;
     acceptLanguage?: GetNodeTypesAcceptLanguageEnum;
@@ -1664,7 +1665,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * 100 Mongo-. graph , , . , . : layoutAutomation . . position . ; .
+     * 100 Mongo-. config_schema default_config getNodeTypes catalog_ids, . graph : . graph , , . , . : layoutAutomation . . position . ; .
      *
      */
     async batchRaw(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>> {
@@ -1726,7 +1727,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * 100 Mongo-. graph , , . , . : layoutAutomation . . position . ; .
+     * 100 Mongo-. config_schema default_config getNodeTypes catalog_ids, . graph : . graph , , . , . : layoutAutomation . . position . ; .
      *
      */
     async batch(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto> {
@@ -2622,7 +2623,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , . MCP- React Flow.
+     * , , , config_schema default_config. catalog_ids, . default_config config_schema . MCP- React Flow.
      *
      */
     async getNodeTypesRaw(requestParameters: GetNodeTypesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeCatalogResponseDto>> {
@@ -2637,6 +2638,10 @@ export class AutomationsApi extends runtime.BaseAPI {
 
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['catalogIds'] != null) {
+            queryParameters['catalog_ids'] = requestParameters['catalogIds'];
         }
 
         if (requestParameters['automationType'] != null) {
@@ -2682,7 +2687,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , . MCP- React Flow.
+     * , , , config_schema default_config. catalog_ids, . default_config config_schema . MCP- React Flow.
      *
      */
     async getNodeTypes(requestParameters: GetNodeTypesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeCatalogResponseDto> {
@@ -3516,7 +3521,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . , ; layoutAutomation . applyAutomationBatch. position . graph . .
+     * . config getNodeTypes catalog_ids: default_config config_schema . , ; layoutAutomation . applyAutomationBatch. position . graph . .
      *
      */
     async nodesRaw(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationNodeResponseDto>> {
@@ -3578,7 +3583,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * . , ; layoutAutomation . applyAutomationBatch. position . graph . .
+     * . config getNodeTypes catalog_ids: default_config config_schema . , ; layoutAutomation . applyAutomationBatch. position . graph . .
      *
      */
     async nodes(requestParameters: NodesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationNodeResponseDto> {

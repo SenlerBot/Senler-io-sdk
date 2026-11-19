@@ -25,6 +25,8 @@ exports.LandingDraftConflictCodeToJSONTyped = LandingDraftConflictCodeToJSONType
  */
 exports.LandingDraftConflictCode = {
     LandingBlockRevisionStale: 'landing_block_revision_stale',
+    LandingHtmlFragmentNotFound: 'landing_html_fragment_not_found',
+    LandingHtmlFragmentAmbiguous: 'landing_html_fragment_ambiguous',
     LandingBlockLimitReached: 'landing_block_limit_reached',
     LandingActionIdDuplicate: 'landing_action_id_duplicate',
     LandingOrderRevisionStale: 'landing_order_revision_stale',
