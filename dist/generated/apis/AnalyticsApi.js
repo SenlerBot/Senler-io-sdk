@@ -46,8 +46,8 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetTopMetricsTopEnum = exports.GetTopMetricsMetricTypeEnum = exports.GetTopMetricsAgentTypeEnum = exports.GetTopMetricsEvaluationModeEnum = exports.GetTopMetricsPeriodEnum = exports.GetTopAgentsAcceptLanguageEnum = exports.GetTopAgentsTopEnum = exports.GetTopAgentsMetricTypeEnum = exports.GetTopAgentsAgentTypeEnum = exports.GetTopAgentsEvaluationModeEnum = exports.GetTopAgentsPeriodEnum = exports.GetSummarizeSettingsAcceptLanguageEnum = exports.GetSummarizeLatestAcceptLanguageEnum = exports.GetSummarizeHistoryAcceptLanguageEnum = exports.GetSummarizeEstimateAcceptLanguageEnum = exports.GetSummarizeEstimatePeriodEnum = exports.GetSummarizeAcceptLanguageEnum = exports.GetMetricsTopAgentsAcceptLanguageEnum = exports.GetMetricsTopAgentsMetricTypeEnum = exports.GetMetricsTopAgentsAgentTypeEnum = exports.GetMetricsTopAgentsEvaluationModeEnum = exports.GetMetricsTopAgentsPeriodEnum = exports.GetMetricsLogAcceptLanguageEnum = exports.GetMetricsLogSortOrderEnum = exports.GetMetricsLogSortByEnum = exports.GetDiagnosticsHistoryAcceptLanguageEnum = exports.GetDiagnosticsEstimateAcceptLanguageEnum = exports.GetDiagnosticsEstimateCheckModeEnum = exports.GetDiagnosticsEntitiesAcceptLanguageEnum = exports.GetDiagnosticsEntitiesEntityTypeEnum = exports.GetDiagnosticsDialogTestsAcceptLanguageEnum = exports.GetDiagnosticsCheckAcceptLanguageEnum = exports.GetDiagnosticsAcceptLanguageEnum = exports.GetDiagnosticsEntityTypeEnum = exports.GetDiagnosticsPeriodDaysEnum = exports.GetAnalysisJobsLatestAcceptLanguageEnum = exports.GetAnalysisJobsLatestKindEnum = exports.GetAnalysisJobsInsightHistoryAcceptLanguageEnum = exports.GetAnalysisJobsAcceptLanguageEnum = exports.GetAgentsTopMetricsAcceptLanguageEnum = exports.GetAgentsTopMetricsMetricTypeEnum = exports.GetAgentsTopMetricsAgentTypeEnum = exports.GetAgentsTopMetricsEvaluationModeEnum = exports.GetAgentsTopMetricsPeriodEnum = exports.DiagnosticsSaveAcceptLanguageEnum = exports.DiagnosticsGenerateAcceptLanguageEnum = exports.AnalysisJobsStopAcceptLanguageEnum = exports.AnalysisJobsResumeAcceptLanguageEnum = exports.AnalysisJobsPauseAcceptLanguageEnum = exports.AnalyticsApi = void 0;
-exports.UpdateSummarizeSettingsAcceptLanguageEnum = exports.SummarizeAcceptLanguageEnum = exports.GetTopMetricsAcceptLanguageEnum = void 0;
+exports.GetTopMetricsEvaluationModeEnum = exports.GetTopMetricsPeriodEnum = exports.GetTopAgentsAcceptLanguageEnum = exports.GetTopAgentsTopEnum = exports.GetTopAgentsMetricTypeEnum = exports.GetTopAgentsAgentTypeEnum = exports.GetTopAgentsEvaluationModeEnum = exports.GetTopAgentsPeriodEnum = exports.GetSummarizeSettingsAcceptLanguageEnum = exports.GetSummarizeLatestAcceptLanguageEnum = exports.GetSummarizeHistoryAcceptLanguageEnum = exports.GetSummarizeEstimateAcceptLanguageEnum = exports.GetSummarizeEstimatePeriodEnum = exports.GetSummarizeAcceptLanguageEnum = exports.GetMetricsTopAgentsAcceptLanguageEnum = exports.GetMetricsTopAgentsMetricTypeEnum = exports.GetMetricsTopAgentsAgentTypeEnum = exports.GetMetricsTopAgentsEvaluationModeEnum = exports.GetMetricsTopAgentsPeriodEnum = exports.GetMetricsLogAcceptLanguageEnum = exports.GetMetricsLogSortOrderEnum = exports.GetMetricsLogSortByEnum = exports.GetDiagnosticsHistoryAcceptLanguageEnum = exports.GetDiagnosticsHistorySectionEnum = exports.GetDiagnosticsHistoryCheckModeEnum = exports.GetDiagnosticsEstimateAcceptLanguageEnum = exports.GetDiagnosticsEstimateCheckModeEnum = exports.GetDiagnosticsEntitiesAcceptLanguageEnum = exports.GetDiagnosticsEntitiesEntityTypeEnum = exports.GetDiagnosticsDialogTestsAcceptLanguageEnum = exports.GetDiagnosticsCheckAcceptLanguageEnum = exports.GetDiagnosticsAcceptLanguageEnum = exports.GetDiagnosticsEntityTypeEnum = exports.GetDiagnosticsPeriodDaysEnum = exports.GetAnalysisJobsLatestAcceptLanguageEnum = exports.GetAnalysisJobsLatestKindEnum = exports.GetAnalysisJobsInsightHistoryAcceptLanguageEnum = exports.GetAnalysisJobsActiveDialogTestsAcceptLanguageEnum = exports.GetAnalysisJobsAcceptLanguageEnum = exports.GetAgentsTopMetricsAcceptLanguageEnum = exports.GetAgentsTopMetricsMetricTypeEnum = exports.GetAgentsTopMetricsAgentTypeEnum = exports.GetAgentsTopMetricsEvaluationModeEnum = exports.GetAgentsTopMetricsPeriodEnum = exports.DiagnosticsSaveAcceptLanguageEnum = exports.DiagnosticsGenerateAcceptLanguageEnum = exports.AnalysisJobsStopAcceptLanguageEnum = exports.AnalysisJobsResumeAcceptLanguageEnum = exports.AnalysisJobsPauseAcceptLanguageEnum = exports.AnalyticsApi = void 0;
+exports.UpdateSummarizeSettingsAcceptLanguageEnum = exports.SummarizeAcceptLanguageEnum = exports.GetTopMetricsAcceptLanguageEnum = exports.GetTopMetricsTopEnum = exports.GetTopMetricsMetricTypeEnum = exports.GetTopMetricsAgentTypeEnum = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -406,6 +406,53 @@ class AnalyticsApi extends runtime.BaseAPI {
      */
     async getAnalysisJobs(requestParameters, initOverrides) {
         const response = await this.getAnalysisJobsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , -, . .
+     * -
+     */
+    async getAnalysisJobsActiveDialogTestsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getAnalysisJobsActiveDialogTests().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/analytics/analysis-jobs/active-dialog-tests`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ActiveDialogTestsDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , -, . .
+     * -
+     */
+    async getAnalysisJobsActiveDialogTests(requestParameters, initOverrides) {
+        const response = await this.getAnalysisJobsActiveDialogTestsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -807,8 +854,8 @@ class AnalyticsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * , 20 , AI-. next_cursor.
-     *
+     * , 20 . . next_cursor.
+     * -
      */
     async getDiagnosticsHistoryRaw(requestParameters, initOverrides) {
         if (requestParameters['projectId'] == null) {
@@ -817,6 +864,12 @@ class AnalyticsApi extends runtime.BaseAPI {
         const queryParameters = {};
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        if (requestParameters['checkMode'] != null) {
+            queryParameters['check_mode'] = requestParameters['checkMode'];
+        }
+        if (requestParameters['section'] != null) {
+            queryParameters['section'] = requestParameters['section'];
         }
         if (requestParameters['cursor'] != null) {
             queryParameters['cursor'] = requestParameters['cursor'];
@@ -849,8 +902,8 @@ class AnalyticsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.DiagnosticsHistoryDtoFromJSON)(jsonValue));
     }
     /**
-     * , 20 , AI-. next_cursor.
-     *
+     * , 20 . . next_cursor.
+     * -
      */
     async getDiagnosticsHistory(requestParameters, initOverrides) {
         const response = await this.getDiagnosticsHistoryRaw(requestParameters, initOverrides);
@@ -1591,6 +1644,13 @@ exports.GetAnalysisJobsAcceptLanguageEnum = {
 /**
  * @export
  */
+exports.GetAnalysisJobsActiveDialogTestsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
 exports.GetAnalysisJobsInsightHistoryAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1671,6 +1731,20 @@ exports.GetDiagnosticsEstimateCheckModeEnum = {
 exports.GetDiagnosticsEstimateAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetDiagnosticsHistoryCheckModeEnum = {
+    Diagnostics: 'diagnostics',
+    DialogTests: 'dialog_tests'
+};
+/**
+ * @export
+ */
+exports.GetDiagnosticsHistorySectionEnum = {
+    Active: 'active',
+    History: 'history'
 };
 /**
  * @export

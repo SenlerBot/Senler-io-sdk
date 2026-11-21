@@ -16,7 +16,7 @@
  */
 export interface CreateDeliveryDto {
     /**
-     * .
+     * . .
      * @type {string}
      * @memberof CreateDeliveryDto
      */

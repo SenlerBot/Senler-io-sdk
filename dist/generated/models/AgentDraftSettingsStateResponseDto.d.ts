@@ -11,6 +11,7 @@
  */
 import type { AgentSelectedModelSummaryDto } from './AgentSelectedModelSummaryDto';
 import type { AgentBookingPolicyDto } from './AgentBookingPolicyDto';
+import type { AgentPreparationStage } from './AgentPreparationStage';
 import type { OperatorHandoffPolicyDto } from './OperatorHandoffPolicyDto';
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 import type { AgentAutomationCallDto } from './AgentAutomationCallDto';
@@ -150,6 +151,12 @@ export interface AgentDraftSettingsStateResponseDto {
      * @memberof AgentDraftSettingsStateResponseDto
      */
     enableModelFallback?: boolean;
+    /**
+     * .
+     * @type {boolean}
+     * @memberof AgentDraftSettingsStateResponseDto
+     */
+    ruModelsOnly?: boolean;
     /**
      * ID . null .
      * @type {string}
@@ -295,11 +302,11 @@ export interface AgentDraftSettingsStateResponseDto {
      */
     aiConfidenceScore?: number | null;
     /**
-     *
-     * @type {string}
+     * . is_active.
+     * @type {AgentPreparationStage}
      * @memberof AgentDraftSettingsStateResponseDto
      */
-    status: AgentDraftSettingsStateResponseDtoStatusEnum;
+    preparationStage: AgentPreparationStage;
     /**
      *
      * @type {boolean}
@@ -656,11 +663,12 @@ export declare const AgentDraftSettingsStateResponseDtoConflictFieldsEnum: {
     readonly AgentType: "agent_type";
     readonly SelectedModelId: "selected_model_id";
     readonly EnableModelFallback: "enable_model_fallback";
+    readonly RuModelsOnly: "ru_models_only";
     readonly EventSummaryMode: "event_summary_mode";
     readonly DialogSummaryMode: "dialog_summary_mode";
     readonly DialogContextMode: "dialog_context_mode";
     readonly Meta: "meta";
-    readonly Status: "status";
+    readonly PreparationStage: "preparation_stage";
     readonly ServerBindingMode: "server_binding_mode";
     readonly McpServerListId: "mcp_server_list_id";
     readonly KnowledgeBasePermissions: "knowledge_base_permissions";
@@ -859,17 +867,6 @@ export declare const AgentDraftSettingsStateResponseDtoKindEnum: {
     readonly Variant: "variant";
 };
 export type AgentDraftSettingsStateResponseDtoKindEnum = typeof AgentDraftSettingsStateResponseDtoKindEnum[keyof typeof AgentDraftSettingsStateResponseDtoKindEnum];
-/**
- * @export
- */
-export declare const AgentDraftSettingsStateResponseDtoStatusEnum: {
-    readonly Draft: "draft";
-    readonly Training: "training";
-    readonly Ready: "ready";
-    readonly Active: "active";
-    readonly Inactive: "inactive";
-};
-export type AgentDraftSettingsStateResponseDtoStatusEnum = typeof AgentDraftSettingsStateResponseDtoStatusEnum[keyof typeof AgentDraftSettingsStateResponseDtoStatusEnum];
 /**
  * @export
  */

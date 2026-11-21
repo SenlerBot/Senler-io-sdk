@@ -34,13 +34,13 @@ import {
     TrainingConfigurationSnapshotDtoToJSON,
     TrainingConfigurationSnapshotDtoToJSONTyped,
 } from './TrainingConfigurationSnapshotDto';
-import type { AgentStatus } from './AgentStatus';
+import type { AgentPreparationStage } from './AgentPreparationStage';
 import {
-    AgentStatusFromJSON,
-    AgentStatusFromJSONTyped,
-    AgentStatusToJSON,
-    AgentStatusToJSONTyped,
-} from './AgentStatus';
+    AgentPreparationStageFromJSON,
+    AgentPreparationStageFromJSONTyped,
+    AgentPreparationStageToJSON,
+    AgentPreparationStageToJSONTyped,
+} from './AgentPreparationStage';
 import type { TrainingRunBillingSummaryDto } from './TrainingRunBillingSummaryDto';
 import {
     TrainingRunBillingSummaryDtoFromJSON,
@@ -84,10 +84,10 @@ export interface TrainingStatusResponseDto {
     agentId: string;
     /**
      *
-     * @type {AgentStatus}
+     * @type {AgentPreparationStage}
      * @memberof TrainingStatusResponseDto
      */
-    agentStatus: AgentStatus;
+    preparationStage: AgentPreparationStage;
     /**
      *
      * @type {TrainingMode}
@@ -163,7 +163,7 @@ export interface TrainingStatusResponseDto {
  */
 export function instanceOfTrainingStatusResponseDto(value: object): value is TrainingStatusResponseDto {
     if (!('agentId' in value) || value['agentId'] === undefined) return false;
-    if (!('agentStatus' in value) || value['agentStatus'] === undefined) return false;
+    if (!('preparationStage' in value) || value['preparationStage'] === undefined) return false;
     if (!('mode' in value) || value['mode'] === undefined) return false;
     if (!('overallProgress' in value) || value['overallProgress'] === undefined) return false;
     if (!('tasksStats' in value) || value['tasksStats'] === undefined) return false;
@@ -182,7 +182,7 @@ export function TrainingStatusResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
     return {
 
         'agentId': json['agentId'],
-        'agentStatus': AgentStatusFromJSON(json['agentStatus']),
+        'preparationStage': AgentPreparationStageFromJSON(json['preparationStage']),
         'mode': TrainingModeFromJSON(json['mode']),
         'overallProgress': json['overallProgress'],
         'tasksStats': TasksStatsDtoFromJSON(json['tasksStats']),
@@ -209,7 +209,7 @@ export function TrainingStatusResponseDtoToJSONTyped(value?: TrainingStatusRespo
     return {
 
         'agentId': value['agentId'],
-        'agentStatus': AgentStatusToJSON(value['agentStatus']),
+        'preparationStage': AgentPreparationStageToJSON(value['preparationStage']),
         'mode': TrainingModeToJSON(value['mode']),
         'overallProgress': value['overallProgress'],
         'tasksStats': TasksStatsDtoToJSON(value['tasksStats']),

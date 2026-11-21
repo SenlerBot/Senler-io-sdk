@@ -47,7 +47,7 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetRunsStateEnum = exports.GetRunsStatusEnum = exports.GetOptionsAcceptLanguageEnum = exports.GetOptionsChannelTypeEnum = exports.GetOptionsTypeEnum = exports.GetOperatorOptionsAcceptLanguageEnum = exports.GetOperationsAcceptLanguageEnum = exports.GetNodesSearchAcceptLanguageEnum = exports.GetNodesSearchTypesEnum = exports.GetNodesSearchViewEnum = exports.GetNodesHttpResponseSampleAcceptLanguageEnum = exports.GetNodesAcceptLanguageEnum = exports.GetNodesViewEnum = exports.GetNodeTypesAcceptLanguageEnum = exports.GetNodeTypesAutomationTypeEnum = exports.GetGraphAcceptLanguageEnum = exports.GetGraphViewEnum = exports.GetFunnelOptionsAcceptLanguageEnum = exports.GetFormulaCatalogAcceptLanguageEnum = exports.GetDialogsRunsAcceptLanguageEnum = exports.GetDialogsRunsStateEnum = exports.GetDialogsRunsStatusEnum = exports.GetChannelsDeliveryRecoveryAcceptLanguageEnum = exports.GetAttentionAcceptLanguageEnum = exports.GetAttachmentsAcceptLanguageEnum = exports.FormulaPreviewAcceptLanguageEnum = exports.EdgesAcceptLanguageEnum = exports.DeleteTestTriggerSessionsAcceptLanguageEnum = exports.DeleteNodesAcceptLanguageEnum = exports.DeleteEdgesAcceptLanguageEnum = exports.ChannelsDeliveryRecoveryRetryAcceptLanguageEnum = exports.BatchAcceptLanguageEnum = exports.AutomationsUpdateAcceptLanguageEnum = exports.AutomationsTestDialogMessagesAcceptLanguageEnum = exports.AutomationsPauseAcceptLanguageEnum = exports.AutomationsListAcceptLanguageEnum = exports.AutomationsListChannelTypeEnum = exports.AutomationsListTypeEnum = exports.AutomationsGetVersionsAcceptLanguageEnum = exports.AutomationsGetTestDialogAcceptLanguageEnum = exports.AutomationsGetByIdAcceptLanguageEnum = exports.AutomationsDeactivateAcceptLanguageEnum = exports.AutomationsCreateAcceptLanguageEnum = exports.AutomationsAvatarUploadUrlAcceptLanguageEnum = exports.AutomationsAvatarFromUrlAcceptLanguageEnum = exports.AutomationsAvatarConfirmAcceptLanguageEnum = exports.AttachmentsUploadUrlAcceptLanguageEnum = exports.AttachmentsFromUrlAcceptLanguageEnum = exports.AttachmentsConfirmAcceptLanguageEnum = exports.AutomationsApi = void 0;
-exports.VersionsRestoreAcceptLanguageEnum = exports.ValidateAcceptLanguageEnum = exports.UpdateNodesHttpResponseSampleAcceptLanguageEnum = exports.UpdateNodesAcceptLanguageEnum = exports.TestTriggerSessionsEventsAcceptLanguageEnum = exports.TestTriggerSessionsAcceptLanguageEnum = exports.TestRunsAcceptLanguageEnum = exports.RunsTasksRetryAcceptLanguageEnum = exports.RunsPauseAcceptLanguageEnum = exports.RunsIncidentsResolveAcceptLanguageEnum = exports.RunsCancelAcceptLanguageEnum = exports.RunsAcceptLanguageEnum = exports.ResumeAcceptLanguageEnum = exports.PublishAcceptLanguageEnum = exports.NodesValidateAcceptLanguageEnum = exports.NodesHttpPreviewAcceptLanguageEnum = exports.NodesCodePreviewAcceptLanguageEnum = exports.NodesAcceptLanguageEnum = exports.LayoutAcceptLanguageEnum = exports.GetTestTriggerSessionsCurrentAcceptLanguageEnum = exports.GetTestTriggerSessionsAcceptLanguageEnum = exports.GetRuns2AcceptLanguageEnum = exports.GetRunsAcceptLanguageEnum = void 0;
+exports.VersionsRestoreAcceptLanguageEnum = exports.ValidateAcceptLanguageEnum = exports.UpdateNodesHttpResponseSampleAcceptLanguageEnum = exports.UpdateNodesAcceptLanguageEnum = exports.TestTriggerSessionsEventsAcceptLanguageEnum = exports.TestTriggerSessionsAcceptLanguageEnum = exports.TestRunsAcceptLanguageEnum = exports.RunsTasksRetryAcceptLanguageEnum = exports.RunsPauseAcceptLanguageEnum = exports.RunsIncidentsResolveAcceptLanguageEnum = exports.RunsCancelAcceptLanguageEnum = exports.RunsAcceptLanguageEnum = exports.ResumeAcceptLanguageEnum = exports.PublishAcceptLanguageEnum = exports.NodesValidateAcceptLanguageEnum = exports.NodesHttpPreviewAcceptLanguageEnum = exports.NodesCodePreviewAcceptLanguageEnum = exports.NodesAcceptLanguageEnum = exports.LayoutAcceptLanguageEnum = exports.GetWaitingClientsAcceptLanguageEnum = exports.GetTestTriggerSessionsCurrentAcceptLanguageEnum = exports.GetTestTriggerSessionsAcceptLanguageEnum = exports.GetRuns2AcceptLanguageEnum = exports.GetRunsAcceptLanguageEnum = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -2149,6 +2149,56 @@ class AutomationsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * . .
+     *
+     */
+    async getWaitingClientsRaw(requestParameters, initOverrides) {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError('automationId', 'Required parameter "automationId" was null or undefined when calling getWaitingClients().');
+        }
+        if (requestParameters['nodeIds'] == null) {
+            throw new runtime.RequiredError('nodeIds', 'Required parameter "nodeIds" was null or undefined when calling getWaitingClients().');
+        }
+        const queryParameters = {};
+        if (requestParameters['nodeIds'] != null) {
+            queryParameters['node_ids'] = requestParameters['nodeIds'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+        const response = await this.request({
+            path: `/api/automations/{automationId}/waiting-clients`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AutomationWaitingClientsResponseDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . .
+     *
+     */
+    async getWaitingClients(requestParameters, initOverrides) {
+        const response = await this.getWaitingClientsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * : , , , . . applyAutomationBatch , . ; . . operation_id expected_draft_revision .
      *
      */
@@ -3546,6 +3596,13 @@ exports.GetTestTriggerSessionsAcceptLanguageEnum = {
  * @export
  */
 exports.GetTestTriggerSessionsCurrentAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetWaitingClientsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

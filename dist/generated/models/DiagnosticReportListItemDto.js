@@ -34,7 +34,10 @@ exports.DiagnosticReportListItemDtoStatusEnum = {
     Paused: 'paused',
     Blocked: 'blocked',
     Complete: 'complete',
-    Cancelled: 'cancelled'
+    Cancelled: 'cancelled',
+    Queued: 'queued',
+    Pausing: 'pausing',
+    Stopping: 'stopping'
 };
 /**
  * Check if a given object implements the DiagnosticReportListItemDto interface.
@@ -64,6 +67,7 @@ function DiagnosticReportListItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         'createdAt': (new Date(json['created_at'])),
         'entityType': json['entity_type'] == null ? undefined : json['entity_type'],
         'scopeName': json['scope_name'],
+        'focus': json['focus'] == null ? undefined : json['focus'],
         'entitiesCount': json['entities_count'],
         'status': json['status'],
     };
@@ -80,6 +84,7 @@ function DiagnosticReportListItemDtoToJSONTyped(value, ignoreDiscriminator = fal
         'created_at': ((value['createdAt']).toISOString()),
         'entity_type': value['entityType'],
         'scope_name': value['scopeName'],
+        'focus': value['focus'],
         'entities_count': value['entitiesCount'],
         'status': value['status'],
     };

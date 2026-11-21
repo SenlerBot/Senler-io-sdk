@@ -20,7 +20,7 @@ import { mapValues } from '../runtime';
  */
 export interface CopyDeliveryDto {
     /**
-     * . , .
+     * . . , .
      * @type {string}
      * @memberof CopyDeliveryDto
      */

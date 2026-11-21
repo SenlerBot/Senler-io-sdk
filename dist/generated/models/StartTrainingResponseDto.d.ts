@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { TrainingMode } from './TrainingMode';
-import type { AgentStatus } from './AgentStatus';
+import type { AgentPreparationStage } from './AgentPreparationStage';
 /**
  * StartTrainingResponseDto.
  * @export
@@ -25,10 +25,10 @@ export interface StartTrainingResponseDto {
     agentId: string;
     /**
      *
-     * @type {AgentStatus}
+     * @type {AgentPreparationStage}
      * @memberof StartTrainingResponseDto
      */
-    status: AgentStatus;
+    preparationStage: AgentPreparationStage;
     /**
      *
      * @type {number}

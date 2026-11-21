@@ -122,6 +122,12 @@ export interface PublicModelResponseDto {
      */
     providers: Array<string>;
     /**
+     * .
+     * @type {boolean}
+     * @memberof PublicModelResponseDto
+     */
+    ruProcessingAvailable?: boolean;
+    /**
      *
      * @type {string}
      * @memberof PublicModelResponseDto

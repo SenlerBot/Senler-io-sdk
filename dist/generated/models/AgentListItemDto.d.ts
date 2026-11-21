@@ -9,9 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { AgentStatus } from './AgentStatus';
 import type { AgentAppOriginDto } from './AgentAppOriginDto';
 import type { WizardStep } from './WizardStep';
+import type { AgentPreparationStage } from './AgentPreparationStage';
 /**
  * AgentListItemDto.
  * @export
@@ -111,11 +111,11 @@ export interface AgentListItemDto {
      */
     autoAssignmentMode: AgentListItemDtoAutoAssignmentModeEnum;
     /**
-     * / . ; is_active.
-     * @type {AgentStatus}
+     * . is_active.
+     * @type {AgentPreparationStage}
      * @memberof AgentListItemDto
      */
-    status: AgentStatus | null;
+    preparationStage: AgentPreparationStage | null;
     /**
      *
      * @type {WizardStep}

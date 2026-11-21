@@ -19,9 +19,9 @@ exports.AgentListItemDtoFromJSON = AgentListItemDtoFromJSON;
 exports.AgentListItemDtoFromJSONTyped = AgentListItemDtoFromJSONTyped;
 exports.AgentListItemDtoToJSON = AgentListItemDtoToJSON;
 exports.AgentListItemDtoToJSONTyped = AgentListItemDtoToJSONTyped;
-const AgentStatus_1 = require("./AgentStatus");
 const AgentAppOriginDto_1 = require("./AgentAppOriginDto");
 const WizardStep_1 = require("./WizardStep");
+const AgentPreparationStage_1 = require("./AgentPreparationStage");
 /**
  * @export
  */
@@ -80,7 +80,7 @@ function instanceOfAgentListItemDto(value) {
         return false;
     if (!('autoAssignmentMode' in value) || value['autoAssignmentMode'] === undefined)
         return false;
-    if (!('status' in value) || value['status'] === undefined)
+    if (!('preparationStage' in value) || value['preparationStage'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
         return false;
@@ -111,7 +111,7 @@ function AgentListItemDtoFromJSONTyped(json, ignoreDiscriminator) {
         'startButtonCaseSensitive': json['start_button_case_sensitive'],
         'startButtonValues': json['start_button_values'] == null ? null : json['start_button_values'],
         'autoAssignmentMode': json['auto_assignment_mode'],
-        'status': (0, AgentStatus_1.AgentStatusFromJSON)(json['status']),
+        'preparationStage': (0, AgentPreparationStage_1.AgentPreparationStageFromJSON)(json['preparation_stage']),
         'wizardCurrentStep': json['wizard_current_step'] == null ? undefined : (0, WizardStep_1.WizardStepFromJSON)(json['wizard_current_step']),
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
@@ -140,7 +140,7 @@ function AgentListItemDtoToJSONTyped(value, ignoreDiscriminator = false) {
         'start_button_case_sensitive': value['startButtonCaseSensitive'],
         'start_button_values': value['startButtonValues'],
         'auto_assignment_mode': value['autoAssignmentMode'],
-        'status': (0, AgentStatus_1.AgentStatusToJSON)(value['status']),
+        'preparation_stage': (0, AgentPreparationStage_1.AgentPreparationStageToJSON)(value['preparationStage']),
         'wizard_current_step': (0, WizardStep_1.WizardStepToJSON)(value['wizardCurrentStep']),
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),

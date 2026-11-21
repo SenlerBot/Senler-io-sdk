@@ -151,6 +151,12 @@ export interface PublicModelResponseDto {
      */
     providers: Array<string>;
     /**
+     * .
+     * @type {boolean}
+     * @memberof PublicModelResponseDto
+     */
+    ruProcessingAvailable?: boolean;
+    /**
      *
      * @type {string}
      * @memberof PublicModelResponseDto
@@ -441,6 +447,7 @@ export function PublicModelResponseDtoFromJSONTyped(json: any, ignoreDiscriminat
         'maxOutputTokens': json['max_output_tokens'],
         'provider': json['provider'],
         'providers': json['providers'],
+        'ruProcessingAvailable': json['ru_processing_available'] == null ? undefined : json['ru_processing_available'],
         'type': json['type'],
         'audioPricingType': json['audio_pricing_type'] == null ? undefined : json['audio_pricing_type'],
         'imagePricingType': json['image_pricing_type'] == null ? undefined : json['image_pricing_type'],
@@ -498,6 +505,7 @@ export function PublicModelResponseDtoToJSONTyped(value?: PublicModelResponseDto
         'max_output_tokens': value['maxOutputTokens'],
         'provider': value['provider'],
         'providers': value['providers'],
+        'ru_processing_available': value['ruProcessingAvailable'],
         'type': value['type'],
         'audio_pricing_type': value['audioPricingType'],
         'image_pricing_type': value['imagePricingType'],

@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AgentDraftSettingsResponseDtoVariablesAccessModeEnum = exports.AgentDraftSettingsResponseDtoWidgetAiProgressModeEnum = exports.AgentDraftSettingsResponseDtoStatusEnum = exports.AgentDraftSettingsResponseDtoKindEnum = exports.AgentDraftSettingsResponseDtoAutoAssignmentRoleEnum = exports.AgentDraftSettingsResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentDraftSettingsResponseDtoAutoAssignmentModeEnum = exports.AgentDraftSettingsResponseDtoKeywordDialogScopeEnum = exports.AgentDraftSettingsResponseDtoKeywordAssignmentRoleEnum = exports.AgentDraftSettingsResponseDtoStartButtonMatchModeEnum = exports.AgentDraftSettingsResponseDtoAutostartModeEnum = exports.AgentDraftSettingsResponseDtoKnowledgeBasePermissionsEnum = exports.AgentDraftSettingsResponseDtoServerBindingModeEnum = exports.AgentDraftSettingsResponseDtoAgentTypeEnum = exports.AgentDraftSettingsResponseDtoConflictFieldsEnum = exports.AgentDraftSettingsResponseDtoDialogContextModeEnum = exports.AgentDraftSettingsResponseDtoLiveVoiceVoiceEnum = void 0;
+exports.AgentDraftSettingsResponseDtoVariablesAccessModeEnum = exports.AgentDraftSettingsResponseDtoWidgetAiProgressModeEnum = exports.AgentDraftSettingsResponseDtoKindEnum = exports.AgentDraftSettingsResponseDtoAutoAssignmentRoleEnum = exports.AgentDraftSettingsResponseDtoAutoAssignmentDialogScopeEnum = exports.AgentDraftSettingsResponseDtoAutoAssignmentModeEnum = exports.AgentDraftSettingsResponseDtoKeywordDialogScopeEnum = exports.AgentDraftSettingsResponseDtoKeywordAssignmentRoleEnum = exports.AgentDraftSettingsResponseDtoStartButtonMatchModeEnum = exports.AgentDraftSettingsResponseDtoAutostartModeEnum = exports.AgentDraftSettingsResponseDtoKnowledgeBasePermissionsEnum = exports.AgentDraftSettingsResponseDtoServerBindingModeEnum = exports.AgentDraftSettingsResponseDtoAgentTypeEnum = exports.AgentDraftSettingsResponseDtoConflictFieldsEnum = exports.AgentDraftSettingsResponseDtoDialogContextModeEnum = exports.AgentDraftSettingsResponseDtoLiveVoiceVoiceEnum = void 0;
 exports.instanceOfAgentDraftSettingsResponseDto = instanceOfAgentDraftSettingsResponseDto;
 exports.AgentDraftSettingsResponseDtoFromJSON = AgentDraftSettingsResponseDtoFromJSON;
 exports.AgentDraftSettingsResponseDtoFromJSONTyped = AgentDraftSettingsResponseDtoFromJSONTyped;
@@ -21,6 +21,7 @@ exports.AgentDraftSettingsResponseDtoToJSON = AgentDraftSettingsResponseDtoToJSO
 exports.AgentDraftSettingsResponseDtoToJSONTyped = AgentDraftSettingsResponseDtoToJSONTyped;
 const AgentSelectedModelSummaryDto_1 = require("./AgentSelectedModelSummaryDto");
 const AgentBookingPolicyDto_1 = require("./AgentBookingPolicyDto");
+const AgentPreparationStage_1 = require("./AgentPreparationStage");
 const OperatorHandoffPolicyDto_1 = require("./OperatorHandoffPolicyDto");
 const KnowledgeBaseSourceBindingDto_1 = require("./KnowledgeBaseSourceBindingDto");
 const AgentAutomationCallDto_1 = require("./AgentAutomationCallDto");
@@ -59,11 +60,12 @@ exports.AgentDraftSettingsResponseDtoConflictFieldsEnum = {
     AgentType: 'agent_type',
     SelectedModelId: 'selected_model_id',
     EnableModelFallback: 'enable_model_fallback',
+    RuModelsOnly: 'ru_models_only',
     EventSummaryMode: 'event_summary_mode',
     DialogSummaryMode: 'dialog_summary_mode',
     DialogContextMode: 'dialog_context_mode',
     Meta: 'meta',
-    Status: 'status',
+    PreparationStage: 'preparation_stage',
     ServerBindingMode: 'server_binding_mode',
     McpServerListId: 'mcp_server_list_id',
     KnowledgeBasePermissions: 'knowledge_base_permissions',
@@ -253,16 +255,6 @@ exports.AgentDraftSettingsResponseDtoKindEnum = {
 /**
  * @export
  */
-exports.AgentDraftSettingsResponseDtoStatusEnum = {
-    Draft: 'draft',
-    Training: 'training',
-    Ready: 'ready',
-    Active: 'active',
-    Inactive: 'inactive'
-};
-/**
- * @export
- */
 exports.AgentDraftSettingsResponseDtoWidgetAiProgressModeEnum = {
     SafeProgress: 'safe_progress',
     DetailedProgress: 'detailed_progress',
@@ -334,7 +326,7 @@ function instanceOfAgentDraftSettingsResponseDto(value) {
         return false;
     if (!('enabledMetricIds' in value) || value['enabledMetricIds'] === undefined)
         return false;
-    if (!('status' in value) || value['status'] === undefined)
+    if (!('preparationStage' in value) || value['preparationStage'] === undefined)
         return false;
     if (!('enableButtons' in value) || value['enableButtons'] === undefined)
         return false;
@@ -459,6 +451,7 @@ function AgentDraftSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'meta': json['meta'] == null ? undefined : json['meta'],
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
         'enableModelFallback': json['enable_model_fallback'] == null ? undefined : json['enable_model_fallback'],
+        'ruModelsOnly': json['ru_models_only'] == null ? undefined : json['ru_models_only'],
         'metricsModelId': json['metrics_model_id'] == null ? undefined : json['metrics_model_id'],
         'selectedModel': json['selected_model'] == null ? undefined : (0, AgentSelectedModelSummaryDto_1.AgentSelectedModelSummaryDtoFromJSON)(json['selected_model']),
         'metricsCollectionEnabled': json['metrics_collection_enabled'],
@@ -483,7 +476,7 @@ function AgentDraftSettingsResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         'enabledMetricIds': json['enabled_metric_ids'] == null ? null : json['enabled_metric_ids'],
         'aiReasoning': json['ai_reasoning'] == null ? undefined : json['ai_reasoning'],
         'aiConfidenceScore': json['ai_confidence_score'] == null ? undefined : json['ai_confidence_score'],
-        'status': json['status'],
+        'preparationStage': (0, AgentPreparationStage_1.AgentPreparationStageFromJSON)(json['preparation_stage']),
         'enableButtons': json['enable_buttons'],
         'maxToolIterations': json['max_tool_iterations'],
         'enableWidgetPageActions': json['enable_widget_page_actions'],
@@ -566,6 +559,7 @@ function AgentDraftSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = f
         'meta': value['meta'],
         'selected_model_id': value['selectedModelId'],
         'enable_model_fallback': value['enableModelFallback'],
+        'ru_models_only': value['ruModelsOnly'],
         'metrics_model_id': value['metricsModelId'],
         'selected_model': (0, AgentSelectedModelSummaryDto_1.AgentSelectedModelSummaryDtoToJSON)(value['selectedModel']),
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
@@ -590,7 +584,7 @@ function AgentDraftSettingsResponseDtoToJSONTyped(value, ignoreDiscriminator = f
         'enabled_metric_ids': value['enabledMetricIds'],
         'ai_reasoning': value['aiReasoning'],
         'ai_confidence_score': value['aiConfidenceScore'],
-        'status': value['status'],
+        'preparation_stage': (0, AgentPreparationStage_1.AgentPreparationStageToJSON)(value['preparationStage']),
         'enable_buttons': value['enableButtons'],
         'max_tool_iterations': value['maxToolIterations'],
         'enable_widget_page_actions': value['enableWidgetPageActions'],

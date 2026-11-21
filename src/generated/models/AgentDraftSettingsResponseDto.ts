@@ -27,6 +27,13 @@ import {
     AgentBookingPolicyDtoToJSON,
     AgentBookingPolicyDtoToJSONTyped,
 } from './AgentBookingPolicyDto';
+import type { AgentPreparationStage } from './AgentPreparationStage';
+import {
+    AgentPreparationStageFromJSON,
+    AgentPreparationStageFromJSONTyped,
+    AgentPreparationStageToJSON,
+    AgentPreparationStageToJSONTyped,
+} from './AgentPreparationStage';
 import type { OperatorHandoffPolicyDto } from './OperatorHandoffPolicyDto';
 import {
     OperatorHandoffPolicyDtoFromJSON,
@@ -196,6 +203,12 @@ export interface AgentDraftSettingsResponseDto {
      */
     enableModelFallback?: boolean;
     /**
+     * .
+     * @type {boolean}
+     * @memberof AgentDraftSettingsResponseDto
+     */
+    ruModelsOnly?: boolean;
+    /**
      * ID . null .
      * @type {string}
      * @memberof AgentDraftSettingsResponseDto
@@ -340,11 +353,11 @@ export interface AgentDraftSettingsResponseDto {
      */
     aiConfidenceScore?: number | null;
     /**
-     *
-     * @type {string}
+     * . is_active.
+     * @type {AgentPreparationStage}
      * @memberof AgentDraftSettingsResponseDto
      */
-    status: AgentDraftSettingsResponseDtoStatusEnum;
+    preparationStage: AgentPreparationStage;
     /**
      *
      * @type {boolean}
@@ -691,11 +704,12 @@ export const AgentDraftSettingsResponseDtoConflictFieldsEnum = {
     AgentType: 'agent_type',
     SelectedModelId: 'selected_model_id',
     EnableModelFallback: 'enable_model_fallback',
+    RuModelsOnly: 'ru_models_only',
     EventSummaryMode: 'event_summary_mode',
     DialogSummaryMode: 'dialog_summary_mode',
     DialogContextMode: 'dialog_context_mode',
     Meta: 'meta',
-    Status: 'status',
+    PreparationStage: 'preparation_stage',
     ServerBindingMode: 'server_binding_mode',
     McpServerListId: 'mcp_server_list_id',
     KnowledgeBasePermissions: 'knowledge_base_permissions',
@@ -909,18 +923,6 @@ export type AgentDraftSettingsResponseDtoKindEnum = typeof AgentDraftSettingsRes
 /**
  * @export
  */
-export const AgentDraftSettingsResponseDtoStatusEnum = {
-    Draft: 'draft',
-    Training: 'training',
-    Ready: 'ready',
-    Active: 'active',
-    Inactive: 'inactive'
-} as const;
-export type AgentDraftSettingsResponseDtoStatusEnum = typeof AgentDraftSettingsResponseDtoStatusEnum[keyof typeof AgentDraftSettingsResponseDtoStatusEnum];
-
-/**
- * @export
- */
 export const AgentDraftSettingsResponseDtoWidgetAiProgressModeEnum = {
     SafeProgress: 'safe_progress',
     DetailedProgress: 'detailed_progress',
@@ -970,7 +972,7 @@ export function instanceOfAgentDraftSettingsResponseDto(value: object): value is
     if (!('useDefaultEventMetrics' in value) || value['useDefaultEventMetrics'] === undefined) return false;
     if (!('useDefaultDiscussionMetrics' in value) || value['useDefaultDiscussionMetrics'] === undefined) return false;
     if (!('enabledMetricIds' in value) || value['enabledMetricIds'] === undefined) return false;
-    if (!('status' in value) || value['status'] === undefined) return false;
+    if (!('preparationStage' in value) || value['preparationStage'] === undefined) return false;
     if (!('enableButtons' in value) || value['enableButtons'] === undefined) return false;
     if (!('maxToolIterations' in value) || value['maxToolIterations'] === undefined) return false;
     if (!('enableWidgetPageActions' in value) || value['enableWidgetPageActions'] === undefined) return false;
@@ -1051,6 +1053,7 @@ export function AgentDraftSettingsResponseDtoFromJSONTyped(json: any, ignoreDisc
         'meta': json['meta'] == null ? undefined : json['meta'],
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
         'enableModelFallback': json['enable_model_fallback'] == null ? undefined : json['enable_model_fallback'],
+        'ruModelsOnly': json['ru_models_only'] == null ? undefined : json['ru_models_only'],
         'metricsModelId': json['metrics_model_id'] == null ? undefined : json['metrics_model_id'],
         'selectedModel': json['selected_model'] == null ? undefined : AgentSelectedModelSummaryDtoFromJSON(json['selected_model']),
         'metricsCollectionEnabled': json['metrics_collection_enabled'],
@@ -1075,7 +1078,7 @@ export function AgentDraftSettingsResponseDtoFromJSONTyped(json: any, ignoreDisc
         'enabledMetricIds': json['enabled_metric_ids'] == null ? null : json['enabled_metric_ids'],
         'aiReasoning': json['ai_reasoning'] == null ? undefined : json['ai_reasoning'],
         'aiConfidenceScore': json['ai_confidence_score'] == null ? undefined : json['ai_confidence_score'],
-        'status': json['status'],
+        'preparationStage': AgentPreparationStageFromJSON(json['preparation_stage']),
         'enableButtons': json['enable_buttons'],
         'maxToolIterations': json['max_tool_iterations'],
         'enableWidgetPageActions': json['enable_widget_page_actions'],
@@ -1162,6 +1165,7 @@ export function AgentDraftSettingsResponseDtoToJSONTyped(value?: AgentDraftSetti
         'meta': value['meta'],
         'selected_model_id': value['selectedModelId'],
         'enable_model_fallback': value['enableModelFallback'],
+        'ru_models_only': value['ruModelsOnly'],
         'metrics_model_id': value['metricsModelId'],
         'selected_model': AgentSelectedModelSummaryDtoToJSON(value['selectedModel']),
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
@@ -1186,7 +1190,7 @@ export function AgentDraftSettingsResponseDtoToJSONTyped(value?: AgentDraftSetti
         'enabled_metric_ids': value['enabledMetricIds'],
         'ai_reasoning': value['aiReasoning'],
         'ai_confidence_score': value['aiConfidenceScore'],
-        'status': value['status'],
+        'preparation_stage': AgentPreparationStageToJSON(value['preparationStage']),
         'enable_buttons': value['enableButtons'],
         'max_tool_iterations': value['maxToolIterations'],
         'enable_widget_page_actions': value['enableWidgetPageActions'],

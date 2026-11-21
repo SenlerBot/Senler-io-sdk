@@ -28,6 +28,12 @@ export interface UpdateAgentModelDto {
      */
     enableModelFallback?: boolean;
     /**
+     * .
+     * @type {boolean}
+     * @memberof UpdateAgentModelDto
+     */
+    ruModelsOnly?: boolean;
+    /**
      *
      * @type {boolean}
      * @memberof UpdateAgentModelDto

@@ -265,8 +265,8 @@ class LandingsPublicBookingApi extends runtime.BaseAPI {
         if (requestParameters['landingPublicId'] == null) {
             throw new runtime.RequiredError('landingPublicId', 'Required parameter "landingPublicId" was null or undefined when calling bookingOperationsResult().');
         }
-        if (requestParameters['landingBookingResultDto'] == null) {
-            throw new runtime.RequiredError('landingBookingResultDto', 'Required parameter "landingBookingResultDto" was null or undefined when calling bookingOperationsResult().');
+        if (requestParameters['landingBookingResultQueryDto'] == null) {
+            throw new runtime.RequiredError('landingBookingResultQueryDto', 'Required parameter "landingBookingResultQueryDto" was null or undefined when calling bookingOperationsResult().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -279,9 +279,9 @@ class LandingsPublicBookingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.LandingBookingResultDtoToJSON)(requestParameters['landingBookingResultDto']),
+            body: (0, index_1.LandingBookingResultQueryDtoToJSON)(requestParameters['landingBookingResultQueryDto']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.BookingOperationDtoFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingBookingOperationResultDtoFromJSON)(jsonValue));
     }
     /**
      * 404; request_key.

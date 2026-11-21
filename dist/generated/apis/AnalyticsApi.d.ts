@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AnalysisJobDto, AnalysisJobQueryDto, DiagnosticEntityOptionsDto, DiagnosticsEstimateDto, DiagnosticsHistoryDto, DiagnosticsResponseDto, DiagnosticsResultDto, DiagnosticsSnapshotQueryDto, DialogTestingResultDto, DrillDownByAgentResponseDto, DrillDownByMetricResponseDto, EstimateSummarizationResponseDto, GenerateDiagnosticsDto, GenerateSummarizationRequestDto, InsightHistoryDto, MetricsLogResponseDto, ResumeAnalysisJobDto, SummarizationHistoryResponseDto, SummarizationResponseDto, SummarizationSettingsResponseDto, TopAgentsResponseDto, TopMetricsResponseDto, UpdateSummarizationSettingsRequestDto } from '../models/index';
+import type { ActiveDialogTestsDto, AnalysisJobDto, AnalysisJobQueryDto, DiagnosticEntityOptionsDto, DiagnosticsEstimateDto, DiagnosticsHistoryDto, DiagnosticsResponseDto, DiagnosticsResultDto, DiagnosticsSnapshotQueryDto, DialogTestingResultDto, DrillDownByAgentResponseDto, DrillDownByMetricResponseDto, EstimateSummarizationResponseDto, GenerateDiagnosticsDto, GenerateSummarizationRequestDto, InsightHistoryDto, MetricsLogResponseDto, ResumeAnalysisJobDto, SummarizationHistoryResponseDto, SummarizationResponseDto, SummarizationSettingsResponseDto, TopAgentsResponseDto, TopMetricsResponseDto, UpdateSummarizationSettingsRequestDto } from '../models/index';
 export interface AnalysisJobsPauseRequest {
     analysisJobQueryDto: AnalysisJobQueryDto;
     acceptLanguage?: AnalysisJobsPauseAcceptLanguageEnum;
@@ -47,6 +47,10 @@ export interface GetAnalysisJobsRequest {
     projectId: string;
     jobId: string;
     acceptLanguage?: GetAnalysisJobsAcceptLanguageEnum;
+}
+export interface GetAnalysisJobsActiveDialogTestsRequest {
+    projectId: string;
+    acceptLanguage?: GetAnalysisJobsActiveDialogTestsAcceptLanguageEnum;
 }
 export interface GetAnalysisJobsInsightHistoryRequest {
     projectId: string;
@@ -96,6 +100,8 @@ export interface GetDiagnosticsEstimateRequest {
 }
 export interface GetDiagnosticsHistoryRequest {
     projectId: string;
+    checkMode?: GetDiagnosticsHistoryCheckModeEnum;
+    section?: GetDiagnosticsHistorySectionEnum;
     cursor?: string;
     acceptLanguage?: GetDiagnosticsHistoryAcceptLanguageEnum;
 }
@@ -260,6 +266,16 @@ export declare class AnalyticsApi extends runtime.BaseAPI {
      */
     getAnalysisJobs(requestParameters: GetAnalysisJobsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnalysisJobDto>;
     /**
+     * , -, . .
+     * -
+     */
+    getAnalysisJobsActiveDialogTestsRaw(requestParameters: GetAnalysisJobsActiveDialogTestsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ActiveDialogTestsDto>>;
+    /**
+     * , -, . .
+     * -
+     */
+    getAnalysisJobsActiveDialogTests(requestParameters: GetAnalysisJobsActiveDialogTestsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ActiveDialogTestsDto>;
+    /**
      * 20 , . next_cursor. AI .
      * AI-
      */
@@ -330,13 +346,13 @@ export declare class AnalyticsApi extends runtime.BaseAPI {
      */
     getDiagnosticsEstimate(requestParameters: GetDiagnosticsEstimateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DiagnosticsEstimateDto>;
     /**
-     * , 20 , AI-. next_cursor.
-     *
+     * , 20 . . next_cursor.
+     * -
      */
     getDiagnosticsHistoryRaw(requestParameters: GetDiagnosticsHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DiagnosticsHistoryDto>>;
     /**
-     * , 20 , AI-. next_cursor.
-     *
+     * , 20 . . next_cursor.
+     * -
      */
     getDiagnosticsHistory(requestParameters: GetDiagnosticsHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DiagnosticsHistoryDto>;
     /**
@@ -550,6 +566,14 @@ export type GetAnalysisJobsAcceptLanguageEnum = typeof GetAnalysisJobsAcceptLang
 /**
  * @export
  */
+export declare const GetAnalysisJobsActiveDialogTestsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetAnalysisJobsActiveDialogTestsAcceptLanguageEnum = typeof GetAnalysisJobsActiveDialogTestsAcceptLanguageEnum[keyof typeof GetAnalysisJobsActiveDialogTestsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetAnalysisJobsInsightHistoryAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -643,6 +667,22 @@ export declare const GetDiagnosticsEstimateAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetDiagnosticsEstimateAcceptLanguageEnum = typeof GetDiagnosticsEstimateAcceptLanguageEnum[keyof typeof GetDiagnosticsEstimateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetDiagnosticsHistoryCheckModeEnum: {
+    readonly Diagnostics: "diagnostics";
+    readonly DialogTests: "dialog_tests";
+};
+export type GetDiagnosticsHistoryCheckModeEnum = typeof GetDiagnosticsHistoryCheckModeEnum[keyof typeof GetDiagnosticsHistoryCheckModeEnum];
+/**
+ * @export
+ */
+export declare const GetDiagnosticsHistorySectionEnum: {
+    readonly Active: "active";
+    readonly History: "history";
+};
+export type GetDiagnosticsHistorySectionEnum = typeof GetDiagnosticsHistorySectionEnum[keyof typeof GetDiagnosticsHistorySectionEnum];
 /**
  * @export
  */

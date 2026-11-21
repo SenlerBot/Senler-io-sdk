@@ -28,7 +28,7 @@ export interface LandingHtmlBlockPayloadDto {
      */
     css: string;
     /**
-     * JavaScript script; addEventListener. ; ID , payload.js . . HTML , SenlerLanding SDK; . payload js .
+     * JavaScript script; addEventListener. . ; ID , payload.js . . HTML , SenlerLanding SDK; . payload js .
      * @type {string}
      * @memberof LandingHtmlBlockPayloadDto
      */

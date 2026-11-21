@@ -27,9 +27,11 @@ import type {
   LandingBookingNotificationConnectionDto,
   LandingBookingNotificationOptionsDto,
   LandingBookingNotificationOptionsInputDto,
+  LandingBookingOperationResultDto,
   LandingBookingPeriodDto,
   LandingBookingRestartDto,
   LandingBookingResultDto,
+  LandingBookingResultQueryDto,
   LandingBookingSessionsDto,
 } from '../models/index';
 import {
@@ -57,12 +59,16 @@ import {
     LandingBookingNotificationOptionsDtoToJSON,
     LandingBookingNotificationOptionsInputDtoFromJSON,
     LandingBookingNotificationOptionsInputDtoToJSON,
+    LandingBookingOperationResultDtoFromJSON,
+    LandingBookingOperationResultDtoToJSON,
     LandingBookingPeriodDtoFromJSON,
     LandingBookingPeriodDtoToJSON,
     LandingBookingRestartDtoFromJSON,
     LandingBookingRestartDtoToJSON,
     LandingBookingResultDtoFromJSON,
     LandingBookingResultDtoToJSON,
+    LandingBookingResultQueryDtoFromJSON,
+    LandingBookingResultQueryDtoToJSON,
     LandingBookingSessionsDtoFromJSON,
     LandingBookingSessionsDtoToJSON,
 } from '../models/index';
@@ -105,7 +111,7 @@ export interface BookingNotificationsOptionsRequest {
 
 export interface BookingOperationsResultRequest {
     landingPublicId: string;
-    landingBookingResultDto: LandingBookingResultDto;
+    landingBookingResultQueryDto: LandingBookingResultQueryDto;
     acceptLanguage?: BookingOperationsResultAcceptLanguageEnum;
 }
 
@@ -424,7 +430,7 @@ export class LandingsPublicBookingApi extends runtime.BaseAPI {
      * 404; request_key.
      *
      */
-    async bookingOperationsResultRaw(requestParameters: BookingOperationsResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BookingOperationDto>> {
+    async bookingOperationsResultRaw(requestParameters: BookingOperationsResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBookingOperationResultDto>> {
         if (requestParameters['landingPublicId'] == null) {
             throw new runtime.RequiredError(
                 'landingPublicId',
@@ -432,10 +438,10 @@ export class LandingsPublicBookingApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['landingBookingResultDto'] == null) {
+        if (requestParameters['landingBookingResultQueryDto'] == null) {
             throw new runtime.RequiredError(
-                'landingBookingResultDto',
-                'Required parameter "landingBookingResultDto" was null or undefined when calling bookingOperationsResult().'
+                'landingBookingResultQueryDto',
+                'Required parameter "landingBookingResultQueryDto" was null or undefined when calling bookingOperationsResult().'
             );
         }
 
@@ -454,17 +460,17 @@ export class LandingsPublicBookingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: LandingBookingResultDtoToJSON(requestParameters['landingBookingResultDto']),
+            body: LandingBookingResultQueryDtoToJSON(requestParameters['landingBookingResultQueryDto']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => BookingOperationDtoFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingBookingOperationResultDtoFromJSON(jsonValue));
     }
 
     /**
      * 404; request_key.
      *
      */
-    async bookingOperationsResult(requestParameters: BookingOperationsResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BookingOperationDto> {
+    async bookingOperationsResult(requestParameters: BookingOperationsResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBookingOperationResultDto> {
         const response = await this.bookingOperationsResultRaw(requestParameters, initOverrides);
         return await response.value();
     }

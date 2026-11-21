@@ -15,6 +15,7 @@
 
 import * as runtime from '../runtime';
 import type {
+  ActiveDialogTestsDto,
   AnalysisJobDto,
   AnalysisJobQueryDto,
   DiagnosticEntityOptionsDto,
@@ -41,6 +42,8 @@ import type {
   UpdateSummarizationSettingsRequestDto,
 } from '../models/index';
 import {
+    ActiveDialogTestsDtoFromJSON,
+    ActiveDialogTestsDtoToJSON,
     AnalysisJobDtoFromJSON,
     AnalysisJobDtoToJSON,
     AnalysisJobQueryDtoFromJSON,
@@ -135,6 +138,11 @@ export interface GetAnalysisJobsRequest {
     acceptLanguage?: GetAnalysisJobsAcceptLanguageEnum;
 }
 
+export interface GetAnalysisJobsActiveDialogTestsRequest {
+    projectId: string;
+    acceptLanguage?: GetAnalysisJobsActiveDialogTestsAcceptLanguageEnum;
+}
+
 export interface GetAnalysisJobsInsightHistoryRequest {
     projectId: string;
     cursor?: string;
@@ -190,6 +198,8 @@ export interface GetDiagnosticsEstimateRequest {
 
 export interface GetDiagnosticsHistoryRequest {
     projectId: string;
+    checkMode?: GetDiagnosticsHistoryCheckModeEnum;
+    section?: GetDiagnosticsHistorySectionEnum;
     cursor?: string;
     acceptLanguage?: GetDiagnosticsHistoryAcceptLanguageEnum;
 }
@@ -765,6 +775,67 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
+     * , -, . .
+     * -
+     */
+    async getAnalysisJobsActiveDialogTestsRaw(requestParameters: GetAnalysisJobsActiveDialogTestsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ActiveDialogTestsDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getAnalysisJobsActiveDialogTests().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/analytics/analysis-jobs/active-dialog-tests`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ActiveDialogTestsDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , -, . .
+     * -
+     */
+    async getAnalysisJobsActiveDialogTests(requestParameters: GetAnalysisJobsActiveDialogTestsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ActiveDialogTestsDto> {
+        const response = await this.getAnalysisJobsActiveDialogTestsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * 20 , . next_cursor. AI .
      * AI-
      */
@@ -1299,8 +1370,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , 20 , AI-. next_cursor.
-     *
+     * , 20 . . next_cursor.
+     * -
      */
     async getDiagnosticsHistoryRaw(requestParameters: GetDiagnosticsHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DiagnosticsHistoryDto>> {
         if (requestParameters['projectId'] == null) {
@@ -1314,6 +1385,14 @@ export class AnalyticsApi extends runtime.BaseAPI {
 
         if (requestParameters['projectId'] != null) {
             queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        if (requestParameters['checkMode'] != null) {
+            queryParameters['check_mode'] = requestParameters['checkMode'];
+        }
+
+        if (requestParameters['section'] != null) {
+            queryParameters['section'] = requestParameters['section'];
         }
 
         if (requestParameters['cursor'] != null) {
@@ -1355,8 +1434,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * , 20 , AI-. next_cursor.
-     *
+     * , 20 . . next_cursor.
+     * -
      */
     async getDiagnosticsHistory(requestParameters: GetDiagnosticsHistoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DiagnosticsHistoryDto> {
         const response = await this.getDiagnosticsHistoryRaw(requestParameters, initOverrides);
@@ -2315,6 +2394,14 @@ export type GetAnalysisJobsAcceptLanguageEnum = typeof GetAnalysisJobsAcceptLang
 /**
  * @export
  */
+export const GetAnalysisJobsActiveDialogTestsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetAnalysisJobsActiveDialogTestsAcceptLanguageEnum = typeof GetAnalysisJobsActiveDialogTestsAcceptLanguageEnum[keyof typeof GetAnalysisJobsActiveDialogTestsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const GetAnalysisJobsInsightHistoryAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -2408,6 +2495,22 @@ export const GetDiagnosticsEstimateAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetDiagnosticsEstimateAcceptLanguageEnum = typeof GetDiagnosticsEstimateAcceptLanguageEnum[keyof typeof GetDiagnosticsEstimateAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetDiagnosticsHistoryCheckModeEnum = {
+    Diagnostics: 'diagnostics',
+    DialogTests: 'dialog_tests'
+} as const;
+export type GetDiagnosticsHistoryCheckModeEnum = typeof GetDiagnosticsHistoryCheckModeEnum[keyof typeof GetDiagnosticsHistoryCheckModeEnum];
+/**
+ * @export
+ */
+export const GetDiagnosticsHistorySectionEnum = {
+    Active: 'active',
+    History: 'history'
+} as const;
+export type GetDiagnosticsHistorySectionEnum = typeof GetDiagnosticsHistorySectionEnum[keyof typeof GetDiagnosticsHistorySectionEnum];
 /**
  * @export
  */

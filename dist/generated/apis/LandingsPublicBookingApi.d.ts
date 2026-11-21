@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { BookingAvailabilityDto, BookingOperationDto, LandingBookingAvailabilityDto, LandingBookingCatalogDto, LandingBookingContextDto, LandingBookingCreateDto, LandingBookingDaysDto, LandingBookingNotificationConnectDto, LandingBookingNotificationConnectionDto, LandingBookingNotificationOptionsDto, LandingBookingNotificationOptionsInputDto, LandingBookingPeriodDto, LandingBookingRestartDto, LandingBookingResultDto, LandingBookingSessionsDto } from '../models/index';
+import type { BookingAvailabilityDto, BookingOperationDto, LandingBookingAvailabilityDto, LandingBookingCatalogDto, LandingBookingContextDto, LandingBookingCreateDto, LandingBookingDaysDto, LandingBookingNotificationConnectDto, LandingBookingNotificationConnectionDto, LandingBookingNotificationOptionsDto, LandingBookingNotificationOptionsInputDto, LandingBookingOperationResultDto, LandingBookingPeriodDto, LandingBookingRestartDto, LandingBookingResultDto, LandingBookingResultQueryDto, LandingBookingSessionsDto } from '../models/index';
 export interface BookingAppointmentsRequest {
     landingPublicId: string;
     landingBookingCreateDto: LandingBookingCreateDto;
@@ -43,7 +43,7 @@ export interface BookingNotificationsOptionsRequest {
 }
 export interface BookingOperationsResultRequest {
     landingPublicId: string;
-    landingBookingResultDto: LandingBookingResultDto;
+    landingBookingResultQueryDto: LandingBookingResultQueryDto;
     acceptLanguage?: BookingOperationsResultAcceptLanguageEnum;
 }
 export interface BookingRestartRequest {
@@ -124,12 +124,12 @@ export declare class LandingsPublicBookingApi extends runtime.BaseAPI {
      * 404; request_key.
      *
      */
-    bookingOperationsResultRaw(requestParameters: BookingOperationsResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BookingOperationDto>>;
+    bookingOperationsResultRaw(requestParameters: BookingOperationsResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBookingOperationResultDto>>;
     /**
      * 404; request_key.
      *
      */
-    bookingOperationsResult(requestParameters: BookingOperationsResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BookingOperationDto>;
+    bookingOperationsResult(requestParameters: BookingOperationsResultRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBookingOperationResultDto>;
     /**
      * . .
      *

@@ -76,6 +76,11 @@ export interface UpdateDraftModelRequest {
     updateAgentModelDto: UpdateAgentModelDto;
     acceptLanguage?: UpdateDraftModelAcceptLanguageEnum;
 }
+export interface UpdateDraftPreparationStageRequest {
+    id: string;
+    stage: UpdateDraftPreparationStageStageEnum;
+    acceptLanguage?: UpdateDraftPreparationStageAcceptLanguageEnum;
+}
 export interface UpdateDraftProfileRequest {
     id: string;
     updateAgentProfileDto: UpdateAgentProfileDto;
@@ -99,11 +104,6 @@ export interface UpdateDraftServersRequest {
     id: string;
     updateAgentServersDto: UpdateAgentServersDto;
     acceptLanguage?: UpdateDraftServersAcceptLanguageEnum;
-}
-export interface UpdateDraftStatusRequest {
-    id: string;
-    status: UpdateDraftStatusStatusEnum;
-    acceptLanguage?: UpdateDraftStatusAcceptLanguageEnum;
 }
 export interface UpdateDraftTrainingRequest {
     id: string;
@@ -260,6 +260,16 @@ export declare class AgentAuthoringApi extends runtime.BaseAPI {
      */
     updateDraftModel(requestParameters: UpdateDraftModelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
     /**
+     * .
+     *
+     */
+    updateDraftPreparationStageRaw(requestParameters: UpdateDraftPreparationStageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>>;
+    /**
+     * .
+     *
+     */
+    updateDraftPreparationStage(requestParameters: UpdateDraftPreparationStageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
+    /**
      * , .
      *
      */
@@ -309,16 +319,6 @@ export declare class AgentAuthoringApi extends runtime.BaseAPI {
      * MCP-
      */
     updateDraftServers(requestParameters: UpdateDraftServersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
-    /**
-     * enum- ; .
-     *
-     */
-    updateDraftStatusRaw(requestParameters: UpdateDraftStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>>;
-    /**
-     * enum- ; .
-     *
-     */
-    updateDraftStatus(requestParameters: UpdateDraftStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto>;
     /**
      * , .
      *
@@ -492,6 +492,25 @@ export type UpdateDraftModelAcceptLanguageEnum = typeof UpdateDraftModelAcceptLa
 /**
  * @export
  */
+export declare const UpdateDraftPreparationStageStageEnum: {
+    readonly Draft: "draft";
+    readonly Training: "training";
+    readonly Ready: "ready";
+    readonly Active: "active";
+    readonly Inactive: "inactive";
+};
+export type UpdateDraftPreparationStageStageEnum = typeof UpdateDraftPreparationStageStageEnum[keyof typeof UpdateDraftPreparationStageStageEnum];
+/**
+ * @export
+ */
+export declare const UpdateDraftPreparationStageAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateDraftPreparationStageAcceptLanguageEnum = typeof UpdateDraftPreparationStageAcceptLanguageEnum[keyof typeof UpdateDraftPreparationStageAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const UpdateDraftProfileAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -529,25 +548,6 @@ export declare const UpdateDraftServersAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateDraftServersAcceptLanguageEnum = typeof UpdateDraftServersAcceptLanguageEnum[keyof typeof UpdateDraftServersAcceptLanguageEnum];
-/**
- * @export
- */
-export declare const UpdateDraftStatusStatusEnum: {
-    readonly Draft: "draft";
-    readonly Training: "training";
-    readonly Ready: "ready";
-    readonly Active: "active";
-    readonly Inactive: "inactive";
-};
-export type UpdateDraftStatusStatusEnum = typeof UpdateDraftStatusStatusEnum[keyof typeof UpdateDraftStatusStatusEnum];
-/**
- * @export
- */
-export declare const UpdateDraftStatusAcceptLanguageEnum: {
-    readonly Ru: "ru";
-    readonly En: "en";
-};
-export type UpdateDraftStatusAcceptLanguageEnum = typeof UpdateDraftStatusAcceptLanguageEnum[keyof typeof UpdateDraftStatusAcceptLanguageEnum];
 /**
  * @export
  */

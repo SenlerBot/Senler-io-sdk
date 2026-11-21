@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { AgentStatus } from './AgentStatus';
-import {
-    AgentStatusFromJSON,
-    AgentStatusFromJSONTyped,
-    AgentStatusToJSON,
-    AgentStatusToJSONTyped,
-} from './AgentStatus';
 import type { AgentAppOriginDto } from './AgentAppOriginDto';
 import {
     AgentAppOriginDtoFromJSON,
@@ -34,6 +27,13 @@ import {
     WizardStepToJSON,
     WizardStepToJSONTyped,
 } from './WizardStep';
+import type { AgentPreparationStage } from './AgentPreparationStage';
+import {
+    AgentPreparationStageFromJSON,
+    AgentPreparationStageFromJSONTyped,
+    AgentPreparationStageToJSON,
+    AgentPreparationStageToJSONTyped,
+} from './AgentPreparationStage';
 
 /**
  * AgentListItemDto.
@@ -132,11 +132,11 @@ export interface AgentListItemDto {
      */
     autoAssignmentMode: AgentListItemDtoAutoAssignmentModeEnum;
     /**
-     * / . ; is_active.
-     * @type {AgentStatus}
+     * . is_active.
+     * @type {AgentPreparationStage}
      * @memberof AgentListItemDto
      */
-    status: AgentStatus | null;
+    preparationStage: AgentPreparationStage | null;
     /**
      *
      * @type {WizardStep}
@@ -211,7 +211,7 @@ export function instanceOfAgentListItemDto(value: object): value is AgentListIte
     if (!('startButtonCaseSensitive' in value) || value['startButtonCaseSensitive'] === undefined) return false;
     if (!('startButtonValues' in value) || value['startButtonValues'] === undefined) return false;
     if (!('autoAssignmentMode' in value) || value['autoAssignmentMode'] === undefined) return false;
-    if (!('status' in value) || value['status'] === undefined) return false;
+    if (!('preparationStage' in value) || value['preparationStage'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     return true;
@@ -242,7 +242,7 @@ export function AgentListItemDtoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'startButtonCaseSensitive': json['start_button_case_sensitive'],
         'startButtonValues': json['start_button_values'] == null ? null : json['start_button_values'],
         'autoAssignmentMode': json['auto_assignment_mode'],
-        'status': AgentStatusFromJSON(json['status']),
+        'preparationStage': AgentPreparationStageFromJSON(json['preparation_stage']),
         'wizardCurrentStep': json['wizard_current_step'] == null ? undefined : WizardStepFromJSON(json['wizard_current_step']),
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
@@ -275,7 +275,7 @@ export function AgentListItemDtoToJSONTyped(value?: AgentListItemDto | null, ign
         'start_button_case_sensitive': value['startButtonCaseSensitive'],
         'start_button_values': value['startButtonValues'],
         'auto_assignment_mode': value['autoAssignmentMode'],
-        'status': AgentStatusToJSON(value['status']),
+        'preparation_stage': AgentPreparationStageToJSON(value['preparationStage']),
         'wizard_current_step': WizardStepToJSON(value['wizardCurrentStep']),
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),

@@ -46,6 +46,7 @@ import type {
   AutomationValidationResponseDto,
   AutomationVersionHistoryResponseDto,
   AutomationVersionInfoDto,
+  AutomationWaitingClientsResponseDto,
   CancelAutomationRunResponseDto,
   ChannelDeliveryRecoveryPageDto,
   ConfirmAutomationAvatarUploadDto,
@@ -148,6 +149,8 @@ import {
     AutomationVersionHistoryResponseDtoToJSON,
     AutomationVersionInfoDtoFromJSON,
     AutomationVersionInfoDtoToJSON,
+    AutomationWaitingClientsResponseDtoFromJSON,
+    AutomationWaitingClientsResponseDtoToJSON,
     CancelAutomationRunResponseDtoFromJSON,
     CancelAutomationRunResponseDtoToJSON,
     ChannelDeliveryRecoveryPageDtoFromJSON,
@@ -517,6 +520,12 @@ export interface GetTestTriggerSessionsRequest {
 export interface GetTestTriggerSessionsCurrentRequest {
     automationId: string;
     acceptLanguage?: GetTestTriggerSessionsCurrentAcceptLanguageEnum;
+}
+
+export interface GetWaitingClientsRequest {
+    automationId: string;
+    nodeIds: Array<string>;
+    acceptLanguage?: GetWaitingClientsAcceptLanguageEnum;
 }
 
 export interface LayoutRequest {
@@ -3450,6 +3459,74 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
+     * . .
+     *
+     */
+    async getWaitingClientsRaw(requestParameters: GetWaitingClientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationWaitingClientsResponseDto>> {
+        if (requestParameters['automationId'] == null) {
+            throw new runtime.RequiredError(
+                'automationId',
+                'Required parameter "automationId" was null or undefined when calling getWaitingClients().'
+            );
+        }
+
+        if (requestParameters['nodeIds'] == null) {
+            throw new runtime.RequiredError(
+                'nodeIds',
+                'Required parameter "nodeIds" was null or undefined when calling getWaitingClients().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['nodeIds'] != null) {
+            queryParameters['node_ids'] = requestParameters['nodeIds'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", []);
+        }
+
+        const response = await this.request({
+            path: `/api/automations/{automationId}/waiting-clients`.replace(`{${"automationId"}}`, encodeURIComponent(String(requestParameters['automationId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AutomationWaitingClientsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . .
+     *
+     */
+    async getWaitingClients(requestParameters: GetWaitingClientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationWaitingClientsResponseDto> {
+        const response = await this.getWaitingClientsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * : , , , . . applyAutomationBatch , . ; . . operation_id expected_draft_revision .
      *
      */
@@ -5272,6 +5349,14 @@ export const GetTestTriggerSessionsCurrentAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetTestTriggerSessionsCurrentAcceptLanguageEnum = typeof GetTestTriggerSessionsCurrentAcceptLanguageEnum[keyof typeof GetTestTriggerSessionsCurrentAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetWaitingClientsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetWaitingClientsAcceptLanguageEnum = typeof GetWaitingClientsAcceptLanguageEnum[keyof typeof GetWaitingClientsAcceptLanguageEnum];
 /**
  * @export
  */

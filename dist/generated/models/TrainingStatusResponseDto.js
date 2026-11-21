@@ -21,7 +21,7 @@ exports.TrainingStatusResponseDtoToJSONTyped = TrainingStatusResponseDtoToJSONTy
 const TrainingMode_1 = require("./TrainingMode");
 const TasksStatsDto_1 = require("./TasksStatsDto");
 const TrainingConfigurationSnapshotDto_1 = require("./TrainingConfigurationSnapshotDto");
-const AgentStatus_1 = require("./AgentStatus");
+const AgentPreparationStage_1 = require("./AgentPreparationStage");
 const TrainingRunBillingSummaryDto_1 = require("./TrainingRunBillingSummaryDto");
 const TaskDetailDto_1 = require("./TaskDetailDto");
 const TrainingProgressDetailDto_1 = require("./TrainingProgressDetailDto");
@@ -32,7 +32,7 @@ const AgentVariantDto_1 = require("./AgentVariantDto");
 function instanceOfTrainingStatusResponseDto(value) {
     if (!('agentId' in value) || value['agentId'] === undefined)
         return false;
-    if (!('agentStatus' in value) || value['agentStatus'] === undefined)
+    if (!('preparationStage' in value) || value['preparationStage'] === undefined)
         return false;
     if (!('mode' in value) || value['mode'] === undefined)
         return false;
@@ -53,7 +53,7 @@ function TrainingStatusResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'agentId': json['agentId'],
-        'agentStatus': (0, AgentStatus_1.AgentStatusFromJSON)(json['agentStatus']),
+        'preparationStage': (0, AgentPreparationStage_1.AgentPreparationStageFromJSON)(json['preparationStage']),
         'mode': (0, TrainingMode_1.TrainingModeFromJSON)(json['mode']),
         'overallProgress': json['overallProgress'],
         'tasksStats': (0, TasksStatsDto_1.TasksStatsDtoFromJSON)(json['tasksStats']),
@@ -76,7 +76,7 @@ function TrainingStatusResponseDtoToJSONTyped(value, ignoreDiscriminator = false
     }
     return {
         'agentId': value['agentId'],
-        'agentStatus': (0, AgentStatus_1.AgentStatusToJSON)(value['agentStatus']),
+        'preparationStage': (0, AgentPreparationStage_1.AgentPreparationStageToJSON)(value['preparationStage']),
         'mode': (0, TrainingMode_1.TrainingModeToJSON)(value['mode']),
         'overallProgress': value['overallProgress'],
         'tasksStats': (0, TasksStatsDto_1.TasksStatsDtoToJSON)(value['tasksStats']),

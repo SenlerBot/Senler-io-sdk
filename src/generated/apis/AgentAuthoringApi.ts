@@ -166,6 +166,12 @@ export interface UpdateDraftModelRequest {
     acceptLanguage?: UpdateDraftModelAcceptLanguageEnum;
 }
 
+export interface UpdateDraftPreparationStageRequest {
+    id: string;
+    stage: UpdateDraftPreparationStageStageEnum;
+    acceptLanguage?: UpdateDraftPreparationStageAcceptLanguageEnum;
+}
+
 export interface UpdateDraftProfileRequest {
     id: string;
     updateAgentProfileDto: UpdateAgentProfileDto;
@@ -193,12 +199,6 @@ export interface UpdateDraftServersRequest {
     id: string;
     updateAgentServersDto: UpdateAgentServersDto;
     acceptLanguage?: UpdateDraftServersAcceptLanguageEnum;
-}
-
-export interface UpdateDraftStatusRequest {
-    id: string;
-    status: UpdateDraftStatusStatusEnum;
-    acceptLanguage?: UpdateDraftStatusAcceptLanguageEnum;
 }
 
 export interface UpdateDraftTrainingRequest {
@@ -1101,6 +1101,70 @@ export class AgentAuthoringApi extends runtime.BaseAPI {
     }
 
     /**
+     * .
+     *
+     */
+    async updateDraftPreparationStageRaw(requestParameters: UpdateDraftPreparationStageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>> {
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling updateDraftPreparationStage().'
+            );
+        }
+
+        if (requestParameters['stage'] == null) {
+            throw new runtime.RequiredError(
+                'stage',
+                'Required parameter "stage" was null or undefined when calling updateDraftPreparationStage().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
+        }
+
+        const response = await this.request({
+            path: `/api/agents/{id}/draft/preparation-stage/{stage}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))).replace(`{${"stage"}}`, encodeURIComponent(String(requestParameters['stage']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AgentDraftSettingsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * .
+     *
+     */
+    async updateDraftPreparationStage(requestParameters: UpdateDraftPreparationStageRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto> {
+        const response = await this.updateDraftPreparationStageRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * , .
      *
      */
@@ -1422,70 +1486,6 @@ export class AgentAuthoringApi extends runtime.BaseAPI {
      */
     async updateDraftServers(requestParameters: UpdateDraftServersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto> {
         const response = await this.updateDraftServersRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * enum- ; .
-     *
-     */
-    async updateDraftStatusRaw(requestParameters: UpdateDraftStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AgentDraftSettingsResponseDto>> {
-        if (requestParameters['id'] == null) {
-            throw new runtime.RequiredError(
-                'id',
-                'Required parameter "id" was null or undefined when calling updateDraftStatus().'
-            );
-        }
-
-        if (requestParameters['status'] == null) {
-            throw new runtime.RequiredError(
-                'status',
-                'Required parameter "status" was null or undefined when calling updateDraftStatus().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters['acceptLanguage'] != null) {
-            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("api-key", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_agents"]);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            // oauth required
-            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_agents"]);
-        }
-
-        const response = await this.request({
-            path: `/api/agents/{id}/draft/status/{status}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))).replace(`{${"status"}}`, encodeURIComponent(String(requestParameters['status']))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AgentDraftSettingsResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * enum- ; .
-     *
-     */
-    async updateDraftStatus(requestParameters: UpdateDraftStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AgentDraftSettingsResponseDto> {
-        const response = await this.updateDraftStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1891,6 +1891,25 @@ export type UpdateDraftModelAcceptLanguageEnum = typeof UpdateDraftModelAcceptLa
 /**
  * @export
  */
+export const UpdateDraftPreparationStageStageEnum = {
+    Draft: 'draft',
+    Training: 'training',
+    Ready: 'ready',
+    Active: 'active',
+    Inactive: 'inactive'
+} as const;
+export type UpdateDraftPreparationStageStageEnum = typeof UpdateDraftPreparationStageStageEnum[keyof typeof UpdateDraftPreparationStageStageEnum];
+/**
+ * @export
+ */
+export const UpdateDraftPreparationStageAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateDraftPreparationStageAcceptLanguageEnum = typeof UpdateDraftPreparationStageAcceptLanguageEnum[keyof typeof UpdateDraftPreparationStageAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const UpdateDraftProfileAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -1928,25 +1947,6 @@ export const UpdateDraftServersAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateDraftServersAcceptLanguageEnum = typeof UpdateDraftServersAcceptLanguageEnum[keyof typeof UpdateDraftServersAcceptLanguageEnum];
-/**
- * @export
- */
-export const UpdateDraftStatusStatusEnum = {
-    Draft: 'draft',
-    Training: 'training',
-    Ready: 'ready',
-    Active: 'active',
-    Inactive: 'inactive'
-} as const;
-export type UpdateDraftStatusStatusEnum = typeof UpdateDraftStatusStatusEnum[keyof typeof UpdateDraftStatusStatusEnum];
-/**
- * @export
- */
-export const UpdateDraftStatusAcceptLanguageEnum = {
-    Ru: 'ru',
-    En: 'en'
-} as const;
-export type UpdateDraftStatusAcceptLanguageEnum = typeof UpdateDraftStatusAcceptLanguageEnum[keyof typeof UpdateDraftStatusAcceptLanguageEnum];
 /**
  * @export
  */

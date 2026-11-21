@@ -19,14 +19,14 @@ exports.StartTrainingResponseDtoFromJSONTyped = StartTrainingResponseDtoFromJSON
 exports.StartTrainingResponseDtoToJSON = StartTrainingResponseDtoToJSON;
 exports.StartTrainingResponseDtoToJSONTyped = StartTrainingResponseDtoToJSONTyped;
 const TrainingMode_1 = require("./TrainingMode");
-const AgentStatus_1 = require("./AgentStatus");
+const AgentPreparationStage_1 = require("./AgentPreparationStage");
 /**
  * Check if a given object implements the StartTrainingResponseDto interface.
  */
 function instanceOfStartTrainingResponseDto(value) {
     if (!('agentId' in value) || value['agentId'] === undefined)
         return false;
-    if (!('status' in value) || value['status'] === undefined)
+    if (!('preparationStage' in value) || value['preparationStage'] === undefined)
         return false;
     if (!('tasksCreated' in value) || value['tasksCreated'] === undefined)
         return false;
@@ -49,7 +49,7 @@ function StartTrainingResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'agentId': json['agentId'],
-        'status': (0, AgentStatus_1.AgentStatusFromJSON)(json['status']),
+        'preparationStage': (0, AgentPreparationStage_1.AgentPreparationStageFromJSON)(json['preparationStage']),
         'tasksCreated': json['tasksCreated'],
         'mode': (0, TrainingMode_1.TrainingModeFromJSON)(json['mode']),
         'taskIds': json['taskIds'],
@@ -66,7 +66,7 @@ function StartTrainingResponseDtoToJSONTyped(value, ignoreDiscriminator = false)
     }
     return {
         'agentId': value['agentId'],
-        'status': (0, AgentStatus_1.AgentStatusToJSON)(value['status']),
+        'preparationStage': (0, AgentPreparationStage_1.AgentPreparationStageToJSON)(value['preparationStage']),
         'tasksCreated': value['tasksCreated'],
         'mode': (0, TrainingMode_1.TrainingModeToJSON)(value['mode']),
         'taskIds': value['taskIds'],

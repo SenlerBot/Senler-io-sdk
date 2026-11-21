@@ -44,6 +44,12 @@ export interface DiagnosticReportListItemDto {
      */
     scopeName: string | null;
     /**
+     * -.
+     * @type {string}
+     * @memberof DiagnosticReportListItemDto
+     */
+    focus?: string;
+    /**
      * , .
      * @type {number}
      * @memberof DiagnosticReportListItemDto
@@ -75,7 +81,10 @@ export const DiagnosticReportListItemDtoStatusEnum = {
     Paused: 'paused',
     Blocked: 'blocked',
     Complete: 'complete',
-    Cancelled: 'cancelled'
+    Cancelled: 'cancelled',
+    Queued: 'queued',
+    Pausing: 'pausing',
+    Stopping: 'stopping'
 } as const;
 export type DiagnosticReportListItemDtoStatusEnum = typeof DiagnosticReportListItemDtoStatusEnum[keyof typeof DiagnosticReportListItemDtoStatusEnum];
 
@@ -106,6 +115,7 @@ export function DiagnosticReportListItemDtoFromJSONTyped(json: any, ignoreDiscri
         'createdAt': (new Date(json['created_at'])),
         'entityType': json['entity_type'] == null ? undefined : json['entity_type'],
         'scopeName': json['scope_name'],
+        'focus': json['focus'] == null ? undefined : json['focus'],
         'entitiesCount': json['entities_count'],
         'status': json['status'],
     };
@@ -126,6 +136,7 @@ export function DiagnosticReportListItemDtoToJSONTyped(value?: DiagnosticReportL
         'created_at': ((value['createdAt']).toISOString()),
         'entity_type': value['entityType'],
         'scope_name': value['scopeName'],
+        'focus': value['focus'],
         'entities_count': value['entitiesCount'],
         'status': value['status'],
     };

@@ -48,13 +48,6 @@ import {
     AgentAssignmentPolicyDtoToJSON,
     AgentAssignmentPolicyDtoToJSONTyped,
 } from './AgentAssignmentPolicyDto';
-import type { AgentStatus } from './AgentStatus';
-import {
-    AgentStatusFromJSON,
-    AgentStatusFromJSONTyped,
-    AgentStatusToJSON,
-    AgentStatusToJSONTyped,
-} from './AgentStatus';
 import type { AgentAppOriginDto } from './AgentAppOriginDto';
 import {
     AgentAppOriginDtoFromJSON,
@@ -76,6 +69,13 @@ import {
     AgentBookingPolicyDtoToJSON,
     AgentBookingPolicyDtoToJSONTyped,
 } from './AgentBookingPolicyDto';
+import type { AgentPreparationStage } from './AgentPreparationStage';
+import {
+    AgentPreparationStageFromJSON,
+    AgentPreparationStageFromJSONTyped,
+    AgentPreparationStageToJSON,
+    AgentPreparationStageToJSONTyped,
+} from './AgentPreparationStage';
 import type { OperatorHandoffPolicyDto } from './OperatorHandoffPolicyDto';
 import {
     OperatorHandoffPolicyDtoFromJSON,
@@ -250,6 +250,12 @@ export interface AgentSettingsResponseDto {
      */
     enableModelFallback?: boolean;
     /**
+     * .
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    ruModelsOnly?: boolean;
+    /**
      * ID . null .
      * @type {string}
      * @memberof AgentSettingsResponseDto
@@ -370,11 +376,11 @@ export interface AgentSettingsResponseDto {
      */
     autoAssignmentRole: AgentSettingsResponseDtoAutoAssignmentRoleEnum;
     /**
-     * / . ; is_active.
-     * @type {AgentStatus}
+     * . is_active.
+     * @type {AgentPreparationStage}
      * @memberof AgentSettingsResponseDto
      */
-    status: AgentStatus | null;
+    preparationStage: AgentPreparationStage | null;
     /**
      *
      * @type {WizardStep}
@@ -921,7 +927,7 @@ export function instanceOfAgentSettingsResponseDto(value: object): value is Agen
     if (!('startButtonValues' in value) || value['startButtonValues'] === undefined) return false;
     if (!('autoAssignmentMode' in value) || value['autoAssignmentMode'] === undefined) return false;
     if (!('autoAssignmentRole' in value) || value['autoAssignmentRole'] === undefined) return false;
-    if (!('status' in value) || value['status'] === undefined) return false;
+    if (!('preparationStage' in value) || value['preparationStage'] === undefined) return false;
     if (!('wizardTrainingModeSelected' in value) || value['wizardTrainingModeSelected'] === undefined) return false;
     if (!('wizardWebsiteSourceIds' in value) || value['wizardWebsiteSourceIds'] === undefined) return false;
     if (!('wizardChannelIds' in value) || value['wizardChannelIds'] === undefined) return false;
@@ -1009,6 +1015,7 @@ export function AgentSettingsResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'isActive': json['is_active'],
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
         'enableModelFallback': json['enable_model_fallback'] == null ? undefined : json['enable_model_fallback'],
+        'ruModelsOnly': json['ru_models_only'] == null ? undefined : json['ru_models_only'],
         'metricsModelId': json['metrics_model_id'] == null ? undefined : json['metrics_model_id'],
         'selectedModel': json['selected_model'] == null ? undefined : AgentSelectedModelSummaryDtoFromJSON(json['selected_model']),
         'metricsCollectionEnabled': json['metrics_collection_enabled'],
@@ -1029,7 +1036,7 @@ export function AgentSettingsResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
         'autoAssignmentChannelIds': json['auto_assignment_channel_ids'] == null ? undefined : json['auto_assignment_channel_ids'],
         'autoAssignmentDialogScope': json['auto_assignment_dialog_scope'] == null ? undefined : json['auto_assignment_dialog_scope'],
         'autoAssignmentRole': json['auto_assignment_role'],
-        'status': AgentStatusFromJSON(json['status']),
+        'preparationStage': AgentPreparationStageFromJSON(json['preparation_stage']),
         'wizardCurrentStep': json['wizard_current_step'] == null ? undefined : WizardStepFromJSON(json['wizard_current_step']),
         'wizardUpdatedAt': json['wizard_updated_at'] == null ? undefined : (new Date(json['wizard_updated_at'])),
         'wizardTrainingModeSelected': TrainingModeFromJSON(json['wizard_training_mode_selected']),
@@ -1125,6 +1132,7 @@ export function AgentSettingsResponseDtoToJSONTyped(value?: AgentSettingsRespons
         'is_active': value['isActive'],
         'selected_model_id': value['selectedModelId'],
         'enable_model_fallback': value['enableModelFallback'],
+        'ru_models_only': value['ruModelsOnly'],
         'metrics_model_id': value['metricsModelId'],
         'selected_model': AgentSelectedModelSummaryDtoToJSON(value['selectedModel']),
         'metrics_collection_enabled': value['metricsCollectionEnabled'],
@@ -1145,7 +1153,7 @@ export function AgentSettingsResponseDtoToJSONTyped(value?: AgentSettingsRespons
         'auto_assignment_channel_ids': value['autoAssignmentChannelIds'],
         'auto_assignment_dialog_scope': value['autoAssignmentDialogScope'],
         'auto_assignment_role': value['autoAssignmentRole'],
-        'status': AgentStatusToJSON(value['status']),
+        'preparation_stage': AgentPreparationStageToJSON(value['preparationStage']),
         'wizard_current_step': WizardStepToJSON(value['wizardCurrentStep']),
         'wizard_updated_at': value['wizardUpdatedAt'] == null ? undefined : ((value['wizardUpdatedAt'] as any).toISOString()),
         'wizard_training_mode_selected': TrainingModeToJSON(value['wizardTrainingModeSelected']),

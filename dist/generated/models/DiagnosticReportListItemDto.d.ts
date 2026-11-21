@@ -40,6 +40,12 @@ export interface DiagnosticReportListItemDto {
      */
     scopeName: string | null;
     /**
+     * -.
+     * @type {string}
+     * @memberof DiagnosticReportListItemDto
+     */
+    focus?: string;
+    /**
      * , .
      * @type {number}
      * @memberof DiagnosticReportListItemDto
@@ -69,6 +75,9 @@ export declare const DiagnosticReportListItemDtoStatusEnum: {
     readonly Blocked: "blocked";
     readonly Complete: "complete";
     readonly Cancelled: "cancelled";
+    readonly Queued: "queued";
+    readonly Pausing: "pausing";
+    readonly Stopping: "stopping";
 };
 export type DiagnosticReportListItemDtoStatusEnum = typeof DiagnosticReportListItemDtoStatusEnum[keyof typeof DiagnosticReportListItemDtoStatusEnum];
 /**

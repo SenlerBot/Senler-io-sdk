@@ -14,10 +14,10 @@ import type { AgentSelectedModelSummaryDto } from './AgentSelectedModelSummaryDt
 import type { KnowledgeBaseSourceBindingDto } from './KnowledgeBaseSourceBindingDto';
 import type { McpServerResponseDto } from './McpServerResponseDto';
 import type { AgentAssignmentPolicyDto } from './AgentAssignmentPolicyDto';
-import type { AgentStatus } from './AgentStatus';
 import type { AgentAppOriginDto } from './AgentAppOriginDto';
 import type { WizardStep } from './WizardStep';
 import type { AgentBookingPolicyDto } from './AgentBookingPolicyDto';
+import type { AgentPreparationStage } from './AgentPreparationStage';
 import type { OperatorHandoffPolicyDto } from './OperatorHandoffPolicyDto';
 import type { AgentMcpServerListResponseDto } from './AgentMcpServerListResponseDto';
 import type { AgentAutomationCallDto } from './AgentAutomationCallDto';
@@ -169,6 +169,12 @@ export interface AgentSettingsResponseDto {
      */
     enableModelFallback?: boolean;
     /**
+     * .
+     * @type {boolean}
+     * @memberof AgentSettingsResponseDto
+     */
+    ruModelsOnly?: boolean;
+    /**
      * ID . null .
      * @type {string}
      * @memberof AgentSettingsResponseDto
@@ -289,11 +295,11 @@ export interface AgentSettingsResponseDto {
      */
     autoAssignmentRole: AgentSettingsResponseDtoAutoAssignmentRoleEnum;
     /**
-     * / . ; is_active.
-     * @type {AgentStatus}
+     * . is_active.
+     * @type {AgentPreparationStage}
      * @memberof AgentSettingsResponseDto
      */
-    status: AgentStatus | null;
+    preparationStage: AgentPreparationStage | null;
     /**
      *
      * @type {WizardStep}

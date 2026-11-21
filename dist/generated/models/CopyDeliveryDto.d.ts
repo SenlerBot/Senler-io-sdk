@@ -16,7 +16,7 @@
  */
 export interface CopyDeliveryDto {
     /**
-     * . , .
+     * . . , .
      * @type {string}
      * @memberof CopyDeliveryDto
      */

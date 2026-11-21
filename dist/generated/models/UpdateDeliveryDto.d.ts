@@ -18,7 +18,7 @@ import type { DeliveryAudienceFilterDto } from './DeliveryAudienceFilterDto';
  */
 export interface UpdateDeliveryDto {
     /**
-     *
+     * . .
      * @type {string}
      * @memberof UpdateDeliveryDto
      */

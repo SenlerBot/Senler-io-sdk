@@ -34,6 +34,7 @@ function UpdateAgentModelDtoFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'selectedModelId': json['selected_model_id'] == null ? undefined : json['selected_model_id'],
         'enableModelFallback': json['enable_model_fallback'] == null ? undefined : json['enable_model_fallback'],
+        'ruModelsOnly': json['ru_models_only'] == null ? undefined : json['ru_models_only'],
         'confirmModelChange': json['confirm_model_change'] == null ? undefined : json['confirm_model_change'],
     };
 }
@@ -47,6 +48,7 @@ function UpdateAgentModelDtoToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'selected_model_id': value['selectedModelId'],
         'enable_model_fallback': value['enableModelFallback'],
+        'ru_models_only': value['ruModelsOnly'],
         'confirm_model_change': value['confirmModelChange'],
     };
 }

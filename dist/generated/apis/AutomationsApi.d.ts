@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAttentionSummaryDto, AutomationAvatarUploadUrlResponseDto, AutomationCodePreviewDto, AutomationCodePreviewResponseDto, AutomationEdgeResponseDto, AutomationFormulaCatalogDto, AutomationFormulaPreviewDto, AutomationFormulaPreviewResponseDto, AutomationGraphResponseDto, AutomationHttpPreviewDto, AutomationHttpPreviewResponseDto, AutomationHttpResponseSampleDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationNodeSearchResponseDto, AutomationNodesResponseDto, AutomationOperationsResponseDto, AutomationOperatorOptionsDto, AutomationOptionsResponseDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationTriggerTestSessionResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, CancelAutomationRunResponseDto, ChannelDeliveryRecoveryPageDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CreateAutomationTriggerTestSessionDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, FunnelOptionsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportAttachmentDto, ImportImageDto, LayoutAutomationDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SimulateAutomationTriggerTestEventDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationHttpResponseSampleDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
+import type { ApplyAutomationBatchDto, AutomationAttachmentsResponseDto, AutomationAttentionSummaryDto, AutomationAvatarUploadUrlResponseDto, AutomationCodePreviewDto, AutomationCodePreviewResponseDto, AutomationEdgeResponseDto, AutomationFormulaCatalogDto, AutomationFormulaPreviewDto, AutomationFormulaPreviewResponseDto, AutomationGraphResponseDto, AutomationHttpPreviewDto, AutomationHttpPreviewResponseDto, AutomationHttpResponseSampleDto, AutomationListResponseDto, AutomationNodeCatalogResponseDto, AutomationNodeConfigValidationResponseDto, AutomationNodeResponseDto, AutomationNodeSearchResponseDto, AutomationNodesResponseDto, AutomationOperationsResponseDto, AutomationOperatorOptionsDto, AutomationOptionsResponseDto, AutomationResponseDto, AutomationRunDetailResponseDto, AutomationRunsResponseDto, AutomationStatusResponseDto, AutomationTriggerTestSessionResponseDto, AutomationValidationResponseDto, AutomationVersionHistoryResponseDto, AutomationVersionInfoDto, AutomationWaitingClientsResponseDto, CancelAutomationRunResponseDto, ChannelDeliveryRecoveryPageDto, ConfirmAutomationAvatarUploadDto, ConfirmAutomationAvatarUploadResponseDto, ConfirmUploadDto, ConfirmUploadResponseDto, CreateAutomationDto, CreateAutomationEdgeDto, CreateAutomationNodeDto, CreateAutomationTriggerTestSessionDto, CurrentAutomationTestDialogDataDto, DeleteAutomationEdgeDto, DeleteAutomationNodeDto, DialogAutomationRunsResponseDto, FunnelOptionsResponseDto, GetAutomationAvatarUploadUrlDto, GetUploadUrlDto, GetUploadUrlResponseDto, ImportAttachmentDto, ImportImageDto, LayoutAutomationDto, PauseAutomationRunDto, PauseAutomationRunResponseDto, PublishAutomationDto, RestoreAutomationVersionDto, RetryAutomationTaskResponseDto, SendFirstTestMessageDto, SendFirstTestMessageResponseDto, SimulateAutomationTriggerTestEventDto, StartAutomationRunDto, StartAutomationRunResponseDto, TestAutomationRunDto, TestAutomationRunResponseDto, UpdateAutomationDto, UpdateAutomationHttpResponseSampleDto, UpdateAutomationNodeDto, ValidateAutomationNodeConfigDto } from '../models/index';
 export interface AttachmentsConfirmRequest {
     automationId: string;
     confirmUploadDto: ConfirmUploadDto;
@@ -263,6 +263,11 @@ export interface GetTestTriggerSessionsRequest {
 export interface GetTestTriggerSessionsCurrentRequest {
     automationId: string;
     acceptLanguage?: GetTestTriggerSessionsCurrentAcceptLanguageEnum;
+}
+export interface GetWaitingClientsRequest {
+    automationId: string;
+    nodeIds: Array<string>;
+    acceptLanguage?: GetWaitingClientsAcceptLanguageEnum;
 }
 export interface LayoutRequest {
     automationId: string;
@@ -774,6 +779,16 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      *
      */
     getTestTriggerSessionsCurrent(requestParameters: GetTestTriggerSessionsCurrentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationTriggerTestSessionResponseDto>;
+    /**
+     * . .
+     *
+     */
+    getWaitingClientsRaw(requestParameters: GetWaitingClientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationWaitingClientsResponseDto>>;
+    /**
+     * . .
+     *
+     */
+    getWaitingClients(requestParameters: GetWaitingClientsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationWaitingClientsResponseDto>;
     /**
      * : , , , . . applyAutomationBatch , . ; . . operation_id expected_draft_revision .
      *
@@ -1464,6 +1479,14 @@ export declare const GetTestTriggerSessionsCurrentAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetTestTriggerSessionsCurrentAcceptLanguageEnum = typeof GetTestTriggerSessionsCurrentAcceptLanguageEnum[keyof typeof GetTestTriggerSessionsCurrentAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetWaitingClientsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetWaitingClientsAcceptLanguageEnum = typeof GetWaitingClientsAcceptLanguageEnum[keyof typeof GetWaitingClientsAcceptLanguageEnum];
 /**
  * @export
  */

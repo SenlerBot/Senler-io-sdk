@@ -35,7 +35,7 @@ import {
  */
 export interface UpdateDeliveryDto {
     /**
-     *
+     * . .
      * @type {string}
      * @memberof UpdateDeliveryDto
      */

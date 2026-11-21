@@ -20,13 +20,13 @@ import {
     TrainingModeToJSON,
     TrainingModeToJSONTyped,
 } from './TrainingMode';
-import type { AgentStatus } from './AgentStatus';
+import type { AgentPreparationStage } from './AgentPreparationStage';
 import {
-    AgentStatusFromJSON,
-    AgentStatusFromJSONTyped,
-    AgentStatusToJSON,
-    AgentStatusToJSONTyped,
-} from './AgentStatus';
+    AgentPreparationStageFromJSON,
+    AgentPreparationStageFromJSONTyped,
+    AgentPreparationStageToJSON,
+    AgentPreparationStageToJSONTyped,
+} from './AgentPreparationStage';
 
 /**
  * StartTrainingResponseDto.
@@ -42,10 +42,10 @@ export interface StartTrainingResponseDto {
     agentId: string;
     /**
      *
-     * @type {AgentStatus}
+     * @type {AgentPreparationStage}
      * @memberof StartTrainingResponseDto
      */
-    status: AgentStatus;
+    preparationStage: AgentPreparationStage;
     /**
      *
      * @type {number}
@@ -85,7 +85,7 @@ export interface StartTrainingResponseDto {
  */
 export function instanceOfStartTrainingResponseDto(value: object): value is StartTrainingResponseDto {
     if (!('agentId' in value) || value['agentId'] === undefined) return false;
-    if (!('status' in value) || value['status'] === undefined) return false;
+    if (!('preparationStage' in value) || value['preparationStage'] === undefined) return false;
     if (!('tasksCreated' in value) || value['tasksCreated'] === undefined) return false;
     if (!('mode' in value) || value['mode'] === undefined) return false;
     if (!('taskIds' in value) || value['taskIds'] === undefined) return false;
@@ -105,7 +105,7 @@ export function StartTrainingResponseDtoFromJSONTyped(json: any, ignoreDiscrimin
     return {
 
         'agentId': json['agentId'],
-        'status': AgentStatusFromJSON(json['status']),
+        'preparationStage': AgentPreparationStageFromJSON(json['preparationStage']),
         'tasksCreated': json['tasksCreated'],
         'mode': TrainingModeFromJSON(json['mode']),
         'taskIds': json['taskIds'],
@@ -126,7 +126,7 @@ export function StartTrainingResponseDtoToJSONTyped(value?: StartTrainingRespons
     return {
 
         'agentId': value['agentId'],
-        'status': AgentStatusToJSON(value['status']),
+        'preparationStage': AgentPreparationStageToJSON(value['preparationStage']),
         'tasksCreated': value['tasksCreated'],
         'mode': TrainingModeToJSON(value['mode']),
         'taskIds': value['taskIds'],

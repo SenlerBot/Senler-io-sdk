@@ -12,7 +12,7 @@
 import type { TrainingMode } from './TrainingMode';
 import type { TasksStatsDto } from './TasksStatsDto';
 import type { TrainingConfigurationSnapshotDto } from './TrainingConfigurationSnapshotDto';
-import type { AgentStatus } from './AgentStatus';
+import type { AgentPreparationStage } from './AgentPreparationStage';
 import type { TrainingRunBillingSummaryDto } from './TrainingRunBillingSummaryDto';
 import type { TaskDetailDto } from './TaskDetailDto';
 import type { TrainingProgressDetailDto } from './TrainingProgressDetailDto';
@@ -31,10 +31,10 @@ export interface TrainingStatusResponseDto {
     agentId: string;
     /**
      *
-     * @type {AgentStatus}
+     * @type {AgentPreparationStage}
      * @memberof TrainingStatusResponseDto
      */
-    agentStatus: AgentStatus;
+    preparationStage: AgentPreparationStage;
     /**
      *
      * @type {TrainingMode}
