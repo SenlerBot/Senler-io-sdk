@@ -26,7 +26,15 @@ const LandingExperimentMarkerDto_1 = require("./LandingExperimentMarkerDto");
  * Check if a given object implements the LandingResolvedResponseDto interface.
  */
 function instanceOfLandingResolvedResponseDto(value) {
+    if (!('appToken' in value) || value['appToken'] === undefined)
+        return false;
     if (!('bookingToken' in value) || value['bookingToken'] === undefined)
+        return false;
+    if (!('resumeToken' in value) || value['resumeToken'] === undefined)
+        return false;
+    if (!('resumeExpiresAt' in value) || value['resumeExpiresAt'] === undefined)
+        return false;
+    if (!('actorKey' in value) || value['actorKey'] === undefined)
         return false;
     if (!('landing' in value) || value['landing'] === undefined)
         return false;
@@ -50,7 +58,11 @@ function LandingResolvedResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'appToken': json['app_token'],
         'bookingToken': json['booking_token'],
+        'resumeToken': json['resume_token'],
+        'resumeExpiresAt': json['resume_expires_at'],
+        'actorKey': json['actor_key'],
         'landing': (0, LandingPublicResponseDto_1.LandingPublicResponseDtoFromJSON)(json['landing']),
         'visitId': json['visit_id'],
         'pageVariantId': json['page_variant_id'],
@@ -68,7 +80,11 @@ function LandingResolvedResponseDtoToJSONTyped(value, ignoreDiscriminator = fals
         return value;
     }
     return {
+        'app_token': value['appToken'],
         'booking_token': value['bookingToken'],
+        'resume_token': value['resumeToken'],
+        'resume_expires_at': value['resumeExpiresAt'],
+        'actor_key': value['actorKey'],
         'landing': (0, LandingPublicResponseDto_1.LandingPublicResponseDtoToJSON)(value['landing']),
         'visit_id': value['visitId'],
         'page_variant_id': value['pageVariantId'],

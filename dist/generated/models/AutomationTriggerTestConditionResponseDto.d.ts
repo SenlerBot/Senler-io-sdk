@@ -16,7 +16,7 @@
  */
 export interface AutomationTriggerTestConditionResponseDto {
     /**
-     * : bot_started, chat_member_added, chat_member_removed, message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, dialog_closed, dialog_operator_assigned, dialog_operator_unassigned, dialog_snoozed, segment_subscribed, app_event_received, booking_changed.
+     * : bot_started, chat_member_added, chat_member_removed, message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, dialog_closed, dialog_operator_assigned, dialog_operator_unassigned, dialog_snoozed, segment_subscribed, app_event_received, booking_changed, payment_received, telegram_post_stars.
      * @type {string}
      * @memberof AutomationTriggerTestConditionResponseDto
      */
@@ -138,6 +138,8 @@ export declare const AutomationTriggerTestConditionResponseDtoEventTypeEnum: {
     readonly SegmentSubscribed: "segment_subscribed";
     readonly AppEventReceived: "app_event_received";
     readonly BookingChanged: "booking_changed";
+    readonly PaymentReceived: "payment_received";
+    readonly TelegramPostStars: "telegram_post_stars";
 };
 export type AutomationTriggerTestConditionResponseDtoEventTypeEnum = typeof AutomationTriggerTestConditionResponseDtoEventTypeEnum[keyof typeof AutomationTriggerTestConditionResponseDtoEventTypeEnum];
 /**

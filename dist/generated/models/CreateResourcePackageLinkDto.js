@@ -23,6 +23,7 @@ exports.CreateResourcePackageLinkDtoToJSONTyped = CreateResourcePackageLinkDtoTo
  * @export
  */
 exports.CreateResourcePackageLinkDtoSourceSectionEnum = {
+    Funnels: 'funnels',
     Automations: 'automations',
     Agents: 'agents',
     Deliveries: 'deliveries',
@@ -59,6 +60,7 @@ function CreateResourcePackageLinkDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'requestId': json['request_id'] == null ? undefined : json['request_id'],
         'sourceSection': json['source_section'] == null ? undefined : json['source_section'],
         'expiresIn': json['expires_in'] == null ? undefined : json['expires_in'],
     };
@@ -71,6 +73,7 @@ function CreateResourcePackageLinkDtoToJSONTyped(value, ignoreDiscriminator = fa
         return value;
     }
     return {
+        'request_id': value['requestId'],
         'source_section': value['sourceSection'],
         'expires_in': value['expiresIn'],
     };

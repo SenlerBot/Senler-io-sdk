@@ -106,6 +106,7 @@ export interface CreateResourcePackageDto {
  * @export
  */
 export const CreateResourcePackageDtoRootResourceTypeEnum = {
+    Funnel: 'funnel',
     Automation: 'automation',
     Agent: 'agent',
     Delivery: 'delivery',

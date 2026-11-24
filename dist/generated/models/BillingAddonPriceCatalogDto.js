@@ -53,6 +53,8 @@ function BillingAddonPriceCatalogDtoFromJSONTyped(json, ignoreDiscriminator) {
         'period': json['period'],
         'priceRub': json['price_rub'],
         'priceUsd': json['price_usd'],
+        'displayRub': json['display_rub'] == null ? undefined : json['display_rub'],
+        'displayUsd': json['display_usd'] == null ? undefined : json['display_usd'],
     };
 }
 function BillingAddonPriceCatalogDtoToJSON(json) {
@@ -67,5 +69,7 @@ function BillingAddonPriceCatalogDtoToJSONTyped(value, ignoreDiscriminator = fal
         'period': value['period'],
         'price_rub': value['priceRub'],
         'price_usd': value['priceUsd'],
+        'display_rub': value['displayRub'],
+        'display_usd': value['displayUsd'],
     };
 }

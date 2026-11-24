@@ -75,6 +75,7 @@ export const UpdateLandingBlockDtoTypeEnum = {
     Video: 'video',
     Timer: 'timer',
     Widget: 'widget',
+    App: 'app',
     Booking: 'booking',
     Other: 'other'
 } as const;

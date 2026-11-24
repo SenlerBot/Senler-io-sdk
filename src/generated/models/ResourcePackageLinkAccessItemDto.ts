@@ -116,6 +116,7 @@ export interface ResourcePackageLinkAccessItemDto {
  * @export
  */
 export const ResourcePackageLinkAccessItemDtoRootResourceTypeEnum = {
+    Funnel: 'funnel',
     Automation: 'automation',
     Agent: 'agent',
     Delivery: 'delivery',
@@ -139,6 +140,7 @@ export type ResourcePackageLinkAccessItemDtoRootResourceTypeEnum = typeof Resour
  * @export
  */
 export const ResourcePackageLinkAccessItemDtoSourceSectionEnum = {
+    Funnels: 'funnels',
     Automations: 'automations',
     Agents: 'agents',
     Deliveries: 'deliveries',

@@ -10,13 +10,19 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateAgentLandingActionBlockDto, CreateBookingLandingBlockDto, CreateButtonLandingBlockDto, CreateCoverLandingBlockDto, CreateFeaturesLandingBlockDto, CreateHtmlLandingBlockDto, CreateImageLandingBlockDto, CreateOtherLandingBlockDto, CreateProductsLandingBlockDto, CreateReviewsLandingBlockDto, CreateTextLandingBlockDto, CreateTimerLandingBlockDto, CreateVideoLandingBlockDto, CreateWidgetLandingBlockDto, LandingBlockContentMutationResponseDto, LandingBlockCreateMutationResponseDto, LandingHtmlPatchResponseDto, PatchLandingHtmlDto, SetAgentLandingSubscribeActionDto, SetLandingOpenBookingActionDto, SetLandingOpenLandingActionDto, SetLandingOpenUrlActionDto, UpdateAgentLandingActionBlockDto, UpdateBookingLandingBlockDto, UpdateButtonLandingBlockDto, UpdateCoverLandingBlockDto, UpdateFeaturesLandingBlockDto, UpdateHtmlLandingBlockDto, UpdateImageLandingBlockDto, UpdateOtherLandingBlockDto, UpdateProductsLandingBlockDto, UpdateReviewsLandingBlockDto, UpdateTextLandingBlockDto, UpdateTimerLandingBlockDto, UpdateTypedLandingBlockActionCommonDto, UpdateVideoLandingBlockDto, UpdateWidgetLandingBlockDto } from '../models/index';
+import type { CreateAgentLandingActionBlockDto, CreateAppLandingBlockDto, CreateBookingLandingBlockDto, CreateButtonLandingBlockDto, CreateCoverLandingBlockDto, CreateFeaturesLandingBlockDto, CreateHtmlLandingBlockDto, CreateImageLandingBlockDto, CreateOtherLandingBlockDto, CreateProductsLandingBlockDto, CreateReviewsLandingBlockDto, CreateTextLandingBlockDto, CreateTimerLandingBlockDto, CreateVideoLandingBlockDto, CreateWidgetLandingBlockDto, LandingBlockContentMutationResponseDto, LandingBlockCreateMutationResponseDto, LandingHtmlPatchResponseDto, PatchLandingHtmlDto, SetAgentLandingSubscribeActionDto, SetLandingAppActionDto, SetLandingOpenBookingActionDto, SetLandingOpenLandingActionDto, SetLandingOpenUrlActionDto, UpdateAgentLandingActionBlockDto, UpdateAppLandingBlockDto, UpdateBookingLandingBlockDto, UpdateButtonLandingBlockDto, UpdateCoverLandingBlockDto, UpdateFeaturesLandingBlockDto, UpdateHtmlLandingBlockDto, UpdateImageLandingBlockDto, UpdateOtherLandingBlockDto, UpdateProductsLandingBlockDto, UpdateReviewsLandingBlockDto, UpdateTextLandingBlockDto, UpdateTimerLandingBlockDto, UpdateTypedLandingBlockActionCommonDto, UpdateVideoLandingBlockDto, UpdateWidgetLandingBlockDto } from '../models/index';
 export interface DeleteLandingBlocksActionRequest {
     resourceId: string;
     blockId: string;
     updateTypedLandingBlockActionCommonDto: UpdateTypedLandingBlockActionCommonDto;
     xLandingEditorSessionId?: string;
     acceptLanguage?: DeleteLandingBlocksActionAcceptLanguageEnum;
+}
+export interface LandingBlocksAppRequest {
+    resourceId: string;
+    createAppLandingBlockDto: CreateAppLandingBlockDto;
+    xLandingEditorSessionId?: string;
+    acceptLanguage?: LandingBlocksAppAcceptLanguageEnum;
 }
 export interface LandingBlocksBookingRequest {
     resourceId: string;
@@ -102,6 +108,13 @@ export interface LandingBlocksWidgetRequest {
     xLandingEditorSessionId?: string;
     acceptLanguage?: LandingBlocksWidgetAcceptLanguageEnum;
 }
+export interface UpdateLandingBlocksActionAppActionRequest {
+    resourceId: string;
+    blockId: string;
+    setLandingAppActionDto: SetLandingAppActionDto;
+    xLandingEditorSessionId?: string;
+    acceptLanguage?: UpdateLandingBlocksActionAppActionAcceptLanguageEnum;
+}
 export interface UpdateLandingBlocksActionOpenBookingRequest {
     resourceId: string;
     blockId: string;
@@ -129,6 +142,13 @@ export interface UpdateLandingBlocksActionSubscribeSegmentRequest {
     setAgentLandingSubscribeActionDto: SetAgentLandingSubscribeActionDto;
     xLandingEditorSessionId?: string;
     acceptLanguage?: UpdateLandingBlocksActionSubscribeSegmentAcceptLanguageEnum;
+}
+export interface UpdateLandingBlocksAppRequest {
+    resourceId: string;
+    blockId: string;
+    updateAppLandingBlockDto: UpdateAppLandingBlockDto;
+    xLandingEditorSessionId?: string;
+    acceptLanguage?: UpdateLandingBlocksAppAcceptLanguageEnum;
 }
 export interface UpdateLandingBlocksBookingRequest {
     resourceId: string;
@@ -249,6 +269,16 @@ export declare class AgentLandingBlocksApi extends runtime.BaseAPI {
      *
      */
     deleteLandingBlocksAction(requestParameters: DeleteLandingBlocksActionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
+    /**
+     * . expected_order_revision; block_id.
+     * app
+     */
+    landingBlocksAppRaw(requestParameters: LandingBlocksAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockCreateMutationResponseDto>>;
+    /**
+     * . expected_order_revision; block_id.
+     * app
+     */
+    landingBlocksApp(requestParameters: LandingBlocksAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
      * . expected_order_revision; block_id.
      * booking
@@ -390,6 +420,16 @@ export declare class AgentLandingBlocksApi extends runtime.BaseAPI {
      */
     landingBlocksWidget(requestParameters: LandingBlocksWidgetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockCreateMutationResponseDto>;
     /**
+     * , .
+     * URL
+     */
+    updateLandingBlocksActionAppActionRaw(requestParameters: UpdateLandingBlocksActionAppActionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
+    /**
+     * , .
+     * URL
+     */
+    updateLandingBlocksActionAppAction(requestParameters: UpdateLandingBlocksActionAppActionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
+    /**
      * - .
      * -
      */
@@ -429,6 +469,16 @@ export declare class AgentLandingBlocksApi extends runtime.BaseAPI {
      *
      */
     updateLandingBlocksActionSubscribeSegment(requestParameters: UpdateLandingBlocksActionSubscribeSegmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
+    /**
+     * payload . , expected_revision; 409 . .
+     *
+     */
+    updateLandingBlocksAppRaw(requestParameters: UpdateLandingBlocksAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingBlockContentMutationResponseDto>>;
+    /**
+     * payload . , expected_revision; 409 . .
+     *
+     */
+    updateLandingBlocksApp(requestParameters: UpdateLandingBlocksAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingBlockContentMutationResponseDto>;
     /**
      * payload . , expected_revision; 409 . .
      * -
@@ -591,6 +641,14 @@ export type DeleteLandingBlocksActionAcceptLanguageEnum = typeof DeleteLandingBl
 /**
  * @export
  */
+export declare const LandingBlocksAppAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingBlocksAppAcceptLanguageEnum = typeof LandingBlocksAppAcceptLanguageEnum[keyof typeof LandingBlocksAppAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const LandingBlocksBookingAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -703,6 +761,14 @@ export type LandingBlocksWidgetAcceptLanguageEnum = typeof LandingBlocksWidgetAc
 /**
  * @export
  */
+export declare const UpdateLandingBlocksActionAppActionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateLandingBlocksActionAppActionAcceptLanguageEnum = typeof UpdateLandingBlocksActionAppActionAcceptLanguageEnum[keyof typeof UpdateLandingBlocksActionAppActionAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const UpdateLandingBlocksActionOpenBookingAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -732,6 +798,14 @@ export declare const UpdateLandingBlocksActionSubscribeSegmentAcceptLanguageEnum
     readonly En: "en";
 };
 export type UpdateLandingBlocksActionSubscribeSegmentAcceptLanguageEnum = typeof UpdateLandingBlocksActionSubscribeSegmentAcceptLanguageEnum[keyof typeof UpdateLandingBlocksActionSubscribeSegmentAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateLandingBlocksAppAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateLandingBlocksAppAcceptLanguageEnum = typeof UpdateLandingBlocksAppAcceptLanguageEnum[keyof typeof UpdateLandingBlocksAppAcceptLanguageEnum];
 /**
  * @export
  */

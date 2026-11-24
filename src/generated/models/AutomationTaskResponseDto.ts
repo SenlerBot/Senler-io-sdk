@@ -35,6 +35,12 @@ import {
  */
 export interface AutomationTaskResponseDto {
     /**
+     * , .
+     * @type {Array<string>}
+     * @memberof AutomationTaskResponseDto
+     */
+    warnings?: Array<string>;
+    /**
      *
      * @type {AutomationTaskIncidentDto}
      * @memberof AutomationTaskResponseDto
@@ -205,6 +211,7 @@ export function AutomationTaskResponseDtoFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
 
+        'warnings': json['warnings'] == null ? undefined : json['warnings'],
         'incident': json['incident'] == null ? undefined : AutomationTaskIncidentDtoFromJSON(json['incident']),
         'httpResult': json['http_result'] == null ? undefined : AutomationHttpResultSummaryDtoFromJSON(json['http_result']),
         'id': json['id'],
@@ -237,6 +244,7 @@ export function AutomationTaskResponseDtoToJSONTyped(value?: AutomationTaskRespo
 
     return {
 
+        'warnings': value['warnings'],
         'incident': AutomationTaskIncidentDtoToJSON(value['incident']),
         'http_result': AutomationHttpResultSummaryDtoToJSON(value['httpResult']),
         'id': value['id'],

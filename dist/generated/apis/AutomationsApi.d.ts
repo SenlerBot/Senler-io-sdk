@@ -530,12 +530,12 @@ export declare class AutomationsApi extends runtime.BaseAPI {
      */
     automationsUpdate(requestParameters: AutomationsUpdateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationResponseDto>;
     /**
-     * 100 Mongo-. config_schema default_config getNodeTypes catalog_ids, . graph : . graph , , . , . : layoutAutomation . . position . ; .
+     * 100 Mongo-. . , . segment_id, expected_draft_revision ID UUID, 0003. operation_id node_id UUID . {\"operation_id\":\"550e8400-e29b-41d4-a716-446655440000\",\"expected_draft_revision\":1,\"operations\":[{\"kind\":\"add_node\",\"node_id\":\"550e8400-e29b-41d4-a716-446655440001\",\"node_type\":\"trigger.segment_entered\",\"name\":\" \",\"config\":{\"segment_id\":\"507f1f77bcf86cd799439011\"}},{\"kind\":\"add_node\",\"node_id\":\"550e8400-e29b-41d4-a716-446655440002\",\"node_type\":\"action.message\",\"name\":\" \",\"config\":{\"message_text\":\" . !\",\"message_target_type\":\"current_context\"}},{\"kind\":\"connect\",\"source_node_id\":\"550e8400-e29b-41d4-a716-446655440001\",\"target_node_id\":\"550e8400-e29b-41d4-a716-446655440002\",\"source_port\":\"next\"},{\"kind\":\"connect\",\"source_node_id\":\"550e8400-e29b-41d4-a716-446655440003\",\"target_node_id\":\"550e8400-e29b-41d4-a716-446655440002\",\"source_port\":\"next\"}]} config_schema default_config getNodeTypes catalog_ids. graph . graph , , . , . layoutAutomation . . position . . .
      *
      */
     batchRaw(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>>;
     /**
-     * 100 Mongo-. config_schema default_config getNodeTypes catalog_ids, . graph : . graph , , . , . : layoutAutomation . . position . ; .
+     * 100 Mongo-. . , . segment_id, expected_draft_revision ID UUID, 0003. operation_id node_id UUID . {\"operation_id\":\"550e8400-e29b-41d4-a716-446655440000\",\"expected_draft_revision\":1,\"operations\":[{\"kind\":\"add_node\",\"node_id\":\"550e8400-e29b-41d4-a716-446655440001\",\"node_type\":\"trigger.segment_entered\",\"name\":\" \",\"config\":{\"segment_id\":\"507f1f77bcf86cd799439011\"}},{\"kind\":\"add_node\",\"node_id\":\"550e8400-e29b-41d4-a716-446655440002\",\"node_type\":\"action.message\",\"name\":\" \",\"config\":{\"message_text\":\" . !\",\"message_target_type\":\"current_context\"}},{\"kind\":\"connect\",\"source_node_id\":\"550e8400-e29b-41d4-a716-446655440001\",\"target_node_id\":\"550e8400-e29b-41d4-a716-446655440002\",\"source_port\":\"next\"},{\"kind\":\"connect\",\"source_node_id\":\"550e8400-e29b-41d4-a716-446655440003\",\"target_node_id\":\"550e8400-e29b-41d4-a716-446655440002\",\"source_port\":\"next\"}]} config_schema default_config getNodeTypes catalog_ids. graph . graph , , . , . layoutAutomation . . position . . .
      *
      */
     batch(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto>;
@@ -1331,6 +1331,8 @@ export declare const GetNodesSearchTypesEnum: {
     readonly TriggerLeadEvent: "trigger.lead_event";
     readonly TriggerAppEvent: "trigger.app_event";
     readonly TriggerBooking: "trigger.booking";
+    readonly TriggerPaymentReceived: "trigger.payment_received";
+    readonly TriggerTelegramPostStars: "trigger.telegram_post_stars";
     readonly ConditionGroup: "condition.group";
     readonly ConditionVariable: "condition.variable";
     readonly ConditionAi: "condition.ai";
@@ -1348,6 +1350,7 @@ export declare const GetNodesSearchTypesEnum: {
     readonly ActionDeleteMessage: "action.delete_message";
     readonly ActionPoll: "action.poll";
     readonly ActionTelegramWidget: "action.telegram_widget";
+    readonly ActionTelegramInvoice: "action.telegram_invoice";
     readonly ActionTyping: "action.typing";
     readonly ActionAgentRequest: "action.agent_request";
     readonly ActionAddSegment: "action.add_segment";

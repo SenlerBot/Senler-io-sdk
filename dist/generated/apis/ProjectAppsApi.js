@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateInstalledVersionAcceptLanguageEnum = exports.UpdateInstalledDeveloperDialogAccessAcceptLanguageEnum = exports.ProjectAppsGetCatalogAcceptLanguageEnum = exports.ProjectAppsGetCatalogTypeEnum = exports.InstalledVersionRetryAcceptLanguageEnum = exports.InstalledSetupStepsSkipAcceptLanguageEnum = exports.GetInstalledVersionAcceptLanguageEnum = exports.GetInstalledSetupAcceptLanguageEnum = exports.GetInstalledEmbeddedPageAcceptLanguageEnum = exports.GetInstalled2AcceptLanguageEnum = exports.GetInstalledAcceptLanguageEnum = exports.GetInstalledTypeEnum = exports.GetCatalog2AcceptLanguageEnum = exports.GetActionsMethodsAcceptLanguageEnum = exports.DeleteInstalledAcceptLanguageEnum = exports.CatalogInstallAcceptLanguageEnum = exports.ActionsExecuteAcceptLanguageEnum = exports.ProjectAppsApi = void 0;
+exports.UpdateInstalledVersionAcceptLanguageEnum = exports.UpdateInstalledDeveloperDialogAccessAcceptLanguageEnum = exports.ProjectAppsGetCatalogAcceptLanguageEnum = exports.ProjectAppsGetCatalogTypeEnum = exports.InstalledVersionRetryAcceptLanguageEnum = exports.InstalledSetupStepsSkipAcceptLanguageEnum = exports.GetLandingActionsAcceptLanguageEnum = exports.GetInstalledVersionAcceptLanguageEnum = exports.GetInstalledSetupAcceptLanguageEnum = exports.GetInstalledEmbeddedPageAcceptLanguageEnum = exports.GetInstalled2AcceptLanguageEnum = exports.GetInstalledAcceptLanguageEnum = exports.GetInstalledTypeEnum = exports.GetCatalog2AcceptLanguageEnum = exports.GetActionsMethodsAcceptLanguageEnum = exports.DeleteInstalledAcceptLanguageEnum = exports.CatalogInstallAcceptLanguageEnum = exports.ActionsExecuteAcceptLanguageEnum = exports.ProjectAppsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -436,6 +436,53 @@ class ProjectAppsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * OpenAPI .
+     * iframe-
+     */
+    async getLandingActionsRaw(requestParameters, initOverrides) {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError('projectId', 'Required parameter "projectId" was null or undefined when calling getLandingActions().');
+        }
+        const queryParameters = {};
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+        const headerParameters = {};
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_use_project_apps"]);
+        }
+        const response = await this.request({
+            path: `/api/project-apps/landing-actions`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingAppCatalogDtoFromJSON)(jsonValue));
+    }
+    /**
+     * OpenAPI .
+     * iframe-
+     */
+    async getLandingActions(requestParameters, initOverrides) {
+        const response = await this.getLandingActionsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * .
      *
      */
@@ -699,6 +746,13 @@ exports.GetInstalledSetupAcceptLanguageEnum = {
  * @export
  */
 exports.GetInstalledVersionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.GetLandingActionsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

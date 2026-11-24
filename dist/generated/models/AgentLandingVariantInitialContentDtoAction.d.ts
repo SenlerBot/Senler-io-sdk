@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { AgentLandingSubscribeActionInputDto } from './AgentLandingSubscribeActionInputDto';
+import type { LandingAppActionInputDto } from './LandingAppActionInputDto';
 import type { LandingOpenBookingActionInputDto } from './LandingOpenBookingActionInputDto';
 import type { LandingOpenLandingActionInputDto } from './LandingOpenLandingActionInputDto';
 import type { LandingOpenUrlActionInputDto } from './LandingOpenUrlActionInputDto';
@@ -19,6 +20,8 @@ import type { LandingOpenUrlActionInputDto } from './LandingOpenUrlActionInputDt
  * @export
  */
 export type AgentLandingVariantInitialContentDtoAction = {
+    type: 'app_action';
+} & LandingAppActionInputDto | {
     type: 'open_booking';
 } & LandingOpenBookingActionInputDto | {
     type: 'open_landing';

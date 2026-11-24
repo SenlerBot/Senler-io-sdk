@@ -99,6 +99,7 @@ export interface CreateResourcePackageCommandDto {
  * @export
  */
 export declare const CreateResourcePackageCommandDtoRootResourceTypeEnum: {
+    readonly Funnel: "funnel";
     readonly Automation: "automation";
     readonly Agent: "agent";
     readonly Delivery: "delivery";

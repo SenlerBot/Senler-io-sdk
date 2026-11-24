@@ -49,11 +49,35 @@ import {
  */
 export interface LandingResolvedResponseDto {
     /**
-     * ; null
+     *
+     * @type {string}
+     * @memberof LandingResolvedResponseDto
+     */
+    appToken: string | null;
+    /**
+     *
      * @type {string}
      * @memberof LandingResolvedResponseDto
      */
     bookingToken: string | null;
+    /**
+     * ; resume_expires_at
+     * @type {string}
+     * @memberof LandingResolvedResponseDto
+     */
+    resumeToken: string | null;
+    /**
+     * , Unix milliseconds;
+     * @type {number}
+     * @memberof LandingResolvedResponseDto
+     */
+    resumeExpiresAt: number | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingResolvedResponseDto
+     */
+    actorKey: string | null;
     /**
      *
      * @type {LandingPublicResponseDto}
@@ -103,7 +127,11 @@ export interface LandingResolvedResponseDto {
  * Check if a given object implements the LandingResolvedResponseDto interface.
  */
 export function instanceOfLandingResolvedResponseDto(value: object): value is LandingResolvedResponseDto {
+    if (!('appToken' in value) || value['appToken'] === undefined) return false;
     if (!('bookingToken' in value) || value['bookingToken'] === undefined) return false;
+    if (!('resumeToken' in value) || value['resumeToken'] === undefined) return false;
+    if (!('resumeExpiresAt' in value) || value['resumeExpiresAt'] === undefined) return false;
+    if (!('actorKey' in value) || value['actorKey'] === undefined) return false;
     if (!('landing' in value) || value['landing'] === undefined) return false;
     if (!('visitId' in value) || value['visitId'] === undefined) return false;
     if (!('pageVariantId' in value) || value['pageVariantId'] === undefined) return false;
@@ -123,7 +151,11 @@ export function LandingResolvedResponseDtoFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
 
+        'appToken': json['app_token'],
         'bookingToken': json['booking_token'],
+        'resumeToken': json['resume_token'],
+        'resumeExpiresAt': json['resume_expires_at'],
+        'actorKey': json['actor_key'],
         'landing': LandingPublicResponseDtoFromJSON(json['landing']),
         'visitId': json['visit_id'],
         'pageVariantId': json['page_variant_id'],
@@ -145,7 +177,11 @@ export function LandingResolvedResponseDtoToJSONTyped(value?: LandingResolvedRes
 
     return {
 
+        'app_token': value['appToken'],
         'booking_token': value['bookingToken'],
+        'resume_token': value['resumeToken'],
+        'resume_expires_at': value['resumeExpiresAt'],
+        'actor_key': value['actorKey'],
         'landing': LandingPublicResponseDtoToJSON(value['landing']),
         'visit_id': value['visitId'],
         'page_variant_id': value['pageVariantId'],

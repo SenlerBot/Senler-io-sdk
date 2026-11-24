@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { LandingAppBindingDto } from './LandingAppBindingDto';
+import {
+    LandingAppBindingDtoFromJSON,
+    LandingAppBindingDtoFromJSONTyped,
+    LandingAppBindingDtoToJSON,
+    LandingAppBindingDtoToJSONTyped,
+} from './LandingAppBindingDto';
 import type { LandingChannelSelectionResponseDto } from './LandingChannelSelectionResponseDto';
 import {
     LandingChannelSelectionResponseDtoFromJSON,
@@ -34,6 +41,12 @@ import {
  * @interface LandingSubscribeActionResponseDto
  */
 export interface LandingSubscribeActionResponseDto {
+    /**
+     *
+     * @type {LandingAppBindingDto}
+     * @memberof LandingSubscribeActionResponseDto
+     */
+    app?: LandingAppBindingDto;
     /**
      * UUID
      * @type {string}
@@ -98,6 +111,7 @@ export function LandingSubscribeActionResponseDtoFromJSONTyped(json: any, ignore
     }
     return {
 
+        'app': json['app'] == null ? undefined : LandingAppBindingDtoFromJSON(json['app']),
         'id': json['id'],
         'type': json['type'],
         'segmentId': json['segment_id'],
@@ -117,6 +131,7 @@ export function LandingSubscribeActionResponseDtoToJSONTyped(value?: LandingSubs
 
     return {
 
+        'app': LandingAppBindingDtoToJSON(value['app']),
         'id': value['id'],
         'type': value['type'],
         'segment_id': value['segmentId'],

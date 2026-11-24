@@ -20,6 +20,12 @@ import { mapValues } from '../runtime';
  */
 export interface CreateResourcePackageLinkDto {
     /**
+     * UUID . .
+     * @type {string}
+     * @memberof CreateResourcePackageLinkDto
+     */
+    requestId?: string;
+    /**
      * ,
      * @type {string}
      * @memberof CreateResourcePackageLinkDto
@@ -38,6 +44,7 @@ export interface CreateResourcePackageLinkDto {
  * @export
  */
 export const CreateResourcePackageLinkDtoSourceSectionEnum = {
+    Funnels: 'funnels',
     Automations: 'automations',
     Agents: 'agents',
     Deliveries: 'deliveries',
@@ -82,6 +89,7 @@ export function CreateResourcePackageLinkDtoFromJSONTyped(json: any, ignoreDiscr
     }
     return {
 
+        'requestId': json['request_id'] == null ? undefined : json['request_id'],
         'sourceSection': json['source_section'] == null ? undefined : json['source_section'],
         'expiresIn': json['expires_in'] == null ? undefined : json['expires_in'],
     };
@@ -98,6 +106,7 @@ export function CreateResourcePackageLinkDtoToJSONTyped(value?: CreateResourcePa
 
     return {
 
+        'request_id': value['requestId'],
         'source_section': value['sourceSection'],
         'expires_in': value['expiresIn'],
     };

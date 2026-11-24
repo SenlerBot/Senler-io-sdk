@@ -87,6 +87,7 @@ function AutomationTaskResponseDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'warnings': json['warnings'] == null ? undefined : json['warnings'],
         'incident': json['incident'] == null ? undefined : (0, AutomationTaskIncidentDto_1.AutomationTaskIncidentDtoFromJSON)(json['incident']),
         'httpResult': json['http_result'] == null ? undefined : (0, AutomationHttpResultSummaryDto_1.AutomationHttpResultSummaryDtoFromJSON)(json['http_result']),
         'id': json['id'],
@@ -115,6 +116,7 @@ function AutomationTaskResponseDtoToJSONTyped(value, ignoreDiscriminator = false
         return value;
     }
     return {
+        'warnings': value['warnings'],
         'incident': (0, AutomationTaskIncidentDto_1.AutomationTaskIncidentDtoToJSON)(value['incident']),
         'http_result': (0, AutomationHttpResultSummaryDto_1.AutomationHttpResultSummaryDtoToJSON)(value['httpResult']),
         'id': value['id'],

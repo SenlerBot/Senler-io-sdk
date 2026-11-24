@@ -67,13 +67,13 @@ export interface AnalysisJobDto {
      */
     trigger: AnalysisJobDtoTriggerEnum | null;
     /**
-     * ; 1 = 10000 .
+     * (1 = 10000 ).
      * @type {number}
      * @memberof AnalysisJobDto
      */
     budgetCredits: number;
     /**
-     * ; 1 = 10000 .
+     * (1 = 10000 ).
      * @type {number}
      * @memberof AnalysisJobDto
      */

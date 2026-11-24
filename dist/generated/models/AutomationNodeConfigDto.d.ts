@@ -22,6 +22,7 @@ import type { AutomationAppStepFieldSnapshotDto } from './AutomationAppStepField
 import type { AutomationMessageButtonDto } from './AutomationMessageButtonDto';
 import type { AutomationTableResultFieldDto } from './AutomationTableResultFieldDto';
 import type { AutomationRandomBranchDto } from './AutomationRandomBranchDto';
+import type { AutomationPaymentSourceDto } from './AutomationPaymentSourceDto';
 import type { AutomationPollOptionDto } from './AutomationPollOptionDto';
 import type { AutomationVariableDestinationDto } from './AutomationVariableDestinationDto';
 import type { AutomationTableWriteDto } from './AutomationTableWriteDto';
@@ -261,6 +262,60 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     variableDurationUnit?: AutomationNodeConfigDtoVariableDurationUnitEnum;
+    /**
+     * invoice amount.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    invoiceAmount?: string;
+    /**
+     * invoice order data.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    invoiceOrderData?: string;
+    /**
+     * payment channel id.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    paymentChannelId?: string;
+    /**
+     * only external invoices.
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    onlyExternalInvoices?: boolean;
+    /**
+     * payment all channels.
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    paymentAllChannels?: boolean;
+    /**
+     * payment sources.
+     * @type {Array<AutomationPaymentSourceDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    paymentSources?: Array<AutomationPaymentSourceDto>;
+    /**
+     * post chat id.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    postChatId?: string;
+    /**
+     * post message id.
+     * @type {number}
+     * @memberof AutomationNodeConfigDto
+     */
+    postMessageId?: number;
+    /**
+     * star threshold.
+     * @type {number}
+     * @memberof AutomationNodeConfigDto
+     */
+    starThreshold?: number;
     /**
      * Telegram
      * @type {AutomationTelegramWidgetConfigDto}
@@ -1458,6 +1513,8 @@ export declare const AutomationNodeConfigDtoEventTypeEnum: {
     readonly SegmentSubscribed: "segment_subscribed";
     readonly AppEventReceived: "app_event_received";
     readonly BookingChanged: "booking_changed";
+    readonly PaymentReceived: "payment_received";
+    readonly TelegramPostStars: "telegram_post_stars";
 };
 export type AutomationNodeConfigDtoEventTypeEnum = typeof AutomationNodeConfigDtoEventTypeEnum[keyof typeof AutomationNodeConfigDtoEventTypeEnum];
 /**

@@ -20,6 +20,13 @@ import {
     LandingChannelSelectionInputDtoToJSON,
     LandingChannelSelectionInputDtoToJSONTyped,
 } from './LandingChannelSelectionInputDto';
+import type { LandingAppBindingDto } from './LandingAppBindingDto';
+import {
+    LandingAppBindingDtoFromJSON,
+    LandingAppBindingDtoFromJSONTyped,
+    LandingAppBindingDtoToJSON,
+    LandingAppBindingDtoToJSONTyped,
+} from './LandingAppBindingDto';
 import type { LandingContactCaptureDto } from './LandingContactCaptureDto';
 import {
     LandingContactCaptureDtoFromJSON,
@@ -53,6 +60,12 @@ export interface SetLandingSubscribeActionDto {
      * @memberof SetLandingSubscribeActionDto
      */
     button: LandingButtonContentDto;
+    /**
+     *
+     * @type {LandingAppBindingDto}
+     * @memberof SetLandingSubscribeActionDto
+     */
+    app?: LandingAppBindingDto;
     /**
      * ,
      * @type {string}
@@ -97,6 +110,7 @@ export function SetLandingSubscribeActionDtoFromJSONTyped(json: any, ignoreDiscr
 
         'expectedRevision': json['expected_revision'],
         'button': LandingButtonContentDtoFromJSON(json['button']),
+        'app': json['app'] == null ? undefined : LandingAppBindingDtoFromJSON(json['app']),
         'segmentId': json['segment_id'],
         'channelSelection': LandingChannelSelectionInputDtoFromJSON(json['channel_selection']),
         'contactCapture': LandingContactCaptureDtoFromJSON(json['contact_capture']),
@@ -116,6 +130,7 @@ export function SetLandingSubscribeActionDtoToJSONTyped(value?: SetLandingSubscr
 
         'expected_revision': value['expectedRevision'],
         'button': LandingButtonContentDtoToJSON(value['button']),
+        'app': LandingAppBindingDtoToJSON(value['app']),
         'segment_id': value['segmentId'],
         'channel_selection': LandingChannelSelectionInputDtoToJSON(value['channelSelection']),
         'contact_capture': LandingContactCaptureDtoToJSON(value['contactCapture']),

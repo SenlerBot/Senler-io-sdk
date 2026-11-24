@@ -9,12 +9,19 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LandingAppAttributionDto } from './LandingAppAttributionDto';
 /**
  * LandingUnsubscriptionRequestDto.
  * @export
  * @interface LandingUnsubscriptionRequestDto
  */
 export interface LandingUnsubscriptionRequestDto {
+    /**
+     * , .
+     * @type {Array<LandingAppAttributionDto>}
+     * @memberof LandingUnsubscriptionRequestDto
+     */
+    appContexts?: Array<LandingAppAttributionDto>;
     /**
      *
      * @type {string}

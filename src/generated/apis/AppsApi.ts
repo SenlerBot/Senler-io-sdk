@@ -26,6 +26,8 @@ import type {
   AppEmbeddedPageTestLaunchResponseDto,
   AppFunnelElementResponseDto,
   AppFunnelElementsResponseDto,
+  AppLandingComponentResponseDto,
+  AppLandingComponentsResponseDto,
   AppListItemResponseDto,
   AppManualToolDefinitionDto,
   AppManualToolResponseDto,
@@ -41,6 +43,7 @@ import type {
   OauthToken200Response,
   ProjectAppOAuthAccessPolicyDto,
   SaveAppFunnelElementDto,
+  SaveAppLandingComponentDto,
   SetAppCatalogVisibilityDto,
   UpdateAppActionSettingsDto,
   UpdateAppEmbeddedPageSettingsDto,
@@ -72,6 +75,10 @@ import {
     AppFunnelElementResponseDtoToJSON,
     AppFunnelElementsResponseDtoFromJSON,
     AppFunnelElementsResponseDtoToJSON,
+    AppLandingComponentResponseDtoFromJSON,
+    AppLandingComponentResponseDtoToJSON,
+    AppLandingComponentsResponseDtoFromJSON,
+    AppLandingComponentsResponseDtoToJSON,
     AppListItemResponseDtoFromJSON,
     AppListItemResponseDtoToJSON,
     AppManualToolDefinitionDtoFromJSON,
@@ -102,6 +109,8 @@ import {
     ProjectAppOAuthAccessPolicyDtoToJSON,
     SaveAppFunnelElementDtoFromJSON,
     SaveAppFunnelElementDtoToJSON,
+    SaveAppLandingComponentDtoFromJSON,
+    SaveAppLandingComponentDtoToJSON,
     SetAppCatalogVisibilityDtoFromJSON,
     SetAppCatalogVisibilityDtoToJSON,
     UpdateAppActionSettingsDtoFromJSON,
@@ -175,6 +184,12 @@ export interface DeleteInstallationsRequest {
     acceptLanguage?: DeleteInstallationsAcceptLanguageEnum;
 }
 
+export interface DeleteLandingComponentsRequest {
+    appId: string;
+    componentId: string;
+    acceptLanguage?: DeleteLandingComponentsAcceptLanguageEnum;
+}
+
 export interface DeleteToolsRequest {
     appId: string;
     toolId: string;
@@ -211,6 +226,17 @@ export interface GetInstallationsRequest {
     state?: GetInstallationsStateEnum;
     search?: string;
     acceptLanguage?: GetInstallationsAcceptLanguageEnum;
+}
+
+export interface GetLandingComponentsRequest {
+    appId: string;
+    acceptLanguage?: GetLandingComponentsAcceptLanguageEnum;
+}
+
+export interface LandingComponentsRequest {
+    appId: string;
+    saveAppLandingComponentDto: SaveAppLandingComponentDto;
+    acceptLanguage?: LandingComponentsAcceptLanguageEnum;
 }
 
 export interface OauthTokenRequest {
@@ -295,6 +321,13 @@ export interface UpdateGeneralSettingsRequest {
     id: string;
     updateAppGeneralSettingsDto: UpdateAppGeneralSettingsDto;
     acceptLanguage?: UpdateGeneralSettingsAcceptLanguageEnum;
+}
+
+export interface UpdateLandingComponentsRequest {
+    appId: string;
+    componentId: string;
+    saveAppLandingComponentDto: SaveAppLandingComponentDto;
+    acceptLanguage?: UpdateLandingComponentsAcceptLanguageEnum;
 }
 
 export interface UpdateOauthAccessProjectRequest {
@@ -832,6 +865,56 @@ export class AppsApi extends runtime.BaseAPI {
     }
 
     /**
+     * . .
+     *
+     */
+    async deleteLandingComponentsRaw(requestParameters: DeleteLandingComponentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError(
+                'appId',
+                'Required parameter "appId" was null or undefined when calling deleteLandingComponents().'
+            );
+        }
+
+        if (requestParameters['componentId'] == null) {
+            throw new runtime.RequiredError(
+                'componentId',
+                'Required parameter "componentId" was null or undefined when calling deleteLandingComponents().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
+        }
+
+        const response = await this.request({
+            path: `/api/apps/{appId}/landing-components/{componentId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"componentId"}}`, encodeURIComponent(String(requestParameters['componentId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * . .
+     *
+     */
+    async deleteLandingComponents(requestParameters: DeleteLandingComponentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.deleteLandingComponentsRaw(requestParameters, initOverrides);
+    }
+
+    /**
      * .
      *
      */
@@ -1139,6 +1222,104 @@ export class AppsApi extends runtime.BaseAPI {
      */
     async getInstallations(requestParameters: GetInstallationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeveloperAppInstallationsResponseDto> {
         const response = await this.getInstallationsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * , . .
+     *
+     */
+    async getLandingComponentsRaw(requestParameters: GetLandingComponentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppLandingComponentsResponseDto>> {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError(
+                'appId',
+                'Required parameter "appId" was null or undefined when calling getLandingComponents().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
+        }
+
+        const response = await this.request({
+            path: `/api/apps/{appId}/landing-components`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AppLandingComponentsResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * , . .
+     *
+     */
+    async getLandingComponents(requestParameters: GetLandingComponentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppLandingComponentsResponseDto> {
+        const response = await this.getLandingComponentsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * iframe- POST- . .
+     *
+     */
+    async landingComponentsRaw(requestParameters: LandingComponentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppLandingComponentResponseDto>> {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError(
+                'appId',
+                'Required parameter "appId" was null or undefined when calling landingComponents().'
+            );
+        }
+
+        if (requestParameters['saveAppLandingComponentDto'] == null) {
+            throw new runtime.RequiredError(
+                'saveAppLandingComponentDto',
+                'Required parameter "saveAppLandingComponentDto" was null or undefined when calling landingComponents().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
+        }
+
+        const response = await this.request({
+            path: `/api/apps/{appId}/landing-components`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SaveAppLandingComponentDtoToJSON(requestParameters['saveAppLandingComponentDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AppLandingComponentResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * iframe- POST- . .
+     *
+     */
+    async landingComponents(requestParameters: LandingComponentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppLandingComponentResponseDto> {
+        const response = await this.landingComponentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1875,6 +2056,67 @@ export class AppsApi extends runtime.BaseAPI {
     }
 
     /**
+     * . . .
+     *
+     */
+    async updateLandingComponentsRaw(requestParameters: UpdateLandingComponentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppLandingComponentResponseDto>> {
+        if (requestParameters['appId'] == null) {
+            throw new runtime.RequiredError(
+                'appId',
+                'Required parameter "appId" was null or undefined when calling updateLandingComponents().'
+            );
+        }
+
+        if (requestParameters['componentId'] == null) {
+            throw new runtime.RequiredError(
+                'componentId',
+                'Required parameter "componentId" was null or undefined when calling updateLandingComponents().'
+            );
+        }
+
+        if (requestParameters['saveAppLandingComponentDto'] == null) {
+            throw new runtime.RequiredError(
+                'saveAppLandingComponentDto',
+                'Required parameter "saveAppLandingComponentDto" was null or undefined when calling updateLandingComponents().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_app_settings"]);
+        }
+
+        const response = await this.request({
+            path: `/api/apps/{appId}/landing-components/{componentId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters['appId']))).replace(`{${"componentId"}}`, encodeURIComponent(String(requestParameters['componentId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SaveAppLandingComponentDtoToJSON(requestParameters['saveAppLandingComponentDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AppLandingComponentResponseDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * . . .
+     *
+     */
+    async updateLandingComponents(requestParameters: UpdateLandingComponentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppLandingComponentResponseDto> {
+        const response = await this.updateLandingComponentsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * OAuth- .
      * OAuth-
      */
@@ -2236,6 +2478,14 @@ export type DeleteInstallationsAcceptLanguageEnum = typeof DeleteInstallationsAc
 /**
  * @export
  */
+export const DeleteLandingComponentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type DeleteLandingComponentsAcceptLanguageEnum = typeof DeleteLandingComponentsAcceptLanguageEnum[keyof typeof DeleteLandingComponentsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const DeleteToolsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -2299,6 +2549,22 @@ export const GetInstallationsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetInstallationsAcceptLanguageEnum = typeof GetInstallationsAcceptLanguageEnum[keyof typeof GetInstallationsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetLandingComponentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetLandingComponentsAcceptLanguageEnum = typeof GetLandingComponentsAcceptLanguageEnum[keyof typeof GetLandingComponentsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const LandingComponentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type LandingComponentsAcceptLanguageEnum = typeof LandingComponentsAcceptLanguageEnum[keyof typeof LandingComponentsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -2411,6 +2677,14 @@ export const UpdateGeneralSettingsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateGeneralSettingsAcceptLanguageEnum = typeof UpdateGeneralSettingsAcceptLanguageEnum[keyof typeof UpdateGeneralSettingsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateLandingComponentsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateLandingComponentsAcceptLanguageEnum = typeof UpdateLandingComponentsAcceptLanguageEnum[keyof typeof UpdateLandingComponentsAcceptLanguageEnum];
 /**
  * @export
  */

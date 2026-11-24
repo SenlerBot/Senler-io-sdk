@@ -55,7 +55,7 @@ export interface InsightHistoryItemDto {
      */
     trigger: SummarizationTrigger;
     /**
-     * ; 1 = 10000 .
+     * (1 = 10000 ).
      * @type {number}
      * @memberof InsightHistoryItemDto
      */

@@ -20,6 +20,7 @@ exports.LandingSubscribeActionInputDtoFromJSONTyped = LandingSubscribeActionInpu
 exports.LandingSubscribeActionInputDtoToJSON = LandingSubscribeActionInputDtoToJSON;
 exports.LandingSubscribeActionInputDtoToJSONTyped = LandingSubscribeActionInputDtoToJSONTyped;
 const LandingChannelSelectionInputDto_1 = require("./LandingChannelSelectionInputDto");
+const LandingAppBindingDto_1 = require("./LandingAppBindingDto");
 const LandingContactCaptureDto_1 = require("./LandingContactCaptureDto");
 /**
  * @export
@@ -49,6 +50,7 @@ function LandingSubscribeActionInputDtoFromJSONTyped(json, ignoreDiscriminator) 
         return json;
     }
     return {
+        'app': json['app'] == null ? undefined : (0, LandingAppBindingDto_1.LandingAppBindingDtoFromJSON)(json['app']),
         'type': json['type'],
         'segmentId': json['segment_id'],
         'channelSelection': (0, LandingChannelSelectionInputDto_1.LandingChannelSelectionInputDtoFromJSON)(json['channel_selection']),
@@ -63,6 +65,7 @@ function LandingSubscribeActionInputDtoToJSONTyped(value, ignoreDiscriminator = 
         return value;
     }
     return {
+        'app': (0, LandingAppBindingDto_1.LandingAppBindingDtoToJSON)(value['app']),
         'type': value['type'],
         'segment_id': value['segmentId'],
         'channel_selection': (0, LandingChannelSelectionInputDto_1.LandingChannelSelectionInputDtoToJSON)(value['channelSelection']),

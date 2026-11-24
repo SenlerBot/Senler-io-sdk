@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TariffsListAcceptLanguageEnum = exports.TariffsApi = void 0;
+exports.TariffsListAcceptLanguageEnum = exports.TariffsListPurchaseTypeEnum = exports.TariffsListKindEnum = exports.TariffsApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -54,11 +54,20 @@ const index_1 = require("../models/index");
  */
 class TariffsApi extends runtime.BaseAPI {
     /**
-     *
+     * . kind, purchase_type tariff_id. , kind=credits purchase_type=one_time . display_rub display_usd . price_rub price_usd , quantity 1/10000 .
      *
      */
     async tariffsListRaw(requestParameters, initOverrides) {
         const queryParameters = {};
+        if (requestParameters['kind'] != null) {
+            queryParameters['kind'] = requestParameters['kind'];
+        }
+        if (requestParameters['purchaseType'] != null) {
+            queryParameters['purchase_type'] = requestParameters['purchaseType'];
+        }
+        if (requestParameters['tariffId'] != null) {
+            queryParameters['tariff_id'] = requestParameters['tariffId'];
+        }
         const headerParameters = {};
         if (requestParameters['acceptLanguage'] != null) {
             headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
@@ -72,7 +81,7 @@ class TariffsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PublicBillingCatalogResponseDtoFromJSON)(jsonValue));
     }
     /**
-     *
+     * . kind, purchase_type tariff_id. , kind=credits purchase_type=one_time . display_rub display_usd . price_rub price_usd , quantity 1/10000 .
      *
      */
     async tariffsList(requestParameters = {}, initOverrides) {
@@ -81,6 +90,24 @@ class TariffsApi extends runtime.BaseAPI {
     }
 }
 exports.TariffsApi = TariffsApi;
+/**
+ * @export
+ */
+exports.TariffsListKindEnum = {
+    Credits: 'credits',
+    AutomationSpeed: 'automation_speed',
+    MailingDaily: 'mailing_daily',
+    ApiDaily: 'api_daily',
+    Storage: 'storage',
+    MailingMessages: 'mailing_messages'
+};
+/**
+ * @export
+ */
+exports.TariffsListPurchaseTypeEnum = {
+    Recurring: 'recurring',
+    OneTime: 'one_time'
+};
 /**
  * @export
  */

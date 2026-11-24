@@ -20,6 +20,7 @@ exports.LandingSubscriptionRequestDtoFromJSONTyped = LandingSubscriptionRequestD
 exports.LandingSubscriptionRequestDtoToJSON = LandingSubscriptionRequestDtoToJSON;
 exports.LandingSubscriptionRequestDtoToJSONTyped = LandingSubscriptionRequestDtoToJSONTyped;
 const AcceptedSegmentConsentDto_1 = require("./AcceptedSegmentConsentDto");
+const LandingAppAttributionDto_1 = require("./LandingAppAttributionDto");
 const AnalyticsSnapshotDto_1 = require("./AnalyticsSnapshotDto");
 const LandingContactDto_1 = require("./LandingContactDto");
 /**
@@ -50,6 +51,7 @@ function LandingSubscriptionRequestDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'appContexts': json['app_contexts'] == null ? undefined : (json['app_contexts'].map(LandingAppAttributionDto_1.LandingAppAttributionDtoFromJSON)),
         'source': json['source'],
         'channelPublicId': json['channel_public_id'],
         'platformPayload': json['platform_payload'],
@@ -76,6 +78,7 @@ function LandingSubscriptionRequestDtoToJSONTyped(value, ignoreDiscriminator = f
         return value;
     }
     return {
+        'app_contexts': value['appContexts'] == null ? undefined : (value['appContexts'].map(LandingAppAttributionDto_1.LandingAppAttributionDtoToJSON)),
         'source': value['source'],
         'channel_public_id': value['channelPublicId'],
         'platform_payload': value['platformPayload'],

@@ -26,6 +26,9 @@ import {
 } from '../models/index';
 
 export interface TariffsListRequest {
+    kind?: TariffsListKindEnum;
+    purchaseType?: TariffsListPurchaseTypeEnum;
+    tariffId?: string;
     acceptLanguage?: TariffsListAcceptLanguageEnum;
 }
 
@@ -35,11 +38,23 @@ export interface TariffsListRequest {
 export class TariffsApi extends runtime.BaseAPI {
 
     /**
-     *
+     * . kind, purchase_type tariff_id. , kind=credits purchase_type=one_time . display_rub display_usd . price_rub price_usd , quantity 1/10000 .
      *
      */
     async tariffsListRaw(requestParameters: TariffsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicBillingCatalogResponseDto>> {
         const queryParameters: any = {};
+
+        if (requestParameters['kind'] != null) {
+            queryParameters['kind'] = requestParameters['kind'];
+        }
+
+        if (requestParameters['purchaseType'] != null) {
+            queryParameters['purchase_type'] = requestParameters['purchaseType'];
+        }
+
+        if (requestParameters['tariffId'] != null) {
+            queryParameters['tariff_id'] = requestParameters['tariffId'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -58,7 +73,7 @@ export class TariffsApi extends runtime.BaseAPI {
     }
 
     /**
-     *
+     * . kind, purchase_type tariff_id. , kind=credits purchase_type=one_time . display_rub display_usd . price_rub price_usd , quantity 1/10000 .
      *
      */
     async tariffsList(requestParameters: TariffsListRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicBillingCatalogResponseDto> {
@@ -68,6 +83,26 @@ export class TariffsApi extends runtime.BaseAPI {
 
 }
 
+/**
+ * @export
+ */
+export const TariffsListKindEnum = {
+    Credits: 'credits',
+    AutomationSpeed: 'automation_speed',
+    MailingDaily: 'mailing_daily',
+    ApiDaily: 'api_daily',
+    Storage: 'storage',
+    MailingMessages: 'mailing_messages'
+} as const;
+export type TariffsListKindEnum = typeof TariffsListKindEnum[keyof typeof TariffsListKindEnum];
+/**
+ * @export
+ */
+export const TariffsListPurchaseTypeEnum = {
+    Recurring: 'recurring',
+    OneTime: 'one_time'
+} as const;
+export type TariffsListPurchaseTypeEnum = typeof TariffsListPurchaseTypeEnum[keyof typeof TariffsListPurchaseTypeEnum];
 /**
  * @export
  */

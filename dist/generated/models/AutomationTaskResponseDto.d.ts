@@ -18,6 +18,12 @@ import type { AutomationTaskIncidentDto } from './AutomationTaskIncidentDto';
  */
 export interface AutomationTaskResponseDto {
     /**
+     * , .
+     * @type {Array<string>}
+     * @memberof AutomationTaskResponseDto
+     */
+    warnings?: Array<string>;
+    /**
      *
      * @type {AutomationTaskIncidentDto}
      * @memberof AutomationTaskResponseDto

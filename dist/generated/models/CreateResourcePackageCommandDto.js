@@ -24,6 +24,7 @@ const ResourcePackageSelectedResourceDto_1 = require("./ResourcePackageSelectedR
  * @export
  */
 exports.CreateResourcePackageCommandDtoRootResourceTypeEnum = {
+    Funnel: 'funnel',
     Automation: 'automation',
     Agent: 'agent',
     Delivery: 'delivery',

@@ -33,6 +33,8 @@ exports.LandingPublicationErrorCode = {
     AssetMissing: 'asset_missing',
     AssetCheckUnavailable: 'asset_check_unavailable',
     ActionInvalid: 'action_invalid',
+    AppConfigurationRequired: 'app_configuration_required',
+    AppConfigurationInvalid: 'app_configuration_invalid',
     ActionIdDuplicate: 'action_id_duplicate',
     SegmentUnavailable: 'segment_unavailable',
     ChannelUnavailable: 'channel_unavailable',

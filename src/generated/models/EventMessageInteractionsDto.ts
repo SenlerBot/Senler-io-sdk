@@ -76,6 +76,13 @@ import {
     EventMessageViewsDtoToJSON,
     EventMessageViewsDtoToJSONTyped,
 } from './EventMessageViewsDto';
+import type { EventTelegramInvoiceDto } from './EventTelegramInvoiceDto';
+import {
+    EventTelegramInvoiceDtoFromJSON,
+    EventTelegramInvoiceDtoFromJSONTyped,
+    EventTelegramInvoiceDtoToJSON,
+    EventTelegramInvoiceDtoToJSONTyped,
+} from './EventTelegramInvoiceDto';
 import type { EventPollSnapshotDto } from './EventPollSnapshotDto';
 import {
     EventPollSnapshotDtoFromJSON,
@@ -97,6 +104,12 @@ import {
  * @interface EventMessageInteractionsDto
  */
 export interface EventMessageInteractionsDto {
+    /**
+     *
+     * @type {EventTelegramInvoiceDto}
+     * @memberof EventMessageInteractionsDto
+     */
+    telegramInvoice?: EventTelegramInvoiceDto;
     /**
      * Telegram
      * @type {EventTelegramWidgetDto}
@@ -188,6 +201,7 @@ export function EventMessageInteractionsDtoFromJSONTyped(json: any, ignoreDiscri
     }
     return {
 
+        'telegramInvoice': json['telegram_invoice'] == null ? undefined : EventTelegramInvoiceDtoFromJSON(json['telegram_invoice']),
         'telegramWidget': json['telegram_widget'] == null ? undefined : EventTelegramWidgetDtoFromJSON(json['telegram_widget']),
         'reactions': json['reactions'] == null ? undefined : ((json['reactions'] as Array<any>).map(EventMessageReactionDtoFromJSON)),
         'poll': json['poll'] == null ? undefined : EventPollSnapshotDtoFromJSON(json['poll']),
@@ -214,6 +228,7 @@ export function EventMessageInteractionsDtoToJSONTyped(value?: EventMessageInter
 
     return {
 
+        'telegram_invoice': EventTelegramInvoiceDtoToJSON(value['telegramInvoice']),
         'telegram_widget': EventTelegramWidgetDtoToJSON(value['telegramWidget']),
         'reactions': value['reactions'] == null ? undefined : ((value['reactions'] as Array<any>).map(EventMessageReactionDtoToJSON)),
         'poll': EventPollSnapshotDtoToJSON(value['poll']),

@@ -39,6 +39,18 @@ export interface BillingAddonPriceCatalogDto {
      * @memberof BillingAddonPriceCatalogDto
      */
     priceUsd: number;
+    /**
+     * .
+     * @type {string}
+     * @memberof BillingAddonPriceCatalogDto
+     */
+    displayRub?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof BillingAddonPriceCatalogDto
+     */
+    displayUsd?: string;
 }
 /**
  * @export

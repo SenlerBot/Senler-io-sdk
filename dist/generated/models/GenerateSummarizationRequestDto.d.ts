@@ -16,7 +16,7 @@
  */
 export interface GenerateSummarizationRequestDto {
     /**
-     * ; 1 = 10000 .
+     * (1 = 10000 ).
      * @type {number}
      * @memberof GenerateSummarizationRequestDto
      */

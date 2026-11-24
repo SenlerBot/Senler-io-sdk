@@ -64,6 +64,7 @@ export declare const UpdateAgentLandingBlockDtoTypeEnum: {
     readonly Video: "video";
     readonly Timer: "timer";
     readonly Widget: "widget";
+    readonly App: "app";
     readonly Booking: "booking";
     readonly Other: "other";
 };

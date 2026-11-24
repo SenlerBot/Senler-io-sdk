@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LandingAppActionDto } from './LandingAppActionDto';
 import type { LandingOpenBookingActionDto } from './LandingOpenBookingActionDto';
 import type { LandingPublicOpenLandingActionDto } from './LandingPublicOpenLandingActionDto';
 import type { LandingPublicOpenUrlActionDto } from './LandingPublicOpenUrlActionDto';
@@ -19,6 +20,8 @@ import type { LandingPublicSubscribeActionDto } from './LandingPublicSubscribeAc
  * @export
  */
 export type LandingPublicCoverBlockDtoAction = {
+    type: 'app_action';
+} & LandingAppActionDto | {
     type: 'open_booking';
 } & LandingOpenBookingActionDto | {
     type: 'open_landing';

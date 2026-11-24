@@ -59,6 +59,7 @@ export const EventErrorDtoErrorTypeEnum = {
     AiTimeout: 'ai.timeout',
     AiNetworkError: 'ai.network_error',
     AiAborted: 'ai.aborted',
+    AiProviderContentRejected: 'ai.provider_content_rejected',
     AiRateLimit: 'ai.rate_limit',
     AiAuthError: 'ai.auth_error',
     AiQuotaExceeded: 'ai.quota_exceeded',

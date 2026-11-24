@@ -20,6 +20,13 @@ import {
     AcceptedSegmentConsentDtoToJSON,
     AcceptedSegmentConsentDtoToJSONTyped,
 } from './AcceptedSegmentConsentDto';
+import type { LandingAppAttributionDto } from './LandingAppAttributionDto';
+import {
+    LandingAppAttributionDtoFromJSON,
+    LandingAppAttributionDtoFromJSONTyped,
+    LandingAppAttributionDtoToJSON,
+    LandingAppAttributionDtoToJSONTyped,
+} from './LandingAppAttributionDto';
 import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
 import {
     AnalyticsSnapshotDtoFromJSON,
@@ -41,6 +48,12 @@ import {
  * @interface LandingSubscriptionRequestDto
  */
 export interface LandingSubscriptionRequestDto {
+    /**
+     * , .
+     * @type {Array<LandingAppAttributionDto>}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    appContexts?: Array<LandingAppAttributionDto>;
     /**
      *
      * @type {string}
@@ -172,6 +185,7 @@ export function LandingSubscriptionRequestDtoFromJSONTyped(json: any, ignoreDisc
     }
     return {
 
+        'appContexts': json['app_contexts'] == null ? undefined : ((json['app_contexts'] as Array<any>).map(LandingAppAttributionDtoFromJSON)),
         'source': json['source'],
         'channelPublicId': json['channel_public_id'],
         'platformPayload': json['platform_payload'],
@@ -202,6 +216,7 @@ export function LandingSubscriptionRequestDtoToJSONTyped(value?: LandingSubscrip
 
     return {
 
+        'app_contexts': value['appContexts'] == null ? undefined : ((value['appContexts'] as Array<any>).map(LandingAppAttributionDtoToJSON)),
         'source': value['source'],
         'channel_public_id': value['channelPublicId'],
         'platform_payload': value['platformPayload'],

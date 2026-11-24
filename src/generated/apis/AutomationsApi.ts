@@ -1674,7 +1674,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * 100 Mongo-. config_schema default_config getNodeTypes catalog_ids, . graph : . graph , , . , . : layoutAutomation . . position . ; .
+     * 100 Mongo-. . , . segment_id, expected_draft_revision ID UUID, 0003. operation_id node_id UUID . {\"operation_id\":\"550e8400-e29b-41d4-a716-446655440000\",\"expected_draft_revision\":1,\"operations\":[{\"kind\":\"add_node\",\"node_id\":\"550e8400-e29b-41d4-a716-446655440001\",\"node_type\":\"trigger.segment_entered\",\"name\":\" \",\"config\":{\"segment_id\":\"507f1f77bcf86cd799439011\"}},{\"kind\":\"add_node\",\"node_id\":\"550e8400-e29b-41d4-a716-446655440002\",\"node_type\":\"action.message\",\"name\":\" \",\"config\":{\"message_text\":\" . !\",\"message_target_type\":\"current_context\"}},{\"kind\":\"connect\",\"source_node_id\":\"550e8400-e29b-41d4-a716-446655440001\",\"target_node_id\":\"550e8400-e29b-41d4-a716-446655440002\",\"source_port\":\"next\"},{\"kind\":\"connect\",\"source_node_id\":\"550e8400-e29b-41d4-a716-446655440003\",\"target_node_id\":\"550e8400-e29b-41d4-a716-446655440002\",\"source_port\":\"next\"}]} config_schema default_config getNodeTypes catalog_ids. graph . graph , , . , . layoutAutomation . . position . . .
      *
      */
     async batchRaw(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AutomationGraphResponseDto>> {
@@ -1736,7 +1736,7 @@ export class AutomationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * 100 Mongo-. config_schema default_config getNodeTypes catalog_ids, . graph : . graph , , . , . : layoutAutomation . . position . ; .
+     * 100 Mongo-. . , . segment_id, expected_draft_revision ID UUID, 0003. operation_id node_id UUID . {\"operation_id\":\"550e8400-e29b-41d4-a716-446655440000\",\"expected_draft_revision\":1,\"operations\":[{\"kind\":\"add_node\",\"node_id\":\"550e8400-e29b-41d4-a716-446655440001\",\"node_type\":\"trigger.segment_entered\",\"name\":\" \",\"config\":{\"segment_id\":\"507f1f77bcf86cd799439011\"}},{\"kind\":\"add_node\",\"node_id\":\"550e8400-e29b-41d4-a716-446655440002\",\"node_type\":\"action.message\",\"name\":\" \",\"config\":{\"message_text\":\" . !\",\"message_target_type\":\"current_context\"}},{\"kind\":\"connect\",\"source_node_id\":\"550e8400-e29b-41d4-a716-446655440001\",\"target_node_id\":\"550e8400-e29b-41d4-a716-446655440002\",\"source_port\":\"next\"},{\"kind\":\"connect\",\"source_node_id\":\"550e8400-e29b-41d4-a716-446655440003\",\"target_node_id\":\"550e8400-e29b-41d4-a716-446655440002\",\"source_port\":\"next\"}]} config_schema default_config getNodeTypes catalog_ids. graph . graph , , . , . layoutAutomation . . position . . .
      *
      */
     async batch(requestParameters: BatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AutomationGraphResponseDto> {
@@ -5201,6 +5201,8 @@ export const GetNodesSearchTypesEnum = {
     TriggerLeadEvent: 'trigger.lead_event',
     TriggerAppEvent: 'trigger.app_event',
     TriggerBooking: 'trigger.booking',
+    TriggerPaymentReceived: 'trigger.payment_received',
+    TriggerTelegramPostStars: 'trigger.telegram_post_stars',
     ConditionGroup: 'condition.group',
     ConditionVariable: 'condition.variable',
     ConditionAi: 'condition.ai',
@@ -5218,6 +5220,7 @@ export const GetNodesSearchTypesEnum = {
     ActionDeleteMessage: 'action.delete_message',
     ActionPoll: 'action.poll',
     ActionTelegramWidget: 'action.telegram_widget',
+    ActionTelegramInvoice: 'action.telegram_invoice',
     ActionTyping: 'action.typing',
     ActionAgentRequest: 'action.agent_request',
     ActionAddSegment: 'action.add_segment',

@@ -28,7 +28,7 @@ import {
  */
 export interface SimulateAutomationTriggerTestEventDto {
     /**
-     * : bot_started, chat_member_added, chat_member_removed, message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, dialog_closed, dialog_operator_assigned, dialog_operator_unassigned, dialog_snoozed, segment_subscribed, app_event_received, booking_changed.
+     * : bot_started, chat_member_added, chat_member_removed, message_created, reaction_added, reaction_removed, like_added, like_removed, lead_blacklisted, dialog_closed, dialog_operator_assigned, dialog_operator_unassigned, dialog_snoozed, segment_subscribed, app_event_received, booking_changed, payment_received, telegram_post_stars.
      * @type {string}
      * @memberof SimulateAutomationTriggerTestEventDto
      */
@@ -61,7 +61,9 @@ export const SimulateAutomationTriggerTestEventDtoEventTypeEnum = {
     DialogSnoozed: 'dialog_snoozed',
     SegmentSubscribed: 'segment_subscribed',
     AppEventReceived: 'app_event_received',
-    BookingChanged: 'booking_changed'
+    BookingChanged: 'booking_changed',
+    PaymentReceived: 'payment_received',
+    TelegramPostStars: 'telegram_post_stars'
 } as const;
 export type SimulateAutomationTriggerTestEventDtoEventTypeEnum = typeof SimulateAutomationTriggerTestEventDtoEventTypeEnum[keyof typeof SimulateAutomationTriggerTestEventDtoEventTypeEnum];
 

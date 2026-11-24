@@ -19,6 +19,7 @@ exports.LandingAcquisitionIdentityDtoFromJSON = LandingAcquisitionIdentityDtoFro
 exports.LandingAcquisitionIdentityDtoFromJSONTyped = LandingAcquisitionIdentityDtoFromJSONTyped;
 exports.LandingAcquisitionIdentityDtoToJSON = LandingAcquisitionIdentityDtoToJSON;
 exports.LandingAcquisitionIdentityDtoToJSONTyped = LandingAcquisitionIdentityDtoToJSONTyped;
+const LandingAppAttributionDto_1 = require("./LandingAppAttributionDto");
 /**
  * @export
  */
@@ -47,6 +48,7 @@ function LandingAcquisitionIdentityDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'appContexts': json['app_contexts'] == null ? undefined : (json['app_contexts'].map(LandingAppAttributionDto_1.LandingAppAttributionDtoFromJSON)),
         'source': json['source'],
         'channelPublicId': json['channel_public_id'],
         'platformPayload': json['platform_payload'],
@@ -66,6 +68,7 @@ function LandingAcquisitionIdentityDtoToJSONTyped(value, ignoreDiscriminator = f
         return value;
     }
     return {
+        'app_contexts': value['appContexts'] == null ? undefined : (value['appContexts'].map(LandingAppAttributionDto_1.LandingAppAttributionDtoToJSON)),
         'source': value['source'],
         'channel_public_id': value['channelPublicId'],
         'platform_payload': value['platformPayload'],

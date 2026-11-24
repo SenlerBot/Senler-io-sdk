@@ -28,7 +28,7 @@ export interface StatisticsBalanceForecastDto {
      */
     averageDailyCredits: number;
     /**
-     * , . null,
+     * , . 0, ; null,
      * @type {number}
      * @memberof StatisticsBalanceForecastDto
      */

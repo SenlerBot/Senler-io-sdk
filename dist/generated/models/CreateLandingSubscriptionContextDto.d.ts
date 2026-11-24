@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LandingAppAttributionDto } from './LandingAppAttributionDto';
 import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
 /**
  * CreateLandingSubscriptionContextDto.
@@ -35,6 +36,12 @@ export interface CreateLandingSubscriptionContextDto {
      * @memberof CreateLandingSubscriptionContextDto
      */
     observedBlockIds?: Array<string>;
+    /**
+     * , .
+     * @type {Array<LandingAppAttributionDto>}
+     * @memberof CreateLandingSubscriptionContextDto
+     */
+    appContexts?: Array<LandingAppAttributionDto>;
     /**
      * resolve
      * @type {string}

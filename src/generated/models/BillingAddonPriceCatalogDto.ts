@@ -43,6 +43,18 @@ export interface BillingAddonPriceCatalogDto {
      * @memberof BillingAddonPriceCatalogDto
      */
     priceUsd: number;
+    /**
+     * .
+     * @type {string}
+     * @memberof BillingAddonPriceCatalogDto
+     */
+    displayRub?: string;
+    /**
+     * .
+     * @type {string}
+     * @memberof BillingAddonPriceCatalogDto
+     */
+    displayUsd?: string;
 }
 
 
@@ -82,6 +94,8 @@ export function BillingAddonPriceCatalogDtoFromJSONTyped(json: any, ignoreDiscri
         'period': json['period'],
         'priceRub': json['price_rub'],
         'priceUsd': json['price_usd'],
+        'displayRub': json['display_rub'] == null ? undefined : json['display_rub'],
+        'displayUsd': json['display_usd'] == null ? undefined : json['display_usd'],
     };
 }
 
@@ -100,5 +114,7 @@ export function BillingAddonPriceCatalogDtoToJSONTyped(value?: BillingAddonPrice
         'period': value['period'],
         'price_rub': value['priceRub'],
         'price_usd': value['priceUsd'],
+        'display_rub': value['displayRub'],
+        'display_usd': value['displayUsd'],
     };
 }

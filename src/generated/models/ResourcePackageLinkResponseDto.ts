@@ -68,6 +68,7 @@ export interface ResourcePackageLinkResponseDto {
  * @export
  */
 export const ResourcePackageLinkResponseDtoSourceSectionEnum = {
+    Funnels: 'funnels',
     Automations: 'automations',
     Agents: 'agents',
     Deliveries: 'deliveries',

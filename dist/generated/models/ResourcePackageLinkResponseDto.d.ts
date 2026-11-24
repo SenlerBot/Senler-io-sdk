@@ -62,6 +62,7 @@ export interface ResourcePackageLinkResponseDto {
  * @export
  */
 export declare const ResourcePackageLinkResponseDtoSourceSectionEnum: {
+    readonly Funnels: "funnels";
     readonly Automations: "automations";
     readonly Agents: "agents";
     readonly Deliveries: "deliveries";

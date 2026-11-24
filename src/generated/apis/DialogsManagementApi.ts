@@ -33,10 +33,13 @@ import type {
   EditMessageResponseDto,
   ErrorResponse,
   HandoffDialogDto,
+  MessageReactionDeliveryDto,
+  MessageReactionOptionsDto,
   ProcessResponseDto,
   RetryDialogAiBillingRecoveryDto,
   SetAutoAssignDisabledDto,
   SetDialogPriorityDto,
+  SetMessageReactionDto,
   SetSoundMuteDto,
   SnoozeDialogDto,
   SupportOperatorDirectoryDto,
@@ -79,6 +82,10 @@ import {
     ErrorResponseToJSON,
     HandoffDialogDtoFromJSON,
     HandoffDialogDtoToJSON,
+    MessageReactionDeliveryDtoFromJSON,
+    MessageReactionDeliveryDtoToJSON,
+    MessageReactionOptionsDtoFromJSON,
+    MessageReactionOptionsDtoToJSON,
     ProcessResponseDtoFromJSON,
     ProcessResponseDtoToJSON,
     RetryDialogAiBillingRecoveryDtoFromJSON,
@@ -87,6 +94,8 @@ import {
     SetAutoAssignDisabledDtoToJSON,
     SetDialogPriorityDtoFromJSON,
     SetDialogPriorityDtoToJSON,
+    SetMessageReactionDtoFromJSON,
+    SetMessageReactionDtoToJSON,
     SetSoundMuteDtoFromJSON,
     SetSoundMuteDtoToJSON,
     SnoozeDialogDtoFromJSON,
@@ -202,6 +211,19 @@ export interface GetEventsBillingRecoveryRequest {
     acceptLanguage?: GetEventsBillingRecoveryAcceptLanguageEnum;
 }
 
+export interface GetEventsReactionRequest {
+    dialogId: string;
+    eventId: string;
+    requestId: string;
+    acceptLanguage?: GetEventsReactionAcceptLanguageEnum;
+}
+
+export interface GetEventsReactionOptionsRequest {
+    dialogId: string;
+    eventId: string;
+    acceptLanguage?: GetEventsReactionOptionsAcceptLanguageEnum;
+}
+
 export interface GetParticipantsRequest {
     dialogId: string;
     acceptLanguage?: GetParticipantsAcceptLanguageEnum;
@@ -278,6 +300,13 @@ export interface UpdateEventsRequest {
     eventId: string;
     editMessageDto: EditMessageDto;
     acceptLanguage?: UpdateEventsAcceptLanguageEnum;
+}
+
+export interface UpdateEventsReactionRequest {
+    dialogId: string;
+    eventId: string;
+    setMessageReactionDto: SetMessageReactionDto;
+    acceptLanguage?: UpdateEventsReactionAcceptLanguageEnum;
 }
 
 export interface UpdateEventsSpamRequest {
@@ -1150,6 +1179,137 @@ export class DialogsManagementApi extends runtime.BaseAPI {
      */
     async getEventsBillingRecovery(requestParameters: GetEventsBillingRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoveryEventStatusDto> {
         const response = await this.getEventsBillingRecoveryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     *
+     */
+    async getEventsReactionRaw(requestParameters: GetEventsReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MessageReactionDeliveryDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling getEventsReaction().'
+            );
+        }
+
+        if (requestParameters['eventId'] == null) {
+            throw new runtime.RequiredError(
+                'eventId',
+                'Required parameter "eventId" was null or undefined when calling getEventsReaction().'
+            );
+        }
+
+        if (requestParameters['requestId'] == null) {
+            throw new runtime.RequiredError(
+                'requestId',
+                'Required parameter "requestId" was null or undefined when calling getEventsReaction().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/events/{eventId}/reaction/{requestId}`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))).replace(`{${"eventId"}}`, encodeURIComponent(String(requestParameters['eventId']))).replace(`{${"requestId"}}`, encodeURIComponent(String(requestParameters['requestId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => MessageReactionDeliveryDtoFromJSON(jsonValue));
+    }
+
+    /**
+     *
+     */
+    async getEventsReaction(requestParameters: GetEventsReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MessageReactionDeliveryDto> {
+        const response = await this.getEventsReactionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     *
+     */
+    async getEventsReactionOptionsRaw(requestParameters: GetEventsReactionOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MessageReactionOptionsDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling getEventsReactionOptions().'
+            );
+        }
+
+        if (requestParameters['eventId'] == null) {
+            throw new runtime.RequiredError(
+                'eventId',
+                'Required parameter "eventId" was null or undefined when calling getEventsReactionOptions().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/events/{eventId}/reaction-options`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))).replace(`{${"eventId"}}`, encodeURIComponent(String(requestParameters['eventId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => MessageReactionOptionsDtoFromJSON(jsonValue));
+    }
+
+    /**
+     *
+     */
+    async getEventsReactionOptions(requestParameters: GetEventsReactionOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MessageReactionOptionsDto> {
+        const response = await this.getEventsReactionOptionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2029,6 +2189,78 @@ export class DialogsManagementApi extends runtime.BaseAPI {
     }
 
     /**
+     *
+     */
+    async updateEventsReactionRaw(requestParameters: UpdateEventsReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MessageReactionDeliveryDto>> {
+        if (requestParameters['dialogId'] == null) {
+            throw new runtime.RequiredError(
+                'dialogId',
+                'Required parameter "dialogId" was null or undefined when calling updateEventsReaction().'
+            );
+        }
+
+        if (requestParameters['eventId'] == null) {
+            throw new runtime.RequiredError(
+                'eventId',
+                'Required parameter "eventId" was null or undefined when calling updateEventsReaction().'
+            );
+        }
+
+        if (requestParameters['setMessageReactionDto'] == null) {
+            throw new runtime.RequiredError(
+                'setMessageReactionDto',
+                'Required parameter "setMessageReactionDto" was null or undefined when calling updateEventsReaction().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", ["can_manage_dialogs"]);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_manage_dialogs"]);
+        }
+
+        const response = await this.request({
+            path: `/api/dialogs/{dialogId}/events/{eventId}/reaction`.replace(`{${"dialogId"}}`, encodeURIComponent(String(requestParameters['dialogId']))).replace(`{${"eventId"}}`, encodeURIComponent(String(requestParameters['eventId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SetMessageReactionDtoToJSON(requestParameters['setMessageReactionDto']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => MessageReactionDeliveryDtoFromJSON(jsonValue));
+    }
+
+    /**
+     *
+     */
+    async updateEventsReaction(requestParameters: UpdateEventsReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MessageReactionDeliveryDto> {
+        const response = await this.updateEventsReactionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * spam- email- , override spam-.
      * email- \"\"
      */
@@ -2793,6 +3025,22 @@ export type GetEventsBillingRecoveryAcceptLanguageEnum = typeof GetEventsBilling
 /**
  * @export
  */
+export const GetEventsReactionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetEventsReactionAcceptLanguageEnum = typeof GetEventsReactionAcceptLanguageEnum[keyof typeof GetEventsReactionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetEventsReactionOptionsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetEventsReactionOptionsAcceptLanguageEnum = typeof GetEventsReactionOptionsAcceptLanguageEnum[keyof typeof GetEventsReactionOptionsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export const GetParticipantsAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
@@ -2902,6 +3150,14 @@ export const UpdateEventsAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type UpdateEventsAcceptLanguageEnum = typeof UpdateEventsAcceptLanguageEnum[keyof typeof UpdateEventsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const UpdateEventsReactionAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type UpdateEventsReactionAcceptLanguageEnum = typeof UpdateEventsReactionAcceptLanguageEnum[keyof typeof UpdateEventsReactionAcceptLanguageEnum];
 /**
  * @export
  */

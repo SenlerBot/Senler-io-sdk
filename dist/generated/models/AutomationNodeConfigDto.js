@@ -34,6 +34,7 @@ const AutomationAppStepFieldSnapshotDto_1 = require("./AutomationAppStepFieldSna
 const AutomationMessageButtonDto_1 = require("./AutomationMessageButtonDto");
 const AutomationTableResultFieldDto_1 = require("./AutomationTableResultFieldDto");
 const AutomationRandomBranchDto_1 = require("./AutomationRandomBranchDto");
+const AutomationPaymentSourceDto_1 = require("./AutomationPaymentSourceDto");
 const AutomationPollOptionDto_1 = require("./AutomationPollOptionDto");
 const AutomationVariableDestinationDto_1 = require("./AutomationVariableDestinationDto");
 const AutomationTableWriteDto_1 = require("./AutomationTableWriteDto");
@@ -281,7 +282,9 @@ exports.AutomationNodeConfigDtoEventTypeEnum = {
     DialogSnoozed: 'dialog_snoozed',
     SegmentSubscribed: 'segment_subscribed',
     AppEventReceived: 'app_event_received',
-    BookingChanged: 'booking_changed'
+    BookingChanged: 'booking_changed',
+    PaymentReceived: 'payment_received',
+    TelegramPostStars: 'telegram_post_stars'
 };
 /**
  * @export
@@ -641,6 +644,15 @@ function AutomationNodeConfigDtoFromJSONTyped(json, ignoreDiscriminator) {
         'variableValueType': json['variable_value_type'] == null ? undefined : json['variable_value_type'],
         'variableValue': json['variable_value'] == null ? undefined : json['variable_value'],
         'variableDurationUnit': json['variable_duration_unit'] == null ? undefined : json['variable_duration_unit'],
+        'invoiceAmount': json['invoice_amount'] == null ? undefined : json['invoice_amount'],
+        'invoiceOrderData': json['invoice_order_data'] == null ? undefined : json['invoice_order_data'],
+        'paymentChannelId': json['payment_channel_id'] == null ? undefined : json['payment_channel_id'],
+        'onlyExternalInvoices': json['only_external_invoices'] == null ? undefined : json['only_external_invoices'],
+        'paymentAllChannels': json['payment_all_channels'] == null ? undefined : json['payment_all_channels'],
+        'paymentSources': json['payment_sources'] == null ? undefined : (json['payment_sources'].map(AutomationPaymentSourceDto_1.AutomationPaymentSourceDtoFromJSON)),
+        'postChatId': json['post_chat_id'] == null ? undefined : json['post_chat_id'],
+        'postMessageId': json['post_message_id'] == null ? undefined : json['post_message_id'],
+        'starThreshold': json['star_threshold'] == null ? undefined : json['star_threshold'],
         'telegramWidget': json['telegram_widget'] == null ? undefined : (0, AutomationTelegramWidgetConfigDto_1.AutomationTelegramWidgetConfigDtoFromJSON)(json['telegram_widget']),
         'messageDeleteNodeId': json['message_delete_node_id'] == null ? undefined : json['message_delete_node_id'],
         'messageDeleteAutomationId': json['message_delete_automation_id'] == null ? undefined : json['message_delete_automation_id'],
@@ -843,6 +855,15 @@ function AutomationNodeConfigDtoToJSONTyped(value, ignoreDiscriminator = false) 
         'variable_value_type': value['variableValueType'],
         'variable_value': value['variableValue'],
         'variable_duration_unit': value['variableDurationUnit'],
+        'invoice_amount': value['invoiceAmount'],
+        'invoice_order_data': value['invoiceOrderData'],
+        'payment_channel_id': value['paymentChannelId'],
+        'only_external_invoices': value['onlyExternalInvoices'],
+        'payment_all_channels': value['paymentAllChannels'],
+        'payment_sources': value['paymentSources'] == null ? undefined : (value['paymentSources'].map(AutomationPaymentSourceDto_1.AutomationPaymentSourceDtoToJSON)),
+        'post_chat_id': value['postChatId'],
+        'post_message_id': value['postMessageId'],
+        'star_threshold': value['starThreshold'],
         'telegram_widget': (0, AutomationTelegramWidgetConfigDto_1.AutomationTelegramWidgetConfigDtoToJSON)(value['telegramWidget']),
         'message_delete_node_id': value['messageDeleteNodeId'],
         'message_delete_automation_id': value['messageDeleteAutomationId'],

@@ -16,6 +16,12 @@
  */
 export interface CreateResourcePackageLinkDto {
     /**
+     * UUID . .
+     * @type {string}
+     * @memberof CreateResourcePackageLinkDto
+     */
+    requestId?: string;
+    /**
      * ,
      * @type {string}
      * @memberof CreateResourcePackageLinkDto
@@ -32,6 +38,7 @@ export interface CreateResourcePackageLinkDto {
  * @export
  */
 export declare const CreateResourcePackageLinkDtoSourceSectionEnum: {
+    readonly Funnels: "funnels";
     readonly Automations: "automations";
     readonly Agents: "agents";
     readonly Deliveries: "deliveries";

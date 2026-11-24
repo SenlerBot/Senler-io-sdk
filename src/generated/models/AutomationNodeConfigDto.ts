@@ -104,6 +104,13 @@ import {
     AutomationRandomBranchDtoToJSON,
     AutomationRandomBranchDtoToJSONTyped,
 } from './AutomationRandomBranchDto';
+import type { AutomationPaymentSourceDto } from './AutomationPaymentSourceDto';
+import {
+    AutomationPaymentSourceDtoFromJSON,
+    AutomationPaymentSourceDtoFromJSONTyped,
+    AutomationPaymentSourceDtoToJSON,
+    AutomationPaymentSourceDtoToJSONTyped,
+} from './AutomationPaymentSourceDto';
 import type { AutomationPollOptionDto } from './AutomationPollOptionDto';
 import {
     AutomationPollOptionDtoFromJSON,
@@ -396,6 +403,60 @@ export interface AutomationNodeConfigDto {
      * @memberof AutomationNodeConfigDto
      */
     variableDurationUnit?: AutomationNodeConfigDtoVariableDurationUnitEnum;
+    /**
+     * invoice amount.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    invoiceAmount?: string;
+    /**
+     * invoice order data.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    invoiceOrderData?: string;
+    /**
+     * payment channel id.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    paymentChannelId?: string;
+    /**
+     * only external invoices.
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    onlyExternalInvoices?: boolean;
+    /**
+     * payment all channels.
+     * @type {boolean}
+     * @memberof AutomationNodeConfigDto
+     */
+    paymentAllChannels?: boolean;
+    /**
+     * payment sources.
+     * @type {Array<AutomationPaymentSourceDto>}
+     * @memberof AutomationNodeConfigDto
+     */
+    paymentSources?: Array<AutomationPaymentSourceDto>;
+    /**
+     * post chat id.
+     * @type {string}
+     * @memberof AutomationNodeConfigDto
+     */
+    postChatId?: string;
+    /**
+     * post message id.
+     * @type {number}
+     * @memberof AutomationNodeConfigDto
+     */
+    postMessageId?: number;
+    /**
+     * star threshold.
+     * @type {number}
+     * @memberof AutomationNodeConfigDto
+     */
+    starThreshold?: number;
     /**
      * Telegram
      * @type {AutomationTelegramWidgetConfigDto}
@@ -1609,7 +1670,9 @@ export const AutomationNodeConfigDtoEventTypeEnum = {
     DialogSnoozed: 'dialog_snoozed',
     SegmentSubscribed: 'segment_subscribed',
     AppEventReceived: 'app_event_received',
-    BookingChanged: 'booking_changed'
+    BookingChanged: 'booking_changed',
+    PaymentReceived: 'payment_received',
+    TelegramPostStars: 'telegram_post_stars'
 } as const;
 export type AutomationNodeConfigDtoEventTypeEnum = typeof AutomationNodeConfigDtoEventTypeEnum[keyof typeof AutomationNodeConfigDtoEventTypeEnum];
 
@@ -2043,6 +2106,15 @@ export function AutomationNodeConfigDtoFromJSONTyped(json: any, ignoreDiscrimina
         'variableValueType': json['variable_value_type'] == null ? undefined : json['variable_value_type'],
         'variableValue': json['variable_value'] == null ? undefined : json['variable_value'],
         'variableDurationUnit': json['variable_duration_unit'] == null ? undefined : json['variable_duration_unit'],
+        'invoiceAmount': json['invoice_amount'] == null ? undefined : json['invoice_amount'],
+        'invoiceOrderData': json['invoice_order_data'] == null ? undefined : json['invoice_order_data'],
+        'paymentChannelId': json['payment_channel_id'] == null ? undefined : json['payment_channel_id'],
+        'onlyExternalInvoices': json['only_external_invoices'] == null ? undefined : json['only_external_invoices'],
+        'paymentAllChannels': json['payment_all_channels'] == null ? undefined : json['payment_all_channels'],
+        'paymentSources': json['payment_sources'] == null ? undefined : ((json['payment_sources'] as Array<any>).map(AutomationPaymentSourceDtoFromJSON)),
+        'postChatId': json['post_chat_id'] == null ? undefined : json['post_chat_id'],
+        'postMessageId': json['post_message_id'] == null ? undefined : json['post_message_id'],
+        'starThreshold': json['star_threshold'] == null ? undefined : json['star_threshold'],
         'telegramWidget': json['telegram_widget'] == null ? undefined : AutomationTelegramWidgetConfigDtoFromJSON(json['telegram_widget']),
         'messageDeleteNodeId': json['message_delete_node_id'] == null ? undefined : json['message_delete_node_id'],
         'messageDeleteAutomationId': json['message_delete_automation_id'] == null ? undefined : json['message_delete_automation_id'],
@@ -2249,6 +2321,15 @@ export function AutomationNodeConfigDtoToJSONTyped(value?: AutomationNodeConfigD
         'variable_value_type': value['variableValueType'],
         'variable_value': value['variableValue'],
         'variable_duration_unit': value['variableDurationUnit'],
+        'invoice_amount': value['invoiceAmount'],
+        'invoice_order_data': value['invoiceOrderData'],
+        'payment_channel_id': value['paymentChannelId'],
+        'only_external_invoices': value['onlyExternalInvoices'],
+        'payment_all_channels': value['paymentAllChannels'],
+        'payment_sources': value['paymentSources'] == null ? undefined : ((value['paymentSources'] as Array<any>).map(AutomationPaymentSourceDtoToJSON)),
+        'post_chat_id': value['postChatId'],
+        'post_message_id': value['postMessageId'],
+        'star_threshold': value['starThreshold'],
         'telegram_widget': AutomationTelegramWidgetConfigDtoToJSON(value['telegramWidget']),
         'message_delete_node_id': value['messageDeleteNodeId'],
         'message_delete_automation_id': value['messageDeleteAutomationId'],

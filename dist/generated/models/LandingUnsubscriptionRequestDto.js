@@ -19,6 +19,7 @@ exports.LandingUnsubscriptionRequestDtoFromJSON = LandingUnsubscriptionRequestDt
 exports.LandingUnsubscriptionRequestDtoFromJSONTyped = LandingUnsubscriptionRequestDtoFromJSONTyped;
 exports.LandingUnsubscriptionRequestDtoToJSON = LandingUnsubscriptionRequestDtoToJSON;
 exports.LandingUnsubscriptionRequestDtoToJSONTyped = LandingUnsubscriptionRequestDtoToJSONTyped;
+const LandingAppAttributionDto_1 = require("./LandingAppAttributionDto");
 /**
  * @export
  */
@@ -47,6 +48,7 @@ function LandingUnsubscriptionRequestDtoFromJSONTyped(json, ignoreDiscriminator)
         return json;
     }
     return {
+        'appContexts': json['app_contexts'] == null ? undefined : (json['app_contexts'].map(LandingAppAttributionDto_1.LandingAppAttributionDtoFromJSON)),
         'source': json['source'],
         'channelPublicId': json['channel_public_id'],
         'platformPayload': json['platform_payload'],
@@ -66,6 +68,7 @@ function LandingUnsubscriptionRequestDtoToJSONTyped(value, ignoreDiscriminator =
         return value;
     }
     return {
+        'app_contexts': value['appContexts'] == null ? undefined : (value['appContexts'].map(LandingAppAttributionDto_1.LandingAppAttributionDtoToJSON)),
         'source': value['source'],
         'channel_public_id': value['channelPublicId'],
         'platform_payload': value['platformPayload'],

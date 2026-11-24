@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AssignAgentToDialogDto, CloseDialogDto, CreateDialogBulkOperationDto, DeleteMessageResponseDto, DialogAiBillingRecoveryBulkRetryResponseDto, DialogAiBillingRecoveryEventStatusDto, DialogAiBillingRecoveryRetryResponseDto, DialogAiBillingRecoverySummaryDto, DialogAiResponseRecoveryRetryDto, DialogAiResponseRecoveryStatusDto, DialogBulkPreviewDto, DialogDto, DialogParticipantsResponseDto, DialogSupportChangeDto, EditMessageDto, EditMessageResponseDto, HandoffDialogDto, ProcessResponseDto, RetryDialogAiBillingRecoveryDto, SetAutoAssignDisabledDto, SetDialogPriorityDto, SetSoundMuteDto, SnoozeDialogDto, SupportOperatorDirectoryDto, TransferDialogOperatorDto } from '../models/index';
+import type { AssignAgentToDialogDto, CloseDialogDto, CreateDialogBulkOperationDto, DeleteMessageResponseDto, DialogAiBillingRecoveryBulkRetryResponseDto, DialogAiBillingRecoveryEventStatusDto, DialogAiBillingRecoveryRetryResponseDto, DialogAiBillingRecoverySummaryDto, DialogAiResponseRecoveryRetryDto, DialogAiResponseRecoveryStatusDto, DialogBulkPreviewDto, DialogDto, DialogParticipantsResponseDto, DialogSupportChangeDto, EditMessageDto, EditMessageResponseDto, HandoffDialogDto, MessageReactionDeliveryDto, MessageReactionOptionsDto, ProcessResponseDto, RetryDialogAiBillingRecoveryDto, SetAutoAssignDisabledDto, SetDialogPriorityDto, SetMessageReactionDto, SetSoundMuteDto, SnoozeDialogDto, SupportOperatorDirectoryDto, TransferDialogOperatorDto } from '../models/index';
 export interface BulkRequest {
     createDialogBulkOperationDto: CreateDialogBulkOperationDto;
     acceptLanguage?: BulkAcceptLanguageEnum;
@@ -105,6 +105,17 @@ export interface GetEventsBillingRecoveryRequest {
     eventId: string;
     acceptLanguage?: GetEventsBillingRecoveryAcceptLanguageEnum;
 }
+export interface GetEventsReactionRequest {
+    dialogId: string;
+    eventId: string;
+    requestId: string;
+    acceptLanguage?: GetEventsReactionAcceptLanguageEnum;
+}
+export interface GetEventsReactionOptionsRequest {
+    dialogId: string;
+    eventId: string;
+    acceptLanguage?: GetEventsReactionOptionsAcceptLanguageEnum;
+}
 export interface GetParticipantsRequest {
     dialogId: string;
     acceptLanguage?: GetParticipantsAcceptLanguageEnum;
@@ -168,6 +179,12 @@ export interface UpdateEventsRequest {
     eventId: string;
     editMessageDto: EditMessageDto;
     acceptLanguage?: UpdateEventsAcceptLanguageEnum;
+}
+export interface UpdateEventsReactionRequest {
+    dialogId: string;
+    eventId: string;
+    setMessageReactionDto: SetMessageReactionDto;
+    acceptLanguage?: UpdateEventsReactionAcceptLanguageEnum;
 }
 export interface UpdateEventsSpamRequest {
     dialogId: string;
@@ -325,6 +342,22 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      */
     getEventsBillingRecovery(requestParameters: GetEventsBillingRecoveryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DialogAiBillingRecoveryEventStatusDto>;
     /**
+     *
+     */
+    getEventsReactionRaw(requestParameters: GetEventsReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MessageReactionDeliveryDto>>;
+    /**
+     *
+     */
+    getEventsReaction(requestParameters: GetEventsReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MessageReactionDeliveryDto>;
+    /**
+     *
+     */
+    getEventsReactionOptionsRaw(requestParameters: GetEventsReactionOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MessageReactionOptionsDto>>;
+    /**
+     *
+     */
+    getEventsReactionOptions(requestParameters: GetEventsReactionOptionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MessageReactionOptionsDto>;
+    /**
      * .
      *
      */
@@ -464,6 +497,14 @@ export declare class DialogsManagementApi extends runtime.BaseAPI {
      *
      */
     updateEvents(requestParameters: UpdateEventsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EditMessageResponseDto>;
+    /**
+     *
+     */
+    updateEventsReactionRaw(requestParameters: UpdateEventsReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MessageReactionDeliveryDto>>;
+    /**
+     *
+     */
+    updateEventsReaction(requestParameters: UpdateEventsReactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MessageReactionDeliveryDto>;
     /**
      * spam- email- , override spam-.
      * email- \"\"
@@ -761,6 +802,22 @@ export type GetEventsBillingRecoveryAcceptLanguageEnum = typeof GetEventsBilling
 /**
  * @export
  */
+export declare const GetEventsReactionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetEventsReactionAcceptLanguageEnum = typeof GetEventsReactionAcceptLanguageEnum[keyof typeof GetEventsReactionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetEventsReactionOptionsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetEventsReactionOptionsAcceptLanguageEnum = typeof GetEventsReactionOptionsAcceptLanguageEnum[keyof typeof GetEventsReactionOptionsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const GetParticipantsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -870,6 +927,14 @@ export declare const UpdateEventsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateEventsAcceptLanguageEnum = typeof UpdateEventsAcceptLanguageEnum[keyof typeof UpdateEventsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateEventsReactionAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateEventsReactionAcceptLanguageEnum = typeof UpdateEventsReactionAcceptLanguageEnum[keyof typeof UpdateEventsReactionAcceptLanguageEnum];
 /**
  * @export
  */

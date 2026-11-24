@@ -23,6 +23,7 @@ exports.ResourcePackageLinkAccessItemDtoToJSONTyped = ResourcePackageLinkAccessI
  * @export
  */
 exports.ResourcePackageLinkAccessItemDtoRootResourceTypeEnum = {
+    Funnel: 'funnel',
     Automation: 'automation',
     Agent: 'agent',
     Delivery: 'delivery',
@@ -44,6 +45,7 @@ exports.ResourcePackageLinkAccessItemDtoRootResourceTypeEnum = {
  * @export
  */
 exports.ResourcePackageLinkAccessItemDtoSourceSectionEnum = {
+    Funnels: 'funnels',
     Automations: 'automations',
     Agents: 'agents',
     Deliveries: 'deliveries',

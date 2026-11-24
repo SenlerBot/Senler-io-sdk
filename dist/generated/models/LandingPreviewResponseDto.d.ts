@@ -21,11 +21,35 @@ import type { LandingExperimentMarkerDto } from './LandingExperimentMarkerDto';
  */
 export interface LandingPreviewResponseDto {
     /**
-     * ; null
+     *
+     * @type {string}
+     * @memberof LandingPreviewResponseDto
+     */
+    appToken: string | null;
+    /**
+     *
      * @type {string}
      * @memberof LandingPreviewResponseDto
      */
     bookingToken: string | null;
+    /**
+     * ; resume_expires_at
+     * @type {string}
+     * @memberof LandingPreviewResponseDto
+     */
+    resumeToken: string | null;
+    /**
+     * , Unix milliseconds;
+     * @type {number}
+     * @memberof LandingPreviewResponseDto
+     */
+    resumeExpiresAt: number | null;
+    /**
+     *
+     * @type {string}
+     * @memberof LandingPreviewResponseDto
+     */
+    actorKey: string | null;
     /**
      *
      * @type {LandingPublicResponseDto}

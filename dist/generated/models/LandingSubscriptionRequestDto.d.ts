@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { AcceptedSegmentConsentDto } from './AcceptedSegmentConsentDto';
+import type { LandingAppAttributionDto } from './LandingAppAttributionDto';
 import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
 import type { LandingContactDto } from './LandingContactDto';
 /**
@@ -18,6 +19,12 @@ import type { LandingContactDto } from './LandingContactDto';
  * @interface LandingSubscriptionRequestDto
  */
 export interface LandingSubscriptionRequestDto {
+    /**
+     * , .
+     * @type {Array<LandingAppAttributionDto>}
+     * @memberof LandingSubscriptionRequestDto
+     */
+    appContexts?: Array<LandingAppAttributionDto>;
     /**
      *
      * @type {string}

@@ -69,6 +69,7 @@ export interface ResourcePackagePreviewDto {
  * @export
  */
 export declare const ResourcePackagePreviewDtoRootResourceTypeEnum: {
+    readonly Funnel: "funnel";
     readonly Automation: "automation";
     readonly Agent: "agent";
     readonly Delivery: "delivery";

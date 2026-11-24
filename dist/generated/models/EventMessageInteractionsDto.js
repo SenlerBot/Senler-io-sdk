@@ -27,6 +27,7 @@ const EventTelegramWidgetDto_1 = require("./EventTelegramWidgetDto");
 const EventMessagePinningDto_1 = require("./EventMessagePinningDto");
 const EventMessageRepliesDto_1 = require("./EventMessageRepliesDto");
 const EventMessageViewsDto_1 = require("./EventMessageViewsDto");
+const EventTelegramInvoiceDto_1 = require("./EventTelegramInvoiceDto");
 const EventPollSnapshotDto_1 = require("./EventPollSnapshotDto");
 const EventPlatformActionDto_1 = require("./EventPlatformActionDto");
 /**
@@ -43,6 +44,7 @@ function EventMessageInteractionsDtoFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'telegramInvoice': json['telegram_invoice'] == null ? undefined : (0, EventTelegramInvoiceDto_1.EventTelegramInvoiceDtoFromJSON)(json['telegram_invoice']),
         'telegramWidget': json['telegram_widget'] == null ? undefined : (0, EventTelegramWidgetDto_1.EventTelegramWidgetDtoFromJSON)(json['telegram_widget']),
         'reactions': json['reactions'] == null ? undefined : (json['reactions'].map(EventMessageReactionDto_1.EventMessageReactionDtoFromJSON)),
         'poll': json['poll'] == null ? undefined : (0, EventPollSnapshotDto_1.EventPollSnapshotDtoFromJSON)(json['poll']),
@@ -65,6 +67,7 @@ function EventMessageInteractionsDtoToJSONTyped(value, ignoreDiscriminator = fal
         return value;
     }
     return {
+        'telegram_invoice': (0, EventTelegramInvoiceDto_1.EventTelegramInvoiceDtoToJSON)(value['telegramInvoice']),
         'telegram_widget': (0, EventTelegramWidgetDto_1.EventTelegramWidgetDtoToJSON)(value['telegramWidget']),
         'reactions': value['reactions'] == null ? undefined : (value['reactions'].map(EventMessageReactionDto_1.EventMessageReactionDtoToJSON)),
         'poll': (0, EventPollSnapshotDto_1.EventPollSnapshotDtoToJSON)(value['poll']),

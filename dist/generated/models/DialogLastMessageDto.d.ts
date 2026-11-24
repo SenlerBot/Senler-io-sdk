@@ -25,6 +25,12 @@ export interface DialogLastMessageDto {
      */
     content: string;
     /**
+     *
+     * @type {string}
+     * @memberof DialogLastMessageDto
+     */
+    sendState?: DialogLastMessageDtoSendStateEnum;
+    /**
      * . id/type , profile .
      * @type {EventSenderDto}
      * @memberof DialogLastMessageDto
@@ -61,6 +67,15 @@ export interface DialogLastMessageDto {
      */
     forwarding?: EventMessageForwardingDto;
 }
+/**
+ * @export
+ */
+export declare const DialogLastMessageDtoSendStateEnum: {
+    readonly Sending: "sending";
+    readonly Sent: "sent";
+    readonly Failed: "failed";
+};
+export type DialogLastMessageDtoSendStateEnum = typeof DialogLastMessageDtoSendStateEnum[keyof typeof DialogLastMessageDtoSendStateEnum];
 /**
  * @export
  */

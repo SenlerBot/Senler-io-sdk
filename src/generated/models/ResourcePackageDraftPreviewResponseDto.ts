@@ -70,6 +70,7 @@ export interface ResourcePackageDraftPreviewResponseDto {
  * @export
  */
 export const ResourcePackageDraftPreviewResponseDtoRootResourceTypeEnum = {
+    Funnel: 'funnel',
     Automation: 'automation',
     Agent: 'agent',
     Delivery: 'delivery',

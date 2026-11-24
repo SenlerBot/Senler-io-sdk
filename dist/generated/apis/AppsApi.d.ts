@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AppAgentEventDefinitionDto, AppAgentEventResponseDto, AppAutomationStepDefinitionDto, AppAutomationStepIconImportResponseDto, AppAutomationStepIconUploadUrlResponseDto, AppAutomationStepResponseDto, AppAutomationStepStatusDto, AppAutomationStepsResponseDto, AppEmbeddedPageTestLaunchResponseDto, AppFunnelElementResponseDto, AppFunnelElementsResponseDto, AppListItemResponseDto, AppManualToolDefinitionDto, AppManualToolResponseDto, AppProvisionResponseDto, AppResponseDto, CreateAppDto, DeveloperAppInstallationRemoveResponseDto, DeveloperAppInstallationsResponseDto, GetAppAutomationStepIconUploadUrlDto, ImportImageDto, OauthToken200Response, ProjectAppOAuthAccessPolicyDto, SaveAppFunnelElementDto, SetAppCatalogVisibilityDto, UpdateAppActionSettingsDto, UpdateAppEmbeddedPageSettingsDto, UpdateAppGeneralSettingsDto, UpdateAppOAuthRedirectUrisDto, UpdateAppToolsSettingsDto, UserAppOAuthAccessPolicyDto } from '../models/index';
+import type { AppAgentEventDefinitionDto, AppAgentEventResponseDto, AppAutomationStepDefinitionDto, AppAutomationStepIconImportResponseDto, AppAutomationStepIconUploadUrlResponseDto, AppAutomationStepResponseDto, AppAutomationStepStatusDto, AppAutomationStepsResponseDto, AppEmbeddedPageTestLaunchResponseDto, AppFunnelElementResponseDto, AppFunnelElementsResponseDto, AppLandingComponentResponseDto, AppLandingComponentsResponseDto, AppListItemResponseDto, AppManualToolDefinitionDto, AppManualToolResponseDto, AppProvisionResponseDto, AppResponseDto, CreateAppDto, DeveloperAppInstallationRemoveResponseDto, DeveloperAppInstallationsResponseDto, GetAppAutomationStepIconUploadUrlDto, ImportImageDto, OauthToken200Response, ProjectAppOAuthAccessPolicyDto, SaveAppFunnelElementDto, SaveAppLandingComponentDto, SetAppCatalogVisibilityDto, UpdateAppActionSettingsDto, UpdateAppEmbeddedPageSettingsDto, UpdateAppGeneralSettingsDto, UpdateAppOAuthRedirectUrisDto, UpdateAppToolsSettingsDto, UserAppOAuthAccessPolicyDto } from '../models/index';
 export interface AgentEventsRequest {
     appId: string;
     appAgentEventDefinitionDto: AppAgentEventDefinitionDto;
@@ -58,6 +58,11 @@ export interface DeleteInstallationsRequest {
     installationId: string;
     acceptLanguage?: DeleteInstallationsAcceptLanguageEnum;
 }
+export interface DeleteLandingComponentsRequest {
+    appId: string;
+    componentId: string;
+    acceptLanguage?: DeleteLandingComponentsAcceptLanguageEnum;
+}
 export interface DeleteToolsRequest {
     appId: string;
     toolId: string;
@@ -89,6 +94,15 @@ export interface GetInstallationsRequest {
     state?: GetInstallationsStateEnum;
     search?: string;
     acceptLanguage?: GetInstallationsAcceptLanguageEnum;
+}
+export interface GetLandingComponentsRequest {
+    appId: string;
+    acceptLanguage?: GetLandingComponentsAcceptLanguageEnum;
+}
+export interface LandingComponentsRequest {
+    appId: string;
+    saveAppLandingComponentDto: SaveAppLandingComponentDto;
+    acceptLanguage?: LandingComponentsAcceptLanguageEnum;
 }
 export interface OauthTokenRequest {
     grantType: OauthTokenGrantTypeEnum;
@@ -160,6 +174,12 @@ export interface UpdateGeneralSettingsRequest {
     id: string;
     updateAppGeneralSettingsDto: UpdateAppGeneralSettingsDto;
     acceptLanguage?: UpdateGeneralSettingsAcceptLanguageEnum;
+}
+export interface UpdateLandingComponentsRequest {
+    appId: string;
+    componentId: string;
+    saveAppLandingComponentDto: SaveAppLandingComponentDto;
+    acceptLanguage?: UpdateLandingComponentsAcceptLanguageEnum;
 }
 export interface UpdateOauthAccessProjectRequest {
     id: string;
@@ -292,6 +312,16 @@ export declare class AppsApi extends runtime.BaseAPI {
      */
     deleteInstallations(requestParameters: DeleteInstallationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeveloperAppInstallationRemoveResponseDto>;
     /**
+     * . .
+     *
+     */
+    deleteLandingComponentsRaw(requestParameters: DeleteLandingComponentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * . .
+     *
+     */
+    deleteLandingComponents(requestParameters: DeleteLandingComponentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
      * .
      *
      */
@@ -351,6 +381,26 @@ export declare class AppsApi extends runtime.BaseAPI {
      *
      */
     getInstallations(requestParameters: GetInstallationsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeveloperAppInstallationsResponseDto>;
+    /**
+     * , . .
+     *
+     */
+    getLandingComponentsRaw(requestParameters: GetLandingComponentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppLandingComponentsResponseDto>>;
+    /**
+     * , . .
+     *
+     */
+    getLandingComponents(requestParameters: GetLandingComponentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppLandingComponentsResponseDto>;
+    /**
+     * iframe- POST- . .
+     *
+     */
+    landingComponentsRaw(requestParameters: LandingComponentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppLandingComponentResponseDto>>;
+    /**
+     * iframe- POST- . .
+     *
+     */
+    landingComponents(requestParameters: LandingComponentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppLandingComponentResponseDto>;
     /**
      * OAuth- grant_type: authorization_code ( ) refresh_token ( ). OAuth client credentials Authorization: Basic .
      * access token
@@ -481,6 +531,16 @@ export declare class AppsApi extends runtime.BaseAPI {
      *
      */
     updateGeneralSettings(requestParameters: UpdateGeneralSettingsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppResponseDto>;
+    /**
+     * . . .
+     *
+     */
+    updateLandingComponentsRaw(requestParameters: UpdateLandingComponentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppLandingComponentResponseDto>>;
+    /**
+     * . . .
+     *
+     */
+    updateLandingComponents(requestParameters: UpdateLandingComponentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppLandingComponentResponseDto>;
     /**
      * OAuth- .
      * OAuth-
@@ -615,6 +675,14 @@ export type DeleteInstallationsAcceptLanguageEnum = typeof DeleteInstallationsAc
 /**
  * @export
  */
+export declare const DeleteLandingComponentsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type DeleteLandingComponentsAcceptLanguageEnum = typeof DeleteLandingComponentsAcceptLanguageEnum[keyof typeof DeleteLandingComponentsAcceptLanguageEnum];
+/**
+ * @export
+ */
 export declare const DeleteToolsAcceptLanguageEnum: {
     readonly Ru: "ru";
     readonly En: "en";
@@ -678,6 +746,22 @@ export declare const GetInstallationsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetInstallationsAcceptLanguageEnum = typeof GetInstallationsAcceptLanguageEnum[keyof typeof GetInstallationsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetLandingComponentsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLandingComponentsAcceptLanguageEnum = typeof GetLandingComponentsAcceptLanguageEnum[keyof typeof GetLandingComponentsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LandingComponentsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingComponentsAcceptLanguageEnum = typeof LandingComponentsAcceptLanguageEnum[keyof typeof LandingComponentsAcceptLanguageEnum];
 /**
  * @export
  */
@@ -790,6 +874,14 @@ export declare const UpdateGeneralSettingsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type UpdateGeneralSettingsAcceptLanguageEnum = typeof UpdateGeneralSettingsAcceptLanguageEnum[keyof typeof UpdateGeneralSettingsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const UpdateLandingComponentsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type UpdateLandingComponentsAcceptLanguageEnum = typeof UpdateLandingComponentsAcceptLanguageEnum[keyof typeof UpdateLandingComponentsAcceptLanguageEnum];
 /**
  * @export
  */

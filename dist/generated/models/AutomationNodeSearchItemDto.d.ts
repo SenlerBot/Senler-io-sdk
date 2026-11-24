@@ -50,6 +50,8 @@ export declare const AutomationNodeSearchItemDtoTypeEnum: {
     readonly TriggerLeadEvent: "trigger.lead_event";
     readonly TriggerAppEvent: "trigger.app_event";
     readonly TriggerBooking: "trigger.booking";
+    readonly TriggerPaymentReceived: "trigger.payment_received";
+    readonly TriggerTelegramPostStars: "trigger.telegram_post_stars";
     readonly ConditionGroup: "condition.group";
     readonly ConditionVariable: "condition.variable";
     readonly ConditionAi: "condition.ai";
@@ -67,6 +69,7 @@ export declare const AutomationNodeSearchItemDtoTypeEnum: {
     readonly ActionDeleteMessage: "action.delete_message";
     readonly ActionPoll: "action.poll";
     readonly ActionTelegramWidget: "action.telegram_widget";
+    readonly ActionTelegramInvoice: "action.telegram_invoice";
     readonly ActionTyping: "action.typing";
     readonly ActionAgentRequest: "action.agent_request";
     readonly ActionAddSegment: "action.add_segment";

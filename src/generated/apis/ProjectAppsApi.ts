@@ -24,6 +24,7 @@ import type {
   ExecuteAppActionMethodDto,
   InstallAppDto,
   InstallationSetupResponseDto,
+  LandingAppCatalogDto,
   ProjectAppCatalogItemResponseDto,
   UpdateDeveloperDialogAccessDto,
   UpgradeAppInstallationVersionDto,
@@ -47,6 +48,8 @@ import {
     InstallAppDtoToJSON,
     InstallationSetupResponseDtoFromJSON,
     InstallationSetupResponseDtoToJSON,
+    LandingAppCatalogDtoFromJSON,
+    LandingAppCatalogDtoToJSON,
     ProjectAppCatalogItemResponseDtoFromJSON,
     ProjectAppCatalogItemResponseDtoToJSON,
     UpdateDeveloperDialogAccessDtoFromJSON,
@@ -108,6 +111,11 @@ export interface GetInstalledSetupRequest {
 export interface GetInstalledVersionRequest {
     installationId: string;
     acceptLanguage?: GetInstalledVersionAcceptLanguageEnum;
+}
+
+export interface GetLandingActionsRequest {
+    projectId: string;
+    acceptLanguage?: GetLandingActionsAcceptLanguageEnum;
 }
 
 export interface InstalledSetupStepsSkipRequest {
@@ -662,6 +670,67 @@ export class ProjectAppsApi extends runtime.BaseAPI {
     }
 
     /**
+     * OpenAPI .
+     * iframe-
+     */
+    async getLandingActionsRaw(requestParameters: GetLandingActionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingAppCatalogDto>> {
+        if (requestParameters['projectId'] == null) {
+            throw new runtime.RequiredError(
+                'projectId',
+                'Required parameter "projectId" was null or undefined when calling getLandingActions().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['projectId'] != null) {
+            queryParameters['project_id'] = requestParameters['projectId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("api-key", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2-user", []);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["can_use_project_apps"]);
+        }
+
+        const response = await this.request({
+            path: `/api/project-apps/landing-actions`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LandingAppCatalogDtoFromJSON(jsonValue));
+    }
+
+    /**
+     * OpenAPI .
+     * iframe-
+     */
+    async getLandingActions(requestParameters: GetLandingActionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingAppCatalogDto> {
+        const response = await this.getLandingActionsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * .
      *
      */
@@ -1011,6 +1080,14 @@ export const GetInstalledVersionAcceptLanguageEnum = {
     En: 'en'
 } as const;
 export type GetInstalledVersionAcceptLanguageEnum = typeof GetInstalledVersionAcceptLanguageEnum[keyof typeof GetInstalledVersionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export const GetLandingActionsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+} as const;
+export type GetLandingActionsAcceptLanguageEnum = typeof GetLandingActionsAcceptLanguageEnum[keyof typeof GetLandingActionsAcceptLanguageEnum];
 /**
  * @export
  */

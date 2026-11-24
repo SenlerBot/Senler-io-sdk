@@ -13,12 +13,26 @@
  */
 
 import { mapValues } from '../runtime';
+import type { LandingAppAttributionDto } from './LandingAppAttributionDto';
+import {
+    LandingAppAttributionDtoFromJSON,
+    LandingAppAttributionDtoFromJSONTyped,
+    LandingAppAttributionDtoToJSON,
+    LandingAppAttributionDtoToJSONTyped,
+} from './LandingAppAttributionDto';
+
 /**
  * LandingAcquisitionIdentityDto.
  * @export
  * @interface LandingAcquisitionIdentityDto
  */
 export interface LandingAcquisitionIdentityDto {
+    /**
+     * , .
+     * @type {Array<LandingAppAttributionDto>}
+     * @memberof LandingAcquisitionIdentityDto
+     */
+    appContexts?: Array<LandingAppAttributionDto>;
     /**
      *
      * @type {string}
@@ -107,6 +121,7 @@ export function LandingAcquisitionIdentityDtoFromJSONTyped(json: any, ignoreDisc
     }
     return {
 
+        'appContexts': json['app_contexts'] == null ? undefined : ((json['app_contexts'] as Array<any>).map(LandingAppAttributionDtoFromJSON)),
         'source': json['source'],
         'channelPublicId': json['channel_public_id'],
         'platformPayload': json['platform_payload'],
@@ -130,6 +145,7 @@ export function LandingAcquisitionIdentityDtoToJSONTyped(value?: LandingAcquisit
 
     return {
 
+        'app_contexts': value['appContexts'] == null ? undefined : ((value['appContexts'] as Array<any>).map(LandingAppAttributionDtoToJSON)),
         'source': value['source'],
         'channel_public_id': value['channelPublicId'],
         'platform_payload': value['platformPayload'],

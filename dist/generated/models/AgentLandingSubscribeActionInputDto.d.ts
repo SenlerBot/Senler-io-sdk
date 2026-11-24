@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { LandingChannelSelectionInputDto } from './LandingChannelSelectionInputDto';
+import type { LandingAppBindingDto } from './LandingAppBindingDto';
 import type { LandingContactCaptureDto } from './LandingContactCaptureDto';
 /**
  * AgentLandingSubscribeActionInputDto.
@@ -17,6 +18,12 @@ import type { LandingContactCaptureDto } from './LandingContactCaptureDto';
  * @interface AgentLandingSubscribeActionInputDto
  */
 export interface AgentLandingSubscribeActionInputDto {
+    /**
+     *
+     * @type {LandingAppBindingDto}
+     * @memberof AgentLandingSubscribeActionInputDto
+     */
+    app?: LandingAppBindingDto;
     /**
      *
      * @type {string}

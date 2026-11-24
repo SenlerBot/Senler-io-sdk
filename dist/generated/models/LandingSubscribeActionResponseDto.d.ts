@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LandingAppBindingDto } from './LandingAppBindingDto';
 import type { LandingChannelSelectionResponseDto } from './LandingChannelSelectionResponseDto';
 import type { LandingContactCaptureDto } from './LandingContactCaptureDto';
 /**
@@ -17,6 +18,12 @@ import type { LandingContactCaptureDto } from './LandingContactCaptureDto';
  * @interface LandingSubscribeActionResponseDto
  */
 export interface LandingSubscribeActionResponseDto {
+    /**
+     *
+     * @type {LandingAppBindingDto}
+     * @memberof LandingSubscribeActionResponseDto
+     */
+    app?: LandingAppBindingDto;
     /**
      * UUID
      * @type {string}

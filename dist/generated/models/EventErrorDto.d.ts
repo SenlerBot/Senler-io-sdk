@@ -52,6 +52,7 @@ export declare const EventErrorDtoErrorTypeEnum: {
     readonly AiTimeout: "ai.timeout";
     readonly AiNetworkError: "ai.network_error";
     readonly AiAborted: "ai.aborted";
+    readonly AiProviderContentRejected: "ai.provider_content_rejected";
     readonly AiRateLimit: "ai.rate_limit";
     readonly AiAuthError: "ai.auth_error";
     readonly AiQuotaExceeded: "ai.quota_exceeded";

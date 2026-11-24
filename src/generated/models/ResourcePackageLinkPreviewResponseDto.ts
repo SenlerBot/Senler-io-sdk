@@ -94,6 +94,7 @@ export interface ResourcePackageLinkPreviewResponseDto {
  * @export
  */
 export const ResourcePackageLinkPreviewResponseDtoRootResourceTypeEnum = {
+    Funnel: 'funnel',
     Automation: 'automation',
     Agent: 'agent',
     Delivery: 'delivery',

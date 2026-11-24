@@ -18,6 +18,7 @@ exports.CreateLandingSubscriptionContextDtoFromJSON = CreateLandingSubscriptionC
 exports.CreateLandingSubscriptionContextDtoFromJSONTyped = CreateLandingSubscriptionContextDtoFromJSONTyped;
 exports.CreateLandingSubscriptionContextDtoToJSON = CreateLandingSubscriptionContextDtoToJSON;
 exports.CreateLandingSubscriptionContextDtoToJSONTyped = CreateLandingSubscriptionContextDtoToJSONTyped;
+const LandingAppAttributionDto_1 = require("./LandingAppAttributionDto");
 const AnalyticsSnapshotDto_1 = require("./AnalyticsSnapshotDto");
 /**
  * Check if a given object implements the CreateLandingSubscriptionContextDto interface.
@@ -38,6 +39,7 @@ function CreateLandingSubscriptionContextDtoFromJSONTyped(json, ignoreDiscrimina
         'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
         'pageObserved': json['page_observed'] == null ? undefined : json['page_observed'],
         'observedBlockIds': json['observed_block_ids'] == null ? undefined : json['observed_block_ids'],
+        'appContexts': json['app_contexts'] == null ? undefined : (json['app_contexts'].map(LandingAppAttributionDto_1.LandingAppAttributionDtoFromJSON)),
         'eventToken': json['event_token'] == null ? undefined : json['event_token'],
         'analytics': json['analytics'] == null ? undefined : (json['analytics'].map(AnalyticsSnapshotDto_1.AnalyticsSnapshotDtoFromJSON)),
         'channelPublicId': json['channel_public_id'],
@@ -60,6 +62,7 @@ function CreateLandingSubscriptionContextDtoToJSONTyped(value, ignoreDiscriminat
         'observed_experiment_ids': value['observedExperimentIds'],
         'page_observed': value['pageObserved'],
         'observed_block_ids': value['observedBlockIds'],
+        'app_contexts': value['appContexts'] == null ? undefined : (value['appContexts'].map(LandingAppAttributionDto_1.LandingAppAttributionDtoToJSON)),
         'event_token': value['eventToken'],
         'analytics': value['analytics'] == null ? undefined : (value['analytics'].map(AnalyticsSnapshotDto_1.AnalyticsSnapshotDtoToJSON)),
         'channel_public_id': value['channelPublicId'],

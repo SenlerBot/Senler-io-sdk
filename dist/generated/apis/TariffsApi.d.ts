@@ -12,6 +12,9 @@
 import * as runtime from '../runtime';
 import type { PublicBillingCatalogResponseDto } from '../models/index';
 export interface TariffsListRequest {
+    kind?: TariffsListKindEnum;
+    purchaseType?: TariffsListPurchaseTypeEnum;
+    tariffId?: string;
     acceptLanguage?: TariffsListAcceptLanguageEnum;
 }
 /**
@@ -19,16 +22,36 @@ export interface TariffsListRequest {
  */
 export declare class TariffsApi extends runtime.BaseAPI {
     /**
-     *
+     * . kind, purchase_type tariff_id. , kind=credits purchase_type=one_time . display_rub display_usd . price_rub price_usd , quantity 1/10000 .
      *
      */
     tariffsListRaw(requestParameters: TariffsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicBillingCatalogResponseDto>>;
     /**
-     *
+     * . kind, purchase_type tariff_id. , kind=credits purchase_type=one_time . display_rub display_usd . price_rub price_usd , quantity 1/10000 .
      *
      */
     tariffsList(requestParameters?: TariffsListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublicBillingCatalogResponseDto>;
 }
+/**
+ * @export
+ */
+export declare const TariffsListKindEnum: {
+    readonly Credits: "credits";
+    readonly AutomationSpeed: "automation_speed";
+    readonly MailingDaily: "mailing_daily";
+    readonly ApiDaily: "api_daily";
+    readonly Storage: "storage";
+    readonly MailingMessages: "mailing_messages";
+};
+export type TariffsListKindEnum = typeof TariffsListKindEnum[keyof typeof TariffsListKindEnum];
+/**
+ * @export
+ */
+export declare const TariffsListPurchaseTypeEnum: {
+    readonly Recurring: "recurring";
+    readonly OneTime: "one_time";
+};
+export type TariffsListPurchaseTypeEnum = typeof TariffsListPurchaseTypeEnum[keyof typeof TariffsListPurchaseTypeEnum];
 /**
  * @export
  */

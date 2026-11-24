@@ -110,6 +110,7 @@ export interface ResourcePackageLinkAccessItemDto {
  * @export
  */
 export declare const ResourcePackageLinkAccessItemDtoRootResourceTypeEnum: {
+    readonly Funnel: "funnel";
     readonly Automation: "automation";
     readonly Agent: "agent";
     readonly Delivery: "delivery";
@@ -132,6 +133,7 @@ export type ResourcePackageLinkAccessItemDtoRootResourceTypeEnum = typeof Resour
  * @export
  */
 export declare const ResourcePackageLinkAccessItemDtoSourceSectionEnum: {
+    readonly Funnels: "funnels";
     readonly Automations: "automations";
     readonly Agents: "agents";
     readonly Deliveries: "deliveries";

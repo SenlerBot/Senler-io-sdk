@@ -68,6 +68,7 @@ export interface ResourcePackagePlanItemDto {
  * @export
  */
 export const ResourcePackagePlanItemDtoResourceTypeEnum = {
+    Funnel: 'funnel',
     Automation: 'automation',
     Agent: 'agent',
     Delivery: 'delivery',

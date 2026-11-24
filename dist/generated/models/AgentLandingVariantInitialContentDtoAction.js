@@ -18,6 +18,7 @@ exports.AgentLandingVariantInitialContentDtoActionFromJSONTyped = AgentLandingVa
 exports.AgentLandingVariantInitialContentDtoActionToJSON = AgentLandingVariantInitialContentDtoActionToJSON;
 exports.AgentLandingVariantInitialContentDtoActionToJSONTyped = AgentLandingVariantInitialContentDtoActionToJSONTyped;
 const AgentLandingSubscribeActionInputDto_1 = require("./AgentLandingSubscribeActionInputDto");
+const LandingAppActionInputDto_1 = require("./LandingAppActionInputDto");
 const LandingOpenBookingActionInputDto_1 = require("./LandingOpenBookingActionInputDto");
 const LandingOpenLandingActionInputDto_1 = require("./LandingOpenLandingActionInputDto");
 const LandingOpenUrlActionInputDto_1 = require("./LandingOpenUrlActionInputDto");
@@ -29,6 +30,8 @@ function AgentLandingVariantInitialContentDtoActionFromJSONTyped(json, ignoreDis
         return json;
     }
     switch (json['type']) {
+        case 'app_action':
+            return Object.assign({}, (0, LandingAppActionInputDto_1.LandingAppActionInputDtoFromJSONTyped)(json, true), { type: 'app_action' });
         case 'open_booking':
             return Object.assign({}, (0, LandingOpenBookingActionInputDto_1.LandingOpenBookingActionInputDtoFromJSONTyped)(json, true), { type: 'open_booking' });
         case 'open_landing':
@@ -49,6 +52,8 @@ function AgentLandingVariantInitialContentDtoActionToJSONTyped(value, ignoreDisc
         return value;
     }
     switch (value['type']) {
+        case 'app_action':
+            return Object.assign({}, (0, LandingAppActionInputDto_1.LandingAppActionInputDtoToJSON)(value), { type: 'app_action' });
         case 'open_booking':
             return Object.assign({}, (0, LandingOpenBookingActionInputDto_1.LandingOpenBookingActionInputDtoToJSON)(value), { type: 'open_booking' });
         case 'open_landing':

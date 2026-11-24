@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AppActionExecutionResponseDto, AppActionMethodResponseDto, AppEmbeddedPageSettingsResponseDto, AppInstallationVersionInfoResponseDto, CatalogInstallationResponseDto, ExecuteAppActionMethodDto, InstallAppDto, InstallationSetupResponseDto, ProjectAppCatalogItemResponseDto, UpdateDeveloperDialogAccessDto, UpgradeAppInstallationVersionDto } from '../models/index';
+import type { AppActionExecutionResponseDto, AppActionMethodResponseDto, AppEmbeddedPageSettingsResponseDto, AppInstallationVersionInfoResponseDto, CatalogInstallationResponseDto, ExecuteAppActionMethodDto, InstallAppDto, InstallationSetupResponseDto, LandingAppCatalogDto, ProjectAppCatalogItemResponseDto, UpdateDeveloperDialogAccessDto, UpgradeAppInstallationVersionDto } from '../models/index';
 export interface ActionsExecuteRequest {
     executeAppActionMethodDto: ExecuteAppActionMethodDto;
     acceptLanguage?: ActionsExecuteAcceptLanguageEnum;
@@ -55,6 +55,10 @@ export interface GetInstalledSetupRequest {
 export interface GetInstalledVersionRequest {
     installationId: string;
     acceptLanguage?: GetInstalledVersionAcceptLanguageEnum;
+}
+export interface GetLandingActionsRequest {
+    projectId: string;
+    acceptLanguage?: GetLandingActionsAcceptLanguageEnum;
 }
 export interface InstalledSetupStepsSkipRequest {
     installationId: string;
@@ -185,6 +189,16 @@ export declare class ProjectAppsApi extends runtime.BaseAPI {
      *
      */
     getInstalledVersion(requestParameters: GetInstalledVersionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppInstallationVersionInfoResponseDto>;
+    /**
+     * OpenAPI .
+     * iframe-
+     */
+    getLandingActionsRaw(requestParameters: GetLandingActionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingAppCatalogDto>>;
+    /**
+     * OpenAPI .
+     * iframe-
+     */
+    getLandingActions(requestParameters: GetLandingActionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingAppCatalogDto>;
     /**
      * .
      *
@@ -325,6 +339,14 @@ export declare const GetInstalledVersionAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetInstalledVersionAcceptLanguageEnum = typeof GetInstalledVersionAcceptLanguageEnum[keyof typeof GetInstalledVersionAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const GetLandingActionsAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type GetLandingActionsAcceptLanguageEnum = typeof GetLandingActionsAcceptLanguageEnum[keyof typeof GetLandingActionsAcceptLanguageEnum];
 /**
  * @export
  */

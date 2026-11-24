@@ -20,6 +20,13 @@ import {
     LandingChannelSelectionInputDtoToJSON,
     LandingChannelSelectionInputDtoToJSONTyped,
 } from './LandingChannelSelectionInputDto';
+import type { LandingAppBindingDto } from './LandingAppBindingDto';
+import {
+    LandingAppBindingDtoFromJSON,
+    LandingAppBindingDtoFromJSONTyped,
+    LandingAppBindingDtoToJSON,
+    LandingAppBindingDtoToJSONTyped,
+} from './LandingAppBindingDto';
 import type { LandingContactCaptureDto } from './LandingContactCaptureDto';
 import {
     LandingContactCaptureDtoFromJSON,
@@ -34,6 +41,12 @@ import {
  * @interface AgentLandingSubscribeActionInputDto
  */
 export interface AgentLandingSubscribeActionInputDto {
+    /**
+     *
+     * @type {LandingAppBindingDto}
+     * @memberof AgentLandingSubscribeActionInputDto
+     */
+    app?: LandingAppBindingDto;
     /**
      *
      * @type {string}
@@ -84,6 +97,7 @@ export function AgentLandingSubscribeActionInputDtoFromJSONTyped(json: any, igno
     }
     return {
 
+        'app': json['app'] == null ? undefined : LandingAppBindingDtoFromJSON(json['app']),
         'type': json['type'],
         'channelSelection': LandingChannelSelectionInputDtoFromJSON(json['channel_selection']),
         'contactCapture': LandingContactCaptureDtoFromJSON(json['contact_capture']),
@@ -101,6 +115,7 @@ export function AgentLandingSubscribeActionInputDtoToJSONTyped(value?: AgentLand
 
     return {
 
+        'app': LandingAppBindingDtoToJSON(value['app']),
         'type': value['type'],
         'channel_selection': LandingChannelSelectionInputDtoToJSON(value['channelSelection']),
         'contact_capture': LandingContactCaptureDtoToJSON(value['contactCapture']),

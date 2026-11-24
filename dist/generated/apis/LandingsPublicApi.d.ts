@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateLandingSubscriptionContextDto, LandingAcquisitionIdentityDto, LandingBotSubscriptionLinkResponseDto, LandingDomainMutationResultDto, LandingDomainResolutionDto, LandingLaunchContextResponseDto, LandingMiniAppLaunchResponseDto, LandingPublicAnalyticsDto, LandingPublicCatalogResponseDto, LandingPublicResponseDto, LandingResolvedResponseDto, LandingSdkNavigationResponseDto, LandingSdkSubscriptionRequestDto, LandingSdkSubscriptionResponseDto, LandingSubscriptionRequestDto, LandingSubscriptionResponseDto, LandingSubscriptionStatusResponseDto, LandingUnsubscriptionRequestDto, LandingVariablesDto, RecordLandingVariantEventDto, ResolveLandingDto, ResolveLandingVariablesRequestDto } from '../models/index';
+import type { CreateLandingSubscriptionContextDto, ExecuteLandingAppActionDto, LandingAcquisitionIdentityDto, LandingAppAuthorizationDto, LandingAppFrameDto, LandingAppRequestDto, LandingAppResultDto, LandingBotSubscriptionLinkResponseDto, LandingDomainMutationResultDto, LandingDomainResolutionDto, LandingLaunchContextResponseDto, LandingMiniAppLaunchResponseDto, LandingPublicAnalyticsDto, LandingPublicCatalogResponseDto, LandingPublicResponseDto, LandingResolvedResponseDto, LandingRuntimeTokensDto, LandingSdkNavigationResponseDto, LandingSdkSubscriptionRequestDto, LandingSdkSubscriptionResponseDto, LandingSubscriptionRequestDto, LandingSubscriptionResponseDto, LandingSubscriptionStatusResponseDto, LandingUnsubscriptionRequestDto, LandingVariablesDto, RecordLandingVariantEventDto, RenewLandingRuntimeContextDto, ResolveLandingDto, ResolveLandingVariablesRequestDto } from '../models/index';
 export interface GetLandingsRequest {
     landingPublicId: string;
     acceptLanguage?: GetLandingsAcceptLanguageEnum;
@@ -41,6 +41,29 @@ export interface GetProjectsLandingsRequest {
 export interface GetProjectsLandingsAnalyticsRequest {
     projectPublicId: string;
     acceptLanguage?: GetProjectsLandingsAnalyticsAcceptLanguageEnum;
+}
+export interface LandingsAppsAuthorizeRequest {
+    landingPublicId: string;
+    bindingId: string;
+    landingAppRequestDto: LandingAppRequestDto;
+    acceptLanguage?: LandingsAppsAuthorizeAcceptLanguageEnum;
+}
+export interface LandingsAppsExecuteRequest {
+    landingPublicId: string;
+    bindingId: string;
+    executeLandingAppActionDto: ExecuteLandingAppActionDto;
+    acceptLanguage?: LandingsAppsExecuteAcceptLanguageEnum;
+}
+export interface LandingsAppsFrameRequest {
+    landingPublicId: string;
+    bindingId: string;
+    landingAppRequestDto: LandingAppRequestDto;
+    acceptLanguage?: LandingsAppsFrameAcceptLanguageEnum;
+}
+export interface LandingsContextRenewRequest {
+    landingPublicId: string;
+    renewLandingRuntimeContextDto: RenewLandingRuntimeContextDto;
+    acceptLanguage?: LandingsContextRenewAcceptLanguageEnum;
 }
 export interface LandingsLaunchBotSubscriptionLinkRequest {
     token: string;
@@ -170,6 +193,44 @@ export declare class LandingsPublicApi extends runtime.BaseAPI {
      *
      */
     getProjectsLandingsAnalytics(requestParameters: GetProjectsLandingsAnalyticsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingPublicAnalyticsDto>;
+    /**
+     * , . 60 .
+     * iframe-
+     */
+    landingsAppsAuthorizeRaw(requestParameters: LandingsAppsAuthorizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingAppAuthorizationDto>>;
+    /**
+     * , . 60 .
+     * iframe-
+     */
+    landingsAppsAuthorize(requestParameters: LandingsAppsAuthorizeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingAppAuthorizationDto>;
+    /**
+     * . operation_id. Idempotency-Key; 15 .
+     * visitor-
+     */
+    landingsAppsExecuteRaw(requestParameters: LandingsAppsExecuteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingAppResultDto>>;
+    /**
+     * . operation_id. Idempotency-Key; 15 .
+     * visitor-
+     */
+    landingsAppsExecute(requestParameters: LandingsAppsExecuteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingAppResultDto>;
+    /**
+     * , . .
+     * iframe
+     */
+    landingsAppsFrameRaw(requestParameters: LandingsAppsFrameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingAppFrameDto>>;
+    /**
+     * , . .
+     * iframe
+     */
+    landingsAppsFrame(requestParameters: LandingsAppsFrameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingAppFrameDto>;
+    /**
+     *
+     */
+    landingsContextRenewRaw(requestParameters: LandingsContextRenewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LandingRuntimeTokensDto>>;
+    /**
+     *
+     */
+    landingsContextRenew(requestParameters: LandingsContextRenewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LandingRuntimeTokensDto>;
     /**
      * UTM , start ID.
      * Telegram- MAX-
@@ -327,6 +388,38 @@ export declare const GetProjectsLandingsAnalyticsAcceptLanguageEnum: {
     readonly En: "en";
 };
 export type GetProjectsLandingsAnalyticsAcceptLanguageEnum = typeof GetProjectsLandingsAnalyticsAcceptLanguageEnum[keyof typeof GetProjectsLandingsAnalyticsAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LandingsAppsAuthorizeAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingsAppsAuthorizeAcceptLanguageEnum = typeof LandingsAppsAuthorizeAcceptLanguageEnum[keyof typeof LandingsAppsAuthorizeAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LandingsAppsExecuteAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingsAppsExecuteAcceptLanguageEnum = typeof LandingsAppsExecuteAcceptLanguageEnum[keyof typeof LandingsAppsExecuteAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LandingsAppsFrameAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingsAppsFrameAcceptLanguageEnum = typeof LandingsAppsFrameAcceptLanguageEnum[keyof typeof LandingsAppsFrameAcceptLanguageEnum];
+/**
+ * @export
+ */
+export declare const LandingsContextRenewAcceptLanguageEnum: {
+    readonly Ru: "ru";
+    readonly En: "en";
+};
+export type LandingsContextRenewAcceptLanguageEnum = typeof LandingsContextRenewAcceptLanguageEnum[keyof typeof LandingsContextRenewAcceptLanguageEnum];
 /**
  * @export
  */

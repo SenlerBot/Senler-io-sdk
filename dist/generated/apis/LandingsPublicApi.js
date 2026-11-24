@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandingsVariantEventsAcceptLanguageEnum = exports.LandingsSdkSubscriptionAcceptLanguageEnum = exports.LandingsResolveAcceptLanguageEnum = exports.LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum = exports.LandingsLaunchVariablesAcceptLanguageEnum = exports.LandingsLaunchUnsubscribeAcceptLanguageEnum = exports.LandingsLaunchSubscriptionStatusAcceptLanguageEnum = exports.LandingsLaunchSubscribeAcceptLanguageEnum = exports.LandingsLaunchMiniAppLaunchAcceptLanguageEnum = exports.LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum = exports.GetProjectsLandingsAnalyticsAcceptLanguageEnum = exports.GetProjectsLandingsAcceptLanguageEnum = exports.GetLandingsSdkLandingAcceptLanguageEnum = exports.GetLandingsLaunchAcceptLanguageEnum = exports.GetLandingsDomainsResolveAcceptLanguageEnum = exports.GetLandingsDomainsCertificateAcceptLanguageEnum = exports.GetLandingsAcceptLanguageEnum = exports.LandingsPublicApi = void 0;
+exports.LandingsVariantEventsAcceptLanguageEnum = exports.LandingsSdkSubscriptionAcceptLanguageEnum = exports.LandingsResolveAcceptLanguageEnum = exports.LandingsLaunchVkMessageSubscriptionLinkAcceptLanguageEnum = exports.LandingsLaunchVariablesAcceptLanguageEnum = exports.LandingsLaunchUnsubscribeAcceptLanguageEnum = exports.LandingsLaunchSubscriptionStatusAcceptLanguageEnum = exports.LandingsLaunchSubscribeAcceptLanguageEnum = exports.LandingsLaunchMiniAppLaunchAcceptLanguageEnum = exports.LandingsLaunchBotSubscriptionLinkAcceptLanguageEnum = exports.LandingsContextRenewAcceptLanguageEnum = exports.LandingsAppsFrameAcceptLanguageEnum = exports.LandingsAppsExecuteAcceptLanguageEnum = exports.LandingsAppsAuthorizeAcceptLanguageEnum = exports.GetProjectsLandingsAnalyticsAcceptLanguageEnum = exports.GetProjectsLandingsAcceptLanguageEnum = exports.GetLandingsSdkLandingAcceptLanguageEnum = exports.GetLandingsLaunchAcceptLanguageEnum = exports.GetLandingsDomainsResolveAcceptLanguageEnum = exports.GetLandingsDomainsCertificateAcceptLanguageEnum = exports.GetLandingsAcceptLanguageEnum = exports.LandingsPublicApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -272,6 +272,149 @@ class LandingsPublicApi extends runtime.BaseAPI {
      */
     async getProjectsLandingsAnalytics(requestParameters, initOverrides) {
         const response = await this.getProjectsLandingsAnalyticsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , . 60 .
+     * iframe-
+     */
+    async landingsAppsAuthorizeRaw(requestParameters, initOverrides) {
+        if (requestParameters['landingPublicId'] == null) {
+            throw new runtime.RequiredError('landingPublicId', 'Required parameter "landingPublicId" was null or undefined when calling landingsAppsAuthorize().');
+        }
+        if (requestParameters['bindingId'] == null) {
+            throw new runtime.RequiredError('bindingId', 'Required parameter "bindingId" was null or undefined when calling landingsAppsAuthorize().');
+        }
+        if (requestParameters['landingAppRequestDto'] == null) {
+            throw new runtime.RequiredError('landingAppRequestDto', 'Required parameter "landingAppRequestDto" was null or undefined when calling landingsAppsAuthorize().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/public/landings/{landingPublicId}/apps/{bindingId}/authorize`.replace(`{${"landingPublicId"}}`, encodeURIComponent(String(requestParameters['landingPublicId']))).replace(`{${"bindingId"}}`, encodeURIComponent(String(requestParameters['bindingId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.LandingAppRequestDtoToJSON)(requestParameters['landingAppRequestDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingAppAuthorizationDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , . 60 .
+     * iframe-
+     */
+    async landingsAppsAuthorize(requestParameters, initOverrides) {
+        const response = await this.landingsAppsAuthorizeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * . operation_id. Idempotency-Key; 15 .
+     * visitor-
+     */
+    async landingsAppsExecuteRaw(requestParameters, initOverrides) {
+        if (requestParameters['landingPublicId'] == null) {
+            throw new runtime.RequiredError('landingPublicId', 'Required parameter "landingPublicId" was null or undefined when calling landingsAppsExecute().');
+        }
+        if (requestParameters['bindingId'] == null) {
+            throw new runtime.RequiredError('bindingId', 'Required parameter "bindingId" was null or undefined when calling landingsAppsExecute().');
+        }
+        if (requestParameters['executeLandingAppActionDto'] == null) {
+            throw new runtime.RequiredError('executeLandingAppActionDto', 'Required parameter "executeLandingAppActionDto" was null or undefined when calling landingsAppsExecute().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/public/landings/{landingPublicId}/apps/{bindingId}/execute`.replace(`{${"landingPublicId"}}`, encodeURIComponent(String(requestParameters['landingPublicId']))).replace(`{${"bindingId"}}`, encodeURIComponent(String(requestParameters['bindingId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ExecuteLandingAppActionDtoToJSON)(requestParameters['executeLandingAppActionDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingAppResultDtoFromJSON)(jsonValue));
+    }
+    /**
+     * . operation_id. Idempotency-Key; 15 .
+     * visitor-
+     */
+    async landingsAppsExecute(requestParameters, initOverrides) {
+        const response = await this.landingsAppsExecuteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * , . .
+     * iframe
+     */
+    async landingsAppsFrameRaw(requestParameters, initOverrides) {
+        if (requestParameters['landingPublicId'] == null) {
+            throw new runtime.RequiredError('landingPublicId', 'Required parameter "landingPublicId" was null or undefined when calling landingsAppsFrame().');
+        }
+        if (requestParameters['bindingId'] == null) {
+            throw new runtime.RequiredError('bindingId', 'Required parameter "bindingId" was null or undefined when calling landingsAppsFrame().');
+        }
+        if (requestParameters['landingAppRequestDto'] == null) {
+            throw new runtime.RequiredError('landingAppRequestDto', 'Required parameter "landingAppRequestDto" was null or undefined when calling landingsAppsFrame().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/public/landings/{landingPublicId}/apps/{bindingId}/frame`.replace(`{${"landingPublicId"}}`, encodeURIComponent(String(requestParameters['landingPublicId']))).replace(`{${"bindingId"}}`, encodeURIComponent(String(requestParameters['bindingId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.LandingAppRequestDtoToJSON)(requestParameters['landingAppRequestDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingAppFrameDtoFromJSON)(jsonValue));
+    }
+    /**
+     * , . .
+     * iframe
+     */
+    async landingsAppsFrame(requestParameters, initOverrides) {
+        const response = await this.landingsAppsFrameRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     *
+     */
+    async landingsContextRenewRaw(requestParameters, initOverrides) {
+        if (requestParameters['landingPublicId'] == null) {
+            throw new runtime.RequiredError('landingPublicId', 'Required parameter "landingPublicId" was null or undefined when calling landingsContextRenew().');
+        }
+        if (requestParameters['renewLandingRuntimeContextDto'] == null) {
+            throw new runtime.RequiredError('renewLandingRuntimeContextDto', 'Required parameter "renewLandingRuntimeContextDto" was null or undefined when calling landingsContextRenew().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['acceptLanguage'] != null) {
+            headerParameters['Accept-Language'] = String(requestParameters['acceptLanguage']);
+        }
+        const response = await this.request({
+            path: `/api/public/landings/{landingPublicId}/context/renew`.replace(`{${"landingPublicId"}}`, encodeURIComponent(String(requestParameters['landingPublicId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.RenewLandingRuntimeContextDtoToJSON)(requestParameters['renewLandingRuntimeContextDto']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LandingRuntimeTokensDtoFromJSON)(jsonValue));
+    }
+    /**
+     *
+     */
+    async landingsContextRenew(requestParameters, initOverrides) {
+        const response = await this.landingsContextRenewRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -685,6 +828,34 @@ exports.GetProjectsLandingsAcceptLanguageEnum = {
  * @export
  */
 exports.GetProjectsLandingsAnalyticsAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LandingsAppsAuthorizeAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LandingsAppsExecuteAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LandingsAppsFrameAcceptLanguageEnum = {
+    Ru: 'ru',
+    En: 'en'
+};
+/**
+ * @export
+ */
+exports.LandingsContextRenewAcceptLanguageEnum = {
     Ru: 'ru',
     En: 'en'
 };

@@ -39,7 +39,9 @@ exports.AutomationTriggerTestSessionResponseDtoEventTypeEnum = {
     DialogSnoozed: 'dialog_snoozed',
     SegmentSubscribed: 'segment_subscribed',
     AppEventReceived: 'app_event_received',
-    BookingChanged: 'booking_changed'
+    BookingChanged: 'booking_changed',
+    PaymentReceived: 'payment_received',
+    TelegramPostStars: 'telegram_post_stars'
 };
 /**
  * @export

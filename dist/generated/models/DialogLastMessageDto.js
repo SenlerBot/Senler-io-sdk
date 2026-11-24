@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DialogLastMessageDtoActionTypeEnum = void 0;
+exports.DialogLastMessageDtoActionTypeEnum = exports.DialogLastMessageDtoSendStateEnum = void 0;
 exports.instanceOfDialogLastMessageDto = instanceOfDialogLastMessageDto;
 exports.DialogLastMessageDtoFromJSON = DialogLastMessageDtoFromJSON;
 exports.DialogLastMessageDtoFromJSONTyped = DialogLastMessageDtoFromJSONTyped;
@@ -22,6 +22,14 @@ exports.DialogLastMessageDtoToJSONTyped = DialogLastMessageDtoToJSONTyped;
 const DialogMessageAttachmentDto_1 = require("./DialogMessageAttachmentDto");
 const EventMessageForwardingDto_1 = require("./EventMessageForwardingDto");
 const EventSenderDto_1 = require("./EventSenderDto");
+/**
+ * @export
+ */
+exports.DialogLastMessageDtoSendStateEnum = {
+    Sending: 'sending',
+    Sent: 'sent',
+    Failed: 'failed'
+};
 /**
  * @export
  */
@@ -116,6 +124,7 @@ function DialogLastMessageDtoFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'content': json['content'],
+        'sendState': json['send_state'] == null ? undefined : json['send_state'],
         'sender': json['sender'] == null ? undefined : (0, EventSenderDto_1.EventSenderDtoFromJSON)(json['sender']),
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
         'timestamp': (new Date(json['timestamp'])),
@@ -133,6 +142,7 @@ function DialogLastMessageDtoToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'content': value['content'],
+        'send_state': value['sendState'],
         'sender': (0, EventSenderDto_1.EventSenderDtoToJSON)(value['sender']),
         'lead_id': value['leadId'],
         'timestamp': ((value['timestamp']).toISOString()),

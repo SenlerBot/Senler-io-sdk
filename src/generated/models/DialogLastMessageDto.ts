@@ -48,6 +48,12 @@ export interface DialogLastMessageDto {
      */
     content: string;
     /**
+     *
+     * @type {string}
+     * @memberof DialogLastMessageDto
+     */
+    sendState?: DialogLastMessageDtoSendStateEnum;
+    /**
      * . id/type , profile .
      * @type {EventSenderDto}
      * @memberof DialogLastMessageDto
@@ -85,6 +91,16 @@ export interface DialogLastMessageDto {
     forwarding?: EventMessageForwardingDto;
 }
 
+
+/**
+ * @export
+ */
+export const DialogLastMessageDtoSendStateEnum = {
+    Sending: 'sending',
+    Sent: 'sent',
+    Failed: 'failed'
+} as const;
+export type DialogLastMessageDtoSendStateEnum = typeof DialogLastMessageDtoSendStateEnum[keyof typeof DialogLastMessageDtoSendStateEnum];
 
 /**
  * @export
@@ -184,6 +200,7 @@ export function DialogLastMessageDtoFromJSONTyped(json: any, ignoreDiscriminator
     return {
 
         'content': json['content'],
+        'sendState': json['send_state'] == null ? undefined : json['send_state'],
         'sender': json['sender'] == null ? undefined : EventSenderDtoFromJSON(json['sender']),
         'leadId': json['lead_id'] == null ? undefined : json['lead_id'],
         'timestamp': (new Date(json['timestamp'])),
@@ -205,6 +222,7 @@ export function DialogLastMessageDtoToJSONTyped(value?: DialogLastMessageDto | n
     return {
 
         'content': value['content'],
+        'send_state': value['sendState'],
         'sender': EventSenderDtoToJSON(value['sender']),
         'lead_id': value['leadId'],
         'timestamp': ((value['timestamp']).toISOString()),

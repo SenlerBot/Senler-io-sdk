@@ -17,6 +17,7 @@ exports.LandingVersionResponseDtoBlocksInnerFromJSON = LandingVersionResponseDto
 exports.LandingVersionResponseDtoBlocksInnerFromJSONTyped = LandingVersionResponseDtoBlocksInnerFromJSONTyped;
 exports.LandingVersionResponseDtoBlocksInnerToJSON = LandingVersionResponseDtoBlocksInnerToJSON;
 exports.LandingVersionResponseDtoBlocksInnerToJSONTyped = LandingVersionResponseDtoBlocksInnerToJSONTyped;
+const LandingAppBlockResponseDto_1 = require("./LandingAppBlockResponseDto");
 const LandingBookingBlockResponseDto_1 = require("./LandingBookingBlockResponseDto");
 const LandingButtonBlockResponseDto_1 = require("./LandingButtonBlockResponseDto");
 const LandingCoverBlockResponseDto_1 = require("./LandingCoverBlockResponseDto");
@@ -38,6 +39,8 @@ function LandingVersionResponseDtoBlocksInnerFromJSONTyped(json, ignoreDiscrimin
         return json;
     }
     switch (json['type']) {
+        case 'app':
+            return Object.assign({}, (0, LandingAppBlockResponseDto_1.LandingAppBlockResponseDtoFromJSONTyped)(json, true), { type: 'app' });
         case 'booking':
             return Object.assign({}, (0, LandingBookingBlockResponseDto_1.LandingBookingBlockResponseDtoFromJSONTyped)(json, true), { type: 'booking' });
         case 'button':
@@ -76,6 +79,8 @@ function LandingVersionResponseDtoBlocksInnerToJSONTyped(value, ignoreDiscrimina
         return value;
     }
     switch (value['type']) {
+        case 'app':
+            return Object.assign({}, (0, LandingAppBlockResponseDto_1.LandingAppBlockResponseDtoToJSON)(value), { type: 'app' });
         case 'booking':
             return Object.assign({}, (0, LandingBookingBlockResponseDto_1.LandingBookingBlockResponseDtoToJSON)(value), { type: 'booking' });
         case 'button':

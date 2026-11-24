@@ -38,6 +38,7 @@ export interface ResourcePackageSelectedResourceDto {
  * @export
  */
 export const ResourcePackageSelectedResourceDtoResourceTypeEnum = {
+    Funnel: 'funnel',
     Automation: 'automation',
     Agent: 'agent',
     Delivery: 'delivery',

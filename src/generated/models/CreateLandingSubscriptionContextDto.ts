@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { LandingAppAttributionDto } from './LandingAppAttributionDto';
+import {
+    LandingAppAttributionDtoFromJSON,
+    LandingAppAttributionDtoFromJSONTyped,
+    LandingAppAttributionDtoToJSON,
+    LandingAppAttributionDtoToJSONTyped,
+} from './LandingAppAttributionDto';
 import type { AnalyticsSnapshotDto } from './AnalyticsSnapshotDto';
 import {
     AnalyticsSnapshotDtoFromJSON,
@@ -46,6 +53,12 @@ export interface CreateLandingSubscriptionContextDto {
      * @memberof CreateLandingSubscriptionContextDto
      */
     observedBlockIds?: Array<string>;
+    /**
+     * , .
+     * @type {Array<LandingAppAttributionDto>}
+     * @memberof CreateLandingSubscriptionContextDto
+     */
+    appContexts?: Array<LandingAppAttributionDto>;
     /**
      * resolve
      * @type {string}
@@ -123,6 +136,7 @@ export function CreateLandingSubscriptionContextDtoFromJSONTyped(json: any, igno
         'observedExperimentIds': json['observed_experiment_ids'] == null ? undefined : json['observed_experiment_ids'],
         'pageObserved': json['page_observed'] == null ? undefined : json['page_observed'],
         'observedBlockIds': json['observed_block_ids'] == null ? undefined : json['observed_block_ids'],
+        'appContexts': json['app_contexts'] == null ? undefined : ((json['app_contexts'] as Array<any>).map(LandingAppAttributionDtoFromJSON)),
         'eventToken': json['event_token'] == null ? undefined : json['event_token'],
         'analytics': json['analytics'] == null ? undefined : ((json['analytics'] as Array<any>).map(AnalyticsSnapshotDtoFromJSON)),
         'channelPublicId': json['channel_public_id'],
@@ -149,6 +163,7 @@ export function CreateLandingSubscriptionContextDtoToJSONTyped(value?: CreateLan
         'observed_experiment_ids': value['observedExperimentIds'],
         'page_observed': value['pageObserved'],
         'observed_block_ids': value['observedBlockIds'],
+        'app_contexts': value['appContexts'] == null ? undefined : ((value['appContexts'] as Array<any>).map(LandingAppAttributionDtoToJSON)),
         'event_token': value['eventToken'],
         'analytics': value['analytics'] == null ? undefined : ((value['analytics'] as Array<any>).map(AnalyticsSnapshotDtoToJSON)),
         'channel_public_id': value['channelPublicId'],

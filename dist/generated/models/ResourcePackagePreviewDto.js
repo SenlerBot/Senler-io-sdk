@@ -24,6 +24,7 @@ const ResourcePackageResourcePreviewDto_1 = require("./ResourcePackageResourcePr
  * @export
  */
 exports.ResourcePackagePreviewDtoRootResourceTypeEnum = {
+    Funnel: 'funnel',
     Automation: 'automation',
     Agent: 'agent',
     Delivery: 'delivery',

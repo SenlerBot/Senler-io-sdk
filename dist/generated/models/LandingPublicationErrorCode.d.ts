@@ -23,6 +23,8 @@ export declare const LandingPublicationErrorCode: {
     readonly AssetMissing: "asset_missing";
     readonly AssetCheckUnavailable: "asset_check_unavailable";
     readonly ActionInvalid: "action_invalid";
+    readonly AppConfigurationRequired: "app_configuration_required";
+    readonly AppConfigurationInvalid: "app_configuration_invalid";
     readonly ActionIdDuplicate: "action_id_duplicate";
     readonly SegmentUnavailable: "segment_unavailable";
     readonly ChannelUnavailable: "channel_unavailable";

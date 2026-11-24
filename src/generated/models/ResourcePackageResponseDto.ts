@@ -82,6 +82,7 @@ export interface ResourcePackageResponseDto {
  * @export
  */
 export const ResourcePackageResponseDtoRootResourceTypeEnum = {
+    Funnel: 'funnel',
     Automation: 'automation',
     Agent: 'agent',
     Delivery: 'delivery',

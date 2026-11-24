@@ -23,6 +23,7 @@ exports.ResourcePackagePlanItemDtoToJSONTyped = ResourcePackagePlanItemDtoToJSON
  * @export
  */
 exports.ResourcePackagePlanItemDtoResourceTypeEnum = {
+    Funnel: 'funnel',
     Automation: 'automation',
     Agent: 'agent',
     Delivery: 'delivery',

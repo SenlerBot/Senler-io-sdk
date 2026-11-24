@@ -18,6 +18,7 @@ import type { EventTelegramWidgetDto } from './EventTelegramWidgetDto';
 import type { EventMessagePinningDto } from './EventMessagePinningDto';
 import type { EventMessageRepliesDto } from './EventMessageRepliesDto';
 import type { EventMessageViewsDto } from './EventMessageViewsDto';
+import type { EventTelegramInvoiceDto } from './EventTelegramInvoiceDto';
 import type { EventPollSnapshotDto } from './EventPollSnapshotDto';
 import type { EventPlatformActionDto } from './EventPlatformActionDto';
 /**
@@ -26,6 +27,12 @@ import type { EventPlatformActionDto } from './EventPlatformActionDto';
  * @interface EventMessageInteractionsDto
  */
 export interface EventMessageInteractionsDto {
+    /**
+     *
+     * @type {EventTelegramInvoiceDto}
+     * @memberof EventMessageInteractionsDto
+     */
+    telegramInvoice?: EventTelegramInvoiceDto;
     /**
      * Telegram
      * @type {EventTelegramWidgetDto}

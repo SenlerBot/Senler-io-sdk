@@ -9,12 +9,19 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { LandingAppAttributionDto } from './LandingAppAttributionDto';
 /**
  * LandingAcquisitionIdentityDto.
  * @export
  * @interface LandingAcquisitionIdentityDto
  */
 export interface LandingAcquisitionIdentityDto {
+    /**
+     * , .
+     * @type {Array<LandingAppAttributionDto>}
+     * @memberof LandingAcquisitionIdentityDto
+     */
+    appContexts?: Array<LandingAppAttributionDto>;
     /**
      *
      * @type {string}

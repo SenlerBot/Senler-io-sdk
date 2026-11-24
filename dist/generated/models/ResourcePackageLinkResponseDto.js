@@ -23,6 +23,7 @@ exports.ResourcePackageLinkResponseDtoToJSONTyped = ResourcePackageLinkResponseD
  * @export
  */
 exports.ResourcePackageLinkResponseDtoSourceSectionEnum = {
+    Funnels: 'funnels',
     Automations: 'automations',
     Agents: 'agents',
     Deliveries: 'deliveries',
